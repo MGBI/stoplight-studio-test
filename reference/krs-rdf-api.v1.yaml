@@ -312,10 +312,9 @@ components:
         Lista możliwości:
         https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
   securitySchemes:
-    Authorization:
-      name: API Key
+    API Key:
+      name: Authorization
       type: apiKey
       in: header
-      description: Klucz do uwierzytelnienia użytkownika
 security:
   - Authorization: []
