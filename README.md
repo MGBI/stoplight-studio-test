@@ -1,0 +1,1 @@
+# stoplight-studio-test
