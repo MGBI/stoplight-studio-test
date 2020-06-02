@@ -1,0 +1,2167 @@
+openapi: "3.0.0"
+info:
+  version: 0.1.0
+  title: API Krajowego Rejestru Sądowego
+  description: |
+      # Wstęp
+      Poniżej znajduje się dokumentacja dostępu programatycznego (API) do danych z Krajowego Rejestru Sądowego
+      udostępnianych przez Fundację ePaństwo (https://epf.org.pl).
+
+      # Autoryzacja
+      Każde zapytanie do API musi zawierać ważny klucz API w nagłówku HTTP 'Authorization'. Klucze API dla danego
+      konta są widoczne po zalogowaniu, na stronie https://rejestr.io/konto/api.
+
+      # Pola KRS udostępniane przez API
+      API rejestr.io udostępnia wszystkie pola obecne w odpisach aktualnych KRS za wyjątkiem numerów PESEL osób.
+      Udostępniamy również dane historyczne.
+
+      Wszystkie te pola znajdują się w węźle `fields` w odpowiedzi na zapytanie
+      ["Pobieranie danych organizacji"](#operation/getKrsOrg).
+
+      Dodatkowo, niektóre podstawowe pola są również zwracane bezpośrednio, poza strukturą `fields`: np. adres,
+      forma prawna, nazwa, numery NIP, REGON. Ich pełna lista jest wyliczona przy odpowiedzi
+      `200 Dane organizacji w KRS` dla powyższego zapytania.
+
+      Wszystkie pola zwracane w `fields` są zgrupowane w rozdziały tematyczne, tzw. "chapters". Ich lista to:
+      - basic - podstawowe pola
+      - branches - pola dotyczące oddziałów organizacji
+      - financials - pola dotyczące finansów
+      - obligations - pola dotyczące zobowiązań
+      - transformations - pola dotyczące przekształceń, zmian statutu, itp.
+
+      Aby zatem otrzymać pełnię aktualnych danych o organizacji, równą informacjom zawartym w odpisie KRS
+      (poza numerami PESEL), potrzeba wykonać maksymalnie pięć zapytań API, po kolei prosząc o niepuste
+      rozdziały z powyższej listy.
+
+      Struktura `fields` jest skomplikowana, celem umożliwienia prezentowania zmian wartości pól w czasie.
+      Jej szczegółowe omówienie znajduje się dalej w treści tej dokumentacji. Natomiast poniżej wyliczone
+      są nazwy pól zwracanych przez API rejestr.io:
+
+      <details>
+        <summary>Kliknij by pokazać listę</summary>
+
+        <div class="fields-listing-names">
+
+        |Nazwa pola|
+        |---------------|
+        |adres|
+        |cel_dzialania  |
+        |czas_na_jaki_zostala_utworzona_organizacja|
+        |czy_obligatoriusze_maja_prawo_do_udzialu_w_zysku|
+        |czy_przedsiebiorca_prowadzi_dzialalnosc_gospodarcza_z_innymi_podmiotami|
+        |czy_statut_przyznaje_uprawnienia_osobiste_okreslonym_akcjonariuszom|
+        |czy_wspolnik_moze_miec|
+        |czy_zarzad_lub_rada_administrujaca_sa_upowaznieni_do_emisji_warrantow_subskrypcyjnych|
+        |czy_zlozono_plan|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_czlonek_ma_ograniczona_zdolnosc|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_czlonek_pozostaje_w_zwiazku_malzenskim|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_istenija_klauzule_zwlaniajace_czlonka|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_zostala_zawarta_malzenska_umowa_majatkowa|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.forma_prawna|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.organization|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.oznaczenie_panstwa_nazwa_rejestru|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.person|
+        |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.siedziba|
+        |dane_jedynego_akcjonariusza.czy_wspolnik_posiada_calosc_akcji_spolki|
+        |dane_jedynego_akcjonariusza.organization|
+        |dane_jedynego_akcjonariusza.person|
+        |dane_komplementariuszy.czy_komplementariusz_ma_ograniczona_zdolnosc_do_czynnosci_prawnych|
+        |dane_komplementariuszy.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami|
+        |dane_komplementariuszy.czy_wspolnik_pozostaje_w_zwiazku_malzenskim|
+        |dane_komplementariuszy.czy_zostala_zawarta_malzenska_umowa_majatkowa|
+        |dane_komplementariuszy.organization|
+        |dane_komplementariuszy.person|
+        |dane_o_poprzedniej_rejestracji_zgrupowania_w_innym_panstwie|
+        |dane_o_wczesniejszej_rejestracji|
+        |dane_partnerow.czy_partner_ma_ograniczona_zdolnosc_do_czynnosci_prawnych|
+        |dane_partnerow.czy_partner_ponosi_odpowiedzialnosc|
+        |dane_partnerow.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami|
+        |dane_partnerow.czy_wspolnik_pozostaje_w_zwiazku_malzenskim|
+        |dane_partnerow.czy_zostala_zawarta_malzenska_umowa_majatkowa|
+        |dane_partnerow.person|
+        |dane_pelnomocnika.organization|
+        |dane_pelnomocnika.person|
+        |dane_pelnomocnika.zakres_umocowania|
+        |dane_wspolnikow.czy_jest_w_tym_wklad_niepieniezny|
+        |dane_wspolnikow.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami|
+        |dane_wspolnikow.czy_wspolnik_jest_komandytariuszem|
+        |dane_wspolnikow.czy_wspolnik_ma_ograniczona_zdolnosc_do_czynnosci_prawnych|
+        |dane_wspolnikow.czy_wspolnik_posiada_calosc_akcji_spolki|
+        |dane_wspolnikow.czy_wspolnik_pozostaje_w_zwiazku_malzenskim|
+        |dane_wspolnikow.czy_zostala_zawarta_malzenska_umowa_majatkowa|
+        |dane_wspolnikow.organization|
+        |dane_wspolnikow.person|
+        |dane_wspolnikow.posiadane_przez_wspolnika_udzialy|
+        |dane_wspolnikow.posiadane_przez_wspolnika_udzialy.cena_udzialu|
+        |dane_wspolnikow.posiadane_przez_wspolnika_udzialy.liczba|
+        |dane_wspolnikow.posiadane_przez_wspolnika_udzialy.wartosc|
+        |dane_wspolnikow.wartosc_wkladu_umowionego|
+        |dane_wspolnikow.wklad_wniesiony.czy_jest_to_wklad_niepieniezny|
+        |dane_wspolnikow.wklad_wniesiony.wartosc_wkladu_wniesionego|
+        |dane_wspolnikow.wklad_zwrocony.czy_jest_to_wklad_niepieniezny|
+        |dane_wspolnikow.wklad_zwrocony.wartosc_wkladu_zwroconego|
+        |dane_wspolnikow.wysokosc_sumy_komandytowej|
+        |decyzja_wykreslenie_data|
+        |decyzja_wykreslenie_nazwa_organu|
+        |decyzja_wykreslenie_numer|
+        |dokumenty_wzmianka_o_braku_obowiazku_sporzadzenia_i_zlozenia_rocznego_sprawozdania_finansowego|
+        |dokumenty_wzmianka_o_zlozeniu_opinii_bieglego_rewidenta|
+        |dokumenty_wzmianka_o_zlozeniu_rocznego_sprawozdania_finansowego|
+        |dokumenty_wzmianka_o_zlozeniu_sprawozdania_z_dzialalnosci_podmiotu|
+        |dokumenty_wzmianka_o_zlozeniu_sprawozdania_z_platnosci_na_rzecz_administracji_publicznej|
+        |dokumenty_wzmianka_o_zlozeniu_uchwaly_lub_postanowienia_o_zatwierdzeniu_skonsolidowanego_rocznego_sprawozdania_finansowego|
+        |dzien_konczacy_pierwszy_rok_obrotowy_za_ktory_nalezy_zlozyc_sprawozdanie_finansowe|
+        |email          |
+        |emisja_akcji.liczba_akcji_w_danej_serii|
+        |emisja_akcji.nazwa_serii_akcji|
+        |emisja_akcji.rodzaj_uprzywilejowania_i_liczba_akcji_uprzywilejowanych|
+        |forma_prawna   |
+        |informacja_o_sporzadzeniu_lub_zmianie_umowy|
+        |informacje_o_udzialach.nazwa_kategorii|
+        |informacje_o_udzialach.wartosc_nominalna_udzialow_tej_samej_kategorii|
+        |inne_dane.data_cofniecia_zezwolenia|
+        |inne_dane.data_uznania_towarzystwo_za_male_towarzystwo_ubezpieczen_wzajemnych|
+        |inne_dane.informacja_o_czesciowym_ograniczeniu_zezwolenia_na_prowadzenie_towarzystwa|
+        |inne_dane.oznaczenie_dzialu|
+        |inne_dane.oznaczenie_terytorialne|
+        |komitet_zalozycielski.organization|
+        |komitet_zalozycielski.person|
+        |kurator.data_do_ktorej_ma_dzialac|
+        |kurator.data_powolania|
+        |kurator.organization|
+        |kurator.person |
+        |kurator.podstawa_powolania_i_zakres_dzialania|
+        |kwotowe_okreslenie_czesci_kapitalu_pokrytego|
+        |kwotowe_okreslenie_czesci_kapitalu_wplaconego|
+        |liczba_akcji_wszystkich_emisji|
+        |liczba_udzialow_wszystkich_kategorii|
+        |likwidacja.dane_likwidatorow.organization|
+        |likwidacja.dane_likwidatorow.person|
+        |likwidacja.dotyczy|
+        |likwidacja.informacja_o_otwarciu|
+        |likwidacja.informacja_o_zakonczeniu|
+        |likwidacja.sposob_reprezentacji_podmiotu_przez_likwidatorow|
+        |minister_nadzorujacy.name|
+        |minister_nadzorujacy.regon|
+        |nazwa          |
+        |nazwa_krotka   |
+        |nazwa_rejestru_numer_w_rejestrze_okreslenie_organu_prowadzacego_rejestr|
+        |nip            |
+        |notyfikacja_bris|
+        |numer_i_data_decyzji_prezesa_uokik_o_zgodzie_na_koncentracje|
+        |oddalone_wnioski_o_ogloszenie_upadlosci.dalsze_pelnienie_funkcji|
+        |oddalone_wnioski_o_ogloszenie_upadlosci.oddalenie_wniosku|
+        |oddalone_wnioski_o_ogloszenie_upadlosci.zabezpieczenie_majatku_w_postepowaniu_restrukturyzacyjnym|
+        |oddalone_wnioski_o_ogloszenie_upadlosci.zabezpieczenie_majatku_w_postepowaniu_upadlosciowym|
+        |oddzialy.adres |
+        |oddzialy.nazwa |
+        |oddzialy.siedziba|
+        |okreslenie_okolicznosci_powstania|
+        |okreslenie_wartosc_akcji_objetych_za_aport|
+        |opis_sposobu_powstania_podmiotu|
+        |opp            |
+        |organ_nadzoru.dane_osob.organization|
+        |organ_nadzoru.dane_osob.person|
+        |organ_nadzoru.nazwa_organu|
+        |organ_reprezentacji.dane_osob.czy_osoba_wchodzaca_w_sklad_zarzadu_zostala_zawieszona_w_czynnosciach|
+        |organ_reprezentacji.dane_osob.data_do_jakiej_zostala_zawieszona|
+        |organ_reprezentacji.dane_osob.funkcja_w_organie|
+        |organ_reprezentacji.dane_osob.okreslenie_osoby|
+        |organ_reprezentacji.dane_osob.organization|
+        |organ_reprezentacji.dane_osob.person|
+        |organ_reprezentacji.nazwa_organu_reprezentacji_podmiotu|
+        |organ_reprezentacji.organ_reprezentacji_kwalifikacja_kierownika|
+        |organ_reprezentacji.osoba|
+        |organ_reprezentacji.sposob_reprezentacji_podmiotu|
+        |organ_reprezentacji_zagranicznego_przedsiebiorcy.dane_osob.funkcja|
+        |organ_reprezentacji_zagranicznego_przedsiebiorcy.dane_osob.person|
+        |organ_reprezentacji_zagranicznego_przedsiebiorcy.nazwa|
+        |organ_reprezentacji_zagranicznego_przedsiebiorcy.sposob_reprezentacji|
+        |organ_sprawujacy_nadzor.name|
+        |organ_zalozycielski.name|
+        |organ_zalozycielski.regon|
+        |osoba_pozwolenie.address|
+        |osoba_pozwolenie.first_names|
+        |osoba_pozwolenie.last_name|
+        |osoba_pozwolenie.name|
+        |osoby_reprezentujace_zagranicznego_przedsiebiorcy_w_oddziale.funkcja|
+        |osoby_reprezentujace_zagranicznego_przedsiebiorcy_w_oddziale.person|
+        |oznaczenie_pisma_innego_niz_msig_przeznaczonego_do_ogloszen|
+        |panstwo_nazwa_rejestru|
+        |pelnomocnicy.organization|
+        |pelnomocnicy.person|
+        |pelnomocnicy.zakres_pelnomocnictwa|
+        |podmioty_z_ktorych_powstala_organizacja.country|
+        |podmioty_z_ktorych_powstala_organizacja.name|
+        |podmioty_z_ktorych_powstala_organizacja.nazwa_sadu_prowadzacego_rejestr|
+        |podmioty_z_ktorych_powstala_organizacja.nip|
+        |podmioty_z_ktorych_powstala_organizacja.numer_w_rejestrze|
+        |podmioty_z_ktorych_powstala_organizacja.regon|
+        |podmiot_tworzacy|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.kraj_i_nazwa_rejestru_lub_ewidencji|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.nazwa_sadu_prowadzacego_rejestr|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.numer_w_rejestrze|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.organization|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.kraj_i_nazwa_rejestru_lub_ewidencji|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.nazwa_sadu_prowadzacego_rejestr|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.numer_w_rejestrze|
+        |polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.organization|
+        |polaczenie_podzial_przeksztalcenie.informacja|
+        |polaczenie_podzial_przeksztalcenie.okolicznosci|
+        |polaczenie_podzial_przeksztalcenie.opis|
+        |postepowanie_ukladowe.otwarcie_postepowania|
+        |postepowanie_ukladowe.uchylenie_ukladu|
+        |postepowanie_ukladowe.zakonczenie_postepowania|
+        |postepowanie_upadlosciowe.dane_osoby_powolanej.funkcja|
+        |postepowanie_upadlosciowe.dane_osoby_powolanej.organization|
+        |postepowanie_upadlosciowe.dane_osoby_powolanej.person|
+        |postepowanie_upadlosciowe.dane_osoby_powolanej.okreslenie_osoby|
+        |postepowanie_upadlosciowe.dane_syndyka.organization|
+        |postepowanie_upadlosciowe.dane_syndyka.person|
+        |postepowanie_upadlosciowe.ogloszenie_upadlosci|
+        |postepowanie_upadlosciowe.sposob_prowadzenia_postepowania|
+        |postepowanie_upadlosciowe.uchylenie_ukladu|
+        |postepowanie_upadlosciowe.zakonczenie_postepowania|
+        |prawo_panstwa_wlasciwego_dla_przedsiebiorcy_zagranicznego|
+        |prokurenci.person|
+        |prokurenci.rodzaj_prokury|
+        |przedmiot_dzialalnosci_statutowej_nieodplatna_dzialalnosc_statutowa|
+        |przedmiot_dzialalnosci_statutowej_odplatna_dzialalnosc_statutowa|
+        |przedmiot_pozostalej_dzialalnosci_przedsiebiorcy|
+        |przedmiot_przewazajacej_dzialalnosci_przedsiebiorcy|
+        |przedsiebiorca_zagraniczny|
+        |regon          |
+        |restrukturyzacja.dane_nadzorcy.funkcja|
+        |restrukturyzacja.dane_nadzorcy.organization|
+        |restrukturyzacja.dane_nadzorcy.person|
+        |restrukturyzacja.otwarcie|
+        |restrukturyzacja.uchylenie_ukladu|
+        |restrukturyzacja.zakonczenie|
+        |rozwiazanie_lub_uniewaznienie_informacja|
+        |rozwiazanie_lub_uniewaznienie_okolicznosci|
+        |siedziba       |
+        |siedziba_i_adres_zakladu_glownego_przedsiebiorcy_zagranicznego|
+        |sprawozdania_wzmianka_o_zlozeniu_skonsolidowanego_rocznego_sprawozdania_finansowego|
+        |sprawozdania_wzmianka_o_zlozeniu_sprawozdania_z_dzialalnosci_spolki_dominujacej|
+        |sprawozdania_wzmianka_o_zlozeniu_opinii_bieglego_rewidenta_sprawozdania_z_badania_skonsolidowanego_rocznego_sprawozdania_finansowego|
+        |sprawozdania_wzmianka_o_zlozeniu_uchwaly_lub_postanowienia_o_zatwierdzeniu_skonsolidowanego_rocznego_sprawozdania_finansowego|
+        |umorzenie_nazwa_organu_prowadzacego_egzekucje|
+        |wartosc_nominalna_akcji|
+        |wartosc_nominalna_warunkowego_podwyzszenia_kapitalu_zakladowego|
+        |wartosc_udzialow_objetych_za_aport|
+        |wierzytelnosci.dane_wierzycieli.organization|
+        |wierzytelnosci.dane_wierzycieli.person|
+        |wierzytelnosci.kwota_lub_opis|
+        |wierzytelnosci.solidarna|
+        |wierzytelnosci.tytul_wykonawczy|
+        |www            |
+        |wysokosc_kapitalu_docelowego|
+        |wysokosc_kapitalu_zakladowego|
+        |wysokosc_kapitalu_zapasowego|
+        |wzmianka_ze_kapital_nie_zostal_pokryty|
+        |zaleglosci.charakter|
+        |zaleglosci.informacja_o_zakonczeniu_egzekucji|
+        |zaleglosci.oznaczenie_organu_wystawiajacego_tytul_wykonawczy|
+        |zaleglosci.wysokosc_zaleglosci|
+        |zarzad_komisaryczny.czas|
+        |zarzad_komisaryczny.dane_zarzadcy.organization|
+        |zarzad_komisaryczny.dane_zarzadcy.person|
+        |zarzad_komisaryczny.reprezentacja|
+        |zarzad_komisaryczny.rodzaj|
+        |zawieszenie_dzialalnosci_gospodarczej.data_wznowienia|
+        |zawieszenie_dzialalnosci_gospodarczej.data_zawieszenia|
+        |zezwolenie_oznaczenie_organu_ktory_wydal_zezwolenie_numer_i_data_zezwolenia|
+
+        </div>
+
+        <div class="fields-listing-full">
+
+        |Rozdział       |Nazwa pola                                                                                                                          |Definicja                                                                                                                                 |
+        |---------------|------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+        |Basic          |adres                                                                                                                               |Adres                                                                                                                                     |
+        |Basic          |cel_dzialania                                                                                                                       |Cel działania                                                                                                                             |
+        |Basic          |czas_na_jaki_zostala_utworzona_organizacja                                                                                          |Czas na jaki została utworzona organizacja                                                                                                |
+        |Basic          |czy_obligatoriusze_maja_prawo_do_udzialu_w_zysku                                                                                    |Czy obligatoriusze mają prawo do udziału w zysku                                                                                          |
+        |Basic          |czy_przedsiebiorca_prowadzi_dzialalnosc_gospodarcza_z_innymi_podmiotami                                                             |Czy przedsiębiorca prowadzi działalność gospodarczą z innymi podmiotami                                                                   |
+        |Basic          |czy_statut_przyznaje_uprawnienia_osobiste_okreslonym_akcjonariuszom                                                                 |Czy statut przynaje uprawnienia osobiste określonym akcjonariuszom                                                                        |
+        |Basic          |czy_wspolnik_moze_miec                                                                                                              |Czy wspólnik może mieć: jeden udział lub większą liczbę udziałów                                                                          |
+        |Basic          |czy_zarzad_lub_rada_administrujaca_sa_upowaznieni_do_emisji_warrantow_subskrypcyjnych                                               |Czy zarząd lub rada administrująca, są upoważnieni do emisji warrantów subskrypcyjnych                                                    |
+        |Basic          |czy_zlozono_plan                                                                                                                    |Czy złożono plan przeniesienia siedziby                                                                                                   |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_czlonek_ma_ograniczona_zdolnosc                                 |Dane członków europejskiego zgrupowania interesów gospodarczych - czy członek ma ograniczoną zdolność do podejmowania czynności prawnych  |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_czlonek_pozostaje_w_zwiazku_malzenskim                          |Dane członków europejskiego zgrupowania interesów gospodarczych - czy członek pozostaje w związku małżeńskim                              |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_istenija_klauzule_zwlaniajace_czlonka                           |Dane członków europejskiego zgrupowania interesów gospodarczych - czy istnieją klauzule zwalniające członka                               |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami               |Dane członków europejskiego zgrupowania interesów gospodarczych - czy powstała rozdzielność majątkowa między małżonkami                   |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.czy_zostala_zawarta_malzenska_umowa_majatkowa                       |Dane członków europejskiego zgrupowania interesów gospodarczych - czy została zawarta małżeńska umowa majątkowa                           |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.forma_prawna                                                        |Dane członków europejskiego zgrupowania interesów gospodarczych - forma prawna                                                            |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.organization                                                        |Dane członków europejskiego zgrupowania interesów gospodarczych - informacje o organizacji                                                |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.oznaczenie_panstwa_nazwa_rejestru                                   |Dane członków europejskiego zgrupowania interesów gospodarczych - oznaczenie państwa, nazwa rejestru                                      |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.person                                                              |Dane członków europejskiego zgrupowania interesów gospodarczych - informacje o osobie                                                     |
+        |Basic          |dane_czlonkow_europejskiego_zgrupowania_interesow_gospodarczych.siedziba                                                            |Dane członków europejskiego zgrupowania interesów gospodarczych - siedziba                                                                |
+        |Basic          |dane_jedynego_akcjonariusza.czy_wspolnik_posiada_calosc_akcji_spolki                                                                |Dane jedynego akcjonariusza - czy wspólnik posiada całość akcji spółki                                                                    |
+        |Basic          |dane_jedynego_akcjonariusza.organization                                                                                            |Dane jedynego akcjonariusza - informacje o organizacji                                                                                    |
+        |Basic          |dane_jedynego_akcjonariusza.person                                                                                                  |Dane jedynego akcjonariusza - informacje o osobie                                                                                         |
+        |Basic          |dane_komplementariuszy.czy_komplementariusz_ma_ograniczona_zdolnosc_do_czynnosci_prawnych                                           |Czy komplementariusz ma ograniczoną zdolność do czynności prawnych                                                                        |
+        |Basic          |dane_komplementariuszy.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami                                                        |Dane komplementariuszy - czy powstała rozdzielność majątkowa między małżonkami                                                            |
+        |Basic          |dane_komplementariuszy.czy_wspolnik_pozostaje_w_zwiazku_malzenskim                                                                  |Dane komplementarisuzy - czy wspólnik pozostaje w związku małżeńskim                                                                      |
+        |Basic          |dane_komplementariuszy.czy_zostala_zawarta_malzenska_umowa_majatkowa                                                                |Dane komplementariuszy - czy została zawarta małżeńska umowa majątkowa                                                                    |
+        |Basic          |dane_komplementariuszy.organization                                                                                                 |Dane komplementariuszy - informacje o organizacji                                                                                         |
+        |Basic          |dane_komplementariuszy.person                                                                                                       |Dane komplementariuszy - informacje o osobie                                                                                              |
+        |Basic          |dane_o_poprzedniej_rejestracji_zgrupowania_w_innym_panstwie                                                                         |Informacja o poprzedniej rejestracji zgrupowania w innym państwie                                                                         |
+        |Basic          |dane_o_wczesniejszej_rejestracji                                                                                                    |Informacja o wcześniejszej rejestracji                                                                                                    |
+        |Basic          |dane_partnerow.czy_partner_ma_ograniczona_zdolnosc_do_czynnosci_prawnych                                                            |Czy partner ma ograniczoną zdolność do czynności prawnych                                                                                 |
+        |Basic          |dane_partnerow.czy_partner_ponosi_odpowiedzialnosc                                                                                  |Czy partner ponosi odpowiedzialność                                                                                                       |
+        |Basic          |dane_partnerow.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami                                                                |Dane partnerów - czy powstała rozdzielność majątkowa między małżonkami                                                                    |
+        |Basic          |dane_partnerow.czy_wspolnik_pozostaje_w_zwiazku_malzenskim                                                                          |Czy wspólnik pozostaje w związku małżeńskim                                                                                               |
+        |Basic          |dane_partnerow.czy_zostala_zawarta_malzenska_umowa_majatkowa                                                                        |Dane partnerów - czy została zawarta małżeńska umowa majątkowa                                                                            |
+        |Basic          |dane_partnerow.person                                                                                                               |Dane partnerów - informacje o osobie                                                                                                      |
+        |Basic          |dane_pelnomocnika.organization                                                                                                      |Dane pełnomocnika uprawnionego do działania w zakresie działalności przedsiębiorstwa zagranicznego - informacje o organizacji             |
+        |Basic          |dane_pelnomocnika.person                                                                                                            |Dane pełnomocnika uprawnionego do działania w zakresie działalności przedsiębiorstwa zagranicznego - informacje o osobie                  |
+        |Basic          |dane_pelnomocnika.zakres_umocowania                                                                                                 |Dane pełnomocnika uprawnionego do działania w zakresie działalności przedsiębiorstwa zagranicznego - zakres umocowania                    |
+        |Basic          |dane_wspolnikow.czy_jest_w_tym_wklad_niepieniezny                                                                                   |Dane wspólników - czy jest wkład niepieniężny                                                                                             |
+        |Basic          |dane_wspolnikow.czy_powstala_rozdzielnosc_majatkowa_miedzy_malzonkami                                                               |Dane wspólników - czy powstała rozdzielność majątkowa między małżonkami                                                                   |
+        |Basic          |dane_wspolnikow.czy_wspolnik_jest_komandytariuszem                                                                                  |Informacja czy wspólnik jest komandytariuszem                                                                                             |
+        |Basic          |dane_wspolnikow.czy_wspolnik_ma_ograniczona_zdolnosc_do_czynnosci_prawnych                                                          |Informacja czy wspólnik ma ograniczoną zdolność do czynności prawnych                                                                     |
+        |Basic          |dane_wspolnikow.czy_wspolnik_posiada_calosc_akcji_spolki                                                                            |Informacja czy wspólnik posiada całość akcji spółki                                                                                       |
+        |Basic          |dane_wspolnikow.czy_wspolnik_pozostaje_w_zwiazku_malzenskim                                                                         |Informacja czy wspólnik pozostaje w związku małżeńskim                                                                                    |
+        |Basic          |dane_wspolnikow.czy_zostala_zawarta_malzenska_umowa_majatkowa                                                                       |Dane wspólnika - czy została zawarta małżeńska umowa majątkowa                                                                            |
+        |Basic          |dane_wspolnikow.organization                                                                                                        |Dane wspólników - informacje o organizacji                                                                                                |
+        |Basic          |dane_wspolnikow.person                                                                                                              |Dane wspólników - informacje o osobie                                                                                                     |
+        |Basic          |dane_wspolnikow.posiadane_przez_wspolnika_udzialy                                                                                   |Dane wspólników - informacja o posiadanych przez wspólników udziałach (słownie, bezpośrednio z KRS)                                       |
+        |Basic          |dane_wspolnikow.posiadane_przez_wspolnika_udzialy.cena_udzialu                                                                      |(Opcjonalnie) Dane wspólników - informacja o posiadanych przez wspólników udziałach - cena jednego udziału (wartość wyliczona z pola słownego) |
+        |Basic          |dane_wspolnikow.posiadane_przez_wspolnika_udzialy.liczba                                                                            |(Opcjonalnie) Dane wspólników - informacja o posiadanych przez wspólników udziałach - liczba udziałów (wartość wyliczona z pola słownego) |
+        |Basic          |dane_wspolnikow.posiadane_przez_wspolnika_udzialy.wartosc                                                                           |(Opcjonalnie) Dane wspólników - informacja o posiadanych przez wspólników udziałach - wartość udziałów (wartość wyliczona z pola słownego)|
+        |Basic          |dane_wspolnikow.wartosc_wkladu_umowionego                                                                                           |Dane wspólników - wartość wkładu umówionego                                                                                               |
+        |Basic          |dane_wspolnikow.wklad_wniesiony.czy_jest_to_wklad_niepieniezny                                                                      |Dane wspólników - informacja czy wkład wniesiony jest wkładem niepieniężnym                                                               |
+        |Basic          |dane_wspolnikow.wklad_wniesiony.wartosc_wkladu_wniesionego                                                                          |Dane wspólników - wartość wkładu wniesionego                                                                                              |
+        |Basic          |dane_wspolnikow.wklad_zwrocony.czy_jest_to_wklad_niepieniezny                                                                       |Dane wspólników - informacja czy wkład zwrócony jest wkładem niepieniężnym                                                                |
+        |Basic          |dane_wspolnikow.wklad_zwrocony.wartosc_wkladu_zwroconego                                                                            |Dane wspólników - wartość wkładu zwróconego                                                                                               |
+        |Basic          |dane_wspolnikow.wysokosc_sumy_komandytowej                                                                                          |Dane wspólników - wysokość sumy komandytowej                                                                                              |
+        |Basic          |decyzja_wykreslenie_data                                                                                                            |Informacja na temat daty decyzji o wykreśleniu z KRS                                                                                      |
+        |Basic          |decyzja_wykreslenie_nazwa_organu                                                                                                    |Informacja na temat organu wykreślającego z KRS                                                                                           |
+        |Basic          |decyzja_wykreslenie_numer                                                                                                           |Informacja na temat numeru decyzji o wykreśleniu z KRS                                                                                    |
+        |Financials     |dokumenty_wzmianka_o_braku_obowiazku_sporzadzenia_i_zlozenia_rocznego_sprawozdania_finansowego                                      |Wzmianka o braku obowiązku sporządzenia i złożenia rocznego sprawozdania finansowego                                                      |
+        |Financials     |dokumenty_wzmianka_o_zlozeniu_opinii_bieglego_rewidenta                                                                             |Wzmianka o złożeniu opinii biegłego rewidenta                                                                                             |
+        |Financials     |dokumenty_wzmianka_o_zlozeniu_rocznego_sprawozdania_finansowego                                                                     |Wzmianka o złożeniu rocznego sprawozdania finansowego                                                                                     |
+        |Financials     |dokumenty_wzmianka_o_zlozeniu_sprawozdania_z_dzialalnosci_podmiotu                                                                  |Wzmianka o złożeniu sprawozdania z działalności podmiotu                                                                                  |
+        |Financials     |dokumenty_wzmianka_o_zlozeniu_sprawozdania_z_platnosci_na_rzecz_administracji_publicznej                                            |Wzmianka o złożeniu sprawozdania z płatności na rzecz administracji publicznej                                                            |
+        |Financials     |dokumenty_wzmianka_o_zlozeniu_uchwaly_lub_postanowienia_o_zatwierdzeniu_skonsolidowanego_rocznego_sprawozdania_finansowego          |Wzmianka o złożeniu ucghwały lub postanowienia o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego                         |
+        |Basic          |dzien_konczacy_pierwszy_rok_obrotowy_za_ktory_nalezy_zlozyc_sprawozdanie_finansowe                                                  |Dzień konczący pierwszy rok obrotowy, za który należy złożyć sprawozdanie finansowe                                                       |
+        |Basic          |email                                                                                                                               |Adres e-mail                                                                                                                              |
+        |Financials     |emisja_akcji.liczba_akcji_w_danej_serii                                                                                             |Emisja akcji - liczba akcji w danej serii                                                                                                 |
+        |Financials     |emisja_akcji.nazwa_serii_akcji                                                                                                      |Emisja akcji - nazwa serii akcji                                                                                                          |
+        |Financials     |emisja_akcji.rodzaj_uprzywilejowania_i_liczba_akcji_uprzywilejowanych                                                               |Emisja akcji - rodzaj uprzeywilejowania i liczba akcji uprzywilejowanych                                                                  |
+        |Basic          |forma_prawna                                                                                                                        |Forma prawna                                                                                                                              |
+        |Transformations|informacja_o_sporzadzeniu_lub_zmianie_umowy                                                                                         |Informacja o sporządzeniu lub zmianie umowy                                                                                               |
+        |Basic          |informacje_o_udzialach.nazwa_kategorii                                                                                              |Informacja o udziałach - nazwa kategorii                                                                                                  |
+        |Basic          |informacje_o_udzialach.wartosc_nominalna_udzialow_tej_samej_kategorii                                                               |Informacja o udziałach - wartość nominalna udziałów tej samej kategorii                                                                   |
+        |Basic          |inne_dane.data_cofniecia_zezwolenia                                                                                                 |                                                                                                                                          |
+        |Basic          |inne_dane.data_uznania_towarzystwo_za_male_towarzystwo_ubezpieczen_wzajemnych                                                       |Data uznania towarzystwa za małe towarzystwo ubezpieczeń wzajemnych                                                                       |
+        |Basic          |inne_dane.informacja_o_czesciowym_ograniczeniu_zezwolenia_na_prowadzenie_towarzystwa                                                |                                                                                                                                          |
+        |Basic          |inne_dane.oznaczenie_dzialu                                                                                                         |Oznaczenie działu ubezpieczeń objętego działalnością towarzystwa ubezpieczeń / reasekuracji                                               |
+        |Basic          |inne_dane.oznaczenie_terytorialne                                                                                                   |Oznaczenie terytorialnego zasięgu towarzystwa ubezpieczeń / reasekuracji                                                                  |
+        |Basic          |komitet_zalozycielski.organization                                                                                                  |Komitet założycielski - informacje o organizacji                                                                                          |
+        |Basic          |komitet_zalozycielski.person                                                                                                        |Komitet założycielski - informacje o osobie                                                                                               |
+        |Basic          |kurator.data_do_ktorej_ma_dzialac                                                                                                   |Data, do której ma działać Kurator                                                                                                        |
+        |Basic          |kurator.data_powolania                                                                                                              |Data powołania Kuratora                                                                                                                   |
+        |Basic          |kurator.organization                                                                                                                |Kurator - informacje o organizacji                                                                                                        |
+        |Basic          |kurator.person                                                                                                                      |Kurator - informacje o osobie                                                                                                             |
+        |Basic          |kurator.podstawa_powolania_i_zakres_dzialania                                                                                       |Podstawa powołania i zakres działania kuratora                                                                                            |
+        |Basic          |kwotowe_okreslenie_czesci_kapitalu_pokrytego                                                                                        |kwotowe określenie części kapitału pokrytego                                                                                              |
+        |Basic          |kwotowe_okreslenie_czesci_kapitalu_wplaconego                                                                                       |Kwotowe okreslenie części kapitału wpłaconego                                                                                             |
+        |Financials     |liczba_akcji_wszystkich_emisji                                                                                                      |Liczba akcji wszystkich emisji                                                                                                            |
+        |Financials     |liczba_udzialow_wszystkich_kategorii                                                                                                |Liczba udziałów wszystkich kategorii                                                                                                      |
+        |Transformations|likwidacja.dane_likwidatorow.organization                                                                                           |Dane likwidatorów - informacje o organizacji                                                                                              |
+        |Transformations|likwidacja.dane_likwidatorow.person                                                                                                 |Dane likwidatorów - informacje o osobie                                                                                                   |
+        |Transformations|likwidacja.dotyczy                                                                                                                  |Czego dotyczy likwidacja (ma zastosowanie dla przedsiębiorstw zagranicznych)                                                              |
+        |Transformations|likwidacja.informacja_o_otwarciu                                                                                                    |Informacja o otwarciu likwidacji                                                                                                          |
+        |Transformations|likwidacja.informacja_o_zakonczeniu                                                                                                 |Informacja o zakończeniu likwidacji                                                                                                       |
+        |Transformations|likwidacja.sposob_reprezentacji_podmiotu_przez_likwidatorow                                                                         |Sposób reprezentacji przez likwidatorów                                                                                                   |
+        |Basic          |minister_nadzorujacy.name                                                                                                           |Nazwa Ministra nadzorującego                                                                                                              |
+        |Basic          |minister_nadzorujacy.regon                                                                                                          |Numer regon Ministra nadzorującego                                                                                                        |
+        |Basic          |nazwa                                                                                                                               |Nazwa organizacji                                                                                                                         |
+        |Basic          |nazwa_krotka                                                                                                                        |Nazwa krótka organizacji                                                                                                                  |
+        |Basic          |nazwa_rejestru_numer_w_rejestrze_okreslenie_organu_prowadzacego_rejestr                                                             |Określeie organu prowadzącego rejestr                                                                                                     |
+        |Basic          |nip                                                                                                                                 |Nr NIP                                                                                                                                    |
+        |Basic          |notyfikacja_bris                                                                                                                    |Notyfikacja BRIS                                                                                                                          |
+        |Basic          |numer_i_data_decyzji_prezesa_uokik_o_zgodzie_na_koncentracje                                                                        |Numer i data decyzji Prezesa UOKIK o zgodzie na koncentrację                                                                              |
+        |Transformations|oddalone_wnioski_o_ogloszenie_upadlosci.dalsze_pelnienie_funkcji                                                                    |Oddalone wnioski o ogłoszenie upadłości - dalsze pełnienie funkcji                                                                        |
+        |Transformations|oddalone_wnioski_o_ogloszenie_upadlosci.oddalenie_wniosku                                                                           |Oddalone wnioski o ogłoszenie upadłości - oddalenie wniosku                                                                               |
+        |Transformations|oddalone_wnioski_o_ogloszenie_upadlosci.zabezpieczenie_majatku_w_postepowaniu_restrukturyzacyjnym                                   |Oddalone wnioski o ogłoszenie upadłości - zabezpieczenie majątku w postępowaniu restrukturyzacyjnym                                       |
+        |Transformations|oddalone_wnioski_o_ogloszenie_upadlosci.zabezpieczenie_majatku_w_postepowaniu_upadlosciowym                                         |Oddalone wnioski o ogłoszenie upadłości - zabezpieczenie majątku w postępowaniu upadłościowym                                             |
+        |Branches       |oddzialy.adres                                                                                                                      |Oddziały - adres                                                                                                                          |
+        |Branches       |oddzialy.nazwa                                                                                                                      |Oddziały - nazwa                                                                                                                          |
+        |Branches       |oddzialy.siedziba                                                                                                                   |Oddziały - siedziba                                                                                                                       |
+        |Basic          |okreslenie_okolicznosci_powstania                                                                                                   |Określenie okoliczności powstania podmiotu                                                                                                |
+        |Financials     |okreslenie_wartosc_akcji_objetych_za_aport                                                                                          |Określenie wartości akcji objętych za aport                                                                                               |
+        |Basic          |opis_sposobu_powstania_podmiotu                                                                                                     |Opis sposobu powstania podmiotu                                                                                                           |
+        |Basic          |opp                                                                                                                                 |Czy podmiot posiada status organizacji pożytku publicznego                                                                                |
+        |Basic          |organ_nadzoru.dane_osob.organization                                                                                                |Organ nadzoru. Dane osób - informacje o organizacji                                                                                       |
+        |Basic          |organ_nadzoru.dane_osob.person                                                                                                      |Organ nadzoru. Dane osób - informacje o osobie                                                                                            |
+        |Basic          |organ_nadzoru.nazwa_organu                                                                                                          |Organ nadzoru - nazwa organu                                                                                                              |
+        |Basic          |organ_reprezentacji.dane_osob.czy_osoba_wchodzaca_w_sklad_zarzadu_zostala_zawieszona_w_czynnosciach                                 |Organ reprezentacji - informacja czy osoba wchodząca w skład zarządu została zawieszona w czynnościach                                    |
+        |Basic          |organ_reprezentacji.dane_osob.data_do_jakiej_zostala_zawieszona                                                                     |Organ reprezentacji - informacja o dacie do jakiej osoba została zawieszona                                                               |
+        |Basic          |organ_reprezentacji.dane_osob.funkcja_w_organie                                                                                     |Organ reprezentacji - funkcja osoby w organie                                                                                             |
+        |Basic          |organ_reprezentacji.dane_osob.okreslenie_osoby                                                                                      |Organ reprezentacji - określenie osoby                                                                                                    |
+        |Basic          |organ_reprezentacji.dane_osob.organization                                                                                          |Organ reprezentacji - informacje o organizacji                                                                                            |
+        |Basic          |organ_reprezentacji.dane_osob.person                                                                                                |Organ reprezentacji - informacje o osobie                                                                                                 |
+        |Basic          |organ_reprezentacji.nazwa_organu_reprezentacji_podmiotu                                                                             |Organ reprezentacji - nazwa organu reprezentacji podmiotu                                                                                 |
+        |Basic          |organ_reprezentacji.organ_reprezentacji_kwalifikacja_kierownika                                                                     |Organ reprezentacji - kwalifikacje kierownika                                                                                             |
+        |Basic          |organ_reprezentacji.osoba                                                                                                           |Organ reprezentacji - informacje o osobie                                                                                                 |
+        |Basic          |organ_reprezentacji.sposob_reprezentacji_podmiotu                                                                                   |Organ reprezentacji - sposób reprezentacji podmiotu                                                                                       |
+        |Basic          |organ_reprezentacji_zagranicznego_przedsiebiorcy.dane_osob.funkcja                                                                  |Organ reprezentacji zagranicznego przedsiębiorcy - funkcja                                                                                |
+        |Basic          |organ_reprezentacji_zagranicznego_przedsiebiorcy.dane_osob.person                                                                   |Organ reprezentacji zagranicznego przedsiębiorcy - informacje o osobie                                                                    |
+        |Basic          |organ_reprezentacji_zagranicznego_przedsiebiorcy.nazwa                                                                              |Organ reprezentacji zagranicznego przedsiębiorcy - nazwa                                                                                  |
+        |Basic          |organ_reprezentacji_zagranicznego_przedsiebiorcy.sposob_reprezentacji                                                               |Organ reprezentacji zagranicznego przedsiębiorcy - sposób reprezentacji                                                                   |
+        |Basic          |organ_sprawujacy_nadzor.name                                                                                                        |Organ sprawujący nadzór - nazwa                                                                                                           |
+        |Basic          |organ_zalozycielski.name                                                                                                            |Organ założycielski - nazwa                                                                                                               |
+        |Basic          |organ_zalozycielski.regon                                                                                                           |Organ założycielski - numer regon                                                                                                         |
+        |Basic          |osoba_pozwolenie.address                                                                                                            |Pozwolenie - adres                                                                                                                        |
+        |Basic          |osoba_pozwolenie.first_names                                                                                                        |Pozwolenie - imiona osoby                                                                                                                 |
+        |Basic          |osoba_pozwolenie.last_name                                                                                                          |Pozwolenie - nazwisko osoby                                                                                                               |
+        |Basic          |osoba_pozwolenie.name                                                                                                               |Pozwolenie - pełne imię i nazwisko osoby                                                                                                  |
+        |Basic          |osoby_reprezentujace_zagranicznego_przedsiebiorcy_w_oddziale.funkcja                                                                |Osoby reprezentujące zagranicznego przedsiębiorcy - funkcja                                                                               |
+        |Basic          |osoby_reprezentujace_zagranicznego_przedsiebiorcy_w_oddziale.person                                                                 |Osoby reprezentujące zagranicznego przedsiębiorcy - informacje o osobie                                                                   |
+        |Basic          |oznaczenie_pisma_innego_niz_msig_przeznaczonego_do_ogloszen                                                                         |Oznaczenie pisma innego niż MSIG przeznaczonego do ogłoszeń                                                                               |
+        |Basic          |panstwo_nazwa_rejestru                                                                                                              |Państwo, do którego przeniesiono siedzibę spółki, nazwa rejestru, w którym wpisano spółkę, organ prowadzący rejestr oraz numer w rejestrze|
+        |Basic          |pelnomocnicy.organization                                                                                                           |Pełnomocnicy - informacje o organizacji                                                                                                   |
+        |Basic          |pelnomocnicy.person                                                                                                                 |Pełnomocnicy - informacje o osobie                                                                                                        |
+        |Basic          |pelnomocnicy.zakres_pelnomocnictwa                                                                                                  |Pełnomocnicy - zakres pełnomocnictwa                                                                                                      |
+        |Transformations|podmioty_z_ktorych_powstala_organizacja.country                                                                                     |Podmioty, z których powstała organizacja - kraj                                                                                           |
+        |Transformations|podmioty_z_ktorych_powstala_organizacja.name                                                                                        |Podmioty, z których powstała organizacja - nazwa                                                                                          |
+        |Transformations|podmioty_z_ktorych_powstala_organizacja.nazwa_sadu_prowadzacego_rejestr                                                             |Podmioty, z których powstała organizacja - nazwa Sądu prowadzącego rejestr                                                                |
+        |Transformations|podmioty_z_ktorych_powstala_organizacja.nip                                                                                         |Podmioty, z których powstała organizacja - numer NIP                                                                                      |
+        |Transformations|podmioty_z_ktorych_powstala_organizacja.numer_w_rejestrze                                                                           |Podmioty, z których powstała organizacja - numer w rejestrze                                                                              |
+        |Transformations|podmioty_z_ktorych_powstala_organizacja.regon                                                                                       |Podmioty, z których powstała organizacja - numer REGON                                                                                    |
+        |Transformations|podmiot_tworzacy                                                                                                                    |Podmiot tworzący (np. SPZOZ, kolumnę transportu sanitarnego) - nazwa, nr KRS, nr REGON, itp.                                              |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.kraj_i_nazwa_rejestru_lub_ewidencji                                    |Połączenie, podział, przekształcenie - podmioty powstałe - kraj i nazwa rejestru lub ewidencji                                            |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.nazwa_sadu_prowadzacego_rejestr                                        |Połączenie, podział, przekształcenie - podmioty powstałe -nazwa Sądu prowadzącego rejestr                                                 |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.numer_w_rejestrze                                                      |Połączenie, podział, przekształcenie - podmioty powstałe - numer w rejestrze                                                              |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_powstalych.organization                                                           |Połączenie, podział, przekształcenie - podmioty powstałe - informacje o organizacji                                                       |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.kraj_i_nazwa_rejestru_lub_ewidencji                                    |Połączenie, podział, przekształcenie - podmioty przejęte - kraj i nazwa rejestru lub ewidencji                                            |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.nazwa_sadu_prowadzacego_rejestr                                        |Połączenie, podział, przekształcenie - podmioty przejęte - nazwa Sądu prowadzącego rejestr                                                |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.numer_w_rejestrze                                                      |Połączenie, podział, przekształcenie - podmioty przejęte - numer w rejestrze                                                              |
+        |Transformations|polaczenie_podzial_przeksztalcenie.dane_podmiotow_przejetych.organization                                                           |Połączenie, podział, przekształcenie - podmioty przejęte - informacje o organizacji                                                       |
+        |Transformations|polaczenie_podzial_przeksztalcenie.informacja                                                                                       |Połączenie, podział, przekształcenie - informacja                                                                                         |
+        |Transformations|polaczenie_podzial_przeksztalcenie.okolicznosci                                                                                     |Połączenie, podział, przekształcenie - określenie okoliczności                                                                            |
+        |Transformations|polaczenie_podzial_przeksztalcenie.opis                                                                                             |Połączenie, podział, przekształcenie - opis                                                                                               |
+        |Transformations|postepowanie_ukladowe.otwarcie_postepowania                                                                                         |Postępowanie układowe - otwarcie postępowania                                                                                             |
+        |Transformations|postepowanie_ukladowe.uchylenie_ukladu                                                                                              |Postępowanie układowe - uchylenie układu                                                                                                  |
+        |Transformations|postepowanie_ukladowe.zakonczenie_postepowania                                                                                      |Postępowanie układowe - zakończenie postępowania                                                                                          |
+        |Transformations|postepowanie_upadlosciowe.dane_osoby_powolanej.funkcja                                                                              |Postępowanie upadłościowe - dane osoby powołanej - funkcja                                                                                |
+        |Transformations|postepowanie_upadlosciowe.dane_osoby_powolanej.organization                                                                         |Postępowanie upadłościowe - dane osoby powołanej - informacje o organizacji                                                               |
+        |Transformations|postepowanie_upadlosciowe.dane_osoby_powolanej.person                                                                               |Postępowanie upadłościowe - dane osoby powołanej - informacje o osobie                                                                    |
+        |Transformations|postepowanie_upadlosciowe.dane_osoby_powolanej.okreslenie_osoby                                                                     |Postępowanie upadłościowe - dane osoby powołanej - określenie osoby                                                                       |
+        |Transformations|postepowanie_upadlosciowe.dane_syndyka.organization                                                                                 |Postępowanie upadłościowe - dane syndyka - informacje o organizacji                                                                       |
+        |Transformations|postepowanie_upadlosciowe.dane_syndyka.person                                                                                       |Postępowanie upadłościowe - dane syndyka - informacje o osobie                                                                            |
+        |Transformations|postepowanie_upadlosciowe.ogloszenie_upadlosci                                                                                      |Postępowanie upadłościowe - ogłosenie upadłości                                                                                           |
+        |Transformations|postepowanie_upadlosciowe.sposob_prowadzenia_postepowania                                                                           |Postępowanie upadłościowe - sposób prowadzenia postępowania                                                                               |
+        |Transformations|postepowanie_upadlosciowe.uchylenie_ukladu                                                                                          |Postępowanie upadłościowe - uchylenie układu                                                                                              |
+        |Transformations|postepowanie_upadlosciowe.zakonczenie_postepowania                                                                                  |Postępowanie upadłosciowe - zakończenie postepowania                                                                                      |
+        |Basic          |prawo_panstwa_wlasciwego_dla_przedsiebiorcy_zagranicznego                                                                           |Prawo państwa właściwego dla przedsiębiorcy zagranicznego                                                                                 |
+        |Basic          |prokurenci.person                                                                                                                   |Prokurenci - informacje o osobie                                                                                                          |
+        |Basic          |prokurenci.rodzaj_prokury                                                                                                           |Prokurenci - rodzaj prokury                                                                                                               |
+        |Basic          |przedmiot_dzialalnosci_statutowej_nieodplatna_dzialalnosc_statutowa                                                                 |Nieodpłatna działalność statutowa                                                                                                         |
+        |Basic          |przedmiot_dzialalnosci_statutowej_odplatna_dzialalnosc_statutowa                                                                    |Odpłatna działalność statutowa                                                                                                            |
+        |Basic          |przedmiot_pozostalej_dzialalnosci_przedsiebiorcy                                                                                    |Przedmiot pozostałej działalności przedsiębiorcy                                                                                          |
+        |Basic          |przedmiot_przewazajacej_dzialalnosci_przedsiebiorcy                                                                                 |Przedmiot przeważającej działalności przedsiębiorcy                                                                                       |
+        |Basic          |przedsiebiorca_zagraniczny                                                                                                          |Informacje o osobie przedsiębiorcy zagranicznego                                                                                          |
+        |Basic          |regon                                                                                                                               |Nr REGON                                                                                                                                  |
+        |Transformations|restrukturyzacja.dane_nadzorcy.funkcja                                                                                              |Restrukturyzacja - dane nadzorcy - funkcja                                                                                                |
+        |Transformations|restrukturyzacja.dane_nadzorcy.organization                                                                                         |Restrukturyzacja - dane nadzorcy - informacje o organizacji                                                                               |
+        |Transformations|restrukturyzacja.dane_nadzorcy.person                                                                                               |Restrukturyzacja - dane nadzorcy - informacje o osobie                                                                                    |
+        |Transformations|restrukturyzacja.otwarcie                                                                                                           |Restrukturyzacja - otwarcie                                                                                                               |
+        |Transformations|restrukturyzacja.uchylenie_ukladu                                                                                                   |Restrukturyzacja - uchylenie układu                                                                                                       |
+        |Transformations|restrukturyzacja.zakonczenie                                                                                                        |Restrukturyzacja - zakończenie                                                                                                            |
+        |Basic          |rozwiazanie_lub_uniewaznienie_informacja                                                                                            |Informacja o rozwiązaniu lub unieważnieniu podmiotu                                                                                       |
+        |Basic          |rozwiazanie_lub_uniewaznienie_okolicznosci                                                                                          |Okoliczności rozwiązania lub unieważnienia podmiotu                                                                                       |
+        |Basic          |siedziba                                                                                                                            |Siedziba                                                                                                                                  |
+        |Basic          |siedziba_i_adres_zakladu_glownego_przedsiebiorcy_zagranicznego                                                                      |Siedziba i adres zakładu głównego przedsiebiorcy zagranicznego                                                                            |
+        |Financials     |sprawozdania_wzmianka_o_zlozeniu_skonsolidowanego_rocznego_sprawozdania_finansowego                                                 |Wzmianka o złożeniu skonsolidowanego rocznego sprawozdania finansowego                                                                    |
+        |Financials     |sprawozdania_wzmianka_o_zlozeniu_sprawozdania_z_dzialalnosci_spolki_dominujacej                                                     |Wzmianka o złożeniu sprawozdania z działalności spółki dominującej                                                                        |
+        |Financials     |sprawozdania_wzmianka_o_zlozeniu_opinii_bieglego_rewidenta_sprawozdania_z_badania_skonsolidowanego_rocznego_sprawozdania_finansowego|Wzmianka o złożeniu opinii biegłego rewidenta - sprawozdania z badania skonsolidowanego rocznego sprawozdania finansowego                 |
+        |Financials     |sprawozdania_wzmianka_o_zlozeniu_uchwaly_lub_postanowienia_o_zatwierdzeniu_skonsolidowanego_rocznego_sprawozdania_finansowego       |Wzmianka o złożeniu uchwały lub postanowienia o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego                          |
+        |Basic          |umorzenie_nazwa_organu_prowadzacego_egzekucje                                                                                       |Umorzenie - nazwa organu prowadzącego egzekucję                                                                                           |
+        |Financials     |wartosc_nominalna_akcji                                                                                                             |Wartość nominalna akcji                                                                                                                   |
+        |Basic          |wartosc_nominalna_warunkowego_podwyzszenia_kapitalu_zakladowego                                                                     |Wartość nominalna warunkowego podwyższenia kapitału zakładowego                                                                           |
+        |Financials     |wartosc_udzialow_objetych_za_aport                                                                                                  |Wartość udziałów objętych za aport                                                                                                        |
+        |Obligations    |wierzytelnosci.dane_wierzycieli.organization                                                                                        |Wierzytelności - dane wierzycieli - informacje o organizacji                                                                              |
+        |Obligations    |wierzytelnosci.dane_wierzycieli.person                                                                                              |Wierzytelności - dane wierzycieli - informacje o osobie                                                                                   |
+        |Obligations    |wierzytelnosci.kwota_lub_opis                                                                                                       |Wierzytelności - kwota lub opis                                                                                                           |
+        |Obligations    |wierzytelnosci.solidarna                                                                                                            |Wierzytelności - czy wierzytelność jest solidarna                                                                                         |
+        |Obligations    |wierzytelnosci.tytul_wykonawczy                                                                                                     |Wierzytelności - tytuł wykonawczy                                                                                                         |
+        |Basic          |www                                                                                                                                 |Adres strony internetowej podmiotu                                                                                                        |
+        |Basic          |wysokosc_kapitalu_docelowego                                                                                                        |Wysokość kapitału docelowego                                                                                                              |
+        |Basic          |wysokosc_kapitalu_zakladowego                                                                                                       |Wysokość kapitału zakładowego                                                                                                             |
+        |Basic          |wysokosc_kapitalu_zapasowego                                                                                                        |Wysokość kapitału zapasowego                                                                                                              |
+        |Basic          |wzmianka_ze_kapital_nie_zostal_pokryty                                                                                              |Kapitał spółki / towarzystwa / spółdzielni: wzmianka, że kapitał nie został pokryty                                                       |
+        |Obligations    |zaleglosci.charakter                                                                                                                |Charakter zaległości                                                                                                                      |
+        |Obligations    |zaleglosci.informacja_o_zakonczeniu_egzekucji                                                                                       |Informacja o zakończeniu egzekucji w sprawie zaległości                                                                                   |
+        |Obligations    |zaleglosci.oznaczenie_organu_wystawiajacego_tytul_wykonawczy                                                                        |Oznaczenie organu wystawiającego tytuł wykonawczy w sprawie zaległości                                                                    |
+        |Obligations    |zaleglosci.wysokosc_zaleglosci                                                                                                      |Wysokość zaległości                                                                                                                       |
+        |Basic          |zarzad_komisaryczny.czas                                                                                                            |Zarząd komisaryczny - określenie czasu                                                                                                    |
+        |Basic          |zarzad_komisaryczny.dane_zarzadcy.organization                                                                                      |Zarząd komisaryczny - dane zarządcy - informacje o organizacji                                                                            |
+        |Basic          |zarzad_komisaryczny.dane_zarzadcy.person                                                                                            |Zarząd komisaryczny - dane zarządcy - informacje o osobie                                                                                 |
+        |Basic          |zarzad_komisaryczny.reprezentacja                                                                                                   |Zarząd komisaryczny - reprezentacja                                                                                                       |
+        |Basic          |zarzad_komisaryczny.rodzaj                                                                                                          |Zarząd komisaryczny - rodzaj                                                                                                              |
+        |Basic          |zawieszenie_dzialalnosci_gospodarczej.data_wznowienia                                                                               |Zawieszenie działalności gospodarczej - data wznowienia                                                                                   |
+        |Basic          |zawieszenie_dzialalnosci_gospodarczej.data_zawieszenia                                                                              |Zawieszenie działalności gospodarczej - data zawieszenia                                                                                  |
+        |Basic          |zezwolenie_oznaczenie_organu_ktory_wydal_zezwolenie_numer_i_data_zezwolenia                                                         |Zezwolenie na działanie przedsiębiorstwa w Polsce: oznaczenie organu, który wydał zezwolenie - numer i data zezwolenia                    |
+
+        </div>
+
+      </details>
+
+      # Struktura węzła fields
+      Pola w węźle `fields` mogą mieć formę prostą lub grupową.
+
+      <br/>
+
+      **Przykład pola w formie prostej:**
+
+
+      ```
+      "nazwa_krotka": {
+          "_value": "EXAMPLEX POLSKA",
+          "_range": {
+              "begin_entry_no": 7,
+              "begin_date": "2010-02-03"
+          }
+      }
+      ```
+
+      Powyższy format pola zawiera:
+      - nazwę pola (tu: `nazwa_krotka`)
+      - aktualną wartość pola (tu: `EXAMPLEX POLSKA`)
+      - informację od kiedy ta wartość jest obowiązująca (tu: od wpisu do KRS nr `7`, z dnia `2010-02-03`)
+
+      <br/>
+
+      **Przykład pola w formie grupowej:**
+
+      ```
+      "przedmiot_pozostalej_dzialalnosci_przedsiebiorcy": {
+          "_childs": {
+              "3": {
+                  "_value": {
+                      "symbol": [
+                          "46",
+                          null,
+                          null
+                      ],
+                      "title": "Handel hurtowy, z wyłączeniem handlu pojazdami samochodowymi"
+                  },
+                  "_range": {
+                      "begin_entry_no": 1,
+                      "begin_date": "2011-03-04"
+                  }
+              },
+              "6": {
+                  "_value": {
+                      "symbol": [
+                          "46",
+                          "90",
+                          "Z"
+                      ],
+                      "title": "Sprzedaż hurtowa niewyspecjalizowana"
+                  },
+                  "_range": {
+                      "begin_entry_no": 5,
+                      "begin_date": "2012-04-05"
+                  }
+              },
+              "7": {
+                  "_value": {
+                      "symbol": [
+                          "46",
+                          "61",
+                          "Z"
+                      ],
+                      "title": "Sprzedaż hurtowa maszyn I urządzeń rolniczych oraz dodatkowego wyposażenia"
+                  },
+                  "_range": {
+                      "begin_entry_no": 5,
+                      "begin_date": "2012-04-05"
+                  }
+              }
+          },
+          "_value": {
+              "members": [
+                  3,
+                  6,
+                  7
+              ],
+              "members_count": 3,
+              "members_total_count": 7
+          },
+          "_range": {
+              "begin_entry_no": 5,
+              "begin_date": "2012-04-05"
+          }
+      }
+      ```
+
+      Powyższy format pola zawiera:
+      - nazwę pola (tu: `przedmiot_pozostalej_dzialalnosci_przedsiebiorcy`)
+      - podstrukturę `childs` zawierającą aktualne pola podrzędne; każde z nich może być
+        w formacie prostym lub grupowym (tu: format prosty); każde z nich ma numer porządkowy (tu: `3`, `6`, `7`)
+      - wartość pola (w strukturze `_value`), która jest listą numerów porządkowych pól podrzędnych aktualnych na
+        dzisiaj (`members`, tu: `3`, `6`, `7`)
+      - liczbę aktualnych pól podrzędnych (`members_count`, tu: `3`) oraz wszystkich, w tym historycznych,
+        pól podrzędnych (`members_total_count`, tu: `7`)
+      - informację od kiedy ta wartość, czyli konkretna lista pól podrzędnych, jest obowiązująca
+        (tu: od wpisu do KRS nr `5`, z dnia `2012-04-05`); uwaga: niektóre z pól podrzędnych mogły być dodane
+        przez wcześniejszy wpis (tu: pole nr `3`, dodane we wpisie do KRS nr `1`)
+
+      # Dane API wymagające planu Rejestrio Premium
+      Te pola, które na portalu https://rejestr.io dostępne są jedynie dla użytkowników posiadających
+      plan [Rejestrio Premium](https://rejestr.io/premium), wymagają również tego planu przy dostępie przez API.
+      Są to następujące dane:
+      - poniższe chaptery organizacji:
+        - branches
+        - obligations
+        - transformations
+      - odpisy KRS
+      - dane historyczne, kwerendowane przy pomocy parametru `entry_no` zapytania API
+        "[Pobieranie danych organizacji](#operation/getKrsOrg)"
+
+servers:
+  - url: https://rejestr.io/api/v1
+security:
+  - RejestrIoApiKey: []
+paths:
+  /krs:
+    get:
+      summary: Wyszukiwanie organizacji
+      operationId: searchKrsOrgs
+      description:
+        "Zwraca listę organizacji na podstawie następujących pól:\n
+        - nazwa\n
+        - numer NIP\n
+        - numer REGON\n
+        - forma prawna\n
+        - data pierwszego wpisu do KRS\n
+        - kod PKD przeważającej działalności\n
+        - kod PKD pozostałej działalności\n
+        - czy organizacja jest organizacją pożytku publicznego (OPP)\n
+        - czy organizacja jest wykreślona z KRS\n
+        - czy organizacja jest w likwidacji\n
+        - czy organizacja jest w upadłości\n
+        - czy organizacja jest w zawieszeniu\n
+        - wysokość kapitału zakładowego\n
+        - kod TERC województwa (z rejestru [TERYT](http://eteryt.stat.gov.pl))\n
+        - kod TERC powiatu (z rejestru [TERYT](http://eteryt.stat.gov.pl))\n
+        - kod TERC gminy (z rejestru [TERYT](http://eteryt.stat.gov.pl)).\n\n
+
+        Zwracane organizacje są posortowane w następujący sposób:\n
+        - jeśli używany jest parametr `sort` - zgodnie z jego definicją;\n
+        - jeśli parametr `sort` nie jest używany, ale jest używany parametr `name` - zgodnie z dopasowaniem
+          szukanego tekstu do nazwy organizacji, lekko zmodyfikowanym wg kapitału zakładowego, gdzie większy kapitał
+          oznacza wyższy wynik;\n
+        - w przeciwnym wypadku - po numerze KRS, malejąco.\n\n
+
+        **Uwaga:** Jeśli znasz numer KRS organizacji - nie musisz jej wyszukiwać. Id organizacji to jej numer KRS
+        bez początkowych zer. Przejdź do sekcji [pobierania danych dla organizacji](#operation/getKrsOrg)."
+      parameters:
+        - name: name
+          in: query
+          description:
+              "Fragment nazwy organizacji.\n\n
+
+              Znaki specjalne powinny być zakodowane używając kodowania procentowego
+              (https://en.wikipedia.org/wiki/Percent-encoding). W szczególności znak spacji koduje się przez **%20**.
+              Przykładowo:\n
+              - wyszukiwanie **examplex polska** powinno być zakodowane w URL jako **name=examplex%20polska**.\n\n
+
+              Wielkość liter nie ma znaczenia. Następujące wyszukiwania są równoważne: **Examplex Polska** i
+              **examplex polska**.\n\n
+
+              Zadany fragment nazwy musi zawierać pełne słowa. Przykładowo:\n
+              - wyszukiwanie **examplex** zwróci np. **Examplex Polska**,\n
+              - wyszukiwanie **polska examplex** także zwróci **Examplex Polska**,\n
+              - wyszukiwanie **examplex pol** NIE zwróci **Examplex Polska**.\n\n
+
+              Nazwy organizacji zawierają formę prawną w wersji rozwiniętej, czyli np.
+              'Examplex Polska spółka z ograniczoną odpowiedzialnością' a nie 'Examplex Polska sp. z o.o.'. Zatem
+              szukanie używając skrótów nie zwróci wyników.
+              "
+          required: false
+          example: pphu
+          schema:
+            type: string
+        - name: nip
+          in: query
+          description: Pełen numer NIP organizacji, bez myślników.
+          required: false
+          example: 1234567890
+          schema:
+            type: string
+        - name: regon
+          in: query
+          description: Pełen numer REGON organizacji.
+          required: false
+          example: 012345678
+          schema:
+            type: string
+        - name: forma_prawna
+          in: query
+          description:
+            "Pełna forma prawna organizacji, pisana wielkimi literami.\n\n
+
+            **Uwaga:** Znak spacji koduje się w URL przez **%20**.
+            "
+          required: false
+          example: "STOWARZYSZENIE EUROPEJSKIE"
+          schema:
+            type: string
+        - name: first_entry_date
+          in: query
+          description:
+            "Data pierwszego wpisu do KRS.\n\n
+
+            Wartością tego parametru jest ciąg znaków reprezentujący albo konkretną datę albo okres czasu.
+            W tym celu występują następujące operatory:\n
+            - `lt` - mniejsza niż\n
+            - `lte` - mniejsza niż lub równa\n
+            - `eq` - równa\n
+            - `gte` - większa niż lub równa\n
+            - `gt` - większa niż\n\n
+
+            Używając powyższych operatorów, same daty zawsze podaje się w formacie `RRRR-MM-DD`, czyli np. `2010-07-15`
+            dla 15 lipca 2010 r.\n\n
+
+            W celu zapytania o konkretną datę należy wpisać ją wraz z operatorem `eq`. Np. zapytanie o
+            organizacje z datą pierwszego wpisu do KRS w dn. 15 lipca 2010 r. wygląda następująco:
+            `first_entry_date=eq:2010-07-15`.\n\n
+
+            W celu zapytania o okres czasu należy użyć pozostałych operatorów. Można po przecinku użyć dwóch
+            operatorów, aby uzyskać okres ograniczony z obu stron.\n\n
+
+            Np. zapytanie o organizacje z datą pierwszego wpisu do KRS nie wcześniej niż 15 lipca 2010 r.
+            i jednocześnie wcześniej niż 15 sierpnia 2020 r. wygląda następująco:
+            `first_entry_date=gte:2010-07-15,lt:2020-08-15`.
+            "
+          required: false
+          schema:
+            type: string
+        - name: przewazajacy_pkd
+          in: query
+          description:
+            "Kod PKD przeważającej działalności przedsiębiorcy.\n\n
+
+            Można także szukać po przedrostku kodu. Np. podające wartość **24** otrzyma się zarówno organizacje mające
+            kod PKD przeważającej działalności równy **24.51.Z** jak i **24.52.Z**, itd.\n\n
+
+            **Uwaga:** Istnieją organizacje, które nadal nie poprawiły swoich kodów PKD po zmianie numeracji w 2007 r.
+            "
+          required: false
+          example: "24.51.Z"
+          schema:
+            type: string
+        - name: pozostaly_pkd
+          in: query
+          description:
+            "Kod PKD pozostałej działalności przedsiębiorcy.\n\n
+
+            Można także szukać po przedrostku kodu. Np. podające wartość **24** otrzyma się zarówno organizacje mające
+            kod PKD pozostałej działalności równy **24.51.Z** jak i **24.52.Z**, itd.\n\n
+
+            **Uwaga:** Istnieją organizacje, które nadal nie poprawiły swoich kodów PKD po zmianie numeracji w 2007 r.
+            "
+          required: false
+          example: "24"
+          schema:
+            type: string
+        - name: dowolny_pkd
+          in: query
+          description:
+            "Kod PKD przeważającej lub pozostałej działalności przedsiębiorcy.\n\n
+
+            Można także szukać po przedrostku kodu. Np. podające wartość **24** otrzyma się zarówno organizacje mające
+            dowolny kod PKD równy **24.51.Z** jak i **24.52.Z**, itd.\n\n
+
+            **Uwaga:** Istnieją organizacje, które nadal nie poprawiły swoich kodów PKD po zmianie numeracji w 2007 r.
+            "
+          required: false
+          example: "24.51"
+          schema:
+            type: string
+        - name: jest_opp
+          in: query
+          description: Czy organizacja jest organizacją pożytku publicznego (OPP)?
+          required: false
+          example: "1"
+          schema:
+            type: boolean
+            minimum: 0
+            maximum: 1
+        - name: jest_wykreslona
+          in: query
+          description: Czy organizacja jest wykreślona z KRS?
+          required: false
+          example: "1"
+          schema:
+            type: boolean
+            minimum: 0
+            maximum: 1
+        - name: w_likwidacji
+          in: query
+          description: Czy organizacja jest w likwidacji?
+          required: false
+          example: "1"
+          schema:
+            type: boolean
+            minimum: 0
+            maximum: 1
+        - name: w_upadlosci
+          in: query
+          description: Czy organizacja jest w upadłości?
+          required: false
+          example: "1"
+          schema:
+            type: boolean
+            minimum: 0
+            maximum: 1
+        - name: w_zawieszeniu
+          in: query
+          description: Czy organizacja jest w zawieszeniu?
+          required: false
+          example: "1"
+          schema:
+            type: boolean
+            minimum: 0
+            maximum: 1
+        - name: kapital
+          in: query
+          description:
+            "Wysokość kapitału zakładowego.\n\n
+
+            Wartością tego parametru jest ciąg znaków reprezentujący albo konkretną wartość kapitału albo jakiś
+            jego zakres. W tym celu występują następujące operatory:\n
+            - `lt` - mniejszy niż\n
+            - `lte` - mniejszy niż lub równy\n
+            - `eq` - równy\n
+            - `gte` - większy niż lub równy\n
+            - `gt` - większy niż\n\n
+
+            W celu zapytania o konkretną wartość należy wpisać tę wartość wraz z operatorem `eq`. Np. zapytanie o
+            organizacje z kapitałem 10000 zł wygląda następująco: `kapital=eq:10000`.\n\n
+
+            W celu zapytania o zakres kapitału należy użyć pozostałych operatorów. Można po przecinku użyć dwóch
+            operatorów, aby uzyskać zakres ograniczony z obu stron.\n\n
+
+            Np. zapytanie o organizacje z kapitałem równym co najmniej 10000 zł ale mniej niż 15000 zł wygląda
+            następująco: `kapital=gte:10000,lt:15000`.\n\n
+
+            **Uwaga**: nieznaczna liczba organizacji (mniej niż 100), podaje kapitał zakładowy w euro,
+            zamiast w złotówkach.
+            "
+          required: false
+          schema:
+            type: string
+        - name: wojewodztwo
+          in: query
+          description: Dwucyfrowy kod TERC województwa siedziby lub oddziału organizacji.
+          required: false
+          example: "02"
+          schema:
+            type: string
+        - name: powiat
+          in: query
+          description: Czterocyfrowy kod TERC powiatu siedziby lub oddziału organizacji.
+          required: false
+          example: "0201"
+          schema:
+            type: string
+        - name: gmina
+          in: query
+          description:
+            "**Sześciocyfrowy** (NIE siedmiocyfrowy) kod TERC gminy siedziby lub oddziału organizacji."
+          required: false
+          example: "020103"
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description:
+            "Określenie porządku sortowania wyników wyszukiwania.\n\n
+
+            Wartością tego parametru jest ciąg znaków reprezentujący pole, po którym należy posortować wyniki, oraz
+            opcjonalnie kierunek sortowania (rosnący albo malejący).\n\n
+
+            Przykład parametru: `sort=first_entry_date:asc`. Takie wyszukiwanie zwróci wyniki posortowane po dacie
+            pierwszego wpisu do KRS w kolejności rosnącej, czyli od najstarszych do najmłodszych organizacji.\n\n
+
+            Pola, które można podać jako kryterium sortowania (lista będzie poszerzana):\n
+            - `first_entry_date`\n
+            - `kapital`\n
+            - `name`\n\n
+
+            Przy polach poza `name` można używać kierunków sortowania: `desc` (malejący) lub `asc` (rosnący),
+            z których pierwszy jest domyślny.\n\n
+
+            Dla pola `name`, kierunek sortowania jest zawsze malejący,
+            zgodnie z dopasowaniem szukanego tekstu do nazwy organizacji, lekko zmodyfikowanym wg kapitału zakładowego,
+            gdzie większy kapitał oznacza wyższy wynik.\n\n
+
+            Przykłady parametru:\n
+            - `sort=first_entry_date:asc`\n
+            - `sort=kapital:desc`\n
+            - `sort=name`
+            "
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Którą stronę wyników wyszukiwania zwrócić.
+          required: false
+          example: 3
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            default: 1
+        - name: per_page
+          in: query
+          description: Ile wyników wyszukiwania mieści się na stronie.
+          required: false
+          example: 20
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100
+            default: 10
+      responses:
+        '200':
+          description: Wyniki wyszukiwania
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/OrgSearchResult"
+              examples:
+                example1:
+                  $ref: "#/components/examples/EnergiaSearch"
+        '400':
+          description: Niepoprawne zapytanie
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                code: 400
+                message: "The nip must be a number."
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '403':
+          $ref: "#/components/responses/QuotaExceededError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Szukaj organizacji w KRS po nazwie zawierającej słowo \"energia\".
+            \ncurl https://rejestr.io/api/v1/krs?name=energia
+                --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+
+  /krs/{id}:
+    get:
+      summary: Pobieranie danych organizacji
+      operationId: getKrsOrg
+      description:
+        "Zwraca dane organizacji dla podanego Id (numeru KRS):\n
+          - dane podstawowe (tylko aktualne)\n
+          - dodatkowe pola z wybranego rozdziału (aktualne lub historyczne)\n
+
+         Dostępne są następujące rozdziały:\n
+          - Podstawowe pola\n
+          - Oddziały\n
+          - Finanse\n
+          - Przekształcenia\n
+          - Zobowiązania\n
+        "
+      parameters:
+        - name: id
+          in: path
+          description: Id organizacji (numer KRS bez początkowych zer)
+          required: true
+          example: 12345
+          schema:
+            type: integer
+            format: int64
+        - name: chapter
+          in: query
+          description:
+            "Rozdział z którego mają być zwrócone dodatkowe pola:\n
+              - *basic* - Podstawowe pola\n
+              - *branches* - Oddziały organizacji\n
+              - *financials* - pola z rozdziału \"Finanse\"\n
+              - *transformations* - pola z rozdziału \"Przekształcenia\"\n
+              - *obligations* - pola z rozdziału \"Zobowiązania\"\n
+            "
+          required: false
+          example: financials
+          schema:
+            type: string
+            default: null
+            enum: [null, basic, branches, financials, transformations, obligations]
+        - name: entry_no
+          in: query
+          description:
+            "Numer wpisu do KRS, według którego zwracane są dane rozdziału.\n\n
+
+            Użycie tego parametru jest tylko możliwe gdy używa się również parametru `chapter`.\n\n
+
+            Użycie tego parametru powoduje, że w odpowiedzi nie ma podstawowych pól, gdyż trzymamy tylko ich wartości
+            dla najnowszego wpisu. Innymi słowy, jedyne zwracane pole najwyższego poziomu to pole `fields`.\n\n
+
+            Pola zwracane w podstrukturze `fields`, z rodziału wskazanego w parametrze `chapter`,
+            mają wartości historyczne. Są to wartości ze stanu organizacji po dokonaniu wpisu do KRS
+            o numerze takim jaka jest wartość niniejszego parametru.
+            "
+          required: false
+          example: 5
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Dane organizacji w KRS
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: "#/components/schemas/OrgWithChapters"
+                  - $ref: "#/components/schemas/OrgWithChaptersAndFields"
+              examples:
+                example1:
+                  $ref: "#/components/examples/OrlenBasic"
+        '400':
+          description: Niepoprawne zapytanie
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                code: 400
+                message: "Invalid 'entry_no'. Should be a positive int."
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '403':
+          $ref: "#/components/responses/QuotaExceededError"
+        '404':
+          $ref: "#/components/responses/NotFoundError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Pobierz aktualne dane organizacji o id 28860 (nr KRS 0000028860):
+              \ncurl https://rejestr.io/api/v1/krs/28860
+                  --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+
+  /krs/{id}/relations:
+    get:
+      summary: Pobieranie powiązań organizacji
+      operationId: getKrsOrgRelations
+      description:
+        "Zwraca aktualne powiązania organizacji z innymi organizacjami lub osobami."
+      parameters:
+        - name: id
+          in: path
+          description: Id organizacji
+          required: true
+          example: 12345
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Tablica organizacji i osób
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrgRelations"
+              examples:
+                example1:
+                  $ref: "#/components/examples/OrlenRelations"
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '403':
+          $ref: "#/components/responses/QuotaExceededError"
+        '404':
+          $ref: "#/components/responses/NotFoundError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Pobierz aktualne powiązania organizacji o id 28860
+                \ncurl https://rejestr.io/api/v1/krs/28860/relations
+                    --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+
+  /krs/{id}/entries:
+    get:
+      summary: Pobieranie listy wpisów do KRS dla organizacji
+      operationId: getKrsEntries
+      description:
+        "Pobieranie listy informacji o wpisach do KRS dla danej organizacji."
+      parameters:
+        - name: id
+          in: path
+          description: Id organizacji. Jest to jej numer KRS bez zer na początku.
+          required: true
+          example: 12345
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Lista metadanych o wszystkich wpisach w KRS dla danej organizacji.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KrsEntries"
+              examples:
+                example1:
+                  $ref: "#/components/examples/OrlenEntries"
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '403':
+          $ref: "#/components/responses/QuotaExceededError"
+        '404':
+          $ref: "#/components/responses/NotFoundError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Pobierz listę metadanych o wpisach dla organizacji o id 28860.
+              \ncurl https://rejestr.io/api/v1/krs/28860/entries
+                  --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+
+  /krs/{id}/extract:
+    get:
+      summary: Pobieranie aktualnego odpisu KRS organizacji
+      operationId: getKrsOrgExtract
+      description:
+        "Zwraca plik PDF z aktualnym odpisem KRS organizacji o danym id (numerze KRS).\n\n
+
+        **Uwagi:**
+
+        - **Aktualność odpisu:** Plik odpisu pochodzi z jednego z ostatnich 30 dni kalendarzowych.
+          Zatem, jeśli wpis organizacji w KRS był aktualizowany bardzo niedawno, pobrany odpis może
+          jeszcze nie uwzględniać tej aktualizacji.
+
+        - **Format odpowiedzi (PDF/JSON):** To zapytanie API może zwrócić odpowiedź w formacie PDF (plik odpisu)
+          lub JSON (jeśli wystąpi błąd).
+
+        - **Organizacje wykreślone:** Takie organizacje nie posiadają wpisu aktualnego, zatem API zwróci
+          dla nich błąd 404 (Not Found).
+        "
+      parameters:
+        - name: id
+          in: path
+          description: Id organizacji (numer KRS bez początkowych zer)
+          required: true
+          example: 12345
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Plik PDF z aktualnym odpisem KRS organizacji.
+          content:
+            application/pdf:
+              example:
+                <... zawartość pliku PDF ...>
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '403':
+          $ref: "#/components/responses/QuotaExceededError"
+        '404':
+          $ref: "#/components/responses/NotFoundError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Pobierz aktualny odpis KRS organizacji o id 28860 (nr KRS 0000028860):
+              \ncurl https://rejestr.io/api/v1/krs/28860/extract
+                  --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+
+  /persons/{id}:
+    get:
+      summary: Pobieranie danych osoby
+      operationId: getPerson
+      description:
+        "Zwraca aktualne dane o osobie występującej w KRS"
+      parameters:
+        - name: id
+          in: path
+          description: Id osoby
+          required: true
+          example: 123456789
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Dane osoby w KRS
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Person"
+              examples:
+                example1:
+                  $ref: "#/components/examples/IksinskiBasic"
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '403':
+          $ref: "#/components/responses/QuotaExceededError"
+        '404':
+          $ref: "#/components/responses/NotFoundError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Pobierz aktualne dane osoby o id 123456789
+              \ncurl https://rejestr.io/api/v1/persons/123456789
+                  --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+
+  /persons/{id}/relations:
+    get:
+      summary: Pobieranie powiązań osoby
+      operationId: getPersonRelations
+      description:
+        "Zwraca aktualne powiązania osoby z organizacjami wpisanymi do Krajowego Rejestru Sądowego."
+      parameters:
+        - name: id
+          in: path
+          description: Id osoby
+          required: true
+          example: 123456789
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Tablica organizacji
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonRelations"
+              examples:
+                example1:
+                  $ref: "#/components/examples/IksinskiRelations"
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '403':
+          $ref: "#/components/responses/QuotaExceededError"
+        '404':
+          $ref: "#/components/responses/NotFoundError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Pobierz aktualne powiązania osoby o id 123456789
+              \ncurl https://rejestr.io/api/v1/persons/123456789/relations
+                  --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+  /account/balance:
+    get:
+      summary: Pobieranie stanu konta API
+      operationId: getAccountBalance
+      description:
+        "Zwraca aktualny stan konta API w PLN, z dokładnością czasową do paru minut.\n\n
+
+        **Uwaga:** ta operacja jest darmowa, czyli nie powoduje zmniejszenia stanu konta.
+        "
+      responses:
+        '200':
+          description: Stan konta API w PLN.
+          content:
+            application/json:
+              schema:
+                type: string
+              example:
+                "123.456"
+        '401':
+          $ref: "#/components/responses/UnauthorizedError"
+        '429':
+          $ref: "#/components/responses/TooManyRequestsError"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Zwróć aktualny stan konta API w PLN.
+              \ncurl https://rejestr.io/api/v1/account/balance
+                  --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+components:
+  # It seems that the tool we use to generate HTML from this YAML file doesn't yet support 'securitySchemes'. :(
+  securitySchemes:
+    RejestrIoApiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >
+        Każde zapytanie do API musi zawierać ważny klucz API w nagłówku HTTP 'Authorization'.
+  schemas:
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int64
+        message:
+          type: string
+    #############
+    # KRS entry #
+    #############
+    KrsEntry:
+      description: Metadane o czynności dokonywania wpisu do KRS.
+      required:
+        - court
+        - date
+        - date_end
+        - number
+        - signature
+      properties:
+        court:
+          type: string
+          description: Sąd gdzie dokonano wpisu.
+        date:
+          type: string
+          format: date
+          description: Data kiedy dokonano wpisu, w formacie RRRR-MM-DD.
+        date_end:
+          type: string
+          format: date
+          nullable: true
+          description: >
+              Ostatnia data w której obowiązywał stan z wpisu, w formacie RRRR-MM-DD. Zazwyczaj jest to data
+              poprzedzająca datę następnego wpisu. Np. jeśli kolejny wpis ma datę "2000-01-23", to ten wpis będzie
+              miał *date_end* jako "2000-01-22". Jeśli wpis jest wciąż aktualny, to pole ma wartość *null*.
+        number:
+          type: integer
+          format: int64
+          description: Numer porządkowy wpisu. Każda organizacja ma wpisy numerowane w sekwencji 1, 2, 3, ..
+        signature:
+          type: string
+          description: Sygnatura wpisu.
+    KrsEntries:
+      type: array
+      items:
+        $ref: "#/components/schemas/KrsEntry"
+    ####################
+    # KRS organization #
+    ####################
+    Org:
+      required:
+        - address
+        - business_insert_date
+        - current_relations_count
+        - duns
+        - first_entry_date
+        - historical_relations_count
+        - id
+        - is_removed
+        - krs
+        - last_entry_date
+        - last_entry_no
+        - last_state_entry_date
+        - last_state_entry_no
+        - legal_form
+        - name
+        - name_short
+        - nip
+        - regon
+        - type
+        - w_likwidacji
+        - w_upadlosci
+        - w_zawieszeniu
+      properties:
+        address:
+          $ref: "#/components/schemas/Address"
+        business_insert_date:
+          type: string
+          format: date
+          description: Data wpisania do KRS w formacie RRRR-MM-DD.
+        ceo:
+          $ref: "#/components/schemas/Ceo"
+        current_relations_count:
+          type: integer
+          format: int64
+          description: Ile organizacja ma obecnie powiązań.
+        duns:
+          type: string
+          description: Nr DUNS organizacji.
+        first_entry_date:
+          type: string
+          format: date
+          description: Data pierwszego wpisu do KRS w formacie RRRR-MM-DD.
+        historical_relations_count:
+          type: integer
+          format: int64
+          description: Ile organizacja ma historycznych (nieaktualnych) powiązań.
+        id:
+          type: integer
+          format: int64
+          description: Id organizacji. Jest to nr KRS bez początkowych zer.
+        is_opp:
+          type: boolean
+          description: Czy organizacja jest organizacją pożytku publicznego (OPP)?
+        is_removed:
+          type: boolean
+          description: Czy organizacja została wykreślona z KRS?
+        krs:
+          type: string
+          description: Pełen nr KRS organizacji.
+        last_entry_date:
+          type: string
+          format: date
+          description: Data najnowszego wpisu do KRS w formacie RRRR-MM-DD.
+        last_entry_no:
+          type: integer
+          format: int64
+          description: Numer najnowszego wpisu do KRS.
+        last_state_entry_date:
+          type: string
+          format: date
+          description:
+            W przypadku organizacji nie wykreślonych, identycznie jak pole "last_entry_date".
+            W przypadku organizacji wykreślonych, data najnowszego wpisu do KRS zawierającego
+            dane sprzed wykreślenia w formacie RRRR-MM-DD.
+        last_state_entry_no:
+          type: integer
+          format: int64
+          description:
+            W przypadku organizacji nie wykreślonych, identycznie jak pole "last_entry_no".
+            W przypadku organizacji wykreślonych, numer najnowszego wpisu do KRS zawierającego
+            dane sprzed wykreślenia.
+        legal_form:
+          type: string
+          description: Forma prawna organizacji.
+        name:
+          type: string
+          description: Pełna nazwa organizacji, zawierająca formę prawną w formie nieskróconej.
+        name_short:
+          type: string
+          description: Skrócona nazwa organizacji, nie zawierająca formy prawnej.
+        nip:
+          type: string
+          description: Nr NIP organizacji.
+        regon:
+          type: string
+          description: Nr REGON organizacji.
+        remove_validation_date:
+          type: string
+          format: date
+          description:
+            W przypadku organizacji wykreślonych, data uprawomocnienia się postanowienia sądu w kwestii wykreślenia
+            organizacji z KRS, w formacie RRRR-MM-DD.
+        type:
+          type: string
+          enum: [KrsOrganization]
+          description: Typ obiektu, zawsze przybierający jedną wartość (KrsOrganization).
+        w_likwidacji:
+          type: boolean
+          description: Czy organizacja jest w likwidacji?
+        w_upadlosci:
+          type: boolean
+          description: Czy organizacja jest w upadłości?
+        w_zawieszeniu:
+          type: boolean
+          description: Czy organizacja jest w zawieszeniu?
+    OrgWithChapters:
+      allOf:
+        - $ref: '#/components/schemas/Org'
+        - type: object
+          required:
+            - chapters
+          properties:
+            chapters:
+              type: array
+              description: 'Lista dostępnych rozdziałów, o które można pytać przy pomocy parametru "chapters".'
+    OrgWithChaptersAndFields:
+      allOf:
+        - $ref: '#/components/schemas/OrgWithChapters'
+        - type: object
+          required:
+            - fields
+          properties:
+            fields:
+              type: array
+              description: 'Pola z wybranego rozdziału.'
+    OrgSearchResult:
+      required:
+        - total
+        - items
+      properties:
+        total:
+          type: integer
+          format: int64
+          description: Liczba znalezionych organizacji
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Org'
+          description: Lista organizacji dla obecnej strony.
+    ##############
+    # KRS person #
+    ##############
+    Person:
+      required:
+        - birthday
+        - current_relations_count
+        - first_name
+        - historical_relations_count
+        - id
+        - krs_person_id
+        - last_name
+        - name
+        - organizations_count
+        - second_name
+        - sex
+        - type
+      properties:
+        birthday:
+          type: string
+          format: date
+          description: "Data urodzin, w formacie RRRR-MM-DD."
+        current_relations_count:
+          type: integer
+          format: int64
+          description: >
+            Ile osoba ma obecnie powiązań. **Uwaga: osoba może mieć więcej niż jedno powiązanie z daną organizacją,
+            np. jako wspólnik oraz jako członek zarządu.**
+        first_name:
+          type: string
+          description: Pierwsze imię.
+        historical_relations_count:
+          type: integer
+          format: int64
+          description: Ile osoba ma historycznych (nieaktualnych) powiązań.
+        id:
+          type: integer
+          format: int64
+          description: >
+            Globalne id osoby. **Uwaga: to jest główne id osoby używane w API.**
+        krs_person_id:
+          type: integer
+          format: int64
+          description: Id osoby w kontekście KRS.
+        last_name:
+          type: string
+          description: Nazwisko.
+        name:
+          type: string
+          description: Wszystkie imiona i nazwisko.
+        organizations_count:
+          type: integer
+          format: int64
+          description: Ile osoba ma powiązanych organizacji.
+        second_name:
+          type: string
+          description: Imiona poza pierwszym.
+        sex:
+          type: string
+          enum: [F, M]
+          description: Płeć.
+        type:
+          type: string
+          enum: [Person]
+          description: Typ obiektu, zawsze przybierający jedną wartość (Person).
+    #############
+    # Relations #
+    #############
+    OrgRelations:
+      type: array
+      items:
+        anyOf:
+          - $ref: '#/components/schemas/OrgWithRelationToOrg'
+          - $ref: '#/components/schemas/PersonWithRelationToOrg'
+    PersonRelations:
+      type: array
+      items:
+        $ref: '#/components/schemas/OrgWithRelationToPerson'
+    OrgWithRelationToOrg:
+      allOf:
+        - $ref: '#/components/schemas/Org'
+        - type: object
+          required:
+            - relations
+          properties:
+            relations:
+              type: array
+              items:
+                $ref: '#/components/schemas/OrgRelation'
+    PersonWithRelationToOrg:
+      allOf:
+        - $ref: '#/components/schemas/Person'
+        - type: object
+          required:
+            - relations
+          properties:
+            relations:
+              type: array
+              items:
+                $ref: '#/components/schemas/PersonRelation'
+    OrgWithRelationToPerson:
+      allOf:
+        - $ref: '#/components/schemas/Org'
+        - type: object
+          required:
+            - relations
+          properties:
+            relations:
+              type: array
+              items:
+                $ref: '#/components/schemas/PersonRelation'
+    OrgRelation:
+      required:
+        - begin_date
+        - direction
+        - end_date
+        - name
+        - type
+      properties:
+        begin_date:
+          type: string
+          format: date
+          description: "Data początku relacji, w formacie RRRR-MM-DD."
+        description:
+          type: string
+          description: "Szczegółowy opis typu relacji."
+        direction:
+          type: boolean
+          description: "Kierunek relacji."
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: "Data końca relacji, w formacie RRRR-MM-DD - lub 'null' jeśli relacja trwa nadal."
+        name:
+          type: string
+          description: "Nazwa organizacji."
+        type:
+          type: string
+          description: "Typ relacji, np. KRS_SHAREHOLDER, KRS_CREATOR, itp."
+    PersonRelation:
+      required:
+        - begin_date
+        - direction
+        - end_date
+        - first_name
+        - last_name
+        - type
+      properties:
+        begin_date:
+          type: string
+          format: date
+          description: "Data początku relacji, w formacie RRRR-MM-DD."
+        description:
+          type: string
+          description: "Szczegółowy opis typu relacji."
+        direction:
+          type: boolean
+          description: "Kierunek relacji."
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: "Data końca relacji, w formacie RRRR-MM-DD - lub 'null' jeśli relacja trwa nadal."
+        first_name:
+          type: string
+          description: "Imię."
+        last_name:
+          type: string
+          description: "Nazwisko."
+        type:
+          type: string
+          description: "Typ relacji, np. KRS_SHAREHOLDER, KRS_BOARD, itp."
+    Address:
+      description: Pełen adres, z dokładnością do numeru lokalu.
+      required:
+        - apt_no
+        - city
+        - code
+        - country
+        - house_no
+        - post_office
+        - street
+      properties:
+        apt_no:
+          type: string
+        city:
+          type: string
+        code:
+          type: string
+        country:
+          type: string
+        house_no:
+          type: string
+        post_office:
+          type: string
+        street:
+          type: string
+      example:
+        apt_no: "12"
+        city: "Warszawa"
+        code: "12-345"
+        country: "Polska"
+        house_no: "123"
+        post_office: "Warszawa"
+        street: "Słoneczna"
+    Ceo:
+      description: Informacje dotyczące prezesa/-ski lub przewodniczącego/-cej organizacji, jeśli występują.
+      required:
+        - first_name
+        - krs_person_id
+        - last_name
+        - name
+      properties:
+        first_name:
+          type: string
+          description: Pierwsze imię.
+        krs_person_id:
+          type: integer
+          format: int64
+          description: Id osoby w kontekście KRS.
+        last_name:
+          type: string
+          description: Nazwisko.
+        name:
+          type: string
+          description: Wszystkie imiona i nazwisko.
+
+  responses:
+    UnauthorizedError:
+      description: Klucz API nie został podany lub jest nieważny.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 401
+            message: "API key not found or invalid."
+    QuotaExceededError:
+      description: Przekroczono liczbę opłaconych zapytań API.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 403
+            message: "API quota exceeded."
+    NotFoundError:
+      description: Żądany obiekt nie został znaleziony.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 404
+            message: "Not found."
+    TooManyRequestsError:
+      description: Przekroczono liczbę zapytań API na minutę.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 429
+            message: "Too many requests."
+    InternalServerError:
+      description: Wewnętrzny błąd serwera.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 500
+            message: "Internal server error."
+  examples:
+    EnergiaSearch:
+      value:
+        total: 3
+        items:
+          - address:
+              city: Katowice
+              code: 40-114
+              country: Polska
+              house_no: '3'
+              post_office: Katowice
+              street: Ks.piotra Ściegiennego
+            business_insert_date: '2007-01-08'
+            ceo:
+              first_name: Przykład
+              krs_person_id: 876543210
+              last_name: Przykładowski
+              name: Przykład Examplus Przykładowski
+            current_relations_count: 41
+            duns: '522946342'
+            first_entry_date: '2007-01-08'
+            historical_relations_count: 83
+            id: 271562
+            is_opp: false
+            is_removed: false
+            krs: '0000271562'
+            last_entry_date: '2019-05-16'
+            last_entry_no: 97
+            last_state_entry_date: '2019-05-16'
+            last_state_entry_no: 97
+            legal_form: SPÓŁKA AKCYJNA
+            name: TAURON POLSKA ENERGIA SPÓŁKA AKCYJNA
+            name_short: TAURON POLSKA ENERGIA
+            nip: '9542583988'
+            regon: '240524697'
+            type: KrsOrganization
+            w_likwidacji: false
+            w_upadlosci: false
+            w_zawieszeniu: false
+          - address:
+              city: Warszawa
+              code: 00-120
+              country: Polska
+              house_no: '59'
+              post_office: Warszawa
+              street: Złota
+            business_insert_date: '2001-05-23'
+            ceo:
+              first_name: Przykład
+              krs_person_id: 876543210
+              last_name: Przykładowski
+              name: Przykład Examplus Przykładowski
+            current_relations_count: 17
+            duns: '422185360'
+            first_entry_date: '2001-05-23'
+            historical_relations_count: 75
+            id: 13479
+            is_removed: false
+            krs: '0000013479'
+            last_entry_date: '2019-06-25'
+            last_entry_no: 114
+            last_state_entry_date: '2019-06-25'
+            last_state_entry_no: 114
+            legal_form: SPÓŁKA AKCYJNA
+            name: PGE ENERGIA CIEPŁA SPÓŁKA AKCYJNA
+            name_short: PGE ENERGIA CIEPŁA
+            nip: '6420000642'
+            regon: '273204260'
+            type: KrsOrganization
+            w_likwidacji: false
+            w_upadlosci: false
+            w_zawieszeniu: false
+          - address:
+              city: Warszawa
+              code: 02-566
+              country: Polska
+              house_no: '2'
+              post_office: Warszawa
+              street: Puławska
+            business_insert_date: '2001-04-05'
+            ceo:
+              first_name: Przykład
+              krs_person_id: 876543210
+              last_name: Przykładowski
+              name: Przykład Examplus Przykładowski
+            current_relations_count: 11
+            duns: '422416607'
+            first_entry_date: '2001-04-05'
+            historical_relations_count: 28
+            id: 6129
+            is_removed: false
+            krs: '0000006129'
+            last_entry_date: '2019-07-12'
+            last_entry_no: 83
+            last_state_entry_date: '2019-07-12'
+            last_state_entry_no: 83
+            legal_form: SPÓŁKA AKCYJNA
+            name: VEOLIA ENERGIA POLSKA SPÓŁKA AKCYJNA
+            name_short: VEOLIA ENERGIA POLSKA
+            nip: '9451647866'
+            regon: '351293622'
+            type: KrsOrganization
+            w_likwidacji: false
+            w_upadlosci: false
+            w_zawieszeniu: false
+      summary: Wynik wyszukiwania.
+    OrlenBasic:
+      value:
+        address:
+          city: Płock
+          code: 09-411
+          country: Polska
+          house_no: '7'
+          post_office: Płock-Biała
+          street: Chemików
+        business_insert_date: '2001-07-19'
+        ceo:
+          first_name: Przykład
+          krs_person_id: 876543210
+          last_name: Przykładowski
+          name: Przykład Examplus Przykładowski
+        current_relations_count: 40
+        duns: '644308413'
+        first_entry_date: '2001-07-19'
+        historical_relations_count: 174
+        id: 28860
+        is_removed: false
+        krs: '0000028860'
+        last_entry_date: '2019-07-03'
+        last_entry_no: 90
+        last_state_entry_date: '2019-07-03'
+        last_state_entry_no: 90
+        legal_form: SPÓŁKA AKCYJNA
+        name: POLSKI KONCERN NAFTOWY ORLEN SPÓŁKA AKCYJNA
+        name_short: POLSKI KONCERN NAFTOWY ORLEN
+        nip: '7740001454'
+        regon: '610188201'
+        type: KrsOrganization
+        w_likwidacji: false
+        w_upadlosci: false
+        w_zawieszeniu: false
+        chapters:
+          - basic
+          - financials
+          - transformations
+      summary: Podstawowa postać organizacji KRS.
+    OrlenRelations:
+      value:
+        - address:
+            apt_no: '303'
+            city: Warszawa
+            code: 02-159
+            country: Polska
+            house_no: 2 B
+            post_office: Warszawa
+            street: Jamesa Gordona Bennetta
+          business_insert_date: '2019-05-09'
+          ceo:
+            first_name: Przykład
+            krs_person_id: 876543210
+            last_name: Przykładowski
+            name: Przykład Examplus Przykładowski
+          current_relations_count: 7
+          first_entry_date: '2019-05-09'
+          historical_relations_count: 0
+          id: 785348
+          is_opp: false
+          is_removed: false
+          krs: '0000785348'
+          last_entry_date: '2019-05-09'
+          last_entry_no: 3
+          last_state_entry_date: '2019-05-09'
+          last_state_entry_no: 3
+          legal_form: SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
+          name: ORLEN USŁUGI FINANSOWE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
+          name_short: ORLEN USŁUGI FINANSOWE
+          nip: '5223159438'
+          regon: '383316210'
+          type: KrsOrganization
+          w_likwidacji: false
+          w_upadlosci: false
+          w_zawieszeniu: false
+          relations:
+          - begin_date: '2019-05-09'
+            direction: true
+            end_date:
+            name: POLSKI KONCERN NAFTOWY ORLEN SPÓŁKA AKCYJNA
+            type: KRS_SHAREHOLDER
+        - address:
+            city: Płock
+            code: 09-411
+            country: Polska
+            house_no: '42'
+            post_office: Płock
+            street: Zglenickiego
+          business_insert_date: '2001-11-21'
+          ceo:
+            first_name: Przykład
+            krs_person_id: 876543210
+            last_name: Przykładowski
+            name: Przykład Examplus Przykładowski
+          current_relations_count: 9
+          duns: '367277733'
+          first_entry_date: '2001-11-21'
+          historical_relations_count: 64
+          id: 64194
+          is_removed: false
+          krs: '0000064194'
+          last_entry_date: '2019-07-05'
+          last_entry_no: 71
+          last_state_entry_date: '2019-07-05'
+          last_state_entry_no: 71
+          legal_form: SPÓŁKA AKCYJNA
+          name: ORLEN PROJEKT SPÓŁKA AKCYJNA
+          name_short: ORLEN PROJEKT
+          nip: '7742372663'
+          regon: '610411633'
+          type: KrsOrganization
+          w_likwidacji: false
+          w_upadlosci: false
+          w_zawieszeniu: false
+          relations:
+          - begin_date: '2018-10-16'
+            direction: true
+            end_date:
+            name: POLSKI KONCERN NAFTOWY ORLEN SPÓŁKA AKCYJNA
+            type: KRS_ONLY_SHAREHOLDE
+        - birthday: "1970-01-01"
+          current_relations_count: 2
+          first_name: Jan
+          historical_relations_count: 5
+          id: 123456789
+          krs_person_id: 9876543210
+          last_name: Iksiński
+          name: Jan Iksiński
+          organizations_count: 2
+          sex: M
+          type: Person
+          relations:
+          - begin_date: '2010-01-01'
+            direction: false
+            end_date: null
+            description: CZŁONEK ZARZĄDU DO SPRAW RÓŻNYCH
+            first_name: Jan
+            last_name: Iksiński
+            type: KRS_BOARD
+      summary: Powiązania organizacji KRS.
+    OrlenEntries:
+      value:
+        - court: SĄD REJONOWY DLA M. ST. WARSZAWY XXI WYDZIAŁ GOSPODARCZY KRAJOWEGO REJESTRU SĄDOWEGO
+          date: '2001-07-19'
+          date_end: '2001-11-05'
+          number: 1
+          signature: WA.XXI NS-REJ.KRS/3724/01/169
+        - court: SĄD REJONOWY DLA M. ST. WARSZAWY XXI WYDZIAŁ GOSPODARCZY KRAJOWEGO REJESTRU SĄDOWEGO
+          date: '2001-11-06'
+          date_end: '2002-04-08'
+          number: 2
+          signature: WA.XXI NS-REJ.KRS/5689/01/141
+        - court: SĄD REJONOWY DLA M. ST. WARSZAWY W WARSZAWIE, XXI WYDZIAŁ GOSPODARCZY KRAJOWEGO REJESTRU SĄDOWEGO
+          date: '2002-04-09'
+          date_end: '2002-07-25'
+          number: 3
+          signature: WA.XXI NS-REJ.KRS/2262/02/78
+      summary: Wpisy organizacji w KRS.
+    IksinskiBasic:
+      value:
+        birthday: "1970-01-01"
+        current_relations_count: 2
+        first_name: "Jan"
+        historical_relations_count: 5
+        id: 123456789
+        krs_person_id: 987654321
+        last_name: "Iksiński"
+        name: "Jan Iksiński"
+        organizations_count: 2
+        second_names: ""
+        sex: "M"
+        type: "Person"
+      summary: Osoba z KRS.
+    IksinskiRelations:
+      value:
+        - address:
+            city: Płock
+            code: 09-411
+            country: Polska
+            house_no: '7'
+            post_office: Płock-Biała
+            street: Chemików
+          business_insert_date: '2001-07-19'
+          ceo:
+            first_name: Przykład
+            krs_person_id: 876543210
+            last_name: Przykładowski
+            name: Przykład Examplus Przykładowski
+          current_relations_count: 40
+          duns: '644308413'
+          first_entry_date: '2001-07-19'
+          historical_relations_count: 174
+          id: 28860
+          is_removed: false
+          krs: '0000028860'
+          last_entry_date: '2019-07-03'
+          last_entry_no: 90
+          last_state_entry_date: '2019-07-03'
+          last_state_entry_no: 90
+          legal_form: SPÓŁKA AKCYJNA
+          name: POLSKI KONCERN NAFTOWY ORLEN SPÓŁKA AKCYJNA
+          name_short: POLSKI KONCERN NAFTOWY ORLEN
+          nip: '7740001454'
+          regon: '610188201'
+          type: KrsOrganization
+          w_likwidacji: false
+          w_upadlosci: false
+          w_zawieszeniu: false
+          relations:
+            - begin_date: '2010-01-01'
+              direction: false
+              end_date: null
+              description: CZŁONEK ZARZĄDU DO SPRAW RÓŻNYCH
+              first_name: Jan
+              last_name: Iksiński
+              type: KRS_BOARD
+        - address:
+            apt_no: '303'
+            city: Warszawa
+            code: 02-159
+            country: Polska
+            house_no: 2 B
+            post_office: Warszawa
+            street: Jamesa Gordona Bennetta
+          business_insert_date: '2019-05-09'
+          ceo:
+            first_name: Przykład
+            krs_person_id: 876543210
+            last_name: Przykładowski
+            name: Przykład Examplus Przykładowski
+          current_relations_count: 7
+          first_entry_date: '2019-05-09'
+          historical_relations_count: 0
+          id: 785348
+          is_opp: false
+          is_removed: false
+          krs: '0000785348'
+          last_entry_date: '2019-05-09'
+          last_entry_no: 3
+          last_state_entry_date: '2019-05-09'
+          last_state_entry_no: 3
+          legal_form: SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
+          name: ORLEN USŁUGI FINANSOWE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
+          name_short: ORLEN USŁUGI FINANSOWE
+          nip: '5223159438'
+          regon: '383316210'
+          type: KrsOrganization
+          w_likwidacji: false
+          w_upadlosci: false
+          w_zawieszeniu: false
+          relations:
+            - begin_date: "2011-01-01"
+              direction: false
+              end_date: null
+              first_name: Jan
+              last_name: Iksiński
+              type: KRS_SHAREHOLDER
+      summary: Powiązania osoby z KRS.
