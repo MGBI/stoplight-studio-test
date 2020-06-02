@@ -1,0 +1,321 @@
+openapi: 3.0.0
+info:
+  title: krs-rdf-api
+  version: '1.0'
+  description: Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego Rejestru Sądowego.
+  contact:
+    name: MGBI sp. z o.o.
+    url: 'https://www.mgbi.pl'
+    email: info@mgbi.pl
+servers:
+  - url: 'https://rdf-api.imsig.pl'
+paths:
+  /v1/documents/:
+    get:
+      summary: ''
+      operationId: get-v1-documents
+      responses:
+        '200':
+          description: |-
+            OK
+
+            Poprawne wyszukiwanie dokumentów
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 0
+                maxItems: 100
+                uniqueItems: true
+                description: |-
+                  Lista dokumentów spełniających kryteria
+                  określone w parametrach metody, posortowanych malejąco według daty publikacji w RDF.
+                  W przypadku, gdy żaden dokument nie spełnia podanych kryteriów, zwracana jest pusta
+                  lista. W przypadku, gdy liczba dokumentów spełniających kryteria jest większa niż 100,
+                  lista zawiera 100 pierwszych dokumentów.
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: Unikalny identyfikator dokumentu (wewnętrzy identyfikator dokumentu w RDF)
+                      example: 2047606
+                      format: int32
+                    krs:
+                      type: string
+                      pattern: "^\\d{10}$"
+                      minLength: 10
+                      maxLength: 10
+                      description: 'Numer KRS podmiotu, którego dotyczy dokument'
+                      example: '0000028860'
+                    type:
+                      $ref: '#/components/schemas/document_type'
+                    period_from:
+                      type: string
+                      format: date
+                      example: '2019-01-01'
+                      description: 'Data początkowa okresu, którego dotyczy dokument'
+                    period_to:
+                      type: string
+                      example: '2019-12-31'
+                      format: date
+                      description: ' Data końcowa okresu, którego dotyczy dokument'
+                    period_year:
+                      type: integer
+                      example: 2019
+                      format: int32
+                      description: 'Rok obrachunkowy, którego dotyczy dokument'
+                    preparation_date:
+                      type: string
+                      format: date
+                      example: '2020-06-30'
+                      description: Data sporządzenia dokumentu
+                    filing_date:
+                      type: string
+                      format: date
+                      example: '2020-07-01'
+                      description: Data publikacji dokumentu w RDF
+                    crawling_date:
+                      type: string
+                      format: date
+                      example: '2020-07-15'
+                      description: Data pobrania dokumentu z RDF
+                    is_correction:
+                      type: boolean
+                      example: false
+                      description: 'Informacja, czy dokument jest korektą'
+                    ias_standard:
+                      type: boolean
+                      example: false
+                      description: 'Informacja, czy dokument został sporządzony zgodnie z Międzynarodowymi Standardami Rachunkowości'
+                    language:
+                      $ref: '#/components/schemas/language'
+                    submission_id:
+                      type: integer
+                      format: int32
+                      description: Wewnętrzny identyfikator zgłoszenia w RDF
+                      example: 845399
+                    file_root:
+                      type: string
+                      description: Nazwa pliku dokumentu bez rozszerzenia (w języku angielskim)
+                      example: 0000028860_2018_financial_statement_2047606
+                      pattern: "^\\d{10}_\\d{4}_[a-z_]+_\\d+$"
+                    file_root_pl:
+                      type: string
+                      pattern: "^\\d{10}_\\d{4}_[a-z_]+_\\d+$"
+                      example: 0000028860_2018_sprawozdanie_finansowe_2047606
+                      description: Nazwa pliku dokumentu bez rozszerzenia (w języku polskim)
+                    file_format:
+                      type: string
+                      example: pdf
+                      description: Format pliku
+                    file_content_type:
+                      $ref: '#/components/schemas/mime_type'
+                    download_url:
+                      type: string
+                      format: uri
+                      description: Bezpośredni adres URL pliku z treścią oryginalnego dokumentu
+                      example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download'
+                    pdf_preview_url:
+                      type: string
+                      format: uri
+                      description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej do formatu PDF (tylko dla dokumentów w formacie XML)
+                      example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download?format=pdf'
+                    html_preview_url:
+                      type: string
+                      format: uri
+                      example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download?format=html'
+                      description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej do formatu HTML (tylko dla dokumentów w formacie XML)
+                  required:
+                    - id
+                    - krs
+                    - type
+                    - period_from
+                    - period_to
+                    - period_year
+                    - filing_date
+                    - crawling_date
+                    - is_correction
+                    - ias_standard
+              examples:
+                example-1:
+                  value:
+                    - id: 2047606
+                      krs: '0000028860'
+                      type: financial_statement
+                      period_from: '2018-01-01'
+                      period_to: '2018-12-31'
+                      period_year: 2018
+                      preparation_date: '2019-03-29'
+                      filing_date: '2019-06-27'
+                      crawling_date: '2019-08-14'
+                      is_correction: false
+                      ias_standard: true
+                      language: pl
+                      submission_id: 845399
+                      file_root: 0000028860_2018_financial_statement_2047606
+                      file_root_pl: 0000028860_2018_sprawozdanie_finansowe_2047606
+                      file_format: pdf
+                      file_content_type: application/pdf
+                      download_url: 'http://rdf-api.imsig.pl/v1/documents/2047606/download/'
+                      pdf_preview_url: 'http://rdf-api.imsig.pl/v1/documents/2047606/preview/?format=pdf'
+        '400':
+          description: |-
+            Bad Request
+
+            Niewłaściwy format zapytania
+          content:
+            application/json:
+              schema:
+                $ref: ./common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: Invalid year format
+        '401':
+          description: |-
+            Unauthorized
+
+            Niepoprawna autentykacja tokenu
+          content:
+            application/json:
+              schema:
+                $ref: ./common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: "Missing 'Authorization' header"
+        '403':
+          description: |-
+            Forbidden
+
+            Nieudana autoryzacja dostępu do API
+          content:
+            application/json:
+              schema:
+                $ref: ./common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: Access forbidden
+        '429':
+          description: |-
+            Too Many Requests
+
+            Wykorzystany limit zapytań do API
+          content:
+            application/json:
+              schema:
+                $ref: ./common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: Quota is exceeded
+      description: Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
+      parameters:
+        - schema:
+            type: string
+            example: '0000028860'
+            pattern: "^\\d{10}$"
+            minLength: 10
+            maxLength: 10
+          in: query
+          name: krs
+          description: 'Numer KRS podmiotu, którego dotyczy dokument'
+        - schema:
+            $ref: '#/components/schemas/document_type'
+          in: query
+          name: type
+          description: Rodzaj dokumentu
+        - schema:
+            type: integer
+            example: 2019
+          in: query
+          name: period_year
+          description: 'Rok obrachunkowy, którego dotyczy dokument'
+        - schema:
+            type: string
+            format: date
+            example: '2020-01-01'
+          in: query
+          name: filing_date_from
+          description: Początek zakresu dla daty publikacji dokumentu w RDF
+        - schema:
+            type: string
+            format: date
+            pattern: '2020-12-31'
+          in: query
+          name: filing_date_to
+          description: Koniec zakresu dla daty publikacji dokumentu w RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-07-01'
+          in: query
+          name: crawling_date_from
+          description: Początek zakresu dla daty pobrania dokumentu z RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-07-31'
+          in: query
+          name: crawling_date_to
+          description: Koniec zakresu dla daty pobrania dokumentu z RDF
+components:
+  schemas:
+    document_type:
+      type: string
+      description: Rodzaj dokumentu
+      x-examples: {}
+      enum:
+        - auditors_opinion
+        - consolidated_auditors_opinion
+        - balance_sheet
+        - footnotes
+        - cash_flow_statement
+        - profit_and_loss_statement
+        - equity_statement
+        - financial_statement
+        - consolidated_footnotes
+        - consolidated_equity_statement
+        - consolidated_balance_sheet
+        - consolidated_cash_flow_statement
+        - consolidated_profit_and_loss_statement
+        - consolidated_equity_statement
+        - consolidated_financial_statement
+        - activity_report
+        - consolidated_and_parent_activity_report
+        - parent_activity_report
+        - report_on_payments
+        - consolidated_report_on_payments
+        - resolution_on_approval
+        - consolidated_resolution_on_approval
+        - resolution_on_profit_distribution
+      example: financial_statement
+    language:
+      type: string
+      title: language
+      example: pl
+      pattern: '^[a-z]{2}$'
+      minLength: 2
+      maxLength: 2
+      description: |-
+        Język, w którym sporządzono dokument
+
+        Łańcuch znaków (dwuliterowy kod języka ISO 639-1)
+    mime_type:
+      title: mime_type
+      type: string
+      description: |-
+        Typ MIME pliku.
+
+        Lista możliwości:
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+  securitySchemes:
+    Authorization:
+      name: API Key
+      type: apiKey
+      in: header
+      description: Klucz do uwierzytelnienia użytkownika
+security:
+  - Authorization: []

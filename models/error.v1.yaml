@@ -1,0 +1,11 @@
+title: Error
+type: object
+description: Obiekt dla błędu.
+x-tags:
+  - Common
+x-examples: {}
+properties:
+  error:
+    type: string
+required:
+  - error
