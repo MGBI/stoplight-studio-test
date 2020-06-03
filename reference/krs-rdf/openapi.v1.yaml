@@ -2,7 +2,154 @@ openapi: 3.0.0
 info:
   title: krs-rdf-api
   version: '1.0'
-  description: Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego Rejestru Sądowego.
+  description: |-
+    Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego Rejestru Sądowego.
+
+    # Wstęp
+    Poniżej znajduje się dokumentacja dostępu programatycznego (API) do danych z Krajowego Rejestru Sądowego
+    udostępnianych przez Fundację ePaństwo (https://epf.org.pl).
+
+    # Autoryzacja
+    Każde zapytanie do API musi zawierać ważny klucz API w nagłówku HTTP 'Authorization'. Klucze API dla danego
+    konta są widoczne po zalogowaniu, na stronie https://rejestr.io/konto/api.
+
+    # Pola KRS udostępniane przez API
+    API rejestr.io udostępnia wszystkie pola obecne w odpisach aktualnych KRS za wyjątkiem numerów PESEL osób.
+    Udostępniamy również dane historyczne.
+
+    Wszystkie te pola znajdują się w węźle `fields` w odpowiedzi na zapytanie.
+
+    Dodatkowo, niektóre podstawowe pola są również zwracane bezpośrednio, poza strukturą `fields`: np. adres,
+    forma prawna, nazwa, numery NIP, REGON. Ich pełna lista jest wyliczona przy odpowiedzi
+    `200 Dane organizacji w KRS` dla powyższego zapytania.
+
+    Wszystkie pola zwracane w `fields` są zgrupowane w rozdziały tematyczne, tzw. "chapters". Ich lista to:
+    - basic - podstawowe pola
+    - branches - pola dotyczące oddziałów organizacji
+    - financials - pola dotyczące finansów
+    - obligations - pola dotyczące zobowiązań
+    - transformations - pola dotyczące przekształceń, zmian statutu, itp.
+
+    Aby zatem otrzymać pełnię aktualnych danych o organizacji, równą informacjom zawartym w odpisie KRS
+    (poza numerami PESEL), potrzeba wykonać maksymalnie pięć zapytań API, po kolei prosząc o niepuste
+    rozdziały z powyższej listy.
+
+    Struktura `fields` jest skomplikowana, celem umożliwienia prezentowania zmian wartości pól w czasie.
+    Jej szczegółowe omówienie znajduje się dalej w treści tej dokumentacji. Natomiast poniżej wyliczone
+    są nazwy pól zwracanych przez API rejestr.io:
+
+
+    # Struktura węzła fields
+    Pola w węźle `fields` mogą mieć formę prostą lub grupową.
+
+    <br/>
+
+    **Przykład pola w formie prostej:**
+
+
+    ```
+    "nazwa_krotka": {
+        "_value": "EXAMPLEX POLSKA",
+        "_range": {
+            "begin_entry_no": 7,
+            "begin_date": "2010-02-03"
+        }
+    }
+    ```
+
+    Powyższy format pola zawiera:
+    - nazwę pola (tu: `nazwa_krotka`)
+    - aktualną wartość pola (tu: `EXAMPLEX POLSKA`)
+    - informację od kiedy ta wartość jest obowiązująca (tu: od wpisu do KRS nr `7`, z dnia `2010-02-03`)
+
+    <br/>
+
+    **Przykład pola w formie grupowej:**
+
+    ```
+    "przedmiot_pozostalej_dzialalnosci_przedsiebiorcy": {
+        "_childs": {
+            "3": {
+                "_value": {
+                    "symbol": [
+                        "46",
+                        null,
+                        null
+                    ],
+                    "title": "Handel hurtowy, z wyłączeniem handlu pojazdami samochodowymi"
+                },
+                "_range": {
+                    "begin_entry_no": 1,
+                    "begin_date": "2011-03-04"
+                }
+            },
+            "6": {
+                "_value": {
+                    "symbol": [
+                        "46",
+                        "90",
+                        "Z"
+                    ],
+                    "title": "Sprzedaż hurtowa niewyspecjalizowana"
+                },
+                "_range": {
+                    "begin_entry_no": 5,
+                    "begin_date": "2012-04-05"
+                }
+            },
+            "7": {
+                "_value": {
+                    "symbol": [
+                        "46",
+                        "61",
+                        "Z"
+                    ],
+                    "title": "Sprzedaż hurtowa maszyn I urządzeń rolniczych oraz dodatkowego wyposażenia"
+                },
+                "_range": {
+                    "begin_entry_no": 5,
+                    "begin_date": "2012-04-05"
+                }
+            }
+        },
+        "_value": {
+            "members": [
+                3,
+                6,
+                7
+            ],
+            "members_count": 3,
+            "members_total_count": 7
+        },
+        "_range": {
+            "begin_entry_no": 5,
+            "begin_date": "2012-04-05"
+        }
+    }
+    ```
+
+    Powyższy format pola zawiera:
+    - nazwę pola (tu: `przedmiot_pozostalej_dzialalnosci_przedsiebiorcy`)
+    - podstrukturę `childs` zawierającą aktualne pola podrzędne; każde z nich może być
+      w formacie prostym lub grupowym (tu: format prosty); każde z nich ma numer porządkowy (tu: `3`, `6`, `7`)
+    - wartość pola (w strukturze `_value`), która jest listą numerów porządkowych pól podrzędnych aktualnych na
+      dzisiaj (`members`, tu: `3`, `6`, `7`)
+    - liczbę aktualnych pól podrzędnych (`members_count`, tu: `3`) oraz wszystkich, w tym historycznych,
+      pól podrzędnych (`members_total_count`, tu: `7`)
+    - informację od kiedy ta wartość, czyli konkretna lista pól podrzędnych, jest obowiązująca
+      (tu: od wpisu do KRS nr `5`, z dnia `2012-04-05`); uwaga: niektóre z pól podrzędnych mogły być dodane
+      przez wcześniejszy wpis (tu: pole nr `3`, dodane we wpisie do KRS nr `1`)
+
+    # Dane API wymagające planu Rejestrio Premium
+    Te pola, które na portalu https://rejestr.io dostępne są jedynie dla użytkowników posiadających
+    plan [Rejestrio Premium](https://rejestr.io/premium), wymagają również tego planu przy dostępie przez API.
+    Są to następujące dane:
+    - poniższe chaptery organizacji:
+      - branches
+      - obligations
+      - transformations
+    - odpisy KRS
+    - dane historyczne, kwerendowane przy pomocy parametru `entry_no` zapytania API
   contact:
     name: MGBI sp. z o.o.
     url: 'https://www.mgbi.pl'
@@ -261,6 +408,8 @@ paths:
           in: query
           name: crawling_date_to
           description: Koniec zakresu dla daty pobrania dokumentu z RDF
+      tags:
+        - dokumenty
 components:
   schemas:
     document_type:
@@ -292,6 +441,8 @@ components:
         - consolidated_resolution_on_approval
         - resolution_on_profit_distribution
       example: financial_statement
+      x-tags:
+        - typy
     language:
       type: string
       title: language
@@ -303,6 +454,8 @@ components:
         Język, w którym sporządzono dokument
 
         Łańcuch znaków (dwuliterowy kod języka ISO 639-1)
+      x-tags:
+        - typy
     mime_type:
       title: mime_type
       type: string
@@ -311,6 +464,8 @@ components:
 
         Lista możliwości:
         https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+      x-tags:
+        - typy
   securitySchemes:
     API Key:
       name: Authorization
