@@ -410,6 +410,12 @@ paths:
           description: Koniec zakresu dla daty pobrania dokumentu z RDF
       tags:
         - dokumenty
+      x-code-samples:
+        - lang: Shell
+          source:
+            "# Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`.\n
+            curl https://rdf-api.imsig.pl/v1/documents?krs=0000028860
+              --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
 components:
   schemas:
     document_type:
