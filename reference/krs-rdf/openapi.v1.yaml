@@ -2,6 +2,9 @@ openapi: 3.0.0
 info:
   title: Instrukcja obsługi API RDF w serwisie IMSiG.pl
   version: '1.0'
+  x-logo:
+    url: "https://www.imsig.pl/layout/monitor_sadowy_i_gospodarczy.png"
+    altText: "iMSiG.pl"
   description: |-
     Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie
     i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego
@@ -11,8 +14,8 @@ info:
     API oparte jest na protokole HTTP, a treść wszystkich żądań i odpowiedzi przekazywana
     jest w formie obiektów języka JavaScript (JSON).
 
-    W nagłówku HTTP Content-Type każdego żądania API przesyłanego metodą POST
-    i zawierającego w treści obiekt JSON należy ustawić wartość application/json.
+    W nagłówku HTTP `Content-Type` każdego żądania API przesyłanego metodą POST
+    i zawierającego w treści obi`ekt JSON należy ustawić wartość `application/json`.
 
     W żądaniach API przesyłanych metodą GET parametry należy umieścić w query stringu.
 
@@ -20,16 +23,8 @@ info:
     Nagłówki i parametry odpowiedzi opisane poniżej dla każdej z metod zwracane są tylko
     dla kodu 200 (OK).
 
-    W przypadku wystąpienia błędu w treści odpowiedzi zwracany jest obiekt ze szczegółową
-    informacją, jak na poniższym przykładzie:
-    ```
-    {
-        "error": "Invalid credentials"
-    }
-    ```
-
     Wszystkie metody API dostępne są pod adresem URL:
-        https://rdf-api.imsig.pl/v1/nazwaMetody
+    `https://rdf-api.imsig.pl/v1/<nazwaObiektu>/`
   contact:
     name: MGBI sp. z o.o.
     url: 'https://www.mgbi.pl'
@@ -41,10 +36,25 @@ servers:
 tags:
   - name: documents
     x-displayName: "Dokumenty"
-    description: Dostęp do oryginalnych dokumentów finansowych.
+    description: Dostęp do oryginalnych dokumentów finansowych z RDF.
+  - name: finance
+    x-displayName: "Dane finansowe"
+    description: Dostęp do przetworzonych danych finansowych z RDF.
+  - name: announcements
+    x-displayName: "Ogłoszenia"
+    description: Dostęp do informacji z ogłoszeń opublikowanych w MSiG/
   - name: types
     x-displayName: "Typy"
     description: Złożone typy danych.
+
+x-tagGroups:
+  - name: "KRS RDF API"
+    tags:
+      - documents
+      - finance
+  - name: "MSiG API"
+    tags:
+      - announcements
 
 paths:
   /v1/documents/:
@@ -368,7 +378,7 @@ components:
       #  - consolidated_resolution_on_approval
       #  - resolution_on_profit_distribution
       example: financial_statement
-      x-tags:
+      tags:
         - types
     language:
       type: string
@@ -381,7 +391,7 @@ components:
         Język, w którym sporządzono dokument
 
         Łańcuch znaków (dwuliterowy kod języka ISO 639-1)
-      x-tags:
+      tags:
         - types
     mime_type:
       title: mime_type
@@ -389,9 +399,8 @@ components:
       description: |-
         Typ MIME pliku.
 
-        Lista możliwości:
-        https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
-      x-tags:
+        [Zobacz listę możliwości](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
+      tags:
         - types
   securitySchemes:
     API Key:
