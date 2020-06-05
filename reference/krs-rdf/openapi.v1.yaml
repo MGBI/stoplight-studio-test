@@ -34,8 +34,18 @@ info:
     name: MGBI sp. z o.o.
     url: 'https://www.mgbi.pl'
     email: info@mgbi.pl
+
 servers:
   - url: 'https://rdf-api.imsig.pl'
+
+tags:
+  - name: documents
+    x-displayName: "Dokumenty"
+    description: Dostęp do oryginalnych dokumentów finansowych.
+  - name: types
+    x-displayName: "Typy"
+    description: Złożone typy danych.
+
 paths:
   /v1/documents/:
     get:
@@ -253,7 +263,6 @@ paths:
             $ref: '#/components/schemas/document_type'
           in: query
           name: type
-          description: Rodzaj dokumentu
         - schema:
             type: integer
             example: 2019
@@ -270,7 +279,7 @@ paths:
         - schema:
             type: string
             format: date
-            pattern: '2020-12-31'
+            example: '2020-12-31'
           in: query
           name: filing_date_to
           description: Koniec zakresu dla daty publikacji dokumentu w RDF
@@ -289,7 +298,7 @@ paths:
           name: crawling_date_to
           description: Koniec zakresu dla daty pobrania dokumentu z RDF
       tags:
-        - Dokumenty
+        - documents
       x-code-samples:
         - lang: Shell
           source:
@@ -300,35 +309,67 @@ components:
   schemas:
     document_type:
       type: string
-      description: Rodzaj dokumentu
+      description: |-
+          Identyfikator rodzaju dokumentu
+
+          <details>
+            <summary>Pokaż możliwe opcje</summary>
+
+            | Identyfikator | Rodzaj dokumentu | Nazwa dokumentu |
+            |-|-|-|
+            | `"auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania rocznego sprawozdania finansowego |  |
+            | `"consolidated_auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania skonsolidowanego rocznego sprawozdania finansowego grupy kapitałowej |  |
+            | `"balance_sheet"` | Roczne sprawozdanie finansowe | Bilans |
+            | `"footnotes"` | Roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
+            | `"cash_flow_statement"` | Roczne sprawozdanie finansowe | Rachunek przepływów pieniężnych |
+            | `"profit_and_loss_statement"` | Roczne sprawozdanie finansowe | Rachunek zysków i strat |
+            | `"equity_statement"` | Roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
+            | `"financial_statement"` | Roczne sprawozdanie finansowe |  |
+            | `"consolidated_footnotes"` | Skonsolidowane roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
+            | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowane zestawienie zmian w kapitale (funduszu) własnym |
+            | `"consolidated_balance_sheet"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany bilans |
+            | `"consolidated_cash_flow_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek przepływów pieniężnych |
+            | `"consolidated_profit_and_loss_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek zysków i strat |
+            | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
+            | `"consolidated_financial_statement"` | Skonsolidowane roczne sprawozdanie finansowe |  |
+            | `"activity_report"` | Sprawozdanie z działalności |  |
+            | `"consolidated_and_parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej oraz sprawozdanie z działalności grupy kapitałowej |  |
+            | `"parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej |  |
+            | `"report_on_payments"` | Sprawozdanie z płatności na rzecz administracji publicznej |  |
+            | `"consolidated_report_on_payments"` | Skonsolidowane sprawozdanie z płatności na rzecz administracji publicznej |  |
+            | `"resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu rocznego sprawozdania finansowego |  |
+            | `"consolidated_resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego |  |
+            | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
+          </details>
       x-examples: {}
-      enum:
-        - auditors_opinion
-        - consolidated_auditors_opinion
-        - balance_sheet
-        - footnotes
-        - cash_flow_statement
-        - profit_and_loss_statement
-        - equity_statement
-        - financial_statement
-        - consolidated_footnotes
-        - consolidated_equity_statement
-        - consolidated_balance_sheet
-        - consolidated_cash_flow_statement
-        - consolidated_profit_and_loss_statement
-        - consolidated_equity_statement
-        - consolidated_financial_statement
-        - activity_report
-        - consolidated_and_parent_activity_report
-        - parent_activity_report
-        - report_on_payments
-        - consolidated_report_on_payments
-        - resolution_on_approval
-        - consolidated_resolution_on_approval
-        - resolution_on_profit_distribution
+      # hide enums from documentation
+      #enum:
+      #  - auditors_opinion
+      #  - consolidated_auditors_opinion
+      #  - balance_sheet
+      #  - footnotes
+      #  - cash_flow_statement
+      #  - profit_and_loss_statement
+      #  - equity_statement
+      #  - financial_statement
+      #  - consolidated_footnotes
+      #  - consolidated_equity_statement
+      #  - consolidated_balance_sheet
+      #  - consolidated_cash_flow_statement
+      #  - consolidated_profit_and_loss_statement
+      #  - consolidated_equity_statement
+      #  - consolidated_financial_statement
+      #  - activity_report
+      #  - consolidated_and_parent_activity_report
+      #  - parent_activity_report
+      #  - report_on_payments
+      #  - consolidated_report_on_payments
+      #  - resolution_on_approval
+      #  - consolidated_resolution_on_approval
+      #  - resolution_on_profit_distribution
       example: financial_statement
       x-tags:
-        - typy
+        - types
     language:
       type: string
       title: language
@@ -341,7 +382,7 @@ components:
 
         Łańcuch znaków (dwuliterowy kod języka ISO 639-1)
       x-tags:
-        - typy
+        - types
     mime_type:
       title: mime_type
       type: string
@@ -351,7 +392,7 @@ components:
         Lista możliwości:
         https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
       x-tags:
-        - typy
+        - types
   securitySchemes:
     API Key:
       name: Authorization
