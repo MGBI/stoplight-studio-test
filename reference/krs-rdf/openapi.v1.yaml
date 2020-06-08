@@ -3,8 +3,8 @@ info:
   title: Instrukcja obsługi API RDF w serwisie IMSiG.pl
   version: '1.0'
   x-logo:
-    url: "https://www.imsig.pl/layout/monitor_sadowy_i_gospodarczy.png"
-    altText: "iMSiG.pl"
+    url: 'https://www.imsig.pl/layout/monitor_sadowy_i_gospodarczy.png'
+    altText: iMSiG.pl
   description: |-
     Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie
     i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego
@@ -35,16 +35,16 @@ servers:
 
 tags:
   - name: documents
-    x-displayName: "Dokumenty"
+    x-displayName: Dokumenty
     description: Dostęp do oryginalnych dokumentów finansowych z RDF.
   - name: finance
-    x-displayName: "Dane finansowe"
+    x-displayName: Dane finansowe
     description: Dostęp do przetworzonych danych finansowych z RDF.
   - name: announcements
-    x-displayName: "Ogłoszenia"
+    x-displayName: Ogłoszenia
     description: Dostęp do informacji z ogłoszeń opublikowanych w MSiG/
   - name: types
-    x-displayName: "Typy"
+    x-displayName: Typy
     description: Złożone typy danych.
 
 x-tagGroups:
@@ -311,10 +311,9 @@ paths:
         - documents
       x-code-samples:
         - lang: Shell
-          source:
-            "# Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`.\n
-            curl https://rdf-api.imsig.pl/v1/documents?krs=0000028860
-              --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\""
+          source: |-
+            # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`.\n
+            curl https://rdf-api.imsig.pl/v1/documents?krs=0000028860 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 components:
   schemas:
     document_type:
@@ -352,33 +351,33 @@ components:
             | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
           </details>
       x-examples: {}
-      # hide enums from documentation
-      #enum:
-      #  - auditors_opinion
-      #  - consolidated_auditors_opinion
-      #  - balance_sheet
-      #  - footnotes
-      #  - cash_flow_statement
-      #  - profit_and_loss_statement
-      #  - equity_statement
-      #  - financial_statement
-      #  - consolidated_footnotes
-      #  - consolidated_equity_statement
-      #  - consolidated_balance_sheet
-      #  - consolidated_cash_flow_statement
-      #  - consolidated_profit_and_loss_statement
-      #  - consolidated_equity_statement
-      #  - consolidated_financial_statement
-      #  - activity_report
-      #  - consolidated_and_parent_activity_report
-      #  - parent_activity_report
-      #  - report_on_payments
-      #  - consolidated_report_on_payments
-      #  - resolution_on_approval
-      #  - consolidated_resolution_on_approval
-      #  - resolution_on_profit_distribution
+      # TODO hide enums from documentation
+      enum:
+        - auditors_opinion
+        - consolidated_auditors_opinion
+        - balance_sheet
+        - footnotes
+        - cash_flow_statement
+        - profit_and_loss_statement
+        - equity_statement
+        - financial_statement
+        - consolidated_footnotes
+        - consolidated_equity_statement
+        - consolidated_balance_sheet
+        - consolidated_cash_flow_statement
+        - consolidated_profit_and_loss_statement
+        - consolidated_equity_statement
+        - consolidated_financial_statement
+        - activity_report
+        - consolidated_and_parent_activity_report
+        - parent_activity_report
+        - report_on_payments
+        - consolidated_report_on_payments
+        - resolution_on_approval
+        - consolidated_resolution_on_approval
+        - resolution_on_profit_distribution
       example: financial_statement
-      tags:
+      x-tags:
         - types
     language:
       type: string
@@ -391,7 +390,7 @@ components:
         Język, w którym sporządzono dokument
 
         Łańcuch znaków (dwuliterowy kod języka ISO 639-1)
-      tags:
+      x-tags:
         - types
     mime_type:
       title: mime_type
@@ -400,7 +399,7 @@ components:
         Typ MIME pliku.
 
         [Zobacz listę możliwości](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
-      tags:
+      x-tags:
         - types
   securitySchemes:
     API Key:
