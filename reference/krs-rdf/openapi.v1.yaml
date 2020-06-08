@@ -1,21 +1,17 @@
 openapi: 3.0.0
 info:
-  title: Instrukcja obsługi API RDF w serwisie IMSiG.pl
+  title: Instrukcja obsługi API w serwisie IMSiG.pl
   version: '1.0'
   x-logo:
     url: 'https://www.imsig.pl/layout/monitor_sadowy_i_gospodarczy.png'
     altText: iMSiG.pl
   description: |-
-    Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie
-    i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego
-    Rejestru Sądowego.
-
     # Ogólne informacje
     API oparte jest na protokole HTTP, a treść wszystkich żądań i odpowiedzi przekazywana
     jest w formie obiektów języka JavaScript (JSON).
 
     W nagłówku HTTP `Content-Type` każdego żądania API przesyłanego metodą POST
-    i zawierającego w treści obi`ekt JSON należy ustawić wartość `application/json`.
+    i zawierającego w treści obiekt JSON należy ustawić wartość `application/json`.
 
     W żądaniach API przesyłanych metodą GET parametry należy umieścić w query stringu.
 
@@ -23,20 +19,23 @@ info:
     Nagłówki i parametry odpowiedzi opisane poniżej dla każdej z metod zwracane są tylko
     dla kodu 200 (OK).
 
-    Wszystkie metody API dostępne są pod adresem URL:
-    `https://rdf-api.imsig.pl/v1/<nazwaObiektu>/`
+    # Autentykacja
+    <SecurityDefinitions />
   contact:
     name: MGBI sp. z o.o.
     url: 'https://www.mgbi.pl'
     email: info@mgbi.pl
 
-servers:
-  - url: 'https://rdf-api.imsig.pl'
-
 tags:
   - name: documents
     x-displayName: Dokumenty
-    description: Dostęp do oryginalnych dokumentów finansowych z RDF.
+    description: |-
+      Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie
+      i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego
+      Rejestru Sądowego.
+
+      Wszystkie metody API dostępne są pod adresem URL:
+      `https://rdf-api.imsig.pl/v1/<nazwaObiektu>/`
   - name: finance
     x-displayName: Dane finansowe
     description: Dostęp do przetworzonych danych finansowych z RDF.
@@ -61,6 +60,10 @@ paths:
     get:
       summary: ''
       operationId: get-documents
+      security:
+        - api_key: []
+      servers:
+        - url: 'https://rdf-api.imsig.pl'
       responses:
         '200':
           description: |-
@@ -314,6 +317,7 @@ paths:
           source: |-
             # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`.\n
             curl https://rdf-api.imsig.pl/v1/documents?krs=0000028860 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+
 components:
   schemas:
     document_type:
@@ -402,9 +406,10 @@ components:
       x-tags:
         - types
   securitySchemes:
-    API Key:
+    api_key:
       name: Authorization
       type: apiKey
       in: header
-security:
-  - Authorization: []
+      description: |-
+        Do uwierzytelniania użytkowników API wykorzystywany jest klucz użytkownika
+        przekazywany w nagłówku HTTP `Authorization` przy wywoływaniu poszczególnych metod.
