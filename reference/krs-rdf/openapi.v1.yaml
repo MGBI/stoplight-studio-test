@@ -60,10 +60,61 @@ paths:
     get:
       summary: ''
       operationId: get-documents
+      tags:
+        - documents
       security:
         - api_key: []
       servers:
         - url: 'https://rdf-api.imsig.pl'
+      description: Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
+      parameters:
+        - schema:
+            type: string
+            example: '0000028860'
+            pattern: "^\\d{10}$"
+            minLength: 10
+            maxLength: 10
+          in: query
+          name: krs
+          description: 'Numer KRS podmiotu, którego dotyczy dokument'
+        - schema:
+            $ref: '#/components/schemas/document_type'
+          in: query
+          name: type
+        - schema:
+            type: integer
+            example: 2019
+          in: query
+          name: period_year
+          description: 'Rok obrachunkowy, którego dotyczy dokument'
+        - schema:
+            type: string
+            format: date
+            example: '2020-01-01'
+          in: query
+          name: filing_date_from
+          description: Początek zakresu dla daty publikacji dokumentu w RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-12-31'
+          in: query
+          name: filing_date_to
+          description: Koniec zakresu dla daty publikacji dokumentu w RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-07-01'
+          in: query
+          name: crawling_date_from
+          description: Początek zakresu dla daty pobrania dokumentu z RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-07-31'
+          in: query
+          name: crawling_date_to
+          description: Koniec zakresu dla daty pobrania dokumentu z RDF
       responses:
         '200':
           description: |-
@@ -261,57 +312,6 @@ paths:
                 example-1:
                   value:
                     error: Quota is exceeded
-      description: Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
-      parameters:
-        - schema:
-            type: string
-            example: '0000028860'
-            pattern: "^\\d{10}$"
-            minLength: 10
-            maxLength: 10
-          in: query
-          name: krs
-          description: 'Numer KRS podmiotu, którego dotyczy dokument'
-        - schema:
-            $ref: '#/components/schemas/document_type'
-          in: query
-          name: type
-        - schema:
-            type: integer
-            example: 2019
-          in: query
-          name: period_year
-          description: 'Rok obrachunkowy, którego dotyczy dokument'
-        - schema:
-            type: string
-            format: date
-            example: '2020-01-01'
-          in: query
-          name: filing_date_from
-          description: Początek zakresu dla daty publikacji dokumentu w RDF
-        - schema:
-            type: string
-            format: date
-            example: '2020-12-31'
-          in: query
-          name: filing_date_to
-          description: Koniec zakresu dla daty publikacji dokumentu w RDF
-        - schema:
-            type: string
-            format: date
-            example: '2020-07-01'
-          in: query
-          name: crawling_date_from
-          description: Początek zakresu dla daty pobrania dokumentu z RDF
-        - schema:
-            type: string
-            format: date
-            example: '2020-07-31'
-          in: query
-          name: crawling_date_to
-          description: Koniec zakresu dla daty pobrania dokumentu z RDF
-      tags:
-        - documents
       x-code-samples:
         - lang: Shell
           source: |-
