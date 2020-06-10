@@ -115,10 +115,7 @@ paths:
           description: Koniec zakresu dla daty pobrania dokumentu z RDF
       responses:
         '200':
-          description: |-
-            OK
-
-            Poprawne wyszukiwanie dokumentów
+          description: Poprawne wyszukiwanie dokumentów
           content:
             application/json:
               schema:
@@ -259,61 +256,17 @@ paths:
                       download_url: 'http://rdf-api.imsig.pl/v1/documents/2047606/download/'
                       pdf_preview_url: 'http://rdf-api.imsig.pl/v1/documents/2047606/preview/?format=pdf'
         '400':
-          description: |-
-            Bad Request
-
-            Niewłaściwy format zapytania
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: Invalid year format
+          $ref: '#/components/responses/bad_request'
         '401':
-          description: |-
-            Unauthorized
-
-            Niepoprawna autentykacja tokenu
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: "Missing 'Authorization' header"
+          $ref: '#/components/responses/unauthorized'
         '403':
-          description: |-
-            Forbidden
-
-            Nieudana autoryzacja dostępu do API
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: Access forbidden
+          $ref: '#/components/responses/forbidden'
         '429':
-          description: |-
-            Too Many Requests
-
-            Wykorzystany limit zapytań do API
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: Quota is exceeded
+          $ref: '#/components/responses/too_many_requests'
       x-code-samples:
         - lang: Shell
           source: |-
-            # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`.
+            # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`
             curl https://api.imsig.pl/v1/rdf/documents?krs=0000028860 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 
   /v1/rdf/financeData/:
@@ -556,53 +509,24 @@ paths:
                       pala_npl_pfy: '652934002.40'
                       pala_npl_cpfy: '653871907.56'
         '400':
-          description: Niewłaściwy format zapytania
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: Invalid year format
+          $ref: '#/components/responses/bad_request'
         '401':
-          description: Niepoprawna autentykacja tokenu
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: "Missing 'Authorization' header"
+          $ref: '#/components/responses/unauthorized'
         '403':
-          description: Nieudana autoryzacja dostępu do API
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: Access forbidden
+          $ref: '#/components/responses/forbidden'
         '429':
-          description: Wykorzystany limit zapytań do API
-          content:
-            application/json:
-              schema:
-                $ref: ../common/models/error.v1.yaml
-              examples:
-                example-1:
-                  value:
-                    error: Quota is exceeded
+          $ref: '#/components/responses/too_many_requests'
       x-code-samples:
         - lang: Shell
           source: |-
-            # Wyszukaj sprawozdania dla podmiotu z numerem KRS `0000019193`.
+            # Wyszukaj dane finansowe ze sprawozdania dla podmiotu z numerem KRS `0000019193`
             curl https://api.imsig.pl/v1/rdf/financialData?krs=0000019193 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 
 
 components:
+  #-------------------------------
+  # Reusable schemas (data models)
+  #-------------------------------
   schemas:
     document_type:
       type: string
@@ -638,7 +562,6 @@ components:
             | `"consolidated_resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego |  |
             | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
           </details>
-      x-examples: {}
       # TODO hide enums from documentation
       enum:
         - auditors_opinion
@@ -689,6 +612,51 @@ components:
         [Zobacz listę możliwości](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
       x-tags:
         - types
+
+  #-------------------------------
+  # Reusable responses
+  #-------------------------------
+  responses:
+    bad_request:
+      description: Niewłaściwy format zapytania
+      content:
+        application/json:
+          schema:
+            $ref: ../common/models/error.v1.yaml
+          examples:
+            example-1:
+              value:
+                error: Invalid year format
+    unauthorized:
+      description: Niepoprawna autentykacja tokenu
+      content:
+        application/json:
+          schema:
+            $ref: ../common/models/error.v1.yaml
+          examples:
+            example-1:
+              value:
+                error: "Missing 'Authorization' header"
+    forbidden:
+      description: Nieudana autoryzacja dostępu do API
+      content:
+        application/json:
+          schema:
+            $ref: ../common/models/error.v1.yaml
+          examples:
+            example-1:
+              value:
+                error: Access forbidden
+    too_many_requests:
+      description: Wykorzystany limit zapytań do API
+      content:
+        application/json:
+          schema:
+            $ref: ../common/models/error.v1.yaml
+          examples:
+            example-1:
+              value:
+                error: Quota is exceeded
 
   securitySchemes:
     api_key:
