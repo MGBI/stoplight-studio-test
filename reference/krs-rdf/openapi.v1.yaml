@@ -47,11 +47,11 @@ tags:
     description: Złożone typy danych.
 
 x-tagGroups:
-  - name: "KRS RDF API"
+  - name: KRS RDF API
     tags:
       - documents
       - finance_data
-  - name: "MSiG API"
+  - name: MSiG API
     tags:
       - announcements
 
@@ -437,6 +437,87 @@ paths:
                       type: boolean
                       example: false
                       description: 'Informacja, czy sprawozdanie zostało sporządzone zgodnie z Międzynarodowymi Standardami Rachunkowości'
+
+                    bs_lae_nc_cfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '10150715600.00'
+                      description: 'Kapitał (fundusz) podstawowy - kwota na dzień kończący bieżący rok obrotowy'
+                    bs_lae_nc_pfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '10150715600.00'
+                      description: 'Kapitał (fundusz) podstawowy - kwota na dzień kończący poprzedni rok obrotowy'
+                    bs_lae_nc_cpfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '10150715600.00'
+                      description: 'Kapitał (fundusz) podstawowy - przekształcone dane porównawcze za poprzedni rok obrotowy'
+
+                    bs_a_ta_cfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '26227994995.11'
+                      description: 'Aktywa razem - kwota na dzień kończący bieżący rok obrotowy'
+                    bs_a_ta_pfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '25540926976.86'
+                      description: 'Aktywa razem - kwota na dzień kończący poprzedni rok obrotowy'
+                    bs_a_ta_cpfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '25573272324.98'
+                      description: 'Aktywa razem - przekształcone dane porównawcze za poprzedni rok obrotowy'
+
+                    bs_lae_e_cfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '10834213197.71'
+                      description: 'Kapitał (fundusz) własny - kwota na dzień kończący bieżący rok obrotowy'
+                    bs_lae_e_pfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '10400343189.57'
+                      description: 'Kapitał (fundusz) własny - kwota na dzień kończący poprzedni rok obrotowy'
+                    bs_lae_e_cpfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '10362941097.49'
+                      description: 'Kapitał (fundusz) własny - przekształcone dane porównawcze za poprzedni rok obrotowy'
+
+                    pala_nrfs_cfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '9318533736.56'
+                      description: 'Przychody netto ze sprzedaży - kwota na dzień kończący bieżący rok obrotowy'
+                    pala_nrfs_pfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '8501384278.96'
+                      description: 'Przychody netto ze sprzedaży - kwota na dzień kończący poprzedni rok obrotowy'
+                    pala_nrfs_cpfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '8588730876.40'
+                      description: 'Przychody netto ze sprzedaży - przekształcone dane porównawcze za poprzedni rok obrotowy'
+ 
+                    pala_npl_cfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '479809229.39'
+                      description: 'Zysk (strata) netto - kwota na dzień kończący bieżący rok obrotowy'
+                    pala_npl_pfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '652934002.40'
+                      description: 'Zysk (strata) netto - kwota na dzień kończący poprzedni rok obrotowy'
+                    pala_npl_cpfy:
+                      type: string
+                      pattern: "\\d+\\.\\d{2}"
+                      example: '653871907.56'
+                      description: 'Zysk (strata) netto - przekształcone dane porównawcze za poprzedni rok obrotowy'
+
                   required:
                     - id
                     - krs
@@ -459,21 +540,21 @@ paths:
                       filing_date: '2019-07-19'
                       consolidated: true
                       ias_standard: false
-                      #bs_a_ta_cfy: "26227994995.11"
-											#bs_a_ta_cpfy: "25573272324.98"
-											#bs_a_ta_pfy: "25540926976.86"
-											#bs_lae_e_cfy: "10834213197.71"
-											#bs_lae_e_cpfy: "10362941097.49"
-											#bs_lae_e_pfy: "10400343189.57"
-											#bs_lae_nc_cfy: "10150715600.00"
-											#bs_lae_nc_cpfy: "10150715600.00"
-											#bs_lae_nc_pfy: "10150715600.00"
-											#pala_npl_cfy: "479809229.39"
-											#pala_npl_cpfy: "653871907.56"
-											#pala_npl_pfy: "652934002.40"
-											#pala_nrfs_cfy: "9318533736.56"
-											#pala_nrfs_cpfy: "8588730876.40"
-											#pala_nrfs_pfy: "8501384278.96"
+                      bs_lae_nc_cfy: '10150715600.00'
+                      bs_lae_nc_pfy: '10150715600.00'
+                      bs_lae_nc_cpfy: '10150715600.00'
+                      bs_a_ta_cfy: '26227994995.11'
+                      bs_a_ta_pfy: '25540926976.86'
+                      bs_a_ta_cpfy: '25573272324.98'
+                      bs_lae_e_cfy: '10834213197.71'
+                      bs_lae_e_pfy: '10400343189.57'
+                      bs_lae_e_cpfy: '10362941097.49'
+                      pala_nrfs_cfy: '9318533736.56'
+                      pala_nrfs_pfy: '8501384278.96'
+                      pala_nrfs_cpfy: '8588730876.40'
+                      pala_npl_cfy: '479809229.39'
+                      pala_npl_pfy: '652934002.40'
+                      pala_npl_cpfy: '653871907.56'
         '400':
           description: Niewłaściwy format zapytania
           content:
@@ -608,6 +689,7 @@ components:
         [Zobacz listę możliwości](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
       x-tags:
         - types
+
   securitySchemes:
     api_key:
       name: Authorization
