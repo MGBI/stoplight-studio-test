@@ -33,15 +33,15 @@ tags:
       Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia wyszukiwanie
       i pobieranie dokumentów złożonych w Repozytorium Dokumentów Finansowych Krajowego
       Rejestru Sądowego.
-
-      Wszystkie metody API dostępne są pod adresem URL:
-      `https://rdf-api.imsig.pl/v1/<nazwaObiektu>/`
-  - name: finance
+  - name: finance_data
     x-displayName: Dane finansowe
-    description: Dostęp do przetworzonych danych finansowych z RDF.
+    description: |-
+      Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia pobieranie
+      przetworzonych danych finansowych ze sprawozdań złożonych w Repozytorium Dokumentów
+      Finansowych Krajowego Rejestru Sądowego.
   - name: announcements
     x-displayName: Ogłoszenia
-    description: Dostęp do informacji z ogłoszeń opublikowanych w MSiG/
+    description: Dostęp do informacji z ogłoszeń opublikowanych w MSiG.
   - name: types
     x-displayName: Typy
     description: Złożone typy danych.
@@ -50,13 +50,13 @@ x-tagGroups:
   - name: "KRS RDF API"
     tags:
       - documents
-      - finance
+      - finance_data
   - name: "MSiG API"
     tags:
       - announcements
 
 paths:
-  /v1/documents/:
+  /v1/rdf/documents/:
     get:
       summary: ''
       operationId: get-documents
@@ -64,8 +64,6 @@ paths:
         - documents
       security:
         - api_key: []
-      servers:
-        - url: 'https://rdf-api.imsig.pl'
       description: Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
       parameters:
         - schema:
@@ -160,7 +158,7 @@ paths:
                       type: string
                       example: '2019-12-31'
                       format: date
-                      description: ' Data końcowa okresu, którego dotyczy dokument'
+                      description: 'Data końcowa okresu, którego dotyczy dokument'
                     period_year:
                       type: integer
                       example: 2019
@@ -315,8 +313,213 @@ paths:
       x-code-samples:
         - lang: Shell
           source: |-
-            # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`.\n
-            curl https://rdf-api.imsig.pl/v1/documents?krs=0000028860 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+            # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`.
+            curl https://api.imsig.pl/v1/rdf/documents?krs=0000028860 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+
+  /v1/rdf/financeData/:
+    get:
+      summary: ''
+      operationId: get-finance-data
+      tags:
+        - finance_data
+      security:
+        - api_key: []
+      servers:
+        - url: 'https://rdf-api.imsig.pl'
+      description: Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
+      parameters:
+        - schema:
+            type: string
+            example: '0000028860'
+            pattern: "^\\d{10}$"
+            minLength: 10
+            maxLength: 10
+          in: query
+          name: krs
+          description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
+        - schema:
+            $ref: '#/components/schemas/document_type'
+          in: query
+          name: type
+        - schema:
+            type: integer
+            example: 2019
+          in: query
+          name: period_year
+          description: 'Rok obrachunkowy, którego dotyczy sprawozdanie'
+        - schema:
+            type: string
+            format: date
+            example: '2020-01-01'
+          in: query
+          name: filing_date_from
+          description: Początek zakresu dla daty publikacji sprawozdania w RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-12-31'
+          in: query
+          name: filing_date_to
+          description: Koniec zakresu dla daty publikacji sprawozdania w RDF
+        - schema:
+            type: boolean
+            example: false
+          in: query
+          name: consolidated
+          description: 'Informacja, czy sprawozdanie jest skonsolidowane'
+        - schema:
+            type: boolean
+            example: false
+          in: query
+          name: ias_standard
+          description: 'Informacja, czy sprawozdanie zostało sporządzone zgodnie z Międzynarodowymi Standardami Rachunkowości'
+      responses:
+        '200':
+          description: Poprawne wyszukiwanie danych finansowych
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 0
+                maxItems: 100
+                uniqueItems: true
+                description: |-
+                  Lista danych finansowych ze sprawozdań spełniających kryteria określone
+                  w parametrach metody, posortowanych malejąco według daty publikacji w RDF.
+                  W przypadku, gdy żadne sprawozdanie nie spełnia podanych kryteriów, zwracana
+                  jest pusta lista. W przypadku, gdy liczba sprawozdań spełniających kryteria
+                  jest większa niż 100, lista zawiera dane finansowe ze 100 pierwszych dokumentów.
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator dokumentu w RDF)
+                      example: 2520543
+                      format: int32
+                    krs:
+                      type: string
+                      pattern: "^\\d{10}$"
+                      minLength: 10
+                      maxLength: 10
+                      description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
+                      example: '0000019193'
+                    period_from:
+                      type: string
+                      format: date
+                      example: '2018-01-01'
+                      description: 'Data początkowa okresu, którego dotyczy sprawozdanie'
+                    period_to:
+                      type: string
+                      example: '2018-12-31'
+                      format: date
+                      description: 'Data końcowa okresu, którego dotyczy sprawozdanie'
+                    period_year:
+                      type: integer
+                      example: 2018
+                      format: int32
+                      description: 'Rok obrachunkowy, którego dotyczy sprawozdanie'
+                    preparation_date:
+                      type: string
+                      format: date
+                      example: '2020-04-12'
+                      description: Data sporządzenia sprawozdania
+                    filing_date:
+                      type: string
+                      format: date
+                      example: '2020-07-19'
+                      description: Data publikacji sprawozdania w RDF
+                    consolidated:
+                      type: boolean
+                      example: true
+                      description: 'Informacja, czy sprawozdanie jest skonsolidowane'
+                    ias_standard:
+                      type: boolean
+                      example: false
+                      description: 'Informacja, czy sprawozdanie zostało sporządzone zgodnie z Międzynarodowymi Standardami Rachunkowości'
+                  required:
+                    - id
+                    - krs
+                    - period_from
+                    - period_to
+                    - period_year
+                    - preparation_date
+                    - filing_date
+                    - consolidated
+                    - ias_standard
+              examples:
+                example-1:
+                  value:
+                    - id: 2520543
+                      krs: '0000019193'
+                      period_from: '2018-01-01'
+                      period_to: '2018-12-31'
+                      period_year: 2018
+                      preparation_date: '2019-04-12'
+                      filing_date: '2019-07-19'
+                      consolidated: true
+                      ias_standard: false
+                      #bs_a_ta_cfy: "26227994995.11"
+											#bs_a_ta_cpfy: "25573272324.98"
+											#bs_a_ta_pfy: "25540926976.86"
+											#bs_lae_e_cfy: "10834213197.71"
+											#bs_lae_e_cpfy: "10362941097.49"
+											#bs_lae_e_pfy: "10400343189.57"
+											#bs_lae_nc_cfy: "10150715600.00"
+											#bs_lae_nc_cpfy: "10150715600.00"
+											#bs_lae_nc_pfy: "10150715600.00"
+											#pala_npl_cfy: "479809229.39"
+											#pala_npl_cpfy: "653871907.56"
+											#pala_npl_pfy: "652934002.40"
+											#pala_nrfs_cfy: "9318533736.56"
+											#pala_nrfs_cpfy: "8588730876.40"
+											#pala_nrfs_pfy: "8501384278.96"
+        '400':
+          description: Niewłaściwy format zapytania
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: Invalid year format
+        '401':
+          description: Niepoprawna autentykacja tokenu
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: "Missing 'Authorization' header"
+        '403':
+          description: Nieudana autoryzacja dostępu do API
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: Access forbidden
+        '429':
+          description: Wykorzystany limit zapytań do API
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/error.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    error: Quota is exceeded
+      x-code-samples:
+        - lang: Shell
+          source: |-
+            # Wyszukaj sprawozdania dla podmiotu z numerem KRS `0000019193`.
+            curl https://api.imsig.pl/v1/rdf/financialData?krs=0000019193 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+
 
 components:
   schemas:
