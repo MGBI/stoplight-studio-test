@@ -283,7 +283,7 @@ paths:
       parameters:
         - schema:
             type: string
-            example: '0000028860'
+            example: '0000019193'
             pattern: "^\\d{10}$"
             minLength: 10
             maxLength: 10
@@ -296,21 +296,21 @@ paths:
           name: type
         - schema:
             type: integer
-            example: 2019
+            example: 2018
           in: query
           name: period_year
           description: 'Rok obrachunkowy, którego dotyczy sprawozdanie'
         - schema:
             type: string
             format: date
-            example: '2020-01-01'
+            example: '2019-01-01'
           in: query
           name: filing_date_from
           description: Początek zakresu dla daty publikacji sprawozdania w RDF
         - schema:
             type: string
             format: date
-            example: '2020-12-31'
+            example: '2019-12-31'
           in: query
           name: filing_date_to
           description: Koniec zakresu dla daty publikacji sprawozdania w RDF
