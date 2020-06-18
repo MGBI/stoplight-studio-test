@@ -62,7 +62,7 @@ tags:
       Aby sprawdzić opcje podglądu dokumentów, skorzystaj z [wyszukiwarki dokumentów](
       https://www.imsig.pl/sprawozdania-finansowe).
 
-  - name: finance_data
+  - name: financial_data
     x-displayName: Dane finansowe
     description: |-
       Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia pobieranie
@@ -133,7 +133,7 @@ x-tagGroups:
   - name: KRS RDF API
     tags:
       - documents
-      - finance_data
+      - financial_data
   - name: MSiG API
     tags:
       - announcements
@@ -352,16 +352,14 @@ paths:
             # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`
             curl https://api.imsig.pl/v1/rdf/documents?krs=0000028860 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 
-  /v1/rdf/financeData/:
+  /v1/rdf/financialData/:
     get:
       summary: ''
-      operationId: get-finance-data
+      operationId: get-financial-data
       tags:
-        - finance_data
+        - financial_data
       security:
         - api_key: []
-      servers:
-        - url: 'https://rdf-api.imsig.pl'
       description: Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
       parameters:
         - schema:
@@ -397,6 +395,20 @@ paths:
           in: query
           name: filing_date_to
           description: Koniec zakresu dla daty publikacji sprawozdania w RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-07-01'
+          in: query
+          name: crawling_date_from
+          description: Początek zakresu dla daty pobrania dokumentu z RDF
+        - schema:
+            type: string
+            format: date
+            example: '2020-07-31'
+          in: query
+          name: crawling_date_to
+          description: Koniec zakresu dla daty pobrania dokumentu z RDF
         - schema:
             type: boolean
             example: false
@@ -465,6 +477,11 @@ paths:
                       format: date
                       example: '2020-07-19'
                       description: Data publikacji sprawozdania w RDF
+                    crawling_date:
+                      type: string
+                      format: date
+                      example: '2020-07-24'
+                      description: Data pobrania sprawozdania z RDF
                     consolidated:
                       type: boolean
                       example: true
@@ -562,6 +579,7 @@ paths:
                     - period_year
                     - preparation_date
                     - filing_date
+                    - crawling_date
                     - consolidated
                     - ias_standard
               examples:
@@ -574,6 +592,7 @@ paths:
                       period_year: 2018
                       preparation_date: '2019-04-12'
                       filing_date: '2019-07-19'
+                      crawling_date: '2019-07-24'
                       consolidated: true
                       ias_standard: false
                       bs_lae_nc_cfy: '10150715600.00'
@@ -605,6 +624,184 @@ paths:
             # Wyszukaj dane finansowe ze sprawozdania dla podmiotu z numerem KRS `0000019193`
             curl https://api.imsig.pl/v1/rdf/financialData?krs=0000019193 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 
+  /v1/upadlosci/announcements/:
+    get:
+      summary: ''
+      operationId: get-announcements
+      tags:
+        - announcements
+      security:
+        - api_key: []
+      description: Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych we wszystkich rozdziałach MSiG poza rozdziałem *XV. Wpisy do krajowego rejestru sądowego*.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: id
+          description: Sygnatura ogłoszenia w MSiG
+        - schema:
+            type: string
+            format: date
+            example: '2019-01-01'
+          in: query
+          name: date_from
+          description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
+        - schema:
+            type: string
+            format: date
+            example: '2019-12-31'
+          in: query
+          name: date_to
+          description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
+        - schema:
+            type: integer
+            example: 0
+          in: query
+          name: msig_chapter
+          description: |-
+            Rozdział MSiG
+
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Wartość | Nazwa rozdziału |
+              |-|-|
+              | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+              | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |
+
+            </details>
+        - schema:
+            type: integer
+            example: 1
+          in: query
+          name: msig_section
+          description: |-
+            Sekcja MSiG dla rozdziału `1`
+
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Wartość | Nazwa sekcji |
+              |-|-|
+              | `1` | Postanowienie o ogłoszeniu upadłości |
+              | `2` | Obwieszczenie o zatwierdzeniu układu |
+              | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+              | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+              | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+              | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+              | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+              | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+              | `9` | Inne |
+
+            </details>
+        - schema:
+            type: string
+            example: '9491827824'
+            pattern: "^\\d{10}$"
+            minLength: 10
+            maxLength: 10
+          in: query
+          name: nip
+          description: 'Numer NIP podmiotu, którego dotyczy ogłoszenie'
+        - schema:
+            type: string
+            example: '152074271'
+            pattern: "^\\d{9}$"
+            minLength: 9
+            maxLength: 9
+          in: query
+          name: regon
+          description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
+        - schema:
+            type: string
+            example: '0000136890'
+            pattern: "^\\d{10}$"
+            minLength: 10
+            maxLength: 10
+          in: query
+          name: krs
+          description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
+        - schema:
+            type: string
+          in: query
+          name: commissioner_name
+          description: Imię i nazwisko sędziego komisarza wyznaczonego w postępowaniu
+        - schema:
+            type: string
+          in: query
+          name: administrator_name
+          description: Imię i nazwisko nadzorcy wyznaczonego w postępowaniu
+        - schema:
+            type: string
+          in: query
+          name: projection
+          description: |-
+            Lista zwracanych grup informacji
+
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Identyfikator | Grupa informacji |
+              |-|-|
+              | `"entity"` | Lista podmiotów, których dotyczy ogłoszenie |
+              | `"proceeding"` | Informacje o postępowaniu |
+              | `"order"` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+              | `"msig_entry"` | Informacje dotyczące numeru MSiG, z którego pochodzi ogłoszenie |
+              | `"content"` | Nieprzetworzona treść ogłoszenia |
+
+            </details>
+
+  /v1/upadlosci/checkNumbers/:
+    post:
+      summary: ''
+      operationId: check-numbers
+      tags:
+        - announcements
+      security:
+        - api_key: []
+      description: Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów o przekazanych numerach rejestrowych.
+      parameters:
+        - schema:
+            type: string
+            format: date
+            example: '2019-01-01'
+          in: query
+          name: date_from
+          description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
+        - schema:
+            type: string
+            format: date
+            example: '2019-12-31'
+          in: query
+          name: date_to
+          description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
+        - schema:
+            type: string
+            example: '9491827824'
+            pattern: "^\\d{10}$"
+            minLength: 10
+            maxLength: 10
+          in: query
+          name: nip
+          description: 'Numer NIP podmiotu, którego dotyczy ogłoszenie'
+        - schema:
+            type: string
+            example: '152074271'
+            pattern: "^\\d{9}$"
+            minLength: 9
+            maxLength: 9
+          in: query
+          name: regon
+          description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
+        - schema:
+            type: string
+            example: '0000136890'
+            pattern: "^\\d{10}$"
+            minLength: 10
+            maxLength: 10
+          in: query
+          name: krs
+          description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
 
 components:
   #-------------------------------
@@ -644,6 +841,7 @@ components:
             | `"resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu rocznego sprawozdania finansowego |  |
             | `"consolidated_resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego |  |
             | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
+
           </details>
       # TODO hide enums from documentation
       enum:
