@@ -635,7 +635,7 @@ paths:
       description: 'Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych we wszystkich rozdziałach MSiG poza rozdziałem *XV. Wpisy do krajowego rejestru sądowego*.'
       parameters:
         - schema:
-            type: string
+            $ref: '#/components/schemas/msig_signature'
           in: query
           name: id
           description: Sygnatura ogłoszenia w MSiG
@@ -654,59 +654,13 @@ paths:
           name: date_to
           description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
         - schema:
-            type: integer
-            example: 0
-            enum:
-              - 0
-              - 1
+            $ref: '#/components/schemas/msig_chapter'
           in: query
           name: msig_chapter
-          description: |-
-            Rozdział MSiG
-
-            <details>
-              <summary>Pokaż możliwe opcje</summary>
-
-              | Wartość | Nazwa rozdziału |
-              |-|-|
-              | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
-              | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |
-
-            </details>
         - schema:
-            type: integer
-            example: 1
-            enum:
-              - 1
-              - 2
-              - 3
-              - 4
-              - 5
-              - 6
-              - 7
-              - 8
-              - 9
+            $ref: '#/components/schemas/msig_section'
           in: query
           name: msig_section
-          description: |-
-            Sekcja MSiG dla rozdziału `1`
-
-            <details>
-              <summary>Pokaż możliwe opcje</summary>
-
-              | Wartość | Nazwa sekcji |
-              |-|-|
-              | `1` | Postanowienie o ogłoszeniu upadłości |
-              | `2` | Obwieszczenie o zatwierdzeniu układu |
-              | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
-              | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
-              | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
-              | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
-              | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
-              | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
-              | `9` | Inne |
-
-            </details>
         - schema:
             $ref: '#/components/schemas/nip'
           in: query
@@ -927,11 +881,11 @@ paths:
                       description: 'Informacje dotyczące numeru MSiG, z którego pochodzi ogłoszenie'
                       properties:
                         chapter:
-                          type: string
+                          $ref: '#/components/schemas/msig_chapter'
                         section:
-                          type: string
+                          $ref: '#/components/schemas/msig_section'
                         signature:
-                          type: string
+                          $ref: '#/components/schemas/msig_signature'
                         issue_date:
                           type: string
                           format: date
@@ -1081,8 +1035,61 @@ components:
       pattern: "\\d{10}"
       minLength: 10
       maxLength: 10
-      description: Numer KRS
       example: '0000136890'
+      description: Numer KRS
+    msig_signature:
+      type: string
+      description: Sygnatura ogłoszenia w MSiG
+    msig_chapter:
+      type: integer
+      example: 0
+      enum:
+        - 0
+        - 1
+      description: |-
+        Rozdział MSiG
+
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa rozdziału |
+          |-|-|
+          | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+          | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |
+
+        </details>
+    msig_section:
+      type: integer
+      example: 1
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+      description: |-
+        Sekcja MSiG dla rozdziału `1`
+
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `1` | Postanowienie o ogłoszeniu upadłości |
+          | `2` | Obwieszczenie o zatwierdzeniu układu |
+          | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+          | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+          | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+          | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+          | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+          | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+          | `9` | Inne |
+
+        </details>
     document_type:
       type: string
       description: |-
