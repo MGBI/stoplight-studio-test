@@ -971,6 +971,11 @@ paths:
                           description: Treść ogłoszenia w formacie HTML
                   required:
                     - id
+      x-code-samples:
+        - lang: Shell
+          source: |-
+            # Wyszukaj ogłoszenia dla podmiotu z numerem KRS `0000136890`
+            curl https://api.imsig.pl/v1/upadlosci/announcements?krs=0000136890 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 
   /v1/upadlosci/checkNumbers/:
     post:
@@ -1046,6 +1051,11 @@ paths:
                   - nip
                   - regon
                   - krs
+      x-code-samples:
+        - lang: Shell
+          source: |-
+            # Sprawdź ogłoszenia dla podmiotu z numerem KRS `0000136890`
+            curl https://api.imsig.pl/v1/upadlosci/checkNumbers --request POST --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\" --data '{"krs":["0000136890"]}'
 
 components:
   #-------------------------------
