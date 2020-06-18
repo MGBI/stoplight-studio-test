@@ -632,7 +632,7 @@ paths:
         - announcements
       security:
         - api_key: []
-      description: Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych we wszystkich rozdziałach MSiG poza rozdziałem *XV. Wpisy do krajowego rejestru sądowego*.
+      description: 'Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych we wszystkich rozdziałach MSiG poza rozdziałem *XV. Wpisy do krajowego rejestru sądowego*.'
       parameters:
         - schema:
             type: string
@@ -656,6 +656,9 @@ paths:
         - schema:
             type: integer
             example: 0
+            enum:
+              - 0
+              - 1
           in: query
           name: msig_chapter
           description: |-
@@ -673,6 +676,16 @@ paths:
         - schema:
             type: integer
             example: 1
+            enum:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
           in: query
           name: msig_section
           description: |-
@@ -733,6 +746,12 @@ paths:
           description: Imię i nazwisko nadzorcy wyznaczonego w postępowaniu
         - schema:
             type: string
+            enum:
+              - entity
+              - proceeding
+              - order
+              - msig_entry
+              - content
           in: query
           name: projection
           description: |-
@@ -759,7 +778,7 @@ paths:
         - announcements
       security:
         - api_key: []
-      description: Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów o przekazanych numerach rejestrowych.
+      description: 'Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów o przekazanych numerach rejestrowych.'
       parameters:
         - schema:
             type: string
