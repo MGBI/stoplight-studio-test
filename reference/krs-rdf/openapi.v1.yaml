@@ -708,29 +708,17 @@ paths:
 
             </details>
         - schema:
-            type: string
-            pattern: "^\\d{10}$"
-            minLength: 10
-            maxLength: 10
-            example: '9491827824'
+            $ref: '#/components/schemas/nip'
           in: query
           name: nip
           description: 'Numer NIP podmiotu, którego dotyczy ogłoszenie'
         - schema:
-            type: string
-            pattern: "^\\d{9}$"
-            minLength: 9
-            maxLength: 9
-            example: '152074271'
+            $ref: '#/components/schemas/regon'
           in: query
           name: regon
           description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
         - schema:
-            type: string
-            pattern: "^\\d{10}$"
-            minLength: 10
-            maxLength: 10
-            example: '0000136890'
+            $ref: '#/components/schemas/krs'
           in: query
           name: krs
           description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
@@ -823,26 +811,11 @@ paths:
                               - krs
                             properties:
                               nip:
-                                type: string
-                                pattern: "^\\d{10}$"
-                                minLength: 10
-                                maxLength: 10
-                                example: '9491827824'
-                                description: Numer NIP
+                                $ref: '#/components/schemas/nip'
                               regon:
-                                type: string
-                                pattern: "^\\d{9}$"
-                                minLength: 9
-                                maxLength: 9
-                                example: '152074271'
-                                description: Numer REGON
+                                $ref: '#/components/schemas/regon'
                               krs:
-                                type: string
-                                pattern: "^\\d{10}$"
-                                minLength: 10
-                                maxLength: 10
-                                example: '0000136890'
-                                description: Numer KRS
+                                $ref: '#/components/schemas/krs'
                           address:
                             type: object
                             description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
@@ -1058,26 +1031,17 @@ paths:
                     type: array
                     description: 'Lista numerów NIP, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
                     items:
-                      type: string
-                      pattern: "\\d{10}"
-                      minLength: 10
-                      maxLength: 10
+                      $ref: '#/components/schemas/nip'
                   regon:
                     type: array
                     description: 'Lista numerów REGON, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
                     items:
-                      type: string
-                      pattern: "\\d{9}"
-                      minLength: 9
-                      maxLength: 9
+                      $ref: '#/components/schemas/regon'
                   krs:
                     type: array
                     description: 'Lista numerów KRS, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
                     items:
-                      type: string
-                      pattern: "\\d{10}"
-                      minLength: 10
-                      maxLength: 10
+                      $ref: '#/components/schemas/krs'
                 required:
                   - nip
                   - regon
@@ -1088,6 +1052,27 @@ components:
   # Reusable schemas (data models)
   #-------------------------------
   schemas:
+    nip:
+      type: string
+      pattern: "\\d{10}"
+      minLength: 10
+      maxLength: 10
+      example: '9491827824'
+      description: Numer NIP
+    regon:
+      type: string
+      pattern: "\\d{9}"
+      minLength: 9
+      maxLength: 9
+      example: '152074271'
+      description: Numer REGON
+    krs:
+      type: string
+      pattern: "\\d{10}"
+      minLength: 10
+      maxLength: 10
+      description: Numer KRS
+      example: '0000136890'
     document_type:
       type: string
       description: |-
