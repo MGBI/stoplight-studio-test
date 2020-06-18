@@ -724,6 +724,7 @@ paths:
                   properties:
                     id:
                       type: string
+                      example: 'BMSiG-26451/2020'
                       description: Unikalny identyfikator ogłoszenia
                     entity:
                       type: array
@@ -743,18 +744,24 @@ paths:
                             properties:
                               cleaned_name:
                                 type: string
+                                example: 'Isd Huta Częstochowa sp. z o.o.'
                                 description: Nazwa podmiotu
                               legal_form:
                                 type: string
+                                example: spółki z ograniczoną odpowiedzialnością
                                 description: Forma prawna
                               ownership_type:
                                 type: string
+                                example: własność prywatna krajowa pozostała
                                 description: Forma własności
                               primary_business:
                                 type: string
+                                example: '24.10.Z Produkcja surówki, żelazostopów, żeliwa i stali oraz wyrobów hutniczych'
                                 description: Przeważająca działalność gospodarcza (kod PKD)
                               commencement_date:
                                 type: string
+                                format: date
+                                example: '2002-10-01'
                                 description: Data rozpoczęcia działalności
                           numbers:
                             type: object
@@ -778,37 +785,45 @@ paths:
                               - powiat
                               - gmina
                               - town
-                              - street
-                              - house_number
                               - zip_code
                               - post_office
                             properties:
                               state:
                                 type: string
+                                example: śląskie
                                 description: Województwo
                               powiat:
                                 type: string
+                                example: Częstochowa
                                 description: Powiat
                               gmina:
                                 type: string
+                                example: Częstochowa
                                 description: Gmina
                               town:
                                 type: string
+                                example: Częstochowa
                                 description: Miejscowość
                               street:
                                 type: string
+                                example: 'ul. Kucelińska'
                                 description: Ulica
                               house_number:
                                 type: string
+                                example: '22'
                                 description: Numer nieruchomości
                               flat_number:
                                 type: string
+                                example: null
                                 description: Numer lokalu
                               zip_code:
                                 type: string
+                                pattern: "\\d{2}-\\d{3}"
+                                example: 42-207
                                 description: Kod pocztowy
                               post_office:
                                 type: string
+                                example: Częstochowa
                                 description: Poczta
                         required:
                           - info
@@ -820,21 +835,31 @@ paths:
                       properties:
                         court_name:
                           type: string
+                          example: Sąd Rejonowy w Częstochowie
                           description: Nazwa sądu
                         court_department:
                           type: string
+                          example: VIII Wydział Gospodarczy
                           description: Nazwa wydziału
                         signatures:
-                          type: string
+                          type: array
                           description: Sygnatury postępowania
+                          items:
+                            type: string
+                          example:
+                            - 'VIII GU 165/19'
+                            - 'VIII GUp 137/19'
                         commissioner_name:
                           type: string
+                          example: Małgorzata Brzózka-Chamala
                           description: Imię i nazwisko sędziego komisarza
                         commissioner_deputy_name:
                           type: string
+                          example: Małgorzata Grabowska
                           description: Imię i nazwisko zastępcy sędziego komisarza
                         administrator_name:
                           type: string
+                          example: Mieczysław Radecki
                           description: Imię i nazwisko nadzorcy wyznaczonego w postępowaniu
                         administrator_function:
                           type: string
@@ -845,14 +870,14 @@ paths:
                             - zarządca
                             - nadzorca sądowy
                         administrator_licence_number:
-                          type: string
+                          type: integer
+                          example: 598
                           description: Numer licencji doradcy restrukturyzacyjnego nadzorcy w postępowaniu
+                          format: int32
                       required:
                         - court_name
                         - court_department
                         - signatures
-                        - commissioner_name
-                        - commissioner_deputy_name
                         - administrator_name
                         - administrator_function
                         - administrator_licence_number
@@ -862,20 +887,21 @@ paths:
                       properties:
                         order_date:
                           type: string
+                          example: '2019-07-19'
                           description: Data wydania postanowienia
                           format: date
                         expiration_period:
                           type: integer
+                          example: 47
                           description: Okres do działania (w dniach)
                           format: int32
                         expiration_date:
                           type: string
+                          example: '2020-07-27'
                           format: date
                           description: Data końcowa okresu do działania
                       required:
                         - order_date
-                        - expiration_period
-                        - expiration_date
                     msig_entry:
                       type: object
                       description: 'Informacje dotyczące numeru MSiG, z którego pochodzi ogłoszenie'
@@ -888,20 +914,25 @@ paths:
                           $ref: '#/components/schemas/msig_signature'
                         issue_date:
                           type: string
-                          format: date
+                          example: '2020-06-10'
                           description: Data publikacji ogłoszenia w MSiG
+                          format: date
                         yearly_number:
-                          type: integer
+                          type: string
+                          example: '112'
                           description: Numer wydania MSiG
-                          format: int32
                         position_number:
+                          type: string
+                          example: '26734'
+                          description: Numer pozycji MSiG
+                        sequential_number:
                           type: integer
                           format: int32
-                          description: Numer pozycji MSiG
                         url:
                           type: string
-                          format: uri
+                          example: 'http://www.imsig.pl/pozycja/2020/112/26734'
                           description: Adres URL ogłoszenia w serwisie imsig.pl
+                          format: uri
                       required:
                         - chapter
                         - section
@@ -919,9 +950,11 @@ paths:
                       properties:
                         text:
                           type: string
+                          example: 'SYNDYK MASY UPADŁOŚCI ISD HUTA CZĘSTOCHOWA Sp. z o.o. w upadłości w Częstochowie (sygn. akt VIII GUp 137/19) obwieszcza przetarg na sprzedaż przedsiębiorstwa Przedmiotem przetargu jest przedsiębiorstwo ISD Huta Częstochowa Sp. z o.o. z siedzibą w Częstochowie (KRS nr 0000136890) opisane w opisie i oszacowaniu według stanu na dzień 3 września 2019 r. Przedmiotem przetargu jest całe przedsiębiorstwo upadłego z wyłączeniem aktywów wymienionych w Regulaminie Przetargu. Cena wywoławcza - 220 000 000,00 zł netto. Oferty w zamkniętych kopertach z wyraźnym dopiskiem "NIE OTWIERAĆ - ISD Huta Częstochowa - PRZETARG" należy składać w biurze podawczym w budynku Sądu Rejonowego w Częstochowie przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, lub przesłać pocztą w terminie do dnia 27 lipca 2020 r., do godz. 14:00 (decyduje data i godzina wpływu do Sądu). Zaleca się osobiste złożenie oferty. W razie braku możliwości złożenia oferty w biurze podawczym Sądu wskutek całkowitego zamknięcia budynku Sądu dla interesantów na mocy decyzji właściwych organów, oferty mogą zostać złożone w Biurze Syndyka w Katowicach, ul. PCK 10/7, 40-057 Katowice, w terminie do dnia 27 lipca 2020 r., do godz. 17:00. Warunkiem uczestnictwa w przetargu jest uprzednia wpłata wadium w wysokości 10% ceny wywoławczej netto przedsiębiorstwa tj. w kwocie 22 000 000,00 zł. Rozpoznanie ofert nastąpi na posiedzeniu jawnym w Sądzie Rejonowym w Częstochowie, VIII Wydział Gospodarczy, przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, w dniu 28 lipca 2020 r., o godz. 12:00, w sali 108. Wszelkie informacje dotyczące przedmiotu niniejszego przetargu, trybu składania ofert oraz treść Regulaminu Przetargu można uzyskać pod nr tel. 502-074-019 lub 735-019-002, w dni robocze, od poniedziałku do piątku, w godz. od 9:00 do 15:00, jak również drogą elektroniczną pod adresem: hcz@bienioszek.pl lub mateusz@bienioszek.pl wyłącznie po uprzednim podpisaniu umowy o zachowaniu poufności.'
                           description: Treść ogłoszenia w formacie tekstowym
                         html:
                           type: string
+                          example: '<tresc><p style="margin:15px 0px 0px 0px;text-align:center">SYNDYK MASY UPADŁOŚCI<br/>ISD HUTA CZĘSTOCHOWA Sp. z o.o. w upadłości<br/>w Częstochowie<br/>(sygn. akt VIII GUp 137/19)<br/>obwieszcza przetarg na sprzedaż przedsiębiorstwa</p><p style="margin:15px 0px 0px 0px">Przedmiotem przetargu jest przedsiębiorstwo ISD Huta Częstochowa Sp. z o.o. z siedzibą w Częstochowie (KRS nr 0000136890) opisane w opisie i oszacowaniu według stanu na dzień 3 września 2019 r. Przedmiotem przetargu jest całe przedsiębiorstwo upadłego z wyłączeniem aktywów wymienionych w Regulaminie Przetargu.</p><p style="margin:15px 0px 0px 0px">Cena wywoławcza - 220 000 000,00 zł netto.</p><p style="margin:15px 0px 0px 0px">Oferty w zamkniętych kopertach z wyraźnym dopiskiem "NIE OTWIERAĆ - ISD Huta Częstochowa - PRZETARG" należy składać w biurze podawczym w budynku Sądu Rejonowego w Częstochowie przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, lub przesłać pocztą w terminie do dnia 27 lipca 2020 r., do godz. 14<sup>00</sup>(decyduje data i godzina wpływu do Sądu).<br/>Zaleca się osobiste złożenie oferty. W razie braku możliwości złożenia oferty w biurze podawczym Sądu wskutek całkowitego zamknięcia budynku Sądu dla interesantów na mocy decyzji właściwych organów, oferty mogą zostać złożone w Biurze Syndyka w Katowicach, ul. PCK 10/7, 40-057 Katowice, w terminie do dnia 27 lipca 2020 r., do godz. 17<sup>00</sup>.</p><p style="margin:15px 0px 0px 0px">Warunkiem uczestnictwa w przetargu jest uprzednia wpłata wadium w wysokości 10% ceny wywoławczej netto przedsiębiorstwa tj. w kwocie 22 000 000,00 zł.</p><p style="margin:15px 0px 0px 0px">Rozpoznanie ofert nastąpi na posiedzeniu jawnym w Sądzie Rejonowym w Częstochowie, VIII Wydział Gospodarczy, przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, w dniu 28 lipca 2020 r., o godz. 12<sup>00</sup>, w sali 108.</p><p style="margin:15px 0px 0px 0px">Wszelkie informacje dotyczące przedmiotu niniejszego przetargu, trybu składania ofert oraz treść Regulaminu Przetargu można uzyskać pod nr tel. 502-074-019 lub 735-019-002, w dni robocze, od poniedziałku do piątku, w godz. od 9<sup>00</sup> do 15<sup>00</sup>, jak również drogą elektroniczną pod adresem: hcz@bienioszek.pl lub mateusz@bienioszek.pl wyłącznie po uprzednim podpisaniu umowy o zachowaniu poufności.</p></tresc>'
                           description: Treść ogłoszenia w formacie HTML
                   required:
                     - id
@@ -957,26 +990,20 @@ paths:
                   example: '2019-12-31'
                   description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
                 nip:
-                  type: string
-                  pattern: "^\\d{10}$"
-                  minLength: 10
-                  maxLength: 10
-                  example: '9491827824'
-                  description: 'Numer NIP podmiotu, którego dotyczy sprawozdanie'
+                  type: array
+                  description: Lista numerów NIP do sprawdzenia
+                  items:
+                    $ref: '#/components/schemas/nip'
                 regon:
-                  type: string
-                  pattern: "^\\d{9}$"
-                  minLength: 9
-                  maxLength: 9
-                  example: '152074271'
-                  description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
+                  type: array
+                  description: Lista numerów REGON do sprawdzenia
+                  items:
+                    $ref: '#/components/schemas/regon'
                 krs:
-                  type: string
-                  pattern: "^\\d{10}$"
-                  minLength: 10
-                  maxLength: 10
-                  example: '0000136890'
-                  description: 'Numer KRS podmiotu, którego dotyczy ogłoszenie'
+                  type: array
+                  description: Lista numerów KRS do sprawdzenia
+                  items:
+                    $ref: '#/components/schemas/krs'
       responses:
         '200':
           description: Poprawne sprawdzenie ogłoszeń
@@ -1039,6 +1066,7 @@ components:
       description: Numer KRS
     msig_signature:
       type: string
+      example: 'BMSiG-26451/2020'
       description: Sygnatura ogłoszenia w MSiG
     msig_chapter:
       type: integer
