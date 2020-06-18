@@ -450,8 +450,8 @@ paths:
                       pattern: "^\\d{10}$"
                       minLength: 10
                       maxLength: 10
-                      description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
                       example: '0000019193'
+                      description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
                     period_from:
                       type: string
                       format: date
@@ -709,28 +709,28 @@ paths:
             </details>
         - schema:
             type: string
-            example: '9491827824'
             pattern: "^\\d{10}$"
             minLength: 10
             maxLength: 10
+            example: '9491827824'
           in: query
           name: nip
           description: 'Numer NIP podmiotu, którego dotyczy ogłoszenie'
         - schema:
             type: string
-            example: '152074271'
             pattern: "^\\d{9}$"
             minLength: 9
             maxLength: 9
+            example: '152074271'
           in: query
           name: regon
           description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
         - schema:
             type: string
-            example: '0000136890'
             pattern: "^\\d{10}$"
             minLength: 10
             maxLength: 10
+            example: '0000136890'
           in: query
           name: krs
           description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
@@ -769,6 +769,235 @@ paths:
               | `"content"` | Nieprzetworzona treść ogłoszenia |
 
             </details>
+      responses:
+        '200':
+          description: Poprawne wyszukiwanie ogłoszeń
+          content:
+            application/json:
+              schema:
+                type: array
+                description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG.'
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Unikalny identyfikator ogłoszenia
+                    entity:
+                      type: array
+                      description: 'Lista podmiotów, których dotyczy ogłoszenie'
+                      items:
+                        type: object
+                        properties:
+                          info:
+                            type: object
+                            description: Podstawowe dane podmiotu
+                            required:
+                              - cleaned_name
+                              - legal_form
+                              - ownership_type
+                              - primary_business
+                              - commencement_date
+                            properties:
+                              cleaned_name:
+                                type: string
+                                description: Nazwa podmiotu
+                              legal_form:
+                                type: string
+                                description: Forma prawna
+                              ownership_type:
+                                type: string
+                                description: Forma własności
+                              primary_business:
+                                type: string
+                                description: Przeważająca działalność gospodarcza (kod PKD)
+                              commencement_date:
+                                type: string
+                                description: Data rozpoczęcia działalności
+                          numbers:
+                            type: object
+                            description: Numery rejestrowe podmiotu
+                            required:
+                              - nip
+                              - regon
+                              - krs
+                            properties:
+                              nip:
+                                type: string
+                                pattern: "^\\d{10}$"
+                                minLength: 10
+                                maxLength: 10
+                                example: '9491827824'
+                                description: Numer NIP
+                              regon:
+                                type: string
+                                pattern: "^\\d{9}$"
+                                minLength: 9
+                                maxLength: 9
+                                example: '152074271'
+                                description: Numer REGON
+                              krs:
+                                type: string
+                                pattern: "^\\d{10}$"
+                                minLength: 10
+                                maxLength: 10
+                                example: '0000136890'
+                                description: Numer KRS
+                          address:
+                            type: object
+                            description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
+                            required:
+                              - state
+                              - powiat
+                              - gmina
+                              - town
+                              - street
+                              - house_number
+                              - zip_code
+                              - post_office
+                            properties:
+                              state:
+                                type: string
+                                description: Województwo
+                              powiat:
+                                type: string
+                                description: Powiat
+                              gmina:
+                                type: string
+                                description: Gmina
+                              town:
+                                type: string
+                                description: Miejscowość
+                              street:
+                                type: string
+                                description: Ulica
+                              house_number:
+                                type: string
+                                description: Numer nieruchomości
+                              flat_number:
+                                type: string
+                                description: Numer lokalu
+                              zip_code:
+                                type: string
+                                description: Kod pocztowy
+                              post_office:
+                                type: string
+                                description: Poczta
+                        required:
+                          - info
+                          - numbers
+                          - address
+                    proceeding:
+                      type: object
+                      description: Informacje o postępowaniu
+                      properties:
+                        court_name:
+                          type: string
+                          description: Nazwa sądu
+                        court_department:
+                          type: string
+                          description: Nazwa wydziału
+                        signatures:
+                          type: string
+                          description: Sygnatury postępowania
+                        commissioner_name:
+                          type: string
+                          description: Imię i nazwisko sędziego komisarza
+                        commissioner_deputy_name:
+                          type: string
+                          description: Imię i nazwisko zastępcy sędziego komisarza
+                        administrator_name:
+                          type: string
+                          description: Imię i nazwisko nadzorcy wyznaczonego w postępowaniu
+                        administrator_function:
+                          type: string
+                          description: Funkcja nadzorcy
+                          example: syndyk
+                          enum:
+                            - syndyk
+                            - zarządca
+                            - nadzorca sądowy
+                        administrator_licence_number:
+                          type: string
+                          description: Numer licencji doradcy restrukturyzacyjnego nadzorcy w postępowaniu
+                      required:
+                        - court_name
+                        - court_department
+                        - signatures
+                        - commissioner_name
+                        - commissioner_deputy_name
+                        - administrator_name
+                        - administrator_function
+                        - administrator_licence_number
+                    order:
+                      type: object
+                      description: 'Informacje o postanowieniu, którego dotyczy ogłoszenie'
+                      properties:
+                        order_date:
+                          type: string
+                          description: Data wydania postanowienia
+                          format: date
+                        expiration_period:
+                          type: integer
+                          description: Okres do działania (w dniach)
+                          format: int32
+                        expiration_date:
+                          type: string
+                          format: date
+                          description: Data końcowa okresu do działania
+                      required:
+                        - order_date
+                        - expiration_period
+                        - expiration_date
+                    msig_entry:
+                      type: object
+                      description: 'Informacje dotyczące numeru MSiG, z którego pochodzi ogłoszenie'
+                      properties:
+                        chapter:
+                          type: string
+                        section:
+                          type: string
+                        signature:
+                          type: string
+                        issue_date:
+                          type: string
+                          format: date
+                          description: Data publikacji ogłoszenia w MSiG
+                        yearly_number:
+                          type: integer
+                          description: Numer wydania MSiG
+                          format: int32
+                        position_number:
+                          type: integer
+                          format: int32
+                          description: Numer pozycji MSiG
+                        url:
+                          type: string
+                          format: uri
+                          description: Adres URL ogłoszenia w serwisie imsig.pl
+                      required:
+                        - chapter
+                        - section
+                        - signature
+                        - issue_date
+                        - yearly_number
+                        - position_number
+                        - url
+                    content:
+                      type: object
+                      required:
+                        - text
+                        - html
+                      description: Nieprzetworzona treść ogłoszenia
+                      properties:
+                        text:
+                          type: string
+                          description: Treść ogłoszenia w formacie tekstowym
+                        html:
+                          type: string
+                          description: Treść ogłoszenia w formacie HTML
+                  required:
+                    - id
 
   /v1/upadlosci/checkNumbers/:
     post:
@@ -779,48 +1008,80 @@ paths:
       security:
         - api_key: []
       description: 'Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów o przekazanych numerach rejestrowych.'
-      parameters:
-        - schema:
-            type: string
-            format: date
-            example: '2019-01-01'
-          in: query
-          name: date_from
-          description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
-        - schema:
-            type: string
-            format: date
-            example: '2019-12-31'
-          in: query
-          name: date_to
-          description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
-        - schema:
-            type: string
-            example: '9491827824'
-            pattern: "^\\d{10}$"
-            minLength: 10
-            maxLength: 10
-          in: query
-          name: nip
-          description: 'Numer NIP podmiotu, którego dotyczy ogłoszenie'
-        - schema:
-            type: string
-            example: '152074271'
-            pattern: "^\\d{9}$"
-            minLength: 9
-            maxLength: 9
-          in: query
-          name: regon
-          description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
-        - schema:
-            type: string
-            example: '0000136890'
-            pattern: "^\\d{10}$"
-            minLength: 10
-            maxLength: 10
-          in: query
-          name: krs
-          description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_from:
+                  type: string
+                  format: date
+                  example: '2019-01-01'
+                  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
+                date_to:
+                  type: string
+                  format: date
+                  example: '2019-12-31'
+                  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
+                nip:
+                  type: string
+                  pattern: "^\\d{10}$"
+                  minLength: 10
+                  maxLength: 10
+                  example: '9491827824'
+                  description: 'Numer NIP podmiotu, którego dotyczy sprawozdanie'
+                regon:
+                  type: string
+                  pattern: "^\\d{9}$"
+                  minLength: 9
+                  maxLength: 9
+                  example: '152074271'
+                  description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
+                krs:
+                  type: string
+                  pattern: "^\\d{10}$"
+                  minLength: 10
+                  maxLength: 10
+                  example: '0000136890'
+                  description: 'Numer KRS podmiotu, którego dotyczy ogłoszenie'
+      responses:
+        '200':
+          description: Poprawne sprawdzenie ogłoszeń
+          content:
+            application/json:
+              schema:
+                type: object
+                description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                properties:
+                  nip:
+                    type: array
+                    description: 'Lista numerów NIP, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                    items:
+                      type: string
+                      pattern: "\\d{10}"
+                      minLength: 10
+                      maxLength: 10
+                  regon:
+                    type: array
+                    description: 'Lista numerów REGON, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                    items:
+                      type: string
+                      pattern: "\\d{9}"
+                      minLength: 9
+                      maxLength: 9
+                  krs:
+                    type: array
+                    description: 'Lista numerów KRS, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                    items:
+                      type: string
+                      pattern: "\\d{10}"
+                      minLength: 10
+                      maxLength: 10
+                required:
+                  - nip
+                  - regon
+                  - krs
 
 components:
   #-------------------------------
