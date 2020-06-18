@@ -232,32 +232,32 @@ paths:
                     period_from:
                       type: string
                       format: date
-                      example: '2019-01-01'
+                      example: '2018-01-01'
                       description: 'Data początkowa okresu, którego dotyczy dokument'
                     period_to:
                       type: string
-                      example: '2019-12-31'
+                      example: '2018-12-31'
                       format: date
                       description: 'Data końcowa okresu, którego dotyczy dokument'
                     period_year:
                       type: integer
-                      example: 2019
+                      example: 2018
                       format: int32
                       description: 'Rok obrachunkowy, którego dotyczy dokument'
                     preparation_date:
                       type: string
                       format: date
-                      example: '2020-06-30'
+                      example: '2019-03-29'
                       description: Data sporządzenia dokumentu
                     filing_date:
                       type: string
                       format: date
-                      example: '2020-07-01'
+                      example: '2019-06-27'
                       description: Data publikacji dokumentu w RDF
                     crawling_date:
                       type: string
                       format: date
-                      example: '2020-07-15'
+                      example: '2019-08-14'
                       description: Data pobrania dokumentu z RDF
                     is_correction:
                       type: boolean
@@ -265,7 +265,7 @@ paths:
                       description: 'Informacja, czy dokument jest korektą'
                     ias_standard:
                       type: boolean
-                      example: false
+                      example: true
                       description: 'Informacja, czy dokument został sporządzony zgodnie z Międzynarodowymi Standardami Rachunkowości'
                     language:
                       $ref: '#/components/schemas/language'
@@ -316,28 +316,6 @@ paths:
                     - crawling_date
                     - is_correction
                     - ias_standard
-              examples:
-                example-1:
-                  value:
-                    - id: 2047606
-                      krs: '0000028860'
-                      type: financial_statement
-                      period_from: '2018-01-01'
-                      period_to: '2018-12-31'
-                      period_year: 2018
-                      preparation_date: '2019-03-29'
-                      filing_date: '2019-06-27'
-                      crawling_date: '2019-08-14'
-                      is_correction: false
-                      ias_standard: true
-                      language: pl
-                      submission_id: 845399
-                      file_root: 0000028860_2018_financial_statement_2047606
-                      file_root_pl: 0000028860_2018_sprawozdanie_finansowe_2047606
-                      file_format: pdf
-                      file_content_type: application/pdf
-                      download_url: 'http://rdf-api.imsig.pl/v1/documents/2047606/download/'
-                      pdf_preview_url: 'http://rdf-api.imsig.pl/v1/documents/2047606/preview/?format=pdf'
         '400':
           $ref: '#/components/responses/bad_request'
         '401':
@@ -470,17 +448,17 @@ paths:
                     preparation_date:
                       type: string
                       format: date
-                      example: '2020-04-12'
+                      example: '2019-04-12'
                       description: Data sporządzenia sprawozdania
                     filing_date:
                       type: string
                       format: date
-                      example: '2020-07-19'
+                      example: '2019-07-19'
                       description: Data publikacji sprawozdania w RDF
                     crawling_date:
                       type: string
                       format: date
-                      example: '2020-07-24'
+                      example: '2019-07-24'
                       description: Data pobrania sprawozdania z RDF
                     consolidated:
                       type: boolean
@@ -582,34 +560,6 @@ paths:
                     - crawling_date
                     - consolidated
                     - ias_standard
-              examples:
-                example-1:
-                  value:
-                    - id: 2520543
-                      krs: '0000019193'
-                      period_from: '2018-01-01'
-                      period_to: '2018-12-31'
-                      period_year: 2018
-                      preparation_date: '2019-04-12'
-                      filing_date: '2019-07-19'
-                      crawling_date: '2019-07-24'
-                      consolidated: true
-                      ias_standard: false
-                      bs_lae_nc_cfy: '10150715600.00'
-                      bs_lae_nc_pfy: '10150715600.00'
-                      bs_lae_nc_cpfy: '10150715600.00'
-                      bs_a_ta_cfy: '26227994995.11'
-                      bs_a_ta_pfy: '25540926976.86'
-                      bs_a_ta_cpfy: '25573272324.98'
-                      bs_lae_e_cfy: '10834213197.71'
-                      bs_lae_e_pfy: '10400343189.57'
-                      bs_lae_e_cpfy: '10362941097.49'
-                      pala_nrfs_cfy: '9318533736.56'
-                      pala_nrfs_pfy: '8501384278.96'
-                      pala_nrfs_cpfy: '8588730876.40'
-                      pala_npl_cfy: '479809229.39'
-                      pala_npl_pfy: '652934002.40'
-                      pala_npl_cpfy: '653871907.56'
         '400':
           $ref: '#/components/responses/bad_request'
         '401':
