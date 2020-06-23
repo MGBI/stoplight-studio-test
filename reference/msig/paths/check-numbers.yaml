@@ -1,0 +1,78 @@
+summary: ''
+operationId: check-numbers
+tags:
+  - announcements
+security:
+  - api_key: []
+description: 'Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów o przekazanych numerach rejestrowych.'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          date_from:
+            type: string
+            format: date
+            example: '2019-01-01'
+            description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
+          date_to:
+            type: string
+            format: date
+            example: '2019-12-31'
+            description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
+          nip:
+            type: array
+            description: Lista numerów NIP do sprawdzenia
+            items:
+              $ref: '#/components/schemas/nip'
+          regon:
+            type: array
+            description: Lista numerów REGON do sprawdzenia
+            items:
+              $ref: '#/components/schemas/regon'
+          krs:
+            type: array
+            description: Lista numerów KRS do sprawdzenia
+            items:
+              $ref: '#/components/schemas/krs'
+responses:
+  '200':
+    description: Wynik sprawdzenia ogłoszeń
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - type: object
+              title: Sukces
+              description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+              properties:
+                nip:
+                  type: array
+                  description: 'Lista numerów NIP, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                  items:
+                    $ref: '#/components/schemas/nip'
+                regon:
+                  type: array
+                  description: 'Lista numerów REGON, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                  items:
+                    $ref: '#/components/schemas/regon'
+                krs:
+                  type: array
+                  description: 'Lista numerów KRS, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                  items:
+                    $ref: '#/components/schemas/krs'
+              required:
+                - nip
+                - regon
+                - krs
+            - $ref: '#/components/schemas/msig_error'
+x-code-samples:
+  - lang: Shell
+    source: |-
+      # Sprawdź ogłoszenia dla podmiotu z numerem KRS `0000136890`
+      curl https://api.imsig.pl/v1/upadlosci/checkNumbers --request POST --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\" --data '{"krs":["0000136890"]}'
+
+components:
+  schemas:
+    $ref: ../schemas.yaml

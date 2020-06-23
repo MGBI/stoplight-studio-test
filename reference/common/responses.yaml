@@ -1,0 +1,51 @@
+bad_request:
+  description: Niewłaściwy format zapytania
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/error'
+      examples:
+        example-1:
+          value:
+            error: Invalid year format
+unauthorized:
+  description: Niepoprawna autentykacja tokenu
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/error'
+      examples:
+        example-1:
+          value:
+            error: "Missing 'Authorization' header"
+forbidden:
+  description: Nieudana autoryzacja dostępu do API
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/error'
+      examples:
+        example-1:
+          value:
+            error: Access forbidden
+too_many_requests:
+  description: Wykorzystany limit zapytań do API
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/error'
+      examples:
+        example-1:
+          value:
+            error: Quota is exceeded
+
+components:
+  schemas:
+    error:
+      type: object
+      description: Obiekt dla błędu.
+      properties:
+        error:
+          type: string
+      required:
+        - error

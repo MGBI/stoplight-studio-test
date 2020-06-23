@@ -1,0 +1,86 @@
+nip:
+  type: string
+  pattern: "\\d{10}"
+  minLength: 10
+  maxLength: 10
+  example: '9491827824'
+  description: Numer NIP
+regon:
+  type: string
+  pattern: "\\d{9}"
+  minLength: 9
+  maxLength: 9
+  example: '152074271'
+  description: Numer REGON
+krs:
+  type: string
+  pattern: "\\d{10}"
+  minLength: 10
+  maxLength: 10
+  example: '0000136890'
+  description: Numer KRS
+msig_error:
+  title: Błąd
+  type: object
+  properties:
+    detail:
+      type: string
+      example: Brak numerów do sprawdzenia
+      description: Szczegółowa informacja na temat błędu
+  required:
+    - detail
+  description: Obiekt dla błędu dla MSIG API.
+msig_signature:
+  type: string
+  example: 'BMSiG-26451/2020'
+  description: Sygnatura ogłoszenia w MSiG
+msig_chapter:
+  type: integer
+  example: 0
+  enum:
+    - 0
+    - 1
+  description: |-
+    Rozdział MSiG
+
+    <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa rozdziału |
+      |-|-|
+      | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+      | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |
+
+    </details>
+msig_section:
+  type: integer
+  example: 1
+  enum:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+  description: |-
+    Sekcja MSiG dla rozdziału `1`
+
+    <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa sekcji |
+      |-|-|
+      | `1` | Postanowienie o ogłoszeniu upadłości |
+      | `2` | Obwieszczenie o zatwierdzeniu układu |
+      | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+      | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+      | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+      | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+      | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+      | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+      | `9` | Inne |
+
+    </details>
