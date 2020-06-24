@@ -139,7 +139,7 @@ x-tagGroups:
     tags:
       - announcements
 paths:
-  /v1/rdf/documents/:
+  /v1/rdf/documents:
     get:
       summary: ''
       operationId: get-documents
@@ -673,7 +673,7 @@ paths:
                     type: string
                 required:
                   - error
-  /v1/rdf/financialData/:
+  /v1/rdf/financialData:
     get:
       summary: ''
       operationId: get-financial-data
@@ -1184,7 +1184,7 @@ paths:
                     type: string
                 required:
                   - error
-  /v1/upadlosci/announcements/:
+  /v1/msig/announcements:
     get:
       summary: ''
       operationId: get-announcements
@@ -1660,7 +1660,7 @@ paths:
         - lang: Shell
           source: |-
             # Wyszukaj ogłoszenia dla podmiotu z numerem KRS `0000136890`
-            curl https://api.imsig.pl/v1/upadlosci/announcements?krs=0000136890 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+            curl https://api.imsig.pl/v1/msig/announcements?krs=0000136890 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
       components:
         schemas:
           nip:
@@ -1749,7 +1749,7 @@ paths:
                 | `9` | Inne |
 
               </details>
-  /v1/upadlosci/checkNumbers/:
+  /v1/msig/checkNumbers:
     post:
       summary: ''
       operationId: check-numbers
@@ -1863,7 +1863,7 @@ paths:
         - lang: Shell
           source: |-
             # Sprawdź ogłoszenia dla podmiotu z numerem KRS `0000136890`
-            curl https://api.imsig.pl/v1/upadlosci/checkNumbers --request POST --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\" --data '{"krs":["0000136890"]}'
+            curl https://api.imsig.pl/v1/msig/checkNumbers --request POST --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\" --data '{"krs":["0000136890"]}'
       components:
         schemas:
           nip:
