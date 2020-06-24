@@ -38,16 +38,16 @@ x-tagGroups:
       - announcements
 
 paths:
-  /v1/rdf/documents/:
+  /v1/rdf/documents:
     get:
       $ref: krs_rdf/paths/get-documents.yaml
-  /v1/rdf/financialData/:
+  /v1/rdf/financialData:
     get:
       $ref: krs_rdf/paths/get-financial-data.yaml
-  /v1/upadlosci/announcements/:
+  /v1/msig/announcements:
     get:
       $ref: msig/paths/get-announcements.yaml
-  /v1/upadlosci/checkNumbers/:
+  /v1/msig/checkNumbers:
     post:
       $ref: msig/paths/check-numbers.yaml
 

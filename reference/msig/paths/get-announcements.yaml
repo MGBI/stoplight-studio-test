@@ -337,7 +337,7 @@ x-code-samples:
   - lang: Shell
     source: |-
       # Wyszukaj ogłoszenia dla podmiotu z numerem KRS `0000136890`
-      curl https://api.imsig.pl/v1/upadlosci/announcements?krs=0000136890 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+      curl https://api.imsig.pl/v1/msig/announcements?krs=0000136890 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 
 components:
   schemas:
