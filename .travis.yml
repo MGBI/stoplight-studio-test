@@ -1,5 +1,6 @@
 language: node_js
 before_script:
+  - npm update -g npm
   - npm install -g @apidevtools/swagger-cli
 script:
   - swagger-cli validate reference/openapi.v1.yaml
