@@ -71,7 +71,7 @@ x-code-samples:
   - lang: Shell
     source: |-
       # Sprawdź ogłoszenia dla podmiotu z numerem KRS `0000136890`
-      curl https://api.imsig.pl/v1/msig/checkNumbers --request POST --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\" --data '{"krs":["0000136890"]}'
+      curl https://api.imsig.pl/v1/msig/checkNumbers --request POST --header \"Authorization: aaaabbbbccccdddd\" --data '{"krs":["0000136890"]}'
 
 components:
   schemas:

@@ -9,8 +9,8 @@ info:
     $ref: description.md
   contact:
     name: MGBI sp. z o.o.
-    url: 'https://www.mgbi.pl'
-    email: info@mgbi.pl
+    url: 'https://www.imsig.pl'
+    email: info@imsig.pl
 
 tags:
   - name: documents

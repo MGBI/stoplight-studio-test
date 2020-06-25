@@ -4,7 +4,7 @@ tags:
   - announcements
 security:
   - api_key: []
-description: 'Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych we wszystkich rozdziałach MSiG poza rozdziałem *XV. Wpisy do krajowego rejestru sądowego*.'
+description: 'Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych w wybranych rozdziałach MSiG.'
 parameters:
   - schema:
       $ref: '#/components/schemas/msig_signature'
@@ -337,7 +337,7 @@ x-code-samples:
   - lang: Shell
     source: |-
       # Wyszukaj ogłoszenia dla podmiotu z numerem KRS `0000136890`
-      curl https://api.imsig.pl/v1/msig/announcements?krs=0000136890 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+      curl https://api.imsig.pl/v1/msig/announcements?krs=0000136890 --header \"Authorization: aaaabbbbccccdddd\"
 
 components:
   schemas:
