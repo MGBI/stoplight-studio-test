@@ -4,6 +4,7 @@ a także wyodrębnionych z nich danych w ustrukturyzowanej formie.
 
 W obecnej wersji API umożliwia dostęp do ogłoszeń dotyczących postępowań upadłościowych
 i restrukturyzacyjnych, pochodzących z numerów MSiG wydanych po 1 stycznia 2001 r.
+(usługa [Lista upadłości](https://www.imsig.pl/lista-upadlosci)).
 
 
 ## Źródło danych
