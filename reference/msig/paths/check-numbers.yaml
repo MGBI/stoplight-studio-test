@@ -4,7 +4,13 @@ tags:
   - announcements
 security:
   - api_key: []
-description: 'Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów o przekazanych numerach rejestrowych.'
+description: |-
+  Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów
+  o przekazanych numerach rejestrowych.
+
+  W przypadku sukcesu w treści odpowiedzi zawsze zwracane są cztery listy
+  zawierające numery rejestrowe przekazane w parametrach żądania, dla których we
+  wskazanym okresie pojawiły się ogłoszenia w MSiG.
 requestBody:
   content:
     application/json:
@@ -54,7 +60,7 @@ responses:
           oneOf:
             - type: object
               title: Sukces
-              description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+              description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG'
               properties:
                 nip:
                   type: array

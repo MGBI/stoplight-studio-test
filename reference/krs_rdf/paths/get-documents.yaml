@@ -4,7 +4,17 @@ tags:
   - documents
 security:
   - api_key: []
-description: Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
+description: |-
+  Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów
+  Finansowych KRS spełniających podane kryteria.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista dokumentów
+  spełniających kryteria określone w parametrach metody, posortowanych
+  malejąco według daty publikacji w RDF.
+
+  W przypadku, gdy żaden dokument nie spełnia podanych kryteriów, zwracana
+  jest pusta lista. W przypadku, gdy liczba dokumentów spełniających kryteria
+  jest większa niż 100, lista zawiera 100 pierwszych dokumentów.
 parameters:
   - schema:
       $ref: '#/components/schemas/krs'
@@ -57,12 +67,7 @@ responses:
           type: array
           maxItems: 100
           uniqueItems: true
-          description: |-
-            Lista dokumentów spełniających kryteria
-            określone w parametrach metody, posortowanych malejąco według daty publikacji w RDF.
-            W przypadku, gdy żaden dokument nie spełnia podanych kryteriów, zwracana jest pusta
-            lista. W przypadku, gdy liczba dokumentów spełniających kryteria jest większa niż 100,
-            lista zawiera 100 pierwszych dokumentów.
+          description: 'Lista dokumentów spełniających kryteria określone w parametrach metody, posortowanych malejąco według daty publikacji w RDF'
           items:
             type: object
             properties:

@@ -4,7 +4,17 @@ tags:
   - announcements
 security:
   - api_key: []
-description: 'Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych w wybranych rozdziałach MSiG.'
+description: |-
+  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
+  w wybranych rozdziałach MSiG.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty publikacji w MSiG.
+
+  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
+  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
 parameters:
   - schema:
       $ref: '#/components/schemas/msig_signature'
@@ -107,7 +117,7 @@ responses:
           oneOf:
             - title: Sukces
               type: array
-              description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG.'
+              description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG'
               items:
                 type: object
                 properties:
