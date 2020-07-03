@@ -145,16 +145,16 @@ responses:
                 type: string
                 format: uri
                 description: Bezpośredni adres URL pliku z treścią oryginalnego dokumentu
-                example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download'
+                example: 'https://api.imsig.pl/v1/rdf/documents/2047606/download'
               pdf_preview_url:
                 type: string
                 format: uri
                 description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej do formatu PDF (tylko dla dokumentów w formacie XML)
-                example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download?format=pdf'
+                example: 'https://api.imsig.pl/v1/rdf/documents/2047606/download?format=pdf'
               html_preview_url:
                 type: string
                 format: uri
-                example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download?format=html'
+                example: 'https://api.imsig.pl/v1/rdf/documents/2047606/download?format=html'
                 description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej do formatu HTML (tylko dla dokumentów w formacie XML)
             required:
               - id
