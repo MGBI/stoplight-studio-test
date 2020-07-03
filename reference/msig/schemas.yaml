@@ -19,6 +19,13 @@ krs:
   maxLength: 10
   example: '0000136890'
   description: Numer KRS
+pesel:
+  type: string
+  pattern: "\\d{11}"
+  minLength: 11
+  maxLength: 11
+  example: '75121968629'
+  description: Numer PESEL
 msig_error:
   title: Błąd
   type: object

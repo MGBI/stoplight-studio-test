@@ -47,7 +47,22 @@ parameters:
       $ref: '#/components/schemas/krs'
     in: query
     name: krs
-    description: 'Numer KRS podmiotu, którego dotyczy sprawozdanie'
+    description: 'Numer KRS podmiotu, którego dotyczy ogłoszenie'
+  - schema:
+      $ref: '#/components/schemas/pesel'
+    in: query
+    name: pesel
+    description: 'Numer PESEL osoby, której dotyczy ogłoszenie'
+  - schema:
+      type: string
+    in: query
+    name: first_name
+    description: 'Imię osoby, której dotyczy ogłoszenie'
+  - schema:
+      type: string
+    in: query
+    name: last_name
+    description: 'Nazwisko osoby, której dotyczy ogłoszenie'
   - schema:
       type: string
     in: query
@@ -120,6 +135,14 @@ responses:
                               type: string
                               example: Isd Huta Częstochowa sp. z o.o.
                               description: Nazwa podmiotu
+                            first_name:
+                              type: string
+                              example: Jan
+                              description: Imię
+                            last_name:
+                              type: string
+                              example: Kowalski
+                              description: Nazwisko
                             legal_form:
                               type: string
                               example: spółki z ograniczoną odpowiedzialnością
@@ -151,6 +174,8 @@ responses:
                               $ref: '#/components/schemas/regon'
                             krs:
                               $ref: '#/components/schemas/krs'
+                            pesel:
+                              $ref: '#/components/schemas/pesel'
                         address:
                           type: object
                           description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
@@ -299,9 +324,6 @@ responses:
                         type: string
                         example: '26734'
                         description: Numer pozycji MSiG
-                      sequential_number:
-                        type: integer
-                        format: int32
                       url:
                         type: string
                         example: 'http://www.imsig.pl/pozycja/2020/112/26734'
