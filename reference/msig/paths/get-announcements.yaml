@@ -124,12 +124,6 @@ responses:
                         info:
                           type: object
                           description: Podstawowe dane podmiotu
-                          required:
-                            - cleaned_name
-                            - legal_form
-                            - ownership_type
-                            - primary_business
-                            - commencement_date
                           properties:
                             cleaned_name:
                               type: string
@@ -137,10 +131,12 @@ responses:
                               description: Nazwa podmiotu
                             first_name:
                               type: string
+                              nullable: true
                               example: Jan
                               description: Imię
                             last_name:
                               type: string
+                              nullable: true
                               example: Kowalski
                               description: Nazwisko
                             legal_form:
@@ -153,6 +149,7 @@ responses:
                               description: Forma własności
                             primary_business:
                               type: string
+                              nullable: true
                               example: '24.10.Z Produkcja surówki, żelazostopów, żeliwa i stali oraz wyrobów hutniczych'
                               description: Przeważająca działalność gospodarcza (kod PKD)
                             commencement_date:
@@ -160,32 +157,62 @@ responses:
                               format: date
                               example: '2002-10-01'
                               description: Data rozpoczęcia działalności
+                          required:
+                            - cleaned_name
+                            - first_name
+                            - last_name
+                            - legal_form
+                            - ownership_type
+                            - primary_business
+                            - commencement_date
                         numbers:
                           type: object
                           description: Numery rejestrowe podmiotu
+                          properties:
+                            # nie możemy skorzystać z definicji
+                            # z #/components/schemas/nip /regon /krs /pesel,
+                            # gdyż wykorzystywane są w parametrach a tam
+                            # nie powinna być ustawiona flaga 'nullable'
+                            nip:
+                              type: string
+                              pattern: "\\d{10}"
+                              minLength: 10
+                              maxLength: 10
+                              nullable: true
+                              example: '9491827824'
+                              description: Numer NIP
+                            regon:
+                              type: string
+                              pattern: "\\d{9}"
+                              minLength: 9
+                              maxLength: 9
+                              nullable: true
+                              example: '152074271'
+                              description: Numer REGON
+                            krs:
+                              type: string
+                              pattern: "\\d{10}"
+                              minLength: 10
+                              maxLength: 10
+                              nullable: true
+                              example: '0000136890'
+                              description: Numer KRS
+                            pesel:
+                              type: string
+                              pattern: "\\d{11}"
+                              minLength: 11
+                              maxLength: 11
+                              nullable: true
+                              example: '75121968629'
+                              description: Numer PESEL
                           required:
                             - nip
                             - regon
                             - krs
-                          properties:
-                            nip:
-                              $ref: '#/components/schemas/nip'
-                            regon:
-                              $ref: '#/components/schemas/regon'
-                            krs:
-                              $ref: '#/components/schemas/krs'
-                            pesel:
-                              $ref: '#/components/schemas/pesel'
+                            - pesel
                         address:
                           type: object
                           description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
-                          required:
-                            - state
-                            - powiat
-                            - gmina
-                            - town
-                            - zip_code
-                            - post_office
                           properties:
                             state:
                               type: string
@@ -205,15 +232,18 @@ responses:
                               description: Miejscowość
                             street:
                               type: string
+                              nullable: true
                               example: ul. Kucelińska
                               description: Ulica
                             house_number:
                               type: string
+                              nullable: true
                               example: '22'
                               description: Numer nieruchomości
                             flat_number:
                               type: string
-                              example: null
+                              nullable: true
+                              example: '11'
                               description: Numer lokalu
                             zip_code:
                               type: string
@@ -224,6 +254,16 @@ responses:
                               type: string
                               example: Częstochowa
                               description: Poczta
+                          required:
+                            - state
+                            - powiat
+                            - gmina
+                            - town
+                            - street
+                            - house_number
+                            - flat_number
+                            - zip_code
+                            - post_office
                       required:
                         - info
                         - numbers
@@ -250,10 +290,12 @@ responses:
                           - VIII GUp 137/19
                       commissioner_name:
                         type: string
+                        nullable: true
                         example: Małgorzata Brzózka-Chamala
                         description: Imię i nazwisko sędziego komisarza
                       commissioner_deputy_name:
                         type: string
+                        nullable: true
                         example: Małgorzata Grabowska
                         description: Imię i nazwisko zastępcy sędziego komisarza
                       administrator_name:
@@ -270,13 +312,15 @@ responses:
                           - nadzorca sądowy
                       administrator_licence_number:
                         type: integer
+                        format: int32
                         example: 598
                         description: Numer licencji doradcy restrukturyzacyjnego nadzorcy w postępowaniu
-                        format: int32
                     required:
                       - court_name
                       - court_department
                       - signatures
+                      - commissioner_name
+                      - commissioner_deputy_name
                       - administrator_name
                       - administrator_function
                       - administrator_licence_number
@@ -286,21 +330,26 @@ responses:
                     properties:
                       order_date:
                         type: string
+                        format: date
+                        nullable: true
                         example: '2019-07-19'
                         description: Data wydania postanowienia
-                        format: date
                       expiration_period:
                         type: integer
+                        format: int32
+                        nullable: true
                         example: 47
                         description: Okres do działania (w dniach)
-                        format: int32
                       expiration_date:
                         type: string
-                        example: '2020-07-27'
                         format: date
+                        nullable: true
+                        example: '2020-07-27'
                         description: Data końcowa okresu do działania
                     required:
                       - order_date
+                      - expiration_period
+                      - expiration_date
                   msig_entry:
                     type: object
                     description: 'Informacje dotyczące numeru MSiG, z którego pochodzi ogłoszenie'
@@ -313,9 +362,9 @@ responses:
                         $ref: '#/components/schemas/msig_signature'
                       issue_date:
                         type: string
+                        format: date
                         example: '2020-06-10'
                         description: Data publikacji ogłoszenia w MSiG
-                        format: date
                       yearly_number:
                         type: string
                         example: '112'
@@ -326,9 +375,9 @@ responses:
                         description: Numer pozycji MSiG
                       url:
                         type: string
+                        format: uri
                         example: 'http://www.imsig.pl/pozycja/2020/112/26734'
                         description: Adres URL ogłoszenia w serwisie imsig.pl
-                        format: uri
                     required:
                       - chapter
                       - section
@@ -339,9 +388,6 @@ responses:
                       - url
                   content:
                     type: object
-                    required:
-                      - text
-                      - html
                     description: Nieprzetworzona treść ogłoszenia
                     properties:
                       text:
@@ -352,8 +398,16 @@ responses:
                         type: string
                         example: '<tresc><p style="margin:15px 0px 0px 0px;text-align:center">SYNDYK MASY UPADŁOŚCI<br/>ISD HUTA CZĘSTOCHOWA Sp. z o.o. w upadłości<br/>w Częstochowie<br/>(sygn. akt VIII GUp 137/19)<br/>obwieszcza przetarg na sprzedaż przedsiębiorstwa</p><p style="margin:15px 0px 0px 0px">Przedmiotem przetargu jest przedsiębiorstwo ISD Huta Częstochowa Sp. z o.o. z siedzibą w Częstochowie (KRS nr 0000136890) opisane w opisie i oszacowaniu według stanu na dzień 3 września 2019 r. Przedmiotem przetargu jest całe przedsiębiorstwo upadłego z wyłączeniem aktywów wymienionych w Regulaminie Przetargu.</p><p style="margin:15px 0px 0px 0px">Cena wywoławcza - 220 000 000,00 zł netto.</p><p style="margin:15px 0px 0px 0px">Oferty w zamkniętych kopertach z wyraźnym dopiskiem "NIE OTWIERAĆ - ISD Huta Częstochowa - PRZETARG" należy składać w biurze podawczym w budynku Sądu Rejonowego w Częstochowie przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, lub przesłać pocztą w terminie do dnia 27 lipca 2020 r., do godz. 14<sup>00</sup>(decyduje data i godzina wpływu do Sądu).<br/>Zaleca się osobiste złożenie oferty. W razie braku możliwości złożenia oferty w biurze podawczym Sądu wskutek całkowitego zamknięcia budynku Sądu dla interesantów na mocy decyzji właściwych organów, oferty mogą zostać złożone w Biurze Syndyka w Katowicach, ul. PCK 10/7, 40-057 Katowice, w terminie do dnia 27 lipca 2020 r., do godz. 17<sup>00</sup>.</p><p style="margin:15px 0px 0px 0px">Warunkiem uczestnictwa w przetargu jest uprzednia wpłata wadium w wysokości 10% ceny wywoławczej netto przedsiębiorstwa tj. w kwocie 22 000 000,00 zł.</p><p style="margin:15px 0px 0px 0px">Rozpoznanie ofert nastąpi na posiedzeniu jawnym w Sądzie Rejonowym w Częstochowie, VIII Wydział Gospodarczy, przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, w dniu 28 lipca 2020 r., o godz. 12<sup>00</sup>, w sali 108.</p><p style="margin:15px 0px 0px 0px">Wszelkie informacje dotyczące przedmiotu niniejszego przetargu, trybu składania ofert oraz treść Regulaminu Przetargu można uzyskać pod nr tel. 502-074-019 lub 735-019-002, w dni robocze, od poniedziałku do piątku, w godz. od 9<sup>00</sup> do 15<sup>00</sup>, jak również drogą elektroniczną pod adresem: hcz@bienioszek.pl lub mateusz@bienioszek.pl wyłącznie po uprzednim podpisaniu umowy o zachowaniu poufności.</p></tresc>'
                         description: Treść ogłoszenia w formacie HTML
+                    required:
+                      - text
+                      - html
                 required:
                   - id
+                  - entity
+                  - proceeding
+                  - order
+                  - msig_entry
+                  - content
             - $ref: '#/components/schemas/msig_error'
 x-code-samples:
   - lang: Shell
