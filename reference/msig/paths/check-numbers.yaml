@@ -23,19 +23,28 @@ requestBody:
             description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
           nip:
             type: array
+            maxItems: 1000
             description: Lista numerów NIP do sprawdzenia
             items:
               $ref: '#/components/schemas/nip'
           regon:
             type: array
+            maxItems: 1000
             description: Lista numerów REGON do sprawdzenia
             items:
               $ref: '#/components/schemas/regon'
           krs:
             type: array
+            maxItems: 1000
             description: Lista numerów KRS do sprawdzenia
             items:
               $ref: '#/components/schemas/krs'
+          pesel:
+            type: array
+            maxItems: 1000
+            description: Lista numerów PESEL do sprawdzenia
+            items:
+              $ref: '#/components/schemas/pesel'
 responses:
   '200':
     description: Wynik sprawdzenia ogłoszeń
@@ -49,23 +58,33 @@ responses:
               properties:
                 nip:
                   type: array
+                  maxItems: 1000
                   description: 'Lista numerów NIP, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
                   items:
                     $ref: '#/components/schemas/nip'
                 regon:
                   type: array
+                  maxItems: 1000
                   description: 'Lista numerów REGON, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
                   items:
                     $ref: '#/components/schemas/regon'
                 krs:
                   type: array
+                  maxItems: 1000
                   description: 'Lista numerów KRS, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                  items:
+                    $ref: '#/components/schemas/krs'
+                pesel:
+                  type: array
+                  maxItems: 1000
+                  description: 'Lista numerów PESEL, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
                   items:
                     $ref: '#/components/schemas/krs'
               required:
                 - nip
                 - regon
                 - krs
+                - pesel
             - $ref: '#/components/schemas/msig_error'
 x-code-samples:
   - lang: Shell

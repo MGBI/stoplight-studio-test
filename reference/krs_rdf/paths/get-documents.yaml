@@ -55,7 +55,6 @@ responses:
       application/json:
         schema:
           type: array
-          minItems: 0
           maxItems: 100
           uniqueItems: true
           description: |-
