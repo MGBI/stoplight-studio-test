@@ -174,7 +174,17 @@ paths:
         - documents
       security:
         - api_key: []
-      description: Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
+      description: |-
+        Pobiera informacje o dokumentach złożonych do Repozytorium Dokumentów
+        Finansowych KRS spełniających podane kryteria.
+
+        W przypadku sukcesu w treści odpowiedzi zwracana jest lista dokumentów
+        spełniających kryteria określone w parametrach metody, posortowanych
+        malejąco według daty publikacji w RDF.
+
+        W przypadku, gdy żaden dokument nie spełnia podanych kryteriów, zwracana
+        jest pusta lista. W przypadku, gdy liczba dokumentów spełniających kryteria
+        jest większa niż 100, lista zawiera 100 pierwszych dokumentów.
       parameters:
         - schema:
             type: string
@@ -290,12 +300,7 @@ paths:
                 type: array
                 maxItems: 100
                 uniqueItems: true
-                description: |-
-                  Lista dokumentów spełniających kryteria
-                  określone w parametrach metody, posortowanych malejąco według daty publikacji w RDF.
-                  W przypadku, gdy żaden dokument nie spełnia podanych kryteriów, zwracana jest pusta
-                  lista. W przypadku, gdy liczba dokumentów spełniających kryteria jest większa niż 100,
-                  lista zawiera 100 pierwszych dokumentów.
+                description: 'Lista dokumentów spełniających kryteria określone w parametrach metody, posortowanych malejąco według daty publikacji w RDF'
                 items:
                   type: object
                   properties:
@@ -448,16 +453,16 @@ paths:
                       type: string
                       format: uri
                       description: Bezpośredni adres URL pliku z treścią oryginalnego dokumentu
-                      example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download'
+                      example: 'https://api.imsig.pl/v1/rdf/documents/2047606/download'
                     pdf_preview_url:
                       type: string
                       format: uri
                       description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej do formatu PDF (tylko dla dokumentów w formacie XML)
-                      example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download?format=pdf'
+                      example: 'https://api.imsig.pl/v1/rdf/documents/2047606/download?format=pdf'
                     html_preview_url:
                       type: string
                       format: uri
-                      example: 'https://rdf-api.imsig.pl/v1/documents/2047606/download?format=html'
+                      example: 'https://api.imsig.pl/v1/rdf/documents/2047606/download?format=html'
                       description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej do formatu HTML (tylko dla dokumentów w formacie XML)
                   required:
                     - id
@@ -707,7 +712,18 @@ paths:
         - financial_data
       security:
         - api_key: []
-      description: Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium Dokumentów Finansowych KRS spełniających podane kryteria.
+      description: |-
+        Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium
+        Dokumentów Finansowych KRS spełniających podane kryteria.
+
+        W przypadku sukcesu w treści odpowiedzi zwracana jest lista danych finansowych
+        ze sprawozdań spełniających kryteria określone w parametrach metody,
+        posortowanych malejąco według daty publikacji w RDF.
+
+        W przypadku, gdy żadne sprawozdanie nie spełnia podanych kryteriów, zwracana
+        jest pusta lista. W przypadku, gdy liczba sprawozdań spełniających kryteria
+        jest większa niż 100, lista zawiera dane finansowe ze 100 pierwszych
+        dokumentów.
       parameters:
         - schema:
             type: string
@@ -835,12 +851,7 @@ paths:
                 type: array
                 maxItems: 100
                 uniqueItems: true
-                description: |-
-                  Lista danych finansowych ze sprawozdań spełniających kryteria określone
-                  w parametrach metody, posortowanych malejąco według daty publikacji w RDF.
-                  W przypadku, gdy żadne sprawozdanie nie spełnia podanych kryteriów, zwracana
-                  jest pusta lista. W przypadku, gdy liczba sprawozdań spełniających kryteria
-                  jest większa niż 100, lista zawiera dane finansowe ze 100 pierwszych dokumentów.
+                description: 'Lista danych finansowych ze sprawozdań spełniających kryteria określone w parametrach metody, posortowanych malejąco według daty publikacji w RDF'
                 items:
                   type: object
                   properties:
@@ -1217,7 +1228,17 @@ paths:
         - announcements
       security:
         - api_key: []
-      description: Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych w wybranych rozdziałach MSiG.
+      description: |-
+        Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
+        w wybranych rozdziałach MSiG.
+
+        W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
+        spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+        według daty publikacji w MSiG.
+
+        W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
+        zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
+        kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
       parameters:
         - schema:
             type: string
@@ -1388,7 +1409,7 @@ paths:
                 oneOf:
                   - title: Sukces
                     type: array
-                    description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG.'
+                    description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG'
                     items:
                       type: object
                       properties:
@@ -1851,7 +1872,13 @@ paths:
         - announcements
       security:
         - api_key: []
-      description: 'Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów o przekazanych numerach rejestrowych.'
+      description: |-
+        Sprawdza, czy we wskazanym okresie pojawiły się ogłoszenia dotyczące podmiotów
+        o przekazanych numerach rejestrowych.
+
+        W przypadku sukcesu w treści odpowiedzi zawsze zwracane są cztery listy
+        zawierające numery rejestrowe przekazane w parametrach żądania, dla których we
+        wskazanym okresie pojawiły się ogłoszenia w MSiG.
       requestBody:
         content:
           application/json:
@@ -1921,7 +1948,7 @@ paths:
                 oneOf:
                   - type: object
                     title: Sukces
-                    description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                    description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG'
                     properties:
                       nip:
                         type: array
