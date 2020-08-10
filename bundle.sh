@@ -1,5 +1,7 @@
 #!/bin/bash -e
 docker build -t swagger-cli -f swagger_cli/Dockerfile .
+
+sudo chgrp docker-root openapi-bundle.v1.yaml
 docker run --rm -it -v $PWD:/data swagger-cli bundle \
   --dereference \
   --type yaml \
@@ -17,6 +19,7 @@ docker build -t redoc-cli -f redoc_cli/Dockerfile .
 #	--options.theme.rightPanel.backgroundColor=#3377b2 \
 
 ./clean_spec.py openapi-bundle.v1.yaml > openapi-bundle-cleaned.v1.yaml
+sudo chgrp docker-root redoc-static.html
 docker run --rm -it -v $PWD:/data redoc-cli bundle \
 	--options.noAutoAuth \
 	--options.theme.colors.primary.main=#2C669A \
