@@ -1637,7 +1637,6 @@ paths:
                             - commissioner_deputy_name
                             - administrator_name
                             - administrator_function
-                            - administrator_licence_number
                         order:
                           type: object
                           description: 'Informacje o postanowieniu, którego dotyczy ogłoszenie'
