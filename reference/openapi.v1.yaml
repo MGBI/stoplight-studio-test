@@ -28,6 +28,9 @@ tags:
     description:
       $ref: msig/descriptions/announcements.md
 
+  - name: updates
+    x-displayName: Aktualizacje
+
 x-tagGroups:
   - name: KRS RDF API
     tags:
@@ -36,6 +39,7 @@ x-tagGroups:
   - name: MSiG API
     tags:
       - announcements
+      - updates
 
 paths:
   /v1/rdf/documents:
@@ -47,6 +51,9 @@ paths:
   /v1/msig/announcements:
     get:
       $ref: msig/paths/get-announcements.yaml
+  /v1/msig/updates:
+    get:
+      $ref: msig/paths/get-updates.yaml
   /v1/msig/checkNumbers:
     post:
       $ref: msig/paths/check-numbers.yaml

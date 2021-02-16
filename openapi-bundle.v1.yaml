@@ -157,6 +157,8 @@ tags:
 
       Aby sprawdzić, jakie ogłoszenia publikowane są w MSiG, przejdź na [stronę główną serwisu iMSiG.pl](
       https://www.imsig.pl).
+  - name: updates
+    x-displayName: Aktualizacje
 x-tagGroups:
   - name: KRS RDF API
     tags:
@@ -165,6 +167,7 @@ x-tagGroups:
   - name: MSiG API
     tags:
       - announcements
+      - updates
 paths:
   /v1/rdf/documents:
     get:
@@ -1922,6 +1925,254 @@ paths:
           source: |-
             # Wyszukaj ogłoszenia dla podmiotu z numerem KRS `0000136890`
             curl https://api.imsig.pl/v1/msig/announcements?krs=0000136890 --header \"Authorization: aaaabbbbccccdddd\"
+      components:
+        schemas:
+          nip:
+            type: string
+            pattern: '\d{10}'
+            minLength: 10
+            maxLength: 10
+            example: '9491827824'
+            description: Numer NIP
+          regon:
+            type: string
+            pattern: '\d{9}'
+            minLength: 9
+            maxLength: 9
+            example: '152074271'
+            description: Numer REGON
+          krs:
+            type: string
+            pattern: '\d{10}'
+            minLength: 10
+            maxLength: 10
+            example: 0000136890
+            description: Numer KRS
+          pesel:
+            type: string
+            pattern: '\d{11}'
+            minLength: 11
+            maxLength: 11
+            example: '75121968629'
+            description: Numer PESEL
+          msig_error:
+            title: Błąd
+            type: object
+            properties:
+              detail:
+                type: string
+                example: Brak numerów do sprawdzenia
+                description: Szczegółowa informacja na temat błędu
+            required:
+              - detail
+            description: Obiekt dla błędu dla MSIG API.
+          msig_signature:
+            type: string
+            example: BMSiG-26451/2020
+            description: Sygnatura ogłoszenia w MSiG
+          msig_chapter:
+            type: integer
+            example: 0
+            enum:
+              - 0
+              - 1
+            description: |-
+              Rozdział MSiG
+
+              <details>
+                <summary>Pokaż możliwe opcje</summary>
+
+                | Wartość | Nazwa rozdziału |
+                |-|-|
+                | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+                | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |
+
+              </details>
+          msig_section:
+            type: integer
+            example: 1
+            enum:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 20
+              - 21
+              - 22
+              - 23
+              - 24
+              - 25
+              - 26
+              - 27
+              - 28
+              - 29
+              - 30
+              - 31
+              - 32
+              - 33
+              - 34
+              - 35
+              - 36
+              - 37
+              - 38
+              - 39
+              - 40
+              - 41
+              - 42
+              - 43
+              - 44
+              - 45
+              - 46
+              - 47
+              - 48
+              - 49
+              - 50
+            description: |-
+              Sekcja MSiG
+
+              <details>
+                <summary>Pokaż możliwe opcje</summary>
+
+                <p><strong>Ogłoszenia wymagane przez prawo upadłościowe:</strong></p>
+                
+                | Wartość | Nazwa sekcji |
+                |-|-|
+                | `1` | Postanowienie o ogłoszeniu upadłości |
+                | `2` | Obwieszczenie o zatwierdzeniu układu |
+                | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+                | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+                | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+                | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+                | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+                | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+                | `9` | Inne |
+                
+                <p><strong>Ogłoszenia wymagane przez prawo restrukturyzacyjne:</strong></p>
+                
+                | Wartość | Nazwa sekcji |
+                |-|-|
+                | `20` | Dokonanie zmian w spisie wierzytelności |
+                | `21` | Inne |
+                | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
+                | `23` | Odmowa zatwierdzenia układu |
+                | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
+                | `25` | Określenie trybu i sposobu głosowania nad układem |
+                | `26` | Otwarcie postępowania o zatwierdzenie układu |
+                | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem COVID-19 |
+                | `28` | Otwarcie postępowania o zmianę układu |
+                | `29` | Otwarcie postępowania sanacyjnego |
+                | `30` | Otwarcie postępowania układowego |
+                | `31` | Otwarcie przyspieszonego postępowania układowego |
+                | `32` | Sprostowanie |
+                | `33` | Stwierdzenie wykonania układu |
+                | `34` | Uchylenie układu |
+                | `35` | Umorzenie postępowania |
+                | `36` | Wyznaczenie nadzorcy lub zarządcy |
+                | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
+                | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
+                | `39` | Zabezpieczenie majątku dłużnika |
+                | `40` | Zakończenie postępowania |
+                | `41` | Zatwierdzenie spisu wierzytelności |
+                | `42` | Zatwierdzenie układu |
+                | `43` | Złożenie planu restrukturyzacyjnego |
+                | `44` | Złożenie spisu wierzytelności |
+                | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
+                | `46` | Złożenie uzupełniającego spisu wierzytelności |
+                | `47` | Złożenie wniosku o zatwierdzenie układu |
+                | `48` | Zmiana nadzorcy lub zarządcy |
+                | `49` | Zmiana sędziego komisarza |
+                | `50` | Zmiana terminu zgromadzenia wierzycieli |
+
+              </details>
+  /v1/msig/updates:
+    get:
+      summary: ''
+      operationId: get-updates
+      tags:
+        - updates
+      security:
+        - api_key: []
+      description: |-
+        Pobiera informacje o aktualizacji dla wydań MSiG ze wskazanego okresu.
+
+        W przypadku sukcesu w treści odpowiedzi zwracana jest lista aktualizacji
+        spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+        według daty wydania MSiG.
+
+        W przypadku, gdy żadna aktualizacja nie spełnia podanych kryteriów,
+        zwracana jest pusta lista. W przypadku, gdy liczba aktualizacji spełniających
+        kryteria jest większa niż 1000, lista zawiera 1000 pierwszych aktualizacji.
+      parameters:
+        - schema:
+            type: string
+            format: date
+            example: '2019-01-01'
+          in: query
+          name: issue_date_from
+          description: Początek zakresu dla daty wydania MSiG
+        - schema:
+            type: string
+            format: date
+            example: '2019-12-31'
+          in: query
+          name: issue_date_to
+          description: Koniec zakresu dla daty wydania MSiG
+      responses:
+        '200':
+          description: Wynik wyszukiwania aktualizacji
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - title: Sukces
+                    type: array
+                    description: 'Lista aktualizacji spełniających kryteria określone w parametrach metody, posortowanych według daty wydania MSiG'
+                    items:
+                      type: object
+                      properties:
+                        issue_date:
+                          type: string
+                          format: date
+                          example: '2019-06-10'
+                          description: Data wydania MSiG
+                        creation_datetime:
+                          type: string
+                          format: datetime
+                          example: '2019-06-10T09:13:12.115Z'
+                          description: Data rozpoczęcia aktualizacji
+                        validation_datetime:
+                          type: string
+                          format: datetime
+                          example: '2019-06-10T10:13:12.115Z'
+                          description: Data zakończenia aktualizacji (weryfikacji danych)
+                        announcements_count:
+                          type: integer
+                          example: 213
+                          description: Liczba ogłoszeń dodanych w aktualizacji
+                      required:
+                        - issue_date
+                        - creation_datetime
+                        - announcements_count
+                  - title: Błąd
+                    type: object
+                    properties:
+                      detail:
+                        type: string
+                        example: Brak numerów do sprawdzenia
+                        description: Szczegółowa informacja na temat błędu
+                    required:
+                      - detail
+                    description: Obiekt dla błędu dla MSIG API.
+      x-code-samples:
+        - lang: Shell
+          source: |-
+            # Wyszukaj aktualizacje dla okresu od `2019-01-01` do `2019-12-31`
+            curl https://api.imsig.pl/v1/msig/updates?issue_date_from=2019-01-01&issue_date_to=2019-12-31 --header \"Authorization: aaaabbbbccccdddd\"
       components:
         schemas:
           nip:
