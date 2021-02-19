@@ -2098,7 +2098,7 @@ paths:
       security:
         - api_key: []
       description: |-
-        Pobiera informacje o aktualizacji dla wydań MSiG ze wskazanego okresu.
+        Pobiera informacje o aktualizacjach dla wydań MSiG ze wskazanego okresu.
 
         W przypadku sukcesu w treści odpowiedzi zwracana jest lista aktualizacji
         spełniających kryteria określone w parametrach metody, posortowanych rosnąco
