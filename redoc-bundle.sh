@@ -9,7 +9,7 @@
 #	--options.theme.rightPanel.backgroundColor=#3377b2 \
 
 sudo chgrp docker-root redoc-static.html
-docker run --rm -it -v $PWD:/mnt mgbi/redoc-cli bundle \
+docker run --rm -it --volume $PWD:/mnt --workdir /mnt mgbi/redoc-cli bundle \
 	--options.noAutoAuth \
 	--options.theme.colors.primary.main=#2C669A \
 	--options.theme.rightPanel.backgroundColor=#2C669A \
