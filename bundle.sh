@@ -18,10 +18,10 @@ docker build -t redoc-cli -f redoc_cli/Dockerfile .
 
 ./clean_spec.py openapi-bundle.v1.yaml > openapi-bundle-cleaned.v1.yaml
 sudo chgrp docker-root redoc-static.html
-docker run --rm -it -v $PWD:/data redoc-cli bundle \
+docker run --rm -it -v $PWD:/mnt redoc-cli bundle \
 	--options.noAutoAuth \
 	--options.theme.colors.primary.main=#2C669A \
 	--options.theme.rightPanel.backgroundColor=#2C669A \
 	--options.theme.logo.gutter=20px \
-  openapi-bundle-cleaned.v1.yaml
+  /mnt/openapi-bundle-cleaned.v1.yaml
 rm -f openapi-bundle-cleaned.v1.yaml
