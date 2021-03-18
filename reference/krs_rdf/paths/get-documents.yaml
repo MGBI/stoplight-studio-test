@@ -33,7 +33,7 @@ parameters:
   - schema:
       type: integer
       example: 2018
-      in: query
+    in: query
     name: period_major_year
     description: 'Zasadniczy rok, którego dotyczy dokument'
   - schema:
