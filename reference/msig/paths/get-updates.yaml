@@ -1,0 +1,77 @@
+summary: ''
+operationId: get-updates
+tags:
+  - updates
+security:
+  - api_key: []
+description: |-
+  Pobiera informacje o aktualizacjach dla wydań MSiG ze wskazanego okresu.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista aktualizacji
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty wydania MSiG.
+
+  W przypadku, gdy żadna aktualizacja nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba aktualizacji spełniających
+  kryteria jest większa niż 1000, lista zawiera 1000 pierwszych aktualizacji.
+parameters:
+  - schema:
+      type: string
+      format: date
+      example: '2019-01-01'
+    in: query
+    name: issue_date_from
+    description: Początek zakresu dla daty wydania MSiG
+  - schema:
+      type: string
+      format: date
+      example: '2019-12-31'
+    in: query
+    name: issue_date_to
+    description: Koniec zakresu dla daty wydania MSiG
+responses:
+  '200':
+    description: Wynik wyszukiwania aktualizacji
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - title: Sukces
+              type: array
+              description: 'Lista aktualizacji spełniających kryteria określone w parametrach metody, posortowanych według daty wydania MSiG'
+              items:
+                type: object
+                properties:
+                  issue_date:
+                    type: string
+                    format: date
+                    example: '2019-06-10'
+                    description: Data wydania MSiG
+                  creation_datetime:
+                    type: string
+                    format: datetime
+                    example: '2019-06-10T09:13:12.115Z'
+                    description: Data rozpoczęcia aktualizacji
+                  validation_datetime:
+                    type: string
+                    format: datetime
+                    example: '2019-06-10T10:13:12.115Z'
+                    description: Data zakończenia aktualizacji (weryfikacji danych)
+                  announcements_count:
+                    type: integer
+                    example: 213
+                    description: Liczba ogłoszeń dodanych w aktualizacji
+                required:
+                  - issue_date
+                  - creation_datetime
+                  - announcements_count
+            - $ref: '#/components/schemas/msig_error'
+x-code-samples:
+  - lang: Shell
+    source: |-
+      # Wyszukaj aktualizacje dla okresu od `2019-01-01` do `2019-12-31`
+      curl https://api.imsig.pl/v1/msig/updates?issue_date_from=2019-01-01&issue_date_to=2019-12-31 --header \"Authorization: aaaabbbbccccdddd\"
+
+components:
+  schemas:
+    $ref: ../schemas.yaml
