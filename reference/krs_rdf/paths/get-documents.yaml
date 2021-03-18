@@ -28,8 +28,14 @@ parameters:
       type: integer
       example: 2019
     in: query
-    name: period_year
-    description: 'Rok obrachunkowy, którego dotyczy dokument'
+    name: period_end_year
+    description: 'Rok z daty końcowej okresu, którego dotyczy dokument'
+  - schema:
+      type: integer
+      example: 2018
+      in: query
+    name: period_major_year
+    description: 'Zasadniczy rok, którego dotyczy dokument'
   - schema:
       type: string
       format: date
@@ -87,14 +93,19 @@ responses:
                 description: 'Data początkowa okresu, którego dotyczy dokument'
               period_to:
                 type: string
-                example: '2018-12-31'
+                example: '2019-02-28'
                 format: date
                 description: 'Data końcowa okresu, którego dotyczy dokument'
-              period_year:
+              period_end_year:
+                type: integer
+                example: 2019
+                format: int32
+                description: 'Rok z daty końcowej okresu, którego dotyczy dokument'
+              period_major_year:
                 type: integer
                 example: 2018
                 format: int32
-                description: 'Rok obrachunkowy, którego dotyczy dokument'
+                description: 'Zasadniczy rok, którego dotyczy dokument'
               preparation_date:
                 type: string
                 format: date
