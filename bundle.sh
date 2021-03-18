@@ -2,11 +2,11 @@
 docker build -t swagger-cli -f swagger_cli/Dockerfile .
 
 sudo chgrp docker-root openapi-bundle.v1.yaml
-docker run --rm -it -v $PWD:/data swagger-cli bundle \
+docker run --rm -v $PWD:/mnt swagger-cli bundle \
   --dereference \
   --type yaml \
   --outfile openapi-bundle.v1.yaml \
-  reference/openapi.v1.yaml
+  /mnt/reference/openapi.v1.yaml
 
 docker build -t redoc-cli -f redoc_cli/Dockerfile .
 # options:
