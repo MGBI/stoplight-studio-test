@@ -1,8 +1,6 @@
 #!/bin/bash -e
-docker build -t swagger-cli -f swagger_cli/Dockerfile .
-
 sudo chgrp docker-root openapi-bundle.v1.yaml
-docker run --rm -v $PWD:/mnt swagger-cli bundle \
+docker run --rm -v $PWD:/mnt mgbi/swagger-cli bundle \
   --dereference \
   --type yaml \
   --outfile openapi-bundle.v1.yaml \
