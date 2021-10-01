@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: 'Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API'
+  title: 'Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API'
   version: '1.0'
   x-logo:
     url: 'https://www.imsig.pl/layout/monitor_sadowy_i_gospodarczy.png'
@@ -33,6 +33,15 @@ tags:
       Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia
       wyszukiwanie i pobieranie dokumentów złożonych w Repozytorium Dokumentów
       Finansowych Krajowego Rejestru Sądowego.
+
+      [Skontaktuj się z nami](https://www.imsig.pl/inne/kontakt), aby uzyskać
+      informacje o zasadach korzystania z interfejsu.
+
+      Słowa kluczowe:
+      * Krajowy Rejestr Sądowy API (KRS API)
+      * Repozytorium Dokumentów Finansowych API (RDF API)
+      * Sprawozdania finansowe API
+
 
       ## Źródło danych
       Począwszy od 15 marca 2018 r. każdy ma dostęp przez Internet do składanych
@@ -130,19 +139,30 @@ tags:
     x-displayName: Ogłoszenia
     description: |
       Interfejs programistyczny serwisu iMSiG.pl umożliwia wyszukiwanie i pobieranie
-      oryginalnej treści ogłoszeń publikowanych w Monitorze Sądowym i Gospodarczym (MSiG),
-      a także wyodrębnionych z nich danych w ustrukturyzowanej formie.
+      oryginalnej treści ogłoszeń publikowanych w Monitorze Sądowym i Gospodarczym (MSiG)
+      oraz w Krajowym Rejestrze Zadłużonych (KRZ), a także wyodrębnionych z nich danych
+      w ustrukturyzowanej formie.
 
       W obecnej wersji API umożliwia dostęp do ogłoszeń dotyczących postępowań upadłościowych
-      i restrukturyzacyjnych, pochodzących z numerów MSiG wydanych po 1 stycznia 2001 r.
-      (usługa [Lista upadłości](https://www.imsig.pl/lista-upadlosci)).
+      i restrukturyzacyjnych, pochodzących z numerów MSiG wydanych (od 1 stycznia 2001 r.)
+      oraz z KRZ (od 1 grudnia 2021 r.).
+
+      Informacje o zasadach korzystania z interfejsu dostępne są na stronie usługi [Lista upadłości](https://www.imsig.pl/lista-upadlosci).
+
+      Słowa kluczowe:
+      * Monitor Sądowy i Gospodarczy API (MSIG API)
+      * Krajowy Rejestr Zadłużonych API (KRZ API)
 
 
       ## Źródło danych
-      Monitor Sądowy i Gospodarczy to oficjalny dziennik urzędowy, w którym publikowane
+      Monitor Sądowy i Gospodarczy (MSiG) to oficjalny dziennik urzędowy, w którym publikowane
       są ogłoszenia sądowe m.in. na podstawie przepisów kodeksu spółek handlowych, kodeksu
       postępowania cywilnego i prawa upadłościowego. Nowe numery dziennika są udostępniane
       codziennie w formie plików PDF na [stronie Ministerstwa Sprawiedliwości](https://ems.ms.gov.pl/msig/przegladaniemonitorow).
+
+      Krajowy Rejestr Zadłużonych (KRZ) to system teleinformatyczny Ministerstwa Sprawiedliwości,
+      w którym gromadzone są wszystkie informacje i dokumenty dotyczące przebiegu postępowań
+      upadłościowych i restrukturyzacyjnych prowadzonych przez polskie sądy (od 1 grudnia 2021 r.).
 
 
       ## Ustrukturyzowane informacje
@@ -152,7 +172,7 @@ tags:
       w niej informacji.
 
       Nasz interfejs programistyczny umożliwia przeszukiwanie bazy ogłoszeń opublikowanych
-      w MSiG na podstawie kilku różnych kryteriów, pobieranie ich oryginalnej wersji w dwóch
+      w MSiG oraz KRZ na podstawie kilku różnych kryteriów, pobieranie ich oryginalnej wersji w dwóch
       formatach, a także dostęp do wybranych informacji wyodrębnionych z tekstowej treści.
 
       Aby sprawdzić, jakie ogłoszenia publikowane są w MSiG, przejdź na [stronę główną serwisu iMSiG.pl](
@@ -164,7 +184,7 @@ x-tagGroups:
     tags:
       - documents
       - financial_data
-  - name: MSiG API
+  - name: 'MSiG API, KRZ API'
     tags:
       - announcements
       - updates
@@ -1233,11 +1253,11 @@ paths:
         - api_key: []
       description: |-
         Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
-        w wybranych rozdziałach MSiG.
+        w wybranych rozdziałach MSiG / KRZ.
 
         W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
         spełniających kryteria określone w parametrach metody, posortowanych rosnąco
-        według daty publikacji w MSiG.
+        według daty publikacji w MSiG / KRZ.
 
         W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
         zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
@@ -1249,21 +1269,21 @@ paths:
             description: Sygnatura ogłoszenia w MSiG
           in: query
           name: id
-          description: Sygnatura ogłoszenia w MSiG
+          description: Sygnatura ogłoszenia w MSiG / KRZ
         - schema:
             type: string
             format: date
             example: '2019-01-01'
           in: query
           name: date_from
-          description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
+          description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
         - schema:
             type: string
             format: date
             example: '2019-12-31'
           in: query
           name: date_to
-          description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
+          description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
         - schema:
             type: integer
             example: 0
@@ -1481,7 +1501,7 @@ paths:
                 oneOf:
                   - title: Sukces
                     type: array
-                    description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG'
+                    description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG / KRZ'
                     items:
                       type: object
                       properties:
@@ -1919,7 +1939,7 @@ paths:
                         description: Szczegółowa informacja na temat błędu
                     required:
                       - detail
-                    description: Obiekt dla błędu dla MSIG API.
+                    description: Obiekt dla błędu dla MSIG API / KRZ API.
       x-code-samples:
         - lang: Shell
           source: |-
@@ -1965,7 +1985,7 @@ paths:
                 description: Szczegółowa informacja na temat błędu
             required:
               - detail
-            description: Obiekt dla błędu dla MSIG API.
+            description: Obiekt dla błędu dla MSIG API / KRZ API.
           msig_signature:
             type: string
             example: BMSiG-26451/2020
@@ -2167,7 +2187,7 @@ paths:
                         description: Szczegółowa informacja na temat błędu
                     required:
                       - detail
-                    description: Obiekt dla błędu dla MSIG API.
+                    description: Obiekt dla błędu dla MSIG API / KRZ API.
       x-code-samples:
         - lang: Shell
           source: |-
@@ -2213,7 +2233,7 @@ paths:
                 description: Szczegółowa informacja na temat błędu
             required:
               - detail
-            description: Obiekt dla błędu dla MSIG API.
+            description: Obiekt dla błędu dla MSIG API / KRZ API.
           msig_signature:
             type: string
             example: BMSiG-26451/2020
@@ -2351,7 +2371,7 @@ paths:
 
         W przypadku sukcesu w treści odpowiedzi zawsze zwracane są cztery listy
         zawierające numery rejestrowe przekazane w parametrach żądania, dla których we
-        wskazanym okresie pojawiły się ogłoszenia w MSiG.
+        wskazanym okresie pojawiły się ogłoszenia w MSiG / KRZ.
       requestBody:
         content:
           application/json:
@@ -2362,12 +2382,12 @@ paths:
                   type: string
                   format: date
                   example: '2019-01-01'
-                  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
+                  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
                 date_to:
                   type: string
                   format: date
                   example: '2019-12-31'
-                  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
+                  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
                 nip:
                   type: array
                   maxItems: 1000
@@ -2421,12 +2441,12 @@ paths:
                 oneOf:
                   - type: object
                     title: Sukces
-                    description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG'
+                    description: 'Cztery listy zawierające numery rejestrowe przekazane w parametrach żądania, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG / KRZ'
                     properties:
                       nip:
                         type: array
                         maxItems: 1000
-                        description: 'Lista numerów NIP, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                        description: 'Lista numerów NIP, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG / KRZ.'
                         items:
                           type: string
                           pattern: '\d{10}'
@@ -2437,7 +2457,7 @@ paths:
                       regon:
                         type: array
                         maxItems: 1000
-                        description: 'Lista numerów REGON, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                        description: 'Lista numerów REGON, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG / KRZ.'
                         items:
                           type: string
                           pattern: '\d{9}'
@@ -2448,7 +2468,7 @@ paths:
                       krs:
                         type: array
                         maxItems: 1000
-                        description: 'Lista numerów KRS, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                        description: 'Lista numerów KRS, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG / KRZ.'
                         items:
                           type: string
                           pattern: '\d{10}'
@@ -2459,7 +2479,7 @@ paths:
                       pesel:
                         type: array
                         maxItems: 1000
-                        description: 'Lista numerów PESEL, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG.'
+                        description: 'Lista numerów PESEL, dla których we wskazanym okresie pojawiły się ogłoszenia w MSiG / KRZ.'
                         items:
                           type: string
                           pattern: '\d{10}'
@@ -2481,7 +2501,7 @@ paths:
                         description: Szczegółowa informacja na temat błędu
                     required:
                       - detail
-                    description: Obiekt dla błędu dla MSIG API.
+                    description: Obiekt dla błędu dla MSIG API / KRZ API.
       x-code-samples:
         - lang: Shell
           source: |-
@@ -2527,7 +2547,7 @@ paths:
                 description: Szczegółowa informacja na temat błędu
             required:
               - detail
-            description: Obiekt dla błędu dla MSIG API.
+            description: Obiekt dla błędu dla MSIG API / KRZ API.
           msig_signature:
             type: string
             example: BMSiG-26451/2020

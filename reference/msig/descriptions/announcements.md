@@ -1,17 +1,28 @@
 Interfejs programistyczny serwisu iMSiG.pl umożliwia wyszukiwanie i pobieranie
-oryginalnej treści ogłoszeń publikowanych w Monitorze Sądowym i Gospodarczym (MSiG),
-a także wyodrębnionych z nich danych w ustrukturyzowanej formie.
+oryginalnej treści ogłoszeń publikowanych w Monitorze Sądowym i Gospodarczym (MSiG)
+oraz w Krajowym Rejestrze Zadłużonych (KRZ), a także wyodrębnionych z nich danych
+w ustrukturyzowanej formie.
 
 W obecnej wersji API umożliwia dostęp do ogłoszeń dotyczących postępowań upadłościowych
-i restrukturyzacyjnych, pochodzących z numerów MSiG wydanych po 1 stycznia 2001 r.
-(usługa [Lista upadłości](https://www.imsig.pl/lista-upadlosci)).
+i restrukturyzacyjnych, pochodzących z numerów MSiG wydanych (od 1 stycznia 2001 r.)
+oraz z KRZ (od 1 grudnia 2021 r.).
+
+Informacje o zasadach korzystania z interfejsu dostępne są na stronie usługi [Lista upadłości](https://www.imsig.pl/lista-upadlosci).
+
+Słowa kluczowe:
+* Monitor Sądowy i Gospodarczy API (MSIG API)
+* Krajowy Rejestr Zadłużonych API (KRZ API)
 
 
 ## Źródło danych
-Monitor Sądowy i Gospodarczy to oficjalny dziennik urzędowy, w którym publikowane
+Monitor Sądowy i Gospodarczy (MSiG) to oficjalny dziennik urzędowy, w którym publikowane
 są ogłoszenia sądowe m.in. na podstawie przepisów kodeksu spółek handlowych, kodeksu
 postępowania cywilnego i prawa upadłościowego. Nowe numery dziennika są udostępniane
 codziennie w formie plików PDF na [stronie Ministerstwa Sprawiedliwości](https://ems.ms.gov.pl/msig/przegladaniemonitorow).
+
+Krajowy Rejestr Zadłużonych (KRZ) to system teleinformatyczny Ministerstwa Sprawiedliwości,
+w którym gromadzone są wszystkie informacje i dokumenty dotyczące przebiegu postępowań
+upadłościowych i restrukturyzacyjnych prowadzonych przez polskie sądy (od 1 grudnia 2021 r.).
 
 
 ## Ustrukturyzowane informacje
@@ -21,7 +32,7 @@ Treść ogłoszeń jest nieustrukturyzowana, co uniemożliwia dalsze przetwarzan
 w niej informacji.
 
 Nasz interfejs programistyczny umożliwia przeszukiwanie bazy ogłoszeń opublikowanych
-w MSiG na podstawie kilku różnych kryteriów, pobieranie ich oryginalnej wersji w dwóch
+w MSiG oraz KRZ na podstawie kilku różnych kryteriów, pobieranie ich oryginalnej wersji w dwóch
 formatach, a także dostęp do wybranych informacji wyodrębnionych z tekstowej treści.
 
 Aby sprawdzić, jakie ogłoszenia publikowane są w MSiG, przejdź na [stronę główną serwisu iMSiG.pl](

@@ -6,11 +6,11 @@ security:
   - api_key: []
 description: |-
   Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
-  w wybranych rozdziałach MSiG.
+  w wybranych rozdziałach MSiG / KRZ.
 
   W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
   spełniających kryteria określone w parametrach metody, posortowanych rosnąco
-  według daty publikacji w MSiG.
+  według daty publikacji w MSiG / KRZ.
 
   W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
   zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
@@ -20,21 +20,21 @@ parameters:
       $ref: '#/components/schemas/msig_signature'
     in: query
     name: id
-    description: Sygnatura ogłoszenia w MSiG
+    description: Sygnatura ogłoszenia w MSiG / KRZ
   - schema:
       type: string
       format: date
       example: '2019-01-01'
     in: query
     name: date_from
-    description: Początek zakresu dla daty publikacji ogłoszenia w MSiG
+    description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
   - schema:
       type: string
       format: date
       example: '2019-12-31'
     in: query
     name: date_to
-    description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG
+    description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
   - schema:
       $ref: '#/components/schemas/msig_chapter'
     in: query
@@ -117,7 +117,7 @@ responses:
           oneOf:
             - title: Sukces
               type: array
-              description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG'
+              description: 'Lista ogłoszeń spełniających kryteria określone w parametrach metody, posortowanych według daty publikacji w MSiG / KRZ'
               items:
                 type: object
                 properties:

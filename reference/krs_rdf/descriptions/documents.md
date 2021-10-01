@@ -2,6 +2,15 @@ Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia
 wyszukiwanie i pobieranie dokumentów złożonych w Repozytorium Dokumentów
 Finansowych Krajowego Rejestru Sądowego.
 
+[Skontaktuj się z nami](https://www.imsig.pl/inne/kontakt), aby uzyskać
+informacje o zasadach korzystania z interfejsu.
+
+Słowa kluczowe:
+* Krajowy Rejestr Sądowy API (KRS API)
+* Repozytorium Dokumentów Finansowych API (RDF API)
+* Sprawozdania finansowe API
+
+
 ## Źródło danych
 Począwszy od 15 marca 2018 r. każdy ma dostęp przez Internet do składanych
 przez podmioty gospodarcze dokumentów finansowych. Ta funkcjonalność dostępna

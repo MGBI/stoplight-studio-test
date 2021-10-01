@@ -36,7 +36,7 @@ msig_error:
       description: Szczegółowa informacja na temat błędu
   required:
     - detail
-  description: Obiekt dla błędu dla MSIG API.
+  description: Obiekt dla błędu dla MSIG API / KRZ API.
 msig_signature:
   type: string
   example: 'BMSiG-26451/2020'
