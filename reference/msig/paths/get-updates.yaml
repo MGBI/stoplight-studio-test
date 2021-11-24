@@ -5,11 +5,11 @@ tags:
 security:
   - api_key: []
 description: |-
-  Pobiera informacje o aktualizacjach dla wydań MSiG ze wskazanego okresu.
+  Pobiera informacje o aktualizacjach bazy ogłoszeń we wskazanym okresie.
 
   W przypadku sukcesu w treści odpowiedzi zwracana jest lista aktualizacji
   spełniających kryteria określone w parametrach metody, posortowanych rosnąco
-  według daty wydania MSiG.
+  według daty udostępnienia.
 
   W przypadku, gdy żadna aktualizacja nie spełnia podanych kryteriów,
   zwracana jest pusta lista. W przypadku, gdy liczba aktualizacji spełniających
@@ -21,14 +21,14 @@ parameters:
       example: '2019-01-01'
     in: query
     name: issue_date_from
-    description: Początek zakresu dla daty wydania MSiG
+    description: Początek zakresu dla daty udostępnienia aktualizacji
   - schema:
       type: string
       format: date
       example: '2019-12-31'
     in: query
     name: issue_date_to
-    description: Koniec zakresu dla daty wydania MSiG
+    description: Koniec zakresu dla daty udostępnienia aktualizacji
 responses:
   '200':
     description: Wynik wyszukiwania aktualizacji
@@ -38,7 +38,7 @@ responses:
           oneOf:
             - title: Sukces
               type: array
-              description: 'Lista aktualizacji spełniających kryteria określone w parametrach metody, posortowanych według daty wydania MSiG'
+              description: 'Lista aktualizacji spełniających kryteria określone w parametrach metody, posortowanych według daty udostępnienia'
               items:
                 type: object
                 properties:
@@ -46,7 +46,7 @@ responses:
                     type: string
                     format: date
                     example: '2019-06-10'
-                    description: Data wydania MSiG
+                    description: Data udostępnienia aktualizacji
                   creation_datetime:
                     type: string
                     format: datetime

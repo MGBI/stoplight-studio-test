@@ -44,6 +44,14 @@ parameters:
     in: query
     name: msig_section
   - schema:
+      $ref: '#/components/schemas/krz_chapter'
+    in: query
+    name: krz_chapter
+  - schema:
+      $ref: '#/components/schemas/krz_section'
+    in: query
+    name: krz_section
+  - schema:
       $ref: '#/components/schemas/nip'
     in: query
     name: nip
@@ -76,6 +84,16 @@ parameters:
   - schema:
       type: string
     in: query
+    name: msig_signature
+    description: 'Sygnatura postępowania w MSiG (od 1 grudnia 2021 r.)'
+  - schema:
+      type: string
+    in: query
+    name: krz_signature
+    description: 'Sygnatura postępowania w KRZ (od 1 grudnia 2021 r.)'
+  - schema:
+      type: string
+    in: query
     name: commissioner_name
     description: Imię i nazwisko sędziego komisarza wyznaczonego w postępowaniu
   - schema:
@@ -90,6 +108,7 @@ parameters:
         - proceeding
         - order
         - msig_entry
+        - krz_entry
         - content
     in: query
     name: projection
@@ -104,7 +123,8 @@ parameters:
         | `"entity"` | Lista podmiotów, których dotyczy ogłoszenie |
         | `"proceeding"` | Informacje o postępowaniu |
         | `"order"` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
-        | `"msig_entry"` | Informacje dotyczące numeru MSiG, z którego pochodzi ogłoszenie |
+        | `"msig_entry"` | Informacje dotyczące publikacji ogłoszenia w MSiG |
+        | `"krz_entry"` | Informacje dotyczące publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.) |
         | `"content"` | Nieprzetworzona treść ogłoszenia |
 
       </details>
@@ -377,7 +397,7 @@ responses:
                       - expiration_date
                   msig_entry:
                     type: object
-                    description: 'Informacje dotyczące numeru MSiG, z którego pochodzi ogłoszenie'
+                    description: 'Informacje dotyczące publikacji ogłoszenia w MSiG'
                     properties:
                       chapter:
                         $ref: '#/components/schemas/msig_chapter'
@@ -402,7 +422,7 @@ responses:
                         type: string
                         format: uri
                         example: 'http://www.imsig.pl/pozycja/2020/112/26734'
-                        description: Adres URL ogłoszenia w serwisie imsig.pl
+                        description: Link do ogłoszenia w serwisie imsig.pl
                     required:
                       - chapter
                       - section
@@ -410,6 +430,32 @@ responses:
                       - issue_date
                       - yearly_number
                       - position_number
+                      - url
+                  krz_entry:
+                    type: object
+                    description: 'Informacje dotyczące publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.)'
+                    properties:
+                      chapter:
+                        $ref: '#/components/schemas/krz_chapter'
+                      section:
+                        $ref: '#/components/schemas/krz_section'
+                      signature:
+                        $ref: '#/components/schemas/krz_signature'
+                      issue_date:
+                        type: string
+                        format: date
+                        example: '2021-12-01'
+                        description: Data publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+                      url:
+                        type: string
+                        format: uri
+                        example: ''
+                        description: Link do ogłoszenia w serwisie KRZ (od 1 grudnia 2021 r.)
+                    required:
+                      - chapter
+                      - section
+                      - signature
+                      - issue_date
                       - url
                   content:
                     type: object
@@ -432,6 +478,7 @@ responses:
                   - proceeding
                   - order
                   - msig_entry
+                  - krz_entry
                   - content
             - $ref: '#/components/schemas/msig_error'
 x-code-samples:

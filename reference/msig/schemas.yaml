@@ -110,7 +110,7 @@ msig_section:
     <details>
       <summary>Pokaż możliwe opcje</summary>
 
-      <p><strong>Ogłoszenia wymagane przez prawo upadłościowe:</strong></p>
+      <p><strong>Ogłoszenia wymagane przez prawo upadłościowe</strong></p>
       
       | Wartość | Nazwa sekcji |
       |-|-|
@@ -124,7 +124,7 @@ msig_section:
       | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
       | `9` | Inne |
       
-      <p><strong>Ogłoszenia wymagane przez prawo restrukturyzacyjne:</strong></p>
+      <p><strong>Ogłoszenia wymagane przez prawo restrukturyzacyjne</strong></p>
       
       | Wartość | Nazwa sekcji |
       |-|-|
@@ -159,5 +159,123 @@ msig_section:
       | `48` | Zmiana nadzorcy lub zarządcy |
       | `49` | Zmiana sędziego komisarza |
       | `50` | Zmiana terminu zgromadzenia wierzycieli |
+
+    </details>
+krz_signature:
+  type: string
+  example: '20210831/00001'
+  description: Sygnatura ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+krz_chapter:
+  type: integer
+  example: 0
+  enum:
+    - 0
+    - 1
+    - 2
+  description: |-
+    Rozdział KRZ (od 1 grudnia 2021 r.)
+
+    <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa rozdziału |
+      |-|-|
+      | `0` | Postępowanie restrukturyzacyjne |
+      | `1` | Postępowanie upadłościowe |
+      | `2` | Zakaz prowadzenia działalności gospodarczej |
+
+    </details>
+krz_section:
+  type: integer
+  example: 1
+  enum:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    - 36
+    - 37
+    - 38
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+    - 44
+    - 45
+    - 46
+    - 47
+    - 48
+    - 49
+    - 50
+
+  description: |-
+    Sekcja KRZ (od 1 grudnia 2021 r.)
+
+    <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      <p><strong>Postępowanie restrukturyzacyjne</strong></p>
+      
+      | Wartość | Nazwa sekcji |
+      |-|-|
+      | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika
+      | `2` | Zabezpieczenie majątku
+      | `3` | Otwarcie postępowania restrukturyzacyjnego
+      | `4` | Nadzorca sądowy/Zarządca/Nadzorca wykonania układu
+      | `5` | Spis wierzytelności/Spis wierzytelności spornych
+      | `6` | Zgromadzenie wierzycieli
+      | `7` | Sprawozdania
+      | `8` | Układ
+      | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego
+      | `10` | Inne
+      
+      <p><strong>Postępowanie upadłościowe</strong></p>
+      
+      | Wartość | Nazwa sekcji |
+      |-|-|
+      | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika
+      | `21` | Zabezpieczenie majątku
+      | `22` | Ogłoszenie upadłości/oddalenie wniosku
+      | `23` | Wtórne postępowanie upadłościowe
+      | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego
+      | `25` | Przygotowana likwidacja
+      | `26` | Syndyk/Zastępca syndyka/Syndyk tymczasowy
+      | `27` | Zgromadzenie wierzycieli
+      | `28` | Masa upadłości
+      | `29` | Lista wierzytelności
+      | `30` | Plan podziału
+      | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego
+      | `32` | Plan spłaty/umorzenie zobowiązań
+      | `33` | Układ w upadłości
+      | `34` | Inne
+      
+      <p><strong>Zakaz prowadzenia działalności gospodarczej</strong></p>
+      
+      | Wartość | Nazwa sekcji |
+      |-|-|
+      | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej
+      | `41` | Inne
 
     </details>
