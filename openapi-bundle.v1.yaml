@@ -1610,12 +1610,12 @@ paths:
             type: string
           in: query
           name: commissioner_name
-          description: Imię i nazwisko sędziego komisarza wyznaczonego w postępowaniu
+          description: Imię i nazwisko sędziego komisarza
         - schema:
             type: string
           in: query
           name: administrator_name
-          description: Imię i nazwisko nadzorcy wyznaczonego w postępowaniu
+          description: Imię i nazwisko nadzorcy sądowego
         - schema:
             type: string
             enum:
@@ -1842,7 +1842,7 @@ paths:
                             administrator_name:
                               type: string
                               example: Mieczysław Radecki
-                              description: Imię i nazwisko nadzorcy wyznaczonego w postępowaniu
+                              description: Imię i nazwisko nadzorcy
                             administrator_function:
                               type: string
                               description: Funkcja nadzorcy
@@ -1855,23 +1855,23 @@ paths:
                               type: integer
                               format: int32
                               example: 598
-                              description: Numer licencji doradcy restrukturyzacyjnego nadzorcy w postępowaniu
+                              description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
                             administrator_address:
                               type: string
                               example: ul. Żurawia 6/12 lok. 766
-                              description: Adres pocztowy nadzorcy wyznaczonego w postępowaniu
+                              description: Adres pocztowy nadzorcy
                             administrator_zip_code:
                               type: string
                               example: 00-503
-                              description: Kod pocztowy w adresie nadzorcy wyznaczonego w postępowaniu
+                              description: Kod pocztowy w adresie nadzorcy
                             administrator_town:
                               type: string
                               example: Warszawa
-                              description: Miejscowość w adresie nadzorcy wyznaczonego w postępowaniu
+                              description: Miejscowość w adresie nadzorcy
                             administrator_source_url:
                               type: string
                               example: 'https://www.arch.ms.gov.pl/pl/lista-osob-posiadajacych-licencje-doradcy-restrukturyzacyjnego/assignee,1.html'
-                              description: Adres URL źródła danych nadzorcy wyznaczonego w postępowaniu
+                              description: Link do źródła danych nadzorcy
                           required:
                             - court_name
                             - court_department
