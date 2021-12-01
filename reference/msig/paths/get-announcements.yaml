@@ -20,7 +20,7 @@ parameters:
       $ref: '#/components/schemas/msig_signature'
     in: query
     name: id
-    description: Sygnatura ogłoszenia w MSiG / KRZ
+    description: Unikalny identyfikator ogłoszenia
   - schema:
       type: string
       format: date
@@ -51,6 +51,16 @@ parameters:
       $ref: '#/components/schemas/krz_section'
     in: query
     name: krz_section
+  - schema:
+      type: string
+    in: query
+    name: msig_signature
+    description: 'Sygnatura ogłoszenia w MSiG'
+  - schema:
+      type: string
+    in: query
+    name: krz_signature
+    description: 'Sygnatura ogłoszenia w KRZ'
   - schema:
       $ref: '#/components/schemas/nip'
     in: query
@@ -84,13 +94,8 @@ parameters:
   - schema:
       type: string
     in: query
-    name: msig_signature
-    description: 'Sygnatura postępowania w MSiG (od 1 grudnia 2021 r.)'
-  - schema:
-      type: string
-    in: query
-    name: krz_signature
-    description: 'Sygnatura postępowania w KRZ (od 1 grudnia 2021 r.)'
+    name: signature
+    description: 'Sygnatura postępowania'
   - schema:
       type: string
     in: query
@@ -124,7 +129,7 @@ parameters:
         | `"proceeding"` | Informacje o postępowaniu |
         | `"order"` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
         | `"msig_entry"` | Informacje dotyczące publikacji ogłoszenia w MSiG |
-        | `"krz_entry"` | Informacje dotyczące publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.) |
+        | `"krz_entry"` | Informacje dotyczące publikacji ogłoszenia w KRZ |
         | `"content"` | Nieprzetworzona treść ogłoszenia |
 
       </details>
@@ -433,7 +438,7 @@ responses:
                       - url
                   krz_entry:
                     type: object
-                    description: 'Informacje dotyczące publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.)'
+                    description: 'Informacje dotyczące publikacji ogłoszenia w KRZ'
                     properties:
                       chapter:
                         $ref: '#/components/schemas/krz_chapter'
@@ -445,12 +450,12 @@ responses:
                         type: string
                         format: date
                         example: '2021-12-01'
-                        description: Data publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+                        description: Data publikacji ogłoszenia w KRZ
                       url:
                         type: string
                         format: uri
                         example: ''
-                        description: Link do ogłoszenia w serwisie KRZ (od 1 grudnia 2021 r.)
+                        description: Link do ogłoszenia w serwisie KRZ
                     required:
                       - chapter
                       - section

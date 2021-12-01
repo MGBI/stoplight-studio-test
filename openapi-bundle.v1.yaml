@@ -1291,7 +1291,7 @@ paths:
             description: Sygnatura ogłoszenia w MSiG
           in: query
           name: id
-          description: Sygnatura ogłoszenia w MSiG / KRZ
+          description: Unikalny identyfikator ogłoszenia
         - schema:
             type: string
             format: date
@@ -1437,7 +1437,7 @@ paths:
               - 1
               - 2
             description: |-
-              Rozdział KRZ (od 1 grudnia 2021 r.)
+              Rozdział KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>
@@ -1496,7 +1496,7 @@ paths:
               - 49
               - 50
             description: |-
-              Sekcja KRZ (od 1 grudnia 2021 r.)
+              Sekcja KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>
@@ -1546,6 +1546,16 @@ paths:
               </details>
           in: query
           name: krz_section
+        - schema:
+            type: string
+          in: query
+          name: msig_signature
+          description: Sygnatura ogłoszenia w MSiG
+        - schema:
+            type: string
+          in: query
+          name: krz_signature
+          description: Sygnatura ogłoszenia w KRZ
         - schema:
             type: string
             pattern: '\d{10}'
@@ -1599,13 +1609,8 @@ paths:
         - schema:
             type: string
           in: query
-          name: msig_signature
-          description: Sygnatura postępowania w MSiG (od 1 grudnia 2021 r.)
-        - schema:
-            type: string
-          in: query
-          name: krz_signature
-          description: Sygnatura postępowania w KRZ (od 1 grudnia 2021 r.)
+          name: signature
+          description: Sygnatura postępowania
         - schema:
             type: string
           in: query
@@ -1639,7 +1644,7 @@ paths:
               | `"proceeding"` | Informacje o postępowaniu |
               | `"order"` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
               | `"msig_entry"` | Informacje dotyczące publikacji ogłoszenia w MSiG |
-              | `"krz_entry"` | Informacje dotyczące publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.) |
+              | `"krz_entry"` | Informacje dotyczące publikacji ogłoszenia w KRZ |
               | `"content"` | Nieprzetworzona treść ogłoszenia |
 
             </details>
@@ -2061,7 +2066,7 @@ paths:
                             - url
                         krz_entry:
                           type: object
-                          description: Informacje dotyczące publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+                          description: Informacje dotyczące publikacji ogłoszenia w KRZ
                           properties:
                             chapter:
                               type: integer
@@ -2071,7 +2076,7 @@ paths:
                                 - 1
                                 - 2
                               description: |-
-                                Rozdział KRZ (od 1 grudnia 2021 r.)
+                                Rozdział KRZ
 
                                 <details>
                                   <summary>Pokaż możliwe opcje</summary>
@@ -2128,7 +2133,7 @@ paths:
                                 - 49
                                 - 50
                               description: |-
-                                Sekcja KRZ (od 1 grudnia 2021 r.)
+                                Sekcja KRZ
 
                                 <details>
                                   <summary>Pokaż możliwe opcje</summary>
@@ -2179,17 +2184,17 @@ paths:
                             signature:
                               type: string
                               example: 20210831/00001
-                              description: Sygnatura ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+                              description: Sygnatura ogłoszenia w KRZ
                             issue_date:
                               type: string
                               format: date
                               example: '2021-12-01'
-                              description: Data publikacji ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+                              description: Data publikacji ogłoszenia w KRZ
                             url:
                               type: string
                               format: uri
                               example: ''
-                              description: Link do ogłoszenia w serwisie KRZ (od 1 grudnia 2021 r.)
+                              description: Link do ogłoszenia w serwisie KRZ
                           required:
                             - chapter
                             - section
@@ -2401,7 +2406,7 @@ paths:
           krz_signature:
             type: string
             example: 20210831/00001
-            description: Sygnatura ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+            description: Sygnatura ogłoszenia w KRZ
           krz_chapter:
             type: integer
             example: 0
@@ -2410,7 +2415,7 @@ paths:
               - 1
               - 2
             description: |-
-              Rozdział KRZ (od 1 grudnia 2021 r.)
+              Rozdział KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>
@@ -2467,7 +2472,7 @@ paths:
               - 49
               - 50
             description: |-
-              Sekcja KRZ (od 1 grudnia 2021 r.)
+              Sekcja KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>
@@ -2766,7 +2771,7 @@ paths:
           krz_signature:
             type: string
             example: 20210831/00001
-            description: Sygnatura ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+            description: Sygnatura ogłoszenia w KRZ
           krz_chapter:
             type: integer
             example: 0
@@ -2775,7 +2780,7 @@ paths:
               - 1
               - 2
             description: |-
-              Rozdział KRZ (od 1 grudnia 2021 r.)
+              Rozdział KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>
@@ -2832,7 +2837,7 @@ paths:
               - 49
               - 50
             description: |-
-              Sekcja KRZ (od 1 grudnia 2021 r.)
+              Sekcja KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>
@@ -3197,7 +3202,7 @@ paths:
           krz_signature:
             type: string
             example: 20210831/00001
-            description: Sygnatura ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+            description: Sygnatura ogłoszenia w KRZ
           krz_chapter:
             type: integer
             example: 0
@@ -3206,7 +3211,7 @@ paths:
               - 1
               - 2
             description: |-
-              Rozdział KRZ (od 1 grudnia 2021 r.)
+              Rozdział KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>
@@ -3263,7 +3268,7 @@ paths:
               - 49
               - 50
             description: |-
-              Sekcja KRZ (od 1 grudnia 2021 r.)
+              Sekcja KRZ
 
               <details>
                 <summary>Pokaż możliwe opcje</summary>

@@ -164,7 +164,7 @@ msig_section:
 krz_signature:
   type: string
   example: '20210831/00001'
-  description: Sygnatura ogłoszenia w KRZ (od 1 grudnia 2021 r.)
+  description: Sygnatura ogłoszenia w KRZ
 krz_chapter:
   type: integer
   example: 0
@@ -173,7 +173,7 @@ krz_chapter:
     - 1
     - 2
   description: |-
-    Rozdział KRZ (od 1 grudnia 2021 r.)
+    Rozdział KRZ
 
     <details>
       <summary>Pokaż możliwe opcje</summary>
@@ -231,7 +231,7 @@ krz_section:
     - 50
 
   description: |-
-    Sekcja KRZ (od 1 grudnia 2021 r.)
+    Sekcja KRZ
 
     <details>
       <summary>Pokaż możliwe opcje</summary>
