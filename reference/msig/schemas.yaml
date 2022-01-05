@@ -240,6 +240,7 @@ krz_section:
       
       | Wartość | Nazwa sekcji |
       |-|-|
+      | `0` | Dzień układowy
       | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika
       | `2` | Zabezpieczenie majątku
       | `3` | Otwarcie postępowania restrukturyzacyjnego
