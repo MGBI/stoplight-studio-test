@@ -1,32 +1,101 @@
+#!/usr/bin/python
 import json
-import os
 import sys
 from collections import defaultdict
 
 import yaml
 
-filePath = sys.argv[1]
+SUFFIX = "_V2"
 
-with open(filePath) as openapiJson:
-    jsonFile = json.load(openapiJson)
 
-wantedPaths = defaultdict(dict)
-for path, methods in jsonFile["paths"].items():
-    for method, endpoint in methods.items():
-        if "internal" not in endpoint["tags"] \
-          and "admin" not in endpoint["tags"]:
-            wantedPaths[path][method] = endpoint
+def transformation_of_openapi_v2(old_file_path, new_file_path):
 
-openapiFile = jsonFile
-openapiFile["paths"] = wantedPaths
+    with open(new_file_path) as openapiJson:
+        new_openapi = json.load(openapiJson)
 
-with open('reference/openapi.json', 'w') as jf:
-    json.dump(openapiFile, jf)
+    with open(old_file_path) as yamlFile:
+        old_openapi = yaml.safe_load(yamlFile)
 
-with open("reference/openapi.json") as jf, \
-  open("reference/openapi.yaml", "w") as yf:
-    jsonObj = json.load(jf)
-    yaml.dump(jsonObj, yf, sort_keys=False)
+    old_api = {}
+    for path, methods in old_api["paths"].items():
+        for method, endpoint in methods.items():
+            old_api[method + " " + path.split("msig", 1)[-1]] = endpoint
 
-# if os.path.exists("files/new_openapi.json"):
-#     os.remove("files/new_openapi.json")
+    # new_openapi = {}
+    # for path, methods in new_openapi["paths"].items():
+    #     for method, endpoint in methods.items():
+    #         new_openapi[method + " " + path.split("msig", 1)[-1]] = endpoint
+    #
+    # for endpoint, new_values in new_openapi.items():
+    #     old_values = old_api.get(endpoint, None)
+    #     if old_values is not None:
+    #         if "description" not in new_values and "description" in old_values:
+    #             new_values["description"] = old_values["description"]
+    #         if "parameters" in new_values:
+    #             for new_item in new_values["parameters"]:
+    #                 new_name = new_item.get("name")
+    #                 for old_item in new_item and old_values["parameters"] or []:
+    #                     if new_name == old_item["name"]:
+    #                         if new_item["schema"].get("description") is None and \
+    #                           old_item["schema"].get(
+    #                           "description") is not None:
+    #                             new_item["schema"]["description"] = old_item[
+    #                               "schema"]["description"]
+    #                     if new_item["schema"].get("example") is None and \
+    #                       old_item["schema"].get("example") is not None:
+    #                         new_item["schema"]["example"] = old_item["schema"][
+    #                           "example"]
+    #                     if new_item.get("description") is None and old_item.get(
+    #                       "description") is not None:
+    #                         new_item["description"] = old_item["description"]
+
+    # here we remove admin and internal tags from paths field in new_openapi
+    #
+    wanted_paths = defaultdict(dict)
+    for path, methods in new_openapi["paths"].items():
+        for method, endpoint in methods.items():
+            if "internal" not in endpoint["tags"] \
+              and "admin" not in endpoint["tags"]:
+                wanted_paths[path][method] = endpoint
+            endpoint["tags"] = [tag + SUFFIX for tag in endpoint["tags"]]
+
+    new_openapi["paths"] = wanted_paths
+
+    # here the api version is overwritten in the info field
+    info_section = defaultdict(dict)
+    for info, fields in new_openapi["info"].items():
+        info_section[info] = fields
+    old_openapi["info"]["version"] = info_section["version"]
+
+    # appending new paths and components to existing ones
+    old_openapi["paths"].update(new_openapi["paths"])
+    old_openapi["components"].update(new_openapi["components"])
+
+    # adding tags from path to set without public, internal and admin
+    tags = set()
+    for path, methods in new_openapi["paths"].items():
+        for method, endpoint in methods.items():
+            tags = tags.union(endpoint["tags"])
+    tags = tags.difference(["public_V2", "internal_V2", "admin_V2"])
+
+    # adding new values to tags field without duplicates
+    for tag in tags.difference({tag["name"] for tag in old_openapi["tags"]}):
+        old_openapi["tags"].append(
+          {"name": tag, "x-displayName": tag.replace("_V2", "").capitalize()}
+        )
+
+    # adding tags from set to tags in x-tagGroups
+    old_openapi["x-tagGroups"].append(
+      {"name": "MSIG API V2", "tags": list(tags)})
+
+    # at the end we dump changes to old openapi
+    yaml.safe_dump(old_openapi, sys.stdout, sort_keys=False)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3:
+        transformation_of_openapi_v2(sys.argv[1], sys.argv[2])
+    else:
+        sys.stderr.write(
+          "USAGE: %s old_file_path new_file_path\n" % sys.argv[0]
+        )
