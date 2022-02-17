@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: '1.0'
+  version: '1.0.0'
   x-logo:
     url: 'https://www.imsig.pl/layout/monitor_sadowy_i_gospodarczy.png'
     altText: iMSiG.pl

@@ -1,30 +1,38 @@
 #!/usr/bin/python
+# This script tries to merge two schemas, existing yaml one, and online
+# generated json schema. It copies missing tags and descriptions into endpoints,
+# and then overwrite endpoints
 import json
+import yaml
 import sys
+import os
 from collections import defaultdict
 
-import yaml
 
-SUFFIX = "_V2"
+V_SUFFIX = "_iapi"
+OLD_API_ROOT_PATH = "/v1/msig"
+NEW_API_ROOT_PATH = "/v2/msig"
+
+
+def load(file_path):
+    loader = {".yaml": yaml.safe_load, ".json": json.load}
+    with open(file_path) as f:
+        return loader[os.path.splitext(file_path)[-1]](f)
 
 
 def transformation_of_openapi_v2(old_file_path, new_file_path):
-
-    with open(new_file_path) as openapiJson:
-        new_openapi = json.load(openapiJson)
-
-    with open(old_file_path) as yamlFile:
-        old_openapi = yaml.safe_load(yamlFile)
+    old_openapi = load(old_file_path)
+    new_openapi = load(new_file_path)
 
     old_api = {}
     for path, methods in old_openapi["paths"].items():
         for method, endpoint in methods.items():
-            old_api[method + " " + path.split("msig", 1)[-1]] = endpoint
+            old_api[method + " " + path.replace(OLD_API_ROOT_PATH, "", 1)] = endpoint
 
     new_api = {}
     for path, methods in new_openapi["paths"].items():
         for method, endpoint in methods.items():
-            new_api[method + " " + path.split("msig", 1)[-1]] = endpoint
+            new_api[method + " " + path.replace(NEW_API_ROOT_PATH, "", 1)] = endpoint
 
     # here we are taking description and other useful info from old endpoints
     # to our new
@@ -58,15 +66,9 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
             if "internal" not in endpoint["tags"] \
               and "admin" not in endpoint["tags"]:
                 wanted_paths[path][method] = endpoint
-            endpoint["tags"] = [tag + SUFFIX for tag in endpoint["tags"]]
+            endpoint["tags"] = [tag + V_SUFFIX for tag in endpoint["tags"]]
 
     new_openapi["paths"] = wanted_paths
-
-    # the api version is overwritten in the info field
-    info_section = defaultdict(dict)
-    for info, fields in new_openapi["info"].items():
-        info_section[info] = fields
-    old_openapi["info"]["version"] = info_section["version"]
 
     # appending new paths and components to existing ones
     old_openapi["paths"].update(new_openapi["paths"])
@@ -77,12 +79,12 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     for path, methods in new_openapi["paths"].items():
         for method, endpoint in methods.items():
             tags = tags.union(endpoint["tags"])
-    tags = tags.difference(["public_V2", "internal_V2", "admin_V2"])
+    tags = tags.difference(["public" + V_SUFFIX, "internal" + V_SUFFIX, "admin" + V_SUFFIX])
 
     # adding new values to tags field without duplicates
     for tag in tags.difference({tag["name"] for tag in old_openapi["tags"]}):
         old_openapi["tags"].append(
-          {"name": tag, "x-displayName": tag.replace("_V2", "").capitalize()}
+          {"name": tag, "x-displayName": tag.replace(V_SUFFIX, "").capitalize()}
         )
 
     # adding tags from set to tags in x-tagGroups

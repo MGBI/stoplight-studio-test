@@ -14,4 +14,4 @@ docker run --rm -it --volume $PWD:/mnt --workdir /mnt mgbi/redoc-cli bundle \
 	--options.theme.colors.primary.main=#2C669A \
 	--options.theme.rightPanel.backgroundColor=#2C669A \
 	--options.theme.logo.gutter=20px \
-  openapi-bundle-cleaned.v2.yaml
+  openapi-bundle-cleaned.yaml
