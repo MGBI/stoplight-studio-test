@@ -1,0 +1,58 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/FiltersModel'
+    description: Create new filter
+  '429':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Too Many Requests
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+parameters:
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- filters_iapi
+summary: Create Filter
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/CreateFiltersModel'
+  required: true
+operationId: create_filter_v2_filters_post
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

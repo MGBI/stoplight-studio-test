@@ -1,0 +1,70 @@
+example:
+  proceeding:
+    signatures:
+    - example signature
+    court_department: V Wydział Gospodarczy
+    court_name: Sąd Rejonowy w XXX
+  krz_entry:
+    chapter: 1
+    issue_date: '2021-12-08T00:00:00Z'
+    section: 20
+    signature: 20211208/00001
+  msig_entry:
+    chapter: 0
+    issue_date: '2021-11-04T00:00:00'
+    url: http://www.imsig.pl/pozycja/2021/214/00000
+    section: 9
+    signature: BMSiG-00000/2021
+    position_number: '00000'
+    yearly_number: '214'
+  id: '000000000000000000000000'
+  content:
+    text: Postanowieniem z dnia ...
+    html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
+  entity:
+  - info:
+      first_name: Jan
+      last_name: Kowalski
+      ownership_type: własność krajowych osób fizycznych
+      cleaned_name: Jan Kowalski
+      legal_form: osoby fizyczne nieprowadzące działalności gospodarczej
+    numbers: {}
+    address: {}
+  order:
+    order_date: '2021-09-01T00:00:00'
+    expiration_period: 7
+    expiration_date: '2021-11-11T00:00:00'
+required:
+- id
+type: object
+properties:
+  proceeding:
+    type: object
+    title: Proceeding
+  krz_entry:
+    type: object
+    title: Krz Entry
+  msig_entry:
+    type: object
+    title: Msig Entry
+  id:
+    type: string
+    title: Id
+  content:
+    type: object
+    title: Content
+  custom_categories:
+    items:
+      $ref: ../schemas.yaml#/CategoriesEnum
+    type: array
+  entity:
+    anyOf:
+    - items:
+        type: object
+      type: array
+    - type: object
+    title: Entity
+  order:
+    type: object
+    title: Order
+title: AnnouncementModel

@@ -1,0 +1,15 @@
+enum:
+- 0
+- 1
+type: integer
+description: |-
+  An enumeration.
+  Rozdział MSiG
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `0` | Current |
+    | `1` | Archive |</details>
+title: TypesEnum

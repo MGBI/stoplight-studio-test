@@ -1,0 +1,46 @@
+operationId: get_actual_user_params_v2_params_get
+summary: Get Actual User Params
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ParamsModel'
+    description: Params retrieved
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+parameters:
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- params_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

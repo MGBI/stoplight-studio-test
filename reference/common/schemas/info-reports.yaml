@@ -1,0 +1,12 @@
+required:
+- id
+- label
+type: object
+properties:
+  id:
+    type: integer
+    title: Id
+  label:
+    type: string
+    title: Label
+title: InfoReports

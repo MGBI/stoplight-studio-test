@@ -1,0 +1,16 @@
+example:
+  emails:
+  - kura@wp.pl
+  filter_id: 3
+type: object
+properties:
+  emails:
+    default: []
+    items:
+      type: string
+    type: array
+    title: Emails
+  filter_id:
+    type: string
+    title: Filter Id
+title: UpdateMonitorsModel

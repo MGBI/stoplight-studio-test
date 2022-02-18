@@ -1,0 +1,31 @@
+required:
+- issue_date
+- announcements_count
+- source
+type: object
+properties:
+  issue_date:
+    format: date
+    type: string
+    title: Issue Date
+  krz_update_id:
+    type: integer
+    title: Krz Update Id
+  source:
+    enum:
+    - krz
+    - msig
+    type: string
+    title: Source
+  msig_update_id:
+    type: integer
+    title: Msig Update Id
+  announcements_count:
+    exclusiveMaximum: 9007199254740991.0
+    minimum: 0.0
+    type: integer
+    title: Announcements Count
+  update_id:
+    type: integer
+    title: Update Id
+title: UpdatesCreateModel

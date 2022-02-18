@@ -1,0 +1,10 @@
+required:
+- error
+type: object
+properties:
+  details:
+    title: Details
+  error:
+    type: string
+    title: Error
+title: Error

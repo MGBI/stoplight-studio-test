@@ -1,0 +1,956 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          oneOf:
+          - items:
+              required:
+              - id
+              - entity
+              - proceeding
+              - order
+              - msig_entry
+              - krz_entry
+              - content
+              type: object
+              properties:
+                content:
+                  required:
+                  - text
+                  - html
+                  type: object
+                  description: Nieprzetworzona treść ogłoszenia
+                  properties:
+                    text:
+                      type: string
+                      example: 'SYNDYK MASY UPADŁOŚCI ISD HUTA CZĘSTOCHOWA Sp. z o.o.
+                        w upadłości w Częstochowie (sygn. akt VIII GUp 137/19) obwieszcza
+                        przetarg na sprzedaż przedsiębiorstwa Przedmiotem przetargu
+                        jest przedsiębiorstwo ISD Huta Częstochowa Sp. z o.o. z siedzibą
+                        w Częstochowie (KRS nr 0000136890) opisane w opisie i oszacowaniu
+                        według stanu na dzień 3 września 2019 r. Przedmiotem przetargu
+                        jest całe przedsiębiorstwo upadłego z wyłączeniem aktywów
+                        wymienionych w Regulaminie Przetargu. Cena wywoławcza - 220
+                        000 000,00 zł netto. Oferty w zamkniętych kopertach z wyraźnym
+                        dopiskiem "NIE OTWIERAĆ - ISD Huta Częstochowa - PRZETARG"
+                        należy składać w biurze podawczym w budynku Sądu Rejonowego
+                        w Częstochowie przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa,
+                        lub przesłać pocztą w terminie do dnia 27 lipca 2020 r., do
+                        godz. 14:00 (decyduje data i godzina wpływu do Sądu). Zaleca
+                        się osobiste złożenie oferty. W razie braku możliwości złożenia
+                        oferty w biurze podawczym Sądu wskutek całkowitego zamknięcia
+                        budynku Sądu dla interesantów na mocy decyzji właściwych organów,
+                        oferty mogą zostać złożone w Biurze Syndyka w Katowicach,
+                        ul. PCK 10/7, 40-057 Katowice, w terminie do dnia 27 lipca
+                        2020 r., do godz. 17:00. Warunkiem uczestnictwa w przetargu
+                        jest uprzednia wpłata wadium w wysokości 10% ceny wywoławczej
+                        netto przedsiębiorstwa tj. w kwocie 22 000 000,00 zł. Rozpoznanie
+                        ofert nastąpi na posiedzeniu jawnym w Sądzie Rejonowym w Częstochowie,
+                        VIII Wydział Gospodarczy, przy ul. Żwirki i Wigury 9/11, 42-217
+                        Częstochowa, w dniu 28 lipca 2020 r., o godz. 12:00, w sali
+                        108. Wszelkie informacje dotyczące przedmiotu niniejszego
+                        przetargu, trybu składania ofert oraz treść Regulaminu Przetargu
+                        można uzyskać pod nr tel. 502-074-019 lub 735-019-002, w dni
+                        robocze, od poniedziałku do piątku, w godz. od 9:00 do 15:00,
+                        jak również drogą elektroniczną pod adresem: hcz@bienioszek.pl
+                        lub mateusz@bienioszek.pl wyłącznie po uprzednim podpisaniu
+                        umowy o zachowaniu poufności.'
+                      description: Treść ogłoszenia w formacie tekstowym
+                    html:
+                      type: string
+                      example: '<tresc><p style="margin:15px 0px 0px 0px;text-align:center">SYNDYK
+                        MASY UPADŁOŚCI<br/>ISD HUTA CZĘSTOCHOWA Sp. z o.o. w upadłości<br/>w
+                        Częstochowie<br/>(sygn. akt VIII GUp 137/19)<br/>obwieszcza
+                        przetarg na sprzedaż przedsiębiorstwa</p><p style="margin:15px
+                        0px 0px 0px">Przedmiotem przetargu jest przedsiębiorstwo ISD
+                        Huta Częstochowa Sp. z o.o. z siedzibą w Częstochowie (KRS
+                        nr 0000136890) opisane w opisie i oszacowaniu według stanu
+                        na dzień 3 września 2019 r. Przedmiotem przetargu jest całe
+                        przedsiębiorstwo upadłego z wyłączeniem aktywów wymienionych
+                        w Regulaminie Przetargu.</p><p style="margin:15px 0px 0px
+                        0px">Cena wywoławcza - 220 000 000,00 zł netto.</p><p style="margin:15px
+                        0px 0px 0px">Oferty w zamkniętych kopertach z wyraźnym dopiskiem
+                        "NIE OTWIERAĆ - ISD Huta Częstochowa - PRZETARG" należy składać
+                        w biurze podawczym w budynku Sądu Rejonowego w Częstochowie
+                        przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, lub przesłać
+                        pocztą w terminie do dnia 27 lipca 2020 r., do godz. 14<sup>00</sup>(decyduje
+                        data i godzina wpływu do Sądu).<br/>Zaleca się osobiste złożenie
+                        oferty. W razie braku możliwości złożenia oferty w biurze
+                        podawczym Sądu wskutek całkowitego zamknięcia budynku Sądu
+                        dla interesantów na mocy decyzji właściwych organów, oferty
+                        mogą zostać złożone w Biurze Syndyka w Katowicach, ul. PCK
+                        10/7, 40-057 Katowice, w terminie do dnia 27 lipca 2020 r.,
+                        do godz. 17<sup>00</sup>.</p><p style="margin:15px 0px 0px
+                        0px">Warunkiem uczestnictwa w przetargu jest uprzednia wpłata
+                        wadium w wysokości 10% ceny wywoławczej netto przedsiębiorstwa
+                        tj. w kwocie 22 000 000,00 zł.</p><p style="margin:15px 0px
+                        0px 0px">Rozpoznanie ofert nastąpi na posiedzeniu jawnym w
+                        Sądzie Rejonowym w Częstochowie, VIII Wydział Gospodarczy,
+                        przy ul. Żwirki i Wigury 9/11, 42-217 Częstochowa, w dniu
+                        28 lipca 2020 r., o godz. 12<sup>00</sup>, w sali 108.</p><p
+                        style="margin:15px 0px 0px 0px">Wszelkie informacje dotyczące
+                        przedmiotu niniejszego przetargu, trybu składania ofert oraz
+                        treść Regulaminu Przetargu można uzyskać pod nr tel. 502-074-019
+                        lub 735-019-002, w dni robocze, od poniedziałku do piątku,
+                        w godz. od 9<sup>00</sup> do 15<sup>00</sup>, jak również
+                        drogą elektroniczną pod adresem: hcz@bienioszek.pl lub mateusz@bienioszek.pl
+                        wyłącznie po uprzednim podpisaniu umowy o zachowaniu poufności.</p></tresc>'
+                      description: Treść ogłoszenia w formacie HTML
+                proceeding:
+                  required:
+                  - court_name
+                  - court_department
+                  - signatures
+                  - commissioner_name
+                  - commissioner_deputy_name
+                  - administrator_name
+                  - administrator_function
+                  type: object
+                  description: Informacje o postępowaniu
+                  properties:
+                    signatures:
+                      items:
+                        type: string
+                      type: array
+                      description: Sygnatury postępowania
+                      example:
+                      - VIII GU 165/19
+                      - VIII GUp 137/19
+                    commissioner_name:
+                      nullable: true
+                      type: string
+                      description: Imię i nazwisko sędziego komisarza
+                      example: Małgorzata Brzózka-Chamala
+                    court_department:
+                      type: string
+                      example: VIII Wydział Gospodarczy
+                      description: Nazwa wydziału
+                    administrator_zip_code:
+                      type: string
+                      example: 00-503
+                      description: Kod pocztowy w adresie nadzorcy
+                    administrator_function:
+                      enum:
+                      - syndyk
+                      - zarządca
+                      - nadzorca sądowy
+                      type: string
+                      description: Funkcja nadzorcy
+                      example: syndyk
+                    court_name:
+                      type: string
+                      example: Sąd Rejonowy w Częstochowie
+                      description: Nazwa sądu
+                    administrator_name:
+                      type: string
+                      example: Mieczysław Radecki
+                      description: Imię i nazwisko nadzorcy
+                    commissioner_deputy_name:
+                      nullable: true
+                      type: string
+                      description: Imię i nazwisko zastępcy sędziego komisarza
+                      example: Małgorzata Grabowska
+                    administrator_town:
+                      type: string
+                      example: Warszawa
+                      description: Miejscowość w adresie nadzorcy
+                    administrator_licence_number:
+                      format: int32
+                      type: integer
+                      description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
+                      example: 598
+                    administrator_address:
+                      type: string
+                      example: ul. Żurawia 6/12 lok. 766
+                      description: Adres pocztowy nadzorcy
+                    administrator_source_url:
+                      type: string
+                      example: https://www.arch.ms.gov.pl/pl/lista-osob-posiadajacych-licencje-doradcy-restrukturyzacyjnego/assignee,1.html
+                      description: Link do źródła danych nadzorcy
+                krz_entry:
+                  required:
+                  - chapter
+                  - section
+                  - signature
+                  - issue_date
+                  - url
+                  type: object
+                  description: Informacje dotyczące publikacji ogłoszenia w KRZ
+                  properties:
+                    chapter:
+                      enum:
+                      - 0
+                      - 1
+                      - 2
+                      type: integer
+                      example: 0
+                      description: |-
+                        Rozdział KRZ
+
+                        <details>
+                          <summary>Pokaż możliwe opcje</summary>
+
+                          | Wartość | Nazwa rozdziału |
+                          |-|-|
+                          | `0` | Postępowanie restrukturyzacyjne |
+                          | `1` | Postępowanie upadłościowe |
+                          | `2` | Zakaz prowadzenia działalności gospodarczej |
+
+                        </details>
+                    url:
+                      format: uri
+                      type: string
+                      description: Link do ogłoszenia w serwisie KRZ
+                      example: ''
+                    section:
+                      enum:
+                      - 1
+                      - 2
+                      - 3
+                      - 4
+                      - 5
+                      - 6
+                      - 7
+                      - 8
+                      - 9
+                      - 20
+                      - 21
+                      - 22
+                      - 23
+                      - 24
+                      - 25
+                      - 26
+                      - 27
+                      - 28
+                      - 29
+                      - 30
+                      - 31
+                      - 32
+                      - 33
+                      - 34
+                      - 35
+                      - 36
+                      - 37
+                      - 38
+                      - 39
+                      - 40
+                      - 41
+                      - 42
+                      - 43
+                      - 44
+                      - 45
+                      - 46
+                      - 47
+                      - 48
+                      - 49
+                      - 50
+                      type: integer
+                      example: 1
+                      description: "Sekcja KRZ\n\n<details>\n  <summary>Pokaż możliwe\
+                        \ opcje</summary>\n\n  <p><strong>Postępowanie restrukturyzacyjne</strong></p>\n\
+                        \  \n  | Wartość | Nazwa sekcji |\n  |-|-|\n  | `0` | Dzień\
+                        \ układowy\n  | `1` | Wniosek restrukturyzacyjny złożony przez\
+                        \ dłużnika\n  | `2` | Zabezpieczenie majątku\n  | `3` | Otwarcie\
+                        \ postępowania restrukturyzacyjnego\n  | `4` | Nadzorca sądowy/Zarządca/Nadzorca\
+                        \ wykonania układu\n  | `5` | Spis wierzytelności/Spis wierzytelności\
+                        \ spornych\n  | `6` | Zgromadzenie wierzycieli\n  | `7` |\
+                        \ Sprawozdania\n  | `8` | Układ\n  | `9` | Zakończenie/umorzenie\
+                        \ postępowania restrukturyzacyjnego\n  | `10` | Inne\n  \n\
+                        \  <p><strong>Postępowanie upadłościowe</strong></p>\n  \n\
+                        \  | Wartość | Nazwa sekcji |\n  |-|-|\n  | `20` | Wniosek\
+                        \ o ogłoszenie upadłości złożony przez dłużnika\n  | `21`\
+                        \ | Zabezpieczenie majątku\n  | `22` | Ogłoszenie upadłości/oddalenie\
+                        \ wniosku\n  | `23` | Wtórne postępowanie upadłościowe\n \
+                        \ | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania\
+                        \ upadłościowego\n  | `25` | Przygotowana likwidacja\n  |\
+                        \ `26` | Syndyk/Zastępca syndyka/Syndyk tymczasowy\n  | `27`\
+                        \ | Zgromadzenie wierzycieli\n  | `28` | Masa upadłości\n\
+                        \  | `29` | Lista wierzytelności\n  | `30` | Plan podziału\n\
+                        \  | `31` | Zakończenie /umorzenie/uchylenie postępowania\
+                        \ upadłościowego\n  | `32` | Plan spłaty/umorzenie zobowiązań\n\
+                        \  | `33` | Układ w upadłości\n  | `34` | Inne\n  \n  <p><strong>Zakaz\
+                        \ prowadzenia działalności gospodarczej</strong></p>\n  \n\
+                        \  | Wartość | Nazwa sekcji |\n  |-|-|\n  | `40` | Orzeczenie\
+                        \ zakazu prowadzenia działalności gospodarczej\n  | `41` |\
+                        \ Inne\n\n</details>"
+                    issue_date:
+                      format: date
+                      type: string
+                      description: Data publikacji ogłoszenia w KRZ
+                      example: '2021-12-01'
+                    signature:
+                      type: string
+                      example: 20210831/00001
+                      description: Sygnatura ogłoszenia w KRZ
+                id:
+                  type: string
+                  example: BMSiG-26451/2020
+                  description: Unikalny identyfikator ogłoszenia
+                msig_entry:
+                  required:
+                  - chapter
+                  - section
+                  - signature
+                  - issue_date
+                  - yearly_number
+                  - position_number
+                  - url
+                  type: object
+                  description: Informacje dotyczące publikacji ogłoszenia w MSiG
+                  properties:
+                    chapter:
+                      enum:
+                      - 0
+                      - 1
+                      type: integer
+                      example: 0
+                      description: |-
+                        Rozdział MSiG
+
+                        <details>
+                          <summary>Pokaż możliwe opcje</summary>
+
+                          | Wartość | Nazwa rozdziału |
+                          |-|-|
+                          | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+                          | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |
+
+                        </details>
+                    position_number:
+                      type: string
+                      example: '26734'
+                      description: Numer pozycji MSiG
+                    issue_date:
+                      format: date
+                      type: string
+                      description: Data publikacji ogłoszenia w MSiG
+                      example: '2020-06-10'
+                    signature:
+                      type: string
+                      example: BMSiG-26451/2020
+                      description: Sygnatura ogłoszenia w MSiG
+                    url:
+                      format: uri
+                      type: string
+                      description: Link do ogłoszenia w serwisie imsig.pl
+                      example: http://www.imsig.pl/pozycja/2020/112/26734
+                    section:
+                      enum:
+                      - 1
+                      - 2
+                      - 3
+                      - 4
+                      - 5
+                      - 6
+                      - 7
+                      - 8
+                      - 9
+                      - 20
+                      - 21
+                      - 22
+                      - 23
+                      - 24
+                      - 25
+                      - 26
+                      - 27
+                      - 28
+                      - 29
+                      - 30
+                      - 31
+                      - 32
+                      - 33
+                      - 34
+                      - 35
+                      - 36
+                      - 37
+                      - 38
+                      - 39
+                      - 40
+                      - 41
+                      - 42
+                      - 43
+                      - 44
+                      - 45
+                      - 46
+                      - 47
+                      - 48
+                      - 49
+                      - 50
+                      type: integer
+                      example: 1
+                      description: "Sekcja MSiG\n\n<details>\n  <summary>Pokaż możliwe\
+                        \ opcje</summary>\n\n  <p><strong>Ogłoszenia wymagane przez\
+                        \ prawo upadłościowe</strong></p>\n  \n  | Wartość | Nazwa\
+                        \ sekcji |\n  |-|-|\n  | `1` | Postanowienie o ogłoszeniu\
+                        \ upadłości |\n  | `2` | Obwieszczenie o zatwierdzeniu układu\
+                        \ |\n  | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu\
+                        \ komisarzowi listy wierzytelności |\n  | `4` | Ogłoszenie\
+                        \ o możliwości przeglądania planu podziału |\n  | `5` | Postanowienie\
+                        \ o umorzeniu postępowania upadłościowego |\n  | `6` | Postanowienie\
+                        \ o zakończeniu postępowania upadłościowego |\n  | `7` | Ogłoszenie\
+                        \ o złożeniu oświadczenia o wszczęciu postępowania naprawczego\
+                        \ |\n  | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej\
+                        \ układ |\n  | `9` | Inne |\n  \n  <p><strong>Ogłoszenia wymagane\
+                        \ przez prawo restrukturyzacyjne</strong></p>\n  \n  | Wartość\
+                        \ | Nazwa sekcji |\n  |-|-|\n  | `20` | Dokonanie zmian w\
+                        \ spisie wierzytelności |\n  | `21` | Inne |\n  | `22` | Odmowa\
+                        \ otwarcia postępowania restrukturyzacyjnego |\n  | `23` |\
+                        \ Odmowa zatwierdzenia układu |\n  | `24` | Ogłoszenie przetargu\
+                        \ lub konkursu ofert na sprzedaż majątku dłużnika |\n  | `25`\
+                        \ | Określenie trybu i sposobu głosowania nad układem |\n\
+                        \  | `26` | Otwarcie postępowania o zatwierdzenie układu |\n\
+                        \  | `27` | Otwarcie postępowania o zatwierdzenie układu w\
+                        \ związku z wystąpieniem COVID-19 |\n  | `28` | Otwarcie postępowania\
+                        \ o zmianę układu |\n  | `29` | Otwarcie postępowania sanacyjnego\
+                        \ |\n  | `30` | Otwarcie postępowania układowego |\n  | `31`\
+                        \ | Otwarcie przyspieszonego postępowania układowego |\n \
+                        \ | `32` | Sprostowanie |\n  | `33` | Stwierdzenie wykonania\
+                        \ układu |\n  | `34` | Uchylenie układu |\n  | `35` | Umorzenie\
+                        \ postępowania |\n  | `36` | Wyznaczenie nadzorcy lub zarządcy\
+                        \ |\n  | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania\
+                        \ układu |\n  | `38` | Wyznaczenie terminu zgromadzenia wierzycieli\
+                        \ |\n  | `39` | Zabezpieczenie majątku dłużnika |\n  | `40`\
+                        \ | Zakończenie postępowania |\n  | `41` | Zatwierdzenie spisu\
+                        \ wierzytelności |\n  | `42` | Zatwierdzenie układu |\n  |\
+                        \ `43` | Złożenie planu restrukturyzacyjnego |\n  | `44` |\
+                        \ Złożenie spisu wierzytelności |\n  | `45` | Złożenie sprawozdania\
+                        \ z wykonania planu restrukturyzacyjnego lub układu |\n  |\
+                        \ `46` | Złożenie uzupełniającego spisu wierzytelności |\n\
+                        \  | `47` | Złożenie wniosku o zatwierdzenie układu |\n  |\
+                        \ `48` | Zmiana nadzorcy lub zarządcy |\n  | `49` | Zmiana\
+                        \ sędziego komisarza |\n  | `50` | Zmiana terminu zgromadzenia\
+                        \ wierzycieli |\n\n</details>"
+                    yearly_number:
+                      type: string
+                      example: '112'
+                      description: Numer wydania MSiG
+                order:
+                  required:
+                  - order_date
+                  - expiration_period
+                  - expiration_date
+                  type: object
+                  description: Informacje o postanowieniu, którego dotyczy ogłoszenie
+                  properties:
+                    order_date:
+                      format: date
+                      example: '2019-07-19'
+                      type: string
+                      description: Data wydania postanowienia
+                      nullable: true
+                    expiration_period:
+                      format: int32
+                      example: 47
+                      type: integer
+                      description: Okres do działania (w dniach)
+                      nullable: true
+                    expiration_date:
+                      format: date
+                      example: '2020-07-27'
+                      type: string
+                      description: Data końcowa okresu do działania
+                      nullable: true
+                entity:
+                  items:
+                    required:
+                    - info
+                    - numbers
+                    - address
+                    type: object
+                    properties:
+                      info:
+                        required:
+                        - cleaned_name
+                        - first_name
+                        - last_name
+                        - legal_form
+                        - ownership_type
+                        - primary_business
+                        - commencement_date
+                        type: object
+                        description: Podstawowe dane podmiotu
+                        properties:
+                          commencement_date:
+                            format: date
+                            type: string
+                            description: Data rozpoczęcia działalności
+                            example: '2002-10-01'
+                          first_name:
+                            nullable: true
+                            type: string
+                            description: Imię
+                            example: Jan
+                          last_name:
+                            nullable: true
+                            type: string
+                            description: Nazwisko
+                            example: Kowalski
+                          cleaned_name:
+                            type: string
+                            example: Isd Huta Częstochowa sp. z o.o.
+                            description: Nazwa podmiotu
+                          primary_business:
+                            nullable: true
+                            type: string
+                            description: Przeważająca działalność gospodarcza (kod
+                              PKD)
+                            example: 24.10.Z Produkcja surówki, żelazostopów, żeliwa
+                              i stali oraz wyrobów hutniczych
+                          ownership_type:
+                            type: string
+                            example: własność prywatna krajowa pozostała
+                            description: Forma własności
+                          legal_form:
+                            type: string
+                            example: spółki z ograniczoną odpowiedzialnością
+                            description: Forma prawna
+                      numbers:
+                        required:
+                        - nip
+                        - regon
+                        - krs
+                        - pesel
+                        type: object
+                        description: Numery rejestrowe podmiotu
+                        properties:
+                          krs:
+                            description: Numer KRS
+                            nullable: true
+                            pattern: \d{10}
+                            maxLength: 10
+                            type: string
+                            example: 0000136890
+                            minLength: 10
+                          nip:
+                            description: Numer NIP
+                            nullable: true
+                            pattern: \d{10}
+                            maxLength: 10
+                            type: string
+                            example: '9491827824'
+                            minLength: 10
+                          regon:
+                            description: Numer REGON
+                            nullable: true
+                            pattern: \d{9}
+                            maxLength: 9
+                            type: string
+                            example: '152074271'
+                            minLength: 9
+                          pesel:
+                            description: Numer PESEL
+                            nullable: true
+                            pattern: \d{11}
+                            maxLength: 11
+                            type: string
+                            example: '75121968629'
+                            minLength: 11
+                      address:
+                        required:
+                        - state
+                        - powiat
+                        - gmina
+                        - town
+                        - street
+                        - house_number
+                        - flat_number
+                        - zip_code
+                        - post_office
+                        type: object
+                        description: Adres pocztowy siedziby podmiotu lub miejsca
+                          zamieszkania
+                        properties:
+                          town:
+                            type: string
+                            example: Częstochowa
+                            description: Miejscowość
+                          gmina:
+                            type: string
+                            example: Częstochowa
+                            description: Gmina
+                          house_number:
+                            nullable: true
+                            type: string
+                            description: Numer nieruchomości
+                            example: '22'
+                          flat_number:
+                            nullable: true
+                            type: string
+                            description: Numer lokalu
+                            example: '11'
+                          state:
+                            type: string
+                            example: śląskie
+                            description: Województwo
+                          street:
+                            nullable: true
+                            type: string
+                            description: Ulica
+                            example: ul. Kucelińska
+                          post_office:
+                            type: string
+                            example: Częstochowa
+                            description: Poczta
+                          powiat:
+                            type: string
+                            example: Częstochowa
+                            description: Powiat
+                          zip_code:
+                            pattern: \d{2}-\d{3}
+                            type: string
+                            example: 42-207
+                            description: Kod pocztowy
+                  type: array
+                  description: Lista podmiotów, których dotyczy ogłoszenie
+            type: array
+            description: Lista ogłoszeń spełniających kryteria określone w parametrach
+              metody, posortowanych według daty publikacji w MSiG / KRZ
+            title: Sukces
+          - title: Błąd
+            required:
+            - detail
+            type: object
+            description: Obiekt dla błędu dla MSIG API / KRZ API.
+            properties:
+              detail:
+                type: string
+                example: Brak numerów do sprawdzenia
+                description: Szczegółowa informacja na temat błędu
+    description: Wynik wyszukiwania ogłoszeń
+parameters:
+- schema:
+    type: string
+    example: BMSiG-26451/2020
+    description: Sygnatura ogłoszenia w MSiG
+  description: Unikalny identyfikator ogłoszenia
+  name: id
+  in: query
+- schema:
+    type: string
+    example: '2019-01-01'
+    format: date
+  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+  name: date_from
+  in: query
+- schema:
+    type: string
+    example: '2019-12-31'
+    format: date
+  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+  name: date_to
+  in: query
+- schema:
+    enum:
+    - 0
+    - 1
+    type: integer
+    example: 0
+    description: |-
+      Rozdział MSiG
+
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+        | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |
+
+      </details>
+  name: msig_chapter
+  in: query
+- schema:
+    enum:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    - 36
+    - 37
+    - 38
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+    - 44
+    - 45
+    - 46
+    - 47
+    - 48
+    - 49
+    - 50
+    type: integer
+    example: 1
+    description: "Sekcja MSiG\n\n<details>\n  <summary>Pokaż możliwe opcje</summary>\n\
+      \n  <p><strong>Ogłoszenia wymagane przez prawo upadłościowe</strong></p>\n \
+      \ \n  | Wartość | Nazwa sekcji |\n  |-|-|\n  | `1` | Postanowienie o ogłoszeniu\
+      \ upadłości |\n  | `2` | Obwieszczenie o zatwierdzeniu układu |\n  | `3` | Ogłoszenie\
+      \ o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |\n\
+      \  | `4` | Ogłoszenie o możliwości przeglądania planu podziału |\n  | `5` |\
+      \ Postanowienie o umorzeniu postępowania upadłościowego |\n  | `6` | Postanowienie\
+      \ o zakończeniu postępowania upadłościowego |\n  | `7` | Ogłoszenie o złożeniu\
+      \ oświadczenia o wszczęciu postępowania naprawczego |\n  | `8` | Ogłoszenie\
+      \ o terminie rozprawy zatwierdzającej układ |\n  | `9` | Inne |\n  \n  <p><strong>Ogłoszenia\
+      \ wymagane przez prawo restrukturyzacyjne</strong></p>\n  \n  | Wartość | Nazwa\
+      \ sekcji |\n  |-|-|\n  | `20` | Dokonanie zmian w spisie wierzytelności |\n\
+      \  | `21` | Inne |\n  | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego\
+      \ |\n  | `23` | Odmowa zatwierdzenia układu |\n  | `24` | Ogłoszenie przetargu\
+      \ lub konkursu ofert na sprzedaż majątku dłużnika |\n  | `25` | Określenie trybu\
+      \ i sposobu głosowania nad układem |\n  | `26` | Otwarcie postępowania o zatwierdzenie\
+      \ układu |\n  | `27` | Otwarcie postępowania o zatwierdzenie układu w związku\
+      \ z wystąpieniem COVID-19 |\n  | `28` | Otwarcie postępowania o zmianę układu\
+      \ |\n  | `29` | Otwarcie postępowania sanacyjnego |\n  | `30` | Otwarcie postępowania\
+      \ układowego |\n  | `31` | Otwarcie przyspieszonego postępowania układowego\
+      \ |\n  | `32` | Sprostowanie |\n  | `33` | Stwierdzenie wykonania układu |\n\
+      \  | `34` | Uchylenie układu |\n  | `35` | Umorzenie postępowania |\n  | `36`\
+      \ | Wyznaczenie nadzorcy lub zarządcy |\n  | `37` | Wyznaczenie terminu rozprawy\
+      \ w celu rozpoznania układu |\n  | `38` | Wyznaczenie terminu zgromadzenia wierzycieli\
+      \ |\n  | `39` | Zabezpieczenie majątku dłużnika |\n  | `40` | Zakończenie postępowania\
+      \ |\n  | `41` | Zatwierdzenie spisu wierzytelności |\n  | `42` | Zatwierdzenie\
+      \ układu |\n  | `43` | Złożenie planu restrukturyzacyjnego |\n  | `44` | Złożenie\
+      \ spisu wierzytelności |\n  | `45` | Złożenie sprawozdania z wykonania planu\
+      \ restrukturyzacyjnego lub układu |\n  | `46` | Złożenie uzupełniającego spisu\
+      \ wierzytelności |\n  | `47` | Złożenie wniosku o zatwierdzenie układu |\n \
+      \ | `48` | Zmiana nadzorcy lub zarządcy |\n  | `49` | Zmiana sędziego komisarza\
+      \ |\n  | `50` | Zmiana terminu zgromadzenia wierzycieli |\n\n</details>"
+  name: msig_section
+  in: query
+- schema:
+    enum:
+    - 0
+    - 1
+    - 2
+    type: integer
+    example: 0
+    description: |-
+      Rozdział KRZ
+
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Postępowanie restrukturyzacyjne |
+        | `1` | Postępowanie upadłościowe |
+        | `2` | Zakaz prowadzenia działalności gospodarczej |
+
+      </details>
+  name: krz_chapter
+  in: query
+- schema:
+    enum:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    - 36
+    - 37
+    - 38
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+    - 44
+    - 45
+    - 46
+    - 47
+    - 48
+    - 49
+    - 50
+    type: integer
+    example: 1
+    description: "Sekcja KRZ\n\n<details>\n  <summary>Pokaż możliwe opcje</summary>\n\
+      \n  <p><strong>Postępowanie restrukturyzacyjne</strong></p>\n  \n  | Wartość\
+      \ | Nazwa sekcji |\n  |-|-|\n  | `0` | Dzień układowy\n  | `1` | Wniosek restrukturyzacyjny\
+      \ złożony przez dłużnika\n  | `2` | Zabezpieczenie majątku\n  | `3` | Otwarcie\
+      \ postępowania restrukturyzacyjnego\n  | `4` | Nadzorca sądowy/Zarządca/Nadzorca\
+      \ wykonania układu\n  | `5` | Spis wierzytelności/Spis wierzytelności spornych\n\
+      \  | `6` | Zgromadzenie wierzycieli\n  | `7` | Sprawozdania\n  | `8` | Układ\n\
+      \  | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego\n  | `10`\
+      \ | Inne\n  \n  <p><strong>Postępowanie upadłościowe</strong></p>\n  \n  | Wartość\
+      \ | Nazwa sekcji |\n  |-|-|\n  | `20` | Wniosek o ogłoszenie upadłości złożony\
+      \ przez dłużnika\n  | `21` | Zabezpieczenie majątku\n  | `22` | Ogłoszenie upadłości/oddalenie\
+      \ wniosku\n  | `23` | Wtórne postępowanie upadłościowe\n  | `24` | Uznanie orzeczenia\
+      \ o wszczęciu zagranicznego postępowania upadłościowego\n  | `25` | Przygotowana\
+      \ likwidacja\n  | `26` | Syndyk/Zastępca syndyka/Syndyk tymczasowy\n  | `27`\
+      \ | Zgromadzenie wierzycieli\n  | `28` | Masa upadłości\n  | `29` | Lista wierzytelności\n\
+      \  | `30` | Plan podziału\n  | `31` | Zakończenie /umorzenie/uchylenie postępowania\
+      \ upadłościowego\n  | `32` | Plan spłaty/umorzenie zobowiązań\n  | `33` | Układ\
+      \ w upadłości\n  | `34` | Inne\n  \n  <p><strong>Zakaz prowadzenia działalności\
+      \ gospodarczej</strong></p>\n  \n  | Wartość | Nazwa sekcji |\n  |-|-|\n  |\
+      \ `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej\n  | `41` |\
+      \ Inne\n\n</details>"
+  name: krz_section
+  in: query
+- schema:
+    type: string
+  description: Sygnatura ogłoszenia w MSiG
+  name: msig_signature
+  in: query
+- schema:
+    type: string
+  description: Sygnatura ogłoszenia w KRZ
+  name: krz_signature
+  in: query
+- schema:
+    description: Numer NIP
+    maxLength: 10
+    pattern: \d{10}
+    type: string
+    example: '9491827824'
+    minLength: 10
+  description: Numer NIP podmiotu, którego dotyczy ogłoszenie
+  name: nip
+  in: query
+- schema:
+    description: Numer REGON
+    maxLength: 9
+    pattern: \d{9}
+    type: string
+    example: '152074271'
+    minLength: 9
+  description: Numer REGON podmiotu, którego dotyczy ogłoszenie
+  name: regon
+  in: query
+- schema:
+    description: Numer KRS
+    maxLength: 10
+    pattern: \d{10}
+    type: string
+    example: 0000136890
+    minLength: 10
+  description: Numer KRS podmiotu, którego dotyczy ogłoszenie
+  name: krs
+  in: query
+- schema:
+    description: Numer PESEL
+    maxLength: 11
+    pattern: \d{11}
+    type: string
+    example: '75121968629'
+    minLength: 11
+  description: Numer PESEL osoby, której dotyczy ogłoszenie
+  name: pesel
+  in: query
+- schema:
+    type: string
+  description: Imię osoby, której dotyczy ogłoszenie
+  name: first_name
+  in: query
+- schema:
+    type: string
+  description: Nazwisko osoby, której dotyczy ogłoszenie
+  name: last_name
+  in: query
+- schema:
+    type: string
+  description: Sygnatura postępowania
+  name: signature
+  in: query
+- schema:
+    type: string
+  description: Imię i nazwisko sędziego komisarza
+  name: commissioner_name
+  in: query
+- schema:
+    type: string
+  description: Imię i nazwisko nadzorcy sądowego
+  name: administrator_name
+  in: query
+- schema:
+    enum:
+    - entity
+    - proceeding
+    - order
+    - msig_entry
+    - krz_entry
+    - content
+    type: string
+  description: |-
+    Lista zwracanych grup informacji
+
+    <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Identyfikator | Grupa informacji |
+      |-|-|
+      | `"entity"` | Lista podmiotów, których dotyczy ogłoszenie |
+      | `"proceeding"` | Informacje o postępowaniu |
+      | `"order"` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+      | `"msig_entry"` | Informacje dotyczące publikacji ogłoszenia w MSiG |
+      | `"krz_entry"` | Informacje dotyczące publikacji ogłoszenia w KRZ |
+      | `"content"` | Nieprzetworzona treść ogłoszenia |
+
+    </details>
+  name: projection
+  in: query
+tags:
+- announcements
+summary: ''
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
+security:
+- api_key: []
+operationId: get-announcements
+x-code-samples:
+- lang: Shell
+  source: |-
+    # Wyszukaj ogłoszenia dla podmiotu z numerem KRS `0000136890`
+    curl https://api.imsig.pl/v1/msig/announcements?krs=0000136890 --header \"Authorization: aaaabbbbccccdddd\"
+description: |-
+  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
+  w wybranych rozdziałach MSiG / KRZ.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty publikacji w MSiG / KRZ.
+
+  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
+  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.

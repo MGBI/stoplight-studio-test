@@ -1,0 +1,18 @@
+operationId: report_formats_v2_dicts_report_formats_get
+summary: Report Formats
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/TypesFormat'
+          type: array
+          title: Response Report Formats V2 Dicts Report Formats Get
+    description: Successful Response
+tags:
+- dicts_iapi
+- public_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

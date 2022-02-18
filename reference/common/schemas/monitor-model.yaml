@@ -1,0 +1,46 @@
+example:
+  creation_datetime: '2021-11-02T15:20:20.584Z'
+  last_update_datetime: '2021-11-02T15:20:20.584Z'
+  emails:
+  - abc@xyz.pl
+  - def@klm.pl
+  notifications:
+  - status: 1
+    email: abc@xyz.pl
+    sent_datetime: '2021-11-02T15:20:20.584Z'
+  filter_id: 2
+  id: 2
+required:
+- id
+- filter_id
+- emails
+- creation_datetime
+- notifications
+type: object
+properties:
+  creation_datetime:
+    format: date-time
+    type: string
+    title: Creation Datetime
+  last_update_datetime:
+    nullable: true
+    format: date-time
+    type: string
+    title: Last Update Datetime
+  emails:
+    items:
+      type: string
+    type: array
+    title: Emails
+  notifications:
+    items:
+      $ref: ../schemas.yaml#/NotificationModel
+    type: array
+    title: Notifications
+  filter_id:
+    type: string
+    title: Filter Id
+  id:
+    type: string
+    title: Id
+title: MonitorModel

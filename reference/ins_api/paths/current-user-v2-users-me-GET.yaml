@@ -1,0 +1,51 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/UserModel'
+    description: Retrieve actual user data
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+parameters:
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- users_iapi
+description: |-
+  Get actual user info.
+  User token is required.
+
+  Not need admin flag to use this endpoint.
+summary: Get Current User
+operationId: get_current_user_v2_users_me_get
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

@@ -1,0 +1,18 @@
+operationId: get_types_v2_dicts_report_types_get
+summary: Get Types
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/InfoTypes'
+          type: array
+          title: Response Get Types V2 Dicts Report Types Get
+    description: Successful Response
+tags:
+- dicts_iapi
+- public_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

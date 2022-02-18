@@ -1,0 +1,62 @@
+operationId: get_user_monitor_by_id_v2_monitors__id__get
+summary: Get User Monitor By Id
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MonitorModel'
+    description: Returned monitoring with specified id
+  '404':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Not Found
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+parameters:
+- required: true
+  in: path
+  name: id
+  schema:
+    anyOf:
+    - type: string
+    - enum:
+      - last
+      type: string
+    title: Id
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- monitors_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

@@ -1,0 +1,19 @@
+operationId: get_announcement_category_v2_dicts_announcement_categories_get
+summary: Get Announcement Category
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/InfoCategories'
+          type: array
+          title: Response Get Announcement Category V2 Dicts Announcement Categories
+            Get
+    description: Successful Response
+tags:
+- dicts_iapi
+- public_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

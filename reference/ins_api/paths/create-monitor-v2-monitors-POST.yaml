@@ -1,0 +1,52 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MonitorModel'
+    description: New monitoring assigned to the current user
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unprocessable Entity
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+parameters:
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- monitors_iapi
+summary: Create Monitor
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/CreateMonitorsModel'
+  required: true
+operationId: create_monitor_v2_monitors_post
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

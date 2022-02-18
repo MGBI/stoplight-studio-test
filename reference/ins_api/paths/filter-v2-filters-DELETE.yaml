@@ -1,0 +1,48 @@
+operationId: delete_filter_v2_filters_delete
+summary: Delete Filter
+responses:
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '204':
+    description: Delete filters
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+parameters:
+- required: false
+  in: query
+  name: ids
+  schema:
+    type: string
+    title: Ids
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- filters_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

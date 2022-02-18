@@ -1,0 +1,18 @@
+operationId: get_fields_v2_dicts_announcement_fields_get
+summary: Get Fields
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/InfoFields'
+          type: array
+          title: Response Get Fields V2 Dicts Announcement Fields Get
+    description: Successful Response
+tags:
+- dicts_iapi
+- public_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

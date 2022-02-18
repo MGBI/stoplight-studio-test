@@ -1,0 +1,39 @@
+example:
+  file_password: mgbi2021
+  name: example raport
+  file_format: 3
+  query:
+    custom_categories:
+    - K
+    from_date: '2021-11-02'
+    append_first_entry: true
+    to_date: '2021-11-04'
+    filter_id: 61ded2f8aff2de52365d891e
+  type: 0
+  custom_content: []
+required:
+- type
+- name
+- query
+- file_format
+- file_password
+type: object
+properties:
+  file_password:
+    type: string
+    title: File Password
+  name:
+    type: string
+    title: Name
+  file_format:
+    $ref: ../schemas.yaml#/Format
+  query:
+    $ref: ../schemas.yaml#/QueryBaseModel
+  type:
+    $ref: ../schemas.yaml#/TypesEnum
+  custom_content:
+    default: []
+    items: {}
+    type: array
+    title: Custom Content
+title: CreateReportModel

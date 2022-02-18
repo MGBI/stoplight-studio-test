@@ -1,0 +1,16 @@
+required:
+- sent_datetime
+- email
+- status
+type: object
+properties:
+  status:
+    $ref: ../schemas.yaml#/NotificationStatusEnum
+  email:
+    type: string
+    title: Email
+  sent_datetime:
+    format: date-time
+    type: string
+    title: Sent Datetime
+title: NotificationModel

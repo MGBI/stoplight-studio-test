@@ -1,0 +1,21 @@
+example:
+  is_admin: false
+  is_active: true
+  email: abc@def.pl
+required:
+- email
+type: object
+properties:
+  is_admin:
+    default: false
+    type: boolean
+    title: Is Admin
+  is_active:
+    default: true
+    type: boolean
+    title: Is Active
+  email:
+    format: email
+    type: string
+    title: Email
+title: CreateUserModel

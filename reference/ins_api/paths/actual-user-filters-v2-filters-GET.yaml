@@ -1,0 +1,49 @@
+operationId: get_actual_user_filters_v2_filters_get
+summary: Get Actual User Filters
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/FiltersModel'
+          type: array
+          title: Response Get Actual User Filters V2 Filters Get
+    description: Retrieve actual user filters list
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+parameters:
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- filters_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

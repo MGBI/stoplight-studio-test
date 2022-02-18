@@ -1,0 +1,86 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          oneOf:
+          - items:
+              required:
+              - issue_date
+              - creation_datetime
+              - announcements_count
+              type: object
+              properties:
+                validation_datetime:
+                  format: datetime
+                  type: string
+                  description: Data zakończenia aktualizacji (weryfikacji danych)
+                  example: '2019-06-10T10:13:12.115Z'
+                issue_date:
+                  format: date
+                  type: string
+                  description: Data udostępnienia aktualizacji
+                  example: '2019-06-10'
+                announcements_count:
+                  type: integer
+                  example: 213
+                  description: Liczba ogłoszeń dodanych w aktualizacji
+                creation_datetime:
+                  format: datetime
+                  type: string
+                  description: Data rozpoczęcia aktualizacji
+                  example: '2019-06-10T09:13:12.115Z'
+            type: array
+            description: Lista aktualizacji spełniających kryteria określone w parametrach
+              metody, posortowanych według daty udostępnienia
+            title: Sukces
+          - title: Błąd
+            required:
+            - detail
+            type: object
+            description: Obiekt dla błędu dla MSIG API / KRZ API.
+            properties:
+              detail:
+                type: string
+                example: Brak numerów do sprawdzenia
+                description: Szczegółowa informacja na temat błędu
+    description: Wynik wyszukiwania aktualizacji
+parameters:
+- schema:
+    type: string
+    example: '2019-01-01'
+    format: date
+  description: Początek zakresu dla daty udostępnienia aktualizacji
+  name: issue_date_from
+  in: query
+- schema:
+    type: string
+    example: '2019-12-31'
+    format: date
+  description: Koniec zakresu dla daty udostępnienia aktualizacji
+  name: issue_date_to
+  in: query
+tags:
+- updates
+summary: ''
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
+security:
+- api_key: []
+operationId: get-updates
+x-code-samples:
+- lang: Shell
+  source: |-
+    # Wyszukaj aktualizacje dla okresu od `2019-01-01` do `2019-12-31`
+    curl https://api.imsig.pl/v1/msig/updates?issue_date_from=2019-01-01&issue_date_to=2019-12-31 --header \"Authorization: aaaabbbbccccdddd\"
+description: |-
+  Pobiera informacje o aktualizacjach bazy ogłoszeń we wskazanym okresie.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista aktualizacji
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty udostępnienia.
+
+  W przypadku, gdy żadna aktualizacja nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba aktualizacji spełniających
+  kryteria jest większa niż 1000, lista zawiera 1000 pierwszych aktualizacji.

@@ -1,0 +1,51 @@
+example:
+  items_count: 8
+  creation_datetime: '2021-11-10T15:20:20.584Z'
+  name: Dłużnicy 2021-11
+  last_update_datetime: '2021-12-10T15:30:20.584Z'
+  content:
+    msig_signature:
+    - XIV GUp 83/16
+    krz_signature:
+    - BY1B/GUp/13/2021
+    krs:
+    - '0000422121'
+    pesel:
+    - '41041202774'
+    regon:
+    - '272404100'
+    nip:
+    - '7272849598'
+    name:
+    - Jan Kowalski
+    - Ambroży Nielepszy
+  id: '222222222222222222222222'
+required:
+- name
+- content
+- id
+- creation_datetime
+- items_count
+type: object
+properties:
+  items_count:
+    type: integer
+    title: Items Count
+  creation_datetime:
+    format: date-time
+    type: string
+    title: Creation Datetime
+  name:
+    type: string
+    title: Name
+  last_update_datetime:
+    nullable: true
+    format: date-time
+    type: string
+    title: Last Update Datetime
+  content:
+    $ref: ../schemas.yaml#/ContentFiltersModel
+  id:
+    type: string
+    title: Id
+title: FiltersModel

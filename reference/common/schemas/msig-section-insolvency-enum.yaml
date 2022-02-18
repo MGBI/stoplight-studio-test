@@ -1,0 +1,28 @@
+enum:
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+type: integer
+description: |-
+  Rozdział MSiG
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `1` | Postanowienie o ogłoszeniu upadłości |
+    | `2` | Obwieszczenie o zatwierdzeniu układu |
+    | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+    | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+    | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+    | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+    | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+    | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+    | `9` | Inne |</details>
+title: MsigSectionInsolvencyEnum

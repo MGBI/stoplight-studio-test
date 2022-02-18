@@ -1,0 +1,8 @@
+type: object
+properties:
+  detail:
+    items:
+      $ref: ../schemas.yaml#/ValidationError
+    type: array
+    title: Detail
+title: HTTPValidationError

@@ -88,6 +88,10 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
         )
 
     # adding tags from set to tags in x-tagGroups
+    for tag_group in old_openapi["x-tagGroups"]:
+        if tag_group["name"] == "MSIG API V2":
+           old_openapi["x-tagGroups"].pop(old_openapi["x-tagGroups"].index(tag_group))
+           break
     old_openapi["x-tagGroups"].append(
       {"name": "MSIG API V2", "tags": list(tags)})
 

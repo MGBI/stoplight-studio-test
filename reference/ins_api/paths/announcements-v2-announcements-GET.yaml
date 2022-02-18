@@ -1,0 +1,249 @@
+operationId: get_announcements_v2_announcements_get
+summary: Get Announcements
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/AnnouncementModel'
+          type: array
+          title: Response Get Announcements V2 Announcements Get
+    description: Get list announcements
+  '429':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Too Many Requests
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+parameters:
+- required: false
+  in: query
+  name: id
+  schema:
+    type: string
+    title: Id
+- required: false
+  in: query
+  name: date_from
+  schema:
+    format: date
+    type: string
+    title: Date From
+- required: false
+  in: query
+  name: date_to
+  schema:
+    format: date
+    type: string
+    title: Date To
+- required: false
+  in: query
+  name: msig_chapter
+  schema:
+    description: |-
+      An enumeration.
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Insolvency |
+        | `1` | Restructuring |</details>
+    $ref: '#/components/schemas/MsigChapterEnum'
+- required: false
+  in: query
+  name: msig_section
+  schema:
+    anyOf:
+    - $ref: '#/components/schemas/MsigSectionInsolvencyEnum'
+    - $ref: '#/components/schemas/MsigSectionRestructuringEnum'
+    title: Msig Section
+- required: false
+  in: query
+  name: krz_chapter
+  schema:
+    description: |-
+      An enumeration.
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Restructuring |
+        | `1` | Insolvency |
+        | `2` | Ban |</details>
+    $ref: '#/components/schemas/KrzChapterEnum'
+- required: false
+  in: query
+  name: krz_section
+  schema:
+    anyOf:
+    - $ref: '#/components/schemas/KrzSectionRestructuringEnum'
+    - $ref: '#/components/schemas/KrzSectionInsolvencyEnum'
+    - $ref: '#/components/schemas/KrzSectionBanEnum'
+    title: Krz Section
+- required: false
+  in: query
+  name: krz_subsection
+  schema:
+    description: |-
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Obwieszczenie o ustaleniu dnia układowego |
+        | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
+        | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
+        | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
+        | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
+        | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
+        | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
+    $ref: '#/components/schemas/KrzSubsectionEnum'
+- required: false
+  in: query
+  name: msig_signature
+  schema:
+    type: string
+    title: Msig Signature
+- required: false
+  in: query
+  name: krz_signature
+  schema:
+    type: string
+    title: Krz Signature
+- required: false
+  in: query
+  name: nip
+  schema:
+    type: string
+    title: Nip
+- required: false
+  in: query
+  name: regon
+  schema:
+    type: string
+    title: Regon
+- required: false
+  in: query
+  name: krs
+  schema:
+    type: string
+    title: Krs
+- required: false
+  in: query
+  name: pesel
+  schema:
+    type: string
+    title: Pesel
+- required: false
+  in: query
+  name: first_name
+  schema:
+    type: string
+    title: First Name
+- required: false
+  in: query
+  name: last_name
+  schema:
+    type: string
+    title: Last Name
+- required: false
+  in: query
+  name: signature
+  schema:
+    type: string
+    title: Signature
+- required: false
+  in: query
+  name: commissioner_name
+  schema:
+    type: string
+    title: Commissioner Name
+- required: false
+  in: query
+  name: administrator_name
+  schema:
+    type: string
+    title: Administrator Name
+- required: false
+  in: query
+  name: projection
+  schema:
+    description: |-
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `entity` | Lista podmiotów, których dotyczy ogłoszenie |
+        | `proceeding` | Informacje o postępowaniu |
+        | `order` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+        | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w msig |
+        | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
+        | `content` | Nieprzetworzona treść ogłoszenia |</details>
+    $ref: '#/components/schemas/ProjectionEnum'
+- required: false
+  in: query
+  name: category
+  schema:
+    items:
+      anyOf:
+      - $ref: '#/components/schemas/CategoriesEnum'
+      - type: string
+    type: array
+    title: Category
+- required: false
+  in: query
+  name: archival
+  schema:
+    default: false
+    type: boolean
+    title: Archival
+- required: false
+  in: query
+  name: filter_id
+  schema:
+    type: string
+    title: Filter Id
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- announcements_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

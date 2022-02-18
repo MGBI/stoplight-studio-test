@@ -5,4 +5,4 @@
 
 rm -f openapi-bundle.yaml
 rm -f iapi.json
-rm -f openapi-bundle-cleaned.yaml
+rm -f openapi-bundle.iapi.yaml

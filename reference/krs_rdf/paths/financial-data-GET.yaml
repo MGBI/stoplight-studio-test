@@ -1,0 +1,387 @@
+responses:
+  '429':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Quota is exceeded
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Wykorzystany limit zapytań do API
+  '200':
+    content:
+      application/json:
+        schema:
+          uniqueItems: true
+          items:
+            required:
+            - id
+            - krs
+            - period_from
+            - period_to
+            - period_year
+            - preparation_date
+            - filing_date
+            - crawling_date
+            - consolidated
+            - ias_standard
+            type: object
+            properties:
+              bs_lae_e_cpfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '10362941097.49'
+                description: Kapitał (fundusz) własny - przekształcone dane porównawcze
+                  za poprzedni rok obrotowy
+              bs_lae_nc_pfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '10150715600.00'
+                description: Kapitał (fundusz) podstawowy - kwota na dzień kończący
+                  poprzedni rok obrotowy
+              period_end_year:
+                format: int32
+                type: integer
+                description: Rok z daty końcowej okresu, którego dotyczy dokument
+                example: 2019
+              consolidated:
+                type: boolean
+                example: true
+                description: Informacja, czy sprawozdanie jest skonsolidowane
+              bs_lae_e_cfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '10834213197.71'
+                description: Kapitał (fundusz) własny - kwota na dzień kończący bieżący
+                  rok obrotowy
+              period_to:
+                format: date
+                type: string
+                description: Data końcowa okresu, którego dotyczy sprawozdanie
+                example: '2019-02-28'
+              pala_nrfs_cpfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '8588730876.40'
+                description: Przychody netto ze sprzedaży - przekształcone dane porównawcze
+                  za poprzedni rok obrotowy
+              ias_standard:
+                type: boolean
+                example: false
+                description: Informacja, czy sprawozdanie zostało sporządzone zgodnie
+                  z Międzynarodowymi Standardami Rachunkowości
+              filing_date:
+                format: date
+                type: string
+                description: Data publikacji sprawozdania w RDF
+                example: '2019-07-19'
+              bs_lae_e_pfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '10400343189.57'
+                description: Kapitał (fundusz) własny - kwota na dzień kończący poprzedni
+                  rok obrotowy
+              id:
+                example: 2520543
+                type: integer
+                description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator
+                  dokumentu w RDF)
+                format: int32
+              pala_npl_cpfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '653871907.56'
+                description: Zysk (strata) netto - przekształcone dane porównawcze
+                  za poprzedni rok obrotowy
+              pala_npl_cfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '479809229.39'
+                description: Zysk (strata) netto - kwota na dzień kończący bieżący
+                  rok obrotowy
+              bs_lae_nc_cpfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '10150715600.00'
+                description: Kapitał (fundusz) podstawowy - przekształcone dane porównawcze
+                  za poprzedni rok obrotowy
+              period_from:
+                format: date
+                type: string
+                description: Data początkowa okresu, którego dotyczy sprawozdanie
+                example: '2018-01-01'
+              krs:
+                description: Numer KRS podmiotu, którego dotyczy sprawozdanie
+                maxLength: 10
+                pattern: ^\d{10}$
+                type: string
+                example: 0000019193
+                minLength: 10
+              bs_lae_nc_cfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '10150715600.00'
+                description: Kapitał (fundusz) podstawowy - kwota na dzień kończący
+                  bieżący rok obrotowy
+              crawling_date:
+                format: date
+                type: string
+                description: Data pobrania sprawozdania z RDF
+                example: '2019-07-24'
+              bs_a_ta_pfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '25540926976.86'
+                description: Aktywa razem - kwota na dzień kończący poprzedni rok
+                  obrotowy
+              pala_npl_pfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '652934002.40'
+                description: Zysk (strata) netto - kwota na dzień kończący poprzedni
+                  rok obrotowy
+              pala_nrfs_cfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '9318533736.56'
+                description: Przychody netto ze sprzedaży - kwota na dzień kończący
+                  bieżący rok obrotowy
+              pala_nrfs_pfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '8501384278.96'
+                description: Przychody netto ze sprzedaży - kwota na dzień kończący
+                  poprzedni rok obrotowy
+              period_major_year:
+                format: int32
+                type: integer
+                description: Zasadniczy rok, którego dotyczy dokument
+                example: 2018
+              bs_a_ta_cfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '26227994995.11'
+                description: Aktywa razem - kwota na dzień kończący bieżący rok obrotowy
+              preparation_date:
+                format: date
+                type: string
+                description: Data sporządzenia sprawozdania
+                example: '2019-04-12'
+              bs_a_ta_cpfy:
+                pattern: \d+\.\d{2}
+                type: string
+                example: '25573272324.98'
+                description: Aktywa razem - przekształcone dane porównawcze za poprzedni
+                  rok obrotowy
+          type: array
+          description: Lista danych finansowych ze sprawozdań spełniających kryteria
+            określone w parametrach metody, posortowanych malejąco według daty publikacji
+            w RDF
+          maxItems: 100
+    description: Poprawne wyszukiwanie danych finansowych
+  '403':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Access forbidden
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nieudana autoryzacja dostępu do API
+  '401':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Missing 'Authorization' header
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niepoprawna autentykacja tokenu
+  '400':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Invalid year format
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niewłaściwy format zapytania
+parameters:
+- schema:
+    pattern: ^\d{10}$
+    type: string
+    example: 0000019193
+    minLength: 10
+    maxLength: 10
+  description: Numer KRS podmiotu, którego dotyczy sprawozdanie
+  name: krs
+  in: query
+- schema:
+    enum:
+    - auditors_opinion
+    - consolidated_auditors_opinion
+    - balance_sheet
+    - footnotes
+    - cash_flow_statement
+    - profit_and_loss_statement
+    - equity_statement
+    - financial_statement
+    - consolidated_footnotes
+    - consolidated_equity_statement
+    - consolidated_balance_sheet
+    - consolidated_cash_flow_statement
+    - consolidated_profit_and_loss_statement
+    - consolidated_equity_statement
+    - consolidated_financial_statement
+    - activity_report
+    - consolidated_and_parent_activity_report
+    - parent_activity_report
+    - report_on_payments
+    - consolidated_report_on_payments
+    - resolution_on_approval
+    - consolidated_resolution_on_approval
+    - resolution_on_profit_distribution
+    type: string
+    description: |-
+      Identyfikator rodzaju dokumentu
+
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Identyfikator | Rodzaj dokumentu | Nazwa dokumentu |
+        |-|-|-|
+        | `"auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania rocznego sprawozdania finansowego |  |
+        | `"consolidated_auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania skonsolidowanego rocznego sprawozdania finansowego grupy kapitałowej |  |
+        | `"balance_sheet"` | Roczne sprawozdanie finansowe | Bilans |
+        | `"footnotes"` | Roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
+        | `"cash_flow_statement"` | Roczne sprawozdanie finansowe | Rachunek przepływów pieniężnych |
+        | `"profit_and_loss_statement"` | Roczne sprawozdanie finansowe | Rachunek zysków i strat |
+        | `"equity_statement"` | Roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
+        | `"financial_statement"` | Roczne sprawozdanie finansowe |  |
+        | `"consolidated_footnotes"` | Skonsolidowane roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
+        | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowane zestawienie zmian w kapitale (funduszu) własnym |
+        | `"consolidated_balance_sheet"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany bilans |
+        | `"consolidated_cash_flow_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek przepływów pieniężnych |
+        | `"consolidated_profit_and_loss_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek zysków i strat |
+        | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
+        | `"consolidated_financial_statement"` | Skonsolidowane roczne sprawozdanie finansowe |  |
+        | `"activity_report"` | Sprawozdanie z działalności |  |
+        | `"consolidated_and_parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej oraz sprawozdanie z działalności grupy kapitałowej |  |
+        | `"parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej |  |
+        | `"report_on_payments"` | Sprawozdanie z płatności na rzecz administracji publicznej |  |
+        | `"consolidated_report_on_payments"` | Skonsolidowane sprawozdanie z płatności na rzecz administracji publicznej |  |
+        | `"resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu rocznego sprawozdania finansowego |  |
+        | `"consolidated_resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego |  |
+        | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
+
+      </details>
+    example: financial_statement
+  name: type
+  in: query
+- schema:
+    type: integer
+    example: 2019
+  description: Rok z daty końcowej okresu, którego dotyczy dokument
+  name: period_end_year
+  in: query
+- schema:
+    type: integer
+    example: 2018
+  description: Zasadniczy rok, którego dotyczy dokument
+  name: period_major_year
+  in: query
+- schema:
+    type: string
+    example: '2019-01-01'
+    format: date
+  description: Początek zakresu dla daty publikacji sprawozdania w RDF
+  name: filing_date_from
+  in: query
+- schema:
+    type: string
+    example: '2019-12-31'
+    format: date
+  description: Koniec zakresu dla daty publikacji sprawozdania w RDF
+  name: filing_date_to
+  in: query
+- schema:
+    type: string
+    example: '2020-07-01'
+    format: date
+  description: Początek zakresu dla daty pobrania dokumentu z RDF
+  name: crawling_date_from
+  in: query
+- schema:
+    type: string
+    example: '2020-07-31'
+    format: date
+  description: Koniec zakresu dla daty pobrania dokumentu z RDF
+  name: crawling_date_to
+  in: query
+- schema:
+    type: boolean
+    example: false
+  description: Informacja, czy sprawozdanie jest skonsolidowane
+  name: consolidated
+  in: query
+- schema:
+    type: boolean
+    example: false
+  description: Informacja, czy sprawozdanie zostało sporządzone zgodnie z Międzynarodowymi
+    Standardami Rachunkowości
+  name: ias_standard
+  in: query
+tags:
+- financial_data
+summary: ''
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
+security:
+- api_key: []
+operationId: get-financial-data
+x-code-samples:
+- lang: Shell
+  source: |-
+    # Wyszukaj dane finansowe ze sprawozdania dla podmiotu z numerem KRS `0000019193`
+    curl https://api.imsig.pl/v1/rdf/financialData?krs=0000019193 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+description: |-
+  Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium
+  Dokumentów Finansowych KRS spełniających podane kryteria.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista danych finansowych
+  ze sprawozdań spełniających kryteria określone w parametrach metody,
+  posortowanych malejąco według daty publikacji w RDF.
+
+  W przypadku, gdy żadne sprawozdanie nie spełnia podanych kryteriów, zwracana
+  jest pusta lista. W przypadku, gdy liczba sprawozdań spełniających kryteria
+  jest większa niż 100, lista zawiera dane finansowe ze 100 pierwszych
+  dokumentów.

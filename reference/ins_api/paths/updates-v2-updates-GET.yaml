@@ -1,0 +1,63 @@
+operationId: get_updates_v2_updates_get
+summary: Get Updates
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/UpdatesModel'
+          type: array
+          title: Response Get Updates V2 Updates Get
+    description: Retrieve updates list
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+parameters:
+- required: true
+  in: query
+  name: creation_datetime_from
+  schema:
+    format: date-time
+    type: string
+    title: Creation Datetime From
+- required: true
+  in: query
+  name: creation_datetime_to
+  schema:
+    format: date-time
+    type: string
+    title: Creation Datetime To
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- updates_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

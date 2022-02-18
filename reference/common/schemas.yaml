@@ -1,0 +1,86 @@
+ContentFiltersModel:
+  $ref: schemas/content-filters-model.yaml
+CreateMonitorsModel:
+  $ref: schemas/create-monitors-model.yaml
+UpdateUserModel:
+  $ref: schemas/update-user-model.yaml
+MsigChapterEnum:
+  $ref: schemas/msig-chapter-enum.yaml
+InfoCategories:
+  $ref: schemas/info-categories.yaml
+CreateUserModel:
+  $ref: schemas/create-user-model.yaml
+NotificationModel:
+  $ref: schemas/notification-model.yaml
+UpdatesModel:
+  $ref: schemas/updates-model.yaml
+UserModel:
+  $ref: schemas/user-model.yaml
+KrzSectionRestructuringEnum:
+  $ref: schemas/krz-section-restructuring-enum.yaml
+FiltersModel:
+  $ref: schemas/filters-model.yaml
+InfoTypes:
+  $ref: schemas/info-types.yaml
+MsigSectionRestructuringEnum:
+  $ref: schemas/msig-section-restructuring-enum.yaml
+ReportModel:
+  $ref: schemas/report-model.yaml
+KrzSubsectionEnum:
+  $ref: schemas/krz-subsection-enum.yaml
+Format:
+  $ref: schemas/format.yaml
+KrzSectionInsolvencyEnum:
+  $ref: schemas/krz-section-insolvency-enum.yaml
+KrzSectionBanEnum:
+  $ref: schemas/krz-section-ban-enum.yaml
+MsigSectionInsolvencyEnum:
+  $ref: schemas/msig-section-insolvency-enum.yaml
+ProjectionEnum:
+  $ref: schemas/projection-enum.yaml
+CreateFiltersModel:
+  $ref: schemas/create-filters-model.yaml
+UpdateMonitorsModel:
+  $ref: schemas/update-monitors-model.yaml
+DBParamsModel:
+  $ref: schemas/d-bparams-model.yaml
+ReportStatusEnum:
+  $ref: schemas/report-status-enum.yaml
+UpdateFiltersModel:
+  $ref: schemas/update-filters-model.yaml
+ParamsModel:
+  $ref: schemas/params-model.yaml
+UpdatesCreateModel:
+  $ref: schemas/updates-create-model.yaml
+ValidationError:
+  $ref: schemas/validation-error.yaml
+MonitorModel:
+  $ref: schemas/monitor-model.yaml
+TypesEnum:
+  $ref: schemas/types-enum.yaml
+UpdateParamsModel:
+  $ref: schemas/update-params-model.yaml
+Error:
+  $ref: schemas/error.yaml
+InfoFields:
+  $ref: schemas/info-fields.yaml
+HTTPValidationError:
+  $ref: schemas/h-tt-pvalidation-error.yaml
+AnnouncementModel:
+  $ref: schemas/announcement-model.yaml
+InfoReports:
+  $ref: schemas/info-reports.yaml
+KrzChapterEnum:
+  $ref: schemas/krz-chapter-enum.yaml
+CategoriesEnum:
+  $ref: schemas/categories-enum.yaml
+StrictContentFiltersModel:
+  $ref: schemas/strict-content-filters-model.yaml
+CreateReportModel:
+  $ref: schemas/create-report-model.yaml
+TypesFormat:
+  $ref: schemas/types-format.yaml
+NotificationStatusEnum:
+  $ref: schemas/notification-status-enum.yaml
+QueryBaseModel:
+  $ref: schemas/query-base-model.yaml

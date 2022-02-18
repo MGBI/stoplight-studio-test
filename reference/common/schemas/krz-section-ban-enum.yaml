@@ -1,0 +1,14 @@
+enum:
+- 40
+- 41
+type: integer
+description: |-
+  Rozdział MSiG
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
+    | `41` | Inne |</details>
+title: KrzSectionBanEnum

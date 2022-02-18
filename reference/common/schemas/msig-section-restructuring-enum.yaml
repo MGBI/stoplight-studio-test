@@ -1,0 +1,72 @@
+enum:
+- 20
+- 21
+- 22
+- 23
+- 24
+- 25
+- 26
+- 27
+- 28
+- 29
+- 30
+- 31
+- 32
+- 33
+- 34
+- 35
+- 36
+- 37
+- 38
+- 39
+- 40
+- 41
+- 42
+- 43
+- 44
+- 45
+- 46
+- 47
+- 48
+- 49
+- 50
+type: integer
+description: |-
+  Rozdział MSiG
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `20` | Dokonanie zmian w spisie wierzytelności |
+    | `21` | Inne |
+    | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
+    | `23` | Odmowa zatwierdzenia układu |
+    | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
+    | `25` | Określenie trybu i sposobu głosowania nad układem |
+    | `26` | Otwarcie postępowania o zatwierdzenie układu |
+    | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
+    | `28` | Otwarcie postępowania o zmianę układu |
+    | `29` | Otwarcie postępowania sanacyjnego |
+    | `30` | Otwarcie postępowania układowego |
+    | `31` | Otwarcie przyspieszonego postępowania układowego |
+    | `32` | Sprostowanie |
+    | `33` | Stwierdzenie wykonania układu |
+    | `34` | Uchylenie układu |
+    | `35` | Umorzenie postępowania |
+    | `36` | Wyznaczenie nadzorcy lub zarządcy |
+    | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
+    | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
+    | `39` | Zabezpieczenie majątku dłużnika |
+    | `40` | Zakończenie postępowania |
+    | `41` | Zatwierdzenie spisu wierzytelności |
+    | `42` | Zatwierdzenie układu |
+    | `43` | Złożenie planu restrukturyzacyjnego |
+    | `44` | Złożenie spisu wierzytelności |
+    | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
+    | `46` | Złożenie uzupełniającego spisu wierzytelności |
+    | `47` | Złożenie wniosku o zatwierdzenie układu |
+    | `48` | Zmiana nadzorcy lub zarządcy |
+    | `49` | Zmiana sędziego komisarza |
+    | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
+title: MsigSectionRestructuringEnum

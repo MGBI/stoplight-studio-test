@@ -1,0 +1,8 @@
+type: object
+properties:
+  content:
+    $ref: ../schemas.yaml#/StrictContentFiltersModel
+  name:
+    type: string
+    title: Name
+title: UpdateFiltersModel

@@ -1,0 +1,32 @@
+enum:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+- 10
+type: integer
+description: |-
+  Rozdział MSiG
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `0` | Dzień układowy |
+    | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
+    | `2` | Zabezpieczenie majątku |
+    | `3` | Otwarcie postępowania restrukturyzacyjnego |
+    | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
+    | `5` | Spis wierzytelności/spis wierzytelności spornych |
+    | `6` | Zgromadzenie wierzycieli |
+    | `7` | Sprawozdania |
+    | `8` | Układ |
+    | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
+    | `10` | Inne |</details>
+title: KrzSectionRestructuringEnum

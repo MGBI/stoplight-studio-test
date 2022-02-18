@@ -1,0 +1,73 @@
+example:
+  status: 1
+  file_password: mgbi2021
+  creation_datetime: '2022-02-18T10:12:27.262422'
+  name: example raport
+  credits_used: 0
+  file_format: 3
+  downloads: []
+  id: exampleID
+  progress: 0
+  query:
+    custom_categories:
+    - K
+    from_date: '2021-11-02'
+    append_first_entry: true
+    to_date: '2021-11-04'
+    filter_id: 61ded2f8aff2de52365d891e
+  type: 0
+  custom_content: []
+required:
+- id
+- type
+- name
+- query
+- file_format
+- file_password
+- credits_used
+type: object
+properties:
+  status:
+    default: 1
+    allOf:
+    - $ref: ../schemas.yaml#/ReportStatusEnum
+  file_password:
+    type: string
+    title: File Password
+  creation_datetime:
+    format: date-time
+    type: string
+    title: Creation Datetime
+  name:
+    type: string
+    title: Name
+  credits_used:
+    type: integer
+    title: Credits Used
+  file_format:
+    $ref: ../schemas.yaml#/Format
+  downloads:
+    default: []
+    items:
+      type: object
+    type: array
+    title: Downloads
+  id:
+    type: string
+    title: Id
+  progress:
+    default: 0
+    minimum: 0.0
+    type: integer
+    maximum: 100.0
+    title: Progress
+  query:
+    $ref: ../schemas.yaml#/QueryBaseModel
+  type:
+    $ref: ../schemas.yaml#/TypesEnum
+  custom_content:
+    default: []
+    items: {}
+    type: array
+    title: Custom Content
+title: ReportModel

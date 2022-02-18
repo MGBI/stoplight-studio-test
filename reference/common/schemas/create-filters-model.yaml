@@ -1,0 +1,11 @@
+required:
+- name
+- content
+type: object
+properties:
+  content:
+    $ref: ../schemas.yaml#/StrictContentFiltersModel
+  name:
+    type: string
+    title: Name
+title: CreateFiltersModel

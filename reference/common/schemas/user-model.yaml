@@ -1,0 +1,37 @@
+example:
+  creation_datetime: '2021-11-10T15:20:20.584Z'
+  is_active: true
+  email: abc@def.pl
+  is_admin: false
+  deactivation_datetime: '2021-11-10T15:20:20.584Z'
+  id: '1'
+required:
+- id
+- email
+- is_active
+- is_admin
+- creation_datetime
+type: object
+properties:
+  creation_datetime:
+    format: date-time
+    type: string
+    title: Creation Datetime
+  is_active:
+    type: boolean
+    title: Is Active
+  email:
+    format: email
+    type: string
+    title: Email
+  is_admin:
+    type: boolean
+    title: Is Admin
+  deactivation_datetime:
+    format: date-time
+    type: string
+    title: Deactivation Datetime
+  id:
+    type: string
+    title: Id
+title: UserModel

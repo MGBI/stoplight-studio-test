@@ -1,0 +1,35 @@
+example:
+  source: krz
+  issue_date: '2022-02-18'
+  announcements_count: 100
+  creation_datetime: '2022-02-18T10:12:27.128461'
+  id: exampleID
+required:
+- id
+- creation_datetime
+- issue_date
+- announcements_count
+- source
+type: object
+properties:
+  source:
+    enum:
+    - krz
+    - msig
+    type: string
+    title: Source
+  issue_date:
+    format: date
+    type: string
+    title: Issue Date
+  announcements_count:
+    type: integer
+    title: Announcements Count
+  creation_datetime:
+    format: date-time
+    type: string
+    title: Creation Datetime
+  id:
+    type: string
+    title: Id
+title: UpdatesModel

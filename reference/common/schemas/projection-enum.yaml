@@ -1,0 +1,21 @@
+enum:
+- entity
+- proceeding
+- order
+- msig_entry
+- krz_entry
+- content
+description: |-
+  Rozdział MSiG
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `entity` | Lista podmiotów, których dotyczy ogłoszenie |
+    | `proceeding` | Informacje o postępowaniu |
+    | `order` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+    | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w msig |
+    | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
+    | `content` | Nieprzetworzona treść ogłoszenia |</details>
+title: ProjectionEnum

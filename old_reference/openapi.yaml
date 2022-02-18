@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
+  version: '1.0.0'
+  x-logo:
+    url: 'https://www.imsig.pl/layout/monitor_sadowy_i_gospodarczy.png'
+    altText: iMSiG.pl
+  description:
+    $ref: description.md
+  contact:
+    name: MGBI sp. z o.o.
+    url: 'https://www.imsig.pl'
+    email: info@imsig.pl
+
+tags:
+  - name: documents
+    x-displayName: Dokumenty
+    description:
+      $ref: krs_rdf/descriptions/documents.md
+
+  - name: financial_data
+    x-displayName: Dane finansowe
+    description:
+      $ref: krs_rdf/descriptions/financial_data.md
+
+  - name: announcements
+    x-displayName: Ogłoszenia
+    description:
+      $ref: msig/descriptions/announcements.md
+
+  - name: updates
+    x-displayName: Aktualizacje
+
+x-tagGroups:
+  - name: KRS RDF API
+    tags:
+      - documents
+      - financial_data
+  - name: MSiG API, KRZ API
+    tags:
+      - announcements
+      - updates
+
+paths:
+  /v1/rdf/documents:
+    get:
+      $ref: krs_rdf/paths/get-documents.yaml
+  /v1/rdf/financialData:
+    get:
+      $ref: krs_rdf/paths/get-financial-data.yaml
+  /v1/msig/announcements:
+    get:
+      $ref: msig/paths/get-announcements.yaml
+  /v1/msig/updates:
+    get:
+      $ref: msig/paths/get-updates.yaml
+  /v1/msig/checkNumbers:
+    post:
+      $ref: msig/paths/check-numbers.yaml
+
+components:
+  securitySchemes:
+    $ref: common/security-schemes.yaml

@@ -1,0 +1,18 @@
+operationId: get_report_statuses_v2_dicts_report_statuses_get
+summary: Get Report Statuses
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/InfoReports'
+          type: array
+          title: Response Get Report Statuses V2 Dicts Report Statuses Get
+    description: Successful Response
+tags:
+- dicts_iapi
+- public_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

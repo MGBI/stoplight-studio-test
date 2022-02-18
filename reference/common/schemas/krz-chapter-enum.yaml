@@ -1,0 +1,17 @@
+enum:
+- 0
+- 1
+- 2
+type: integer
+description: |-
+  An enumeration.
+  Rozdział MSiG
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `0` | Restructuring |
+    | `1` | Insolvency |
+    | `2` | Ban |</details>
+title: KrzChapterEnum

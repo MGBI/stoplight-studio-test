@@ -1,7 +1,7 @@
 api_key:
-  in: header
+  name: Authorization
   type: apiKey
+  in: header
   description: |-
     Do uwierzytelniania użytkowników API wykorzystywany jest klucz użytkownika
     przekazywany w nagłówku HTTP `Authorization` przy wywoływaniu poszczególnych metod.
-  name: Authorization

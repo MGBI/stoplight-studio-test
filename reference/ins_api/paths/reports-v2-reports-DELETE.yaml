@@ -1,0 +1,53 @@
+operationId: delete_reports_v2_reports_delete
+summary: Delete Reports
+responses:
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+  '403':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Forbidden
+  '204':
+    description: Delete reports
+  '401':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Unauthorized
+  '400':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Bad Request
+parameters:
+- required: true
+  in: query
+  description: A list of id's whose ones are strings representing the ObjectId from
+    bson.
+  name: ids
+  schema:
+    minLength: 24
+    type: string
+    description: A list of id's whose ones are strings representing the ObjectId from
+      bson.
+    title: List of id
+- required: false
+  in: header
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  schema:
+    type: string
+    title: Authorization
+tags:
+- reports_iapi
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
