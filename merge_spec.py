@@ -10,8 +10,8 @@ from collections import defaultdict
 
 
 V_SUFFIX = "_iapi"
-OLD_API_ROOT_PATH = "/v1/msig"
-NEW_API_ROOT_PATH = "/v2/msig"
+OLD_API_ROOT_PATH = "/v2/"
+NEW_API_ROOT_PATH = "/v2/"
 
 
 def load(file_path):
@@ -72,7 +72,23 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
 
     # appending new paths and components to existing ones
     old_openapi["paths"].update(new_openapi["paths"])
-    old_openapi["components"].update(new_openapi["components"])
+
+    # components
+    for name, component in new_openapi.get("components", {}).items() :
+        if name in old_openapi["components"]:
+            old_component = old_openapi["components"][name]
+            for field in component:
+                if field in ["example", "properties"]:
+                    for f in component[field]:
+                        component[field][f] = old_component[field].get(f, component[field][f])
+                if field == "properties":
+                    for p in component[field]:
+                        for pname in old_component[field].get(p, []):
+                            component[field][p][pname] = old_component[field][p][pname]
+            for field in old_component:
+                if field not in ["example", "properties"]:
+                    component[field] = old_component[field]
+        old_openapi["components"][name] = component
 
     # adding tags from path to set without public, internal and admin
     tags = set()
