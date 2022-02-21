@@ -78,7 +78,7 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
         if name in old_openapi["components"]:
             old_component = old_openapi["components"][name]
             for field in component:
-                if field in ["example", "properties"]:
+                if field == "example":
                     for f in component[field]:
                         component[field][f] = old_component[field].get(f, component[field][f])
                 if field == "properties":
