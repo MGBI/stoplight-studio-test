@@ -28,46 +28,52 @@ required:
 type: object
 properties:
   status:
-    default: 1
     allOf:
     - $ref: ../schemas.yaml#/ReportStatusEnum
   file_password:
     type: string
     title: File Password
+    description: Hasło do pliku raportu
   creation_datetime:
     format: date-time
     type: string
     title: Creation Datetime
+    description: Data i czas utworzenia raportu
   name:
     type: string
     title: Name
+    description: Nazwa raportu
   credits_used:
     type: integer
     title: Credits Used
+    description: Liczba punktów wykorzystanych do utworzenia raportu
   file_format:
     $ref: ../schemas.yaml#/Format
+    description: Format pliku raportu
   downloads:
-    default: []
     items:
       type: object
     type: array
     title: Downloads
+    description: Historia pobrań raportu
   id:
     type: string
     title: Id
+    description: Unikalny identyfikator raportu
   progress:
-    default: 0
     minimum: 0.0
     type: integer
     maximum: 100.0
     title: Progress
+    description: Procentowy postęp generowania pliku raportu w skali 0-100
   query:
     $ref: ../schemas.yaml#/QueryBaseModel
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
   type:
     $ref: ../schemas.yaml#/TypesEnum
   custom_content:
-    default: []
     items: {}
     type: array
     title: Custom Content
+    description: Identyfikatory pól raportu wybranych przez użytkownika
 title: ReportModel

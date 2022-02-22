@@ -22,18 +22,22 @@ properties:
   file_password:
     type: string
     title: File Password
+    description: Hasło do pliku raportu
   name:
     type: string
     title: Name
+    description: Nazwa raportu
   file_format:
     $ref: ../schemas.yaml#/Format
+    description: Format pliku raportu
   query:
     $ref: ../schemas.yaml#/QueryBaseModel
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
   type:
     $ref: ../schemas.yaml#/TypesEnum
   custom_content:
-    default: []
     items: {}
     type: array
     title: Custom Content
+    description: Identyfikatory pól raportu wybranych przez użytkownika
 title: CreateReportModel

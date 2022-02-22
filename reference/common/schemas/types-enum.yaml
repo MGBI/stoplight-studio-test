@@ -3,13 +3,12 @@ enum:
 - 1
 type: integer
 description: |-
-  An enumeration.
-  Rozdział MSiG
+  Rodzaj raportu.
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
-    | Wartość | Nazwa rozdziału |
+    | Wartość | Nazwa |
     |-|-|
-    | `0` | Current |
-    | `1` | Archive |</details>
+    | `0` | Aktualny |
+    | `1` | Archiwalny |</details>
 title: TypesEnum

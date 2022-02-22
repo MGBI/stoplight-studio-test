@@ -22,25 +22,31 @@ properties:
     format: date-time
     type: string
     title: Creation Datetime
+    description: Data i czas utworzenia monitoringu
   last_update_datetime:
     nullable: true
     format: date-time
     type: string
     title: Last Update Datetime
+    description: Data i czas ostatniej aktualizacji monitoringu
   emails:
     items:
       type: string
     type: array
     title: Emails
+    description: Adresy e-mail do wysyłki powiadomień z monitoringów
   notifications:
     items:
       $ref: ../schemas.yaml#/NotificationModel
     type: array
     title: Notifications
+    description: Data i czas wysyłki powiadomienia
   filter_id:
     type: string
     title: Filter Id
+    description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
   id:
     type: string
     title: Id
+    description: Unikalny identyfikator monitoringu
 title: MonitorModel

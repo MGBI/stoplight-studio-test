@@ -10,12 +10,15 @@ properties:
     default: false
     type: boolean
     title: Is Admin
+    description: Czy użytkownik jest adminem?
   is_active:
     default: true
     type: boolean
     title: Is Active
+    description: Czy użytkownik jest aktywny?
   email:
     format: email
     type: string
     title: Email
+    description: Adres e-mail użytkownika
 title: CreateUserModel

@@ -18,18 +18,23 @@ properties:
     - msig
     type: string
     title: Source
+    description: Identyfikator źródła danych
   issue_date:
     format: date
     type: string
     title: Issue Date
+    description: Data publikacji ogłoszeń
   announcements_count:
     type: integer
     title: Announcements Count
+    description: Liczba ogłoszeń dodanych w aktualizacji
   creation_datetime:
     format: date-time
     type: string
     title: Creation Datetime
+    description: Data i czas rejestracji aktualizacji
   id:
     type: string
     title: Id
+    description: Unikalny identyfikator zarejestrowanej aktualizacji
 title: UpdatesModel

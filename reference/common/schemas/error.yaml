@@ -4,7 +4,9 @@ type: object
 properties:
   details:
     title: Details
+    description: Szczegółowa informacja na temat błędu
   error:
     type: string
     title: Error
+    description: Kod błędu
 title: Error

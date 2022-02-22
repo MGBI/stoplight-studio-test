@@ -12,11 +12,13 @@ enum:
 - 10
 type: integer
 description: |-
-  Rozdział MSiG
+  Sekcja KRZ
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
-    | Wartość | Nazwa rozdziału |
+    <b>Postępowanie restrukturyzacyjne</b>
+
+    | Wartość | Nazwa sekcji |
     |-|-|
     | `0` | Dzień układowy |
     | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |

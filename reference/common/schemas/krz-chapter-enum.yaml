@@ -4,14 +4,13 @@ enum:
 - 2
 type: integer
 description: |-
-  An enumeration.
-  Rozdział MSiG
+  Rozdział KRZ
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
     | Wartość | Nazwa rozdziału |
     |-|-|
-    | `0` | Restructuring |
-    | `1` | Insolvency |
-    | `2` | Ban |</details>
+    | `0` | Postępowanie restrukturyzacyjne |
+    | `1` | Postępowanie upadłościowe |
+    | `2` | Zakaz prowadzenia działalności gospodarczej |</details>
 title: KrzChapterEnum

@@ -1,17 +1,12 @@
-enum:
-- 0
-- 1
-- 2
 type: integer
 description: |-
-  An enumeration.
-  Rozdział MSiG
+  Aktualny status generowania pliku raportu
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
-    | Wartość | Nazwa rozdziału |
+    | Wartość | Nazwa |
     |-|-|
-    | `0` | Unavailable |
-    | `1` | Preparing |
-    | `2` | Ready |</details>
+    | `0` | Niedostępny |
+    | `1` | W przygotowaniu |
+    | `2` | Gotowe |</details>
 title: ReportStatusEnum

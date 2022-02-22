@@ -5,7 +5,9 @@ type: object
 properties:
   content:
     $ref: ../schemas.yaml#/StrictContentFiltersModel
+    description: Zawartość filtra
   name:
     type: string
     title: Name
+    description: Nazwa filtra
 title: CreateFiltersModel

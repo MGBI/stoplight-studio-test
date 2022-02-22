@@ -12,7 +12,9 @@ properties:
       type: string
     type: array
     title: Emails
+    description: Adresy e-mail do wysyłki powiadomień z monitoringów
   filter_id:
     type: string
     title: Filter Id
+    description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
 title: CreateMonitorsModel

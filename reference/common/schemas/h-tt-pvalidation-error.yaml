@@ -5,4 +5,5 @@ properties:
       $ref: ../schemas.yaml#/ValidationError
     type: array
     title: Detail
+    description: Szczegółowa informacja na temat błędu
 title: HTTPValidationError

@@ -31,21 +31,27 @@ properties:
   items_count:
     type: integer
     title: Items Count
+    description: Liczba wszystkich identyfikatorów w filtrze
   creation_datetime:
     format: date-time
     type: string
     title: Creation Datetime
+    description: Data i czas utworzenia filtra
   name:
     type: string
     title: Name
+    description: Nazwa filtra
   last_update_datetime:
     nullable: true
     format: date-time
     type: string
     title: Last Update Datetime
+    description: Data i czas ostatniej aktualizacji filtra
   content:
     $ref: ../schemas.yaml#/ContentFiltersModel
+    description: Zawartość filtra
   id:
     type: string
     title: Id
+    description: Unikalny identyfikator filtra
 title: FiltersModel
