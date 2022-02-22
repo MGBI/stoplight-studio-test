@@ -41,22 +41,28 @@ properties:
   proceeding:
     type: object
     title: Proceeding
+    description: Informacje o postępowaniu
   krz_entry:
     type: object
     title: Krz Entry
+    description: Informacje dotyczące publikacji ogłoszenia w KRZ
   msig_entry:
     type: object
     title: Msig Entry
+    description: Informacje dotyczące publikacji ogłoszenia w MSiG
   id:
     type: string
     title: Id
+    description: Unikalny identyfikator ogłoszenia
   content:
     type: object
     title: Content
+    description: Nieprzetworzona treść ogłoszenia
   custom_categories:
     items:
       $ref: ../schemas.yaml#/CategoriesEnum
     type: array
+    description: Lista kategorii
   entity:
     anyOf:
     - items:
@@ -64,7 +70,9 @@ properties:
       type: array
     - type: object
     title: Entity
+    description: Lista podmiotów, których dotyczy ogłoszenie
   order:
     type: object
     title: Order
+    description: Informacje o postanowieniu, którego dotyczy ogłoszenie
 title: AnnouncementModel

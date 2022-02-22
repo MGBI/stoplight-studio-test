@@ -1,5 +1,16 @@
 operationId: get_announcements_v2_announcements_get
 summary: Get Announcements
+description: |-
+  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
+  w wybranych rozdziałach MSiG / KRZ.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty publikacji w MSiG / KRZ.
+
+  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
+  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
 responses:
   '200':
     content:
@@ -44,12 +55,14 @@ parameters:
 - required: false
   in: query
   name: id
+  description: Unikalny identyfikator ogłoszenia
   schema:
     type: string
     title: Id
 - required: false
   in: query
   name: date_from
+  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
   schema:
     format: date
     type: string
@@ -57,6 +70,7 @@ parameters:
 - required: false
   in: query
   name: date_to
+  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
   schema:
     format: date
     type: string
@@ -131,66 +145,77 @@ parameters:
 - required: false
   in: query
   name: msig_signature
+  description: 'Sygnatura ogłoszenia w MSiG'
   schema:
     type: string
     title: Msig Signature
 - required: false
   in: query
   name: krz_signature
+  description: 'Sygnatura ogłoszenia w KRZ'
   schema:
     type: string
     title: Krz Signature
 - required: false
   in: query
   name: nip
+  description: 'Numer NIP podmiotu, którego dotyczy ogłoszenie'
   schema:
     type: string
     title: Nip
 - required: false
   in: query
   name: regon
+  description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
   schema:
     type: string
     title: Regon
 - required: false
   in: query
   name: krs
+  description: 'Numer KRS podmiotu, którego dotyczy ogłoszenie'
   schema:
     type: string
     title: Krs
 - required: false
   in: query
   name: pesel
+  description: 'Numer PESEL osoby, której dotyczy ogłoszenie'
   schema:
     type: string
     title: Pesel
 - required: false
   in: query
   name: first_name
+  description: 'Imię osoby, której dotyczy ogłoszenie'
   schema:
     type: string
     title: First Name
 - required: false
   in: query
   name: last_name
+  description: 'Nazwisko osoby, której dotyczy ogłoszenie'
   schema:
     type: string
     title: Last Name
 - required: false
   in: query
   name: signature
+  description: 'Sygnatura postępowania'
   schema:
     type: string
     title: Signature
 - required: false
   in: query
   name: commissioner_name
+  description: Imię i nazwisko sędziego komisarza
   schema:
     type: string
     title: Commissioner Name
 - required: false
   in: query
   name: administrator_name
+  description: Imię i nazwisko nadzorcy sądowego
   schema:
     type: string
     title: Administrator Name
@@ -215,6 +240,7 @@ parameters:
 - required: false
   in: query
   name: category
+  description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section, krz_entry.chapter i krz_entry.section
   schema:
     items:
       anyOf:
@@ -225,6 +251,7 @@ parameters:
 - required: false
   in: query
   name: archival
+  description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from z parametrów usługi
   schema:
     default: false
     type: boolean
@@ -232,6 +259,7 @@ parameters:
 - required: false
   in: query
   name: filter_id
+  description: Identyfikator filtra
   schema:
     type: string
     title: Filter Id

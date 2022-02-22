@@ -41,17 +41,18 @@ parameters:
 - required: true
   in: path
   name: report_id
+  description: Unikalny identyfikator raportu
   schema:
     anyOf:
     - type: string
     - enum:
       - last
-      type: string
     title: Report Id
 - required: false
   in: header
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
+  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization

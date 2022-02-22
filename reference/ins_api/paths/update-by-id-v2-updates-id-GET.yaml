@@ -35,6 +35,7 @@ parameters:
 - required: true
   in: path
   name: id
+  description: Unikalny identyfikator zarejestrowanej aktualizacji
   schema:
     anyOf:
     - type: string
@@ -46,6 +47,7 @@ parameters:
   in: header
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
+  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
