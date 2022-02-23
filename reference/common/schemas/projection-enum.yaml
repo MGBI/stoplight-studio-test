@@ -6,11 +6,11 @@ enum:
 - krz_entry
 - content
 description: |-
-  Rozdział MSiG
+  Lista zwracanych grup informacji
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
-    | Wartość | Nazwa rozdziału |
+    | Identyfikator | Grupa informacji |
     |-|-|
     | `entity` | Lista podmiotów, których dotyczy ogłoszenie |
     | `proceeding` | Informacje o postępowaniu |

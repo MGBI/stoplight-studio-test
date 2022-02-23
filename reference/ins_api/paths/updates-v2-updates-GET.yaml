@@ -38,6 +38,7 @@ parameters:
 - required: true
   in: query
   name: creation_datetime_from
+  description: Początek zakresu dla daty i czasu utworzenia aktualizacji
   schema:
     format: date-time
     type: string
@@ -45,6 +46,7 @@ parameters:
 - required: true
   in: query
   name: creation_datetime_to
+  description: Koniec zakresu dla daty i czasu utworzenia aktualizacji
   schema:
     format: date-time
     type: string
@@ -53,6 +55,7 @@ parameters:
   in: header
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
+  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization

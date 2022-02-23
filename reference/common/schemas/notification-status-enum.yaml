@@ -3,13 +3,12 @@ enum:
 - 1
 type: integer
 description: |-
-  An enumeration.
-  Rozdział MSiG
+  Status wysyłki powiadomienia
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
-    | Wartość | Nazwa rozdziału |
+    | Wartość | Nazwa |
     |-|-|
-    | `0` | Error |
-    | `1` | Success |</details>
+    | `0` | Błąd wysyłki |
+    | `1` | Wysłane |</details>
 title: NotificationStatusEnum

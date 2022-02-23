@@ -39,6 +39,7 @@ parameters:
 - required: true
   in: path
   name: id
+  description: Unikalny identyfikator monitoringu
   schema:
     type: string
     title: Id
@@ -46,6 +47,7 @@ parameters:
   in: header
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
+  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization

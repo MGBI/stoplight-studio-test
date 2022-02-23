@@ -10,11 +10,11 @@ enum:
 - 9
 type: integer
 description: |-
-  Rozdział MSiG
+  Sekcja MSiG
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
-    | Wartość | Nazwa rozdziału |
+    | Wartość | Nazwa sekcji |
     |-|-|
     | `1` | Postanowienie o ogłoszeniu upadłości |
     | `2` | Obwieszczenie o zatwierdzeniu układu |

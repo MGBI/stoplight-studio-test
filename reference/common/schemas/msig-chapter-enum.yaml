@@ -3,13 +3,12 @@ enum:
 - 1
 type: integer
 description: |-
-  An enumeration.
   Rozdział MSiG
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
     | Wartość | Nazwa rozdziału |
     |-|-|
-    | `0` | Insolvency |
-    | `1` | Restructuring |</details>
+    | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+    | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
 title: MsigChapterEnum

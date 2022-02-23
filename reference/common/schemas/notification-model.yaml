@@ -9,8 +9,10 @@ properties:
   email:
     type: string
     title: Email
+    description: Adres e-mail, na który wysłano powiadomienie
   sent_datetime:
     format: date-time
     type: string
     title: Sent Datetime
+    description: Data wysyłki powiadomienia
 title: NotificationModel

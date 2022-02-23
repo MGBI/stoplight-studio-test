@@ -6,7 +6,9 @@ properties:
   id:
     type: string
     title: Id
+    description: Unikalny identyfikator
   label:
     type: string
     title: Label
+    description: Etykieta
 title: InfoCategories

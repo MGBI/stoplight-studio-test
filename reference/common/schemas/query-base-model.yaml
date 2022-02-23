@@ -11,24 +11,27 @@ required:
 type: object
 properties:
   custom_categories:
-    default: []
     items:
       $ref: ../schemas.yaml#/CategoriesEnum
     type: array
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
   from_date:
     format: date
     type: string
     title: From Date
+    description: Data początkowa zakresu dla daty publikacji ogłoszenia w MSiG lub KRZ
   append_first_entry:
-    default: true
     type: boolean
     title: Append First Entry
+    description: Czy pola z sekcji `entity` i `proceeding` powinny być przekopiowane z pierwszego ogłoszenia w ramach postępowania?
   to_date:
     format: date
     type: string
     title: To Date
+    description: Data końcowa zakresu dla daty publikacji ogłoszenia w MSiG lub KRZ
   filter_id:
     nullable: true
     type: string
     title: Filter Id
+    description: Identyfikator filtra użytego do wygenerowania raportu
 title: QueryBaseModel

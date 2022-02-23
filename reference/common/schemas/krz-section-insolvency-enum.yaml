@@ -16,11 +16,14 @@ enum:
 - 34
 type: integer
 description: |-
-  Rozdział MSiG
+  Sekcja KRZ
+
   <details>
     <summary>Pokaż możliwe opcje</summary>
 
-    | Wartość | Nazwa rozdziału |
+    <b>Postępowanie upadłościowe</b>
+
+    | Wartość | Nazwa sekcji |
     |-|-|
     | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
     | `21` | Zabezpieczenie majątku |
