@@ -1,5 +1,3 @@
-operationId: get_updates_v2_updates_get
-summary: Get Updates
 responses:
   '200':
     content:
@@ -34,33 +32,38 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Bad Request
+description: Zwraca listę aktualizacji dla podanych parametrów z kolekcji `update_record`.
 parameters:
-- required: true
+- description: Początek zakresu dla daty i czasu utworzenia aktualizacji
+  required: true
   in: query
   name: creation_datetime_from
-  description: Początek zakresu dla daty i czasu utworzenia aktualizacji
   schema:
     format: date-time
     type: string
+    example: '2019-01-01'
     title: Creation Datetime From
-- required: true
+- description: Koniec zakresu dla daty i czasu utworzenia aktualizacji
+  required: true
   in: query
   name: creation_datetime_to
-  description: Koniec zakresu dla daty i czasu utworzenia aktualizacji
   schema:
     format: date-time
     type: string
+    example: '2019-12-31'
     title: Creation Datetime To
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - updates_iapi
+summary: Get Updates
+operationId: get_updates_v2_updates_get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

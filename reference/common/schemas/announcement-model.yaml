@@ -1,4 +1,7 @@
 example:
+  content:
+    text: Postanowieniem z dnia ...
+    html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
   proceeding:
     signatures:
     - example signature
@@ -9,18 +12,19 @@ example:
     issue_date: '2021-12-08T00:00:00Z'
     section: 20
     signature: 20211208/00001
+  id: '000000000000000000000000'
   msig_entry:
     chapter: 0
+    position_number: '00000'
     issue_date: '2021-11-04T00:00:00'
+    signature: BMSiG-00000/2021
     url: http://www.imsig.pl/pozycja/2021/214/00000
     section: 9
-    signature: BMSiG-00000/2021
-    position_number: '00000'
     yearly_number: '214'
-  id: '000000000000000000000000'
-  content:
-    text: Postanowieniem z dnia ...
-    html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
+  order:
+    order_date: '2021-09-01T00:00:00'
+    expiration_period: 7
+    expiration_date: '2021-11-11T00:00:00'
   entity:
   - info:
       first_name: Jan
@@ -30,49 +34,123 @@ example:
       legal_form: osoby fizyczne nieprowadzące działalności gospodarczej
     numbers: {}
     address: {}
-  order:
-    order_date: '2021-09-01T00:00:00'
-    expiration_period: 7
-    expiration_date: '2021-11-11T00:00:00'
 required:
 - id
 type: object
 properties:
   proceeding:
     type: object
-    title: Proceeding
     description: Informacje o postępowaniu
+    title: Proceeding
   krz_entry:
     type: object
-    title: Krz Entry
     description: Informacje dotyczące publikacji ogłoszenia w KRZ
+    title: Krz Entry
   msig_entry:
     type: object
-    title: Msig Entry
     description: Informacje dotyczące publikacji ogłoszenia w MSiG
-  id:
-    type: string
-    title: Id
-    description: Unikalny identyfikator ogłoszenia
-  content:
-    type: object
-    title: Content
-    description: Nieprzetworzona treść ogłoszenia
-  custom_categories:
-    items:
-      $ref: ../schemas.yaml#/CategoriesEnum
-    type: array
-    description: Lista kategorii
+    title: Msig Entry
   entity:
     anyOf:
     - items:
         type: object
       type: array
     - type: object
-    title: Entity
     description: Lista podmiotów, których dotyczy ogłoszenie
+    title: Entity
+  content:
+    type: object
+    description: Nieprzetworzona treść ogłoszenia
+    title: Content
+  custom_categories:
+    items:
+      enum:
+      - K
+      - K.0
+      - K.0.0
+      - K.0.1
+      - K.0.2
+      - K.0.3
+      - K.0.4
+      - K.0.5
+      - K.0.6
+      - K.0.7
+      - K.0.8
+      - K.0.9
+      - K.0.10
+      - K.1
+      - K.1.20
+      - K.1.21
+      - K.1.22
+      - K.1.23
+      - K.1.24
+      - K.1.25
+      - K.1.26
+      - K.1.27
+      - K.1.28
+      - K.1.29
+      - K.1.30
+      - K.1.31
+      - K.1.32
+      - K.1.33
+      - K.1.34
+      - K.2
+      - K.2.40
+      - K.2.41
+      - M
+      - M.0
+      - M.0.1
+      - M.0.2
+      - M.0.3
+      - M.0.4
+      - M.0.5
+      - M.0.6
+      - M.0.7
+      - M.0.8
+      - M.0.9
+      - M.1
+      - M.1.20
+      - M.1.21
+      - M.1.22
+      - M.1.23
+      - M.1.24
+      - M.1.25
+      - M.1.26
+      - M.1.27
+      - M.1.28
+      - M.1.29
+      - M.1.30
+      - M.1.31
+      - M.1.32
+      - M.1.33
+      - M.1.34
+      - M.1.35
+      - M.1.36
+      - M.1.37
+      - M.1.38
+      - M.1.39
+      - M.1.40
+      - M.1.41
+      - M.1.42
+      - M.1.43
+      - M.1.44
+      - M.1.45
+      - M.1.46
+      - M.1.47
+      - M.1.48
+      - M.1.49
+      - M.1.50
+      type: string
+      description: An enumeration.
+      title: CategoriesEnum
+    type: array
+    description: Lista kategorii
+  id:
+    type: string
+    description: Unikalny identyfikator ogłoszenia
+    title: Id
   order:
     type: object
-    title: Order
     description: Informacje o postanowieniu, którego dotyczy ogłoszenie
+    title: Order
 title: AnnouncementModel

@@ -1,5 +1,3 @@
-operationId: get_update_by_id_v2_updates__id__get
-summary: Get Update By Id
 responses:
   '200':
     content:
@@ -7,12 +5,12 @@ responses:
         schema:
           $ref: '#/components/schemas/UpdatesModel'
     description: Retrieve update by id
-  '422':
+  '404':
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
+          $ref: '#/components/schemas/Error'
+    description: Not Found
   '403':
     content:
       application/json:
@@ -31,28 +29,38 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Bad Request
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+description: Zwraca dane aktualizacji o podanym id.
 parameters:
-- required: true
+- description: Unikalny identyfikator zarejestrowanej aktualizacji
+  required: true
   in: path
   name: id
-  description: Unikalny identyfikator zarejestrowanej aktualizacji
   schema:
     anyOf:
-    - type: string
+    - type: integer
     - enum:
       - last
       type: string
+    example: '222222222222222222222222'
     title: Id
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - updates_iapi
+summary: Get Update By Id
+operationId: get_update_by_id_v2_updates__id__get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

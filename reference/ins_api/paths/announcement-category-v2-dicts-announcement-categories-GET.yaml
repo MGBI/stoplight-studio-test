@@ -1,4 +1,5 @@
 operationId: get_announcement_category_v2_dicts_announcement_categories_get
+description: Zwraca słownik zawierający etykiety dla kategorii ogłoszeń.
 summary: Get Announcement Category
 responses:
   '200':

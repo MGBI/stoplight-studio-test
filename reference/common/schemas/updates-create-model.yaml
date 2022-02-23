@@ -4,28 +4,28 @@ required:
 - source
 type: object
 properties:
-  issue_date:
-    format: date
-    type: string
-    title: Issue Date
-  krz_update_id:
-    type: integer
-    title: Krz Update Id
   source:
     enum:
     - krz
     - msig
     type: string
     title: Source
-  msig_update_id:
-    type: integer
-    title: Msig Update Id
+  issue_date:
+    format: date
+    type: string
+    title: Issue Date
   announcements_count:
-    exclusiveMaximum: 9007199254740991.0
-    minimum: 0.0
+    exclusiveMaximum: 9007199254740991
+    minimum: 0
     type: integer
     title: Announcements Count
   update_id:
     type: integer
     title: Update Id
+  krz_update_id:
+    type: integer
+    title: Krz Update Id
+  msig_update_id:
+    type: integer
+    title: Msig Update Id
 title: UpdatesCreateModel

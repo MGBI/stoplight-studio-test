@@ -36,16 +36,17 @@ responses:
           $ref: '#/components/schemas/HTTPValidationError'
     description: Validation Error
 parameters:
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Unikalny identyfikator filtra
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - filters_iapi
+description: Tworzy nowy filtr przypisany do aktualnego użytkownika.
 summary: Create Filter
 requestBody:
   content:

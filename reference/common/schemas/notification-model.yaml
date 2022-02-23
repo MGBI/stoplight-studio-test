@@ -5,14 +5,28 @@ required:
 type: object
 properties:
   status:
-    $ref: ../schemas.yaml#/NotificationStatusEnum
+    enum:
+    - 0
+    - 1
+    type: integer
+    description: |-
+      Status wysyłki powiadomienia
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `0` | Błąd wysyłki |
+        | `1` | Wysłane |</details>
+    title: NotificationStatusEnum
   email:
+    example: msig@bnf.pl
     type: string
-    title: Email
     description: Adres e-mail, na który wysłano powiadomienie
+    title: Email
   sent_datetime:
     format: date-time
     type: string
-    title: Sent Datetime
     description: Data wysyłki powiadomienia
+    title: Sent Datetime
 title: NotificationModel

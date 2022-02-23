@@ -5,10 +5,10 @@ type: object
 properties:
   id:
     type: integer
-    title: Id
     description: Unikalny identyfikator
+    title: Id
   label:
     type: string
-    title: Label
     description: Etykieta
+    title: Label
 title: InfoReports

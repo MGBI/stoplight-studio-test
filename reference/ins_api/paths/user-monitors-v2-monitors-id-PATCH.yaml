@@ -36,23 +36,25 @@ responses:
           $ref: '#/components/schemas/HTTPValidationError'
     description: Validation Error
 parameters:
-- required: true
+- description: Unikalny identyfikator monitoringu
+  required: true
   in: path
   name: id
-  description: Unikalny identyfikator monitoringu
   schema:
     type: string
+    example: '222222222222222222222222'
     title: Id
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - monitors_iapi
+description: Modyfikuje monitoring o podanym id.
 summary: Patch User Monitors
 requestBody:
   content:

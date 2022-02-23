@@ -16,6 +16,8 @@ UpdatesModel:
   $ref: schemas/updates-model.yaml
 UserModel:
   $ref: schemas/user-model.yaml
+TypesEnum:
+  $ref: schemas/types-enum.yaml
 KrzSectionRestructuringEnum:
   $ref: schemas/krz-section-restructuring-enum.yaml
 FiltersModel:
@@ -56,8 +58,8 @@ ValidationError:
   $ref: schemas/validation-error.yaml
 MonitorModel:
   $ref: schemas/monitor-model.yaml
-TypesEnum:
-  $ref: schemas/types-enum.yaml
+QueryRaportByNotificationModel:
+  $ref: schemas/query-raport-by-notification-model.yaml
 UpdateParamsModel:
   $ref: schemas/update-params-model.yaml
 Error:
@@ -70,6 +72,8 @@ AnnouncementModel:
   $ref: schemas/announcement-model.yaml
 InfoReports:
   $ref: schemas/info-reports.yaml
+QueryRaportByDateRangeModel:
+  $ref: schemas/query-raport-by-date-range-model.yaml
 KrzChapterEnum:
   $ref: schemas/krz-chapter-enum.yaml
 CategoriesEnum:

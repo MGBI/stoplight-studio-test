@@ -1,14 +1,14 @@
 example:
-  creation_datetime: '2021-11-02T15:20:20.584Z'
-  last_update_datetime: '2021-11-02T15:20:20.584Z'
-  emails:
-  - abc@xyz.pl
-  - def@klm.pl
   notifications:
   - status: 1
     email: abc@xyz.pl
     sent_datetime: '2021-11-02T15:20:20.584Z'
+  creation_datetime: '2021-11-02T15:20:20.584Z'
   filter_id: 2
+  last_update_datetime: '2021-11-02T15:20:20.584Z'
+  emails:
+  - abc@xyz.pl
+  - def@klm.pl
   id: 2
 required:
 - id
@@ -18,35 +18,67 @@ required:
 - notifications
 type: object
 properties:
+  notifications:
+    items:
+      required:
+      - sent_datetime
+      - email
+      - status
+      type: object
+      properties:
+        status:
+          enum:
+          - 0
+          - 1
+          type: integer
+          description: |-
+            Status wysyłki powiadomienia
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Wartość | Nazwa |
+              |-|-|
+              | `0` | Błąd wysyłki |
+              | `1` | Wysłane |</details>
+          title: NotificationStatusEnum
+        email:
+          minLength: 5
+          maxLength: 100
+          type: string
+          description: Adres e-mail, na który wysłano powiadomienie
+          title: Email
+        sent_datetime:
+          format: date-time
+          type: string
+          description: Data wysyłki powiadomienia
+          title: Sent Datetime
+      title: NotificationModel
+    type: array
+    description: Data i czas wysyłki powiadomienia
+    title: Notifications
   creation_datetime:
     format: date-time
     type: string
-    title: Creation Datetime
     description: Data i czas utworzenia monitoringu
+    title: Creation Datetime
+  filter_id:
+    type: string
+    description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
+    title: Filter Id
   last_update_datetime:
     nullable: true
     format: date-time
     type: string
-    title: Last Update Datetime
     description: Data i czas ostatniej aktualizacji monitoringu
+    title: Last Update Datetime
   emails:
     items:
       type: string
     type: array
-    title: Emails
     description: Adresy e-mail do wysyłki powiadomień z monitoringów
-  notifications:
-    items:
-      $ref: ../schemas.yaml#/NotificationModel
-    type: array
-    title: Notifications
-    description: Data i czas wysyłki powiadomienia
-  filter_id:
-    type: string
-    title: Filter Id
-    description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
+    title: Emails
   id:
     type: string
-    title: Id
     description: Unikalny identyfikator monitoringu
+    title: Id
 title: MonitorModel

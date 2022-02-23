@@ -52,25 +52,25 @@ example:
   - content.html
   - content.url
   archival_reports_used: 0
-  credits_used: 0
   current_reports_available: 25
   current_reports_filter_required: false
-  archive_date_from: '2021-04-23'
-  monitors_used: 2
-  current_reports_used: 5
   api_requests_used: 100
   credits_available: 5
-  archival_reports_available: 5
   archival_reports_filter_required: false
-  monitors_emails_limit: 5
+  api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   panel_users:
   - abc@def.pl
   - xyz@ghi.pl
+  api_requests_available: 1000
+  credits_used: 0
+  archive_date_from: '2021-04-23'
+  monitors_used: 2
+  current_reports_used: 5
+  archival_reports_available: 5
+  monitors_emails_limit: 5
   filter_items_limit: 50
   panel_users_limit: 5
   monitors_available: 5
-  api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  api_requests_available: 1000
 required:
 - archive_date_from
 - current_reports_available
@@ -145,16 +145,40 @@ properties:
     default: 0
     type: integer
     title: Archival Reports Used
-  credits_used:
-    default: 0
-    type: integer
-    title: Credits Used
   current_reports_available:
     type: integer
     title: Current Reports Available
   current_reports_filter_required:
     type: boolean
     title: Current Reports Filter Required
+  api_requests_used:
+    default: 0
+    type: integer
+    title: Api Requests Used
+  credits_available:
+    type: integer
+    title: Credits Available
+  archival_reports_filter_required:
+    type: boolean
+    title: Archival Reports Filter Required
+  api_key:
+    format: uuid
+    type: string
+    title: Api Key
+  panel_users:
+    default: []
+    items:
+      type: string
+      format: email
+    type: array
+    title: Panel Users
+  api_requests_available:
+    type: integer
+    title: Api Requests Available
+  credits_used:
+    default: 0
+    type: integer
+    title: Credits Used
   archive_date_from:
     format: date
     type: string
@@ -167,30 +191,13 @@ properties:
     default: 0
     type: integer
     title: Current Reports Used
-  api_requests_used:
-    default: 0
-    type: integer
-    title: Api Requests Used
-  credits_available:
-    type: integer
-    title: Credits Available
   archival_reports_available:
     type: integer
     title: Archival Reports Available
-  archival_reports_filter_required:
-    type: boolean
-    title: Archival Reports Filter Required
   monitors_emails_limit:
     default: 0
     type: integer
     title: Monitors Emails Limit
-  panel_users:
-    default: []
-    items:
-      type: string
-      format: email
-    type: array
-    title: Panel Users
   filter_items_limit:
     type: integer
     title: Filter Items Limit
@@ -201,11 +208,4 @@ properties:
   monitors_available:
     type: integer
     title: Monitors Available
-  api_key:
-    format: uuid
-    type: string
-    title: Api Key
-  api_requests_available:
-    type: integer
-    title: Api Requests Available
 title: DBParamsModel

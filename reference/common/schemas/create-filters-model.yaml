@@ -4,10 +4,71 @@ required:
 type: object
 properties:
   content:
-    $ref: ../schemas.yaml#/StrictContentFiltersModel
     description: Zawartość filtra
+    title: StrictContentFiltersModel
+    additionalProperties: false
+    type: object
+    example:
+      msig_signature:
+      - XIV GUp 83/16
+      regon:
+      - '272404100'
+      krz_signature:
+      - BY1B/GUp/13/2021
+      krs:
+      - '0000422121'
+      pesel:
+      - '41041202774'
+      nip:
+      - '7272849598'
+      name:
+      - Jan Kowalski
+      - Ambroży Nielepszy
+    properties:
+      msig_signature:
+        items:
+          type: string
+        type: array
+        description: XIV GUp 83/16
+        title: Msig Signature
+      regon:
+        items:
+          type: string
+        type: array
+        description: 272404100
+        title: Regon
+      krz_signature:
+        items:
+          type: string
+        type: array
+        description: KO1K/GU/1/2021
+        title: Krz Signature
+      krs:
+        items:
+          type: string
+        type: array
+        description: '0000422121'
+        title: Krs
+      pesel:
+        items:
+          type: string
+        type: array
+        description: 73010211898
+        title: Pesel
+      nip:
+        items:
+          type: string
+        type: array
+        description: 5940003304
+        title: Nip
+      name:
+        items:
+          type: string
+        type: array
+        description: Jan Kowalski
+        title: Name
   name:
     type: string
-    title: Name
     description: Nazwa filtra
+    title: Name
 title: CreateFiltersModel

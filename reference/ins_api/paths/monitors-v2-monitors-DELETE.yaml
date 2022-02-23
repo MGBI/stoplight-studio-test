@@ -1,5 +1,3 @@
-operationId: delete_monitors_v2_monitors_delete
-summary: Delete Monitors
 responses:
   '422':
     content:
@@ -27,24 +25,29 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Bad Request
+description: Usuwa monitoringi o identyfikatorach przekazanych w parametrze ids w
+  query stringu (po przecinku).
 parameters:
-- required: false
+- description: Unikalny identyfikator monitoringu
+  required: false
   in: query
   name: ids
-  description: Unikalny identyfikator monitoringu
   schema:
     type: string
+    example: '222222222222222222222222'
     title: Ids
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - monitors_iapi
+summary: Delete Monitors
+operationId: delete_monitors_v2_monitors_delete
 components:
   schemas:
     $ref: ../../common/schemas.yaml

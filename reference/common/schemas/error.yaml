@@ -3,10 +3,10 @@ required:
 type: object
 properties:
   details:
-    title: Details
     description: Szczegółowa informacja na temat błędu
+    title: Details
   error:
     type: string
-    title: Error
     description: Kod błędu
+    title: Error
 title: Error

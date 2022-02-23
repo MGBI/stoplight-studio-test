@@ -1,5 +1,3 @@
-operationId: get_reports_v2_reports_get
-summary: Get Reports
 responses:
   '200':
     content:
@@ -34,17 +32,20 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Bad Request
+description: Zwraca listę raportów przypisanych do aktualnego użytkownika.
 parameters:
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - reports_iapi
+summary: Get Reports
+operationId: get_reports_v2_reports_get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

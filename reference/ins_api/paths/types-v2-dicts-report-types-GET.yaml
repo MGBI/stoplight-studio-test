@@ -1,4 +1,5 @@
 operationId: get_types_v2_dicts_report_types_get
+description: Zwraca słownik zawierający etykiety dla typów raportu.
 summary: Get Types
 responses:
   '200':

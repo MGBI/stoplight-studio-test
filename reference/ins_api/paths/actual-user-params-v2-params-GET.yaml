@@ -1,5 +1,3 @@
-operationId: get_actual_user_params_v2_params_get
-summary: Get Actual User Params
 responses:
   '200':
     content:
@@ -31,17 +29,20 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Bad Request
+description: Zwraca parametry usługi dla aktualnego użytkownika.
 parameters:
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - params_iapi
+summary: Get Actual User Params
+operationId: get_actual_user_params_v2_params_get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

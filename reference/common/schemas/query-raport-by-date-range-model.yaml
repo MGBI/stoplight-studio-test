@@ -1,16 +1,6 @@
-example:
-  custom_categories:
-  - K
-  from_date: '2021-11-02'
-  append_first_entry: true
-  to_date: '2021-11-04'
-  filter_id: 61ded2f8aff2de52365d891e
-required:
-- from_date
-- to_date
-type: object
 properties:
   custom_categories:
+    default: []
     items:
       enum:
       - K
@@ -92,26 +82,31 @@ properties:
       description: An enumeration.
       title: CategoriesEnum
     type: array
-    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
   from_date:
     format: date
     type: string
-    description: Data początkowa zakresu dla daty publikacji ogłoszenia w MSiG lub
-      KRZ
     title: From Date
   append_first_entry:
+    default: true
     type: boolean
-    description: Czy pola z sekcji `entity` i `proceeding` powinny być przekopiowane
-      z pierwszego ogłoszenia w ramach postępowania?
     title: Append First Entry
   to_date:
     format: date
     type: string
-    description: Data końcowa zakresu dla daty publikacji ogłoszenia w MSiG lub KRZ
     title: To Date
   filter_id:
     nullable: true
     type: string
-    description: Identyfikator filtra użytego do wygenerowania raportu
     title: Filter Id
-title: QueryBaseModel
+required:
+- from_date
+- to_date
+type: object
+example:
+  custom_categories:
+  - K
+  from_date: '2021-11-02'
+  append_first_entry: true
+  to_date: '2021-11-04'
+  filter_id: 61ded2f8aff2de52365d891e
+title: QueryRaportByDateRangeModel

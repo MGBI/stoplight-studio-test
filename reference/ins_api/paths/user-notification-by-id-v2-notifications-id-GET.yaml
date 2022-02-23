@@ -1,18 +1,22 @@
 responses:
-  '422':
+  '200':
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
+          $ref: '#/components/schemas/NotificationModel'
+    description: Returned notification with specified id
+  '404':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+    description: Not Found
   '403':
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
     description: Forbidden
-  '204':
-    description: Delete filters
   '401':
     content:
       application/json:
@@ -25,18 +29,23 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Bad Request
-description: Usuwa filtry o identyfikatorach przekazanych w parametrze ids w query
-  stringu (po przecinku). W przypadku sukcesu metoda zwraca kod odpowiedzi 204 No
-  Content.
+  '422':
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
+    description: Validation Error
+description: Zwraca powiadomienie o podanym id, jeżeli monitor monitor_id należy do
+  aktualnego użytkownika.
 parameters:
-- description: Unikalny identyfikator filtra
-  required: false
-  in: query
-  name: ids
+- description: Unikalny identyfikator powiadomienia
+  required: true
+  in: path
+  name: id
   schema:
     type: string
     example: '222222222222222222222222'
-    title: Ids
+    title: Id
 - description: Klucz autoryzacji
   required: false
   in: header
@@ -46,9 +55,9 @@ parameters:
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
 tags:
-- filters_iapi
-summary: Delete Filter
-operationId: delete_filter_v2_filters_delete
+- notifications_iapi
+summary: Get User Notification By Id
+operationId: get_user_notification_by_id_v2_notifications__id__get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

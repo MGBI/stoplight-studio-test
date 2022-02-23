@@ -1,4 +1,5 @@
 operationId: get_report_statuses_v2_dicts_report_statuses_get
+description: Zwraca słownik zawierający etykiety dla statusów pliku raportu.
 summary: Get Report Statuses
 responses:
   '200':

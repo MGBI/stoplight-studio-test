@@ -5,10 +5,10 @@ type: object
 properties:
   id:
     type: string
-    title: Id
     description: Unikalny identyfikator
+    title: Id
   label:
     type: string
-    title: Label
     description: Etykieta
+    title: Label
 title: InfoCategories

@@ -1,16 +1,3 @@
-operationId: get_announcements_v2_announcements_get
-summary: Get Announcements
-description: |-
-  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
-  w wybranych rozdziałach MSiG / KRZ.
-
-  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
-  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
-  według daty publikacji w MSiG / KRZ.
-
-  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
-  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
-  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
 responses:
   '200':
     content:
@@ -51,34 +38,49 @@ responses:
         schema:
           $ref: '#/components/schemas/HTTPValidationError'
     description: Validation Error
+description: |-
+  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
+  w wybranych rozdziałach MSiG / KRZ.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty publikacji w MSiG / KRZ.
+
+  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
+  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
 parameters:
-- required: false
+- description: Unikalny identyfikator ogłoszenia
+  required: false
   in: query
   name: id
-  description: Unikalny identyfikator ogłoszenia
   schema:
     type: string
+    example: BMSiG-26451/2020
     title: Id
-- required: false
+- description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+  required: false
   in: query
   name: date_from
-  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
   schema:
     format: date
     type: string
+    example: 2022-01-01 00:00:00+00:00
     title: Date From
-- required: false
+- description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+  required: false
   in: query
   name: date_to
-  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
   schema:
     format: date
     type: string
+    example: 2022-12-31 00:00:00+00:00
     title: Date To
 - required: false
   in: query
   name: msig_chapter
   schema:
+    example: 0
     description: |-
       An enumeration.
       Rozdział MSiG
@@ -97,11 +99,13 @@ parameters:
     anyOf:
     - $ref: '#/components/schemas/MsigSectionInsolvencyEnum'
     - $ref: '#/components/schemas/MsigSectionRestructuringEnum'
+    example: 1
     title: Msig Section
 - required: false
   in: query
   name: krz_chapter
   schema:
+    example: krz_chapter=0
     description: |-
       An enumeration.
       Rozdział MSiG
@@ -122,6 +126,7 @@ parameters:
     - $ref: '#/components/schemas/KrzSectionRestructuringEnum'
     - $ref: '#/components/schemas/KrzSectionInsolvencyEnum'
     - $ref: '#/components/schemas/KrzSectionBanEnum'
+    example: 1
     title: Krz Section
 - required: false
   in: query
@@ -142,80 +147,86 @@ parameters:
         | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
         | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
     $ref: '#/components/schemas/KrzSubsectionEnum'
-- required: false
+- description: Sygnatura ogłoszenia w MSiG
+  required: false
   in: query
   name: msig_signature
-  description: 'Sygnatura ogłoszenia w MSiG'
   schema:
     type: string
     title: Msig Signature
-- required: false
+- description: Sygnatura ogłoszenia w KRZ
+  required: false
   in: query
   name: krz_signature
-  description: 'Sygnatura ogłoszenia w KRZ'
   schema:
     type: string
     title: Krz Signature
-- required: false
+- description: Numer NIP podmiotu, którego dotyczy ogłoszenie
+  required: false
   in: query
   name: nip
-  description: 'Numer NIP podmiotu, którego dotyczy ogłoszenie'
   schema:
     type: string
+    example: 9491827824
     title: Nip
-- required: false
+- description: Numer REGON podmiotu, którego dotyczy ogłoszenie
+  required: false
   in: query
   name: regon
-  description: 'Numer REGON podmiotu, którego dotyczy ogłoszenie'
   schema:
     type: string
+    example: 152074271
     title: Regon
-- required: false
+- description: Numer KRS podmiotu, którego dotyczy ogłoszenie
+  required: false
   in: query
   name: krs
-  description: 'Numer KRS podmiotu, którego dotyczy ogłoszenie'
   schema:
     type: string
+    example: 0000136890
     title: Krs
-- required: false
+- description: Numer PESEL osoby, której dotyczy ogłoszenie
+  required: false
   in: query
   name: pesel
-  description: 'Numer PESEL osoby, której dotyczy ogłoszenie'
   schema:
     type: string
+    example: 75121968629
     title: Pesel
-- required: false
+- description: Imię osoby, której dotyczy ogłoszenie
+  required: false
   in: query
   name: first_name
-  description: 'Imię osoby, której dotyczy ogłoszenie'
   schema:
     type: string
+    example: Bogdan
     title: First Name
-- required: false
+- description: Nazwisko osoby, której dotyczy ogłoszenie
+  required: false
   in: query
   name: last_name
-  description: 'Nazwisko osoby, której dotyczy ogłoszenie'
   schema:
     type: string
+    example: Bogdanowicz
     title: Last Name
-- required: false
+- description: Sygnatura postępowania
+  required: false
   in: query
   name: signature
-  description: 'Sygnatura postępowania'
   schema:
     type: string
     title: Signature
-- required: false
+- description: Imię i nazwisko sędziego komisarza
+  required: false
   in: query
   name: commissioner_name
-  description: Imię i nazwisko sędziego komisarza
   schema:
     type: string
     title: Commissioner Name
-- required: false
+- description: Imię i nazwisko nadzorcy sądowego
+  required: false
   in: query
   name: administrator_name
-  description: Imię i nazwisko nadzorcy sądowego
   schema:
     type: string
     title: Administrator Name
@@ -237,10 +248,11 @@ parameters:
         | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
         | `content` | Nieprzetworzona treść ogłoszenia |</details>
     $ref: '#/components/schemas/ProjectionEnum'
-- required: false
+- description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,
+    krz_entry.chapter i krz_entry.section
+  required: false
   in: query
   name: category
-  description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section, krz_entry.chapter i krz_entry.section
   schema:
     items:
       anyOf:
@@ -248,30 +260,41 @@ parameters:
       - type: string
     type: array
     title: Category
-- required: false
+- description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from
+    z parametrów usługi
+  required: false
   in: query
   name: archival
-  description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from z parametrów usługi
   schema:
     default: false
     type: boolean
     title: Archival
-- required: false
+- description: Identyfikator filtra
+  required: false
   in: query
   name: filter_id
-  description: Identyfikator filtra
   schema:
     type: string
     title: Filter Id
 - required: false
+  in: query
+  name: append_first_entry
+  schema:
+    default: false
+    type: boolean
+    title: Append First Entry
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - announcements_iapi
+summary: Get Announcements
+operationId: get_announcements_v2_announcements_get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

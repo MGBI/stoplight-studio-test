@@ -1,4 +1,13 @@
 responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/NotificationModel'
+          type: array
+          title: Response Get Notifications V2 Notifications Get
+    description: Returned the list of notifications assigned to the current user.
   '422':
     content:
       application/json:
@@ -11,8 +20,6 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Forbidden
-  '204':
-    description: Delete filters
   '401':
     content:
       application/json:
@@ -25,18 +32,8 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
     description: Bad Request
-description: Usuwa filtry o identyfikatorach przekazanych w parametrze ids w query
-  stringu (po przecinku). W przypadku sukcesu metoda zwraca kod odpowiedzi 204 No
-  Content.
+description: Zwraca powiadomienia dla aktualnego użytkownika.
 parameters:
-- description: Unikalny identyfikator filtra
-  required: false
-  in: query
-  name: ids
-  schema:
-    type: string
-    example: '222222222222222222222222'
-    title: Ids
 - description: Klucz autoryzacji
   required: false
   in: header
@@ -46,9 +43,9 @@ parameters:
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
 tags:
-- filters_iapi
-summary: Delete Filter
-operationId: delete_filter_v2_filters_delete
+- notifications_iapi
+summary: Get Notifications
+operationId: get_notifications_v2_notifications_get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

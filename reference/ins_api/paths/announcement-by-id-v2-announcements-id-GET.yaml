@@ -1,5 +1,3 @@
-operationId: get_announcement_by_id_v2_announcements__id__get
-summary: Get Announcement By Id
 responses:
   '200':
     content:
@@ -37,24 +35,28 @@ responses:
         schema:
           $ref: '#/components/schemas/HTTPValidationError'
     description: Validation Error
+description: Zwraca ogłoszenie o podanym id.
 parameters:
-- required: true
+- description: Unikalny identyfikator ogłoszenia
+  required: true
   in: path
   name: id
-  description: Unikalny identyfikator ogłoszenia
   schema:
     type: string
+    example: BMSiG-26451/2020
     title: Id
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - announcements_iapi
+summary: Get Announcement By Id
+operationId: get_announcement_by_id_v2_announcements__id__get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

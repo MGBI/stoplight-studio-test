@@ -1,4 +1,5 @@
 operationId: report_formats_v2_dicts_report_formats_get
+description: Zwraca słownik zawierający etykiety dla formatów pliku raportu.
 summary: Report Formats
 responses:
   '200':

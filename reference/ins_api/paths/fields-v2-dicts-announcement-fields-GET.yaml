@@ -1,4 +1,6 @@
 operationId: get_fields_v2_dicts_announcement_fields_get
+description: Zwraca słownik zawierający etykiety dla identyfikatorów pól dostępnych
+  w raportach.
 summary: Get Fields
 responses:
   '200':

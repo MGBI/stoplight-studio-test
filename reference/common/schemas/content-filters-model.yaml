@@ -1,14 +1,14 @@
 example:
   msig_signature:
   - XIV GUp 83/16
+  regon:
+  - '272404100'
   krz_signature:
   - BY1B/GUp/13/2021
   krs:
   - '0000422121'
   pesel:
   - '41041202774'
-  regon:
-  - '272404100'
   nip:
   - '7272849598'
   name:
@@ -21,6 +21,11 @@ properties:
       type: string
     type: array
     title: Msig Signature
+  regon:
+    items:
+      type: string
+    type: array
+    title: Regon
   krz_signature:
     items:
       type: string
@@ -36,11 +41,6 @@ properties:
       type: string
     type: array
     title: Pesel
-  regon:
-    items:
-      type: string
-    type: array
-    title: Regon
   nip:
     items:
       type: string

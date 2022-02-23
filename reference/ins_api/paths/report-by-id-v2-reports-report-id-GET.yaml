@@ -1,5 +1,3 @@
-operationId: get_report_by_id_v2_reports__report_id__get
-summary: Get Report By Id
 responses:
   '200':
     content:
@@ -37,27 +35,32 @@ responses:
         schema:
           $ref: '#/components/schemas/HTTPValidationError'
     description: Validation Error
+description: Zwraca raport o podanym id.
 parameters:
-- required: true
+- description: Unikalny identyfikator raportu
+  required: true
   in: path
   name: report_id
-  description: Unikalny identyfikator raportu
   schema:
     anyOf:
     - type: string
     - enum:
       - last
+      type: string
+    example: '222222222222222222222222'
     title: Report Id
-- required: false
+- description: Klucz autoryzacji
+  required: false
   in: header
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
-  description: Klucz autoryzacji
   schema:
     type: string
     title: Authorization
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
 tags:
 - reports_iapi
+summary: Get Report By Id
+operationId: get_report_by_id_v2_reports__report_id__get
 components:
   schemas:
     $ref: ../../common/schemas.yaml

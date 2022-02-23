@@ -1,24 +1,24 @@
 example:
-  items_count: 8
-  creation_datetime: '2021-11-10T15:20:20.584Z'
-  name: Dłużnicy 2021-11
-  last_update_datetime: '2021-12-10T15:30:20.584Z'
   content:
     msig_signature:
     - XIV GUp 83/16
+    regon:
+    - '272404100'
     krz_signature:
     - BY1B/GUp/13/2021
     krs:
     - '0000422121'
     pesel:
     - '41041202774'
-    regon:
-    - '272404100'
     nip:
     - '7272849598'
     name:
     - Jan Kowalski
     - Ambroży Nielepszy
+  items_count: 8
+  creation_datetime: '2021-11-10T15:20:20.584Z'
+  name: Dłużnicy 2021-11
+  last_update_datetime: '2021-12-10T15:30:20.584Z'
   id: '222222222222222222222222'
 required:
 - name
@@ -28,30 +28,83 @@ required:
 - items_count
 type: object
 properties:
+  content:
+    description: Zawartość filtra
+    example:
+      msig_signature:
+      - XIV GUp 83/16
+      regon:
+      - '272404100'
+      krz_signature:
+      - BY1B/GUp/13/2021
+      krs:
+      - '0000422121'
+      pesel:
+      - '41041202774'
+      nip:
+      - '7272849598'
+      name:
+      - Jan Kowalski
+      - Ambroży Nielepszy
+    type: object
+    properties:
+      msig_signature:
+        items:
+          type: string
+        type: array
+        title: Msig Signature
+      regon:
+        items:
+          type: string
+        type: array
+        title: Regon
+      krz_signature:
+        items:
+          type: string
+        type: array
+        title: Krz Signature
+      krs:
+        items:
+          type: string
+        type: array
+        title: Krs
+      pesel:
+        items:
+          type: string
+        type: array
+        title: Pesel
+      nip:
+        items:
+          type: string
+        type: array
+        title: Nip
+      name:
+        items:
+          type: string
+        type: array
+        title: Name
+    title: ContentFiltersModel
   items_count:
     type: integer
-    title: Items Count
     description: Liczba wszystkich identyfikatorów w filtrze
+    title: Items Count
   creation_datetime:
     format: date-time
     type: string
-    title: Creation Datetime
     description: Data i czas utworzenia filtra
+    title: Creation Datetime
   name:
     type: string
-    title: Name
     description: Nazwa filtra
+    title: Name
   last_update_datetime:
     nullable: true
     format: date-time
     type: string
-    title: Last Update Datetime
     description: Data i czas ostatniej aktualizacji filtra
-  content:
-    $ref: ../schemas.yaml#/ContentFiltersModel
-    description: Zawartość filtra
+    title: Last Update Datetime
   id:
     type: string
-    title: Id
     description: Unikalny identyfikator filtra
+    title: Id
 title: FiltersModel
