@@ -36,30 +36,398 @@ example:
     address: {}
 required:
 - id
+- krz_entry
+- proceeding
+- msig_entry
+- entity
+- content
+- custom_categories
+- order
 type: object
 properties:
   proceeding:
-    type: object
+    items:
+      required:
+      - court_name
+      - court_department
+      - signatures
+      - commissioner_name
+      - commissioner_deputy_name
+      - administrator_name
+      - administrator_function
+      type: object
+      properties:
+        signatures:
+          items:
+            type: string
+          type: array
+          description: Sygnatury postępowania
+        commissioner_name:
+          type: string
+          description: Imię i nazwisko sędziego komisarza
+          nullable: true
+        court_department:
+          type: string
+          description: Nazwa wydziału
+        administrator_zip_code:
+          type: string
+          description: Kod pocztowy w adresie nadzorcy
+        administrator_function:
+          type: string
+          description: Funkcja nadzorcy
+        court_name:
+          type: string
+          description: Nazwa sądu
+        administrator_name:
+          type: string
+          description: Imię i nazwisko nadzorcy
+        commissioner_deputy_name:
+          type: string
+          description: Imię i nazwisko zastępcy sędziego komisarza
+          nullable: true
+        administrator_town:
+          type: string
+          description: Miejscowość w adresie nadzorcy
+        administrator_licence_number:
+          type: integer
+          description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
+        administrator_address:
+          type: string
+          description: Adres pocztowy nadzorcy
+        administrator_source_url:
+          type: string
+          description: Link do źródła danych nadzorcy
+    type: array
     description: Informacje o postępowaniu
     title: Proceeding
   krz_entry:
-    type: object
+    items:
+      required:
+      - chapter
+      - section
+      - signature
+      - issue_date
+      - url
+      type: object
+      properties:
+        chapter:
+          type: integer
+          description: |-
+            Rozdział KRZ
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Wartość | Nazwa rozdziału |
+              |-|-|
+              | `0` | Postępowanie restrukturyzacyjne |
+              | `1` | Postępowanie upadłościowe |
+              | `2` | Zakaz prowadzenia działalności gospodarczej |</details>
+        url:
+          type: string
+          description: Link do ogłoszenia w serwisie KRZ
+          format: uri
+        section:
+          type: integer
+          description: |-
+            Sekcja KRZ
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              <b>Postępowanie restrukturyzacyjne</b>
+
+              | Wartość | Nazwa sekcji |
+              |-|-|
+              | `0` | Dzień układowy |
+              | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
+              | `2` | Zabezpieczenie majątku |
+              | `3` | Otwarcie postępowania restrukturyzacyjnego |
+              | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
+              | `5` | Spis wierzytelności/spis wierzytelności spornych |
+              | `6` | Zgromadzenie wierzycieli |
+              | `7` | Sprawozdania |
+              | `8` | Układ |
+              | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
+              | `10` | Inne |
+
+              <b>Postępowanie upadłościowe</b>
+
+              | Wartość | Nazwa sekcji |
+              |-|-|
+              | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
+              | `21` | Zabezpieczenie majątku |
+              | `22` | Ogłoszenie upadłości/oddalenie wniosku |
+              | `23` | Wtórne postępowanie upadłościowe |
+              | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
+              | `25` | Przygotowana likwidacja |
+              | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
+              | `27` | Zgromadzenie wierzycieli |
+              | `28` | Masa upadłości |
+              | `29` | Lista wierzytelności |
+              | `30` | Plan podziału |
+              | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
+              | `32` | Plan spłaty/umorzenie zobowiązań |
+              | `33` | Układ w upadłości |
+              | `34` | Inne |
+
+              <b>Zakaz prowadzenia działalności gospodarczej</b>
+
+              | Wartość | Nazwa sekcji |
+              |-|-|
+              | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
+              | `41` | Inne |</details>
+        issue_date:
+          type: string
+          description: Data publikacji ogłoszenia w KRZ
+          format: date
+        signature:
+          type: string
+          description: Sygnatura ogłoszenia w KRZ
+    type: array
     description: Informacje dotyczące publikacji ogłoszenia w KRZ
     title: Krz Entry
   msig_entry:
-    type: object
+    items:
+      required:
+      - chapter
+      - section
+      - signature
+      - issue_date
+      - yearly_number
+      - position_number
+      - url
+      type: object
+      properties:
+        chapter:
+          type: integer
+          description: |-
+            Rozdział MSiG
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Wartość | Nazwa rozdziału |
+              |-|-|
+              | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+              | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
+        position_number:
+          type: string
+          description: Numer pozycji MSiG
+        issue_date:
+          type: string
+          description: Data publikacji ogłoszenia w MSiG
+          format: date
+        signature:
+          type: string
+          description: Sygnatura ogłoszenia w MSiG
+        url:
+          type: string
+          description: Link do ogłoszenia w serwisie imsig.pl
+          format: uri
+        section:
+          type: integer
+          description: |-
+            Sekcja MSiG
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              <b>Ogłoszenia wymagane przez prawo upadłościowe</b>
+
+              | Wartość | Nazwa sekcji |
+              |-|-|
+              | `1` | Postanowienie o ogłoszeniu upadłości |
+              | `2` | Obwieszczenie o zatwierdzeniu układu |
+              | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+              | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+              | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+              | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+              | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+              | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+              | `9` | Inne |
+
+              <b>Ogłoszenia wymagane przez prawo restrukturyzacyjne</b>
+
+              | Wartość | Nazwa sekcji |
+              |-|-|
+              | `20` | Dokonanie zmian w spisie wierzytelności |
+              | `21` | Inne |
+              | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
+              | `23` | Odmowa zatwierdzenia układu |
+              | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
+              | `25` | Określenie trybu i sposobu głosowania nad układem |
+              | `26` | Otwarcie postępowania o zatwierdzenie układu |
+              | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
+              | `28` | Otwarcie postępowania o zmianę układu |
+              | `29` | Otwarcie postępowania sanacyjnego |
+              | `30` | Otwarcie postępowania układowego |
+              | `31` | Otwarcie przyspieszonego postępowania układowego |
+              | `32` | Sprostowanie |
+              | `33` | Stwierdzenie wykonania układu |
+              | `34` | Uchylenie układu |
+              | `35` | Umorzenie postępowania |
+              | `36` | Wyznaczenie nadzorcy lub zarządcy |
+              | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
+              | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
+              | `39` | Zabezpieczenie majątku dłużnika |
+              | `40` | Zakończenie postępowania |
+              | `41` | Zatwierdzenie spisu wierzytelności |
+              | `42` | Zatwierdzenie układu |
+              | `43` | Złożenie planu restrukturyzacyjnego |
+              | `44` | Złożenie spisu wierzytelności |
+              | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
+              | `46` | Złożenie uzupełniającego spisu wierzytelności |
+              | `47` | Złożenie wniosku o zatwierdzenie układu |
+              | `48` | Zmiana nadzorcy lub zarządcy |
+              | `49` | Zmiana sędziego komisarza |
+              | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
+        yearly_number:
+          type: string
+          description: Numer wydania MSiG
+    type: array
     description: Informacje dotyczące publikacji ogłoszenia w MSiG
     title: Msig Entry
   entity:
-    anyOf:
-    - items:
-        type: object
-      type: array
-    - type: object
+    items:
+      required:
+      - info
+      - adress
+      - numbers
+      type: object
+      properties:
+        info:
+          items:
+            required:
+            - commencement_date
+            - first_name
+            - last_name
+            - cleaned_name
+            - primary_business
+            - ownership_type
+            - legal_form
+            type: object
+            properties:
+              commencement_date:
+                type: string
+                description: Data rozpoczęcia działalności
+              first_name:
+                type: string
+                description: Imię
+                nullable: true
+              last_name:
+                type: string
+                description: Nazwisko
+                nullable: true
+              cleaned_name:
+                type: string
+                description: Nazwa podmiotu
+              primary_business:
+                type: string
+                description: Przeważająca działalność gospodarcza (kod PKD)
+                nullable: true
+              ownership_type:
+                type: string
+                description: Forma własności
+              legal_form:
+                type: string
+                description: Forma prawna
+          type: array
+          description: Podstawowe dane podmiotu
+        adress:
+          items:
+            required:
+            - town
+            - gmina
+            - house_number
+            - flat_number
+            - state
+            - street
+            - post_office
+            - powiat
+            - zip_code
+            type: object
+            properties:
+              town:
+                type: string
+                description: Miejscowość
+              gmina:
+                type: string
+                description: Gmina
+              house_number:
+                type: string
+                description: Numer nieruchomości
+                nullable: true
+              flat_number:
+                type: string
+                description: Numer lokalu
+                nullable: true
+              state:
+                type: string
+                description: Województwo
+              street:
+                type: string
+                description: Ulica
+                nullable: true
+              post_office:
+                type: string
+                description: Poczta
+              powiat:
+                type: string
+                description: Powiat
+              zip_code:
+                type: string
+                description: Kod pocztowy
+          type: array
+          description: Numery rejestrowe podmiotu
+        numbers:
+          items:
+            required:
+            - krs
+            - nip
+            - regon
+            - pesel
+            type: object
+            properties:
+              krs:
+                minLength: 10
+                maxLength: 10
+                type: string
+                description: Numer KRS
+                nullable: true
+              nip:
+                minLength: 10
+                maxLength: 10
+                type: string
+                description: Numer NIP
+                nullable: true
+              regon:
+                minLength: 9
+                maxLength: 9
+                type: string
+                description: Numer REGON
+                nullable: true
+              pesel:
+                minLength: 11
+                maxLength: 11
+                type: string
+                description: Numer PESEL
+                nullable: true
+          type: array
+          description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
+    type: array
     description: Lista podmiotów, których dotyczy ogłoszenie
     title: Entity
   content:
-    type: object
+    items:
+      required:
+      - text
+      - html
+      type: object
+      properties:
+        text:
+          type: string
+          description: Treść ogłoszenia w formacie tekstowym
+        html:
+          type: string
+          description: Treść ogłoszenia w formacie HTML
+    type: array
     description: Nieprzetworzona treść ogłoszenia
     title: Content
   custom_categories:
@@ -150,7 +518,26 @@ properties:
     description: Unikalny identyfikator ogłoszenia
     title: Id
   order:
-    type: object
+    items:
+      required:
+      - order_date
+      - expiration_period
+      - expiration_date
+      type: object
+      properties:
+        order_date:
+          type: string
+          description: Data wydania postanowienia
+          nullable: true
+        expiration_period:
+          type: integer
+          description: Okres do działania (w dniach)
+          nullable: true
+        expiration_date:
+          type: string
+          description: Data końcowa okresu do działania
+          nullable: true
+    type: array
     description: Informacje o postanowieniu, którego dotyczy ogłoszenie
     title: Order
 title: AnnouncementModel
