@@ -1,0 +1,12 @@
+1. Dodać niebieskie opisy w polach, tak jak w get-announcements(10 characters, etc.)
+2. Dodać example do każdego pola - sprawdzić czy się da (w Responses np. nie jest to możliwe, nie wiem jak w REQUEST BODY SCHEMA)
+3. Ustawić pola z typem "object" na rozwijane - zmienić w projekcie iapi
+4. Dodać znaki required do odpowiednich pól
+5. W errorach upewnić się czy details jest required
+6. Kod błędu poprawić na opis błędu
+7. Usunąć kod 422 - nie ma już takiego w dokumentacji
+8. Dla metod DELETE ustalić w opisie informacje o liście ajdików (tak jak w Reports)
+9. W id last dodać opis, że to np. ostatni raport
+10. W POST Reports dodać enum dla pola file_format
+11. W POST Reports dodać enum dla pola custom_content (dodać pola z get announcement by id, Konrad dodał zmianę w iapi)
+12. Dodać opis do odpowiedzi 200 DOWNLOAD
