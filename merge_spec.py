@@ -8,7 +8,6 @@ import sys
 import os
 from collections import defaultdict
 
-
 V_SUFFIX = "_iapi"
 OLD_API_ROOT_PATH = "/v2/"
 NEW_API_ROOT_PATH = "/v2/"
@@ -46,25 +45,22 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                     new_name = new_item.get("name")
                     for old_item in new_item and old_values["parameters"] or []:
                         if new_name == old_item["name"]:
-                            if new_item["schema"].get("description") is None \
-                              and old_item["schema"].get(
-                              "description") is not None:
-                                new_item["schema"]["description"] = old_item[
-                                  "schema"]["description"]
-                            if new_item["schema"].get("example") is None and \
-                              old_item["schema"].get("example") is not None:
-                                new_item["schema"]["example"] = old_item["schema"][
-                                  "example"]
-                            if new_item.get("description") is None and old_item.get(
-                              "description") is not None:
-                                new_item["description"] = old_item["description"]
+                            objs = [(old_item.get("schema"), new_item.get("schema")),
+                                    (old_item.get("schema", {}).get("anyOf"),
+                                     new_item.get("schema", {}).get("anyOf")),
+                                    (old_item, new_item)],
+                            for old, new in objs:
+                                for label in ["description", "example"]:
+                                    if old is not None and new is not None and old.get(
+                                            label) is not None:
+                                        new[label] = old[label]
 
     # here we remove admin and internal tags from paths field in new_openapi
     wanted_paths = defaultdict(dict)
     for path, methods in new_openapi["paths"].items():
         for method, endpoint in methods.items():
             if "internal" not in endpoint["tags"] \
-              and "admin" not in endpoint["tags"]:
+                    and "admin" not in endpoint["tags"]:
                 wanted_paths[path][method] = endpoint
             endpoint["tags"] = [tag + V_SUFFIX for tag in endpoint["tags"]]
 
@@ -74,7 +70,7 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     old_openapi["paths"].update(new_openapi["paths"])
 
     # components
-    for name, component in new_openapi.get("components", {}).items() :
+    for name, component in new_openapi.get("components", {}).items():
         if name in old_openapi["components"]:
             old_component = old_openapi["components"][name]
             for field in component:
@@ -100,16 +96,16 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     # adding new values to tags field without duplicates
     for tag in tags.difference({tag["name"] for tag in old_openapi["tags"]}):
         old_openapi["tags"].append(
-          {"name": tag, "x-displayName": tag.replace(V_SUFFIX, "").capitalize()}
+            {"name": tag, "x-displayName": tag.replace(V_SUFFIX, "").capitalize()}
         )
 
     # adding tags from set to tags in x-tagGroups
     for tag_group in old_openapi["x-tagGroups"]:
         if tag_group["name"] == "MSIG API V2":
-           old_openapi["x-tagGroups"].pop(old_openapi["x-tagGroups"].index(tag_group))
-           break
+            old_openapi["x-tagGroups"].pop(old_openapi["x-tagGroups"].index(tag_group))
+            break
     old_openapi["x-tagGroups"].append(
-      {"name": "MSIG API V2", "tags": list(tags)})
+        {"name": "MSIG API V2", "tags": list(tags)})
 
     # at the end we dump changes to old openapi
     yaml.safe_dump(old_openapi, sys.stdout, sort_keys=False)
@@ -120,5 +116,5 @@ if __name__ == "__main__":
         transformation_of_openapi_v2(sys.argv[1], sys.argv[2])
     else:
         sys.stderr.write(
-          "USAGE: %s old_file_path new_file_path\n" % sys.argv[0]
+            "USAGE: %s old_file_path new_file_path\n" % sys.argv[0]
         )
