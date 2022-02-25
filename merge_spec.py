@@ -46,9 +46,13 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                     for old_item in new_item and old_values["parameters"] or []:
                         if new_name == old_item["name"]:
                             objs = [(old_item.get("schema"), new_item.get("schema")),
-                                    (old_item.get("schema", {}).get("anyOf"),
-                                     new_item.get("schema", {}).get("anyOf")),
-                                    (old_item, new_item)],
+                                    (old_item, new_item)]
+                            if old_item.get("schema", {}).get("anyOf") and new_item.get("schema",
+                                                                                        {}).get(
+                                    "anyOf"):
+                                objs.extend(zip(old_item.get("schema", {}).get("anyOf"),
+                                                new_item.get("schema", {}).get("anyOf")))
+
                             for old, new in objs:
                                 for label in ["description", "example"]:
                                     if old is not None and new is not None and old.get(
@@ -60,7 +64,7 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     for path, methods in new_openapi["paths"].items():
         for method, endpoint in methods.items():
             if "internal" not in endpoint["tags"] \
-                    and "admin" not in endpoint["tags"]:
+                and "admin" not in endpoint["tags"]:
                 wanted_paths[path][method] = endpoint
             endpoint["tags"] = [tag + V_SUFFIX for tag in endpoint["tags"]]
 
