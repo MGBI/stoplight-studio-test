@@ -1,12 +1,13 @@
 required:
 - error
+- details
 type: object
 properties:
   details:
-    description: Szczegółowa informacja na temat błędu
+    description: Szczegółowe informacje na temat błędu
     title: Details
   error:
     type: string
-    description: Kod błędu
+    description: Opis błędu
     title: Error
 title: Error

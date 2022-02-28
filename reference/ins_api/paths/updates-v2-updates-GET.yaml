@@ -1,69 +1,63 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          items:
-            $ref: '#/components/schemas/UpdatesModel'
-          type: array
-          title: Response Get Updates V2 Updates Get
-    description: Retrieve updates list
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-description: Zwraca listę aktualizacji dla podanych parametrów z kolekcji `update_record`.
-parameters:
-- description: Początek zakresu dla daty i czasu utworzenia aktualizacji
-  required: true
-  in: query
-  name: creation_datetime_from
-  schema:
-    format: date-time
-    type: string
-    example: '2019-01-01'
-    title: Creation Datetime From
-- description: Koniec zakresu dla daty i czasu utworzenia aktualizacji
-  required: true
-  in: query
-  name: creation_datetime_to
-  schema:
-    format: date-time
-    type: string
-    example: '2019-12-31'
-    title: Creation Datetime To
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - updates_iapi
 summary: Get Updates
 operationId: get_updates_v2_updates_get
+parameters:
+- required: true
+  schema:
+    title: Creation Datetime From
+    type: string
+    format: date-time
+    example: '2019-01-01'
+  name: creation_datetime_from
+  in: query
+  description: Początek zakresu dla daty i czasu utworzenia aktualizacji
+- required: true
+  schema:
+    title: Creation Datetime To
+    type: string
+    format: date-time
+    example: '2019-12-31'
+  name: creation_datetime_to
+  in: query
+  description: Koniec zakresu dla daty i czasu utworzenia aktualizacji
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Retrieve updates list
+    content:
+      application/json:
+        schema:
+          title: Response Get Updates V2 Updates Get
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdatesModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Zwraca listę aktualizacji dla podanych parametrów z kolekcji `update_record`.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

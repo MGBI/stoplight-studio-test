@@ -1,17 +1,3 @@
-example:
-  creation_datetime: '2021-11-10T15:20:20.584Z'
-  deactivation_datetime: '2021-11-10T15:20:20.584Z'
-  is_admin: false
-  is_active: true
-  email: abc@def.pl
-  id: '1'
-required:
-- id
-- email
-- is_active
-- is_admin
-- creation_datetime
-type: object
 properties:
   creation_datetime:
     format: date-time
@@ -31,13 +17,27 @@ properties:
     type: boolean
     description: Czy użytkownik jest aktywny?
     title: Is Active
+  id:
+    type: string
+    description: Unikalny identyfikator użytkownika
+    title: Id
   email:
     format: email
     type: string
     description: Adres e-mail użytkownika
     title: Email
-  id:
-    type: string
-    description: Unikalny identyfikator użytkownika
-    title: Id
+required:
+- id
+- email
+- is_active
+- is_admin
+- creation_datetime
+type: object
+example:
+  creation_datetime: '2021-11-10T15:20:20.584Z'
+  deactivation_datetime: '2021-11-10T15:20:20.584Z'
+  is_admin: false
+  is_active: true
+  id: '1'
+  email: abc@def.pl
 title: UserModel

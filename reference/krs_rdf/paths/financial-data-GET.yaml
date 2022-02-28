@@ -1,20 +1,4 @@
 responses:
-  '429':
-    content:
-      application/json:
-        examples:
-          example-1:
-            value:
-              error: Quota is exceeded
-        schema:
-          required:
-          - error
-          type: object
-          description: Obiekt dla błędu.
-          properties:
-            error:
-              type: string
-    description: Wykorzystany limit zapytań do API
   '200':
     content:
       application/json:
@@ -49,8 +33,8 @@ responses:
               period_end_year:
                 format: int32
                 type: integer
-                description: Rok z daty końcowej okresu, którego dotyczy dokument
                 example: 2019
+                description: Rok z daty końcowej okresu, którego dotyczy dokument
               consolidated:
                 type: boolean
                 example: true
@@ -61,11 +45,12 @@ responses:
                 example: '10834213197.71'
                 description: Kapitał (fundusz) własny - kwota na dzień kończący bieżący
                   rok obrotowy
-              period_to:
-                format: date
+              bs_lae_nc_cfy:
+                pattern: \d+\.\d{2}
                 type: string
-                description: Data końcowa okresu, którego dotyczy sprawozdanie
-                example: '2019-02-28'
+                example: '10150715600.00'
+                description: Kapitał (fundusz) podstawowy - kwota na dzień kończący
+                  bieżący rok obrotowy
               pala_nrfs_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -80,8 +65,8 @@ responses:
               filing_date:
                 format: date
                 type: string
-                description: Data publikacji sprawozdania w RDF
                 example: '2019-07-19'
+                description: Data publikacji sprawozdania w RDF
               bs_lae_e_pfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -89,10 +74,10 @@ responses:
                 description: Kapitał (fundusz) własny - kwota na dzień kończący poprzedni
                   rok obrotowy
               id:
-                example: 2520543
-                type: integer
                 description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator
                   dokumentu w RDF)
+                type: integer
+                example: 2520543
                 format: int32
               pala_npl_cpfy:
                 pattern: \d+\.\d{2}
@@ -115,8 +100,8 @@ responses:
               period_from:
                 format: date
                 type: string
-                description: Data początkowa okresu, którego dotyczy sprawozdanie
                 example: '2018-01-01'
+                description: Data początkowa okresu, którego dotyczy sprawozdanie
               krs:
                 description: Numer KRS podmiotu, którego dotyczy sprawozdanie
                 maxLength: 10
@@ -124,17 +109,16 @@ responses:
                 type: string
                 example: 0000019193
                 minLength: 10
-              bs_lae_nc_cfy:
-                pattern: \d+\.\d{2}
+              period_to:
+                format: date
                 type: string
-                example: '10150715600.00'
-                description: Kapitał (fundusz) podstawowy - kwota na dzień kończący
-                  bieżący rok obrotowy
+                example: '2019-02-28'
+                description: Data końcowa okresu, którego dotyczy sprawozdanie
               crawling_date:
                 format: date
                 type: string
-                description: Data pobrania sprawozdania z RDF
                 example: '2019-07-24'
+                description: Data pobrania sprawozdania z RDF
               bs_a_ta_pfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -162,8 +146,8 @@ responses:
               period_major_year:
                 format: int32
                 type: integer
-                description: Zasadniczy rok, którego dotyczy dokument
                 example: 2018
+                description: Zasadniczy rok, którego dotyczy dokument
               bs_a_ta_cfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -172,8 +156,8 @@ responses:
               preparation_date:
                 format: date
                 type: string
-                description: Data sporządzenia sprawozdania
                 example: '2019-04-12'
+                description: Data sporządzenia sprawozdania
               bs_a_ta_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -186,38 +170,6 @@ responses:
             w RDF
           maxItems: 100
     description: Poprawne wyszukiwanie danych finansowych
-  '403':
-    content:
-      application/json:
-        examples:
-          example-1:
-            value:
-              error: Access forbidden
-        schema:
-          required:
-          - error
-          type: object
-          description: Obiekt dla błędu.
-          properties:
-            error:
-              type: string
-    description: Nieudana autoryzacja dostępu do API
-  '401':
-    content:
-      application/json:
-        examples:
-          example-1:
-            value:
-              error: Missing 'Authorization' header
-        schema:
-          required:
-          - error
-          type: object
-          description: Obiekt dla błędu.
-          properties:
-            error:
-              type: string
-    description: Niepoprawna autentykacja tokenu
   '400':
     content:
       application/json:
@@ -234,6 +186,54 @@ responses:
             error:
               type: string
     description: Niewłaściwy format zapytania
+  '401':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Missing 'Authorization' header
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niepoprawna autentykacja tokenu
+  '403':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Access forbidden
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nieudana autoryzacja dostępu do API
+  '429':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Quota is exceeded
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Wykorzystany limit zapytań do API
 parameters:
 - schema:
     pattern: ^\d{10}$

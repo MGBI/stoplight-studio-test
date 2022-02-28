@@ -1,60 +1,54 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/FiltersModel'
-    description: Create new filter
-  '429':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Too Many Requests
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-parameters:
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - filters_iapi
-description: Tworzy nowy filtr przypisany do aktualnego użytkownika.
 summary: Create Filter
+operationId: create_filter_v2_filters_post
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
 requestBody:
   content:
     application/json:
       schema:
         $ref: '#/components/schemas/CreateFiltersModel'
   required: true
-operationId: create_filter_v2_filters_post
+responses:
+  '200':
+    description: Create new filter
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/FiltersModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '429':
+    description: Too Many Requests
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Tworzy nowy filtr przypisany do aktualnego użytkownika.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

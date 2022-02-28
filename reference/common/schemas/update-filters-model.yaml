@@ -26,36 +26,43 @@ properties:
         items:
           type: string
         type: array
+        description: Sygnatura w MSiG
         title: Msig Signature
       regon:
         items:
           type: string
         type: array
+        description: Numer REGON
         title: Regon
       krz_signature:
         items:
           type: string
         type: array
+        description: Sygnatura w KRZ
         title: Krz Signature
       krs:
         items:
           type: string
         type: array
+        description: Numer KRS
         title: Krs
       pesel:
         items:
           type: string
         type: array
+        description: Numer PESEL
         title: Pesel
       nip:
         items:
           type: string
         type: array
+        description: Numer NIP
         title: Nip
       name:
         items:
           type: string
         type: array
+        description: Imię i nazwisko
         title: Name
   name:
     type: string

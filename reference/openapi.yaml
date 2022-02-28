@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.5
+  version: 1.0.170
   description:
     $ref: common/info_description.md
   x-logo:
@@ -60,6 +60,10 @@ tags:
   name: monitors_iapi
   description:
     $ref: ins_api/descriptions/tag_monitors.md
+- x-displayName: Notifications
+  name: notifications_iapi
+  description:
+    $ref: ins_api/descriptions/tag_notifications.md
 x-tagGroups:
 - name: KRS RDF API
   tags:
@@ -71,26 +75,21 @@ x-tagGroups:
   - updates
 - name: MSIG API V2
   tags:
-  - announcements_iapi
-  - filters_iapi
-  - reports_iapi
-  - dicts_iapi
-  - updates_iapi
   - users_iapi
-  - params_iapi
   - monitors_iapi
+  - notifications_iapi
+  - announcements_iapi
+  - reports_iapi
+  - updates_iapi
+  - filters_iapi
+  - params_iapi
+  - dicts_iapi
 paths:
-  /v2/dicts/announcement-categories:
-    get:
-      $ref: ins_api/paths/announcement-category-v2-dicts-announcement-categories-GET.yaml
-  /v2/dicts/report-types:
-    get:
-      $ref: ins_api/paths/types-v2-dicts-report-types-GET.yaml
   /v2/filters:
-    post:
-      $ref: ins_api/paths/create-filter-v2-filters-POST.yaml
     get:
       $ref: ins_api/paths/actual-user-filters-v2-filters-GET.yaml
+    post:
+      $ref: ins_api/paths/create-filter-v2-filters-POST.yaml
     delete:
       $ref: ins_api/paths/filter-v2-filters-DELETE.yaml
   /v2/monitors/{id}:
@@ -98,47 +97,26 @@ paths:
       $ref: ins_api/paths/user-monitor-by-id-v2-monitors-id-GET.yaml
     patch:
       $ref: ins_api/paths/user-monitors-v2-monitors-id-PATCH.yaml
-  /v2/updates:
-    get:
-      $ref: ins_api/paths/updates-v2-updates-GET.yaml
-  /v2/dicts/announcement-fields:
-    get:
-      $ref: ins_api/paths/fields-v2-dicts-announcement-fields-GET.yaml
   /v2/users/me:
     get:
       $ref: ins_api/paths/current-user-v2-users-me-GET.yaml
-  /v2/dicts/report-formats:
+  /v2/dicts/announcement-categories:
     get:
-      $ref: ins_api/paths/report-formats-v2-dicts-report-formats-GET.yaml
-  /v2/announcements:
+      $ref: ins_api/paths/announcement-category-v2-dicts-announcement-categories-GET.yaml
+  /v2/notifications:
     get:
-      $ref: ins_api/paths/announcements-v2-announcements-GET.yaml
-  /v1/msig/checkNumbers:
-    post:
-      $ref: msig/paths/check-numbers-POST.yaml
-  /v1/msig/announcements:
+      $ref: ins_api/paths/notifications-v2-notifications-GET.yaml
+  /v2/notifications/{id}:
     get:
-      $ref: msig/paths/announcements-GET.yaml
-  /v2/reports/{report_id}/download:
-    get:
-      $ref: ins_api/paths/download-report-by-id-v2-reports-report-id-download-GET.yaml
-  /v1/rdf/documents:
-    get:
-      $ref: krs_rdf/paths/documents-GET.yaml
-  /v2/dicts/report-statuses:
-    get:
-      $ref: ins_api/paths/report-statuses-v2-dicts-report-statuses-GET.yaml
+      $ref: ins_api/paths/user-notification-by-id-v2-notifications-id-GET.yaml
   /v2/updates/{id}:
     get:
       $ref: ins_api/paths/update-by-id-v2-updates-id-GET.yaml
-  /v2/announcements/{id}:
-    get:
-      $ref: ins_api/paths/announcement-by-id-v2-announcements-id-GET.yaml
   /v2/reports:
-    post:
-      $ref: ins_api/paths/create-report-v2-reports-POST.yaml
     get:
       $ref: ins_api/paths/reports-v2-reports-GET.yaml
+    post:
+      $ref: ins_api/paths/create-report-v2-reports-POST.yaml
     delete:
       $ref: ins_api/paths/reports-v2-reports-DELETE.yaml
   /v2/reports/{report_id}:
@@ -152,19 +130,52 @@ paths:
   /v1/rdf/financialData:
     get:
       $ref: krs_rdf/paths/financial-data-GET.yaml
-  /v2/monitors:
+  /v2/dicts/report-statuses:
+    get:
+      $ref: ins_api/paths/report-statuses-v2-dicts-report-statuses-GET.yaml
+  /v2/dicts/report-types:
+    get:
+      $ref: ins_api/paths/types-v2-dicts-report-types-GET.yaml
+  /v1/rdf/documents:
+    get:
+      $ref: krs_rdf/paths/documents-GET.yaml
+  /v2/dicts/announcement-fields:
+    get:
+      $ref: ins_api/paths/fields-v2-dicts-announcement-fields-GET.yaml
+  /v2/dicts/report-formats:
+    get:
+      $ref: ins_api/paths/report-formats-v2-dicts-report-formats-GET.yaml
+  /v1/msig/checkNumbers:
     post:
-      $ref: ins_api/paths/create-monitor-v2-monitors-POST.yaml
+      $ref: msig/paths/check-numbers-POST.yaml
+  /v1/msig/announcements:
     get:
-      $ref: ins_api/paths/monitors-v2-monitors-GET.yaml
-    delete:
-      $ref: ins_api/paths/monitors-v2-monitors-DELETE.yaml
-  /v2/params:
+      $ref: msig/paths/announcements-GET.yaml
+  /v2/reports/{report_id}/download:
     get:
-      $ref: ins_api/paths/actual-user-params-v2-params-GET.yaml
+      $ref: ins_api/paths/download-report-by-id-v2-reports-report-id-download-GET.yaml
   /v1/msig/updates:
     get:
       $ref: msig/paths/updates-GET.yaml
+  /v2/params:
+    get:
+      $ref: ins_api/paths/actual-user-params-v2-params-GET.yaml
+  /v2/announcements:
+    get:
+      $ref: ins_api/paths/announcements-v2-announcements-GET.yaml
+  /v2/announcements/{id}:
+    get:
+      $ref: ins_api/paths/announcement-by-id-v2-announcements-id-GET.yaml
+  /v2/updates:
+    get:
+      $ref: ins_api/paths/updates-v2-updates-GET.yaml
+  /v2/monitors:
+    get:
+      $ref: ins_api/paths/monitors-v2-monitors-GET.yaml
+    post:
+      $ref: ins_api/paths/create-monitor-v2-monitors-POST.yaml
+    delete:
+      $ref: ins_api/paths/monitors-v2-monitors-DELETE.yaml
 components:
   securitySchemes:
     $ref: common/security-schemes.yaml

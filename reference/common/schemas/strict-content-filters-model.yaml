@@ -1,21 +1,4 @@
 additionalProperties: false
-example:
-  msig_signature:
-  - XIV GUp 83/16
-  regon:
-  - '272404100'
-  krz_signature:
-  - BY1B/GUp/13/2021
-  krs:
-  - '0000422121'
-  pesel:
-  - '41041202774'
-  nip:
-  - '7272849598'
-  name:
-  - Jan Kowalski
-  - Ambroży Nielepszy
-type: object
 properties:
   msig_signature:
     items:
@@ -52,4 +35,21 @@ properties:
       type: string
     type: array
     title: Name
+type: object
+example:
+  msig_signature:
+  - XIV GUp 83/16
+  regon:
+  - '272404100'
+  krz_signature:
+  - BY1B/GUp/13/2021
+  krs:
+  - '0000422121'
+  pesel:
+  - '41041202774'
+  nip:
+  - '7272849598'
+  name:
+  - Jan Kowalski
+  - Ambroży Nielepszy
 title: StrictContentFiltersModel

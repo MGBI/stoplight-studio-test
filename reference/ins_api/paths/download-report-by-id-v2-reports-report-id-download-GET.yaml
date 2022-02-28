@@ -1,62 +1,58 @@
-responses:
-  '200':
-    description: Download a single report
-  '404':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Not Found
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-description: Pobiera plik raportu o podanym id.
+tags:
+- reports_iapi
+summary: Download Report By Id
+operationId: download_report_by_id_v2_reports__report_id__download_get
 parameters:
-- description: Unikalny identyfikator raportu
-  required: true
-  in: path
-  name: report_id
+- required: true
   schema:
+    title: Report Id
     anyOf:
     - type: string
     - enum:
       - last
       type: string
+      description: Pobiera ostatni dostępny raport
     example: '222222222222222222222222'
-    title: Report Id
-- description: Klucz autoryzacji
-  required: false
-  in: header
+    maxLength: 24
+  name: report_id
+  in: path
+  description: Unikalny identyfikator raportu
+- required: false
   schema:
-    type: string
     title: Authorization
+    type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
-tags:
-- reports_iapi
-summary: Download Report By Id
-operationId: download_report_by_id_v2_reports__report_id__download_get
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Download a single report
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Not Found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Pobiera plik raportu o podanym id.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

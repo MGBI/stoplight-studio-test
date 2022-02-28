@@ -1,20 +1,4 @@
 responses:
-  '429':
-    content:
-      application/json:
-        examples:
-          example-1:
-            value:
-              error: Quota is exceeded
-        schema:
-          required:
-          - error
-          type: object
-          description: Obiekt dla błędu.
-          properties:
-            error:
-              type: string
-    description: Wykorzystany limit zapytań do API
   '200':
     content:
       application/json:
@@ -37,13 +21,13 @@ responses:
               submission_id:
                 format: int32
                 type: integer
-                example: 845399
                 description: Wewnętrzny identyfikator zgłoszenia w RDF
+                example: 845399
               period_end_year:
                 format: int32
                 type: integer
-                description: Rok z daty końcowej okresu, którego dotyczy dokument
                 example: 2019
+                description: Rok z daty końcowej okresu, którego dotyczy dokument
               file_root_pl:
                 pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
                 type: string
@@ -52,8 +36,8 @@ responses:
               period_to:
                 format: date
                 type: string
-                description: Data końcowa okresu, którego dotyczy dokument
                 example: '2019-02-28'
+                description: Data końcowa okresu, którego dotyczy dokument
               ias_standard:
                 type: boolean
                 example: true
@@ -62,13 +46,13 @@ responses:
               filing_date:
                 format: date
                 type: string
-                description: Data publikacji dokumentu w RDF
                 example: '2019-06-27'
+                description: Data publikacji dokumentu w RDF
               id:
-                example: 2047606
-                type: integer
                 description: Unikalny identyfikator dokumentu (wewnętrzy identyfikator
                   dokumentu w RDF)
+                type: integer
+                example: 2047606
                 format: int32
               file_root:
                 pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
@@ -99,35 +83,35 @@ responses:
               pdf_preview_url:
                 format: uri
                 type: string
-                example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=pdf
                 description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
                   do formatu PDF (tylko dla dokumentów w formacie XML)
+                example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=pdf
               crawling_date:
                 format: date
                 type: string
-                description: Data pobrania dokumentu z RDF
                 example: '2019-08-14'
+                description: Data pobrania dokumentu z RDF
               download_url:
                 format: uri
                 type: string
-                example: https://api.imsig.pl/v1/rdf/documents/2047606/download
                 description: Bezpośredni adres URL pliku z treścią oryginalnego dokumentu
+                example: https://api.imsig.pl/v1/rdf/documents/2047606/download
               html_preview_url:
                 format: uri
                 type: string
+                example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=html
                 description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
                   do formatu HTML (tylko dla dokumentów w formacie XML)
-                example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=html
               period_from:
                 format: date
                 type: string
-                description: Data początkowa okresu, którego dotyczy dokument
                 example: '2018-01-01'
+                description: Data początkowa okresu, którego dotyczy dokument
               period_major_year:
                 format: int32
                 type: integer
-                description: Zasadniczy rok, którego dotyczy dokument
                 example: 2018
+                description: Zasadniczy rok, którego dotyczy dokument
               is_correction:
                 type: boolean
                 example: false
@@ -201,45 +185,13 @@ responses:
               preparation_date:
                 format: date
                 type: string
-                description: Data sporządzenia dokumentu
                 example: '2019-03-29'
+                description: Data sporządzenia dokumentu
           type: array
           description: Lista dokumentów spełniających kryteria określone w parametrach
             metody, posortowanych malejąco według daty publikacji w RDF
           maxItems: 100
     description: Poprawne wyszukiwanie dokumentów
-  '403':
-    content:
-      application/json:
-        examples:
-          example-1:
-            value:
-              error: Access forbidden
-        schema:
-          required:
-          - error
-          type: object
-          description: Obiekt dla błędu.
-          properties:
-            error:
-              type: string
-    description: Nieudana autoryzacja dostępu do API
-  '401':
-    content:
-      application/json:
-        examples:
-          example-1:
-            value:
-              error: Missing 'Authorization' header
-        schema:
-          required:
-          - error
-          type: object
-          description: Obiekt dla błędu.
-          properties:
-            error:
-              type: string
-    description: Niepoprawna autentykacja tokenu
   '400':
     content:
       application/json:
@@ -256,6 +208,54 @@ responses:
             error:
               type: string
     description: Niewłaściwy format zapytania
+  '401':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Missing 'Authorization' header
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niepoprawna autentykacja tokenu
+  '403':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Access forbidden
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nieudana autoryzacja dostępu do API
+  '429':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Quota is exceeded
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Wykorzystany limit zapytań do API
 parameters:
 - schema:
     description: Numer KRS podmiotu, którego dotyczy dokument

@@ -14,13 +14,13 @@ responses:
                 validation_datetime:
                   format: datetime
                   type: string
-                  description: Data zakończenia aktualizacji (weryfikacji danych)
                   example: '2019-06-10T10:13:12.115Z'
+                  description: Data zakończenia aktualizacji (weryfikacji danych)
                 issue_date:
                   format: date
                   type: string
-                  description: Data udostępnienia aktualizacji
                   example: '2019-06-10'
+                  description: Data udostępnienia aktualizacji
                 announcements_count:
                   type: integer
                   example: 213
@@ -28,8 +28,8 @@ responses:
                 creation_datetime:
                   format: datetime
                   type: string
-                  description: Data rozpoczęcia aktualizacji
                   example: '2019-06-10T09:13:12.115Z'
+                  description: Data rozpoczęcia aktualizacji
             type: array
             description: Lista aktualizacji spełniających kryteria określone w parametrach
               metody, posortowanych według daty udostępnienia
@@ -38,12 +38,12 @@ responses:
             required:
             - detail
             type: object
-            description: Obiekt dla błędu dla MSIG API / KRZ API.
             properties:
               detail:
                 type: string
                 example: Brak numerów do sprawdzenia
                 description: Szczegółowa informacja na temat błędu
+            description: Obiekt dla błędu dla MSIG API / KRZ API.
     description: Wynik wyszukiwania aktualizacji
 parameters:
 - schema:

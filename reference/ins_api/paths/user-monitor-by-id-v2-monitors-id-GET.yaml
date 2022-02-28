@@ -1,66 +1,62 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/MonitorModel'
-    description: Returned monitoring with specified id
-  '404':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Not Found
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-description: Zwraca monitoring o podanym id.
+tags:
+- monitors_iapi
+summary: Get User Monitor By Id
+operationId: get_user_monitor_by_id_v2_monitors__id__get
 parameters:
-- description: Unikalny identyfikator monitoringu
-  required: true
-  in: path
-  name: id
+- required: true
   schema:
+    title: Id
     anyOf:
     - type: string
     - enum:
       - last
       type: string
+      description: Zwraca ostatni dostępny monitoring
     example: '222222222222222222222222'
-    title: Id
-- description: Klucz autoryzacji
-  required: false
-  in: header
+    maxLength: 24
+  name: id
+  in: path
+  description: Unikalny identyfikator monitoringu
+- required: false
   schema:
-    type: string
     title: Authorization
+    type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
-tags:
-- monitors_iapi
-summary: Get User Monitor By Id
-operationId: get_user_monitor_by_id_v2_monitors__id__get
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Returned monitoring with specified id
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MonitorModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Not Found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Zwraca monitoring o podanym id.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

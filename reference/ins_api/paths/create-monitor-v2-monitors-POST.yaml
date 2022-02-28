@@ -1,54 +1,54 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/MonitorModel'
-    description: New monitoring assigned to the current user
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unprocessable Entity
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-parameters:
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - monitors_iapi
-description: Tworzy nowy monitoring przypisany do aktualnego użytkownika.
 summary: Create Monitor
+operationId: create_monitor_v2_monitors_post
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
 requestBody:
   content:
     application/json:
       schema:
         $ref: '#/components/schemas/CreateMonitorsModel'
   required: true
-operationId: create_monitor_v2_monitors_post
+responses:
+  '200':
+    description: New monitoring assigned to the current user
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MonitorModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '429':
+    description: Too Many Requests
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Tworzy nowy monitoring przypisany do aktualnego użytkownika.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

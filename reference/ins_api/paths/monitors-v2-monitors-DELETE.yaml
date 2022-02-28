@@ -1,53 +1,49 @@
-responses:
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '204':
-    description: Delete monitors
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-description: Usuwa monitoringi o identyfikatorach przekazanych w parametrze ids w
-  query stringu (po przecinku).
-parameters:
-- description: Unikalny identyfikator monitoringu
-  required: false
-  in: query
-  name: ids
-  schema:
-    type: string
-    example: '222222222222222222222222'
-    title: Ids
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - monitors_iapi
 summary: Delete Monitors
 operationId: delete_monitors_v2_monitors_delete
+parameters:
+- required: false
+  schema:
+    title: Ids
+    type: string
+    example: '222222222222222222222222'
+    maxLength: 24
+    minLength: 24
+  name: ids
+  in: query
+  description: Lista identyfikatorów monitoringów.
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '204':
+    description: Delete monitors
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Usuwa monitoringi o identyfikatorach przekazanych w parametrze ids w
+  query stringu (po przecinku).
 components:
   schemas:
     $ref: ../../common/schemas.yaml

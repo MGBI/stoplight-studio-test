@@ -1,52 +1,46 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/UserModel'
-    description: Retrieve actual user data
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-parameters:
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - users_iapi
+summary: Get Current User
 description: |-
   Get actual user info.
   User token is required.
 
   Not need admin flag to use this endpoint.
-summary: Get Current User
 operationId: get_current_user_v2_users_me_get
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Retrieve actual user data
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/UserModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
 components:
   schemas:
     $ref: ../../common/schemas.yaml

@@ -29,43 +29,43 @@ properties:
         items:
           type: string
         type: array
-        description: XIV GUp 83/16
+        description: Sygnatura w MSiG
         title: Msig Signature
       regon:
         items:
           type: string
         type: array
-        description: 272404100
+        description: Numer REGON
         title: Regon
       krz_signature:
         items:
           type: string
         type: array
-        description: KO1K/GU/1/2021
+        description: Sygnatura w KRZ
         title: Krz Signature
       krs:
         items:
           type: string
         type: array
-        description: '0000422121'
+        description: Numer KRS
         title: Krs
       pesel:
         items:
           type: string
         type: array
         description: 73010211898
-        title: Pesel
+        title: Numer PESEL
       nip:
         items:
           type: string
         type: array
         description: 5940003304
-        title: Nip
+        title: Numer NIP
       name:
         items:
           type: string
         type: array
-        description: Jan Kowalski
+        description: Imię i nazwisko
         title: Name
   name:
     type: string

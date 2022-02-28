@@ -1,20 +1,20 @@
-operationId: get_fields_v2_dicts_announcement_fields_get
-description: Zwraca słownik zawierający etykiety dla identyfikatorów pól dostępnych
-  w raportach.
-summary: Get Fields
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          items:
-            $ref: '#/components/schemas/InfoFields'
-          type: array
-          title: Response Get Fields V2 Dicts Announcement Fields Get
-    description: Successful Response
 tags:
 - dicts_iapi
 - public_iapi
+summary: Get Fields
+operationId: get_fields_v2_dicts_announcement_fields_get
+responses:
+  '200':
+    description: Successful Response
+    content:
+      application/json:
+        schema:
+          title: Response Get Fields V2 Dicts Announcement Fields Get
+          type: array
+          items:
+            $ref: '#/components/schemas/InfoFields'
+description: Zwraca słownik zawierający etykiety dla identyfikatorów pól dostępnych
+  w raportach.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

@@ -120,8 +120,8 @@ responses:
                     commissioner_name:
                       nullable: true
                       type: string
-                      description: Imię i nazwisko sędziego komisarza
                       example: Małgorzata Brzózka-Chamala
+                      description: Imię i nazwisko sędziego komisarza
                     court_department:
                       type: string
                       example: VIII Wydział Gospodarczy
@@ -149,8 +149,8 @@ responses:
                     commissioner_deputy_name:
                       nullable: true
                       type: string
-                      description: Imię i nazwisko zastępcy sędziego komisarza
                       example: Małgorzata Grabowska
+                      description: Imię i nazwisko zastępcy sędziego komisarza
                     administrator_town:
                       type: string
                       example: Warszawa
@@ -158,8 +158,8 @@ responses:
                     administrator_licence_number:
                       format: int32
                       type: integer
-                      description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
                       example: 598
+                      description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
                     administrator_address:
                       type: string
                       example: ul. Żurawia 6/12 lok. 766
@@ -201,8 +201,8 @@ responses:
                     url:
                       format: uri
                       type: string
-                      description: Link do ogłoszenia w serwisie KRZ
                       example: ''
+                      description: Link do ogłoszenia w serwisie KRZ
                     section:
                       enum:
                       - 1
@@ -277,8 +277,8 @@ responses:
                     issue_date:
                       format: date
                       type: string
-                      description: Data publikacji ogłoszenia w KRZ
                       example: '2021-12-01'
+                      description: Data publikacji ogłoszenia w KRZ
                     signature:
                       type: string
                       example: 20210831/00001
@@ -324,8 +324,8 @@ responses:
                     issue_date:
                       format: date
                       type: string
-                      description: Data publikacji ogłoszenia w MSiG
                       example: '2020-06-10'
+                      description: Data publikacji ogłoszenia w MSiG
                     signature:
                       type: string
                       example: BMSiG-26451/2020
@@ -333,8 +333,8 @@ responses:
                     url:
                       format: uri
                       type: string
-                      description: Link do ogłoszenia w serwisie imsig.pl
                       example: http://www.imsig.pl/pozycja/2020/112/26734
+                      description: Link do ogłoszenia w serwisie imsig.pl
                     section:
                       enum:
                       - 1
@@ -474,18 +474,18 @@ responses:
                           commencement_date:
                             format: date
                             type: string
-                            description: Data rozpoczęcia działalności
                             example: '2002-10-01'
+                            description: Data rozpoczęcia działalności
                           first_name:
                             nullable: true
                             type: string
-                            description: Imię
                             example: Jan
+                            description: Imię
                           last_name:
                             nullable: true
                             type: string
-                            description: Nazwisko
                             example: Kowalski
+                            description: Nazwisko
                           cleaned_name:
                             type: string
                             example: Isd Huta Częstochowa sp. z o.o.
@@ -493,10 +493,10 @@ responses:
                           primary_business:
                             nullable: true
                             type: string
-                            description: Przeważająca działalność gospodarcza (kod
-                              PKD)
                             example: 24.10.Z Produkcja surówki, żelazostopów, żeliwa
                               i stali oraz wyrobów hutniczych
+                            description: Przeważająca działalność gospodarcza (kod
+                              PKD)
                           ownership_type:
                             type: string
                             example: własność prywatna krajowa pozostała
@@ -572,13 +572,13 @@ responses:
                           house_number:
                             nullable: true
                             type: string
-                            description: Numer nieruchomości
                             example: '22'
+                            description: Numer nieruchomości
                           flat_number:
                             nullable: true
                             type: string
-                            description: Numer lokalu
                             example: '11'
+                            description: Numer lokalu
                           state:
                             type: string
                             example: śląskie
@@ -586,8 +586,8 @@ responses:
                           street:
                             nullable: true
                             type: string
-                            description: Ulica
                             example: ul. Kucelińska
+                            description: Ulica
                           post_office:
                             type: string
                             example: Częstochowa
@@ -611,12 +611,12 @@ responses:
             required:
             - detail
             type: object
-            description: Obiekt dla błędu dla MSIG API / KRZ API.
             properties:
               detail:
                 type: string
                 example: Brak numerów do sprawdzenia
                 description: Szczegółowa informacja na temat błędu
+            description: Obiekt dla błędu dla MSIG API / KRZ API.
     description: Wynik wyszukiwania ogłoszeń
 parameters:
 - schema:

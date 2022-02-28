@@ -1,22 +1,3 @@
-example:
-  notifications:
-  - status: 1
-    email: abc@xyz.pl
-    sent_datetime: '2021-11-02T15:20:20.584Z'
-  creation_datetime: '2021-11-02T15:20:20.584Z'
-  filter_id: 2
-  last_update_datetime: '2021-11-02T15:20:20.584Z'
-  emails:
-  - abc@xyz.pl
-  - def@klm.pl
-  id: 2
-required:
-- id
-- filter_id
-- emails
-- creation_datetime
-- notifications
-type: object
 properties:
   notifications:
     items:
@@ -81,4 +62,23 @@ properties:
     type: string
     description: Unikalny identyfikator monitoringu
     title: Id
+required:
+- id
+- filter_id
+- emails
+- creation_datetime
+- notifications
+type: object
+example:
+  notifications:
+  - status: 1
+    email: abc@xyz.pl
+    sent_datetime: '2021-11-02T15:20:20.584Z'
+  creation_datetime: '2021-11-02T15:20:20.584Z'
+  filter_id: 2
+  last_update_datetime: '2021-11-02T15:20:20.584Z'
+  emails:
+  - abc@xyz.pl
+  - def@klm.pl
+  id: 2
 title: MonitorModel

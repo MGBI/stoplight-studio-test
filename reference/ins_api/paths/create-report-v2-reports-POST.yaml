@@ -1,60 +1,54 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/ReportModel'
-    description: Create new report
-  '429':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Too Many Requests
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-parameters:
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - reports_iapi
-description: Tworzy nowy raport przypisany do aktualnego użytkownika.
 summary: Create Report
+operationId: create_report_v2_reports_post
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
 requestBody:
   content:
     application/json:
       schema:
         $ref: '#/components/schemas/CreateReportModel'
   required: true
-operationId: create_report_v2_reports_post
+responses:
+  '200':
+    description: Create new report
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ReportModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '429':
+    description: Too Many Requests
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Tworzy nowy raport przypisany do aktualnego użytkownika.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

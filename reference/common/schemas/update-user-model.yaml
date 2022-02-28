@@ -1,8 +1,3 @@
-example:
-  is_admin: false
-  is_active: true
-  email: abc@def.pl
-type: object
 properties:
   is_admin:
     type: boolean
@@ -17,4 +12,9 @@ properties:
     type: string
     description: Adres e-mail użytkownika
     title: Email
+type: object
+example:
+  is_admin: false
+  is_active: true
+  email: abc@def.pl
 title: UpdateUserModel

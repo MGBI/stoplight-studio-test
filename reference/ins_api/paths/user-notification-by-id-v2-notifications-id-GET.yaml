@@ -1,63 +1,59 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/NotificationModel'
-    description: Returned notification with specified id
-  '404':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Not Found
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-description: Zwraca powiadomienie o podanym id, jeżeli monitor monitor_id należy do
-  aktualnego użytkownika.
-parameters:
-- description: Unikalny identyfikator powiadomienia
-  required: true
-  in: path
-  name: id
-  schema:
-    type: string
-    example: '222222222222222222222222'
-    title: Id
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - notifications_iapi
 summary: Get User Notification By Id
 operationId: get_user_notification_by_id_v2_notifications__id__get
+parameters:
+- required: true
+  schema:
+    title: Id
+    type: string
+    example: '222222222222222222222222'
+    maxLength: 24
+    minLength: 24
+  name: id
+  in: path
+  description: Unikalny identyfikator powiadomienia
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Returned notification with specified id
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/NotificationModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Not Found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Zwraca powiadomienie o podanym id, jeżeli monitor monitor_id należy do
+  aktualnego użytkownika.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

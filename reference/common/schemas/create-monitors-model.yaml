@@ -1,10 +1,3 @@
-example:
-  emails:
-  - jajko@wp.pl
-  filter_id: 3
-required:
-- filter_id
-type: object
 properties:
   emails:
     default: []
@@ -17,4 +10,11 @@ properties:
     type: string
     description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
     title: Filter Id
+required:
+- filter_id
+type: object
+example:
+  emails:
+  - jajko@wp.pl
+  filter_id: 3
 title: CreateMonitorsModel

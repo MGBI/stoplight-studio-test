@@ -1,62 +1,58 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/AnnouncementModel'
-    description: Get single announcement by id
-  '404':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Not Found
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-description: Zwraca ogłoszenie o podanym id.
-parameters:
-- description: Unikalny identyfikator ogłoszenia
-  required: true
-  in: path
-  name: id
-  schema:
-    type: string
-    example: BMSiG-26451/2020
-    title: Id
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - announcements_iapi
 summary: Get Announcement By Id
 operationId: get_announcement_by_id_v2_announcements__id__get
+parameters:
+- required: true
+  schema:
+    title: Id
+    type: string
+    example: BMSiG-26451/2020
+    maxLength: 24
+    minLength: 24
+  name: id
+  in: path
+  description: Unikalny identyfikator ogłoszenia
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Get single announcement by id
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/AnnouncementModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '404':
+    description: Not Found
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Zwraca ogłoszenie o podanym id.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

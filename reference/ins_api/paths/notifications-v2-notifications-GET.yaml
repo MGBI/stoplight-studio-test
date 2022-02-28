@@ -1,51 +1,45 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          items:
-            $ref: '#/components/schemas/NotificationModel'
-          type: array
-          title: Response Get Notifications V2 Notifications Get
-    description: Returned the list of notifications assigned to the current user.
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-description: Zwraca powiadomienia dla aktualnego użytkownika.
-parameters:
-- description: Klucz autoryzacji
-  required: false
-  in: header
-  schema:
-    type: string
-    title: Authorization
-  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  name: Authorization
 tags:
 - notifications_iapi
 summary: Get Notifications
 operationId: get_notifications_v2_notifications_get
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Returned the list of notifications assigned to the current user.
+    content:
+      application/json:
+        schema:
+          title: Response Get Notifications V2 Notifications Get
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: Zwraca powiadomienia dla aktualnego użytkownika.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

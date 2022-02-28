@@ -20,9 +20,9 @@ properties:
         | `1` | Wysłane |</details>
     title: NotificationStatusEnum
   email:
-    example: msig@bnf.pl
-    type: string
     description: Adres e-mail, na który wysłano powiadomienie
+    type: string
+    example: msig@bnf.pl
     title: Email
   sent_datetime:
     format: date-time

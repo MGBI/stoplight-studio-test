@@ -1,77 +1,3 @@
-example:
-  available_content:
-  - entity.info.cleaned_name
-  - entity.info.first_name
-  - entity.info.last_name
-  - entity.info.legal_form
-  - entity.info.ownership_type
-  - entity.info.primary_business
-  - entity.info.commencement_date
-  - entity.numbers.nip
-  - entity.numbers.regon
-  - entity.numbers.krs
-  - entity.numbers.pesel
-  - entity.address.state
-  - entity.address.powiat
-  - entity.address.gmina
-  - entity.address.town
-  - entity.address.street
-  - entity.address.house_number
-  - entity.address.flat_number
-  - entity.address.zip_code
-  - entity.address.post_office
-  - proceeding.court_name
-  - proceeding.court_department
-  - proceeding.signatures
-  - proceeding.commissioner_name
-  - proceeding.commissioner_deputy_name
-  - proceeding.administrator_name
-  - proceeding.administrator_function
-  - proceeding.administrator_licence_number
-  - proceeding.administrator_address
-  - proceeding.administrator_zip_code
-  - proceeding.administrator_town
-  - proceeding.administrator_source_url
-  - order.order_date
-  - order.expiration_period
-  - order.expiration_date
-  - msig_entry.chapter
-  - msig_entry.section
-  - msig_entry.signature
-  - msig_entry.issue_date
-  - msig_entry.yearly_number
-  - msig_entry.position_number
-  - msig_entry.url
-  - krz_entry.chapter
-  - krz_entry.section
-  - krz_entry.subsection
-  - krz_entry.signature
-  - krz_entry.issue_date
-  - krz_entry.url
-  - content.text
-  - content.html
-  - content.url
-  archival_reports_used: 0
-  current_reports_available: 25
-  current_reports_filter_required: false
-  api_requests_used: 100
-  credits_available: 5
-  archival_reports_filter_required: false
-  api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  panel_users:
-  - abc@def.pl
-  - xyz@ghi.pl
-  api_requests_available: 1000
-  credits_used: 0
-  archive_date_from: '2021-04-23'
-  monitors_used: 2
-  current_reports_used: 5
-  archival_reports_available: 5
-  monitors_emails_limit: 5
-  filter_items_limit: 50
-  panel_users_limit: 5
-  monitors_available: 5
-type: object
 properties:
   available_content:
     items:
@@ -164,4 +90,78 @@ properties:
     description: Maksymalna liczba monitoringów, które użytkownik może utorzyć w ramach
       obecnego planu
     title: Monitors Available
+type: object
+example:
+  available_content:
+  - entity.info.cleaned_name
+  - entity.info.first_name
+  - entity.info.last_name
+  - entity.info.legal_form
+  - entity.info.ownership_type
+  - entity.info.primary_business
+  - entity.info.commencement_date
+  - entity.numbers.nip
+  - entity.numbers.regon
+  - entity.numbers.krs
+  - entity.numbers.pesel
+  - entity.address.state
+  - entity.address.powiat
+  - entity.address.gmina
+  - entity.address.town
+  - entity.address.street
+  - entity.address.house_number
+  - entity.address.flat_number
+  - entity.address.zip_code
+  - entity.address.post_office
+  - proceeding.court_name
+  - proceeding.court_department
+  - proceeding.signatures
+  - proceeding.commissioner_name
+  - proceeding.commissioner_deputy_name
+  - proceeding.administrator_name
+  - proceeding.administrator_function
+  - proceeding.administrator_licence_number
+  - proceeding.administrator_address
+  - proceeding.administrator_zip_code
+  - proceeding.administrator_town
+  - proceeding.administrator_source_url
+  - order.order_date
+  - order.expiration_period
+  - order.expiration_date
+  - msig_entry.chapter
+  - msig_entry.section
+  - msig_entry.signature
+  - msig_entry.issue_date
+  - msig_entry.yearly_number
+  - msig_entry.position_number
+  - msig_entry.url
+  - krz_entry.chapter
+  - krz_entry.section
+  - krz_entry.subsection
+  - krz_entry.signature
+  - krz_entry.issue_date
+  - krz_entry.url
+  - content.text
+  - content.html
+  - content.url
+  archival_reports_used: 0
+  current_reports_available: 25
+  current_reports_filter_required: false
+  api_requests_used: 100
+  credits_available: 5
+  archival_reports_filter_required: false
+  api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  panel_users:
+  - abc@def.pl
+  - xyz@ghi.pl
+  api_requests_available: 1000
+  credits_used: 0
+  archive_date_from: '2021-04-23'
+  monitors_used: 2
+  current_reports_used: 5
+  archival_reports_available: 5
+  monitors_emails_limit: 5
+  filter_items_limit: 50
+  panel_users_limit: 5
+  monitors_available: 5
 title: UpdateParamsModel

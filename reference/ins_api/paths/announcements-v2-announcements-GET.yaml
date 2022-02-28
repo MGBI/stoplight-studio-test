@@ -1,86 +1,39 @@
-responses:
-  '200':
-    content:
-      application/json:
-        schema:
-          items:
-            $ref: '#/components/schemas/AnnouncementModel'
-          type: array
-          title: Response Get Announcements V2 Announcements Get
-    description: Get list announcements
-  '429':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Too Many Requests
-  '403':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Forbidden
-  '401':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Unauthorized
-  '400':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-    description: Bad Request
-  '422':
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/HTTPValidationError'
-    description: Validation Error
-description: |-
-  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
-  w wybranych rozdziałach MSiG / KRZ.
-
-  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
-  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
-  według daty publikacji w MSiG / KRZ.
-
-  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
-  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
-  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
+tags:
+- announcements_iapi
+summary: Get Announcements
+operationId: get_announcements_v2_announcements_get
 parameters:
-- description: Unikalny identyfikator ogłoszenia
-  required: false
-  in: query
-  name: id
+- required: false
   schema:
+    title: Id
     type: string
     example: BMSiG-26451/2020
-    title: Id
-- description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
-  required: false
+    maxLength: 24
+    minLength: 24
+  name: id
   in: query
-  name: date_from
-  schema:
-    format: date
-    type: string
-    example: 2022-01-01 00:00:00+00:00
-    title: Date From
-- description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
-  required: false
-  in: query
-  name: date_to
-  schema:
-    format: date
-    type: string
-    example: 2022-12-31 00:00:00+00:00
-    title: Date To
+  description: Unikalny identyfikator ogłoszenia
 - required: false
-  in: query
-  name: msig_chapter
   schema:
-    example: 0
+    title: Date From
+    type: string
+    format: date
+    example: 2022-01-01 00:00:00+00:00
+  name: date_from
+  in: query
+  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+- required: false
+  schema:
+    title: Date To
+    type: string
+    format: date
+    example: 2022-12-31 00:00:00+00:00
+  name: date_to
+  in: query
+  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+- required: false
+  schema:
+    $ref: '#/components/schemas/MsigChapterEnum'
     description: |-
       An enumeration.
       Rozdział MSiG
@@ -91,21 +44,75 @@ parameters:
         |-|-|
         | `0` | Insolvency |
         | `1` | Restructuring |</details>
-    $ref: '#/components/schemas/MsigChapterEnum'
-- required: false
+    example: 0
+  name: msig_chapter
   in: query
-  name: msig_section
+- required: false
   schema:
+    title: Msig Section
     anyOf:
     - $ref: '#/components/schemas/MsigSectionInsolvencyEnum'
+      description: |-
+        Sekcja MSiG
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `1` | Postanowienie o ogłoszeniu upadłości |
+          | `2` | Obwieszczenie o zatwierdzeniu układu |
+          | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+          | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+          | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+          | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+          | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+          | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+          | `9` | Inne |</details>
     - $ref: '#/components/schemas/MsigSectionRestructuringEnum'
+      description: |-
+        Sekcja MSiG
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `20` | Dokonanie zmian w spisie wierzytelności |
+          | `21` | Inne |
+          | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
+          | `23` | Odmowa zatwierdzenia układu |
+          | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
+          | `25` | Określenie trybu i sposobu głosowania nad układem |
+          | `26` | Otwarcie postępowania o zatwierdzenie układu |
+          | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
+          | `28` | Otwarcie postępowania o zmianę układu |
+          | `29` | Otwarcie postępowania sanacyjnego |
+          | `30` | Otwarcie postępowania układowego |
+          | `31` | Otwarcie przyspieszonego postępowania układowego |
+          | `32` | Sprostowanie |
+          | `33` | Stwierdzenie wykonania układu |
+          | `34` | Uchylenie układu |
+          | `35` | Umorzenie postępowania |
+          | `36` | Wyznaczenie nadzorcy lub zarządcy |
+          | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
+          | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
+          | `39` | Zabezpieczenie majątku dłużnika |
+          | `40` | Zakończenie postępowania |
+          | `41` | Zatwierdzenie spisu wierzytelności |
+          | `42` | Zatwierdzenie układu |
+          | `43` | Złożenie planu restrukturyzacyjnego |
+          | `44` | Złożenie spisu wierzytelności |
+          | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
+          | `46` | Złożenie uzupełniającego spisu wierzytelności |
+          | `47` | Złożenie wniosku o zatwierdzenie układu |
+          | `48` | Zmiana nadzorcy lub zarządcy |
+          | `49` | Zmiana sędziego komisarza |
+          | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
     example: 1
-    title: Msig Section
-- required: false
+  name: msig_section
   in: query
-  name: krz_chapter
+- required: false
   schema:
-    example: krz_chapter=0
+    $ref: '#/components/schemas/KrzChapterEnum'
     description: |-
       An enumeration.
       Rozdział MSiG
@@ -117,21 +124,79 @@ parameters:
         | `0` | Restructuring |
         | `1` | Insolvency |
         | `2` | Ban |</details>
-    $ref: '#/components/schemas/KrzChapterEnum'
-- required: false
+    example: krz_chapter=0
+  name: krz_chapter
   in: query
-  name: krz_section
+- required: false
   schema:
+    title: Krz Section
     anyOf:
     - $ref: '#/components/schemas/KrzSectionRestructuringEnum'
+      description: |-
+        Sekcja KRZ
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          <b>Postępowanie restrukturyzacyjne</b>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `0` | Dzień układowy |
+          | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
+          | `2` | Zabezpieczenie majątku |
+          | `3` | Otwarcie postępowania restrukturyzacyjnego |
+          | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
+          | `5` | Spis wierzytelności/spis wierzytelności spornych |
+          | `6` | Zgromadzenie wierzycieli |
+          | `7` | Sprawozdania |
+          | `8` | Układ |
+          | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
+          | `10` | Inne |</details>
     - $ref: '#/components/schemas/KrzSectionInsolvencyEnum'
+      description: |-
+        Sekcja KRZ
+
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          <b>Postępowanie upadłościowe</b>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
+          | `21` | Zabezpieczenie majątku |
+          | `22` | Ogłoszenie upadłości/oddalenie wniosku |
+          | `23` | Wtórne postępowanie upadłościowe |
+          | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
+          | `25` | Przygotowana likwidacja |
+          | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
+          | `27` | Zgromadzenie wierzycieli |
+          | `28` | Masa upadłości |
+          | `29` | Lista wierzytelności |
+          | `30` | Plan podziału |
+          | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
+          | `32` | Plan spłaty/umorzenie zobowiązań |
+          | `33` | Układ w upadłości |
+          | `34` | Inne |</details>
     - $ref: '#/components/schemas/KrzSectionBanEnum'
+      description: |-
+        Sekcja KRZ
+
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          <b>Zakaz prowadzenia działalności gospodarczej</b>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
+          | `41` | Inne |</details>
     example: 1
-    title: Krz Section
-- required: false
+  name: krz_section
   in: query
-  name: krz_subsection
+- required: false
   schema:
+    $ref: '#/components/schemas/KrzSubsectionEnum'
     description: |-
       Rozdział MSiG
       <details>
@@ -146,94 +211,102 @@ parameters:
         | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
         | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
         | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
-    $ref: '#/components/schemas/KrzSubsectionEnum'
-- description: Sygnatura ogłoszenia w MSiG
-  required: false
+  name: krz_subsection
   in: query
-  name: msig_signature
+- required: false
   schema:
-    type: string
     title: Msig Signature
-- description: Sygnatura ogłoszenia w KRZ
-  required: false
-  in: query
-  name: krz_signature
-  schema:
     type: string
-    title: Krz Signature
-- description: Numer NIP podmiotu, którego dotyczy ogłoszenie
-  required: false
+  name: msig_signature
   in: query
-  name: nip
+  description: Sygnatura ogłoszenia w MSiG
+- required: false
   schema:
+    title: Krz Signature
+    type: string
+  name: krz_signature
+  in: query
+  description: Sygnatura ogłoszenia w KRZ
+- required: false
+  schema:
+    title: Nip
     type: string
     example: 9491827824
-    title: Nip
-- description: Numer REGON podmiotu, którego dotyczy ogłoszenie
-  required: false
+    maxLength: 10
+    minLength: 10
+  name: nip
   in: query
-  name: regon
+  description: Numer NIP podmiotu, którego dotyczy ogłoszenie
+- required: false
   schema:
+    title: Regon
     type: string
     example: 152074271
-    title: Regon
-- description: Numer KRS podmiotu, którego dotyczy ogłoszenie
-  required: false
+    maxLength: 9
+    minLength: 9
+  name: regon
   in: query
-  name: krs
+  description: Numer REGON podmiotu, którego dotyczy ogłoszenie
+- required: false
   schema:
+    title: Krs
     type: string
     example: 0000136890
-    title: Krs
-- description: Numer PESEL osoby, której dotyczy ogłoszenie
-  required: false
+    maxLength: 10
+    minLength: 10
+  name: krs
   in: query
-  name: pesel
+  description: Numer KRS podmiotu, którego dotyczy ogłoszenie
+- required: false
   schema:
+    title: Pesel
     type: string
     example: 75121968629
-    title: Pesel
-- description: Imię osoby, której dotyczy ogłoszenie
-  required: false
+    maxLength: 11
+    minLength: 11
+  name: pesel
   in: query
-  name: first_name
+  description: Numer PESEL osoby, której dotyczy ogłoszenie
+- required: false
   schema:
+    title: First Name
     type: string
     example: Bogdan
-    title: First Name
-- description: Nazwisko osoby, której dotyczy ogłoszenie
-  required: false
+  name: first_name
   in: query
-  name: last_name
+  description: Imię osoby, której dotyczy ogłoszenie
+- required: false
   schema:
+    title: Last Name
     type: string
     example: Bogdanowicz
-    title: Last Name
-- description: Sygnatura postępowania
-  required: false
+  name: last_name
   in: query
-  name: signature
-  schema:
-    type: string
-    title: Signature
-- description: Imię i nazwisko sędziego komisarza
-  required: false
-  in: query
-  name: commissioner_name
-  schema:
-    type: string
-    title: Commissioner Name
-- description: Imię i nazwisko nadzorcy sądowego
-  required: false
-  in: query
-  name: administrator_name
-  schema:
-    type: string
-    title: Administrator Name
+  description: Nazwisko osoby, której dotyczy ogłoszenie
 - required: false
-  in: query
-  name: projection
   schema:
+    title: Signature
+    type: string
+  name: signature
+  in: query
+  description: Sygnatura postępowania
+- required: false
+  schema:
+    title: Commissioner Name
+    type: string
+  name: commissioner_name
+  in: query
+  description: Imię i nazwisko sędziego komisarza
+- required: false
+  schema:
+    title: Administrator Name
+    type: string
+  name: administrator_name
+  in: query
+  description: Imię i nazwisko nadzorcy sądowego
+- required: false
+  schema:
+    $ref: '#/components/schemas/ProjectionEnum'
     description: |-
       Rozdział MSiG
       <details>
@@ -247,54 +320,96 @@ parameters:
         | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w msig |
         | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
         | `content` | Nieprzetworzona treść ogłoszenia |</details>
-    $ref: '#/components/schemas/ProjectionEnum'
-- description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,
-    krz_entry.chapter i krz_entry.section
-  required: false
+  name: projection
   in: query
-  name: category
+- required: false
   schema:
+    title: Category
+    type: array
     items:
       anyOf:
       - $ref: '#/components/schemas/CategoriesEnum'
       - type: string
-    type: array
-    title: Category
-- description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from
-    z parametrów usługi
-  required: false
+  name: category
   in: query
-  name: archival
-  schema:
-    default: false
-    type: boolean
-    title: Archival
-- description: Identyfikator filtra
-  required: false
-  in: query
-  name: filter_id
-  schema:
-    type: string
-    title: Filter Id
+  description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,
+    krz_entry.chapter i krz_entry.section
 - required: false
-  in: query
-  name: append_first_entry
   schema:
-    default: false
+    title: Archival
     type: boolean
-    title: Append First Entry
-- description: Klucz autoryzacji
-  required: false
-  in: header
+    default: false
+  name: archival
+  in: query
+  description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from
+    z parametrów usługi
+- required: false
   schema:
+    title: Filter Id
     type: string
+  name: filter_id
+  in: query
+  description: Identyfikator filtra
+- required: false
+  schema:
+    title: Append First Entry
+    type: boolean
+    default: false
+  name: append_first_entry
+  in: query
+- required: false
+  schema:
     title: Authorization
+    type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
-tags:
-- announcements_iapi
-summary: Get Announcements
-operationId: get_announcements_v2_announcements_get
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Get list announcements
+    content:
+      application/json:
+        schema:
+          title: Response Get Announcements V2 Announcements Get
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnouncementModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  '429':
+    description: Too Many Requests
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+description: |-
+  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
+  w wybranych rozdziałach MSiG / KRZ.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty publikacji w MSiG / KRZ.
+
+  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
+  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

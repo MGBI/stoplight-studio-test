@@ -59,14 +59,19 @@ properties:
     description: Liczba punktów wykorzystanych do utworzenia raportu
     title: Credits Used
   file_format:
-    enum:
-    - 1
-    - 2
-    - 3
-    - 4
-    - 5
     type: integer
-    description: Format pliku raportu
+    description: |-
+      Format pliku raportu.
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `1` | Csv |
+        | `2` | Xlsx |
+        | `3` | Xml |
+        | `4` | Json |
+        | `5` | Def |</details>
     title: Format
   downloads:
     items:
@@ -75,9 +80,11 @@ properties:
     description: Historia pobrań raportu
     title: Downloads
   id:
+    minLength: 24
+    title: Id
     type: string
     description: Unikalny identyfikator raportu
-    title: Id
+    maxLength: 24
   progress:
     title: Progress
     minimum: 0
@@ -222,6 +229,72 @@ properties:
   custom_content:
     items: {}
     type: array
-    description: Identyfikatory pól raportu wybranych przez użytkownika
+    description: |-
+      Identyfikatory pól raportu wybranych przez użytkownika
+      <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa |
+      |-|-|
+      | `entity` | Lista podmiotów, których dotyczy ogłoszenie |
+      | `entity.info` | Podstawowe dane podmiotu |
+      | `entity.info.cleaned_name` | Nazwa podmiotu |
+      | `entity.info.first_name` | Imię |
+      | `entity.info.last_name` | Nazwisko |
+      | `entity.info.legal_form` | Forma prawna |
+      | `entity.info.ownership_type` | Forma własności |
+      | `entity.info.primary_business` | Przeważająca działalność gospodarcza (kod PKD) |
+      | `entity.info.commencement_date` | Data rozpoczęcia działalności |
+      | `entity.numbers` | Numery rejestrowe podmiotu |
+      | `entity.numbers.nip` | NIP |
+      | `entity.numbers.regon` | REGON |
+      | `entity.numbers.krs` | KRS |
+      | `entity.numbers.pesel` | PESEL |
+      | `entity.address` | Adres pocztowy siedziby podmiotu lub miejsca zamieszkania |
+      | `entity.address.state` | Województwo |
+      | `entity.address.powiat` | Powiat |
+      | `entity.address.gmina` | Gmina |
+      | `entity.address.town` | Miejscowość |
+      | `entity.address.street` | Ulica |
+      | `entity.address.house_number` | Numer nieruchomości |
+      | `entity.address.flat_number` | Numer lokalu |
+      | `entity.address.zip_code` | Kod pocztowy |
+      | `entity.address.post_office` | Poczta |
+      | `proceeding` | Informacje o postępowaniu |
+      | `proceeding.court_name` | Nazwa sądu |
+      | `proceeding.court_department` | Nazwa wydziału |
+      | `proceeding.signatures` | Sygnatura sprawy |
+      | `proceeding.commissioner_name` | Sędzia komisarz |
+      | `proceeding.commissioner_deputy_name` | Zastępca sędziego komisarza |
+      | `proceeding.administrator_name` | Nadzorca w postępowaniu |
+      | `proceeding.administrator_function` | Funkcja nadzorcy |
+      | `proceeding.administrator_licence_number` | Numer licencji doradcy restrukturyzacyjnego |
+      | `proceeding.administrator_address` | Adres nadzorcy (ulica) |
+      | `proceeding.administrator_zip_code` | Adres nadzorcy (kod pocztowy) |
+      | `proceeding.administrator_town` | Adres nadzorcy (miejscowość) |
+      | `proceeding.administrator_source_url` | Źródło danych nadzorcy |
+      | `order` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+      | `order.order_date` | Data wydania postanowienia |
+      | `order.expiration_period` | Okres do działania (w dniach) |
+      | `order.expiration_date` | Koniec okresu do działania |
+      | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w MSiG |
+      | `msig_entry.chapter` | Rozdział MSiG |
+      | `msig_entry.section` | Sekcja MSiG |
+      | `msig_entry.signature` | Sygnatura ogłoszenia w MSiG |
+      | `msig_entry.issue_date` | Data publikacji ogłoszenia w MSiG |
+      | `msig_entry.yearly_number` | Numer wydania MSiG |
+      | `msig_entry.position_number` | Numer pozycji MSiG |
+      | `msig_entry.url` | Link do ogłoszenia w serwisie imsig.pl |
+      | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w KRZ |
+      | `krz_entry.chapter` | Rozdział KRZ |
+      | `krz_entry.section` | Sekcja KRZ |
+      | `krz_entry.subsection` | Podsekcja KRZ |
+      | `krz_entry.signature` | Sygnatura ogłoszenia w KRZ |
+      | `krz_entry.issue_date` | Data publikacji ogłoszenia w KRZ |
+      | `krz_entry.url` | Link do ogłoszenia w serwisie KRZ |
+      | `content` | Nieprzetworzona treść ogłoszenia |
+      | `content.text` | Treść ogłoszenia (tekst) |
+      | `content.html` | Treść ogłoszenia (HTML) |
+      | `content.url` | Link do podglądu treści ogłoszenia |</details>
     title: Custom Content
 title: ReportModel
