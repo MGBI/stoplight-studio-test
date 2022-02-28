@@ -40,6 +40,8 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
         if old_values is not None:
             if "description" not in new_values and "description" in old_values:
                 new_values["description"] = old_values["description"]
+            # Remove 422 status_code that is added standards in fastapi
+            new_values.get("responses", {}).pop("422", None)
             if "parameters" in new_values:
                 for new_item in new_values["parameters"]:
                     new_name = new_item.get("name")
@@ -47,10 +49,12 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                         if new_name == old_item["name"]:
                             objs = [(old_item.get("schema"), new_item.get("schema")),
                                     (old_item, new_item)]
-                            if old_item.get("schema", {}).get("anyOf") and \
-                                    new_item.get("schema", {}).get("anyOf"):
+                            if old_item.get("schema", {}).get("anyOf") and new_item.get("schema",
+                                                                                        {}).get(
+                                    "anyOf"):
                                 objs.extend(zip(old_item.get("schema", {}).get("anyOf"),
-                                     new_item.get("schema", {}).get("anyOf")))
+                                                new_item.get("schema", {}).get("anyOf")))
+
                             for old, new in objs:
                                 for label in ["description", "example"]:
                                     if old is not None and new is not None and old.get(
