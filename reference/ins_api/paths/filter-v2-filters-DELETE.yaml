@@ -24,21 +24,21 @@ parameters:
   description: Klucz autoryzacji
 responses:
   '204':
-    description: Delete filters
+    description: Wynik usunięcia filtrów
   '400':
-    description: Bad Request
+    description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '401':
-    description: Unauthorized
+    description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '403':
-    description: Forbidden
+    description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:

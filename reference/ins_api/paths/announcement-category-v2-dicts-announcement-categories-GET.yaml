@@ -5,7 +5,7 @@ summary: Get Announcement Category
 operationId: get_announcement_category_v2_dicts_announcement_categories_get
 responses:
   '200':
-    description: Successful Response
+    description: Wynik wyszukiwania słownika
     content:
       application/json:
         schema:

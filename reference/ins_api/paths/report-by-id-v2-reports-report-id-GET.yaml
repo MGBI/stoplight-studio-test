@@ -30,31 +30,31 @@ parameters:
   description: Klucz autoryzacji
 responses:
   '200':
-    description: Get a single report
+    description: Wynik wyszukiwania raportu o określonym identyfikatorze
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/ReportModel'
   '400':
-    description: Bad Request
+    description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '401':
-    description: Unauthorized
+    description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '403':
-    description: Forbidden
+    description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '404':
-    description: Not Found
+    description: Nie znaleziono
     content:
       application/json:
         schema:

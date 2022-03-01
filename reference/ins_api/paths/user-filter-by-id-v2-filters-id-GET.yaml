@@ -30,7 +30,7 @@ parameters:
   description: Klucz autoryzacji
 responses:
   '200':
-    description: Retrieve filter by id
+    description: Wynik wyszukiwania filtra o określonym identyfikatorze
     content:
       application/json:
         schema:

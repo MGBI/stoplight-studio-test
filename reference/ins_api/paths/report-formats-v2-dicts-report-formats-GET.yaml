@@ -5,7 +5,7 @@ summary: Report Formats
 operationId: report_formats_v2_dicts_report_formats_get
 responses:
   '200':
-    description: Successful Response
+    description: Wynik wyszukiwania słownika
     content:
       application/json:
         schema:

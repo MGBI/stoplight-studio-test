@@ -19,31 +19,31 @@ requestBody:
   required: true
 responses:
   '200':
-    description: Create new filter
+    description: Wynik utworzenia nowego filtra
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/FiltersModel'
   '400':
-    description: Bad Request
+    description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '401':
-    description: Unauthorized
+    description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '403':
-    description: Forbidden
+    description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '429':
-    description: Too Many Requests
+    description: Wykorzystany limit zapytań do API
     content:
       application/json:
         schema:

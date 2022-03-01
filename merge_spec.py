@@ -50,12 +50,23 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                             objs = [(old_item.get("schema"), new_item.get("schema")),
                                     (old_item, new_item)]
                             if old_item.get("schema", {}).get("anyOf") and \
-                                    new_item.get("schema", {}).get("anyOf"):
+                                new_item.get("schema", {}).get("anyOf"):
                                 objs.extend(zip(old_item.get("schema", {}).get("anyOf"),
                                                 new_item.get("schema", {}).get("anyOf")))
 
                             for old, new in objs:
                                 for label in ["description", "example", "maxLength", "minLength"]:
+                                    if old is not None and new is not None and old.get(
+                                            label) is not None:
+                                        new[label] = old[label]
+            if "responses" in new_values:
+                for new_code, new_item in new_values["responses"].items():
+                    for old_code, old_item in old_values["responses"].items():
+                        if new_code == old_code:
+                            objs = [(old_item, new_item)]
+
+                            for old, new in objs:
+                                for label in ["description"]:
                                     if old is not None and new is not None and old.get(
                                             label) is not None:
                                         new[label] = old[label]

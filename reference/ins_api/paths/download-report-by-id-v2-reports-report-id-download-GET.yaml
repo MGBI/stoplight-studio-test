@@ -30,7 +30,7 @@ parameters:
   description: Klucz autoryzacji
 responses:
   '200':
-    description: Download a single report
+    description: Wynik pobierania pojedynczego raportu
   '400':
     description: Bad Request
     content:
@@ -38,19 +38,19 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
   '401':
-    description: Unauthorized
+    description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '403':
-    description: Forbidden
+    description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '404':
-    description: Not Found
+    description: Nie znaleziono
     content:
       application/json:
         schema:
