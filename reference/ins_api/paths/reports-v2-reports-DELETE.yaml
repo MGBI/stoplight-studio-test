@@ -11,8 +11,9 @@ parameters:
     type: string
     description: A list of id's whose ones are strings representing the ObjectId from
       bson.
-    example: '222222222222222222222222'
-    maxLength: 24
+    example:
+    - '222222222222222222222222'
+    - '333333333333333333333333'
   name: ids
   in: query
 - required: false

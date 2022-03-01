@@ -5,6 +5,19 @@ operationId: get_monitors_v2_monitors_get
 parameters:
 - required: false
   schema:
+    title: Exclude
+    type: array
+    items:
+      enum:
+      - notifications
+      - ''
+      type: string
+    default:
+    - notifications
+  name: exclude
+  in: query
+- required: false
+  schema:
     title: Authorization
     type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee

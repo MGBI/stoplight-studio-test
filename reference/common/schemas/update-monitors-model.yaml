@@ -6,6 +6,8 @@ properties:
     description: Adresy e-mail do wysyłki powiadomień z monitoringów
     title: Emails
   filter_id:
+    maxLength: 24
+    minLength: 24
     type: string
     description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
     title: Filter Id

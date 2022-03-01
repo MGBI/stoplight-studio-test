@@ -12,8 +12,11 @@ parameters:
       - last
       type: string
       description: Zwraca ostatni dostępny raport
+      maxLength: 4
+      minLength: 4
     example: '222222222222222222222222'
     maxLength: 24
+    minLength: 24
   name: report_id
   in: path
   description: Unikalny identyfikator raportu

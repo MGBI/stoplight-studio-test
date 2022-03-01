@@ -12,11 +12,27 @@ parameters:
       - last
       type: string
       description: Zwraca ostatni dostępny monitoring
+      maxLength: 4
+      minLength: 4
     example: '222222222222222222222222'
     maxLength: 24
+    minLength: 24
   name: id
   in: path
   description: Unikalny identyfikator monitoringu
+- required: false
+  schema:
+    title: Exclude
+    type: array
+    items:
+      enum:
+      - notifications
+      - ''
+      type: string
+    default:
+    - notifications
+  name: exclude
+  in: query
 - required: false
   schema:
     title: Authorization
