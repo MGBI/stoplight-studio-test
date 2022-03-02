@@ -22,6 +22,20 @@ parameters:
   description: Unikalny identyfikator filtra
 - required: false
   schema:
+    title: Exclude
+    type: array
+    items:
+      enum:
+      - content
+      - items_count
+      - ''
+      type: string
+    default:
+    - content
+  name: exclude
+  in: query
+- required: false
+  schema:
     title: Authorization
     type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
@@ -36,25 +50,25 @@ responses:
         schema:
           $ref: '#/components/schemas/FiltersModel'
   '400':
-    description: Bad Request
+    description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '401':
-    description: Unauthorized
+    description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '403':
-    description: Forbidden
+    description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
   '404':
-    description: Not Found
+    description: Nie znaleziono
     content:
       application/json:
         schema:

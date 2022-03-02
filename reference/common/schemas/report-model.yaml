@@ -5,7 +5,8 @@ example:
   name: example raport
   credits_used: 0
   file_format: 3
-  downloads: []
+  downloads:
+  - download_datetime: '2021-11-12T15:39:29.584Z'
   id: exampleID
   progress: 0
   query:
@@ -79,6 +80,11 @@ properties:
     type: array
     description: Historia pobrań raportu
     title: Downloads
+  records_count:
+    description: Liczba ogłoszeń w wygenerowanym raporcie
+    title: Records Count
+    type: integer
+    nullable: true
   id:
     minLength: 24
     title: Id

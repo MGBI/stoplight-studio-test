@@ -85,4 +85,10 @@ properties:
     type: string
     description: Unikalny identyfikator filtra
     title: Id
+required:
+- content
+- items_count
+- creation_datetime
+- name
+- id
 title: FiltersModel

@@ -58,6 +58,16 @@ properties:
     type: array
     description: Adresy e-mail do wysyłki powiadomień z monitoringów
     title: Emails
+  append_first_entry:
+    type: boolean
+    title: Append First Entry
+    description: Czy uwzględniać również identyfikatory podane w pierwszym ogłoszeniu
+      w ramach postępowania?
+  send_empty_notifications:
+    type: boolean
+    title: Send Empty Notifications
+    description: Czy wysyłać powiadomienie, jeśli nie pojawiły się nowe ogłoszenia
+      w ramach monitoringu?
   id:
     type: string
     description: Unikalny identyfikator monitoringu
@@ -68,6 +78,8 @@ required:
 - emails
 - creation_datetime
 - notifications
+- send_empty_notifications
+- append_first_entry
 type: object
 example:
   notifications:

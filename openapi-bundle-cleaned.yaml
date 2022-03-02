@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.188
+  version: 1.0.204
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -179,15 +179,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2
   tags:
-  - filters_iapi
-  - reports_iapi
-  - updates_iapi
-  - notifications_iapi
-  - users_iapi
-  - monitors_iapi
-  - dicts_iapi
   - params_iapi
   - announcements_iapi
+  - filters_iapi
+  - notifications_iapi
+  - monitors_iapi
+  - dicts_iapi
+  - updates_iapi
+  - reports_iapi
+  - users_iapi
 paths:
   /v2/filters:
     get:
@@ -196,6 +196,16 @@ paths:
       summary: Get Actual User Filters
       operationId: get_actual_user_filters_v2_filters_get
       parameters:
+      - required: false
+        schema:
+          title: Exclude
+          type: array
+          items:
+            type: string
+          default:
+          - content
+        name: exclude
+        in: query
       - required: false
         schema:
           title: Authorization
@@ -943,6 +953,16 @@ paths:
         description: Unikalny identyfikator filtra
       - required: false
         schema:
+          title: Exclude
+          type: array
+          items:
+            type: string
+          default:
+          - content
+        name: exclude
+        in: query
+      - required: false
+        schema:
           title: Authorization
           type: string
         example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
@@ -957,25 +977,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/FiltersModel'
         '400':
-          description: Bad Request
+          description: "Niew\u0142a\u015Bciwy format zapytania"
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '401':
-          description: Unauthorized
+          description: Niepoprawna autentykacja tokenu
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '403':
-          description: Forbidden
+          description: "Nieudana autoryzacja dost\u0119pu do API"
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '404':
-          description: Not Found
+          description: Nie znaleziono
           content:
             application/json:
               schema:
@@ -2474,6 +2494,12 @@ paths:
                 type: string
                 description: Unikalny identyfikator filtra
                 title: Id
+            required:
+            - content
+            - items_count
+            - creation_datetime
+            - name
+            - id
             title: FiltersModel
           Format:
             type: integer
@@ -2685,6 +2711,16 @@ paths:
                 description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
                   w"
                 title: Emails
+              append_first_entry:
+                type: boolean
+                title: Append First Entry
+                description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory\
+                  \ podane w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
+              send_empty_notifications:
+                type: boolean
+                title: Send Empty Notifications
+                description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
+                  \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
               id:
                 type: string
                 description: Unikalny identyfikator monitoringu
@@ -2695,6 +2731,8 @@ paths:
             - emails
             - creation_datetime
             - notifications
+            - send_empty_notifications
+            - append_first_entry
             type: object
             example:
               notifications:
@@ -3067,7 +3105,8 @@ paths:
               name: example raport
               credits_used: 0
               file_format: 3
-              downloads: []
+              downloads:
+              - download_datetime: '2021-11-12T15:39:29.584Z'
               id: exampleID
               progress: 0
               query:
@@ -3127,6 +3166,11 @@ paths:
                 type: array
                 description: "Historia pobra\u0144 raportu"
                 title: Downloads
+              records_count:
+                description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
+                title: Records Count
+                type: integer
+                nullable: true
               id:
                 minLength: 24
                 title: Id
@@ -5312,6 +5356,12 @@ paths:
                 type: string
                 description: Unikalny identyfikator filtra
                 title: Id
+            required:
+            - content
+            - items_count
+            - creation_datetime
+            - name
+            - id
             title: FiltersModel
           Format:
             type: integer
@@ -5523,6 +5573,16 @@ paths:
                 description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
                   w"
                 title: Emails
+              append_first_entry:
+                type: boolean
+                title: Append First Entry
+                description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory\
+                  \ podane w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
+              send_empty_notifications:
+                type: boolean
+                title: Send Empty Notifications
+                description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
+                  \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
               id:
                 type: string
                 description: Unikalny identyfikator monitoringu
@@ -5533,6 +5593,8 @@ paths:
             - emails
             - creation_datetime
             - notifications
+            - send_empty_notifications
+            - append_first_entry
             type: object
             example:
               notifications:
@@ -5905,7 +5967,8 @@ paths:
               name: example raport
               credits_used: 0
               file_format: 3
-              downloads: []
+              downloads:
+              - download_datetime: '2021-11-12T15:39:29.584Z'
               id: exampleID
               progress: 0
               query:
@@ -5965,6 +6028,11 @@ paths:
                 type: array
                 description: "Historia pobra\u0144 raportu"
                 title: Downloads
+              records_count:
+                description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
+                title: Records Count
+                type: integer
+                nullable: true
               id:
                 minLength: 24
                 title: Id
@@ -7936,6 +8004,12 @@ paths:
                 type: string
                 description: Unikalny identyfikator filtra
                 title: Id
+            required:
+            - content
+            - items_count
+            - creation_datetime
+            - name
+            - id
             title: FiltersModel
           Format:
             type: integer
@@ -8147,6 +8221,16 @@ paths:
                 description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
                   w"
                 title: Emails
+              append_first_entry:
+                type: boolean
+                title: Append First Entry
+                description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory\
+                  \ podane w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
+              send_empty_notifications:
+                type: boolean
+                title: Send Empty Notifications
+                description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
+                  \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
               id:
                 type: string
                 description: Unikalny identyfikator monitoringu
@@ -8157,6 +8241,8 @@ paths:
             - emails
             - creation_datetime
             - notifications
+            - send_empty_notifications
+            - append_first_entry
             type: object
             example:
               notifications:
@@ -8529,7 +8615,8 @@ paths:
               name: example raport
               credits_used: 0
               file_format: 3
-              downloads: []
+              downloads:
+              - download_datetime: '2021-11-12T15:39:29.584Z'
               id: exampleID
               progress: 0
               query:
@@ -8589,6 +8676,11 @@ paths:
                 type: array
                 description: "Historia pobra\u0144 raportu"
                 title: Downloads
+              records_count:
+                description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
+                title: Records Count
+                type: integer
+                nullable: true
               id:
                 minLength: 24
                 title: Id
@@ -11160,6 +11252,12 @@ paths:
                 type: string
                 description: Unikalny identyfikator filtra
                 title: Id
+            required:
+            - content
+            - items_count
+            - creation_datetime
+            - name
+            - id
             title: FiltersModel
           Format:
             type: integer
@@ -11371,6 +11469,16 @@ paths:
                 description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
                   w"
                 title: Emails
+              append_first_entry:
+                type: boolean
+                title: Append First Entry
+                description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory\
+                  \ podane w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
+              send_empty_notifications:
+                type: boolean
+                title: Send Empty Notifications
+                description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
+                  \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
               id:
                 type: string
                 description: Unikalny identyfikator monitoringu
@@ -11381,6 +11489,8 @@ paths:
             - emails
             - creation_datetime
             - notifications
+            - send_empty_notifications
+            - append_first_entry
             type: object
             example:
               notifications:
@@ -11753,7 +11863,8 @@ paths:
               name: example raport
               credits_used: 0
               file_format: 3
-              downloads: []
+              downloads:
+              - download_datetime: '2021-11-12T15:39:29.584Z'
               id: exampleID
               progress: 0
               query:
@@ -11813,6 +11924,11 @@ paths:
                 type: array
                 description: "Historia pobra\u0144 raportu"
                 title: Downloads
+              records_count:
+                description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
+                title: Records Count
+                type: integer
+                nullable: true
               id:
                 minLength: 24
                 title: Id
@@ -13735,6 +13851,12 @@ paths:
                 type: string
                 description: Unikalny identyfikator filtra
                 title: Id
+            required:
+            - content
+            - items_count
+            - creation_datetime
+            - name
+            - id
             title: FiltersModel
           Format:
             type: integer
@@ -13946,6 +14068,16 @@ paths:
                 description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
                   w"
                 title: Emails
+              append_first_entry:
+                type: boolean
+                title: Append First Entry
+                description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory\
+                  \ podane w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
+              send_empty_notifications:
+                type: boolean
+                title: Send Empty Notifications
+                description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
+                  \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
               id:
                 type: string
                 description: Unikalny identyfikator monitoringu
@@ -13956,6 +14088,8 @@ paths:
             - emails
             - creation_datetime
             - notifications
+            - send_empty_notifications
+            - append_first_entry
             type: object
             example:
               notifications:
@@ -14328,7 +14462,8 @@ paths:
               name: example raport
               credits_used: 0
               file_format: 3
-              downloads: []
+              downloads:
+              - download_datetime: '2021-11-12T15:39:29.584Z'
               id: exampleID
               progress: 0
               query:
@@ -14388,6 +14523,11 @@ paths:
                 type: array
                 description: "Historia pobra\u0144 raportu"
                 title: Downloads
+              records_count:
+                description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
+                title: Records Count
+                type: integer
+                nullable: true
               id:
                 minLength: 24
                 title: Id
@@ -16837,6 +16977,12 @@ components:
           type: string
           description: Unikalny identyfikator filtra
           title: Id
+      required:
+      - content
+      - items_count
+      - creation_datetime
+      - name
+      - id
       title: FiltersModel
     Format:
       type: integer
@@ -17042,6 +17188,16 @@ components:
           description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
             w"
           title: Emails
+        append_first_entry:
+          type: boolean
+          title: Append First Entry
+          description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory podane\
+            \ w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
+        send_empty_notifications:
+          type: boolean
+          title: Send Empty Notifications
+          description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie pojawi\u0142\
+            y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
         id:
           type: string
           description: Unikalny identyfikator monitoringu
@@ -17052,6 +17208,8 @@ components:
       - emails
       - creation_datetime
       - notifications
+      - send_empty_notifications
+      - append_first_entry
       type: object
       example:
         notifications:
@@ -17414,7 +17572,8 @@ components:
         name: example raport
         credits_used: 0
         file_format: 3
-        downloads: []
+        downloads:
+        - download_datetime: '2021-11-12T15:39:29.584Z'
         id: exampleID
         progress: 0
         query:
@@ -17474,6 +17633,11 @@ components:
           type: array
           description: "Historia pobra\u0144 raportu"
           title: Downloads
+        records_count:
+          description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
+          title: Records Count
+          type: integer
+          nullable: true
         id:
           minLength: 24
           title: Id
