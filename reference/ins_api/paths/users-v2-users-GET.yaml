@@ -1,7 +1,7 @@
 tags:
 - users_iapi
 - admin_iapi
-summary: Get /v2/users
+summary: GET /v2/users
 description: Admin flag is required.
 operationId: get_users_v2_users_get
 parameters:

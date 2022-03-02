@@ -1,7 +1,7 @@
 tags:
 - params_iapi
 - admin_iapi
-summary: Patch /v2/users/{id}/params
+summary: PATCH /v2/users/{id}/params
 description: Admin flag is required.
 operationId: patch_user_params_v2_users__id__params_patch
 parameters:

@@ -1,7 +1,7 @@
 tags:
 - dicts_iapi
 - public_iapi
-summary: Get /v2/dicts/report-formats
+summary: GET /v2/dicts/report-formats
 operationId: report_formats_v2_dicts_report_formats_get
 responses:
   '200':

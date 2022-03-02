@@ -1,6 +1,6 @@
 tags:
 - filters_iapi
-summary: Get /v2/filters/{id}
+summary: GET /v2/filters/{id}
 operationId: get_user_filter_by_id_v2_filters__id__get
 parameters:
 - required: true

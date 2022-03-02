@@ -1,6 +1,6 @@
 tags:
 - reports_iapi
-summary: Get /v2/reports
+summary: GET /v2/reports
 operationId: get_reports_v2_reports_get
 parameters:
 - required: false

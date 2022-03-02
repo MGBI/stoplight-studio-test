@@ -1,6 +1,6 @@
 tags:
 - filters_iapi
-summary: Get /v2/filters
+summary: GET /v2/filters
 operationId: get_actual_user_filters_v2_filters_get
 parameters:
 - required: false

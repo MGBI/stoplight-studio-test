@@ -1,7 +1,7 @@
 tags:
 - params_iapi
 - admin_iapi
-summary: Create /v2/users/{id}/params
+summary: POST /v2/users/{id}/params
 description: Admin flag is required.
 operationId: create_params_v2_users__id__params_post
 parameters:

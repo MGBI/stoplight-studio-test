@@ -1,6 +1,6 @@
 tags:
 - announcements_iapi
-summary: Get /v2/announcements
+summary: GET /v2/announcements
 operationId: get_announcements_v2_announcements_get
 parameters:
 - required: false

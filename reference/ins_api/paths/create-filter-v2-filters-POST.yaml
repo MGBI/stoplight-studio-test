@@ -1,6 +1,6 @@
 tags:
 - filters_iapi
-summary: Create /v2/filters
+summary: POST /v2/filters
 operationId: create_filter_v2_filters_post
 parameters:
 - required: false

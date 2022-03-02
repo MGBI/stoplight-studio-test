@@ -1,6 +1,6 @@
 tags:
 - updates_iapi
-summary: Get /v2/updates
+summary: GET /v2/updates
 operationId: get_updates_v2_updates_get
 parameters:
 - required: true

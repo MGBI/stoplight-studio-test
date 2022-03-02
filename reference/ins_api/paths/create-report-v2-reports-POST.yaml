@@ -1,6 +1,6 @@
 tags:
 - reports_iapi
-summary: Create /v2/reports
+summary: POST /v2/reports
 operationId: create_report_v2_reports_post
 parameters:
 - required: false

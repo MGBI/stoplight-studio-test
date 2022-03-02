@@ -1,7 +1,7 @@
 tags:
 - users_iapi
 - admin_iapi
-summary: Patch /v2/users/{id}
+summary: PATCH /v2/users/{id}
 description: |-
   Update user data, basing on the shown diagram.
   Delete fields which should not to be updated.

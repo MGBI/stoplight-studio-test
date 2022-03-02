@@ -1,7 +1,7 @@
 tags:
 - users_iapi
 - admin_iapi
-summary: Get /v2/users/{id}
+summary: GET /v2/users/{id}
 description: |-
   Get user info by given id.
 

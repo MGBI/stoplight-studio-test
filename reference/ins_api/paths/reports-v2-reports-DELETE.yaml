@@ -1,6 +1,6 @@
 tags:
 - reports_iapi
-summary: Delete /v2/reports
+summary: DELETE /v2/reports
 operationId: delete_reports_v2_reports_delete
 parameters:
 - description: Lista identyfikatorów raportów.

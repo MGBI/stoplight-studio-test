@@ -1,7 +1,7 @@
 tags:
 - params_iapi
 - admin_iapi
-summary: Delete /v2/users/{id}/params
+summary: DELETE /v2/users/{id}/params
 description: Admin flag is required.
 operationId: delete_params_v2_users__id__params_delete
 parameters:

@@ -1,7 +1,7 @@
 tags:
 - dicts_iapi
 - public_iapi
-summary: Get /v2/dicts/announcement-categories
+summary: GET /v2/dicts/announcement-categories
 operationId: get_announcement_category_v2_dicts_announcement_categories_get
 responses:
   '200':

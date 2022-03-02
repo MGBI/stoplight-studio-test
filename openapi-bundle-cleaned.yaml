@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.215
+  version: 1.0.213
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -179,21 +179,21 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - dicts_iapi
-  - monitors_iapi
-  - notifications_iapi
   - announcements_iapi
-  - filters_iapi
-  - params_iapi
   - users_iapi
   - reports_iapi
+  - notifications_iapi
+  - params_iapi
+  - monitors_iapi
+  - filters_iapi
+  - dicts_iapi
   - updates_iapi
 paths:
   /v2/filters:
     get:
       tags:
       - filters_iapi
-      summary: Get /v2/filters
+      summary: GET /v2/filters
       operationId: get_actual_user_filters_v2_filters_get
       parameters:
       - required: false
@@ -247,7 +247,7 @@ paths:
     post:
       tags:
       - filters_iapi
-      summary: Create /v2/filters
+      summary: POST /v2/filters
       operationId: create_filter_v2_filters_post
       parameters:
       - required: false
@@ -299,7 +299,7 @@ paths:
     delete:
       tags:
       - filters_iapi
-      summary: Delete /v2/filters
+      summary: DELETE /v2/filters
       operationId: delete_filter_v2_filters_delete
       parameters:
       - required: false
@@ -349,7 +349,7 @@ paths:
     get:
       tags:
       - monitors_iapi
-      summary: Get /v2/monitors/{id}
+      summary: GET /v2/monitors/{id}
       operationId: get_user_monitor_by_id_v2_monitors__id__get
       parameters:
       - required: true
@@ -422,7 +422,7 @@ paths:
     patch:
       tags:
       - monitors_iapi
-      summary: Patch /v2/monitors/{id}
+      summary: PATCH /v2/monitors/{id}
       operationId: patch_user_monitors_v2_monitors__id__patch
       parameters:
       - required: true
@@ -485,7 +485,7 @@ paths:
     get:
       tags:
       - users_iapi
-      summary: Get /v2/users/me
+      summary: GET /v2/users/me
       description: "Zwraca aktualne informacje o u\u017Cytkowniku"
       operationId: get_current_user_v2_users_me_get
       parameters:
@@ -527,7 +527,7 @@ paths:
       tags:
       - dicts_iapi
       - public_iapi
-      summary: Get /v2/dicts/announcement-categories
+      summary: GET /v2/dicts/announcement-categories
       operationId: get_announcement_category_v2_dicts_announcement_categories_get
       responses:
         '200':
@@ -546,7 +546,7 @@ paths:
     get:
       tags:
       - notifications_iapi
-      summary: Get /v2/notifications
+      summary: GET /v2/notifications
       operationId: get_notifications_v2_notifications_get
       parameters:
       - required: false
@@ -590,7 +590,7 @@ paths:
     get:
       tags:
       - notifications_iapi
-      summary: Get /v2/notifications/{id}
+      summary: GET /v2/notifications/{id}
       operationId: get_user_notification_by_id_v2_notifications__id__get
       parameters:
       - required: true
@@ -648,7 +648,7 @@ paths:
     get:
       tags:
       - updates_iapi
-      summary: Get /v2/updates/{id}
+      summary: GET /v2/updates/{id}
       operationId: get_update_by_id_v2_updates__id__get
       parameters:
       - required: true
@@ -664,9 +664,8 @@ paths:
             description: Zwraca ostatnie dane aktualizacji
             maxLength: 4
             minLength: 4
-          example: '222222222222222222222222'
-          maxLength: 24
-          minLength: 24
+          example: '1'
+          minLength: 1
         name: id
         in: path
         description: Unikalny identyfikator zarejestrowanej aktualizacji
@@ -714,7 +713,7 @@ paths:
     get:
       tags:
       - reports_iapi
-      summary: Get /v2/reports
+      summary: GET /v2/reports
       operationId: get_reports_v2_reports_get
       parameters:
       - required: false
@@ -758,7 +757,7 @@ paths:
     post:
       tags:
       - reports_iapi
-      summary: Create /v2/reports
+      summary: POST /v2/reports
       operationId: create_report_v2_reports_post
       parameters:
       - required: false
@@ -810,7 +809,7 @@ paths:
     delete:
       tags:
       - reports_iapi
-      summary: Delete /v2/reports
+      summary: DELETE /v2/reports
       operationId: delete_reports_v2_reports_delete
       parameters:
       - description: "Lista identyfikator\xF3w raport\xF3w."
@@ -862,7 +861,7 @@ paths:
     get:
       tags:
       - reports_iapi
-      summary: Get /v2/reports/{report_id}
+      summary: GET /v2/reports/{report_id}
       operationId: get_report_by_id_v2_reports__report_id__get
       parameters:
       - required: true
@@ -926,7 +925,7 @@ paths:
     get:
       tags:
       - filters_iapi
-      summary: Get /v2/filters/{id}
+      summary: GET /v2/filters/{id}
       operationId: get_user_filter_by_id_v2_filters__id__get
       parameters:
       - required: true
@@ -999,7 +998,7 @@ paths:
     patch:
       tags:
       - filters_iapi
-      summary: Patch /v2/filters/{id}
+      summary: PATCH /v2/filters/{id}
       operationId: patch_user_filters_v2_filters__id__patch
       parameters:
       - required: true
@@ -3864,7 +3863,7 @@ paths:
       tags:
       - dicts_iapi
       - public_iapi
-      summary: Get /v2/dicts/report-statuses
+      summary: GET /v2/dicts/report-statuses
       operationId: get_report_statuses_v2_dicts_report_statuses_get
       responses:
         '200':
@@ -3883,7 +3882,7 @@ paths:
       tags:
       - dicts_iapi
       - public_iapi
-      summary: Get /v2/dicts/report-types
+      summary: GET /v2/dicts/report-types
       operationId: get_types_v2_dicts_report_types_get
       responses:
         '200':
@@ -6722,7 +6721,7 @@ paths:
       tags:
       - dicts_iapi
       - public_iapi
-      summary: Get /v2/dicts/announcement-fields
+      summary: GET /v2/dicts/announcement-fields
       operationId: get_fields_v2_dicts_announcement_fields_get
       responses:
         '200':
@@ -6741,7 +6740,7 @@ paths:
       tags:
       - dicts_iapi
       - public_iapi
-      summary: Get /v2/dicts/report-formats
+      summary: GET /v2/dicts/report-formats
       operationId: report_formats_v2_dicts_report_formats_get
       responses:
         '200':
@@ -12612,7 +12611,7 @@ paths:
     get:
       tags:
       - reports_iapi
-      summary: Download /v2/reports/{report_id}/download
+      summary: DOWNLOAD /v2/reports/{report_id}/download
       operationId: download_report_by_id_v2_reports__report_id__download_get
       parameters:
       - required: true
@@ -15209,7 +15208,7 @@ paths:
     get:
       tags:
       - params_iapi
-      summary: Get /v2/params
+      summary: GET /v2/params
       operationId: get_actual_user_params_v2_params_get
       parameters:
       - required: false
@@ -15250,7 +15249,7 @@ paths:
     get:
       tags:
       - announcements_iapi
-      summary: Get /v2/announcements
+      summary: GET /v2/announcements
       operationId: get_announcements_v2_announcements_get
       parameters:
       - required: false
@@ -15607,7 +15606,7 @@ paths:
     get:
       tags:
       - announcements_iapi
-      summary: Get /v2/announcements/{id}
+      summary: GET /v2/announcements/{id}
       operationId: get_announcement_by_id_v2_announcements__id__get
       parameters:
       - required: true
@@ -15671,7 +15670,7 @@ paths:
     get:
       tags:
       - updates_iapi
-      summary: Get /v2/updates
+      summary: GET /v2/updates
       operationId: get_updates_v2_updates_get
       parameters:
       - required: true
@@ -15734,7 +15733,7 @@ paths:
     get:
       tags:
       - monitors_iapi
-      summary: Get /v2/monitors
+      summary: GET /v2/monitors
       operationId: get_monitors_v2_monitors_get
       parameters:
       - required: false
@@ -15788,7 +15787,7 @@ paths:
     post:
       tags:
       - monitors_iapi
-      summary: Create /v2/monitors
+      summary: POST /v2/monitors
       operationId: create_monitor_v2_monitors_post
       parameters:
       - required: false
@@ -15840,7 +15839,7 @@ paths:
     delete:
       tags:
       - monitors_iapi
-      summary: Delete /v2/monitors
+      summary: DELETE /v2/monitors
       operationId: delete_monitors_v2_monitors_delete
       parameters:
       - required: false

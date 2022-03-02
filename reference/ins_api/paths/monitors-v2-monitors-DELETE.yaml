@@ -1,6 +1,6 @@
 tags:
 - monitors_iapi
-summary: Delete /v2/monitors
+summary: DELETE /v2/monitors
 operationId: delete_monitors_v2_monitors_delete
 parameters:
 - required: false

@@ -1,7 +1,7 @@
 tags:
 - dicts_iapi
 - public_iapi
-summary: Get /v2/dicts/announcement-fields
+summary: GET /v2/dicts/announcement-fields
 operationId: get_fields_v2_dicts_announcement_fields_get
 responses:
   '200':

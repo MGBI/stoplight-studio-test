@@ -1,6 +1,6 @@
 tags:
 - monitors_iapi
-summary: Get /v2/monitors/{id}
+summary: GET /v2/monitors/{id}
 operationId: get_user_monitor_by_id_v2_monitors__id__get
 parameters:
 - required: true

@@ -1,7 +1,7 @@
 tags:
 - users_iapi
 - admin_iapi
-summary: Create /v2/users
+summary: POST /v2/users
 description: |-
   Adding user into the database, basing on the shown diagram.
 

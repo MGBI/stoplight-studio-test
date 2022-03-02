@@ -1,7 +1,7 @@
 tags:
 - users_iapi
 - admin_iapi
-summary: Delete /v2/users
+summary: DELETE /v2/users
 description: |-
   Delete user with given ids.
 

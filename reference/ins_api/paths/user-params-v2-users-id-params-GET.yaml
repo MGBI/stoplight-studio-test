@@ -1,7 +1,7 @@
 tags:
 - params_iapi
 - admin_iapi
-summary: Get /v2/users/{id}/params
+summary: GET /v2/users/{id}/params
 description: Admin flag is required.
 operationId: get_user_params_v2_users__id__params_get
 parameters:
