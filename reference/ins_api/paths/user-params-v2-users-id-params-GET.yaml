@@ -20,7 +20,7 @@ parameters:
   in: header
 responses:
   '200':
-    description: Params for user retrieved
+    description: Wynik parametrów użytkownika
     content:
       application/json:
         schema:
@@ -218,7 +218,7 @@ responses:
             monitors_available: 5
           title: ParamsModel
   '400':
-    description: Bad Request
+    description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:
@@ -236,7 +236,7 @@ responses:
               title: Error
           title: Error
   '401':
-    description: Unauthorized
+    description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
@@ -254,7 +254,7 @@ responses:
               title: Error
           title: Error
   '403':
-    description: Forbidden
+    description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:
@@ -271,37 +271,6 @@ responses:
               description: Opis błędu
               title: Error
           title: Error
-  '422':
-    description: Validation Error
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            detail:
-              items:
-                required:
-                - loc
-                - msg
-                - type
-                type: object
-                properties:
-                  msg:
-                    type: string
-                    title: Message
-                  loc:
-                    items:
-                      type: string
-                    type: array
-                    title: Location
-                  type:
-                    type: string
-                    title: Error Type
-                title: ValidationError
-              type: array
-              description: Szczegółowa informacja na temat błędu
-              title: Detail
-          title: HTTPValidationError
 components:
   schemas:
     $ref: ../../common/schemas.yaml

@@ -32,7 +32,7 @@ responses:
   '200':
     description: Wynik pobierania pojedynczego raportu
   '400':
-    description: Bad Request
+    description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:

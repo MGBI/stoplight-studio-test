@@ -197,7 +197,7 @@ requestBody:
   required: true
 responses:
   '200':
-    description: Update user params
+    description: Wynik aktualizacji parametrów użytkownika
     content:
       application/json:
         schema:
