@@ -1,6 +1,6 @@
 tags:
 - notifications_iapi
-summary: Get Notifications
+summary: Get /v2/notifications
 operationId: get_notifications_v2_notifications_get
 parameters:
 - required: false

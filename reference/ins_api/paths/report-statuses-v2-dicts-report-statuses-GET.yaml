@@ -1,7 +1,7 @@
 tags:
 - dicts_iapi
 - public_iapi
-summary: Get Report Statuses
+summary: Get /v2/dicts/report-statuses
 operationId: get_report_statuses_v2_dicts_report_statuses_get
 responses:
   '200':

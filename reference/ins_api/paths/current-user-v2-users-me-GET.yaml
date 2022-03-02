@@ -1,6 +1,6 @@
 tags:
 - users_iapi
-summary: Get Current User
+summary: Get /v2/users/me
 description: |-
   Get actual user info.
   User token is required.

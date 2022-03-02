@@ -1,6 +1,6 @@
 tags:
 - monitors_iapi
-summary: Patch User Monitors
+summary: Patch /v2/monitors/{id}
 operationId: patch_user_monitors_v2_monitors__id__patch
 parameters:
 - required: true

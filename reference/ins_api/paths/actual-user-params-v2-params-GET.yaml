@@ -1,6 +1,6 @@
 tags:
 - params_iapi
-summary: Get Actual User Params
+summary: Get /v2/params
 operationId: get_actual_user_params_v2_params_get
 parameters:
 - required: false

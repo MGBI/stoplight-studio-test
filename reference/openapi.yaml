@@ -28,39 +28,39 @@ tags:
   name: updates
   description:
     $ref: other/descriptions/tag_updates.md
-- x-displayName: Announcements
+- x-displayName: Ogłoszenia
   name: announcements_iapi
   description:
     $ref: ins_api/descriptions/tag_announcements.md
-- x-displayName: Filters
+- x-displayName: Filtry
   name: filters_iapi
   description:
     $ref: ins_api/descriptions/tag_filters.md
-- x-displayName: Reports
+- x-displayName: Raporty
   name: reports_iapi
   description:
     $ref: ins_api/descriptions/tag_reports.md
-- x-displayName: Dicts
+- x-displayName: Słowniki
   name: dicts_iapi
   description:
     $ref: ins_api/descriptions/tag_dicts.md
-- x-displayName: Users
+- x-displayName: Użytkownicy
   name: users_iapi
   description:
     $ref: ins_api/descriptions/tag_users.md
-- x-displayName: Updates
+- x-displayName: Aktualizacje
   name: updates_iapi
   description:
     $ref: ins_api/descriptions/tag_updates.md
-- x-displayName: Params
+- x-displayName: Parametry
   name: params_iapi
   description:
     $ref: ins_api/descriptions/tag_params.md
-- x-displayName: Monitors
+- x-displayName: Monitoringi
   name: monitors_iapi
   description:
     $ref: ins_api/descriptions/tag_monitors.md
-- x-displayName: Notifications
+- x-displayName: Powiadomienia
   name: notifications_iapi
   description:
     $ref: ins_api/descriptions/tag_notifications.md
@@ -73,7 +73,7 @@ x-tagGroups:
   tags:
   - announcements
   - updates
-- name: MSIG API V2
+- name: MSIG API V2, KRZ API V2
   tags:
   - params_iapi
   - announcements_iapi
@@ -176,6 +176,33 @@ paths:
       $ref: ins_api/paths/create-monitor-v2-monitors-POST.yaml
     delete:
       $ref: ins_api/paths/monitors-v2-monitors-DELETE.yaml
+  /healthcheck:
+    get:
+      $ref: other/paths/healthcheck-healthcheck-GET.yaml
+  /sentry:
+    get:
+      $ref: other/paths/sentry-sentry-GET.yaml
+  /v2/users:
+    get:
+      $ref: ins_api/paths/users-v2-users-GET.yaml
+    post:
+      $ref: ins_api/paths/create-user-v2-users-POST.yaml
+    delete:
+      $ref: ins_api/paths/user-v2-users-DELETE.yaml
+  /v2/users/{id}:
+    get:
+      $ref: ins_api/paths/user-v2-users-id-GET.yaml
+    patch:
+      $ref: ins_api/paths/user-data-v2-users-id-PATCH.yaml
+  /v2/users/{id}/params:
+    get:
+      $ref: ins_api/paths/user-params-v2-users-id-params-GET.yaml
+    post:
+      $ref: ins_api/paths/create-params-v2-users-id-params-POST.yaml
+    delete:
+      $ref: ins_api/paths/params-v2-users-id-params-DELETE.yaml
+    patch:
+      $ref: ins_api/paths/user-params-v2-users-id-params-PATCH.yaml
 components:
   securitySchemes:
     $ref: common/security-schemes.yaml

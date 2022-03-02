@@ -1,6 +1,6 @@
 tags:
 - filters_iapi
-summary: Delete Filter
+summary: Delete /v2/filters
 operationId: delete_filter_v2_filters_delete
 parameters:
 - required: false

@@ -1,7 +1,7 @@
 tags:
 - dicts_iapi
 - public_iapi
-summary: Get Types
+summary: Get /v2/dicts/report-types
 operationId: get_types_v2_dicts_report_types_get
 responses:
   '200':
