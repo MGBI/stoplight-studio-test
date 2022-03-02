@@ -1,6 +1,6 @@
 tags:
 - reports_iapi
-summary: Get Report By Id
+summary: Get /v2/reports/{report_id}
 operationId: get_report_by_id_v2_reports__report_id__get
 parameters:
 - required: true

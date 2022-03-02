@@ -1,0 +1,119 @@
+tags:
+- users_iapi
+- admin_iapi
+summary: Delete /v2/users
+description: |-
+  Delete user with given ids.
+
+  Admin flag is required.
+operationId: delete_user_v2_users_delete
+parameters:
+- description: A list of id's whose ones are strings representing the ObjectId from
+    bson.
+  required: true
+  schema:
+    title: List of id
+    minLength: 24
+    type: string
+    description: A list of id's whose ones are strings representing the ObjectId from
+      bson.
+  name: ids
+  in: query
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+responses:
+  '204':
+    description: Delete users
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '422':
+    description: Validation Error
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            detail:
+              items:
+                required:
+                - loc
+                - msg
+                - type
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    title: Message
+                  loc:
+                    items:
+                      type: string
+                    type: array
+                    title: Location
+                  type:
+                    type: string
+                    title: Error Type
+                title: ValidationError
+              type: array
+              description: Szczegółowa informacja na temat błędu
+              title: Detail
+          title: HTTPValidationError
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

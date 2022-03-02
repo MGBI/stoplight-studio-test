@@ -1,6 +1,6 @@
 tags:
 - filters_iapi
-summary: Patch User Filters
+summary: Patch /v2/filters/{id}
 operationId: patch_user_filters_v2_filters__id__patch
 parameters:
 - required: true

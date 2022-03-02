@@ -1,6 +1,6 @@
 tags:
 - monitors_iapi
-summary: Create Monitor
+summary: Create /v2/monitors
 operationId: create_monitor_v2_monitors_post
 parameters:
 - required: false

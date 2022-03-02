@@ -1,0 +1,541 @@
+tags:
+- params_iapi
+- admin_iapi
+summary: Create /v2/users/{id}/params
+description: Admin flag is required.
+operationId: create_params_v2_users__id__params_post
+parameters:
+- required: true
+  schema:
+    title: Id
+    type: string
+  name: id
+  in: path
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+requestBody:
+  content:
+    application/json:
+      schema:
+        properties:
+          available_content:
+            default:
+            - entity.info.cleaned_name
+            - entity.info.first_name
+            - entity.info.last_name
+            - entity.info.legal_form
+            - entity.info.ownership_type
+            - entity.info.primary_business
+            - entity.info.commencement_date
+            - entity.numbers.nip
+            - entity.numbers.regon
+            - entity.numbers.krs
+            - entity.numbers.pesel
+            - entity.address.state
+            - entity.address.powiat
+            - entity.address.gmina
+            - entity.address.town
+            - entity.address.street
+            - entity.address.house_number
+            - entity.address.flat_number
+            - entity.address.zip_code
+            - entity.address.post_office
+            - proceeding.court_name
+            - proceeding.court_department
+            - proceeding.signatures
+            - proceeding.commissioner_name
+            - proceeding.commissioner_deputy_name
+            - proceeding.administrator_name
+            - proceeding.administrator_function
+            - proceeding.administrator_licence_number
+            - proceeding.administrator_address
+            - proceeding.administrator_zip_code
+            - proceeding.administrator_town
+            - proceeding.administrator_source_url
+            - order.order_date
+            - order.expiration_period
+            - order.expiration_date
+            - msig_entry.chapter
+            - msig_entry.section
+            - msig_entry.signature
+            - msig_entry.issue_date
+            - msig_entry.yearly_number
+            - msig_entry.position_number
+            - msig_entry.url
+            - krz_entry.chapter
+            - krz_entry.section
+            - krz_entry.subsection
+            - krz_entry.signature
+            - krz_entry.issue_date
+            - krz_entry.url
+            - content.text
+            - content.html
+            - content.url
+            items:
+              type: string
+            type: array
+            title: Available Content
+          archival_reports_used:
+            default: 0
+            type: integer
+            title: Archival Reports Used
+          current_reports_available:
+            type: integer
+            title: Current Reports Available
+          current_reports_filter_required:
+            type: boolean
+            title: Current Reports Filter Required
+          api_requests_used:
+            default: 0
+            type: integer
+            title: Api Requests Used
+          credits_available:
+            type: integer
+            title: Credits Available
+          archival_reports_filter_required:
+            type: boolean
+            title: Archival Reports Filter Required
+          api_key:
+            format: uuid
+            type: string
+            title: Api Key
+          panel_users:
+            default: []
+            items:
+              type: string
+              format: email
+            type: array
+            title: Panel Users
+          api_requests_available:
+            type: integer
+            title: Api Requests Available
+          credits_used:
+            default: 0
+            type: integer
+            title: Credits Used
+          archive_date_from:
+            format: date
+            type: string
+            title: Archive Date From
+          monitors_used:
+            default: 0
+            type: integer
+            title: Monitors Used
+          current_reports_used:
+            default: 0
+            type: integer
+            title: Current Reports Used
+          archival_reports_available:
+            type: integer
+            title: Archival Reports Available
+          monitors_emails_limit:
+            default: 0
+            type: integer
+            title: Monitors Emails Limit
+          filter_items_limit:
+            type: integer
+            title: Filter Items Limit
+          panel_users_limit:
+            default: 0
+            type: integer
+            title: Panel Users Limit
+          monitors_available:
+            type: integer
+            title: Monitors Available
+        required:
+        - archive_date_from
+        - current_reports_available
+        - current_reports_filter_required
+        - archival_reports_available
+        - archival_reports_filter_required
+        - credits_available
+        - filter_items_limit
+        - monitors_available
+        - api_key
+        - api_requests_available
+        type: object
+        example:
+          available_content:
+          - entity.info.cleaned_name
+          - entity.info.first_name
+          - entity.info.last_name
+          - entity.info.legal_form
+          - entity.info.ownership_type
+          - entity.info.primary_business
+          - entity.info.commencement_date
+          - entity.numbers.nip
+          - entity.numbers.regon
+          - entity.numbers.krs
+          - entity.numbers.pesel
+          - entity.address.state
+          - entity.address.powiat
+          - entity.address.gmina
+          - entity.address.town
+          - entity.address.street
+          - entity.address.house_number
+          - entity.address.flat_number
+          - entity.address.zip_code
+          - entity.address.post_office
+          - proceeding.court_name
+          - proceeding.court_department
+          - proceeding.signatures
+          - proceeding.commissioner_name
+          - proceeding.commissioner_deputy_name
+          - proceeding.administrator_name
+          - proceeding.administrator_function
+          - proceeding.administrator_licence_number
+          - proceeding.administrator_address
+          - proceeding.administrator_zip_code
+          - proceeding.administrator_town
+          - proceeding.administrator_source_url
+          - order.order_date
+          - order.expiration_period
+          - order.expiration_date
+          - msig_entry.chapter
+          - msig_entry.section
+          - msig_entry.signature
+          - msig_entry.issue_date
+          - msig_entry.yearly_number
+          - msig_entry.position_number
+          - msig_entry.url
+          - krz_entry.chapter
+          - krz_entry.section
+          - krz_entry.subsection
+          - krz_entry.signature
+          - krz_entry.issue_date
+          - krz_entry.url
+          - content.text
+          - content.html
+          - content.url
+          archival_reports_used: 0
+          current_reports_available: 25
+          current_reports_filter_required: false
+          api_requests_used: 100
+          credits_available: 5
+          archival_reports_filter_required: false
+          api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+          panel_users:
+          - abc@def.pl
+          - xyz@ghi.pl
+          api_requests_available: 1000
+          credits_used: 0
+          archive_date_from: '2021-04-23'
+          monitors_used: 2
+          current_reports_used: 5
+          archival_reports_available: 5
+          monitors_emails_limit: 5
+          filter_items_limit: 50
+          panel_users_limit: 5
+          monitors_available: 5
+        title: DBParamsModel
+  required: true
+responses:
+  '200':
+    description: User params created
+    content:
+      application/json:
+        schema:
+          properties:
+            available_content:
+              items:
+                type: string
+              title: Available Content
+              type: array
+              example: asdasd
+              description: Lista identyfikatorów pól, które użytkownik może uwzględnić
+                w raportach
+            archival_reports_used:
+              type: integer
+              description: Liczba utworzonych raportów archiwalnych
+              title: Archival Reports Used
+            current_reports_available:
+              type: integer
+              description: Maksymalna liczba raportów aktualnych, które użytkownik
+                może utorzyć w ramach obecnego planu
+              title: Current Reports Available
+            current_reports_filter_required:
+              type: boolean
+              description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać
+                filtr?
+              title: Current Reports Filter Required
+            api_requests_used:
+              type: integer
+              description: Liczba wykonanych zapytań do API o pojedyncze ogłoszenia
+              title: Api Requests Used
+            credits_available:
+              type: integer
+              description: Maksymalna liczba identyfikatorów, o które użytkownik może
+                odpytać API w zapytaniu o ogłoszenia z całego archiwum (od 1.01.2021)
+                albo których może użyć w filtrze dla raportu archiwalnego w ramach
+                obecnego planu
+              title: Credits Available
+            archival_reports_filter_required:
+              type: boolean
+              description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać
+                filtr?
+              title: Archival Reports Filter Required
+            api_key:
+              format: uuid
+              type: string
+              description: Klucz autoryzacji w API
+              title: Api Key
+            panel_users:
+              items:
+                type: string
+                format: email
+              type: array
+              description: Adresy e-mail użytkowników usługi
+              title: Panel Users
+            api_requests_available:
+              type: integer
+              description: Maksymalna liczba zapytań do API o pojedyncze ogłoszenia,
+                które użytkownik może wykonać w ramach obecnego planu
+              title: Api Requests Available
+            credits_used:
+              type: integer
+              description: Liczba identyfikatorów, o które użytkownik odpytał API
+                albo których użył w filtrze dla raportu archiwalnego
+              title: Credits Used
+            archive_date_from:
+              format: date
+              type: string
+              description: Data początkowa okresu, z którego użytkownik może pobierać
+                ogłoszenia w ramach raportów aktualnych
+              title: Archive Date From
+            monitors_used:
+              type: integer
+              description: Liczba utworzonych monitoringów
+              title: Monitors Used
+            current_reports_used:
+              type: integer
+              description: Liczba utworzonych raportów aktualnych
+              title: Current Reports Used
+            archival_reports_available:
+              type: integer
+              description: Maksymalna liczba raportów archiwalnych, które użytkownik
+                może utorzyć w ramach obecnego planu
+              title: Archival Reports Available
+            monitors_emails_limit:
+              type: integer
+              description: Maksymalna liczba adresów e-mail przypisanych do pojedynczego
+                monitoringu
+              title: Monitors Emails Limit
+            filter_items_limit:
+              type: integer
+              description: Maksymalna liczba identyfikatorów w filtrze
+              title: Filter Items Limit
+            panel_users_limit:
+              type: integer
+              description: Maksymalna liczba użytkowników panelu usługi
+              title: Panel Users Limit
+            monitors_available:
+              type: integer
+              description: Maksymalna liczba monitoringów, które użytkownik może utorzyć
+                w ramach obecnego planu
+              title: Monitors Available
+          required:
+          - archive_date_from
+          - current_reports_available
+          - current_reports_used
+          - current_reports_filter_required
+          - archival_reports_available
+          - archival_reports_used
+          - archival_reports_filter_required
+          - credits_available
+          - credits_used
+          - available_content
+          - filter_items_limit
+          - monitors_available
+          - monitors_used
+          - monitors_emails_limit
+          - api_key
+          - api_requests_available
+          - api_requests_used
+          - panel_users_limit
+          - panel_users
+          type: object
+          example:
+            available_content:
+            - entity.info.cleaned_name
+            - entity.info.first_name
+            - entity.info.last_name
+            - entity.info.legal_form
+            - entity.info.ownership_type
+            - entity.info.primary_business
+            - entity.info.commencement_date
+            - entity.numbers.nip
+            - entity.numbers.regon
+            - entity.numbers.krs
+            - entity.numbers.pesel
+            - entity.address.state
+            - entity.address.powiat
+            - entity.address.gmina
+            - entity.address.town
+            - entity.address.street
+            - entity.address.house_number
+            - entity.address.flat_number
+            - entity.address.zip_code
+            - entity.address.post_office
+            - proceeding.court_name
+            - proceeding.court_department
+            - proceeding.signatures
+            - proceeding.commissioner_name
+            - proceeding.commissioner_deputy_name
+            - proceeding.administrator_name
+            - proceeding.administrator_function
+            - proceeding.administrator_licence_number
+            - proceeding.administrator_address
+            - proceeding.administrator_zip_code
+            - proceeding.administrator_town
+            - proceeding.administrator_source_url
+            - order.order_date
+            - order.expiration_period
+            - order.expiration_date
+            - msig_entry.chapter
+            - msig_entry.section
+            - msig_entry.signature
+            - msig_entry.issue_date
+            - msig_entry.yearly_number
+            - msig_entry.position_number
+            - msig_entry.url
+            - krz_entry.chapter
+            - krz_entry.section
+            - krz_entry.subsection
+            - krz_entry.signature
+            - krz_entry.issue_date
+            - krz_entry.url
+            - content.text
+            - content.html
+            - content.url
+            archival_reports_used: 0
+            current_reports_available: 25
+            current_reports_filter_required: false
+            api_requests_used: 100
+            credits_available: 5
+            archival_reports_filter_required: false
+            api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+            panel_users:
+            - abc@def.pl
+            - xyz@ghi.pl
+            api_requests_available: 1000
+            credits_used: 0
+            archive_date_from: '2021-04-23'
+            monitors_used: 2
+            current_reports_used: 5
+            archival_reports_available: 5
+            monitors_emails_limit: 5
+            filter_items_limit: 50
+            panel_users_limit: 5
+            monitors_available: 5
+          title: ParamsModel
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '404':
+    description: Not Found
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '422':
+    description: Validation Error
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            detail:
+              items:
+                required:
+                - loc
+                - msg
+                - type
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    title: Message
+                  loc:
+                    items:
+                      type: string
+                    type: array
+                    title: Location
+                  type:
+                    type: string
+                    title: Error Type
+                title: ValidationError
+              type: array
+              description: Szczegółowa informacja na temat błędu
+              title: Detail
+          title: HTTPValidationError
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
