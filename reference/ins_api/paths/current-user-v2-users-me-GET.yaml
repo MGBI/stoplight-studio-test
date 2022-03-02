@@ -1,11 +1,7 @@
 tags:
 - users_iapi
 summary: Get /v2/users/me
-description: |-
-  Get actual user info.
-  User token is required.
-
-  Not need admin flag to use this endpoint.
+description: Zwraca aktualne informacje o użytkowniku
 operationId: get_current_user_v2_users_me_get
 parameters:
 - required: false

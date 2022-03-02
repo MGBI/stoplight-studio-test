@@ -16,9 +16,8 @@ parameters:
       description: Zwraca ostatnie dane aktualizacji
       maxLength: 4
       minLength: 4
-    example: '222222222222222222222222'
-    maxLength: 24
-    minLength: 24
+    example: '1'
+    minLength: 1
   name: id
   in: path
   description: Unikalny identyfikator zarejestrowanej aktualizacji

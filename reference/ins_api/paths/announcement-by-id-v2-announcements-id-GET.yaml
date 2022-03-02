@@ -15,6 +15,13 @@ parameters:
   description: Unikalny identyfikator ogłoszenia
 - required: false
   schema:
+    title: Append First Entry
+    type: boolean
+    default: false
+  name: append_first_entry
+  in: query
+- required: false
+  schema:
     title: Authorization
     type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
