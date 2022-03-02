@@ -38,7 +38,7 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     for endpoint, new_values in new_api.items():
         old_values = old_api.get(endpoint, None)
         if old_values is not None:
-            if "description" not in new_values and "description" in old_values:
+            if "description" or ("description" not in new_values and "description" in old_values):
                 new_values["description"] = old_values["description"]
             # Remove 422 status_code that is added standards in fastapi
             new_values.get("responses", {}).pop("422", None)
