@@ -1,0 +1,1 @@
+Etykiety dla zwracanych stałych.
