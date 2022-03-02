@@ -55,7 +55,10 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Pobiera plik raportu o podanym id.
+description: |-
+  Pobiera plik wygenerowanego raportu o podanym `id`.
+
+  Plik raportu można pobrać tylko w sytuacji, gdy status raportu ma wartość `2` (gotowy).
 components:
   schemas:
     $ref: ../../common/schemas.yaml

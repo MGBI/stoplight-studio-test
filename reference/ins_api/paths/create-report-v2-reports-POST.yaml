@@ -48,7 +48,23 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Tworzy nowy raport przypisany do aktualnego użytkownika.
+description: |-
+  Tworzy nowy raport - plik z listą ogłoszeń - przypisany do aktualnego użytkownika.
+
+  Raport możemy tworzyć w dwóch trybach:
+  * w trybie raportu aktualnego, gdzie podana wartość pola `query.from_date`
+  ograniczona jest przez wartość `archive_date_from` z parametrów usługi,
+  * w trybie raportu archiwalnego, gdzie podana wartość pola `query_from.date`
+  nie jest ograniczona.
+
+  Raport aktualny/archiwalny może zostać utworzony, gdy liczba raportów po jego
+  utworzeniu nie będzie przekraczać wartości odpowiednio
+  `current_reports_available`/`archival_reports_available` z parametrów usługi.
+
+  Dodatkowo, przy tworzeniu raportu archiwalnego, sumaryczna liczba ogłoszeń
+  wygenerowanych w ramach wszystkich stworzonych do tej pory archiwalnych
+  raportów i zapytań nie może przekroczyć wartości `credits_available`
+  z parametrów usługi.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

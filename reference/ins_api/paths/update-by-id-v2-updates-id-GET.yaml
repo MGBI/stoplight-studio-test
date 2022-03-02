@@ -13,14 +13,14 @@ parameters:
     - enum:
       - last
       type: string
-      description: Zwraca ostatnie dane aktualizacji
+      description: Zwraca dane ostatniej aktualizacji bazy ogłoszeń
       maxLength: 4
       minLength: 4
     example: '1'
     minLength: 1
   name: id
   in: path
-  description: Unikalny identyfikator zarejestrowanej aktualizacji
+  description: Unikalny identyfikator aktualizacji
 - required: false
   schema:
     title: Authorization
@@ -60,7 +60,7 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Zwraca dane aktualizacji o podanym id.
+description: Zwraca dane aktualizacji bazy ogłoszeń o podanym `id`.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

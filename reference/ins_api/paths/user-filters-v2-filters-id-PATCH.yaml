@@ -52,7 +52,12 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Modyfikuje filtr o podanym id.
+description: |-
+  Modyfikuje filtr o podanym `id`.
+
+  Ustawiając parametr `content`, podajemy przynajmniej jeden identyfikator
+  dowolnego typu. Łączna liczba przekazanych w żądaniu identyfikatorów nie może
+  przekraczać wartości `filter_items_limit` z parametrów usługi.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

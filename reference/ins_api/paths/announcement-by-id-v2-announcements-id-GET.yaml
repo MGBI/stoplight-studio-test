@@ -59,7 +59,7 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Zwraca ogłoszenie o podanym id.
+description: Zwraca ogłoszenie o podanym `id`.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

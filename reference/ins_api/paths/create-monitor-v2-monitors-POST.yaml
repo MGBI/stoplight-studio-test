@@ -48,7 +48,16 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Tworzy nowy monitoring przypisany do aktualnego użytkownika.
+description: |-
+  Tworzy nowy monitoring przypisany do aktualnego użytkownika.
+
+  W parametrze `emails` podajemy przynajmniej jeden adres e-mail, na który będą
+  wysyłane powiadomienia o nowych ogłoszeniach w ramach monitoringu.
+  Liczba adresów e-mail nie może przekraczać wartości `monitors_emails_limit`
+  z parametrów usługi.
+
+  Monitoring może zostać utworzony, gdy liczba monitoringów po jego utworzeniu
+  nie będzie przekraczać wartości `monitors_available` z parametrów usługi.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

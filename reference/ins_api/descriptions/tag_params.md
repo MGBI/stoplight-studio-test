@@ -1,0 +1,1 @@
+Parametry usługi przypisane do użytkownika.

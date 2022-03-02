@@ -37,3 +37,18 @@ formatach, a także dostęp do wybranych informacji wyodrębnionych z tekstowej 
 
 Aby sprawdzić, jakie ogłoszenia publikowane są w MSiG, przejdź na [stronę główną serwisu iMSiG.pl](
 https://www.imsig.pl).
+
+
+## Masowy dostęp
+Wyszukiwarka ogłoszeń dostępna na stronie Ministerstwa Sprawiedliwości nie jest
+przeznaczona do masowego dostępu do bazy ogłoszeń. Nie zostało również
+udostępnione oficjalne API do integracji z systemami teleinformatycznymi.
+
+W ramach naszego interfejsu programistycznego udostępniamy szereg kryteriów do
+przeszukiwania bazy ogłoszeń dostępnych w systemie KRZ jak i MSiG. Umożliwia to
+masowe pobieranie dokumentów bez konieczności ręcznego sprawdzania ogłoszeń
+w dwóch różnych systemach.
+
+Dodatkowo, wszystkie udostępniane przez nas ogłoszenia są uzupełniane o pominięte
+w publicznym portalu dane doradców restukturyzacyjnych oraz dane rejestrowe
+podmiotów, których dotyczą ogłoszenia.
