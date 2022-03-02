@@ -36,9 +36,7 @@ example:
     address: {}
 required:
 - id
-- krz_entry
 - proceeding
-- msig_entry
 - entity
 - content
 - custom_categories

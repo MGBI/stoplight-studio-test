@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.208
+  version: 1.0.210
   description:
     $ref: common/info_description.md
   x-logo:
@@ -76,14 +76,14 @@ x-tagGroups:
 - name: MSIG API V2, KRZ API V2
   tags:
   - reports_iapi
-  - monitors_iapi
-  - params_iapi
-  - filters_iapi
-  - notifications_iapi
   - updates_iapi
   - announcements_iapi
-  - users_iapi
+  - monitors_iapi
+  - filters_iapi
+  - notifications_iapi
   - dicts_iapi
+  - params_iapi
+  - users_iapi
 paths:
   /v2/filters:
     get:
@@ -176,33 +176,6 @@ paths:
       $ref: ins_api/paths/create-monitor-v2-monitors-POST.yaml
     delete:
       $ref: ins_api/paths/monitors-v2-monitors-DELETE.yaml
-  /healthcheck:
-    get:
-      $ref: other/paths/healthcheck-healthcheck-GET.yaml
-  /sentry:
-    get:
-      $ref: other/paths/sentry-sentry-GET.yaml
-  /v2/users:
-    get:
-      $ref: ins_api/paths/users-v2-users-GET.yaml
-    post:
-      $ref: ins_api/paths/create-user-v2-users-POST.yaml
-    delete:
-      $ref: ins_api/paths/user-v2-users-DELETE.yaml
-  /v2/users/{id}:
-    get:
-      $ref: ins_api/paths/user-v2-users-id-GET.yaml
-    patch:
-      $ref: ins_api/paths/user-data-v2-users-id-PATCH.yaml
-  /v2/users/{id}/params:
-    get:
-      $ref: ins_api/paths/user-params-v2-users-id-params-GET.yaml
-    post:
-      $ref: ins_api/paths/create-params-v2-users-id-params-POST.yaml
-    delete:
-      $ref: ins_api/paths/params-v2-users-id-params-DELETE.yaml
-    patch:
-      $ref: ins_api/paths/user-params-v2-users-id-params-PATCH.yaml
 components:
   securitySchemes:
     $ref: common/security-schemes.yaml
