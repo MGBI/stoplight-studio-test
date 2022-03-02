@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.209
+  version: 1.0.215
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -179,15 +179,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - reports_iapi
-  - updates_iapi
-  - announcements_iapi
-  - monitors_iapi
-  - filters_iapi
-  - notifications_iapi
   - dicts_iapi
+  - monitors_iapi
+  - notifications_iapi
+  - announcements_iapi
+  - filters_iapi
   - params_iapi
   - users_iapi
+  - reports_iapi
+  - updates_iapi
 paths:
   /v2/filters:
     get:
@@ -486,12 +486,7 @@ paths:
       tags:
       - users_iapi
       summary: Get /v2/users/me
-      description: 'Get actual user info.
-
-        User token is required.
-
-
-        Not need admin flag to use this endpoint.'
+      description: "Zwraca aktualne informacje o u\u017Cytkowniku"
       operationId: get_current_user_v2_users_me_get
       parameters:
       - required: false
@@ -15625,6 +15620,13 @@ paths:
         name: id
         in: path
         description: "Unikalny identyfikator og\u0142oszenia"
+      - required: false
+        schema:
+          title: Append First Entry
+          type: boolean
+          default: false
+        name: append_first_entry
+        in: query
       - required: false
         schema:
           title: Authorization
