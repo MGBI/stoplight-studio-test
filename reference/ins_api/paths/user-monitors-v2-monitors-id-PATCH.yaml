@@ -53,7 +53,7 @@ responses:
         schema:
           $ref: '#/components/schemas/Error'
   '404':
-    description: Not Found
+    description: Nie znaleziono
     content:
       application/json:
         schema:

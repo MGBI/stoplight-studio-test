@@ -25,7 +25,7 @@ responses:
   '204':
     description: Wynik usuwania monitoringów
   '400':
-    description: Bad Request
+    description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:
