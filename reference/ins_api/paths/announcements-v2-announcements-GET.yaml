@@ -410,6 +410,14 @@ description: |-
   W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
   zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
   kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
+
+  Zapytanie może zostać wykonane, gdy całkowita liczba zapytań po jego wykonaniu
+  nie będzie przekraczać wartości `api_requests_used` z parametrów usługi.
+
+  Dodatkowo, przy wykonywaniu zapytania archiwalnego, sumaryczna liczba ogłoszeń
+  wygenerowanych w ramach wszystkich stworzonych do tej pory archiwalnych
+  raportów i zapytań nie może przekroczyć wartości `credits_available`
+  z parametrów usługi.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

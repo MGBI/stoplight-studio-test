@@ -42,8 +42,11 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Usuwa monitoringi o identyfikatorach przekazanych w parametrze ids w
-  query stringu (po przecinku).
+description: |-
+  Usuwa monitoringi o identyfikatorach przekazanych w kolejnych parametrach `ids`
+  w query stringu.
+
+  W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

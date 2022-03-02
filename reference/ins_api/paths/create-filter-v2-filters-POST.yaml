@@ -48,7 +48,12 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Tworzy nowy filtr przypisany do aktualnego użytkownika.
+description: |-
+  Tworzy nowy filtr przypisany do aktualnego użytkownika.
+
+  W parametrze `content` podajemy przynajmniej jeden identyfikator dowolnego
+  typu. Łączna liczba przekazanych w żądaniu identyfikatorów nie może przekraczać
+  wartości `filter_items_limit` z parametrów usługi.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

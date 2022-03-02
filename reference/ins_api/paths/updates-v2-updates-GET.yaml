@@ -57,7 +57,7 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Zwraca listę aktualizacji dla podanych parametrów z kolekcji `update_record`.
+description: Zwraca listę aktualizacji bazy ogłoszeń dla podanych parametrów.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

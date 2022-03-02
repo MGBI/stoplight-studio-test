@@ -58,7 +58,13 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Modyfikuje monitoring o podanym id.
+description: |-
+  Modyfikuje monitoring o podanym `id`.
+
+  W parametrze `emails` podajemy przynajmniej jeden adres e-mail, na który będą
+  wysyłane powiadomienia o nowych ogłoszeniach w ramach monitoringu.
+  Liczba adresów e-mail nie może przekraczać wartości `monitors_emails_limit`
+  z parametrów usługi.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

@@ -52,8 +52,7 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Zwraca powiadomienie o podanym id, jeżeli monitor monitor_id należy do
-  aktualnego użytkownika.
+description: Zwraca powiadomienie o podanym `id`.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

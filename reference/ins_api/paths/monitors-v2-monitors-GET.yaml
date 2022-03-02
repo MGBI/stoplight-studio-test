@@ -52,7 +52,11 @@ responses:
       application/json:
         schema:
           $ref: '#/components/schemas/Error'
-description: Zwraca listę monitorów przypisanych do aktualnego użytkownika.
+description: |-
+  Zwraca listę monitoringów przypisanych do aktualnego użytkownika.
+
+  Aby ograniczyć listę zwracanych pól, warto ustawić parametr `exclude`
+  na listę pól, które nie są wymagane w odpowiedzi, np. `["notifications"]`.
 components:
   schemas:
     $ref: ../../common/schemas.yaml
