@@ -2,7 +2,7 @@ Interfejs programistyczny RDF dostępny w serwisie iMSiG.pl umożliwia pobierani
 przetworzonych danych finansowych ze sprawozdań złożonych w Repozytorium
 Dokumentów Finansowych Krajowego Rejestru Sądowego.
 
-## Źródło danych
+## Źródło danych dla sprawozdań
 Począwszy od 1 października 2018 r. sprawozdania finansowe podmiotów
 prowadzących księgi rachunkowe muszą być sporządzone w ustrukturyzowanym
 logicznie formacie XML (*Extensible Markup Format*). Struktury logiczne i format
