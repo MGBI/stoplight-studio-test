@@ -14,7 +14,7 @@ Słowa kluczowe:
 * Krajowy Rejestr Zadłużonych API (KRZ API)
 
 
-## Źródło danych
+## Źródło danych w API
 Monitor Sądowy i Gospodarczy (MSiG) to oficjalny dziennik urzędowy, w którym publikowane
 są ogłoszenia sądowe m.in. na podstawie przepisów kodeksu spółek handlowych, kodeksu
 postępowania cywilnego i prawa upadłościowego. Nowe numery dziennika są udostępniane
@@ -25,7 +25,7 @@ w którym gromadzone są wszystkie informacje i dokumenty dotyczące przebiegu p
 upadłościowych i restrukturyzacyjnych prowadzonych przez polskie sądy (od 1 grudnia 2021 r.).
 
 
-## Ustrukturyzowane informacje
+## Ustrukturyzowane informacje w API
 Format pliku, w jakim udostępniany jest Monitor Sądowy i Gospodarczy, nie umożliwia
 łatwego wyszukiwania ogłoszeń dotyczących poszczególnych osób fizycznych lub podmiotów.
 Treść ogłoszeń jest nieustrukturyzowana, co uniemożliwia dalsze przetwarzanie zawartych
@@ -39,7 +39,7 @@ Aby sprawdzić, jakie ogłoszenia publikowane są w MSiG, przejdź na [stronę g
 https://www.imsig.pl).
 
 
-## Masowy dostęp
+## Masowy dostęp w API
 Wyszukiwarka ogłoszeń dostępna na stronie Ministerstwa Sprawiedliwości nie jest
 przeznaczona do masowego dostępu do bazy ogłoszeń. Nie zostało również
 udostępnione oficjalne API do integracji z systemami teleinformatycznymi.
