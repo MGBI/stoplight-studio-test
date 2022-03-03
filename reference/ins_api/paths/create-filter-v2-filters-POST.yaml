@@ -23,31 +23,48 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/FiltersModel'
+          items:
+            $ref: '#/components/schemas/FiltersModel'
   '400':
     description: Niewłaściwy format zapytania
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/Error'
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/Error'
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
   '403':
     description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/Error'
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
   '429':
     description: Wykorzystany limit zapytań do API
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/Error'
+          example:
+            details: Error Description
+            error: Too Many Requests
+          items:
+            $ref: '#/components/schemas/Error'
 description: |-
   Tworzy nowy filtr przypisany do aktualnego użytkownika.
 

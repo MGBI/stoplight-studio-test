@@ -6,6 +6,7 @@ import json
 import yaml
 import sys
 import os
+import http
 from collections import defaultdict
 
 V_SUFFIX = "_iapi"
@@ -69,15 +70,31 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                             objs = [(old_item, new_item)]
 
                             for old, new in objs:
-                                for label in ["description"]:
-                                    if old is not None and new is not None and old.get(
-                                            label) is not None:
-                                        new[label] = old[label]
+                                for label in ["description", "content"]:
+                                    if label == "content":
+                                        content_schema = new.get(label, {}).get(
+                                            "application/json", {}).get("schema", {})
+                                        if new_code != "200":
+                                            content_schema["example"] = {
+                                                "details": "Error Description",
+                                                "error": http.HTTPStatus(int(new_code)).phrase
+                                            }
+                                        if not content_schema.get("items"):
+                                            content_schema["items"] = {
+                                                "$ref": content_schema.get("$ref")
+                                            }
+                                            if content_schema.get("$ref"):
+                                                del content_schema["$ref"]
+                                    else:
+                                        if old is not None and new is not None and old.get(
+                                                label) is not None:
+                                            new[label] = old[label]
 
     # here we remove admin and internal tags from paths field in new_openapi
     wanted_paths = defaultdict(dict)
     for path, methods in new_openapi["paths"].items():
         for method, endpoint in methods.items():
+            # TODO: add types
             if "internal" not in endpoint["tags"] \
                     and "admin" not in endpoint["tags"]:
                 wanted_paths[path][method] = endpoint

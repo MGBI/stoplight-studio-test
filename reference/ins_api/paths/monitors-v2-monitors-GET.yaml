@@ -37,19 +37,31 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/Error'
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/Error'
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
   '403':
     description: Nieudana autoryzacja dostępu do API
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/Error'
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
 description: |-
   Zwraca listę monitoringów przypisanych do aktualnego użytkownika.
 
