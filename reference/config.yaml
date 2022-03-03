@@ -14,3 +14,14 @@ tag-to-directory:
   announcements: msig
   "*_iapi": ins_api
   "*": other
+# x-tagGroups order
+tags-order:
+  - announcements_iapi
+  - updates_iapi
+  - filters_iapi
+  - reports_iapi
+  - monitors_iapi
+  - notifications_iapi
+  - users_iapi
+  - params_iapi
+  - dicts_iapi

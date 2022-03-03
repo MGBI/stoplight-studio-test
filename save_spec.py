@@ -182,6 +182,17 @@ def save_spec(api_file_path, spec_directory):
         tag["description"] = save(file_path, tag.get("description", ""))
         spec["tags"].append(tag)
 
+    # x-tagGroups
+    tags_order = config["tags-order"]
+    for group in api["x-tagGroups"]:
+        tags = []
+        for tag in tags_order:
+            if tag in group["tags"]:
+                group["tags"].remove(tag)
+                tags.append(tag)
+        tags.extend(group["tags"])
+        group["tags"] = tags
+
     # COMPONENTS
     spec["components"] = save_components(config, spec["components"])
 
