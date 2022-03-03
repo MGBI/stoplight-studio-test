@@ -103,6 +103,7 @@ properties:
     title: Append First Entry
     type: boolean
     default: true
+additionalProperties: false
 example:
   custom_categories:
   - K
