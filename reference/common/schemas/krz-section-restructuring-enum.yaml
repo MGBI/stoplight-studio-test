@@ -1,3 +1,4 @@
+title: KrzSectionRestructuringEnum
 enum:
 - 0
 - 1
@@ -31,4 +32,3 @@ description: |-
     | `8` | Układ |
     | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
     | `10` | Inne |</details>
-title: KrzSectionRestructuringEnum

@@ -1,17 +1,14 @@
+title: InfoReports
 required:
 - id
 - label
 type: object
 properties:
   id:
+    title: Id
     type: integer
     description: Unikalny identyfikator
-    title: Id
   label:
+    title: Label
     type: string
     description: Etykieta
-    title: Label
-title: InfoReports
-example:
-  id: 1
-  label: w przygotowaniu

@@ -1,31 +1,38 @@
+title: CreateReportModel
+required:
+- type
+- name
+- query
+- file_format
+- file_password
+type: object
 properties:
-  file_password:
-    type: string
-    description: Hasło do pliku raportu
-    title: File Password
+  type:
+    $ref: ../schemas.yaml#/TypesEnum
+    enum:
+    - 0
+    - 1
+    type: integer
+    description: |-
+      Rodzaj raportu.
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `0` | Aktualny |
+        | `1` | Archiwalny |</details>
+    title: Types
   name:
+    title: Name
     type: string
     description: Nazwa raportu
-    title: Name
-  file_format:
-    allOf:
-    - type: integer
-      description: |-
-        Format pliku raportu.
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          | Wartość | Nazwa |
-          |-|-|
-          | `1` | Csv |
-          | `2` | Xlsx |
-          | `3` | Xml |
-          | `4` | Json |
-          | `5` | Def |</details>
-    title: Format
   query:
-    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
     title: Query
+    anyOf:
+    - $ref: ../schemas.yaml#/QueryRaportByDateRangeModel
+    - $ref: ../schemas.yaml#/QueryRaportByNotificationModel
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
     required:
     - from_date
     - to_date
@@ -143,24 +150,11 @@ properties:
       append_first_entry: true
       to_date: '2021-11-04'
       filter_id: 61ded2f8aff2de52365d891e
-  type:
-    enum:
-    - 0
-    - 1
-    type: integer
-    description: |-
-      Rodzaj raportu.
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Wartość | Nazwa |
-        |-|-|
-        | `0` | Aktualny |
-        | `1` | Archiwalny |</details>
-    title: Types
   custom_content:
-    items: {}
+    title: Custom Content
     type: array
+    items: {}
+    default: []
     description: |-
       Identyfikatory pól raportu wybranych przez użytkownika
       <details>
@@ -228,18 +222,30 @@ properties:
       | `content.text` | Treść ogłoszenia (tekst) |
       | `content.html` | Treść ogłoszenia (HTML) |
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
-    title: Custom Content
-required:
-- type
-- name
-- query
-- file_format
-- file_password
-type: object
+  file_format:
+    $ref: ../schemas.yaml#/Format
+    allOf:
+    - type: integer
+      description: |-
+        Format pliku raportu.
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa |
+          |-|-|
+          | `1` | Csv |
+          | `2` | Xlsx |
+          | `3` | Xml |
+          | `4` | Json |
+          | `5` | Def |</details>
+    title: Format
+  file_password:
+    title: File Password
+    type: string
+    description: Hasło do pliku raportu
 example:
-  file_password: mgbi2021
+  type: 0
   name: example raport
-  file_format: 3
   query:
     custom_categories:
     - K
@@ -247,6 +253,6 @@ example:
     append_first_entry: true
     to_date: '2021-11-04'
     filter_id: 61ded2f8aff2de52365d891e
-  type: 0
   custom_content: []
-title: CreateReportModel
+  file_format: 3
+  file_password: mgbi2021

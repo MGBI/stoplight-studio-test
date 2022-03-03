@@ -1,3 +1,4 @@
+title: MsigSectionInsolvencyEnum
 enum:
 - 1
 - 2
@@ -25,4 +26,3 @@ description: |-
     | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
     | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
     | `9` | Inne |</details>
-title: MsigSectionInsolvencyEnum

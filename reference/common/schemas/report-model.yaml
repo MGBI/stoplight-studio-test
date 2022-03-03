@@ -1,105 +1,51 @@
-example:
-  status: 1
-  file_password: mgbi2021
-  creation_datetime: '2022-02-18T10:12:27.262422'
-  name: example raport
-  credits_used: 0
-  file_format: 3
-  downloads:
-  - download_datetime: '2021-11-12T15:39:29.584Z'
-  id: exampleID
-  progress: 0
-  query:
-    custom_categories:
-    - K
-    from_date: '2021-11-02'
-    append_first_entry: true
-    to_date: '2021-11-04'
-    filter_id: 61ded2f8aff2de52365d891e
-  type: 0
-  custom_content: []
+title: ReportModel
 required:
 - id
 - type
 - name
 - query
+- custom_content
+- status
+- progress
 - file_format
 - file_password
 - credits_used
+- creation_datetime
+- downloads
 type: object
 properties:
-  status:
-    allOf:
-    - type: integer
-      description: |-
-        Aktualny status generowania pliku raportu
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          | Wartość | Nazwa |
-          |-|-|
-          | `0` | Niedostępny |
-          | `1` | W przygotowaniu |
-          | `2` | Gotowe |</details>
-      title: ReportStatusEnum
-  file_password:
+  id:
+    title: Id
     type: string
-    description: Hasło do pliku raportu
-    title: File Password
-  creation_datetime:
-    format: date-time
-    type: string
-    description: Data i czas utworzenia raportu
-    title: Creation Datetime
-  name:
-    type: string
-    description: Nazwa raportu
-    title: Name
-  credits_used:
-    type: integer
-    description: Liczba punktów wykorzystanych do utworzenia raportu
-    title: Credits Used
-  file_format:
+    minLength: 24
+    description: Unikalny identyfikator raportu
+    maxLength: 24
+  type:
+    $ref: ../schemas.yaml#/TypesEnum
+    enum:
+    - 0
+    - 1
     type: integer
     description: |-
-      Format pliku raportu.
+      Rodzaj raportu.
       <details>
         <summary>Pokaż możliwe opcje</summary>
 
         | Wartość | Nazwa |
         |-|-|
-        | `1` | Csv |
-        | `2` | Xlsx |
-        | `3` | Xml |
-        | `4` | Json |
-        | `5` | Def |</details>
-    title: Format
-  downloads:
-    items:
-      type: object
-    type: array
-    description: Historia pobrań raportu
-    title: Downloads
-  records_count:
-    description: Liczba ogłoszeń w wygenerowanym raporcie
-    title: Records Count
-    type: integer
-    nullable: true
-  id:
-    minLength: 24
-    title: Id
+        | `0` | Aktualny |
+        | `1` | Archiwalny |</details>
+    title: TypesEnum
+  name:
+    title: Name
     type: string
-    description: Unikalny identyfikator raportu
-    maxLength: 24
-  progress:
-    title: Progress
-    minimum: 0
-    type: integer
-    description: Procentowy postęp generowania pliku raportu w skali 0-100
-    maximum: 100
+    description: Nazwa raportu
   query:
-    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
     title: QueryBaseModel
+    anyOf:
+    - $ref: ../schemas.yaml#/QueryRaportByDateRangeModel
+    - $ref: ../schemas.yaml#/QueryRaportByNotificationModel
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
     required:
     - from_date
     - to_date
@@ -217,24 +163,10 @@ properties:
       append_first_entry: true
       to_date: '2021-11-04'
       filter_id: 61ded2f8aff2de52365d891e
-  type:
-    enum:
-    - 0
-    - 1
-    type: integer
-    description: |-
-      Rodzaj raportu.
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Wartość | Nazwa |
-        |-|-|
-        | `0` | Aktualny |
-        | `1` | Archiwalny |</details>
-    title: TypesEnum
   custom_content:
-    items: {}
+    title: Custom Content
     type: array
+    items: {}
     description: |-
       Identyfikatory pól raportu wybranych przez użytkownika
       <details>
@@ -302,5 +234,84 @@ properties:
       | `content.text` | Treść ogłoszenia (tekst) |
       | `content.html` | Treść ogłoszenia (HTML) |
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
-    title: Custom Content
-title: ReportModel
+  status:
+    $ref: ../schemas.yaml#/ReportStatusEnum
+    allOf:
+    - type: integer
+      description: |-
+        Aktualny status generowania pliku raportu
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa |
+          |-|-|
+          | `0` | Niedostępny |
+          | `1` | W przygotowaniu |
+          | `2` | Gotowe |</details>
+      title: ReportStatusEnum
+  progress:
+    title: Progress
+    type: integer
+    minimum: 0
+    description: Procentowy postęp generowania pliku raportu w skali 0-100
+    maximum: 100
+  file_format:
+    $ref: ../schemas.yaml#/Format
+    type: integer
+    description: |-
+      Format pliku raportu.
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `1` | Csv |
+        | `2` | Xlsx |
+        | `3` | Xml |
+        | `4` | Json |
+        | `5` | Def |</details>
+    title: Format
+  file_password:
+    title: File Password
+    type: string
+    description: Hasło do pliku raportu
+  credits_used:
+    title: Credits Used
+    type: integer
+    description: Liczba punktów wykorzystanych do utworzenia raportu
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas utworzenia raportu
+  records_count:
+    title: Records Count
+    type: integer
+    nullable: true
+    description: Liczba ogłoszeń w wygenerowanym raporcie
+  downloads:
+    title: Downloads
+    type: array
+    items:
+      type: object
+    description: Historia pobrań raportu
+example:
+  id: exampleID
+  type: 0
+  name: example raport
+  query:
+    custom_categories:
+    - K
+    from_date: '2021-11-02'
+    append_first_entry: true
+    to_date: '2021-11-04'
+    filter_id: 61ded2f8aff2de52365d891e
+  custom_content: []
+  status: 1
+  progress: 0
+  file_format: 3
+  file_password: mgbi2021
+  credits_used: 0
+  creation_datetime: '2022-02-18T10:12:27.262422'
+  downloads:
+  - download_datetime: '2021-11-12T15:39:29.584Z'

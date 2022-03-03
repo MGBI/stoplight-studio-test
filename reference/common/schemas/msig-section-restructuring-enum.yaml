@@ -1,3 +1,4 @@
+title: MsigSectionRestructuringEnum
 enum:
 - 20
 - 21
@@ -69,4 +70,3 @@ description: |-
     | `48` | Zmiana nadzorcy lub zarządcy |
     | `49` | Zmiana sędziego komisarza |
     | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
-title: MsigSectionRestructuringEnum

@@ -1,3 +1,4 @@
+title: MsigChapterEnum
 enum:
 - 0
 - 1
@@ -11,4 +12,3 @@ description: |-
     |-|-|
     | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
     | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
-title: MsigChapterEnum

@@ -1,20 +1,24 @@
+title: UpdateUserModel
+type: object
 properties:
-  is_admin:
-    type: boolean
-    description: Czy użytkownik jest adminem?
-    title: Is Admin
+  email:
+    title: Email
+    type: string
+    format: email
+    description: Adres e-mail użytkownika
   is_active:
+    title: Is Active
     type: boolean
     description: Czy użytkownik jest aktywny?
-    title: Is Active
-  email:
-    format: email
+  is_admin:
+    title: Is Admin
+    type: boolean
+    description: Czy użytkownik jest adminem?
+  deactivation_datetime:
+    title: Deactivation Datetime
     type: string
-    description: Adres e-mail użytkownika
-    title: Email
-type: object
+    format: date-time
 example:
-  is_admin: false
-  is_active: true
   email: abc@def.pl
-title: UpdateUserModel
+  is_active: true
+  is_admin: false

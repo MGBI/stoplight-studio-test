@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.221
+  version: 1.0.227
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -248,15 +248,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - monitors_iapi
   - notifications_iapi
+  - filters_iapi
+  - monitors_iapi
   - updates_iapi
-  - users_iapi
+  - params_iapi
   - dicts_iapi
   - announcements_iapi
-  - params_iapi
-  - filters_iapi
   - reports_iapi
+  - users_iapi
 paths:
   /v2/filters:
     get:
@@ -16153,256 +16153,22 @@ components:
       name: Authorization
   schemas:
     AnnouncementModel:
-      example:
-        content:
-          text: Postanowieniem z dnia ...
-          html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
-        proceeding:
-          signatures:
-          - example signature
-          court_department: "V Wydzia\u0142 Gospodarczy"
-          court_name: "S\u0105d Rejonowy w XXX"
-        krz_entry:
-          chapter: 1
-          issue_date: '2021-12-08T00:00:00Z'
-          section: 20
-          signature: 20211208/00001
-        id: '000000000000000000000000'
-        msig_entry:
-          chapter: 0
-          position_number: '00000'
-          issue_date: '2021-11-04T00:00:00'
-          signature: BMSiG-00000/2021
-          url: http://www.imsig.pl/pozycja/2021/214/00000
-          section: 9
-          yearly_number: '214'
-        order:
-          order_date: '2021-09-01T00:00:00'
-          expiration_period: 7
-          expiration_date: '2021-11-11T00:00:00'
-        entity:
-        - info:
-            first_name: Jan
-            last_name: Kowalski
-            ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-            cleaned_name: Jan Kowalski
-            legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015Bci\
-              \ gospodarczej"
-          numbers: {}
-          address: {}
+      title: AnnouncementModel
       required:
       - id
-      - proceeding
-      - entity
-      - content
-      - custom_categories
-      - order
       type: object
       properties:
-        proceeding:
-          items:
-            required:
-            - court_name
-            - court_department
-            - signatures
-            - commissioner_name
-            - commissioner_deputy_name
-            - administrator_name
-            - administrator_function
-            type: object
-            properties:
-              signatures:
-                items:
-                  type: string
-                type: array
-                description: "Sygnatury post\u0119powania"
-              commissioner_name:
-                type: string
-                description: "Imi\u0119 i nazwisko s\u0119dziego komisarza"
-                nullable: true
-              court_department:
-                type: string
-                description: "Nazwa wydzia\u0142u"
-              administrator_zip_code:
-                type: string
-                description: Kod pocztowy w adresie nadzorcy
-              administrator_function:
-                type: string
-                description: Funkcja nadzorcy
-              court_name:
-                type: string
-                description: "Nazwa s\u0105du"
-              administrator_name:
-                type: string
-                description: "Imi\u0119 i nazwisko nadzorcy"
-              commissioner_deputy_name:
-                type: string
-                description: "Imi\u0119 i nazwisko zast\u0119pcy s\u0119dziego komisarza"
-                nullable: true
-              administrator_town:
-                type: string
-                description: "Miejscowo\u015B\u0107 w adresie nadzorcy"
-              administrator_licence_number:
-                type: integer
-                description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
-              administrator_address:
-                type: string
-                description: Adres pocztowy nadzorcy
-              administrator_source_url:
-                type: string
-                description: "Link do \u017Ar\xF3d\u0142a danych nadzorcy"
-          type: array
-          description: "Informacje o post\u0119powaniu"
-          title: Proceeding
-        krz_entry:
-          items:
-            required:
-            - chapter
-            - section
-            - signature
-            - issue_date
-            - url
-            type: object
-            properties:
-              chapter:
-                type: integer
-                description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ rozdzia\u0142u |\n  |-|-|\n  | `0` | Post\u0119powanie restrukturyzacyjne\
-                  \ |\n  | `1` | Post\u0119powanie upad\u0142o\u015Bciowe |\n  | `2`\
-                  \ | Zakaz prowadzenia dzia\u0142alno\u015Bci gospodarczej |</details>"
-              url:
-                type: string
-                description: "Link do og\u0142oszenia w serwisie KRZ"
-                format: uri
-              section:
-                type: integer
-                description: "Sekcja KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
-                  liwe opcje</summary>\n\n  <b>Post\u0119powanie restrukturyzacyjne</b>\n\
-                  \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `0` | Dzie\u0144\
-                  \ uk\u0142adowy |\n  | `1` | Wniosek restrukturyzacyjny z\u0142\
-                  o\u017Cony przez d\u0142u\u017Cnika |\n  | `2` | Zabezpieczenie\
-                  \ maj\u0105tku |\n  | `3` | Otwarcie post\u0119powania restrukturyzacyjnego\
-                  \ |\n  | `4` | Nadzorca s\u0105dowy/zarz\u0105dca/nadzorca wykonania\
-                  \ uk\u0142adu |\n  | `5` | Spis wierzytelno\u015Bci/spis wierzytelno\u015B\
-                  ci spornych |\n  | `6` | Zgromadzenie wierzycieli |\n  | `7` | Sprawozdania\
-                  \ |\n  | `8` | Uk\u0142ad |\n  | `9` | Zako\u0144czenie/umorzenie\
-                  \ post\u0119powania restrukturyzacyjnego |\n  | `10` | Inne |\n\n\
-                  \  <b>Post\u0119powanie upad\u0142o\u015Bciowe</b>\n\n  | Warto\u015B\
-                  \u0107 | Nazwa sekcji |\n  |-|-|\n  | `20` | Wniosek o og\u0142\
-                  oszenie upad\u0142o\u015Bci z\u0142o\u017Cony przez d\u0142u\u017C\
-                  nika |\n  | `21` | Zabezpieczenie maj\u0105tku |\n  | `22` | Og\u0142\
-                  oszenie upad\u0142o\u015Bci/oddalenie wniosku |\n  | `23` | Wt\xF3\
-                  rne post\u0119powanie upad\u0142o\u015Bciowe |\n  | `24` | Uznanie\
-                  \ orzeczenia o wszcz\u0119ciu zagranicznego post\u0119powania upad\u0142\
-                  o\u015Bciowego |\n  | `25` | Przygotowana likwidacja |\n  | `26`\
-                  \ | Syndyk/zast\u0119pca syndyka/syndyk tymczasowy |\n  | `27` |\
-                  \ Zgromadzenie wierzycieli |\n  | `28` | Masa upad\u0142o\u015B\
-                  ci |\n  | `29` | Lista wierzytelno\u015Bci |\n  | `30` | Plan podzia\u0142\
-                  u |\n  | `31` | Zako\u0144czenie /umorzenie/uchylenie post\u0119\
-                  powania upad\u0142o\u015Bciowego |\n  | `32` | Plan sp\u0142aty/umorzenie\
-                  \ zobowi\u0105za\u0144 |\n  | `33` | Uk\u0142ad w upad\u0142o\u015B\
-                  ci |\n  | `34` | Inne |\n\n  <b>Zakaz prowadzenia dzia\u0142alno\u015B\
-                  ci gospodarczej</b>\n\n  | Warto\u015B\u0107 | Nazwa sekcji |\n\
-                  \  |-|-|\n  | `40` | Orzeczenie zakazu prowadzenia dzia\u0142alno\u015B\
-                  ci gospodarczej |\n  | `41` | Inne |</details>"
-              issue_date:
-                type: string
-                description: "Data publikacji og\u0142oszenia w KRZ"
-                format: date
-              signature:
-                type: string
-                description: "Sygnatura og\u0142oszenia w KRZ"
-          type: array
-          description: "Informacje dotycz\u0105ce publikacji og\u0142oszenia w KRZ"
-          title: Krz Entry
-        msig_entry:
-          items:
-            required:
-            - chapter
-            - section
-            - signature
-            - issue_date
-            - yearly_number
-            - position_number
-            - url
-            type: object
-            properties:
-              chapter:
-                type: integer
-                description: "Rozdzia\u0142 MSiG\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ rozdzia\u0142u |\n  |-|-|\n  | `0` | Og\u0142oszenia wymagane\
-                  \ przez prawo upad\u0142o\u015Bciowe |\n  | `1` | Og\u0142oszenia\
-                  \ wymagane przez prawo restrukturyzacyjne |</details>"
-              position_number:
-                type: string
-                description: Numer pozycji MSiG
-              issue_date:
-                type: string
-                description: "Data publikacji og\u0142oszenia w MSiG"
-                format: date
-              signature:
-                type: string
-                description: "Sygnatura og\u0142oszenia w MSiG"
-              url:
-                type: string
-                description: "Link do og\u0142oszenia w serwisie imsig.pl"
-                format: uri
-              section:
-                type: integer
-                description: "Sekcja MSiG\n<details>\n  <summary>Poka\u017C mo\u017C\
-                  liwe opcje</summary>\n\n  <b>Og\u0142oszenia wymagane przez prawo\
-                  \ upad\u0142o\u015Bciowe</b>\n\n  | Warto\u015B\u0107 | Nazwa sekcji\
-                  \ |\n  |-|-|\n  | `1` | Postanowienie o og\u0142oszeniu upad\u0142\
-                  o\u015Bci |\n  | `2` | Obwieszczenie o zatwierdzeniu uk\u0142adu\
-                  \ |\n  | `3` | Og\u0142oszenie o sporz\u0105dzeniu i przekazaniu\
-                  \ s\u0119dziemu komisarzowi listy wierzytelno\u015Bci |\n  | `4`\
-                  \ | Og\u0142oszenie o mo\u017Cliwo\u015Bci przegl\u0105dania planu\
-                  \ podzia\u0142u |\n  | `5` | Postanowienie o umorzeniu post\u0119\
-                  powania upad\u0142o\u015Bciowego |\n  | `6` | Postanowienie o zako\u0144\
-                  czeniu post\u0119powania upad\u0142o\u015Bciowego |\n  | `7` | Og\u0142\
-                  oszenie o z\u0142o\u017Ceniu o\u015Bwiadczenia o wszcz\u0119ciu\
-                  \ post\u0119powania naprawczego |\n  | `8` | Og\u0142oszenie o terminie\
-                  \ rozprawy zatwierdzaj\u0105cej uk\u0142ad |\n  | `9` | Inne |\n\
-                  \n  <b>Og\u0142oszenia wymagane przez prawo restrukturyzacyjne</b>\n\
-                  \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `20` | Dokonanie\
-                  \ zmian w spisie wierzytelno\u015Bci |\n  | `21` | Inne |\n  | `22`\
-                  \ | Odmowa otwarcia post\u0119powania restrukturyzacyjnego |\n \
-                  \ | `23` | Odmowa zatwierdzenia uk\u0142adu |\n  | `24` | Og\u0142\
-                  oszenie przetargu lub konkursu ofert na sprzeda\u017C maj\u0105\
-                  tku d\u0142u\u017Cnika |\n  | `25` | Okre\u015Blenie trybu i sposobu\
-                  \ g\u0142osowania nad uk\u0142adem |\n  | `26` | Otwarcie post\u0119\
-                  powania o zatwierdzenie uk\u0142adu |\n  | `27` | Otwarcie post\u0119\
-                  powania o zatwierdzenie uk\u0142adu w zwi\u0105zku z wyst\u0105\
-                  pieniem covid-19 |\n  | `28` | Otwarcie post\u0119powania o zmian\u0119\
-                  \ uk\u0142adu |\n  | `29` | Otwarcie post\u0119powania sanacyjnego\
-                  \ |\n  | `30` | Otwarcie post\u0119powania uk\u0142adowego |\n \
-                  \ | `31` | Otwarcie przyspieszonego post\u0119powania uk\u0142adowego\
-                  \ |\n  | `32` | Sprostowanie |\n  | `33` | Stwierdzenie wykonania\
-                  \ uk\u0142adu |\n  | `34` | Uchylenie uk\u0142adu |\n  | `35` |\
-                  \ Umorzenie post\u0119powania |\n  | `36` | Wyznaczenie nadzorcy\
-                  \ lub zarz\u0105dcy |\n  | `37` | Wyznaczenie terminu rozprawy w\
-                  \ celu rozpoznania uk\u0142adu |\n  | `38` | Wyznaczenie terminu\
-                  \ zgromadzenia wierzycieli |\n  | `39` | Zabezpieczenie maj\u0105\
-                  tku d\u0142u\u017Cnika |\n  | `40` | Zako\u0144czenie post\u0119\
-                  powania |\n  | `41` | Zatwierdzenie spisu wierzytelno\u015Bci |\n\
-                  \  | `42` | Zatwierdzenie uk\u0142adu |\n  | `43` | Z\u0142o\u017C\
-                  enie planu restrukturyzacyjnego |\n  | `44` | Z\u0142o\u017Cenie\
-                  \ spisu wierzytelno\u015Bci |\n  | `45` | Z\u0142o\u017Cenie sprawozdania\
-                  \ z wykonania planu restrukturyzacyjnego lub uk\u0142adu |\n  |\
-                  \ `46` | Z\u0142o\u017Cenie uzupe\u0142niaj\u0105cego spisu wierzytelno\u015B\
-                  ci |\n  | `47` | Z\u0142o\u017Cenie wniosku o zatwierdzenie uk\u0142\
-                  adu |\n  | `48` | Zmiana nadzorcy lub zarz\u0105dcy |\n  | `49`\
-                  \ | Zmiana s\u0119dziego komisarza |\n  | `50` | Zmiana terminu\
-                  \ zgromadzenia wierzycieli |</details>"
-              yearly_number:
-                type: string
-                description: Numer wydania MSiG
-          type: array
-          description: "Informacje dotycz\u0105ce publikacji og\u0142oszenia w MSiG"
-          title: Msig Entry
+        id:
+          title: Id
+          type: string
+          description: "Unikalny identyfikator og\u0142oszenia"
         entity:
+          title: Entity
+          anyOf:
+          - type: array
+            items:
+              type: object
+          - type: object
           items:
             required:
             - info
@@ -16532,35 +16298,64 @@ components:
                 description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
           type: array
           description: "Lista podmiot\xF3w, kt\xF3rych dotyczy og\u0142oszenie"
-          title: Entity
-        content:
+        proceeding:
+          title: Proceeding
+          type: array
           items:
             required:
-            - text
-            - html
+            - court_name
+            - court_department
+            - signatures
+            - commissioner_name
+            - commissioner_deputy_name
+            - administrator_name
+            - administrator_function
             type: object
             properties:
-              text:
+              signatures:
+                items:
+                  type: string
+                type: array
+                description: "Sygnatury post\u0119powania"
+              commissioner_name:
                 type: string
-                description: "Tre\u015B\u0107 og\u0142oszenia w formacie tekstowym"
-              html:
+                description: "Imi\u0119 i nazwisko s\u0119dziego komisarza"
+                nullable: true
+              court_department:
                 type: string
-                description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
-          type: array
-          description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
-          title: Content
-        custom_categories:
-          items:
-            type: string
-            description: An enumeration.
-            title: CategoriesEnum
-          type: array
-          description: Lista kategorii
-        id:
-          type: string
-          description: "Unikalny identyfikator og\u0142oszenia"
-          title: Id
+                description: "Nazwa wydzia\u0142u"
+              administrator_zip_code:
+                type: string
+                description: Kod pocztowy w adresie nadzorcy
+              administrator_function:
+                type: string
+                description: Funkcja nadzorcy
+              court_name:
+                type: string
+                description: "Nazwa s\u0105du"
+              administrator_name:
+                type: string
+                description: "Imi\u0119 i nazwisko nadzorcy"
+              commissioner_deputy_name:
+                type: string
+                description: "Imi\u0119 i nazwisko zast\u0119pcy s\u0119dziego komisarza"
+                nullable: true
+              administrator_town:
+                type: string
+                description: "Miejscowo\u015B\u0107 w adresie nadzorcy"
+              administrator_licence_number:
+                type: integer
+                description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
+              administrator_address:
+                type: string
+                description: Adres pocztowy nadzorcy
+              administrator_source_url:
+                type: string
+                description: "Link do \u017Ar\xF3d\u0142a danych nadzorcy"
+          description: "Informacje o post\u0119powaniu"
         order:
+          title: Order
+          type: array
           items:
             required:
             - order_date
@@ -16580,76 +16375,280 @@ components:
                 type: string
                 description: "Data ko\u0144cowa okresu do dzia\u0142ania"
                 nullable: true
-          type: array
           description: "Informacje o postanowieniu, kt\xF3rego dotyczy og\u0142oszenie"
-          title: Order
-      title: AnnouncementModel
+        msig_entry:
+          title: Msig Entry
+          type: array
+          items:
+            required:
+            - chapter
+            - section
+            - signature
+            - issue_date
+            - yearly_number
+            - position_number
+            - url
+            type: object
+            properties:
+              chapter:
+                type: integer
+                description: "Rozdzia\u0142 MSiG\n<details>\n  <summary>Poka\u017C\
+                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
+                  \ rozdzia\u0142u |\n  |-|-|\n  | `0` | Og\u0142oszenia wymagane\
+                  \ przez prawo upad\u0142o\u015Bciowe |\n  | `1` | Og\u0142oszenia\
+                  \ wymagane przez prawo restrukturyzacyjne |</details>"
+              position_number:
+                type: string
+                description: Numer pozycji MSiG
+              issue_date:
+                type: string
+                description: "Data publikacji og\u0142oszenia w MSiG"
+                format: date
+              signature:
+                type: string
+                description: "Sygnatura og\u0142oszenia w MSiG"
+              url:
+                type: string
+                description: "Link do og\u0142oszenia w serwisie imsig.pl"
+                format: uri
+              section:
+                type: integer
+                description: "Sekcja MSiG\n<details>\n  <summary>Poka\u017C mo\u017C\
+                  liwe opcje</summary>\n\n  <b>Og\u0142oszenia wymagane przez prawo\
+                  \ upad\u0142o\u015Bciowe</b>\n\n  | Warto\u015B\u0107 | Nazwa sekcji\
+                  \ |\n  |-|-|\n  | `1` | Postanowienie o og\u0142oszeniu upad\u0142\
+                  o\u015Bci |\n  | `2` | Obwieszczenie o zatwierdzeniu uk\u0142adu\
+                  \ |\n  | `3` | Og\u0142oszenie o sporz\u0105dzeniu i przekazaniu\
+                  \ s\u0119dziemu komisarzowi listy wierzytelno\u015Bci |\n  | `4`\
+                  \ | Og\u0142oszenie o mo\u017Cliwo\u015Bci przegl\u0105dania planu\
+                  \ podzia\u0142u |\n  | `5` | Postanowienie o umorzeniu post\u0119\
+                  powania upad\u0142o\u015Bciowego |\n  | `6` | Postanowienie o zako\u0144\
+                  czeniu post\u0119powania upad\u0142o\u015Bciowego |\n  | `7` | Og\u0142\
+                  oszenie o z\u0142o\u017Ceniu o\u015Bwiadczenia o wszcz\u0119ciu\
+                  \ post\u0119powania naprawczego |\n  | `8` | Og\u0142oszenie o terminie\
+                  \ rozprawy zatwierdzaj\u0105cej uk\u0142ad |\n  | `9` | Inne |\n\
+                  \n  <b>Og\u0142oszenia wymagane przez prawo restrukturyzacyjne</b>\n\
+                  \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `20` | Dokonanie\
+                  \ zmian w spisie wierzytelno\u015Bci |\n  | `21` | Inne |\n  | `22`\
+                  \ | Odmowa otwarcia post\u0119powania restrukturyzacyjnego |\n \
+                  \ | `23` | Odmowa zatwierdzenia uk\u0142adu |\n  | `24` | Og\u0142\
+                  oszenie przetargu lub konkursu ofert na sprzeda\u017C maj\u0105\
+                  tku d\u0142u\u017Cnika |\n  | `25` | Okre\u015Blenie trybu i sposobu\
+                  \ g\u0142osowania nad uk\u0142adem |\n  | `26` | Otwarcie post\u0119\
+                  powania o zatwierdzenie uk\u0142adu |\n  | `27` | Otwarcie post\u0119\
+                  powania o zatwierdzenie uk\u0142adu w zwi\u0105zku z wyst\u0105\
+                  pieniem covid-19 |\n  | `28` | Otwarcie post\u0119powania o zmian\u0119\
+                  \ uk\u0142adu |\n  | `29` | Otwarcie post\u0119powania sanacyjnego\
+                  \ |\n  | `30` | Otwarcie post\u0119powania uk\u0142adowego |\n \
+                  \ | `31` | Otwarcie przyspieszonego post\u0119powania uk\u0142adowego\
+                  \ |\n  | `32` | Sprostowanie |\n  | `33` | Stwierdzenie wykonania\
+                  \ uk\u0142adu |\n  | `34` | Uchylenie uk\u0142adu |\n  | `35` |\
+                  \ Umorzenie post\u0119powania |\n  | `36` | Wyznaczenie nadzorcy\
+                  \ lub zarz\u0105dcy |\n  | `37` | Wyznaczenie terminu rozprawy w\
+                  \ celu rozpoznania uk\u0142adu |\n  | `38` | Wyznaczenie terminu\
+                  \ zgromadzenia wierzycieli |\n  | `39` | Zabezpieczenie maj\u0105\
+                  tku d\u0142u\u017Cnika |\n  | `40` | Zako\u0144czenie post\u0119\
+                  powania |\n  | `41` | Zatwierdzenie spisu wierzytelno\u015Bci |\n\
+                  \  | `42` | Zatwierdzenie uk\u0142adu |\n  | `43` | Z\u0142o\u017C\
+                  enie planu restrukturyzacyjnego |\n  | `44` | Z\u0142o\u017Cenie\
+                  \ spisu wierzytelno\u015Bci |\n  | `45` | Z\u0142o\u017Cenie sprawozdania\
+                  \ z wykonania planu restrukturyzacyjnego lub uk\u0142adu |\n  |\
+                  \ `46` | Z\u0142o\u017Cenie uzupe\u0142niaj\u0105cego spisu wierzytelno\u015B\
+                  ci |\n  | `47` | Z\u0142o\u017Cenie wniosku o zatwierdzenie uk\u0142\
+                  adu |\n  | `48` | Zmiana nadzorcy lub zarz\u0105dcy |\n  | `49`\
+                  \ | Zmiana s\u0119dziego komisarza |\n  | `50` | Zmiana terminu\
+                  \ zgromadzenia wierzycieli |</details>"
+              yearly_number:
+                type: string
+                description: Numer wydania MSiG
+          description: "Informacje dotycz\u0105ce publikacji og\u0142oszenia w MSiG"
+        krz_entry:
+          title: Krz Entry
+          type: array
+          items:
+            required:
+            - chapter
+            - section
+            - signature
+            - issue_date
+            - url
+            type: object
+            properties:
+              chapter:
+                type: integer
+                description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C\
+                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
+                  \ rozdzia\u0142u |\n  |-|-|\n  | `0` | Post\u0119powanie restrukturyzacyjne\
+                  \ |\n  | `1` | Post\u0119powanie upad\u0142o\u015Bciowe |\n  | `2`\
+                  \ | Zakaz prowadzenia dzia\u0142alno\u015Bci gospodarczej |</details>"
+              url:
+                type: string
+                description: "Link do og\u0142oszenia w serwisie KRZ"
+                format: uri
+              section:
+                type: integer
+                description: "Sekcja KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
+                  liwe opcje</summary>\n\n  <b>Post\u0119powanie restrukturyzacyjne</b>\n\
+                  \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `0` | Dzie\u0144\
+                  \ uk\u0142adowy |\n  | `1` | Wniosek restrukturyzacyjny z\u0142\
+                  o\u017Cony przez d\u0142u\u017Cnika |\n  | `2` | Zabezpieczenie\
+                  \ maj\u0105tku |\n  | `3` | Otwarcie post\u0119powania restrukturyzacyjnego\
+                  \ |\n  | `4` | Nadzorca s\u0105dowy/zarz\u0105dca/nadzorca wykonania\
+                  \ uk\u0142adu |\n  | `5` | Spis wierzytelno\u015Bci/spis wierzytelno\u015B\
+                  ci spornych |\n  | `6` | Zgromadzenie wierzycieli |\n  | `7` | Sprawozdania\
+                  \ |\n  | `8` | Uk\u0142ad |\n  | `9` | Zako\u0144czenie/umorzenie\
+                  \ post\u0119powania restrukturyzacyjnego |\n  | `10` | Inne |\n\n\
+                  \  <b>Post\u0119powanie upad\u0142o\u015Bciowe</b>\n\n  | Warto\u015B\
+                  \u0107 | Nazwa sekcji |\n  |-|-|\n  | `20` | Wniosek o og\u0142\
+                  oszenie upad\u0142o\u015Bci z\u0142o\u017Cony przez d\u0142u\u017C\
+                  nika |\n  | `21` | Zabezpieczenie maj\u0105tku |\n  | `22` | Og\u0142\
+                  oszenie upad\u0142o\u015Bci/oddalenie wniosku |\n  | `23` | Wt\xF3\
+                  rne post\u0119powanie upad\u0142o\u015Bciowe |\n  | `24` | Uznanie\
+                  \ orzeczenia o wszcz\u0119ciu zagranicznego post\u0119powania upad\u0142\
+                  o\u015Bciowego |\n  | `25` | Przygotowana likwidacja |\n  | `26`\
+                  \ | Syndyk/zast\u0119pca syndyka/syndyk tymczasowy |\n  | `27` |\
+                  \ Zgromadzenie wierzycieli |\n  | `28` | Masa upad\u0142o\u015B\
+                  ci |\n  | `29` | Lista wierzytelno\u015Bci |\n  | `30` | Plan podzia\u0142\
+                  u |\n  | `31` | Zako\u0144czenie /umorzenie/uchylenie post\u0119\
+                  powania upad\u0142o\u015Bciowego |\n  | `32` | Plan sp\u0142aty/umorzenie\
+                  \ zobowi\u0105za\u0144 |\n  | `33` | Uk\u0142ad w upad\u0142o\u015B\
+                  ci |\n  | `34` | Inne |\n\n  <b>Zakaz prowadzenia dzia\u0142alno\u015B\
+                  ci gospodarczej</b>\n\n  | Warto\u015B\u0107 | Nazwa sekcji |\n\
+                  \  |-|-|\n  | `40` | Orzeczenie zakazu prowadzenia dzia\u0142alno\u015B\
+                  ci gospodarczej |\n  | `41` | Inne |</details>"
+              issue_date:
+                type: string
+                description: "Data publikacji og\u0142oszenia w KRZ"
+                format: date
+              signature:
+                type: string
+                description: "Sygnatura og\u0142oszenia w KRZ"
+          description: "Informacje dotycz\u0105ce publikacji og\u0142oszenia w KRZ"
+        content:
+          title: Content
+          type: array
+          items:
+            required:
+            - text
+            - html
+            type: object
+            properties:
+              text:
+                type: string
+                description: "Tre\u015B\u0107 og\u0142oszenia w formacie tekstowym"
+              html:
+                type: string
+                description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
+          description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
+      example:
+        id: '000000000000000000000000'
+        entity:
+        - info:
+            first_name: Jan
+            last_name: Kowalski
+            ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
+            cleaned_name: Jan Kowalski
+            legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015Bci\
+              \ gospodarczej"
+          numbers: {}
+          address: {}
+        proceeding:
+          signatures:
+          - example signature
+          court_department: "V Wydzia\u0142 Gospodarczy"
+          court_name: "S\u0105d Rejonowy w XXX"
+        order:
+          order_date: '2021-09-01T00:00:00'
+          expiration_period: 7
+          expiration_date: '2021-11-11T00:00:00'
+        msig_entry:
+          chapter: 0
+          position_number: '00000'
+          issue_date: '2021-11-04T00:00:00'
+          signature: BMSiG-00000/2021
+          url: http://www.imsig.pl/pozycja/2021/214/00000
+          section: 9
+          yearly_number: '214'
+        krz_entry:
+          chapter: 1
+          issue_date: '2021-12-08T00:00:00Z'
+          section: 20
+          signature: 20211208/00001
+        content:
+          text: Postanowieniem z dnia ...
+          html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
     CategoriesEnum:
+      title: CategoriesEnum
       type: string
       description: An enumeration.
-      title: CategoriesEnum
     ContentFiltersModel:
-      properties:
-        msig_signature:
-          items:
-            type: string
-          type: array
-          title: Msig Signature
-        regon:
-          items:
-            type: string
-          type: array
-          title: Regon
-        krz_signature:
-          items:
-            type: string
-          type: array
-          title: Krz Signature
-        krs:
-          items:
-            type: string
-          type: array
-          title: Krs
-        pesel:
-          items:
-            type: string
-          type: array
-          title: Pesel
-        nip:
-          items:
-            type: string
-          type: array
-          title: Nip
-        name:
-          items:
-            type: string
-          type: array
-          title: Name
+      title: ContentFiltersModel
       type: array
-      example:
+      properties:
+        nip:
+          title: Nip
+          type: array
+          items:
+            type: string
+        regon:
+          title: Regon
+          type: array
+          items:
+            type: string
+        krs:
+          title: Krs
+          type: array
+          items:
+            type: string
+        pesel:
+          title: Pesel
+          type: array
+          items:
+            type: string
+        krz_signature:
+          title: Krz Signature
+          type: array
+          items:
+            type: string
         msig_signature:
-        - XIV GUp 83/16
+          title: Msig Signature
+          type: array
+          items:
+            type: string
+        name:
+          title: Name
+          type: array
+          items:
+            type: string
+      example:
+        nip:
+        - '7272849598'
         regon:
         - '272404100'
-        krz_signature:
-        - BY1B/GUp/13/2021
         krs:
         - '0000422121'
         pesel:
         - '41041202774'
-        nip:
-        - '7272849598'
+        krz_signature:
+        - BY1B/GUp/13/2021
+        msig_signature:
+        - XIV GUp 83/16
         name:
         - Jan Kowalski
         - "Ambro\u017Cy Nielepszy"
-      title: ContentFiltersModel
     CreateFiltersModel:
+      title: CreateFiltersModel
       required:
       - name
       - content
       type: object
       properties:
+        name:
+          title: Name
+          type: string
+          description: Nazwa filtra
         content:
+          $ref: '#/components/schemas/StrictContentFiltersModel'
           description: "Zawarto\u015B\u0107 filtra"
           title: StrictContentFiltersModel
           additionalProperties: false
@@ -16713,57 +16712,66 @@ components:
               type: array
               description: "Imi\u0119 i nazwisko"
               title: Name
-        name:
-          type: string
-          description: Nazwa filtra
-          title: Name
-      title: CreateFiltersModel
     CreateMonitorsModel:
+      title: CreateMonitorsModel
+      required:
+      - append_first_entry
+      type: object
       properties:
-        emails:
-          default: []
-          items:
-            type: string
-          type: array
-          description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
-            w"
-          title: Emails
         filter_id:
+          title: Filter Id
+          type: string
           maxLength: 24
           minLength: 24
-          type: string
           description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
-          title: Filter Id
-      required:
-      - filter_id
-      type: object
+        emails:
+          title: Emails
+          type: array
+          items:
+            type: string
+          default: []
+          description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
+            w"
+        append_first_entry:
+          title: Append First Entry
+          type: boolean
+        send_empty_notifications:
+          title: Send Empty Notifications
+          type: boolean
+          default: false
       example:
+        filter_id: 3
         emails:
         - jajko@wp.pl
-        filter_id: 3
-      title: CreateMonitorsModel
+        append_first_entry: true
     CreateReportModel:
+      title: CreateReportModel
+      required:
+      - type
+      - name
+      - query
+      - file_format
+      - file_password
+      type: object
       properties:
-        file_password:
-          type: string
-          description: "Has\u0142o do pliku raportu"
-          title: File Password
+        type:
+          $ref: '#/components/schemas/TypesEnum'
+          type: integer
+          description: "Rodzaj raportu.\n<details>\n  <summary>Poka\u017C mo\u017C\
+            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  |\
+            \ `0` | Aktualny |\n  | `1` | Archiwalny |</details>"
+          title: Types
         name:
+          title: Name
           type: string
           description: Nazwa raportu
-          title: Name
-        file_format:
-          allOf:
-          - type: integer
-            description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C\
-              \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n\
-              \  |-|-|\n  | `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n  | `4`\
-              \ | Json |\n  | `5` | Def |</details>"
-          title: Format
         query:
+          title: Query
+          anyOf:
+          - $ref: '#/components/schemas/QueryRaportByDateRangeModel'
+          - $ref: '#/components/schemas/QueryRaportByNotificationModel'
           description: "Identyfikatory kategorii og\u0142osze\u0144 wybranych przez\
             \ u\u017Cytkownika"
-          title: Query
           required:
           - from_date
           - to_date
@@ -16806,15 +16814,11 @@ components:
             append_first_entry: true
             to_date: '2021-11-04'
             filter_id: 61ded2f8aff2de52365d891e
-        type:
-          type: integer
-          description: "Rodzaj raportu.\n<details>\n  <summary>Poka\u017C mo\u017C\
-            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  |\
-            \ `0` | Aktualny |\n  | `1` | Archiwalny |</details>"
-          title: Types
         custom_content:
-          items: {}
+          title: Custom Content
           type: array
+          items: {}
+          default: []
           description: "Identyfikatory p\xF3l raportu wybranych przez u\u017Cytkownika\n\
             <details>\n<summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\
             \u0107 | Nazwa |\n|-|-|\n| `entity` | Lista podmiot\xF3w, kt\xF3rych dotyczy\
@@ -16864,18 +16868,22 @@ components:
             \ | Tre\u015B\u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\
             \u0107 og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
             du tre\u015Bci og\u0142oszenia |</details>"
-          title: Custom Content
-      required:
-      - type
-      - name
-      - query
-      - file_format
-      - file_password
-      type: object
+        file_format:
+          $ref: '#/components/schemas/Format'
+          allOf:
+          - type: integer
+            description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C\
+              \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n\
+              \  |-|-|\n  | `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n  | `4`\
+              \ | Json |\n  | `5` | Def |</details>"
+          title: Format
+        file_password:
+          title: File Password
+          type: string
+          description: "Has\u0142o do pliku raportu"
       example:
-        file_password: mgbi2021
+        type: 0
         name: example raport
-        file_format: 3
         query:
           custom_categories:
           - K
@@ -16883,37 +16891,92 @@ components:
           append_first_entry: true
           to_date: '2021-11-04'
           filter_id: 61ded2f8aff2de52365d891e
-        type: 0
         custom_content: []
-      title: CreateReportModel
+        file_format: 3
+        file_password: mgbi2021
     CreateUserModel:
-      properties:
-        is_admin:
-          default: false
-          type: boolean
-          description: "Czy u\u017Cytkownik jest adminem?"
-          title: Is Admin
-        is_active:
-          default: true
-          type: boolean
-          description: "Czy u\u017Cytkownik jest aktywny?"
-          title: Is Active
-        email:
-          format: email
-          type: string
-          description: "Adres e-mail u\u017Cytkownika"
-          title: Email
+      title: CreateUserModel
       required:
       - email
       type: object
-      example:
-        is_admin: false
-        is_active: true
-        email: abc@def.pl
-      title: CreateUserModel
-    DBParamsModel:
       properties:
+        email:
+          title: Email
+          type: string
+          format: email
+          description: "Adres e-mail u\u017Cytkownika"
+        is_active:
+          title: Is Active
+          type: boolean
+          default: true
+          description: "Czy u\u017Cytkownik jest aktywny?"
+        is_admin:
+          title: Is Admin
+          type: boolean
+          default: false
+          description: "Czy u\u017Cytkownik jest adminem?"
+        deactivation_datetime:
+          title: Deactivation Datetime
+          type: string
+          format: date-time
+      example:
+        email: abc@def.pl
+        is_active: true
+        is_admin: false
+    DBParamsModel:
+      title: DBParamsModel
+      required:
+      - archive_date_from
+      - current_reports_available
+      - current_reports_filter_required
+      - archival_reports_available
+      - archival_reports_filter_required
+      - credits_available
+      - filter_items_limit
+      - monitors_available
+      - monitors_emails_limit
+      - api_requests_available
+      - panel_users_limit
+      - panel_users
+      - monitors_filter_required
+      type: object
+      properties:
+        archive_date_from:
+          title: Archive Date From
+          type: string
+          format: date
+        current_reports_available:
+          title: Current Reports Available
+          type: integer
+        current_reports_used:
+          title: Current Reports Used
+          type: integer
+          default: 0
+        current_reports_filter_required:
+          title: Current Reports Filter Required
+          type: boolean
+        archival_reports_available:
+          title: Archival Reports Available
+          type: integer
+        archival_reports_used:
+          title: Archival Reports Used
+          type: integer
+          default: 0
+        archival_reports_filter_required:
+          title: Archival Reports Filter Required
+          type: boolean
+        credits_available:
+          title: Credits Available
+          type: integer
+        credits_used:
+          title: Credits Used
+          type: integer
+          default: 0
         available_content:
+          title: Available Content
+          type: array
+          items:
+            type: string
           default:
           - entity.info.cleaned_name
           - entity.info.first_name
@@ -16966,90 +17029,55 @@ components:
           - content.text
           - content.html
           - content.url
-          items:
-            type: string
-          type: array
-          title: Available Content
-        archival_reports_used:
+        filter_items_limit:
+          title: Filter Items Limit
+          type: integer
+        monitors_available:
+          title: Monitors Available
+          type: integer
+        monitors_used:
+          title: Monitors Used
+          type: integer
           default: 0
+        monitors_emails_limit:
+          title: Monitors Emails Limit
           type: integer
-          title: Archival Reports Used
-        current_reports_available:
-          type: integer
-          title: Current Reports Available
-        current_reports_filter_required:
-          type: boolean
-          title: Current Reports Filter Required
-        api_requests_used:
           default: 0
-          type: integer
-          title: Api Requests Used
-        credits_available:
-          type: integer
-          title: Credits Available
-        archival_reports_filter_required:
-          type: boolean
-          title: Archival Reports Filter Required
         api_key:
-          format: uuid
-          type: string
           title: Api Key
+          type: string
+          format: uuid
+        api_requests_available:
+          title: Api Requests Available
+          type: integer
+        api_requests_used:
+          title: Api Requests Used
+          type: integer
+          default: 0
+        panel_users_limit:
+          title: Panel Users Limit
+          type: integer
+          default: 0
         panel_users:
-          default: []
+          title: Panel Users
+          type: array
           items:
             type: string
             format: email
-          type: array
-          title: Panel Users
-        api_requests_available:
-          type: integer
-          title: Api Requests Available
-        credits_used:
-          default: 0
-          type: integer
-          title: Credits Used
-        archive_date_from:
-          format: date
-          type: string
-          title: Archive Date From
-        monitors_used:
-          default: 0
-          type: integer
-          title: Monitors Used
-        current_reports_used:
-          default: 0
-          type: integer
-          title: Current Reports Used
-        archival_reports_available:
-          type: integer
-          title: Archival Reports Available
-        monitors_emails_limit:
-          default: 0
-          type: integer
-          title: Monitors Emails Limit
-        filter_items_limit:
-          type: integer
-          title: Filter Items Limit
-        panel_users_limit:
-          default: 0
-          type: integer
-          title: Panel Users Limit
-        monitors_available:
-          type: integer
-          title: Monitors Available
-      required:
-      - archive_date_from
-      - current_reports_available
-      - current_reports_filter_required
-      - archival_reports_available
-      - archival_reports_filter_required
-      - credits_available
-      - filter_items_limit
-      - monitors_available
-      - api_key
-      - api_requests_available
-      type: object
+          default: []
+        monitors_filter_required:
+          title: Monitors Filter Required
+          type: boolean
       example:
+        archive_date_from: '2021-04-23'
+        current_reports_available: 25
+        current_reports_used: 5
+        current_reports_filter_required: false
+        archival_reports_available: 5
+        archival_reports_used: 0
+        archival_reports_filter_required: false
+        credits_available: 5
+        credits_used: 0
         available_content:
         - entity.info.cleaned_name
         - entity.info.first_name
@@ -17102,44 +17130,49 @@ components:
         - content.text
         - content.html
         - content.url
-        archival_reports_used: 0
-        current_reports_available: 25
-        current_reports_filter_required: false
-        api_requests_used: 100
-        credits_available: 5
-        archival_reports_filter_required: false
+        filter_items_limit: 50
+        monitors_available: 5
+        monitors_used: 2
+        monitors_emails_limit: 5
         api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+        api_requests_available: 1000
+        api_requests_used: 100
+        panel_users_limit: 5
         panel_users:
         - abc@def.pl
         - xyz@ghi.pl
-        api_requests_available: 1000
-        credits_used: 0
-        archive_date_from: '2021-04-23'
-        monitors_used: 2
-        current_reports_used: 5
-        archival_reports_available: 5
-        monitors_emails_limit: 5
-        filter_items_limit: 50
-        panel_users_limit: 5
-        monitors_available: 5
-      title: DBParamsModel
+        monitors_filter_required: false
     Error:
+      title: Error
       required:
       - error
       - details
       type: object
       properties:
-        details:
-          description: "Szczeg\xF3\u0142owe informacje na temat b\u0142\u0119du"
-          title: Details
         error:
+          title: Error
           type: string
           description: "Opis b\u0142\u0119du"
-          title: Error
-      title: Error
+        details:
+          title: Details
+          anyOf:
+          - type: string
+          - type: object
+          description: "Szczeg\xF3\u0142owe informacje na temat b\u0142\u0119du"
     FiltersModel:
+      title: FiltersModel
+      required:
+      - name
+      - id
+      - creation_datetime
+      type: object
       properties:
+        name:
+          title: Name
+          type: string
+          description: Nazwa filtra
         content:
+          $ref: '#/components/schemas/ContentFiltersModel'
           description: "Zawarto\u015B\u0107 filtra"
           example:
             msig_signature:
@@ -17202,44 +17235,58 @@ components:
               description: "Imi\u0119 i nazwisko"
               title: Name
           title: ContentFiltersModel
-        items_count:
-          type: integer
-          description: "Liczba wszystkich identyfikator\xF3w w filtrze"
-          title: Items Count
-        creation_datetime:
-          format: date-time
-          type: string
-          description: Data i czas utworzenia filtra
-          title: Creation Datetime
-        name:
-          type: string
-          description: Nazwa filtra
-          title: Name
-        last_update_datetime:
-          nullable: true
-          format: date-time
-          type: string
-          description: Data i czas ostatniej aktualizacji filtra
-          title: Last Update Datetime
         id:
+          title: Id
           type: string
           description: Unikalny identyfikator filtra
-          title: Id
-      required:
-      - content
-      - items_count
-      - creation_datetime
-      - name
-      - id
-      title: FiltersModel
+        creation_datetime:
+          title: Creation Datetime
+          type: string
+          format: date-time
+          description: Data i czas utworzenia filtra
+        last_update_datetime:
+          title: Last Update Datetime
+          type: string
+          format: date-time
+          nullable: true
+          description: Data i czas ostatniej aktualizacji filtra
+        items_count:
+          title: Items Count
+          type: integer
+          description: "Liczba wszystkich identyfikator\xF3w w filtrze"
+      example:
+        id: '222222222222222222222222'
+        name: "D\u0142u\u017Cnicy 2021-11"
+        content:
+          nip:
+          - '7272849598'
+          regon:
+          - '272404100'
+          krs:
+          - '0000422121'
+          pesel:
+          - '41041202774'
+          krz_signature:
+          - BY1B/GUp/13/2021
+          msig_signature:
+          - XIV GUp 83/16
+          name:
+          - Jan Kowalski
+          - "Ambro\u017Cy Nielepszy"
+        items_count: 8
+        creation_datetime: '2021-11-10T15:20:20.584Z'
+        last_update_datetime: '2021-12-10T15:30:20.584Z'
     Format:
+      title: Format
       type: integer
       description: We numerate here each file format
-      title: Format
     HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
         detail:
+          title: Detail
+          type: array
           items:
             required:
             - loc
@@ -17259,98 +17306,84 @@ components:
                 type: string
                 title: Error Type
             title: ValidationError
-          type: array
           description: "Szczeg\xF3\u0142owa informacja na temat b\u0142\u0119du"
-          title: Detail
-      title: HTTPValidationError
     InfoCategories:
-      required:
-      - id
-      - label
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unikalny identyfikator
-          title: Id
-        label:
-          type: string
-          description: Etykieta
-          title: Label
       title: InfoCategories
-      example:
-        id: K.0.0
-        label: "Dzie\u0144 uk\u0142adowy"
+      required:
+      - id
+      - label
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unikalny identyfikator
+        label:
+          title: Label
+          type: string
+          description: Etykieta
     InfoFields:
-      required:
-      - id
-      - label
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unikalny identyfikator
-          title: Id
-        label:
-          type: string
-          description: Etykieta
-          title: Label
       title: InfoFields
-      example:
-        id: K
-        label: "Krajowy Rejestr Zad\u0142u\u017Conych"
+      required:
+      - id
+      - label
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unikalny identyfikator
+        label:
+          title: Label
+          type: string
+          description: Etykieta
     InfoReports:
-      required:
-      - id
-      - label
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Unikalny identyfikator
-          title: Id
-        label:
-          type: string
-          description: Etykieta
-          title: Label
       title: InfoReports
-      example:
-        id: 1
-        label: w przygotowaniu
-    InfoTypes:
       required:
       - id
       - label
       type: object
       properties:
         id:
+          title: Id
           type: integer
           description: Unikalny identyfikator
-          title: Id
         label:
+          title: Label
           type: string
           description: Etykieta
-          title: Label
+    InfoTypes:
       title: InfoTypes
-      example:
-        id: 0
-        label: aktualny
+      required:
+      - id
+      - label
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Unikalny identyfikator
+        label:
+          title: Label
+          type: string
+          description: Etykieta
     KrzChapterEnum:
+      title: KrzChapterEnum
       type: integer
       description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C mo\u017Cliwe\
         \ opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa rozdzia\u0142u |\n  |-|-|\n\
         \  | `0` | Post\u0119powanie restrukturyzacyjne |\n  | `1` | Post\u0119powanie\
         \ upad\u0142o\u015Bciowe |\n  | `2` | Zakaz prowadzenia dzia\u0142alno\u015B\
         ci gospodarczej |</details>"
-      title: KrzChapterEnum
     KrzSectionBanEnum:
+      title: KrzSectionBanEnum
       type: integer
       description: "Sekcja KRZ\n\n<details>\n  <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
         \n  <b>Zakaz prowadzenia dzia\u0142alno\u015Bci gospodarczej</b>\n\n  | Warto\u015B\
         \u0107 | Nazwa sekcji |\n  |-|-|\n  | `40` | Orzeczenie zakazu prowadzenia\
         \ dzia\u0142alno\u015Bci gospodarczej |\n  | `41` | Inne |</details>"
-      title: KrzSectionBanEnum
     KrzSectionInsolvencyEnum:
+      title: KrzSectionInsolvencyEnum
       type: integer
       description: "Sekcja KRZ\n\n<details>\n  <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
         \n  <b>Post\u0119powanie upad\u0142o\u015Bciowe</b>\n\n  | Warto\u015B\u0107\
@@ -17366,8 +17399,8 @@ components:
         \ post\u0119powania upad\u0142o\u015Bciowego |\n  | `32` | Plan sp\u0142aty/umorzenie\
         \ zobowi\u0105za\u0144 |\n  | `33` | Uk\u0142ad w upad\u0142o\u015Bci |\n\
         \  | `34` | Inne |</details>"
-      title: KrzSectionInsolvencyEnum
     KrzSectionRestructuringEnum:
+      title: KrzSectionRestructuringEnum
       type: integer
       description: "Sekcja KRZ\n<details>\n  <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
         \n  <b>Post\u0119powanie restrukturyzacyjne</b>\n\n  | Warto\u015B\u0107 |\
@@ -17379,8 +17412,8 @@ components:
         ci spornych |\n  | `6` | Zgromadzenie wierzycieli |\n  | `7` | Sprawozdania\
         \ |\n  | `8` | Uk\u0142ad |\n  | `9` | Zako\u0144czenie/umorzenie post\u0119\
         powania restrukturyzacyjnego |\n  | `10` | Inne |</details>"
-      title: KrzSectionRestructuringEnum
     KrzSubsectionEnum:
+      title: KrzSubsectionEnum
       type: integer
       description: "Subsekcja KRZ\n<details>\n  <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
         \n  | Warto\u015B\u0107 | Nazwa subsekcji |\n  |-|-|\n  | `0` | Obwieszczenie\
@@ -17393,10 +17426,51 @@ components:
         \ postanowienia o otwarciu post\u0119powania restrukturyzacyjnego |\n  | `32`\
         \ | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy s\u0105\
         dowego |</details>"
-      title: KrzSubsectionEnum
     MonitorModel:
+      title: MonitorModel
+      required:
+      - id
+      - emails
+      - append_first_entry
+      - creation_datetime
+      - send_empty_notifications
+      type: object
       properties:
+        id:
+          title: Id
+          type: string
+          description: Unikalny identyfikator monitoringu
+        filter_id:
+          title: Filter Id
+          type: string
+          nullable: true
+          description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
+        emails:
+          title: Emails
+          type: array
+          items:
+            type: string
+          description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
+            w"
+        append_first_entry:
+          title: Append First Entry
+          type: boolean
+          description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory podane\
+            \ w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
+        creation_datetime:
+          title: Creation Datetime
+          type: string
+          format: date-time
+          description: Data i czas utworzenia monitoringu
+        last_update_datetime:
+          title: Last Update Datetime
+          type: string
+          format: date-time
+          nullable: true
+          description: Data i czas ostatniej aktualizacji monitoringu
         notifications:
+          title: Notifications
+          type: array
           items:
             required:
             - sent_datetime
@@ -17423,76 +17497,36 @@ components:
                 description: "Data wysy\u0142ki powiadomienia"
                 title: Sent Datetime
             title: NotificationModel
-          type: array
           description: "Data i czas wysy\u0142ki powiadomienia"
-          title: Notifications
-        creation_datetime:
-          format: date-time
-          type: string
-          description: Data i czas utworzenia monitoringu
-          title: Creation Datetime
-        filter_id:
-          type: string
-          description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
-          title: Filter Id
-        last_update_datetime:
-          nullable: true
-          format: date-time
-          type: string
-          description: Data i czas ostatniej aktualizacji monitoringu
-          title: Last Update Datetime
-        emails:
-          items:
-            type: string
-          type: array
-          description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
-            w"
-          title: Emails
-        append_first_entry:
-          type: boolean
-          title: Append First Entry
-          description: "Czy uwzgl\u0119dnia\u0107 r\xF3wnie\u017C identyfikatory podane\
-            \ w pierwszym og\u0142oszeniu w ramach post\u0119powania?"
         send_empty_notifications:
-          type: boolean
           title: Send Empty Notifications
+          type: boolean
           description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie pojawi\u0142\
             y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
-        id:
-          type: string
-          description: Unikalny identyfikator monitoringu
-          title: Id
-      required:
-      - id
-      - filter_id
-      - emails
-      - creation_datetime
-      - notifications
-      - send_empty_notifications
-      - append_first_entry
-      type: object
       example:
+        id: 2
+        filter_id: 2
+        emails:
+        - abc@xyz.pl
+        - def@klm.pl
+        append_first_entry: false
+        send_empty_notification: true
+        creation_datetime: '2021-11-02T15:20:20.584Z'
+        last_update_datetime: '2021-11-02T15:20:20.584Z'
         notifications:
         - status: 1
           email: abc@xyz.pl
           sent_datetime: '2021-11-02T15:20:20.584Z'
-        creation_datetime: '2021-11-02T15:20:20.584Z'
-        filter_id: 2
-        last_update_datetime: '2021-11-02T15:20:20.584Z'
-        emails:
-        - abc@xyz.pl
-        - def@klm.pl
-        id: 2
-      title: MonitorModel
     MsigChapterEnum:
+      title: MsigChapterEnum
       type: integer
       description: "Rozdzia\u0142 MSiG\n<details>\n  <summary>Poka\u017C mo\u017C\
         liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa rozdzia\u0142u |\n \
         \ |-|-|\n  | `0` | Og\u0142oszenia wymagane przez prawo upad\u0142o\u015B\
         ciowe |\n  | `1` | Og\u0142oszenia wymagane przez prawo restrukturyzacyjne\
         \ |</details>"
-      title: MsigChapterEnum
     MsigSectionInsolvencyEnum:
+      title: MsigSectionInsolvencyEnum
       type: integer
       description: "Sekcja MSiG\n<details>\n  <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
         \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `1` | Postanowienie\
@@ -17505,8 +17539,8 @@ components:
         o\u015Bciowego |\n  | `7` | Og\u0142oszenie o z\u0142o\u017Ceniu o\u015Bwiadczenia\
         \ o wszcz\u0119ciu post\u0119powania naprawczego |\n  | `8` | Og\u0142oszenie\
         \ o terminie rozprawy zatwierdzaj\u0105cej uk\u0142ad |\n  | `9` | Inne |</details>"
-      title: MsigSectionInsolvencyEnum
     MsigSectionRestructuringEnum:
+      title: MsigSectionRestructuringEnum
       type: integer
       description: "Sekcja MSiG\n<details>\n  <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
         \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `20` | Dokonanie zmian\
@@ -17535,143 +17569,62 @@ components:
         \ uk\u0142adu |\n  | `48` | Zmiana nadzorcy lub zarz\u0105dcy |\n  | `49`\
         \ | Zmiana s\u0119dziego komisarza |\n  | `50` | Zmiana terminu zgromadzenia\
         \ wierzycieli |</details>"
-      title: MsigSectionRestructuringEnum
     NotificationModel:
+      title: NotificationModel
       required:
+      - id
       - sent_datetime
       - email
       - status
+      - dispatch_id
+      - monitor_id
       type: object
       properties:
+        id:
+          title: Id
+          type: string
+        sent_datetime:
+          title: Sent Datetime
+          type: string
+          format: date-time
+          description: "Data wysy\u0142ki powiadomienia"
+        email:
+          title: Email
+          type: string
+          description: "Adres e-mail, na kt\xF3ry wys\u0142ano powiadomienie"
+          example: msig@bnf.pl
         status:
+          $ref: '#/components/schemas/NotificationStatusEnum'
           type: integer
           description: "Status wysy\u0142ki powiadomienia\n<details>\n  <summary>Poka\u017C\
             \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n\
             \  | `0` | B\u0142\u0105d wysy\u0142ki |\n  | `1` | Wys\u0142ane |</details>"
           title: NotificationStatusEnum
-        email:
-          description: "Adres e-mail, na kt\xF3ry wys\u0142ano powiadomienie"
+        dispatch_id:
+          title: Dispatch Id
           type: string
-          example: msig@bnf.pl
-          title: Email
-        sent_datetime:
-          format: date-time
+        monitor_id:
+          title: Monitor Id
           type: string
-          description: "Data wysy\u0142ki powiadomienia"
-          title: Sent Datetime
-      title: NotificationModel
+        error:
+          title: Error
+          type: string
+          nullable: true
+      example:
+        id: 0
+        dispatch_id: 1
+        monitor_id: 1
+        sent_datetime: '2021-11-12T15:39:29.584Z'
+        email: abc@def.pl
+        status: 1
     NotificationStatusEnum:
+      title: NotificationStatusEnum
       type: integer
       description: "Status wysy\u0142ki powiadomienia\n<details>\n  <summary>Poka\u017C\
         \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n\
         \  | `0` | B\u0142\u0105d wysy\u0142ki |\n  | `1` | Wys\u0142ane |</details>"
-      title: NotificationStatusEnum
     ParamsModel:
-      properties:
-        available_content:
-          items:
-            type: string
-          title: Available Content
-          type: array
-          example: asdasd
-          description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-            \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
-        archival_reports_used:
-          type: integer
-          description: "Liczba utworzonych raport\xF3w archiwalnych"
-          title: Archival Reports Used
-        current_reports_available:
-          type: integer
-          description: "Maksymalna liczba raport\xF3w aktualnych, kt\xF3re u\u017C\
-            ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
-          title: Current Reports Available
-        current_reports_filter_required:
-          type: boolean
-          description: "Czy przy tworzeniu raportu aktualnego u\u017Cytkownik musi\
-            \ wybra\u0107 filtr?"
-          title: Current Reports Filter Required
-        api_requests_used:
-          type: integer
-          description: "Liczba wykonanych zapyta\u0144 do API o pojedyncze og\u0142\
-            oszenia"
-          title: Api Requests Used
-        credits_available:
-          type: integer
-          description: "Maksymalna liczba identyfikator\xF3w, o kt\xF3re u\u017Cytkownik\
-            \ mo\u017Ce odpyta\u0107 API w zapytaniu o og\u0142oszenia z ca\u0142\
-            ego archiwum (od 1.01.2021) albo kt\xF3rych mo\u017Ce u\u017Cy\u0107 w\
-            \ filtrze dla raportu archiwalnego w ramach obecnego planu"
-          title: Credits Available
-        archival_reports_filter_required:
-          type: boolean
-          description: "Czy przy tworzeniu raportu aktualnego u\u017Cytkownik musi\
-            \ wybra\u0107 filtr?"
-          title: Archival Reports Filter Required
-        api_key:
-          format: uuid
-          type: string
-          description: Klucz autoryzacji w API
-          title: Api Key
-        panel_users:
-          items:
-            type: string
-            format: email
-          type: array
-          description: "Adresy e-mail u\u017Cytkownik\xF3w us\u0142ugi"
-          title: Panel Users
-        api_requests_available:
-          type: integer
-          description: "Maksymalna liczba zapyta\u0144 do API o pojedyncze og\u0142\
-            oszenia, kt\xF3re u\u017Cytkownik mo\u017Ce wykona\u0107 w ramach obecnego\
-            \ planu"
-          title: Api Requests Available
-        credits_used:
-          type: integer
-          description: "Liczba identyfikator\xF3w, o kt\xF3re u\u017Cytkownik odpyta\u0142\
-            \ API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla raportu archiwalnego"
-          title: Credits Used
-        archive_date_from:
-          format: date
-          type: string
-          description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
-            \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
-          title: Archive Date From
-        monitors_used:
-          type: integer
-          description: "Liczba utworzonych monitoring\xF3w"
-          title: Monitors Used
-        current_reports_used:
-          type: integer
-          description: "Liczba utworzonych raport\xF3w aktualnych"
-          title: Current Reports Used
-        archival_reports_available:
-          type: integer
-          description: "Maksymalna liczba raport\xF3w archiwalnych, kt\xF3re u\u017C\
-            ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
-          title: Archival Reports Available
-        monitors_emails_limit:
-          type: integer
-          description: "Maksymalna liczba adres\xF3w e-mail przypisanych do pojedynczego\
-            \ monitoringu"
-          title: Monitors Emails Limit
-        filter_items_limit:
-          type: integer
-          description: "Maksymalna liczba identyfikator\xF3w w filtrze"
-          title: Filter Items Limit
-        panel_users_limit:
-          type: integer
-          description: "Maksymalna liczba u\u017Cytkownik\xF3w panelu us\u0142ugi"
-          title: Panel Users Limit
-        monitors_available:
-          type: integer
-          description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017Cytkownik\
-            \ mo\u017Ce utorzy\u0107 w ramach obecnego planu"
-          title: Monitors Available
-        monitor_filter_required:
-          type: boolean
-          description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi wybiera\u0107\
-            \ filtr?"
-          title: Monitors Filter Required
+      title: ParamsModel
       required:
       - archive_date_from
       - current_reports_available
@@ -17692,9 +17645,121 @@ components:
       - api_requests_used
       - panel_users_limit
       - panel_users
-      - monitor_filter_required
+      - monitors_filter_required
       type: object
+      properties:
+        archive_date_from:
+          title: Archive Date From
+          type: string
+          format: date
+          description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
+            \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
+        current_reports_available:
+          title: Current Reports Available
+          type: integer
+          description: "Maksymalna liczba raport\xF3w aktualnych, kt\xF3re u\u017C\
+            ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
+        current_reports_used:
+          title: Current Reports Used
+          type: integer
+          description: "Liczba utworzonych raport\xF3w aktualnych"
+        current_reports_filter_required:
+          title: Current Reports Filter Required
+          type: boolean
+          description: "Czy przy tworzeniu raportu aktualnego u\u017Cytkownik musi\
+            \ wybra\u0107 filtr?"
+        archival_reports_available:
+          title: Archival Reports Available
+          type: integer
+          description: "Maksymalna liczba raport\xF3w archiwalnych, kt\xF3re u\u017C\
+            ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
+        archival_reports_used:
+          title: Archival Reports Used
+          type: integer
+          description: "Liczba utworzonych raport\xF3w archiwalnych"
+        archival_reports_filter_required:
+          title: Archival Reports Filter Required
+          type: boolean
+          description: "Czy przy tworzeniu raportu aktualnego u\u017Cytkownik musi\
+            \ wybra\u0107 filtr?"
+        credits_available:
+          title: Credits Available
+          type: integer
+          description: "Maksymalna liczba identyfikator\xF3w, o kt\xF3re u\u017Cytkownik\
+            \ mo\u017Ce odpyta\u0107 API w zapytaniu o og\u0142oszenia z ca\u0142\
+            ego archiwum (od 1.01.2021) albo kt\xF3rych mo\u017Ce u\u017Cy\u0107 w\
+            \ filtrze dla raportu archiwalnego w ramach obecnego planu"
+        credits_used:
+          title: Credits Used
+          type: integer
+          description: "Liczba identyfikator\xF3w, o kt\xF3re u\u017Cytkownik odpyta\u0142\
+            \ API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla raportu archiwalnego"
+        available_content:
+          title: Available Content
+          type: array
+          items:
+            type: string
+          example: asdasd
+          description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
+            \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+        filter_items_limit:
+          title: Filter Items Limit
+          type: integer
+          description: "Maksymalna liczba identyfikator\xF3w w filtrze"
+        monitors_available:
+          title: Monitors Available
+          type: integer
+          description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017Cytkownik\
+            \ mo\u017Ce utorzy\u0107 w ramach obecnego planu"
+        monitors_used:
+          title: Monitors Used
+          type: integer
+          description: "Liczba utworzonych monitoring\xF3w"
+        monitors_emails_limit:
+          title: Monitors Emails Limit
+          type: integer
+          description: "Maksymalna liczba adres\xF3w e-mail przypisanych do pojedynczego\
+            \ monitoringu"
+        api_key:
+          title: Api Key
+          type: string
+          format: uuid
+          description: Klucz autoryzacji w API
+        api_requests_available:
+          title: Api Requests Available
+          type: integer
+          description: "Maksymalna liczba zapyta\u0144 do API o pojedyncze og\u0142\
+            oszenia, kt\xF3re u\u017Cytkownik mo\u017Ce wykona\u0107 w ramach obecnego\
+            \ planu"
+        api_requests_used:
+          title: Api Requests Used
+          type: integer
+          description: "Liczba wykonanych zapyta\u0144 do API o pojedyncze og\u0142\
+            oszenia"
+        panel_users_limit:
+          title: Panel Users Limit
+          type: integer
+          description: "Maksymalna liczba u\u017Cytkownik\xF3w panelu us\u0142ugi"
+        panel_users:
+          title: Panel Users
+          type: array
+          items:
+            type: string
+            format: email
+          description: "Adresy e-mail u\u017Cytkownik\xF3w us\u0142ugi"
+        monitors_filter_required:
+          title: Monitors Filter Required
+          type: boolean
       example:
+        archive_date_from: '2021-04-23'
+        current_reports_available: 25
+        current_reports_used: 5
+        current_reports_filter_required: false
+        archival_reports_available: 5
+        archival_reports_used: 0
+        archival_reports_filter_required: false
+        credits_available: 5
+        credits_used: 0
         available_content:
         - entity.info.cleaned_name
         - entity.info.first_name
@@ -17747,29 +17812,20 @@ components:
         - content.text
         - content.html
         - content.url
-        archival_reports_used: 0
-        current_reports_available: 25
-        current_reports_filter_required: false
-        api_requests_used: 100
-        credits_available: 5
-        archival_reports_filter_required: false
+        filter_items_limit: 50
+        monitors_available: 5
+        monitors_used: 2
+        monitors_emails_limit: 5
         api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+        api_requests_available: 1000
+        api_requests_used: 100
+        panel_users_limit: 5
         panel_users:
         - abc@def.pl
         - xyz@ghi.pl
-        api_requests_available: 1000
-        credits_used: 0
-        archive_date_from: '2021-04-23'
-        monitors_used: 2
-        current_reports_used: 5
-        archival_reports_available: 5
-        monitors_emails_limit: 5
-        filter_items_limit: 50
-        panel_users_limit: 5
-        monitors_available: 5
-        monitor_filter_required: true
-      title: ParamsModel
+        monitors_filter_required: false
     ProjectionEnum:
+      title: ProjectionEnum
       description: "Lista zwracanych grup informacji\n<details>\n  <summary>Poka\u017C\
         \ mo\u017Cliwe opcje</summary>\n\n  | Identyfikator | Grupa informacji |\n\
         \  |-|-|\n  | `entity` | Lista podmiot\xF3w, kt\xF3rych dotyczy og\u0142oszenie\
@@ -17778,149 +17834,93 @@ components:
         \ | Informacje dotycz\u0105ce publikacji og\u0142oszenia w msig |\n  | `krz_entry`\
         \ | Informacje dotycz\u0105ce publikacji og\u0142oszenia w krz |\n  | `content`\
         \ | Nieprzetworzona tre\u015B\u0107 og\u0142oszenia |</details>"
-      title: ProjectionEnum
     QueryRaportByDateRangeModel:
-      example:
-        custom_categories:
-        - K
-        from_date: '2021-11-02'
-        append_first_entry: true
-        to_date: '2021-11-04'
-        filter_id: 61ded2f8aff2de52365d891e
+      title: QueryRaportByDateRangeModel
       required:
       - from_date
       - to_date
       type: object
       properties:
         custom_categories:
-          default: []
+          type: array
           items:
             type: string
             description: An enumeration.
             title: CategoriesEnum
-          type: array
+          default: []
         from_date:
-          format: date
-          type: string
           title: From Date
-        append_first_entry:
-          default: true
-          type: boolean
-          title: Append First Entry
-        to_date:
+          type: string
           format: date
-          type: string
+        to_date:
           title: To Date
-        filter_id:
-          nullable: true
           type: string
+          format: date
+        filter_id:
           title: Filter Id
-      title: QueryRaportByDateRangeModel
+          type: string
+          nullable: true
+        append_first_entry:
+          title: Append First Entry
+          type: boolean
+          default: true
+      example:
+        custom_categories:
+        - K
+        from_date: '2021-11-02'
+        to_date: '2021-11-04'
+        filter_id: 61ded2f8aff2de52365d891e
+        append_first_entry: true
     QueryRaportByNotificationModel:
+      title: QueryRaportByNotificationModel
       required:
       - notification_id
       type: object
       properties:
         notification_id:
-          type: string
           title: Notification Id
-        custom_categories:
-          items:
-            type: string
-            description: An enumeration.
-            title: CategoriesEnum
-          type: array
-      title: QueryRaportByNotificationModel
+          type: string
     ReportModel:
-      example:
-        status: 1
-        file_password: mgbi2021
-        creation_datetime: '2022-02-18T10:12:27.262422'
-        name: example raport
-        credits_used: 0
-        file_format: 3
-        downloads:
-        - download_datetime: '2021-11-12T15:39:29.584Z'
-        id: exampleID
-        progress: 0
-        query:
-          custom_categories:
-          - K
-          from_date: '2021-11-02'
-          append_first_entry: true
-          to_date: '2021-11-04'
-          filter_id: 61ded2f8aff2de52365d891e
-        type: 0
-        custom_content: []
+      title: ReportModel
       required:
       - id
       - type
       - name
       - query
+      - custom_content
+      - status
+      - progress
       - file_format
       - file_password
       - credits_used
+      - creation_datetime
+      - downloads
       type: object
       properties:
-        status:
-          allOf:
-          - type: integer
-            description: "Aktualny status generowania pliku raportu\n<details>\n \
-              \ <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\
-              \u0107 | Nazwa |\n  |-|-|\n  | `0` | Niedost\u0119pny |\n  | `1` | W\
-              \ przygotowaniu |\n  | `2` | Gotowe |</details>"
-            title: ReportStatusEnum
-        file_password:
-          type: string
-          description: "Has\u0142o do pliku raportu"
-          title: File Password
-        creation_datetime:
-          format: date-time
-          type: string
-          description: Data i czas utworzenia raportu
-          title: Creation Datetime
-        name:
-          type: string
-          description: Nazwa raportu
-          title: Name
-        credits_used:
-          type: integer
-          description: "Liczba punkt\xF3w wykorzystanych do utworzenia raportu"
-          title: Credits Used
-        file_format:
-          type: integer
-          description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C mo\u017C\
-            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  |\
-            \ `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n  | `4` | Json |\n \
-            \ | `5` | Def |</details>"
-          title: Format
-        downloads:
-          items:
-            type: object
-          type: array
-          description: "Historia pobra\u0144 raportu"
-          title: Downloads
-        records_count:
-          description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
-          title: Records Count
-          type: integer
-          nullable: true
         id:
-          minLength: 24
           title: Id
           type: string
+          minLength: 24
           description: Unikalny identyfikator raportu
           maxLength: 24
-        progress:
-          title: Progress
-          minimum: 0
+        type:
+          $ref: '#/components/schemas/TypesEnum'
           type: integer
-          description: "Procentowy post\u0119p generowania pliku raportu w skali 0-100"
-          maximum: 100
+          description: "Rodzaj raportu.\n<details>\n  <summary>Poka\u017C mo\u017C\
+            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  |\
+            \ `0` | Aktualny |\n  | `1` | Archiwalny |</details>"
+          title: TypesEnum
+        name:
+          title: Name
+          type: string
+          description: Nazwa raportu
         query:
+          title: QueryBaseModel
+          anyOf:
+          - $ref: '#/components/schemas/QueryRaportByDateRangeModel'
+          - $ref: '#/components/schemas/QueryRaportByNotificationModel'
           description: "Identyfikatory kategorii og\u0142osze\u0144 wybranych przez\
             \ u\u017Cytkownika"
-          title: QueryBaseModel
           required:
           - from_date
           - to_date
@@ -17963,15 +17963,10 @@ components:
             append_first_entry: true
             to_date: '2021-11-04'
             filter_id: 61ded2f8aff2de52365d891e
-        type:
-          type: integer
-          description: "Rodzaj raportu.\n<details>\n  <summary>Poka\u017C mo\u017C\
-            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  |\
-            \ `0` | Aktualny |\n  | `1` | Archiwalny |</details>"
-          title: TypesEnum
         custom_content:
-          items: {}
+          title: Custom Content
           type: array
+          items: {}
           description: "Identyfikatory p\xF3l raportu wybranych przez u\u017Cytkownika\n\
             <details>\n<summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\
             \u0107 | Nazwa |\n|-|-|\n| `entity` | Lista podmiot\xF3w, kt\xF3rych dotyczy\
@@ -18021,104 +18016,172 @@ components:
             \ | Tre\u015B\u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\
             \u0107 og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
             du tre\u015Bci og\u0142oszenia |</details>"
-          title: Custom Content
-      title: ReportModel
+        status:
+          $ref: '#/components/schemas/ReportStatusEnum'
+          allOf:
+          - type: integer
+            description: "Aktualny status generowania pliku raportu\n<details>\n \
+              \ <summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\
+              \u0107 | Nazwa |\n  |-|-|\n  | `0` | Niedost\u0119pny |\n  | `1` | W\
+              \ przygotowaniu |\n  | `2` | Gotowe |</details>"
+            title: ReportStatusEnum
+        progress:
+          title: Progress
+          type: integer
+          minimum: 0
+          description: "Procentowy post\u0119p generowania pliku raportu w skali 0-100"
+          maximum: 100
+        file_format:
+          $ref: '#/components/schemas/Format'
+          type: integer
+          description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C mo\u017C\
+            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  |\
+            \ `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n  | `4` | Json |\n \
+            \ | `5` | Def |</details>"
+          title: Format
+        file_password:
+          title: File Password
+          type: string
+          description: "Has\u0142o do pliku raportu"
+        credits_used:
+          title: Credits Used
+          type: integer
+          description: "Liczba punkt\xF3w wykorzystanych do utworzenia raportu"
+        creation_datetime:
+          title: Creation Datetime
+          type: string
+          format: date-time
+          description: Data i czas utworzenia raportu
+        records_count:
+          title: Records Count
+          type: integer
+          nullable: true
+          description: "Liczba og\u0142osze\u0144 w wygenerowanym raporcie"
+        downloads:
+          title: Downloads
+          type: array
+          items:
+            type: object
+          description: "Historia pobra\u0144 raportu"
+      example:
+        id: exampleID
+        type: 0
+        name: example raport
+        query:
+          custom_categories:
+          - K
+          from_date: '2021-11-02'
+          append_first_entry: true
+          to_date: '2021-11-04'
+          filter_id: 61ded2f8aff2de52365d891e
+        custom_content: []
+        status: 1
+        progress: 0
+        file_format: 3
+        file_password: mgbi2021
+        credits_used: 0
+        creation_datetime: '2022-02-18T10:12:27.262422'
+        downloads:
+        - download_datetime: '2021-11-12T15:39:29.584Z'
     ReportStatusEnum:
+      title: ReportStatusEnum
       type: integer
       description: "Aktualny status generowania pliku raportu\n<details>\n  <summary>Poka\u017C\
         \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n\
         \  | `0` | Niedost\u0119pny |\n  | `1` | W przygotowaniu |\n  | `2` | Gotowe\
         \ |</details>"
-      title: ReportStatusEnum
     SourceEnum:
       title: SourceEnum
       description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
         \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig` | Msig |\n| `krz` | Krz\
         \ |</details>"
     StrictContentFiltersModel:
-      additionalProperties: false
-      properties:
-        msig_signature:
-          items:
-            type: string
-          type: array
-          title: Msig Signature
-        regon:
-          items:
-            type: string
-          type: array
-          title: Regon
-        krz_signature:
-          items:
-            type: string
-          type: array
-          title: Krz Signature
-        krs:
-          items:
-            type: string
-          type: array
-          title: Krs
-        pesel:
-          items:
-            type: string
-          type: array
-          title: Pesel
-        nip:
-          items:
-            type: string
-          type: array
-          title: Nip
-        name:
-          items:
-            type: string
-          type: array
-          title: Name
+      title: StrictContentFiltersModel
       type: object
-      example:
+      properties:
+        nip:
+          title: Nip
+          type: array
+          items:
+            type: string
+        regon:
+          title: Regon
+          type: array
+          items:
+            type: string
+        krs:
+          title: Krs
+          type: array
+          items:
+            type: string
+        pesel:
+          title: Pesel
+          type: array
+          items:
+            type: string
+        krz_signature:
+          title: Krz Signature
+          type: array
+          items:
+            type: string
         msig_signature:
-        - XIV GUp 83/16
+          title: Msig Signature
+          type: array
+          items:
+            type: string
+        name:
+          title: Name
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+      example:
+        nip:
+        - '7272849598'
         regon:
         - '272404100'
-        krz_signature:
-        - BY1B/GUp/13/2021
         krs:
         - '0000422121'
         pesel:
         - '41041202774'
-        nip:
-        - '7272849598'
+        krz_signature:
+        - BY1B/GUp/13/2021
+        msig_signature:
+        - XIV GUp 83/16
         name:
         - Jan Kowalski
         - "Ambro\u017Cy Nielepszy"
-      title: StrictContentFiltersModel
     TypesEnum:
+      title: TypesEnum
       type: integer
       description: "Rodzaj raportu.\n<details>\n  <summary>Poka\u017C mo\u017Cliwe\
         \ opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  | `0` | Aktualny\
         \ |\n  | `1` | Archiwalny |</details>"
-      title: TypesEnum
     TypesFormat:
+      title: TypesFormat
       required:
       - id
       - label
       type: object
       properties:
         id:
-          type: integer
           title: Id
+          type: integer
           description: Unikalny identyfikator
         label:
-          type: string
           title: Label
+          type: string
           description: Etykieta
-      title: TypesFormat
-      example:
-        id: 3
-        label: XML
     UpdateFiltersModel:
+      title: UpdateFiltersModel
       type: object
       properties:
+        name:
+          title: Name
+          type: string
+          description: Nazwa filtra
         content:
+          $ref: '#/components/schemas/StrictContentFiltersModel'
           description: "Zawarto\u015B\u0107 filtra"
           title: StrictContentFiltersModel
           additionalProperties: false
@@ -18182,134 +18245,150 @@ components:
               type: array
               description: "Imi\u0119 i nazwisko"
               title: Name
-        name:
-          type: string
-          description: Nazwa filtra
-          title: Name
-      title: UpdateFiltersModel
     UpdateMonitorsModel:
+      title: UpdateMonitorsModel
+      type: object
       properties:
-        emails:
-          items:
-            type: string
-          type: array
-          description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
-            w"
-          title: Emails
         filter_id:
+          title: Filter Id
+          type: string
           maxLength: 24
           minLength: 24
-          type: string
           description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
-          title: Filter Id
-      type: object
-      example:
         emails:
-        - kura@wp.pl
-        filter_id: 3
-      title: UpdateMonitorsModel
-    UpdateParamsModel:
-      properties:
-        available_content:
+          title: Emails
+          type: array
           items:
             type: string
-          type: array
-          description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-            \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
-          title: Available Content
-        archival_reports_used:
-          type: integer
-          description: "Liczba utworzonych raport\xF3w archiwalnych"
-          title: Archival Reports Used
+          default: []
+          description: "Adresy e-mail do wysy\u0142ki powiadomie\u0144 z monitoring\xF3\
+            w"
+        append_first_entry:
+          title: Append First Entry
+          type: boolean
+        send_empty_notifications:
+          title: Send Empty Notifications
+          type: boolean
+      example:
+        filter_id: 3
+        emails:
+        - kura@wp.pl
+        append_first_entry: false
+    UpdateParamsModel:
+      title: UpdateParamsModel
+      type: object
+      properties:
+        archive_date_from:
+          title: Archive Date From
+          type: string
+          format: date
+          description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
+            \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
         current_reports_available:
+          title: Current Reports Available
           type: integer
           description: "Maksymalna liczba raport\xF3w aktualnych, kt\xF3re u\u017C\
             ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
-          title: Current Reports Available
+        current_reports_used:
+          title: Current Reports Used
+          type: integer
+          description: "Liczba utworzonych raport\xF3w aktualnych"
         current_reports_filter_required:
+          title: Current Reports Filter Required
           type: boolean
           description: "Czy przy tworzeniu raportu aktualnego u\u017Cytkownik musi\
             \ wybra\u0107 filtr?"
-          title: Current Reports Filter Required
-        api_requests_used:
+        archival_reports_available:
+          title: Archival Reports Available
           type: integer
-          description: "Liczba wykonanych zapyta\u0144 do API o pojedyncze og\u0142\
-            oszenia"
-          title: Api Requests Used
+          description: "Maksymalna liczba raport\xF3w archiwalnych, kt\xF3re u\u017C\
+            ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
+        archival_reports_used:
+          title: Archival Reports Used
+          type: integer
+          description: "Liczba utworzonych raport\xF3w archiwalnych"
+        archival_reports_filter_required:
+          title: Archival Reports Filter Required
+          type: boolean
+          description: "Czy przy tworzeniu raportu aktualnego u\u017Cytkownik musi\
+            \ wybra\u0107 filtr?"
         credits_available:
+          title: Credits Available
           type: integer
           description: "Maksymalna liczba identyfikator\xF3w, o kt\xF3re u\u017Cytkownik\
             \ mo\u017Ce odpyta\u0107 API w zapytaniu o og\u0142oszenia z ca\u0142\
             ego archiwum (od 1.01.2021) albo kt\xF3rych mo\u017Ce u\u017Cy\u0107 w\
             \ filtrze dla raportu archiwalnego w ramach obecnego planu"
-          title: Credits Available
-        archival_reports_filter_required:
-          type: boolean
-          description: "Czy przy tworzeniu raportu aktualnego u\u017Cytkownik musi\
-            \ wybra\u0107 filtr?"
-          title: Archival Reports Filter Required
-        api_key:
-          format: uuid
-          type: string
-          description: Klucz autoryzacji w API
-          title: Api Key
-        panel_users:
+        credits_used:
+          title: Credits Used
+          type: integer
+          description: "Liczba identyfikator\xF3w, o kt\xF3re u\u017Cytkownik odpyta\u0142\
+            \ API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla raportu archiwalnego"
+        available_content:
+          title: Available Content
+          type: array
           items:
             type: string
-            format: email
-          type: array
-          description: "Adresy e-mail u\u017Cytkownik\xF3w us\u0142ugi"
-          title: Panel Users
+          description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
+            \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+        filter_items_limit:
+          title: Filter Items Limit
+          type: integer
+          description: "Maksymalna liczba identyfikator\xF3w w filtrze"
+        monitors_available:
+          title: Monitors Available
+          type: integer
+          description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017Cytkownik\
+            \ mo\u017Ce utorzy\u0107 w ramach obecnego planu"
+        monitors_used:
+          title: Monitors Used
+          type: integer
+          description: "Liczba utworzonych monitoring\xF3w"
+        api_key:
+          title: Api Key
+          type: string
+          format: uuid
+          description: Klucz autoryzacji w API
         api_requests_available:
+          title: Api Requests Available
           type: integer
           description: "Maksymalna liczba zapyta\u0144 do API o pojedyncze og\u0142\
             oszenia, kt\xF3re u\u017Cytkownik mo\u017Ce wykona\u0107 w ramach obecnego\
             \ planu"
-          title: Api Requests Available
-        credits_used:
+        api_requests_used:
+          title: Api Requests Used
           type: integer
-          description: "Liczba identyfikator\xF3w, o kt\xF3re u\u017Cytkownik odpyta\u0142\
-            \ API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla raportu archiwalnego"
-          title: Credits Used
-        archive_date_from:
-          format: date
-          type: string
-          description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
-            \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
-          title: Archive Date From
-        monitors_used:
-          type: integer
-          description: "Liczba utworzonych monitoring\xF3w"
-          title: Monitors Used
-        current_reports_used:
-          type: integer
-          description: "Liczba utworzonych raport\xF3w aktualnych"
-          title: Current Reports Used
-        archival_reports_available:
-          type: integer
-          description: "Maksymalna liczba raport\xF3w archiwalnych, kt\xF3re u\u017C\
-            ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
-          title: Archival Reports Available
+          description: "Liczba wykonanych zapyta\u0144 do API o pojedyncze og\u0142\
+            oszenia"
         monitors_emails_limit:
+          title: Monitors Emails Limit
           type: integer
           description: "Maksymalna liczba adres\xF3w e-mail przypisanych do pojedynczego\
             \ monitoringu"
-          title: Monitors Emails Limit
-        filter_items_limit:
-          type: integer
-          description: "Maksymalna liczba identyfikator\xF3w w filtrze"
-          title: Filter Items Limit
         panel_users_limit:
+          title: Panel Users Limit
           type: integer
           description: "Maksymalna liczba u\u017Cytkownik\xF3w panelu us\u0142ugi"
-          title: Panel Users Limit
-        monitors_available:
-          type: integer
-          description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017Cytkownik\
-            \ mo\u017Ce utorzy\u0107 w ramach obecnego planu"
-          title: Monitors Available
-      type: object
+        panel_users:
+          title: Panel Users
+          type: array
+          items:
+            type: string
+            format: email
+          description: "Adresy e-mail u\u017Cytkownik\xF3w us\u0142ugi"
+        monitors_filter_required:
+          title: Monitors Filter Required
+          type: boolean
       example:
+        archive_date_from: '2021-04-23'
+        current_reports_available: 25
+        current_reports_used: 5
+        current_reports_filter_required: false
+        archival_reports_available: 5
+        archival_reports_used: 0
+        archival_reports_filter_required: false
+        credits_available: 5
+        credits_used: 0
         available_content:
         - entity.info.cleaned_name
         - entity.info.first_name
@@ -18362,115 +18441,83 @@ components:
         - content.text
         - content.html
         - content.url
-        archival_reports_used: 0
-        current_reports_available: 25
-        current_reports_filter_required: false
-        api_requests_used: 100
-        credits_available: 5
-        archival_reports_filter_required: false
+        filter_items_limit: 50
+        monitors_available: 5
+        monitors_used: 2
+        monitors_emails_limit: 5
         api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+        api_requests_available: 1000
+        api_requests_used: 100
+        panel_users_limit: 5
         panel_users:
         - abc@def.pl
         - xyz@ghi.pl
-        api_requests_available: 1000
-        credits_used: 0
-        archive_date_from: '2021-04-23'
-        monitors_used: 2
-        current_reports_used: 5
-        archival_reports_available: 5
-        monitors_emails_limit: 5
-        filter_items_limit: 50
-        panel_users_limit: 5
-        monitors_available: 5
-      title: UpdateParamsModel
+        monitors_filter_required: false
     UpdateUserModel:
+      title: UpdateUserModel
+      type: object
       properties:
-        is_admin:
-          type: boolean
-          description: "Czy u\u017Cytkownik jest adminem?"
-          title: Is Admin
+        email:
+          title: Email
+          type: string
+          format: email
+          description: "Adres e-mail u\u017Cytkownika"
         is_active:
+          title: Is Active
           type: boolean
           description: "Czy u\u017Cytkownik jest aktywny?"
-          title: Is Active
-        email:
-          format: email
+        is_admin:
+          title: Is Admin
+          type: boolean
+          description: "Czy u\u017Cytkownik jest adminem?"
+        deactivation_datetime:
+          title: Deactivation Datetime
           type: string
-          description: "Adres e-mail u\u017Cytkownika"
-          title: Email
-      type: object
-      example:
-        is_admin: false
-        is_active: true
-        email: abc@def.pl
-      title: UpdateUserModel
-    UpdatesModel:
-      properties:
-        source:
-          type: string
-          description: "Identyfikator \u017Ar\xF3d\u0142a danych"
-          title: Source
-        issue_date:
-          format: date
-          type: string
-          description: "Data publikacji og\u0142osze\u0144"
-          title: Issue Date
-        announcements_count:
-          type: integer
-          description: "Liczba og\u0142osze\u0144 dodanych w aktualizacji"
-          title: Announcements Count
-        creation_datetime:
           format: date-time
-          type: string
-          description: Data i czas rejestracji aktualizacji
-          title: Creation Datetime
-        id:
-          type: string
-          description: Unikalny identyfikator zarejestrowanej aktualizacji
-          title: Id
+      example:
+        email: abc@def.pl
+        is_active: true
+        is_admin: false
+    UpdatesModel:
+      title: UpdatesModel
       required:
       - id
       - creation_datetime
       - issue_date
-      - announcements_count
+      - added_records_count
       - source
       type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unikalny identyfikator zarejestrowanej aktualizacji
+        creation_datetime:
+          title: Creation Datetime
+          type: string
+          format: date-time
+          description: Data i czas rejestracji aktualizacji
+        issue_date:
+          title: Issue Date
+          type: string
+          format: date
+          description: "Data publikacji og\u0142osze\u0144"
+        added_records_count:
+          title: Added Records Count
+          type: integer
+        source:
+          $ref: '#/components/schemas/SourceEnum'
+          type: string
+          description: "Identyfikator \u017Ar\xF3d\u0142a danych"
+          title: Source
       example:
-        source: krz
+        id: exampleID
+        creation_datetime: '2022-02-18T10:12:27.128461'
         issue_date: '2022-02-18'
         announcements_count: 100
-        creation_datetime: '2022-02-18T10:12:27.128461'
-        id: exampleID
-      title: UpdatesModel
+        source: krz
     UserModel:
-      properties:
-        creation_datetime:
-          format: date-time
-          type: string
-          description: "Data wygasania konta u\u017Cytkownika"
-          title: Creation Datetime
-        deactivation_datetime:
-          format: date-time
-          type: string
-          description: "Data wygasania konta u\u017Cytkownika"
-          title: Deactivation Datetime
-        is_admin:
-          type: boolean
-          description: "Czy u\u017Cytkownik jest adminem?"
-          title: Is Admin
-        is_active:
-          type: boolean
-          description: "Czy u\u017Cytkownik jest aktywny?"
-          title: Is Active
-        id:
-          type: string
-          description: "Unikalny identyfikator u\u017Cytkownika"
-          title: Id
-        email:
-          format: email
-          type: string
-          description: "Adres e-mail u\u017Cytkownika"
-          title: Email
+      title: UserModel
       required:
       - id
       - email
@@ -18478,33 +18525,61 @@ components:
       - is_admin
       - creation_datetime
       type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: "Unikalny identyfikator u\u017Cytkownika"
+        email:
+          title: Email
+          type: string
+          format: email
+          description: "Adres e-mail u\u017Cytkownika"
+        is_active:
+          title: Is Active
+          type: boolean
+          description: "Czy u\u017Cytkownik jest aktywny?"
+        is_admin:
+          title: Is Admin
+          type: boolean
+          description: "Czy u\u017Cytkownik jest adminem?"
+        creation_datetime:
+          title: Creation Datetime
+          type: string
+          format: date-time
+          description: "Data wygasania konta u\u017Cytkownika"
+        deactivation_datetime:
+          title: Deactivation Datetime
+          type: string
+          format: date-time
+          nullable: true
+          description: "Data wygasania konta u\u017Cytkownika"
       example:
-        creation_datetime: '2021-11-10T15:20:20.584Z'
-        deactivation_datetime: '2021-11-10T15:20:20.584Z'
-        is_admin: false
-        is_active: true
         id: '1'
         email: abc@def.pl
-      title: UserModel
+        is_active: true
+        is_admin: false
+        creation_datetime: '2021-11-10T15:20:20.584Z'
+        deactivation_datetime: '2021-11-10T15:20:20.584Z'
     ValidationError:
+      title: ValidationError
       required:
       - loc
       - msg
       - type
       type: object
       properties:
-        msg:
-          type: string
-          title: Message
         loc:
+          title: Location
+          type: array
           items:
             type: string
-          type: array
-          title: Location
-        type:
+        msg:
+          title: Message
           type: string
+        type:
           title: Error Type
-      title: ValidationError
+          type: string
     UpdatesCreateModel:
       required:
       - issue_date

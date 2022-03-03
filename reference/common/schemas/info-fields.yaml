@@ -1,17 +1,14 @@
+title: InfoFields
 required:
 - id
 - label
 type: object
 properties:
   id:
+    title: Id
     type: string
     description: Unikalny identyfikator
-    title: Id
   label:
+    title: Label
     type: string
     description: Etykieta
-    title: Label
-title: InfoFields
-example:
-  id: K
-  label: Krajowy Rejestr Zadłużonych

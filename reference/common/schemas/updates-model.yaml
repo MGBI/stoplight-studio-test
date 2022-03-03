@@ -1,40 +1,40 @@
+title: UpdatesModel
+required:
+- id
+- creation_datetime
+- issue_date
+- added_records_count
+- source
+type: object
 properties:
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator zarejestrowanej aktualizacji
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas rejestracji aktualizacji
+  issue_date:
+    title: Issue Date
+    type: string
+    format: date
+    description: Data publikacji ogłoszeń
+  added_records_count:
+    title: Added Records Count
+    type: integer
   source:
+    $ref: ../schemas.yaml#/SourceEnum
     enum:
     - krz
     - msig
     type: string
     description: Identyfikator źródła danych
     title: Source
-  issue_date:
-    format: date
-    type: string
-    description: Data publikacji ogłoszeń
-    title: Issue Date
-  announcements_count:
-    type: integer
-    description: Liczba ogłoszeń dodanych w aktualizacji
-    title: Announcements Count
-  creation_datetime:
-    format: date-time
-    type: string
-    description: Data i czas rejestracji aktualizacji
-    title: Creation Datetime
-  id:
-    type: string
-    description: Unikalny identyfikator zarejestrowanej aktualizacji
-    title: Id
-required:
-- id
-- creation_datetime
-- issue_date
-- announcements_count
-- source
-type: object
 example:
-  source: krz
+  id: exampleID
+  creation_datetime: '2022-02-18T10:12:27.128461'
   issue_date: '2022-02-18'
   announcements_count: 100
-  creation_datetime: '2022-02-18T10:12:27.128461'
-  id: exampleID
-title: UpdatesModel
+  source: krz

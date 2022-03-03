@@ -1,3 +1,4 @@
+title: Format
 enum:
 - 1
 - 2
@@ -6,4 +7,3 @@ enum:
 - 5
 type: integer
 description: We numerate here each file format
-title: Format

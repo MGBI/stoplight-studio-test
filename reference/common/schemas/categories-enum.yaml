@@ -1,3 +1,4 @@
+title: CategoriesEnum
 enum:
 - K
 - K.0
@@ -76,4 +77,3 @@ enum:
 - M.1.50
 type: string
 description: An enumeration.
-title: CategoriesEnum

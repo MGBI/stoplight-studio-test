@@ -89,11 +89,17 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     old_openapi["paths"].update(new_openapi["paths"])
 
     # components
-    for name, component in new_openapi.get("components", {}).items():
-        if name in old_openapi["components"]:
-            old_component = old_openapi["components"][name]
+    for name, components in new_openapi.get("components", {}).items():
+        if name not in old_openapi["components"]:
+            old_openapi["components"][name] = components
+            continue
+        for component_name, component in components.items():
+            if component_name not in old_openapi["components"][name]:
+                old_openapi["components"][name][component_name] = component
+                continue
+            old_component = old_openapi["components"][name][component_name]
             for field in component:
-                if field == "example":
+                if field in ["example"] and field in old_component:
                     for f in component[field]:
                         component[field][f] = old_component[field].get(f, component[field][f])
                 if field == "properties":
@@ -101,9 +107,9 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                         for pname in old_component[field].get(p, []):
                             component[field][p][pname] = old_component[field][p][pname]
             for field in old_component:
-                if field not in ["example", "properties"]:
+                if field not in ["example", "properties", "required"]:
                     component[field] = old_component[field]
-        old_openapi["components"][name] = component
+            old_openapi["components"][name][component_name] = component
 
     # adding tags from path to set without public, internal and admin
     tags = set()
