@@ -91,6 +91,10 @@ properties:
     description: Maksymalna liczba monitoringów, które użytkownik może utorzyć w ramach
       obecnego planu
     title: Monitors Available
+  monitor_filter_required:
+    type: boolean
+    description: Czy przy tworzeniu monitoringu użytkownik musi wybierać filtr?
+    title: Monitors Filter Required
 required:
 - archive_date_from
 - current_reports_available
@@ -111,6 +115,7 @@ required:
 - api_requests_used
 - panel_users_limit
 - panel_users
+- monitor_filter_required
 type: object
 example:
   available_content:
@@ -185,4 +190,5 @@ example:
   filter_items_limit: 50
   panel_users_limit: 5
   monitors_available: 5
+  monitor_filter_required: true
 title: ParamsModel

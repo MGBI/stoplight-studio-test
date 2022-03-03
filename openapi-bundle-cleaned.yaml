@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.219
+  version: 1.0.221
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -248,15 +248,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - users_iapi
-  - filters_iapi
+  - monitors_iapi
+  - notifications_iapi
   - updates_iapi
+  - users_iapi
+  - dicts_iapi
   - announcements_iapi
   - params_iapi
-  - monitors_iapi
+  - filters_iapi
   - reports_iapi
-  - notifications_iapi
-  - dicts_iapi
 paths:
   /v2/filters:
     get:
@@ -3037,6 +3037,11 @@ paths:
                 description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017C\
                   ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
                 title: Monitors Available
+              monitor_filter_required:
+                type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybiera\u0107 filtr?"
+                title: Monitors Filter Required
             required:
             - archive_date_from
             - current_reports_available
@@ -3057,6 +3062,7 @@ paths:
             - api_requests_used
             - panel_users_limit
             - panel_users
+            - monitor_filter_required
             type: object
             example:
               available_content:
@@ -3131,6 +3137,7 @@ paths:
               filter_items_limit: 50
               panel_users_limit: 5
               monitors_available: 5
+              monitor_filter_required: true
             title: ParamsModel
           ProjectionEnum:
             description: "Lista zwracanych grup informacji\n<details>\n  <summary>Poka\u017C\
@@ -5919,6 +5926,11 @@ paths:
                 description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017C\
                   ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
                 title: Monitors Available
+              monitor_filter_required:
+                type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybiera\u0107 filtr?"
+                title: Monitors Filter Required
             required:
             - archive_date_from
             - current_reports_available
@@ -5939,6 +5951,7 @@ paths:
             - api_requests_used
             - panel_users_limit
             - panel_users
+            - monitor_filter_required
             type: object
             example:
               available_content:
@@ -6013,6 +6026,7 @@ paths:
               filter_items_limit: 50
               panel_users_limit: 5
               monitors_available: 5
+              monitor_filter_required: true
             title: ParamsModel
           ProjectionEnum:
             description: "Lista zwracanych grup informacji\n<details>\n  <summary>Poka\u017C\
@@ -8587,6 +8601,11 @@ paths:
                 description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017C\
                   ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
                 title: Monitors Available
+              monitor_filter_required:
+                type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybiera\u0107 filtr?"
+                title: Monitors Filter Required
             required:
             - archive_date_from
             - current_reports_available
@@ -8607,6 +8626,7 @@ paths:
             - api_requests_used
             - panel_users_limit
             - panel_users
+            - monitor_filter_required
             type: object
             example:
               available_content:
@@ -8681,6 +8701,7 @@ paths:
               filter_items_limit: 50
               panel_users_limit: 5
               monitors_available: 5
+              monitor_filter_required: true
             title: ParamsModel
           ProjectionEnum:
             description: "Lista zwracanych grup informacji\n<details>\n  <summary>Poka\u017C\
@@ -11855,6 +11876,11 @@ paths:
                 description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017C\
                   ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
                 title: Monitors Available
+              monitor_filter_required:
+                type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybiera\u0107 filtr?"
+                title: Monitors Filter Required
             required:
             - archive_date_from
             - current_reports_available
@@ -11875,6 +11901,7 @@ paths:
             - api_requests_used
             - panel_users_limit
             - panel_users
+            - monitor_filter_required
             type: object
             example:
               available_content:
@@ -11949,6 +11976,7 @@ paths:
               filter_items_limit: 50
               panel_users_limit: 5
               monitors_available: 5
+              monitor_filter_required: true
             title: ParamsModel
           ProjectionEnum:
             description: "Lista zwracanych grup informacji\n<details>\n  <summary>Poka\u017C\
@@ -14476,6 +14504,11 @@ paths:
                 description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017C\
                   ytkownik mo\u017Ce utorzy\u0107 w ramach obecnego planu"
                 title: Monitors Available
+              monitor_filter_required:
+                type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybiera\u0107 filtr?"
+                title: Monitors Filter Required
             required:
             - archive_date_from
             - current_reports_available
@@ -14496,6 +14529,7 @@ paths:
             - api_requests_used
             - panel_users_limit
             - panel_users
+            - monitor_filter_required
             type: object
             example:
               available_content:
@@ -14570,6 +14604,7 @@ paths:
               filter_items_limit: 50
               panel_users_limit: 5
               monitors_available: 5
+              monitor_filter_required: true
             title: ParamsModel
           ProjectionEnum:
             description: "Lista zwracanych grup informacji\n<details>\n  <summary>Poka\u017C\
@@ -17632,6 +17667,11 @@ components:
           description: "Maksymalna liczba monitoring\xF3w, kt\xF3re u\u017Cytkownik\
             \ mo\u017Ce utorzy\u0107 w ramach obecnego planu"
           title: Monitors Available
+        monitor_filter_required:
+          type: boolean
+          description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi wybiera\u0107\
+            \ filtr?"
+          title: Monitors Filter Required
       required:
       - archive_date_from
       - current_reports_available
@@ -17652,6 +17692,7 @@ components:
       - api_requests_used
       - panel_users_limit
       - panel_users
+      - monitor_filter_required
       type: object
       example:
         available_content:
@@ -17726,6 +17767,7 @@ components:
         filter_items_limit: 50
         panel_users_limit: 5
         monitors_available: 5
+        monitor_filter_required: true
       title: ParamsModel
     ProjectionEnum:
       description: "Lista zwracanych grup informacji\n<details>\n  <summary>Poka\u017C\
