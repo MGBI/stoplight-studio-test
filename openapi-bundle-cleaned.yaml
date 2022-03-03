@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.239
+  version: 1.0.240
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -117,38 +117,38 @@ tags:
     \ dost\u0119pne s\u0105 na stronie us\u0142ugi [Lista upad\u0142o\u015Bci](https://www.imsig.pl/lista-upadlosci).\n\
     \nS\u0142owa kluczowe:\n* Monitor S\u0105dowy i Gospodarczy API (MSIG API)\n*\
     \ Krajowy Rejestr Zad\u0142u\u017Conych API (KRZ API)\n\n\n## \u0179r\xF3d\u0142\
-    o danych w API\nMonitor S\u0105dowy i Gospodarczy (MSiG) to oficjalny dziennik\
-    \ urz\u0119dowy, w kt\xF3rym publikowane\ns\u0105 og\u0142oszenia s\u0105dowe\
-    \ m.in. na podstawie przepis\xF3w kodeksu sp\xF3\u0142ek handlowych, kodeksu\n\
-    post\u0119powania cywilnego i prawa upad\u0142o\u015Bciowego. Nowe numery dziennika\
-    \ s\u0105 udost\u0119pniane\ncodziennie w formie plik\xF3w PDF na [stronie Ministerstwa\
-    \ Sprawiedliwo\u015Bci](https://ems.ms.gov.pl/msig/przegladaniemonitorow).\n\n\
-    Krajowy Rejestr Zad\u0142u\u017Conych (KRZ) to system teleinformatyczny Ministerstwa\
-    \ Sprawiedliwo\u015Bci,\nw kt\xF3rym gromadzone s\u0105 wszystkie informacje i\
-    \ dokumenty dotycz\u0105ce przebiegu post\u0119powa\u0144\nupad\u0142o\u015Bciowych\
-    \ i restrukturyzacyjnych prowadzonych przez polskie s\u0105dy (od 1 grudnia 2021\
-    \ r.).\n\n\n## Ustrukturyzowane informacje w API\nFormat pliku, w jakim udost\u0119\
-    pniany jest Monitor S\u0105dowy i Gospodarczy, nie umo\u017Cliwia\n\u0142atwego\
-    \ wyszukiwania og\u0142osze\u0144 dotycz\u0105cych poszczeg\xF3lnych os\xF3b fizycznych\
-    \ lub podmiot\xF3w.\nTre\u015B\u0107 og\u0142osze\u0144 jest nieustrukturyzowana,\
-    \ co uniemo\u017Cliwia dalsze przetwarzanie zawartych\nw niej informacji.\n\n\
-    Nasz interfejs programistyczny umo\u017Cliwia przeszukiwanie bazy og\u0142osze\u0144\
-    \ opublikowanych\nw MSiG oraz KRZ na podstawie kilku r\xF3\u017Cnych kryteri\xF3\
-    w, pobieranie ich oryginalnej wersji w dw\xF3ch\nformatach, a tak\u017Ce dost\u0119\
-    p do wybranych informacji wyodr\u0119bnionych z tekstowej tre\u015Bci.\n\nAby\
-    \ sprawdzi\u0107, jakie og\u0142oszenia publikowane s\u0105 w MSiG, przejd\u017A\
-    \ na [stron\u0119 g\u0142\xF3wn\u0105 serwisu iMSiG.pl](\nhttps://www.imsig.pl).\n\
-    \n\n## Masowy dost\u0119p w API\nWyszukiwarka og\u0142osze\u0144 dost\u0119pna\
-    \ na stronie Ministerstwa Sprawiedliwo\u015Bci nie jest\nprzeznaczona do masowego\
-    \ dost\u0119pu do bazy og\u0142osze\u0144. Nie zosta\u0142o r\xF3wnie\u017C\n\
-    udost\u0119pnione oficjalne API do integracji z systemami teleinformatycznymi.\n\
-    \nW ramach naszego interfejsu programistycznego udost\u0119pniamy szereg kryteri\xF3\
-    w do\nprzeszukiwania bazy og\u0142osze\u0144 dost\u0119pnych w systemie KRZ jak\
-    \ i MSiG. Umo\u017Cliwia to\nmasowe pobieranie dokument\xF3w bez konieczno\u015B\
-    ci r\u0119cznego sprawdzania og\u0142osze\u0144\nw dw\xF3ch r\xF3\u017Cnych systemach.\n\
-    \nDodatkowo, wszystkie udost\u0119pniane przez nas og\u0142oszenia s\u0105 uzupe\u0142\
-    niane o pomini\u0119te\nw publicznym portalu dane doradc\xF3w restukturyzacyjnych\
-    \ oraz dane rejestrowe\npodmiot\xF3w, kt\xF3rych dotycz\u0105 og\u0142oszenia."
+    o danych\nMonitor S\u0105dowy i Gospodarczy (MSiG) to oficjalny dziennik urz\u0119\
+    dowy, w kt\xF3rym publikowane\ns\u0105 og\u0142oszenia s\u0105dowe m.in. na podstawie\
+    \ przepis\xF3w kodeksu sp\xF3\u0142ek handlowych, kodeksu\npost\u0119powania cywilnego\
+    \ i prawa upad\u0142o\u015Bciowego. Nowe numery dziennika s\u0105 udost\u0119\
+    pniane\ncodziennie w formie plik\xF3w PDF na [stronie Ministerstwa Sprawiedliwo\u015B\
+    ci](https://ems.ms.gov.pl/msig/przegladaniemonitorow).\n\nKrajowy Rejestr Zad\u0142\
+    u\u017Conych (KRZ) to system teleinformatyczny Ministerstwa Sprawiedliwo\u015B\
+    ci,\nw kt\xF3rym gromadzone s\u0105 wszystkie informacje i dokumenty dotycz\u0105\
+    ce przebiegu post\u0119powa\u0144\nupad\u0142o\u015Bciowych i restrukturyzacyjnych\
+    \ prowadzonych przez polskie s\u0105dy (od 1 grudnia 2021 r.).\n\n\n## Ustrukturyzowane\
+    \ informacje\nFormat pliku, w jakim udost\u0119pniany jest Monitor S\u0105dowy\
+    \ i Gospodarczy, nie umo\u017Cliwia\n\u0142atwego wyszukiwania og\u0142osze\u0144\
+    \ dotycz\u0105cych poszczeg\xF3lnych os\xF3b fizycznych lub podmiot\xF3w.\nTre\u015B\
+    \u0107 og\u0142osze\u0144 jest nieustrukturyzowana, co uniemo\u017Cliwia dalsze\
+    \ przetwarzanie zawartych\nw niej informacji.\n\nNasz interfejs programistyczny\
+    \ umo\u017Cliwia przeszukiwanie bazy og\u0142osze\u0144 opublikowanych\nw MSiG\
+    \ oraz KRZ na podstawie kilku r\xF3\u017Cnych kryteri\xF3w, pobieranie ich oryginalnej\
+    \ wersji w dw\xF3ch\nformatach, a tak\u017Ce dost\u0119p do wybranych informacji\
+    \ wyodr\u0119bnionych z tekstowej tre\u015Bci.\n\nAby sprawdzi\u0107, jakie og\u0142\
+    oszenia publikowane s\u0105 w MSiG, przejd\u017A na [stron\u0119 g\u0142\xF3wn\u0105\
+    \ serwisu iMSiG.pl](\nhttps://www.imsig.pl).\n\n\n## Masowy dost\u0119p\nWyszukiwarka\
+    \ og\u0142osze\u0144 dost\u0119pna na stronie Ministerstwa Sprawiedliwo\u015B\
+    ci nie jest\nprzeznaczona do masowego dost\u0119pu do bazy og\u0142osze\u0144\
+    . Nie zosta\u0142o r\xF3wnie\u017C\nudost\u0119pnione oficjalne API do integracji\
+    \ z systemami teleinformatycznymi.\n\nW ramach naszego interfejsu programistycznego\
+    \ udost\u0119pniamy szereg kryteri\xF3w do\nprzeszukiwania bazy og\u0142osze\u0144\
+    \ dost\u0119pnych w systemie KRZ jak i MSiG. Umo\u017Cliwia to\nmasowe pobieranie\
+    \ dokument\xF3w bez konieczno\u015Bci r\u0119cznego sprawdzania og\u0142osze\u0144\
+    \nw dw\xF3ch r\xF3\u017Cnych systemach.\n\nDodatkowo, wszystkie udost\u0119pniane\
+    \ przez nas og\u0142oszenia s\u0105 uzupe\u0142niane o pomini\u0119te\nw publicznym\
+    \ portalu dane doradc\xF3w restukturyzacyjnych oraz dane rejestrowe\npodmiot\xF3\
+    w, kt\xF3rych dotycz\u0105 og\u0142oszenia."
 - x-displayName: Aktualizacje
   name: updates
   description: ''
@@ -248,15 +248,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - params_iapi
-  - monitors_iapi
-  - updates_iapi
-  - notifications_iapi
   - announcements_iapi
-  - filters_iapi
-  - reports_iapi
-  - users_iapi
+  - params_iapi
   - dicts_iapi
+  - updates_iapi
+  - monitors_iapi
+  - notifications_iapi
+  - users_iapi
+  - reports_iapi
+  - filters_iapi
 paths:
   /v2/filters:
     get:
