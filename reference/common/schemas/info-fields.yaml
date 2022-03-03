@@ -12,3 +12,6 @@ properties:
     description: Etykieta
     title: Label
 title: InfoFields
+example:
+  id: K
+  label: Krajowy Rejestr Zadłużonych

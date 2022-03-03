@@ -12,3 +12,6 @@ properties:
     description: Etykieta
     title: Label
 title: InfoCategories
+example:
+  id: K.0.0
+  label: Dzień układowy

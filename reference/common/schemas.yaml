@@ -64,6 +64,8 @@ ReportModel:
   $ref: schemas/report-model.yaml
 ReportStatusEnum:
   $ref: schemas/report-status-enum.yaml
+SourceEnum:
+  $ref: schemas/source-enum.yaml
 StrictContentFiltersModel:
   $ref: schemas/strict-content-filters-model.yaml
 TypesEnum:

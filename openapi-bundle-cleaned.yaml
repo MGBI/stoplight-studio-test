@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.213
+  version: 1.0.219
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -137,37 +137,106 @@ tags:
     \ wersji w dw\xF3ch\nformatach, a tak\u017Ce dost\u0119p do wybranych informacji\
     \ wyodr\u0119bnionych z tekstowej tre\u015Bci.\n\nAby sprawdzi\u0107, jakie og\u0142\
     oszenia publikowane s\u0105 w MSiG, przejd\u017A na [stron\u0119 g\u0142\xF3wn\u0105\
-    \ serwisu iMSiG.pl](\nhttps://www.imsig.pl).\n"
+    \ serwisu iMSiG.pl](\nhttps://www.imsig.pl).\n\n\n## Masowy dost\u0119p\nWyszukiwarka\
+    \ og\u0142osze\u0144 dost\u0119pna na stronie Ministerstwa Sprawiedliwo\u015B\
+    ci nie jest\nprzeznaczona do masowego dost\u0119pu do bazy og\u0142osze\u0144\
+    . Nie zosta\u0142o r\xF3wnie\u017C\nudost\u0119pnione oficjalne API do integracji\
+    \ z systemami teleinformatycznymi.\n\nW ramach naszego interfejsu programistycznego\
+    \ udost\u0119pniamy szereg kryteri\xF3w do\nprzeszukiwania bazy og\u0142osze\u0144\
+    \ dost\u0119pnych w systemie KRZ jak i MSiG. Umo\u017Cliwia to\nmasowe pobieranie\
+    \ dokument\xF3w bez konieczno\u015Bci r\u0119cznego sprawdzania og\u0142osze\u0144\
+    \nw dw\xF3ch r\xF3\u017Cnych systemach.\n\nDodatkowo, wszystkie udost\u0119pniane\
+    \ przez nas og\u0142oszenia s\u0105 uzupe\u0142niane o pomini\u0119te\nw publicznym\
+    \ portalu dane doradc\xF3w restukturyzacyjnych oraz dane rejestrowe\npodmiot\xF3\
+    w, kt\xF3rych dotycz\u0105 og\u0142oszenia."
 - x-displayName: Aktualizacje
   name: updates
   description: ''
 - x-displayName: "Og\u0142oszenia"
   name: announcements_iapi
-  description: ''
+  description: "Interfejs programistyczny serwisu iMSiG.pl umo\u017Cliwia wyszukiwanie\
+    \ i pobieranie\noryginalnej tre\u015Bci og\u0142osze\u0144 publikowanych w Monitorze\
+    \ S\u0105dowym i Gospodarczym (MSiG)\noraz w Krajowym Rejestrze Zad\u0142u\u017C\
+    onych (KRZ), a tak\u017Ce wyodr\u0119bnionych z nich danych\nw ustrukturyzowanej\
+    \ formie.\n\nW obecnej wersji API umo\u017Cliwia dost\u0119p do og\u0142osze\u0144\
+    \ dotycz\u0105cych post\u0119powa\u0144 upad\u0142o\u015Bciowych\ni restrukturyzacyjnych,\
+    \ pochodz\u0105cych z numer\xF3w MSiG wydanych (od 1 stycznia 2001 r.)\noraz z\
+    \ KRZ (od 1 grudnia 2021 r.).\n\nInformacje o zasadach korzystania z interfejsu\
+    \ dost\u0119pne s\u0105 na stronie us\u0142ugi [Lista upad\u0142o\u015Bci](https://www.imsig.pl/lista-upadlosci).\n\
+    \nS\u0142owa kluczowe:\n* Monitor S\u0105dowy i Gospodarczy API (MSIG API)\n*\
+    \ Krajowy Rejestr Zad\u0142u\u017Conych API (KRZ API)\n\n\n## \u0179r\xF3d\u0142\
+    o danych\nMonitor S\u0105dowy i Gospodarczy (MSiG) to oficjalny dziennik urz\u0119\
+    dowy, w kt\xF3rym publikowane\ns\u0105 og\u0142oszenia s\u0105dowe m.in. na podstawie\
+    \ przepis\xF3w kodeksu sp\xF3\u0142ek handlowych, kodeksu\npost\u0119powania cywilnego\
+    \ i prawa upad\u0142o\u015Bciowego. Nowe numery dziennika s\u0105 udost\u0119\
+    pniane\ncodziennie w formie plik\xF3w PDF na [stronie Ministerstwa Sprawiedliwo\u015B\
+    ci](https://ems.ms.gov.pl/msig/przegladaniemonitorow).\n\nKrajowy Rejestr Zad\u0142\
+    u\u017Conych (KRZ) to system teleinformatyczny Ministerstwa Sprawiedliwo\u015B\
+    ci,\nw kt\xF3rym gromadzone s\u0105 wszystkie informacje i dokumenty dotycz\u0105\
+    ce przebiegu post\u0119powa\u0144\nupad\u0142o\u015Bciowych i restrukturyzacyjnych\
+    \ prowadzonych przez polskie s\u0105dy (od 1 grudnia 2021 r.).\n\n\n## Ustrukturyzowane\
+    \ informacje\nFormat pliku, w jakim udost\u0119pniany jest Monitor S\u0105dowy\
+    \ i Gospodarczy, nie umo\u017Cliwia\n\u0142atwego wyszukiwania og\u0142osze\u0144\
+    \ dotycz\u0105cych poszczeg\xF3lnych os\xF3b fizycznych lub podmiot\xF3w.\nTre\u015B\
+    \u0107 og\u0142osze\u0144 jest nieustrukturyzowana, co uniemo\u017Cliwia dalsze\
+    \ przetwarzanie zawartych\nw niej informacji.\n\nNasz interfejs programistyczny\
+    \ umo\u017Cliwia przeszukiwanie bazy og\u0142osze\u0144 opublikowanych\nw MSiG\
+    \ oraz KRZ na podstawie kilku r\xF3\u017Cnych kryteri\xF3w, pobieranie ich oryginalnej\
+    \ wersji w dw\xF3ch\nformatach, a tak\u017Ce dost\u0119p do wybranych informacji\
+    \ wyodr\u0119bnionych z tekstowej tre\u015Bci.\n\nAby sprawdzi\u0107, jakie og\u0142\
+    oszenia publikowane s\u0105 w MSiG, przejd\u017A na [stron\u0119 g\u0142\xF3wn\u0105\
+    \ serwisu iMSiG.pl](\nhttps://www.imsig.pl).\n\n\n## Masowy dost\u0119p\nWyszukiwarka\
+    \ og\u0142osze\u0144 dost\u0119pna na stronie Ministerstwa Sprawiedliwo\u015B\
+    ci nie jest\nprzeznaczona do masowego dost\u0119pu do bazy og\u0142osze\u0144\
+    . Nie zosta\u0142o r\xF3wnie\u017C\nudost\u0119pnione oficjalne API do integracji\
+    \ z systemami teleinformatycznymi.\n\nW ramach naszego interfejsu programistycznego\
+    \ udost\u0119pniamy szereg kryteri\xF3w do\nprzeszukiwania bazy og\u0142osze\u0144\
+    \ dost\u0119pnych w systemie KRZ jak i MSiG. Umo\u017Cliwia to\nmasowe pobieranie\
+    \ dokument\xF3w bez konieczno\u015Bci r\u0119cznego sprawdzania og\u0142osze\u0144\
+    \nw dw\xF3ch r\xF3\u017Cnych systemach.\n\nDodatkowo, wszystkie udost\u0119pniane\
+    \ przez nas og\u0142oszenia s\u0105 uzupe\u0142niane o pomini\u0119te\nw publicznym\
+    \ portalu dane doradc\xF3w restukturyzacyjnych oraz dane rejestrowe\npodmiot\xF3\
+    w, kt\xF3rych dotycz\u0105 og\u0142oszenia."
 - x-displayName: Filtry
   name: filters_iapi
-  description: ''
+  description: "Udost\u0119pniamy mo\u017Cliwo\u015B\u0107 utworzenia filtra na potrzeby\
+    \ monitorowania wybranych\npodmiot\xF3w, os\xF3b czy post\u0119powa\u0144. W ten\
+    \ spos\xF3b, w tworzonych raportach mo\u017Cemy\nzaw\u0119zi\u0107 list\u0119\
+    \ og\u0142osze\u0144 do:\n* podmiot\xF3w z wybranej listy numer\xF3w NIP, REGON\
+    \ albo KRS,\n* os\xF3b fizycznych z wybrabej listy numer\xF3w PESEL albo listy\
+    \ imion i nazwisk,\n* post\u0119powa\u0144 z wybranej listy sygnatur z MSiG albo\
+    \ KRZ."
 - x-displayName: Raporty
   name: reports_iapi
-  description: ''
+  description: "Udost\u0119pniamy mechanizm tworzenia plik\xF3w z list\u0105 og\u0142\
+    osze\u0144 opublikowanych\nw wybranym zakresie dat. Wygenerowane archiwum ZIP\
+    \ zawiera plik w jednym\nze wskazanych format\xF3w: CSV, XLSX, XML, JSON albo\
+    \ DEF."
 - x-displayName: "S\u0142owniki"
   name: dicts_iapi
-  description: ''
+  description: "Etykiety dla zwracanych sta\u0142ych."
 - x-displayName: "U\u017Cytkownicy"
   name: users_iapi
-  description: ''
+  description: "Informacje o aktualnym u\u017Cytkowniku."
 - x-displayName: Aktualizacje
   name: updates_iapi
-  description: ''
+  description: "Udost\u0119pniamy podgl\u0105d na aktualizacje naszej wewn\u0119trznej\
+    \ bazy og\u0142osze\u0144.\nW ten spos\xF3b mo\u017Cemy sprawdzi\u0107 aktualno\u015B\
+    \u0107 naszych danych."
 - x-displayName: Parametry
   name: params_iapi
-  description: ''
+  description: "Parametry us\u0142ugi przypisane do u\u017Cytkownika."
 - x-displayName: Monitoringi
   name: monitors_iapi
-  description: ''
+  description: "Udost\u0119pniamy mo\u017Cliwo\u015B\u0107 monitorowania nowych og\u0142\
+    osze\u0144 w ramach list\nidentyfikator\xF3w podanych w filtrze. Na wskazane adresy\
+    \ e-mail b\u0119dzie\nraz dziennie wysy\u0142ana wiadomo\u015B\u0107 o nowych\
+    \ og\u0142oszeniach dotycz\u0105cych wybranych\npodmiot\xF3w, os\xF3b b\u0105\
+    d\u017A sygnatur."
 - x-displayName: Powiadomienia
   name: notifications_iapi
-  description: ''
+  description: "Udost\u0119pniamy podgl\u0105d na list\u0119 powiadomie\u0144 o nowych\
+    \ og\u0142oszeniach w ramach\nzdefiniowanych monitoring\xF3w."
 x-tagGroups:
 - name: KRS RDF API
   tags:
@@ -179,15 +248,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - announcements_iapi
   - users_iapi
-  - reports_iapi
-  - notifications_iapi
+  - filters_iapi
+  - updates_iapi
+  - announcements_iapi
   - params_iapi
   - monitors_iapi
-  - filters_iapi
+  - reports_iapi
+  - notifications_iapi
   - dicts_iapi
-  - updates_iapi
 paths:
   /v2/filters:
     get:
@@ -202,8 +271,6 @@ paths:
           type: array
           items:
             type: string
-          default:
-          - content
         name: exclude
         in: query
       - required: false
@@ -295,7 +362,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: "Tworzy nowy filtr przypisany do aktualnego u\u017Cytkownika."
+      description: "Tworzy nowy filtr przypisany do aktualnego u\u017Cytkownika.\n\
+        \nW parametrze `content` podajemy przynajmniej jeden identyfikator dowolnego\n\
+        typu. \u0141\u0105czna liczba przekazanych w \u017C\u0105daniu identyfikator\xF3\
+        w nie mo\u017Ce przekracza\u0107\nwarto\u015Bci `filter_items_limit` z parametr\xF3\
+        w us\u0142ugi."
     delete:
       tags:
       - filters_iapi
@@ -342,9 +413,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Usuwa filtry o identyfikatorach przekazanych w parametrze ids w
-        query stringu (po przecinku). W przypadku sukcesu metoda zwraca kod odpowiedzi
-        204 No Content.
+      description: 'Usuwa filtry o identyfikatorach przekazanych w kolejnych parametrach
+        `ids`
+
+        w query stringu.
+
+
+        W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.'
   /v2/monitors/{id}:
     get:
       tags:
@@ -375,8 +450,6 @@ paths:
           type: array
           items:
             type: string
-          default:
-          - notifications
         name: exclude
         in: query
       - required: false
@@ -418,7 +491,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Zwraca monitoring o podanym id.
+      description: Zwraca monitoring o podanym `id`.
     patch:
       tags:
       - monitors_iapi
@@ -480,7 +553,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Modyfikuje monitoring o podanym id.
+      description: "Modyfikuje monitoring o podanym `id`.\n\nW parametrze `emails`\
+        \ podajemy przynajmniej jeden adres e-mail, na kt\xF3ry b\u0119d\u0105\nwysy\u0142\
+        ane powiadomienia o nowych og\u0142oszeniach w ramach monitoringu.\nLiczba\
+        \ adres\xF3w e-mail nie mo\u017Ce przekracza\u0107 warto\u015Bci `monitors_emails_limit`\n\
+        z parametr\xF3w us\u0142ugi."
   /v2/users/me:
     get:
       tags:
@@ -642,8 +719,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: "Zwraca powiadomienie o podanym id, je\u017Celi monitor monitor_id\
-        \ nale\u017Cy do aktualnego u\u017Cytkownika."
+      description: Zwraca powiadomienie o podanym `id`.
   /v2/updates/{id}:
     get:
       tags:
@@ -661,14 +737,14 @@ paths:
           - enum:
             - last
             type: string
-            description: Zwraca ostatnie dane aktualizacji
+            description: "Zwraca dane ostatniej aktualizacji bazy og\u0142osze\u0144"
             maxLength: 4
             minLength: 4
           example: '1'
           minLength: 1
         name: id
         in: path
-        description: Unikalny identyfikator zarejestrowanej aktualizacji
+        description: Unikalny identyfikator aktualizacji
       - required: false
         schema:
           title: Authorization
@@ -708,7 +784,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Zwraca dane aktualizacji o podanym id.
+      description: "Zwraca dane aktualizacji bazy og\u0142osze\u0144 o podanym `id`."
   /v2/reports:
     get:
       tags:
@@ -805,7 +881,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: "Tworzy nowy raport przypisany do aktualnego u\u017Cytkownika."
+      description: "Tworzy nowy raport - plik z list\u0105 og\u0142osze\u0144 - przypisany\
+        \ do aktualnego u\u017Cytkownika.\n\nRaport mo\u017Cemy tworzy\u0107 w dw\xF3\
+        ch trybach:\n* w trybie raportu aktualnego, gdzie podana warto\u015B\u0107\
+        \ pola `query.from_date`\nograniczona jest przez warto\u015B\u0107 `archive_date_from`\
+        \ z parametr\xF3w us\u0142ugi,\n* w trybie raportu archiwalnego, gdzie podana\
+        \ warto\u015B\u0107 pola `query_from.date`\nnie jest ograniczona.\n\nRaport\
+        \ aktualny/archiwalny mo\u017Ce zosta\u0107 utworzony, gdy liczba raport\xF3\
+        w po jego\nutworzeniu nie b\u0119dzie przekracza\u0107 warto\u015Bci odpowiednio\n\
+        `current_reports_available`/`archival_reports_available` z parametr\xF3w us\u0142\
+        ugi.\n\nDodatkowo, przy tworzeniu raportu archiwalnego, sumaryczna liczba\
+        \ og\u0142osze\u0144\nwygenerowanych w ramach wszystkich stworzonych do tej\
+        \ pory archiwalnych\nraport\xF3w i zapyta\u0144 nie mo\u017Ce przekroczy\u0107\
+        \ warto\u015Bci `credits_available`\nz parametr\xF3w us\u0142ugi."
     delete:
       tags:
       - reports_iapi
@@ -854,9 +942,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Usuwa raporty o identyfikatorach przekazanych w parametrze ids
-        w query stringu (po przecinku). W przypadku sukcesu metoda zwraca kod odpowiedzi
-        204 No Content.
+      description: 'Usuwa raporty o identyfikatorach przekazanych w kolejnych parametrach
+        `ids`
+
+        w query stringu.
+
+
+        W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.'
   /v2/reports/{report_id}:
     get:
       tags:
@@ -920,7 +1012,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Zwraca raport o podanym id.
+      description: Zwraca raport o podanym `id`.
   /v2/filters/{id}:
     get:
       tags:
@@ -951,8 +1043,6 @@ paths:
           type: array
           items:
             type: string
-          default:
-          - content
         name: exclude
         in: query
       - required: false
@@ -994,7 +1084,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Zwraca filtr o podanym id.
+      description: Zwraca filtr o podanym `id`.
     patch:
       tags:
       - filters_iapi
@@ -1050,7 +1140,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Modyfikuje filtr o podanym id.
+      description: "Modyfikuje filtr o podanym `id`.\n\nUstawiaj\u0105c parametr `content`,\
+        \ podajemy przynajmniej jeden identyfikator\ndowolnego typu. \u0141\u0105\
+        czna liczba przekazanych w \u017C\u0105daniu identyfikator\xF3w nie mo\u017C\
+        e\nprzekracza\u0107 warto\u015Bci `filter_items_limit` z parametr\xF3w us\u0142\
+        ugi."
   /v1/rdf/financialData:
     get:
       responses:
@@ -2540,6 +2634,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoCategories
+            example:
+              id: K.0.0
+              label: "Dzie\u0144 uk\u0142adowy"
           InfoFields:
             required:
             - id
@@ -2555,6 +2652,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoFields
+            example:
+              id: K
+              label: "Krajowy Rejestr Zad\u0142u\u017Conych"
           InfoReports:
             required:
             - id
@@ -2570,6 +2670,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoReports
+            example:
+              id: 1
+              label: w przygotowaniu
           InfoTypes:
             required:
             - id
@@ -2585,6 +2688,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoTypes
+            example:
+              id: 0
+              label: aktualny
           KrzChapterEnum:
             type: integer
             description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
@@ -3296,6 +3402,11 @@ paths:
               \u0107 | Nazwa |\n  |-|-|\n  | `0` | Niedost\u0119pny |\n  | `1` | W\
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
             title: ReportStatusEnum
+          SourceEnum:
+            title: SourceEnum
+            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
+              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
+              \ | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             additionalProperties: false
             properties:
@@ -3367,10 +3478,15 @@ paths:
               id:
                 type: integer
                 title: Id
+                description: Unikalny identyfikator
               label:
                 type: string
                 title: Label
+                description: Etykieta
             title: TypesFormat
+            example:
+              id: 3
+              label: XML
           UpdateFiltersModel:
             type: object
             properties:
@@ -5400,6 +5516,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoCategories
+            example:
+              id: K.0.0
+              label: "Dzie\u0144 uk\u0142adowy"
           InfoFields:
             required:
             - id
@@ -5415,6 +5534,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoFields
+            example:
+              id: K
+              label: "Krajowy Rejestr Zad\u0142u\u017Conych"
           InfoReports:
             required:
             - id
@@ -5430,6 +5552,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoReports
+            example:
+              id: 1
+              label: w przygotowaniu
           InfoTypes:
             required:
             - id
@@ -5445,6 +5570,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoTypes
+            example:
+              id: 0
+              label: aktualny
           KrzChapterEnum:
             type: integer
             description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
@@ -6156,6 +6284,11 @@ paths:
               \u0107 | Nazwa |\n  |-|-|\n  | `0` | Niedost\u0119pny |\n  | `1` | W\
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
             title: ReportStatusEnum
+          SourceEnum:
+            title: SourceEnum
+            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
+              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
+              \ | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             additionalProperties: false
             properties:
@@ -6227,10 +6360,15 @@ paths:
               id:
                 type: integer
                 title: Id
+                description: Unikalny identyfikator
               label:
                 type: string
                 title: Label
+                description: Etykieta
             title: TypesFormat
+            example:
+              id: 3
+              label: XML
           UpdateFiltersModel:
             type: object
             properties:
@@ -8046,6 +8184,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoCategories
+            example:
+              id: K.0.0
+              label: "Dzie\u0144 uk\u0142adowy"
           InfoFields:
             required:
             - id
@@ -8061,6 +8202,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoFields
+            example:
+              id: K
+              label: "Krajowy Rejestr Zad\u0142u\u017Conych"
           InfoReports:
             required:
             - id
@@ -8076,6 +8220,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoReports
+            example:
+              id: 1
+              label: w przygotowaniu
           InfoTypes:
             required:
             - id
@@ -8091,6 +8238,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoTypes
+            example:
+              id: 0
+              label: aktualny
           KrzChapterEnum:
             type: integer
             description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
@@ -8802,6 +8952,11 @@ paths:
               \u0107 | Nazwa |\n  |-|-|\n  | `0` | Niedost\u0119pny |\n  | `1` | W\
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
             title: ReportStatusEnum
+          SourceEnum:
+            title: SourceEnum
+            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
+              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
+              \ | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             additionalProperties: false
             properties:
@@ -8873,10 +9028,15 @@ paths:
               id:
                 type: integer
                 title: Id
+                description: Unikalny identyfikator
               label:
                 type: string
                 title: Label
+                description: Etykieta
             title: TypesFormat
+            example:
+              id: 3
+              label: XML
           UpdateFiltersModel:
             type: object
             properties:
@@ -11292,6 +11452,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoCategories
+            example:
+              id: K.0.0
+              label: "Dzie\u0144 uk\u0142adowy"
           InfoFields:
             required:
             - id
@@ -11307,6 +11470,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoFields
+            example:
+              id: K
+              label: "Krajowy Rejestr Zad\u0142u\u017Conych"
           InfoReports:
             required:
             - id
@@ -11322,6 +11488,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoReports
+            example:
+              id: 1
+              label: w przygotowaniu
           InfoTypes:
             required:
             - id
@@ -11337,6 +11506,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoTypes
+            example:
+              id: 0
+              label: aktualny
           KrzChapterEnum:
             type: integer
             description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
@@ -12048,6 +12220,11 @@ paths:
               \u0107 | Nazwa |\n  |-|-|\n  | `0` | Niedost\u0119pny |\n  | `1` | W\
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
             title: ReportStatusEnum
+          SourceEnum:
+            title: SourceEnum
+            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
+              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
+              \ | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             additionalProperties: false
             properties:
@@ -12119,10 +12296,15 @@ paths:
               id:
                 type: integer
                 title: Id
+                description: Unikalny identyfikator
               label:
                 type: string
                 title: Label
+                description: Etykieta
             title: TypesFormat
+            example:
+              id: 3
+              label: XML
           UpdateFiltersModel:
             type: object
             properties:
@@ -12666,7 +12848,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Pobiera plik raportu o podanym id.
+      description: "Pobiera plik wygenerowanego raportu o podanym `id`.\n\nPlik raportu\
+        \ mo\u017Cna pobra\u0107 tylko w sytuacji, gdy\_status\_raportu ma warto\u015B\
+        \u0107\_`2`\_(gotowy)."
   /v1/msig/updates:
     get:
       responses:
@@ -13889,6 +14073,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoCategories
+            example:
+              id: K.0.0
+              label: "Dzie\u0144 uk\u0142adowy"
           InfoFields:
             required:
             - id
@@ -13904,6 +14091,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoFields
+            example:
+              id: K
+              label: "Krajowy Rejestr Zad\u0142u\u017Conych"
           InfoReports:
             required:
             - id
@@ -13919,6 +14109,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoReports
+            example:
+              id: 1
+              label: w przygotowaniu
           InfoTypes:
             required:
             - id
@@ -13934,6 +14127,9 @@ paths:
                 description: Etykieta
                 title: Label
             title: InfoTypes
+            example:
+              id: 0
+              label: aktualny
           KrzChapterEnum:
             type: integer
             description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
@@ -14645,6 +14841,11 @@ paths:
               \u0107 | Nazwa |\n  |-|-|\n  | `0` | Niedost\u0119pny |\n  | `1` | W\
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
             title: ReportStatusEnum
+          SourceEnum:
+            title: SourceEnum
+            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
+              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
+              \ | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             additionalProperties: false
             properties:
@@ -14716,10 +14917,15 @@ paths:
               id:
                 type: integer
                 title: Id
+                description: Unikalny identyfikator
               label:
                 type: string
                 title: Label
+                description: Etykieta
             title: TypesFormat
+            example:
+              id: 3
+              label: XML
           UpdateFiltersModel:
             type: object
             properties:
@@ -15601,7 +15807,13 @@ paths:
         \ KRZ.\n\nW przypadku, gdy \u017Cadne og\u0142oszenie nie spe\u0142nia podanych\
         \ kryteri\xF3w,\nzwracana jest pusta lista. W przypadku, gdy liczba og\u0142\
         osze\u0144 spe\u0142niaj\u0105cych\nkryteria jest wi\u0119ksza ni\u017C 1\
-        \ 000, lista zawiera 1 000 pierwszych og\u0142osze\u0144."
+        \ 000, lista zawiera 1 000 pierwszych og\u0142osze\u0144.\n\nZapytanie mo\u017C\
+        e zosta\u0107 wykonane, gdy ca\u0142kowita liczba zapyta\u0144 po jego wykonaniu\n\
+        nie b\u0119dzie przekracza\u0107 warto\u015Bci `api_requests_used` z parametr\xF3\
+        w us\u0142ugi.\n\nDodatkowo, przy wykonywaniu zapytania archiwalnego, sumaryczna\
+        \ liczba og\u0142osze\u0144\nwygenerowanych w ramach wszystkich stworzonych\
+        \ do tej pory archiwalnych\nraport\xF3w i zapyta\u0144 nie mo\u017Ce przekroczy\u0107\
+        \ warto\u015Bci `credits_available`\nz parametr\xF3w us\u0142ugi."
   /v2/announcements/{id}:
     get:
       tags:
@@ -15665,7 +15877,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: "Zwraca og\u0142oszenie o podanym id."
+      description: "Zwraca og\u0142oszenie o podanym `id`."
   /v2/updates:
     get:
       tags:
@@ -15727,8 +15939,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: "Zwraca list\u0119 aktualizacji dla podanych parametr\xF3w z kolekcji\
-        \ `update_record`."
+      description: "Zwraca list\u0119 aktualizacji bazy og\u0142osze\u0144 dla podanych\
+        \ parametr\xF3w."
   /v2/monitors:
     get:
       tags:
@@ -15742,8 +15954,6 @@ paths:
           type: array
           items:
             type: string
-          default:
-          - notifications
         name: exclude
         in: query
       - required: false
@@ -15782,8 +15992,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: "Zwraca list\u0119 monitor\xF3w przypisanych do aktualnego u\u017C\
-        ytkownika."
+      description: "Zwraca list\u0119 monitoring\xF3w przypisanych do aktualnego u\u017C\
+        ytkownika.\n\nAby ograniczy\u0107 list\u0119 zwracanych p\xF3l, warto ustawi\u0107\
+        \ parametr `exclude`\nna list\u0119 p\xF3l, kt\xF3re nie s\u0105 wymagane\
+        \ w odpowiedzi, np. `[\"notifications\"]`."
     post:
       tags:
       - monitors_iapi
@@ -15835,7 +16047,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: "Tworzy nowy monitoring przypisany do aktualnego u\u017Cytkownika."
+      description: "Tworzy nowy monitoring przypisany do aktualnego u\u017Cytkownika.\n\
+        \nW parametrze `emails` podajemy przynajmniej jeden adres e-mail, na kt\xF3\
+        ry b\u0119d\u0105\nwysy\u0142ane powiadomienia o nowych og\u0142oszeniach\
+        \ w ramach monitoringu.\nLiczba adres\xF3w e-mail nie mo\u017Ce przekracza\u0107\
+        \ warto\u015Bci `monitors_emails_limit`\nz parametr\xF3w us\u0142ugi.\n\n\
+        Monitoring mo\u017Ce zosta\u0107 utworzony, gdy liczba monitoring\xF3w po\
+        \ jego utworzeniu\nnie b\u0119dzie przekracza\u0107 warto\u015Bci `monitors_available`\
+        \ z parametr\xF3w us\u0142ugi."
     delete:
       tags:
       - monitors_iapi
@@ -15881,8 +16100,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      description: Usuwa monitoringi o identyfikatorach przekazanych w parametrze
-        ids w query stringu (po przecinku).
+      description: 'Usuwa monitoringi o identyfikatorach przekazanych w kolejnych
+        parametrach `ids`
+
+        w query stringu.
+
+
+        W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.'
 components:
   securitySchemes:
     api_key:
@@ -17019,6 +17243,9 @@ components:
           description: Etykieta
           title: Label
       title: InfoCategories
+      example:
+        id: K.0.0
+        label: "Dzie\u0144 uk\u0142adowy"
     InfoFields:
       required:
       - id
@@ -17034,6 +17261,9 @@ components:
           description: Etykieta
           title: Label
       title: InfoFields
+      example:
+        id: K
+        label: "Krajowy Rejestr Zad\u0142u\u017Conych"
     InfoReports:
       required:
       - id
@@ -17049,6 +17279,9 @@ components:
           description: Etykieta
           title: Label
       title: InfoReports
+      example:
+        id: 1
+        label: w przygotowaniu
     InfoTypes:
       required:
       - id
@@ -17064,6 +17297,9 @@ components:
           description: Etykieta
           title: Label
       title: InfoTypes
+      example:
+        id: 0
+        label: aktualny
     KrzChapterEnum:
       type: integer
       description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C mo\u017Cliwe\
@@ -17752,6 +17988,11 @@ components:
         \  | `0` | Niedost\u0119pny |\n  | `1` | W przygotowaniu |\n  | `2` | Gotowe\
         \ |</details>"
       title: ReportStatusEnum
+    SourceEnum:
+      title: SourceEnum
+      description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
+        \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig` | Msig |\n| `krz` | Krz\
+        \ |</details>"
     StrictContentFiltersModel:
       additionalProperties: false
       properties:
@@ -17823,10 +18064,15 @@ components:
         id:
           type: integer
           title: Id
+          description: Unikalny identyfikator
         label:
           type: string
           title: Label
+          description: Etykieta
       title: TypesFormat
+      example:
+        id: 3
+        label: XML
     UpdateFiltersModel:
       type: object
       properties:

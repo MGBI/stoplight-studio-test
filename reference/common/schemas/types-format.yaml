@@ -6,7 +6,12 @@ properties:
   id:
     type: integer
     title: Id
+    description: Unikalny identyfikator
   label:
     type: string
     title: Label
+    description: Etykieta
 title: TypesFormat
+example:
+  id: 3
+  label: XML

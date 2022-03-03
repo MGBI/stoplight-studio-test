@@ -11,10 +11,7 @@ parameters:
       enum:
       - content
       - items_count
-      - ''
       type: string
-    default:
-    - content
   name: exclude
   in: query
 - required: false

@@ -12,3 +12,6 @@ properties:
     description: Etykieta
     title: Label
 title: InfoReports
+example:
+  id: 1
+  label: w przygotowaniu

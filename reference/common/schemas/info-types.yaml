@@ -12,3 +12,6 @@ properties:
     description: Etykieta
     title: Label
 title: InfoTypes
+example:
+  id: 0
+  label: aktualny

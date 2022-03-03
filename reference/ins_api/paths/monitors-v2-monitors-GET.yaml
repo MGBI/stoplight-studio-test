@@ -12,8 +12,6 @@ parameters:
       - notifications
       - ''
       type: string
-    default:
-    - notifications
   name: exclude
   in: query
 - required: false
