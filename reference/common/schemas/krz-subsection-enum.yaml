@@ -1,3 +1,4 @@
+title: KrzSubsectionEnum
 enum:
 - 0
 - 1
@@ -21,4 +22,3 @@ description: |-
     | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
     | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
     | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
-title: KrzSubsectionEnum

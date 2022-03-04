@@ -1,17 +1,14 @@
+title: InfoTypes
 required:
 - id
 - label
 type: object
 properties:
   id:
+    title: Id
     type: integer
     description: Unikalny identyfikator
-    title: Id
   label:
+    title: Label
     type: string
     description: Etykieta
-    title: Label
-title: InfoTypes
-example:
-  id: 0
-  label: aktualny

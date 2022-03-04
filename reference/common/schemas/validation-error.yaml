@@ -1,18 +1,18 @@
+title: ValidationError
 required:
 - loc
 - msg
 - type
 type: object
 properties:
-  msg:
-    type: string
-    title: Message
   loc:
+    title: Location
+    type: array
     items:
       type: string
-    type: array
-    title: Location
-  type:
+  msg:
+    title: Message
     type: string
+  type:
     title: Error Type
-title: ValidationError
+    type: string

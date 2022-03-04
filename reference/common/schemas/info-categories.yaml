@@ -1,17 +1,14 @@
+title: InfoCategories
 required:
 - id
 - label
 type: object
 properties:
   id:
+    title: Id
     type: string
     description: Unikalny identyfikator
-    title: Id
   label:
+    title: Label
     type: string
     description: Etykieta
-    title: Label
-title: InfoCategories
-example:
-  id: K.0.0
-  label: Dzień układowy

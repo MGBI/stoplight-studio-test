@@ -1,19 +1,27 @@
+title: UpdateMonitorsModel
+type: object
 properties:
-  emails:
-    items:
-      type: string
-    type: array
-    description: Adresy e-mail do wysyłki powiadomień z monitoringów
-    title: Emails
   filter_id:
+    title: Filter Id
+    type: string
     maxLength: 24
     minLength: 24
-    type: string
     description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
-    title: Filter Id
-type: object
+  emails:
+    title: Emails
+    type: array
+    items:
+      type: string
+    default: []
+    description: Adresy e-mail do wysyłki powiadomień z monitoringów
+  append_first_entry:
+    title: Append First Entry
+    type: boolean
+  send_empty_notifications:
+    title: Send Empty Notifications
+    type: boolean
 example:
+  filter_id: 3
   emails:
   - kura@wp.pl
-  filter_id: 3
-title: UpdateMonitorsModel
+  append_first_entry: false

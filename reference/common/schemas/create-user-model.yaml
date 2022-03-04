@@ -1,24 +1,28 @@
-properties:
-  is_admin:
-    default: false
-    type: boolean
-    description: Czy użytkownik jest adminem?
-    title: Is Admin
-  is_active:
-    default: true
-    type: boolean
-    description: Czy użytkownik jest aktywny?
-    title: Is Active
-  email:
-    format: email
-    type: string
-    description: Adres e-mail użytkownika
-    title: Email
+title: CreateUserModel
 required:
 - email
 type: object
+properties:
+  email:
+    title: Email
+    type: string
+    format: email
+    description: Adres e-mail użytkownika
+  is_active:
+    title: Is Active
+    type: boolean
+    default: true
+    description: Czy użytkownik jest aktywny?
+  is_admin:
+    title: Is Admin
+    type: boolean
+    default: false
+    description: Czy użytkownik jest adminem?
+  deactivation_datetime:
+    title: Deactivation Datetime
+    type: string
+    format: date-time
 example:
-  is_admin: false
-  is_active: true
   email: abc@def.pl
-title: CreateUserModel
+  is_active: true
+  is_admin: false

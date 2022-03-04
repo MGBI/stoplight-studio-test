@@ -1,6 +1,9 @@
+title: HTTPValidationError
 type: object
 properties:
   detail:
+    title: Detail
+    type: array
     items:
       required:
       - loc
@@ -20,7 +23,4 @@ properties:
           type: string
           title: Error Type
       title: ValidationError
-    type: array
     description: Szczegółowa informacja na temat błędu
-    title: Detail
-title: HTTPValidationError

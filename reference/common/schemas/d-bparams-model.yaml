@@ -1,5 +1,56 @@
+title: DBParamsModel
+required:
+- archive_date_from
+- current_reports_available
+- current_reports_filter_required
+- archival_reports_available
+- archival_reports_filter_required
+- credits_available
+- filter_items_limit
+- monitors_available
+- monitors_emails_limit
+- api_requests_available
+- panel_users_limit
+- panel_users
+- monitors_filter_required
+type: object
 properties:
+  archive_date_from:
+    title: Archive Date From
+    type: string
+    format: date
+  current_reports_available:
+    title: Current Reports Available
+    type: integer
+  current_reports_used:
+    title: Current Reports Used
+    type: integer
+    default: 0
+  current_reports_filter_required:
+    title: Current Reports Filter Required
+    type: boolean
+  archival_reports_available:
+    title: Archival Reports Available
+    type: integer
+  archival_reports_used:
+    title: Archival Reports Used
+    type: integer
+    default: 0
+  archival_reports_filter_required:
+    title: Archival Reports Filter Required
+    type: boolean
+  credits_available:
+    title: Credits Available
+    type: integer
+  credits_used:
+    title: Credits Used
+    type: integer
+    default: 0
   available_content:
+    title: Available Content
+    type: array
+    items:
+      type: string
     default:
     - entity.info.cleaned_name
     - entity.info.first_name
@@ -52,90 +103,55 @@ properties:
     - content.text
     - content.html
     - content.url
-    items:
-      type: string
-    type: array
-    title: Available Content
-  archival_reports_used:
+  filter_items_limit:
+    title: Filter Items Limit
+    type: integer
+  monitors_available:
+    title: Monitors Available
+    type: integer
+  monitors_used:
+    title: Monitors Used
+    type: integer
     default: 0
+  monitors_emails_limit:
+    title: Monitors Emails Limit
     type: integer
-    title: Archival Reports Used
-  current_reports_available:
-    type: integer
-    title: Current Reports Available
-  current_reports_filter_required:
-    type: boolean
-    title: Current Reports Filter Required
-  api_requests_used:
     default: 0
-    type: integer
-    title: Api Requests Used
-  credits_available:
-    type: integer
-    title: Credits Available
-  archival_reports_filter_required:
-    type: boolean
-    title: Archival Reports Filter Required
   api_key:
-    format: uuid
-    type: string
     title: Api Key
+    type: string
+    format: uuid
+  api_requests_available:
+    title: Api Requests Available
+    type: integer
+  api_requests_used:
+    title: Api Requests Used
+    type: integer
+    default: 0
+  panel_users_limit:
+    title: Panel Users Limit
+    type: integer
+    default: 0
   panel_users:
-    default: []
+    title: Panel Users
+    type: array
     items:
       type: string
       format: email
-    type: array
-    title: Panel Users
-  api_requests_available:
-    type: integer
-    title: Api Requests Available
-  credits_used:
-    default: 0
-    type: integer
-    title: Credits Used
-  archive_date_from:
-    format: date
-    type: string
-    title: Archive Date From
-  monitors_used:
-    default: 0
-    type: integer
-    title: Monitors Used
-  current_reports_used:
-    default: 0
-    type: integer
-    title: Current Reports Used
-  archival_reports_available:
-    type: integer
-    title: Archival Reports Available
-  monitors_emails_limit:
-    default: 0
-    type: integer
-    title: Monitors Emails Limit
-  filter_items_limit:
-    type: integer
-    title: Filter Items Limit
-  panel_users_limit:
-    default: 0
-    type: integer
-    title: Panel Users Limit
-  monitors_available:
-    type: integer
-    title: Monitors Available
-required:
-- archive_date_from
-- current_reports_available
-- current_reports_filter_required
-- archival_reports_available
-- archival_reports_filter_required
-- credits_available
-- filter_items_limit
-- monitors_available
-- api_key
-- api_requests_available
-type: object
+    default: []
+  monitors_filter_required:
+    title: Monitors Filter Required
+    type: boolean
 example:
+  archive_date_from: '2021-04-23'
+  current_reports_available: 25
+  current_reports_used: 5
+  current_reports_filter_required: false
+  archival_reports_available: 5
+  archival_reports_used: 0
+  archival_reports_filter_required: false
+  credits_available: 5
+  credits_used: 0
   available_content:
   - entity.info.cleaned_name
   - entity.info.first_name
@@ -188,24 +204,15 @@ example:
   - content.text
   - content.html
   - content.url
-  archival_reports_used: 0
-  current_reports_available: 25
-  current_reports_filter_required: false
-  api_requests_used: 100
-  credits_available: 5
-  archival_reports_filter_required: false
+  filter_items_limit: 50
+  monitors_available: 5
+  monitors_used: 2
+  monitors_emails_limit: 5
   api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  api_requests_available: 1000
+  api_requests_used: 100
+  panel_users_limit: 5
   panel_users:
   - abc@def.pl
   - xyz@ghi.pl
-  api_requests_available: 1000
-  credits_used: 0
-  archive_date_from: '2021-04-23'
-  monitors_used: 2
-  current_reports_used: 5
-  archival_reports_available: 5
-  monitors_emails_limit: 5
-  filter_items_limit: 50
-  panel_users_limit: 5
-  monitors_available: 5
-title: DBParamsModel
+  monitors_filter_required: false

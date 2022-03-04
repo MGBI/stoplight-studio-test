@@ -1,17 +1,14 @@
+title: TypesFormat
 required:
 - id
 - label
 type: object
 properties:
   id:
-    type: integer
     title: Id
+    type: integer
     description: Unikalny identyfikator
   label:
-    type: string
     title: Label
+    type: string
     description: Etykieta
-title: TypesFormat
-example:
-  id: 3
-  label: XML

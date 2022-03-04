@@ -1,9 +1,15 @@
+title: CreateFiltersModel
 required:
 - name
 - content
 type: object
 properties:
+  name:
+    title: Name
+    type: string
+    description: Nazwa filtra
   content:
+    $ref: ../schemas.yaml#/StrictContentFiltersModel
     description: Zawartość filtra
     title: StrictContentFiltersModel
     additionalProperties: false
@@ -67,8 +73,3 @@ properties:
         type: array
         description: Imię i nazwisko
         title: Name
-  name:
-    type: string
-    description: Nazwa filtra
-    title: Name
-title: CreateFiltersModel

@@ -1,5 +1,16 @@
+title: FiltersModel
+required:
+- name
+- id
+- creation_datetime
+type: object
 properties:
+  name:
+    title: Name
+    type: string
+    description: Nazwa filtra
   content:
+    $ref: ../schemas.yaml#/ContentFiltersModel
     description: Zawartość filtra
     example:
       msig_signature:
@@ -62,33 +73,44 @@ properties:
         description: Imię i nazwisko
         title: Name
     title: ContentFiltersModel
-  items_count:
-    type: integer
-    description: Liczba wszystkich identyfikatorów w filtrze
-    title: Items Count
-  creation_datetime:
-    format: date-time
-    type: string
-    description: Data i czas utworzenia filtra
-    title: Creation Datetime
-  name:
-    type: string
-    description: Nazwa filtra
-    title: Name
-  last_update_datetime:
-    nullable: true
-    format: date-time
-    type: string
-    description: Data i czas ostatniej aktualizacji filtra
-    title: Last Update Datetime
   id:
+    title: Id
     type: string
     description: Unikalny identyfikator filtra
-    title: Id
-required:
-- content
-- items_count
-- creation_datetime
-- name
-- id
-title: FiltersModel
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas utworzenia filtra
+  last_update_datetime:
+    title: Last Update Datetime
+    type: string
+    format: date-time
+    nullable: true
+    description: Data i czas ostatniej aktualizacji filtra
+  items_count:
+    title: Items Count
+    type: integer
+    description: Liczba wszystkich identyfikatorów w filtrze
+example:
+  id: '222222222222222222222222'
+  name: Dłużnicy 2021-11
+  content:
+    nip:
+    - '7272849598'
+    regon:
+    - '272404100'
+    krs:
+    - '0000422121'
+    pesel:
+    - '41041202774'
+    krz_signature:
+    - BY1B/GUp/13/2021
+    msig_signature:
+    - XIV GUp 83/16
+    name:
+    - Jan Kowalski
+    - Ambroży Nielepszy
+  items_count: 8
+  creation_datetime: '2021-11-10T15:20:20.584Z'
+  last_update_datetime: '2021-12-10T15:30:20.584Z'

@@ -1,5 +1,46 @@
+title: MonitorModel
+required:
+- id
+- emails
+- append_first_entry
+- creation_datetime
+- send_empty_notifications
+type: object
 properties:
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator monitoringu
+  filter_id:
+    title: Filter Id
+    type: string
+    nullable: true
+    description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
+  emails:
+    title: Emails
+    type: array
+    items:
+      type: string
+    description: Adresy e-mail do wysyłki powiadomień z monitoringów
+  append_first_entry:
+    title: Append First Entry
+    type: boolean
+    description: Czy uwzględniać również identyfikatory podane w pierwszym ogłoszeniu
+      w ramach postępowania?
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas utworzenia monitoringu
+  last_update_datetime:
+    title: Last Update Datetime
+    type: string
+    format: date-time
+    nullable: true
+    description: Data i czas ostatniej aktualizacji monitoringu
   notifications:
+    title: Notifications
+    type: array
     items:
       required:
       - sent_datetime
@@ -34,63 +75,23 @@ properties:
           description: Data wysyłki powiadomienia
           title: Sent Datetime
       title: NotificationModel
-    type: array
     description: Data i czas wysyłki powiadomienia
-    title: Notifications
-  creation_datetime:
-    format: date-time
-    type: string
-    description: Data i czas utworzenia monitoringu
-    title: Creation Datetime
-  filter_id:
-    type: string
-    description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
-    title: Filter Id
-  last_update_datetime:
-    nullable: true
-    format: date-time
-    type: string
-    description: Data i czas ostatniej aktualizacji monitoringu
-    title: Last Update Datetime
-  emails:
-    items:
-      type: string
-    type: array
-    description: Adresy e-mail do wysyłki powiadomień z monitoringów
-    title: Emails
-  append_first_entry:
-    type: boolean
-    title: Append First Entry
-    description: Czy uwzględniać również identyfikatory podane w pierwszym ogłoszeniu
-      w ramach postępowania?
   send_empty_notifications:
-    type: boolean
     title: Send Empty Notifications
+    type: boolean
     description: Czy wysyłać powiadomienie, jeśli nie pojawiły się nowe ogłoszenia
       w ramach monitoringu?
-  id:
-    type: string
-    description: Unikalny identyfikator monitoringu
-    title: Id
-required:
-- id
-- filter_id
-- emails
-- creation_datetime
-- notifications
-- send_empty_notifications
-- append_first_entry
-type: object
 example:
+  id: 2
+  filter_id: 2
+  emails:
+  - abc@xyz.pl
+  - def@klm.pl
+  append_first_entry: false
+  send_empty_notification: true
+  creation_datetime: '2021-11-02T15:20:20.584Z'
+  last_update_datetime: '2021-11-02T15:20:20.584Z'
   notifications:
   - status: 1
     email: abc@xyz.pl
     sent_datetime: '2021-11-02T15:20:20.584Z'
-  creation_datetime: '2021-11-02T15:20:20.584Z'
-  filter_id: 2
-  last_update_datetime: '2021-11-02T15:20:20.584Z'
-  emails:
-  - abc@xyz.pl
-  - def@klm.pl
-  id: 2
-title: MonitorModel

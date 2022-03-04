@@ -1,3 +1,26 @@
+title: ParamsModel
+required:
+- archive_date_from
+- current_reports_available
+- current_reports_used
+- current_reports_filter_required
+- archival_reports_available
+- archival_reports_used
+- archival_reports_filter_required
+- credits_available
+- credits_used
+- available_content
+- filter_items_limit
+- monitors_available
+- monitors_used
+- monitors_emails_limit
+- api_key
+- api_requests_available
+- api_requests_used
+- panel_users_limit
+- panel_users
+- monitors_filter_required
+type: object
 properties:
   available_content:
     items:
@@ -61,118 +84,104 @@ properties:
       | `content.text` | Treść ogłoszenia (tekst) |
       | `content.html` | Treść ogłoszenia (HTML) |
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
-  archival_reports_used:
-    type: integer
-    description: Liczba utworzonych raportów archiwalnych
-    title: Archival Reports Used
+  archive_date_from:
+    title: Archive Date From
+    type: string
+    format: date
+    description: Data początkowa okresu, z którego użytkownik może pobierać ogłoszenia
+      w ramach raportów aktualnych
   current_reports_available:
+    title: Current Reports Available
     type: integer
     description: Maksymalna liczba raportów aktualnych, które użytkownik może utorzyć
       w ramach obecnego planu
-    title: Current Reports Available
+  current_reports_used:
+    title: Current Reports Used
+    type: integer
+    description: Liczba utworzonych raportów aktualnych
   current_reports_filter_required:
+    title: Current Reports Filter Required
     type: boolean
     description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
-    title: Current Reports Filter Required
-  api_requests_used:
+  archival_reports_available:
+    title: Archival Reports Available
     type: integer
-    description: Liczba wykonanych zapytań do API o pojedyncze ogłoszenia
-    title: Api Requests Used
+    description: Maksymalna liczba raportów archiwalnych, które użytkownik może utorzyć
+      w ramach obecnego planu
+  archival_reports_used:
+    title: Archival Reports Used
+    type: integer
+    description: Liczba utworzonych raportów archiwalnych
+  archival_reports_filter_required:
+    title: Archival Reports Filter Required
+    type: boolean
+    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
   credits_available:
+    title: Credits Available
     type: integer
     description: Maksymalna liczba identyfikatorów, o które użytkownik może odpytać
       API w zapytaniu o ogłoszenia z całego archiwum (od 1.01.2021) albo których może
       użyć w filtrze dla raportu archiwalnego w ramach obecnego planu
-    title: Credits Available
-  archival_reports_filter_required:
-    type: boolean
-    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
-    title: Archival Reports Filter Required
-  api_key:
-    format: uuid
-    type: string
-    description: Klucz autoryzacji w API
-    title: Api Key
-  panel_users:
-    items:
-      type: string
-      format: email
-    type: array
-    description: Adresy e-mail użytkowników usługi
-    title: Panel Users
-  api_requests_available:
-    type: integer
-    description: Maksymalna liczba zapytań do API o pojedyncze ogłoszenia, które użytkownik
-      może wykonać w ramach obecnego planu
-    title: Api Requests Available
   credits_used:
+    title: Credits Used
     type: integer
     description: Liczba identyfikatorów, o które użytkownik odpytał API albo których
       użył w filtrze dla raportu archiwalnego
-    title: Credits Used
-  archive_date_from:
-    format: date
-    type: string
-    description: Data początkowa okresu, z którego użytkownik może pobierać ogłoszenia
-      w ramach raportów aktualnych
-    title: Archive Date From
-  monitors_used:
-    type: integer
-    description: Liczba utworzonych monitoringów
-    title: Monitors Used
-  current_reports_used:
-    type: integer
-    description: Liczba utworzonych raportów aktualnych
-    title: Current Reports Used
-  archival_reports_available:
-    type: integer
-    description: Maksymalna liczba raportów archiwalnych, które użytkownik może utorzyć
-      w ramach obecnego planu
-    title: Archival Reports Available
-  monitors_emails_limit:
-    type: integer
-    description: Maksymalna liczba adresów e-mail przypisanych do pojedynczego monitoringu
-    title: Monitors Emails Limit
   filter_items_limit:
+    title: Filter Items Limit
     type: integer
     description: Maksymalna liczba identyfikatorów w filtrze
-    title: Filter Items Limit
-  panel_users_limit:
-    type: integer
-    description: Maksymalna liczba użytkowników panelu usługi
-    title: Panel Users Limit
   monitors_available:
+    title: Monitors Available
     type: integer
     description: Maksymalna liczba monitoringów, które użytkownik może utorzyć w ramach
       obecnego planu
-    title: Monitors Available
-  monitor_filter_required:
-    type: boolean
-    description: Czy przy tworzeniu monitoringu użytkownik musi wybierać filtr?
+  monitors_used:
+    title: Monitors Used
+    type: integer
+    description: Liczba utworzonych monitoringów
+  monitors_emails_limit:
+    title: Monitors Emails Limit
+    type: integer
+    description: Maksymalna liczba adresów e-mail przypisanych do pojedynczego monitoringu
+  api_key:
+    title: Api Key
+    type: string
+    format: uuid
+    description: Klucz autoryzacji w API
+  api_requests_available:
+    title: Api Requests Available
+    type: integer
+    description: Maksymalna liczba zapytań do API o pojedyncze ogłoszenia, które użytkownik
+      może wykonać w ramach obecnego planu
+  api_requests_used:
+    title: Api Requests Used
+    type: integer
+    description: Liczba wykonanych zapytań do API o pojedyncze ogłoszenia
+  panel_users_limit:
+    title: Panel Users Limit
+    type: integer
+    description: Maksymalna liczba użytkowników panelu usługi
+  panel_users:
+    title: Panel Users
+    type: array
+    items:
+      type: string
+      format: email
+    description: Adresy e-mail użytkowników usługi
+  monitors_filter_required:
     title: Monitors Filter Required
-required:
-- archive_date_from
-- current_reports_available
-- current_reports_used
-- current_reports_filter_required
-- archival_reports_available
-- archival_reports_used
-- archival_reports_filter_required
-- credits_available
-- credits_used
-- available_content
-- filter_items_limit
-- monitors_available
-- monitors_used
-- monitors_emails_limit
-- api_key
-- api_requests_available
-- api_requests_used
-- panel_users_limit
-- panel_users
-- monitor_filter_required
-type: object
+    type: boolean
 example:
+  archive_date_from: '2021-04-23'
+  current_reports_available: 25
+  current_reports_used: 5
+  current_reports_filter_required: false
+  archival_reports_available: 5
+  archival_reports_used: 0
+  archival_reports_filter_required: false
+  credits_available: 5
+  credits_used: 0
   available_content:
   - entity.info.cleaned_name
   - entity.info.first_name
@@ -225,25 +234,15 @@ example:
   - content.text
   - content.html
   - content.url
-  archival_reports_used: 0
-  current_reports_available: 25
-  current_reports_filter_required: false
-  api_requests_used: 100
-  credits_available: 5
-  archival_reports_filter_required: false
+  filter_items_limit: 50
+  monitors_available: 5
+  monitors_used: 2
+  monitors_emails_limit: 5
   api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  api_requests_available: 1000
+  api_requests_used: 100
+  panel_users_limit: 5
   panel_users:
   - abc@def.pl
   - xyz@ghi.pl
-  api_requests_available: 1000
-  credits_used: 0
-  archive_date_from: '2021-04-23'
-  monitors_used: 2
-  current_reports_used: 5
-  archival_reports_available: 5
-  monitors_emails_limit: 5
-  filter_items_limit: 50
-  panel_users_limit: 5
-  monitors_available: 5
-  monitor_filter_required: true
-title: ParamsModel
+  monitors_filter_required: false

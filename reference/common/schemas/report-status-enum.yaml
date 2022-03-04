@@ -1,3 +1,8 @@
+title: ReportStatusEnum
+enum:
+- 0
+- 1
+- 2
 type: integer
 description: |-
   Aktualny status generowania pliku raportu
@@ -9,4 +14,3 @@ description: |-
     | `0` | Niedostępny |
     | `1` | W przygotowaniu |
     | `2` | Gotowe |</details>
-title: ReportStatusEnum

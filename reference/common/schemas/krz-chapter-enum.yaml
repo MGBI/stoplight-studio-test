@@ -1,3 +1,4 @@
+title: KrzChapterEnum
 enum:
 - 0
 - 1
@@ -13,4 +14,3 @@ description: |-
     | `0` | Postępowanie restrukturyzacyjne |
     | `1` | Postępowanie upadłościowe |
     | `2` | Zakaz prowadzenia działalności gospodarczej |</details>
-title: KrzChapterEnum

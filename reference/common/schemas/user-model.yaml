@@ -1,31 +1,4 @@
-properties:
-  creation_datetime:
-    format: date-time
-    type: string
-    description: Data wygasania konta użytkownika
-    title: Creation Datetime
-  deactivation_datetime:
-    format: date-time
-    type: string
-    description: Data wygasania konta użytkownika
-    title: Deactivation Datetime
-  is_admin:
-    type: boolean
-    description: Czy użytkownik jest adminem?
-    title: Is Admin
-  is_active:
-    type: boolean
-    description: Czy użytkownik jest aktywny?
-    title: Is Active
-  id:
-    type: string
-    description: Unikalny identyfikator użytkownika
-    title: Id
-  email:
-    format: email
-    type: string
-    description: Adres e-mail użytkownika
-    title: Email
+title: UserModel
 required:
 - id
 - email
@@ -33,11 +6,39 @@ required:
 - is_admin
 - creation_datetime
 type: object
+properties:
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator użytkownika
+  email:
+    title: Email
+    type: string
+    format: email
+    description: Adres e-mail użytkownika
+  is_active:
+    title: Is Active
+    type: boolean
+    description: Czy użytkownik jest aktywny?
+  is_admin:
+    title: Is Admin
+    type: boolean
+    description: Czy użytkownik jest adminem?
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data wygasania konta użytkownika
+  deactivation_datetime:
+    title: Deactivation Datetime
+    type: string
+    format: date-time
+    nullable: true
+    description: Data wygasania konta użytkownika
 example:
-  creation_datetime: '2021-11-10T15:20:20.584Z'
-  deactivation_datetime: '2021-11-10T15:20:20.584Z'
-  is_admin: false
-  is_active: true
   id: '1'
   email: abc@def.pl
-title: UserModel
+  is_active: true
+  is_admin: false
+  creation_datetime: '2021-11-10T15:20:20.584Z'
+  deactivation_datetime: '2021-11-10T15:20:20.584Z'

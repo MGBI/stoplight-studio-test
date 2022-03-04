@@ -11,7 +11,7 @@ Słowa kluczowe:
 * Sprawozdania finansowe API
 
 
-## Źródło danych
+## Źródło danych dla dokumentów
 Począwszy od 15 marca 2018 r. każdy ma dostęp przez Internet do składanych
 przez podmioty gospodarcze dokumentów finansowych. Ta funkcjonalność dostępna
 jest bez posiadania konta użytkownika ani logowania na konto w wyszukiwarce na
@@ -19,7 +19,7 @@ jest bez posiadania konta użytkownika ani logowania na konto w wyszukiwarce na
 Wystarczy podać numer KRS, aby wyszukać dokumenty przypisane do podmiotu z tym
 numerem.
 
-## Masowy dostęp
+## Masowy dostęp do dokumentów
 Wyszukiwarka dokumentów złożonych w RDF nie jest przeznaczona do masowego
 dostępu do dokumentów. Wyszukiwanie jest zabezpieczone przed działaniem robotów
 pobierających dokumenty mechanizmem reCAPTCHA v3. Co więcej, część dokumentów

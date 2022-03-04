@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.243
+  version: 1.0.229
   description:
     $ref: common/info_description.md
   x-logo:
@@ -75,15 +75,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - announcements_iapi
-  - updates_iapi
-  - filters_iapi
-  - reports_iapi
-  - monitors_iapi
-  - notifications_iapi
-  - users_iapi
-  - params_iapi
   - dicts_iapi
+  - params_iapi
+  - filters_iapi
+  - monitors_iapi
+  - users_iapi
+  - announcements_iapi
+  - reports_iapi
+  - notifications_iapi
+  - updates_iapi
 paths:
   /v2/filters:
     get:

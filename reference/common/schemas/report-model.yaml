@@ -1,105 +1,169 @@
-example:
-  status: 1
-  file_password: mgbi2021
-  creation_datetime: '2022-02-18T10:12:27.262422'
-  name: example raport
-  credits_used: 0
-  file_format: 3
-  downloads:
-  - download_datetime: '2021-11-12T15:39:29.584Z'
-  id: exampleID
-  progress: 0
-  query:
-    custom_categories:
-    - K
-    from_date: '2021-11-02'
-    append_first_entry: true
-    to_date: '2021-11-04'
-    filter_id: 61ded2f8aff2de52365d891e
-  type: 0
-  custom_content: []
+title: ReportModel
 required:
 - id
 - type
 - name
 - query
+- custom_content
+- status
+- progress
 - file_format
 - file_password
 - credits_used
+- creation_datetime
+- downloads
 type: object
 properties:
-  status:
-    allOf:
-    - type: integer
-      description: |-
-        Aktualny status generowania pliku raportu
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          | Wartość | Nazwa |
-          |-|-|
-          | `0` | Niedostępny |
-          | `1` | W przygotowaniu |
-          | `2` | Gotowe |</details>
-      title: ReportStatusEnum
-  file_password:
+  id:
+    title: Id
     type: string
-    description: Hasło do pliku raportu
-    title: File Password
-  creation_datetime:
-    format: date-time
-    type: string
-    description: Data i czas utworzenia raportu
-    title: Creation Datetime
-  name:
-    type: string
-    description: Nazwa raportu
-    title: Name
-  credits_used:
-    type: integer
-    description: Liczba punktów wykorzystanych do utworzenia raportu
-    title: Credits Used
-  file_format:
+    minLength: 24
+    description: Unikalny identyfikator raportu
+    maxLength: 24
+  type:
+    $ref: ../schemas.yaml#/TypesEnum
+    enum:
+    - 0
+    - 1
     type: integer
     description: |-
-      Format pliku raportu.
+      Rodzaj raportu.
       <details>
         <summary>Pokaż możliwe opcje</summary>
 
         | Wartość | Nazwa |
         |-|-|
-        | `1` | Csv |
-        | `2` | Xlsx |
-        | `3` | Xml |
-        | `4` | Json |
-        | `5` | Def |</details>
-    title: Format
-  downloads:
-    items:
-      type: object
-    type: array
-    description: Historia pobrań raportu
-    title: Downloads
-  records_count:
-    description: Liczba ogłoszeń w wygenerowanym raporcie
-    title: Records Count
-    type: integer
-    nullable: true
-  id:
-    minLength: 24
-    title: Id
+        | `0` | Aktualny |
+        | `1` | Archiwalny |</details>
+    title: TypesEnum
+  name:
+    title: Name
     type: string
-    description: Unikalny identyfikator raportu
-    maxLength: 24
-  progress:
-    title: Progress
-    minimum: 0
-    type: integer
-    description: Procentowy postęp generowania pliku raportu w skali 0-100
-    maximum: 100
+    description: Nazwa raportu
   query:
-    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
     title: QueryBaseModel
+    anyOf:
+    - title: QueryRaportByDateRangeModel
+      required:
+      - from_date
+      - to_date
+      type: object
+      properties:
+        custom_categories:
+          type: array
+          items:
+            enum:
+            - K
+            - K.0
+            - K.0.0
+            - K.0.1
+            - K.0.2
+            - K.0.3
+            - K.0.4
+            - K.0.5
+            - K.0.6
+            - K.0.7
+            - K.0.8
+            - K.0.9
+            - K.0.10
+            - K.1
+            - K.1.20
+            - K.1.21
+            - K.1.22
+            - K.1.23
+            - K.1.24
+            - K.1.25
+            - K.1.26
+            - K.1.27
+            - K.1.28
+            - K.1.29
+            - K.1.30
+            - K.1.31
+            - K.1.32
+            - K.1.33
+            - K.1.34
+            - K.2
+            - K.2.40
+            - K.2.41
+            - M
+            - M.0
+            - M.0.1
+            - M.0.2
+            - M.0.3
+            - M.0.4
+            - M.0.5
+            - M.0.6
+            - M.0.7
+            - M.0.8
+            - M.0.9
+            - M.1
+            - M.1.20
+            - M.1.21
+            - M.1.22
+            - M.1.23
+            - M.1.24
+            - M.1.25
+            - M.1.26
+            - M.1.27
+            - M.1.28
+            - M.1.29
+            - M.1.30
+            - M.1.31
+            - M.1.32
+            - M.1.33
+            - M.1.34
+            - M.1.35
+            - M.1.36
+            - M.1.37
+            - M.1.38
+            - M.1.39
+            - M.1.40
+            - M.1.41
+            - M.1.42
+            - M.1.43
+            - M.1.44
+            - M.1.45
+            - M.1.46
+            - M.1.47
+            - M.1.48
+            - M.1.49
+            - M.1.50
+            type: string
+            description: An enumeration.
+            title: CategoriesEnum
+          default: []
+        from_date:
+          title: From Date
+          type: string
+          format: date
+        to_date:
+          title: To Date
+          type: string
+          format: date
+        filter_id:
+          title: Filter Id
+          type: string
+          nullable: true
+        append_first_entry:
+          title: Append First Entry
+          type: boolean
+          default: true
+      example:
+        custom_categories:
+        - K
+        from_date: '2021-11-02'
+        to_date: '2021-11-04'
+        filter_id: 61ded2f8aff2de52365d891e
+        append_first_entry: true
+    - title: QueryRaportByNotificationModel
+      required:
+      - notification_id
+      type: object
+      properties:
+        notification_id:
+          title: Notification Id
+          type: string
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
     required:
     - from_date
     - to_date
@@ -217,24 +281,10 @@ properties:
       append_first_entry: true
       to_date: '2021-11-04'
       filter_id: 61ded2f8aff2de52365d891e
-  type:
-    enum:
-    - 0
-    - 1
-    type: integer
-    description: |-
-      Rodzaj raportu.
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Wartość | Nazwa |
-        |-|-|
-        | `0` | Aktualny |
-        | `1` | Archiwalny |</details>
-    title: TypesEnum
   custom_content:
-    items: {}
+    title: Custom Content
     type: array
+    items: {}
     description: |-
       Identyfikatory pól raportu wybranych przez użytkownika
       <details>
@@ -302,5 +352,106 @@ properties:
       | `content.text` | Treść ogłoszenia (tekst) |
       | `content.html` | Treść ogłoszenia (HTML) |
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
-    title: Custom Content
-title: ReportModel
+  status:
+    $ref: ../schemas.yaml#/ReportStatusEnum
+    allOf:
+    - type: integer
+      description: |-
+        Aktualny status generowania pliku raportu
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa |
+          |-|-|
+          | `0` | Niedostępny |
+          | `1` | W przygotowaniu |
+          | `2` | Gotowe |</details>
+      title: ReportStatusEnum
+    title: ReportStatusEnum
+    enum:
+    - 0
+    - 1
+    - 2
+    type: integer
+    description: |-
+      Aktualny status generowania pliku raportu
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `0` | Niedostępny |
+        | `1` | W przygotowaniu |
+        | `2` | Gotowe |</details>
+  progress:
+    title: Progress
+    type: integer
+    minimum: 0
+    description: Procentowy postęp generowania pliku raportu w skali 0-100
+    maximum: 100
+  file_format:
+    $ref: ../schemas.yaml#/Format
+    type: integer
+    description: |-
+      Format pliku raportu.
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `1` | Csv |
+        | `2` | Xlsx |
+        | `3` | Xml |
+        | `4` | Json |
+        | `5` | Def |</details>
+    title: Format
+    enum:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  file_password:
+    title: File Password
+    type: string
+    description: Hasło do pliku raportu
+  credits_used:
+    title: Credits Used
+    type: integer
+    description: Liczba punktów wykorzystanych do utworzenia raportu
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas utworzenia raportu
+  records_count:
+    title: Records Count
+    type: integer
+    nullable: true
+    description: Liczba ogłoszeń w wygenerowanym raporcie
+  downloads:
+    title: Downloads
+    type: array
+    items:
+      type: object
+    description: Historia pobrań raportu
+example:
+  id: exampleID
+  type: 0
+  name: example raport
+  query:
+    custom_categories:
+    - K
+    from_date: '2021-11-02'
+    append_first_entry: true
+    to_date: '2021-11-04'
+    filter_id: 61ded2f8aff2de52365d891e
+  custom_content: []
+  status: 1
+  progress: 0
+  file_format: 3
+  file_password: mgbi2021
+  credits_used: 0
+  creation_datetime: '2022-02-18T10:12:27.262422'
+  downloads:
+  - download_datetime: '2021-11-12T15:39:29.584Z'
