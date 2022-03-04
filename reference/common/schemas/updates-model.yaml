@@ -9,8 +9,7 @@ type: object
 properties:
   id:
     title: Id
-    type: string
-    description: Unikalny identyfikator zarejestrowanej aktualizacji
+    type: integer
   creation_datetime:
     title: Creation Datetime
     type: string
