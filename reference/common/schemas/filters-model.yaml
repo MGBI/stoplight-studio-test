@@ -93,7 +93,7 @@ properties:
     type: integer
     description: Liczba wszystkich identyfikatorów w filtrze
 example:
-  id: '222222222222222222222222'
+  id: 6221c40ca9ab2f868237cd47
   name: Dłużnicy 2021-11
   content:
     nip:
@@ -112,5 +112,5 @@ example:
     - Jan Kowalski
     - Ambroży Nielepszy
   items_count: 8
-  creation_datetime: '2021-11-10T15:20:20.584Z'
-  last_update_datetime: '2021-12-10T15:30:20.584Z'
+  creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+  last_update_datetime: '2022-03-04T06:47:24.672929+01:00'

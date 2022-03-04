@@ -48,9 +48,9 @@ properties:
     type: string
     nullable: true
 example:
-  id: 0
-  dispatch_id: 1
-  monitor_id: 1
-  sent_datetime: '2021-11-12T15:39:29.584Z'
+  id: 6221c40c51fce5ae9f37cd48
+  dispatch_id: 6221c40c5cb436601e37cd49
+  monitor_id: 6221c40c5278893ac137cd4a
+  sent_datetime: '2022-03-02T08:47:24.765264+01:00'
   email: abc@def.pl
   status: 1

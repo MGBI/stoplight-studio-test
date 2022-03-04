@@ -33,8 +33,8 @@ properties:
     description: Identyfikator źródła danych
     title: Source
 example:
-  id: exampleID
-  creation_datetime: '2022-02-18T10:12:27.128461'
-  issue_date: '2022-02-18'
+  id: 1
+  creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+  issue_date: '2022-03-04'
   announcements_count: 100
   source: krz
