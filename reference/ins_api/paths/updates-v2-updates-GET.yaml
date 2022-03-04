@@ -8,7 +8,7 @@ parameters:
     title: Creation Datetime From
     type: string
     format: date-time
-    example: '2019-01-01'
+    example: '2019-01-01T00:00:00Z'
   name: creation_datetime_from
   in: query
   description: Początek zakresu dla daty i czasu utworzenia aktualizacji
@@ -17,7 +17,7 @@ parameters:
     title: Creation Datetime To
     type: string
     format: date-time
-    example: '2019-12-31'
+    example: '2019-12-31T00:00:00Z'
   name: creation_datetime_to
   in: query
   description: Koniec zakresu dla daty i czasu utworzenia aktualizacji

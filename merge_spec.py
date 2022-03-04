@@ -141,12 +141,19 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
         )
 
     # adding tags from set to tags in x-tagGroups
+    found = False
+    tags = list(tags)
     for tag_group in old_openapi["x-tagGroups"]:
         if tag_group["name"] == "MSIG API V2, KRZ API V2":
-            old_openapi["x-tagGroups"].pop(old_openapi["x-tagGroups"].index(tag_group))
+            found = True
+            for tag in tag_group["tags"]:
+                if tag in tags:
+                    tags.remove(tag)
+            tag_group["tags"].extend(tags)
             break
-    old_openapi["x-tagGroups"].append(
-        {"name": "MSIG API V2, KRZ API V2", "tags": list(tags)})
+    if found is False:
+        old_openapi["x-tagGroups"].append(
+            {"name": "MSIG API V2, KRZ API V2", "tags": list(tags)})
 
     # at the end we dump changes to old openapi
     yaml.safe_dump(old_openapi, sys.stdout, sort_keys=False)
