@@ -250,15 +250,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - notifications_iapi
-  - users_iapi
-  - dicts_iapi
-  - params_iapi
   - reports_iapi
+  - notifications_iapi
   - monitors_iapi
-  - announcements_iapi
-  - updates_iapi
+  - users_iapi
   - filters_iapi
+  - updates_iapi
+  - params_iapi
+  - announcements_iapi
+  - dicts_iapi
 paths:
   /v2/filters:
     get:
@@ -2875,7 +2875,7 @@ paths:
                 type: integer
                 description: "Liczba wszystkich identyfikator\xF3w w filtrze"
             example:
-              id: '222222222222222222222222'
+              id: 6221c40ca9ab2f868237cd47
               name: "D\u0142u\u017Cnicy 2021-11"
               content:
                 nip:
@@ -2894,8 +2894,8 @@ paths:
                 - Jan Kowalski
                 - "Ambro\u017Cy Nielepszy"
               items_count: 8
-              creation_datetime: '2021-11-10T15:20:20.584Z'
-              last_update_datetime: '2021-12-10T15:30:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.672929+01:00'
           Format:
             title: Format
             type: integer
@@ -3130,19 +3130,19 @@ paths:
                 description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
                   \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
             example:
-              id: 2
-              filter_id: 2
+              id: 6221c40c843d0d773f37cd4b
+              filter_id: 6221c40cdeb9dcdccf37cd4c
               emails:
-              - abc@xyz.pl
-              - def@klm.pl
+              - abc@mgbi.pl
+              - def@mgbi.pl
               append_first_entry: false
               send_empty_notification: true
-              creation_datetime: '2021-11-02T15:20:20.584Z'
-              last_update_datetime: '2021-11-02T15:20:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
               notifications:
-              - status: 1
-                email: abc@xyz.pl
-                sent_datetime: '2021-11-02T15:20:20.584Z'
+              - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+                email: abc@mgbi.pl
+                status: 1
           MsigChapterEnum:
             title: MsigChapterEnum
             type: integer
@@ -3241,10 +3241,10 @@ paths:
                 type: string
                 nullable: true
             example:
-              id: 0
-              dispatch_id: 1
-              monitor_id: 1
-              sent_datetime: '2021-11-12T15:39:29.584Z'
+              id: 6221c40c51fce5ae9f37cd48
+              dispatch_id: 6221c40c5cb436601e37cd49
+              monitor_id: 6221c40c5278893ac137cd4a
+              sent_datetime: '2022-03-02T08:47:24.765264+01:00'
               email: abc@def.pl
               status: 1
           NotificationStatusEnum:
@@ -3798,25 +3798,24 @@ paths:
                   type: object
                 description: "Historia pobra\u0144 raportu"
             example:
-              id: exampleID
+              id: 6221c40cff11c462e837cd51
               type: 0
               name: example raport
               query:
                 custom_categories:
                 - K
                 from_date: '2021-11-02'
-                append_first_entry: true
                 to_date: '2021-11-04'
-                filter_id: 61ded2f8aff2de52365d891e
+                filter_id: 6221c40c3ae93e8d7b37cd50
+                append_first_entry: true
               custom_content: []
               status: 1
               progress: 0
               file_format: 3
               file_password: mgbi2021
               credits_used: 0
-              creation_datetime: '2022-02-18T10:12:27.262422'
-              downloads:
-              - download_datetime: '2021-11-12T15:39:29.584Z'
+              creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+              downloads: []
               records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
@@ -4225,10 +4224,6 @@ paths:
             - source
             type: object
             properties:
-              id:
-                title: Id
-                type: string
-                description: Unikalny identyfikator zarejestrowanej aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -4246,12 +4241,6 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
-            example:
-              id: exampleID
-              creation_datetime: '2022-02-18T10:12:27.128461'
-              issue_date: '2022-02-18'
-              announcements_count: 100
-              source: krz
           UserModel:
             title: UserModel
             required:
@@ -4292,7 +4281,7 @@ paths:
                 description: "Data wygasania konta u\u017Cytkownika"
             example:
               id: '1'
-              email: abc@def.pl
+              email: abc@mgbi.pl
               is_active: true
               is_admin: false
               creation_datetime: '2021-11-10T15:20:20.584Z'
@@ -5969,7 +5958,7 @@ paths:
                 type: integer
                 description: "Liczba wszystkich identyfikator\xF3w w filtrze"
             example:
-              id: '222222222222222222222222'
+              id: 6221c40ca9ab2f868237cd47
               name: "D\u0142u\u017Cnicy 2021-11"
               content:
                 nip:
@@ -5988,8 +5977,8 @@ paths:
                 - Jan Kowalski
                 - "Ambro\u017Cy Nielepszy"
               items_count: 8
-              creation_datetime: '2021-11-10T15:20:20.584Z'
-              last_update_datetime: '2021-12-10T15:30:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.672929+01:00'
           Format:
             title: Format
             type: integer
@@ -6224,19 +6213,19 @@ paths:
                 description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
                   \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
             example:
-              id: 2
-              filter_id: 2
+              id: 6221c40c843d0d773f37cd4b
+              filter_id: 6221c40cdeb9dcdccf37cd4c
               emails:
-              - abc@xyz.pl
-              - def@klm.pl
+              - abc@mgbi.pl
+              - def@mgbi.pl
               append_first_entry: false
               send_empty_notification: true
-              creation_datetime: '2021-11-02T15:20:20.584Z'
-              last_update_datetime: '2021-11-02T15:20:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
               notifications:
-              - status: 1
-                email: abc@xyz.pl
-                sent_datetime: '2021-11-02T15:20:20.584Z'
+              - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+                email: abc@mgbi.pl
+                status: 1
           MsigChapterEnum:
             title: MsigChapterEnum
             type: integer
@@ -6335,10 +6324,10 @@ paths:
                 type: string
                 nullable: true
             example:
-              id: 0
-              dispatch_id: 1
-              monitor_id: 1
-              sent_datetime: '2021-11-12T15:39:29.584Z'
+              id: 6221c40c51fce5ae9f37cd48
+              dispatch_id: 6221c40c5cb436601e37cd49
+              monitor_id: 6221c40c5278893ac137cd4a
+              sent_datetime: '2022-03-02T08:47:24.765264+01:00'
               email: abc@def.pl
               status: 1
           NotificationStatusEnum:
@@ -6892,25 +6881,24 @@ paths:
                   type: object
                 description: "Historia pobra\u0144 raportu"
             example:
-              id: exampleID
+              id: 6221c40cff11c462e837cd51
               type: 0
               name: example raport
               query:
                 custom_categories:
                 - K
                 from_date: '2021-11-02'
-                append_first_entry: true
                 to_date: '2021-11-04'
-                filter_id: 61ded2f8aff2de52365d891e
+                filter_id: 6221c40c3ae93e8d7b37cd50
+                append_first_entry: true
               custom_content: []
               status: 1
               progress: 0
               file_format: 3
               file_password: mgbi2021
               credits_used: 0
-              creation_datetime: '2022-02-18T10:12:27.262422'
-              downloads:
-              - download_datetime: '2021-11-12T15:39:29.584Z'
+              creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+              downloads: []
               records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
@@ -7319,10 +7307,6 @@ paths:
             - source
             type: object
             properties:
-              id:
-                title: Id
-                type: string
-                description: Unikalny identyfikator zarejestrowanej aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -7340,12 +7324,6 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
-            example:
-              id: exampleID
-              creation_datetime: '2022-02-18T10:12:27.128461'
-              issue_date: '2022-02-18'
-              announcements_count: 100
-              source: krz
           UserModel:
             title: UserModel
             required:
@@ -7386,7 +7364,7 @@ paths:
                 description: "Data wygasania konta u\u017Cytkownika"
             example:
               id: '1'
-              email: abc@def.pl
+              email: abc@mgbi.pl
               is_active: true
               is_admin: false
               creation_datetime: '2021-11-10T15:20:20.584Z'
@@ -8849,7 +8827,7 @@ paths:
                 type: integer
                 description: "Liczba wszystkich identyfikator\xF3w w filtrze"
             example:
-              id: '222222222222222222222222'
+              id: 6221c40ca9ab2f868237cd47
               name: "D\u0142u\u017Cnicy 2021-11"
               content:
                 nip:
@@ -8868,8 +8846,8 @@ paths:
                 - Jan Kowalski
                 - "Ambro\u017Cy Nielepszy"
               items_count: 8
-              creation_datetime: '2021-11-10T15:20:20.584Z'
-              last_update_datetime: '2021-12-10T15:30:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.672929+01:00'
           Format:
             title: Format
             type: integer
@@ -9104,19 +9082,19 @@ paths:
                 description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
                   \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
             example:
-              id: 2
-              filter_id: 2
+              id: 6221c40c843d0d773f37cd4b
+              filter_id: 6221c40cdeb9dcdccf37cd4c
               emails:
-              - abc@xyz.pl
-              - def@klm.pl
+              - abc@mgbi.pl
+              - def@mgbi.pl
               append_first_entry: false
               send_empty_notification: true
-              creation_datetime: '2021-11-02T15:20:20.584Z'
-              last_update_datetime: '2021-11-02T15:20:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
               notifications:
-              - status: 1
-                email: abc@xyz.pl
-                sent_datetime: '2021-11-02T15:20:20.584Z'
+              - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+                email: abc@mgbi.pl
+                status: 1
           MsigChapterEnum:
             title: MsigChapterEnum
             type: integer
@@ -9215,10 +9193,10 @@ paths:
                 type: string
                 nullable: true
             example:
-              id: 0
-              dispatch_id: 1
-              monitor_id: 1
-              sent_datetime: '2021-11-12T15:39:29.584Z'
+              id: 6221c40c51fce5ae9f37cd48
+              dispatch_id: 6221c40c5cb436601e37cd49
+              monitor_id: 6221c40c5278893ac137cd4a
+              sent_datetime: '2022-03-02T08:47:24.765264+01:00'
               email: abc@def.pl
               status: 1
           NotificationStatusEnum:
@@ -9772,25 +9750,24 @@ paths:
                   type: object
                 description: "Historia pobra\u0144 raportu"
             example:
-              id: exampleID
+              id: 6221c40cff11c462e837cd51
               type: 0
               name: example raport
               query:
                 custom_categories:
                 - K
                 from_date: '2021-11-02'
-                append_first_entry: true
                 to_date: '2021-11-04'
-                filter_id: 61ded2f8aff2de52365d891e
+                filter_id: 6221c40c3ae93e8d7b37cd50
+                append_first_entry: true
               custom_content: []
               status: 1
               progress: 0
               file_format: 3
               file_password: mgbi2021
               credits_used: 0
-              creation_datetime: '2022-02-18T10:12:27.262422'
-              downloads:
-              - download_datetime: '2021-11-12T15:39:29.584Z'
+              creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+              downloads: []
               records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
@@ -10199,10 +10176,6 @@ paths:
             - source
             type: object
             properties:
-              id:
-                title: Id
-                type: string
-                description: Unikalny identyfikator zarejestrowanej aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -10220,12 +10193,6 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
-            example:
-              id: exampleID
-              creation_datetime: '2022-02-18T10:12:27.128461'
-              issue_date: '2022-02-18'
-              announcements_count: 100
-              source: krz
           UserModel:
             title: UserModel
             required:
@@ -10266,7 +10233,7 @@ paths:
                 description: "Data wygasania konta u\u017Cytkownika"
             example:
               id: '1'
-              email: abc@def.pl
+              email: abc@mgbi.pl
               is_active: true
               is_admin: false
               creation_datetime: '2021-11-10T15:20:20.584Z'
@@ -12329,7 +12296,7 @@ paths:
                 type: integer
                 description: "Liczba wszystkich identyfikator\xF3w w filtrze"
             example:
-              id: '222222222222222222222222'
+              id: 6221c40ca9ab2f868237cd47
               name: "D\u0142u\u017Cnicy 2021-11"
               content:
                 nip:
@@ -12348,8 +12315,8 @@ paths:
                 - Jan Kowalski
                 - "Ambro\u017Cy Nielepszy"
               items_count: 8
-              creation_datetime: '2021-11-10T15:20:20.584Z'
-              last_update_datetime: '2021-12-10T15:30:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.672929+01:00'
           Format:
             title: Format
             type: integer
@@ -12584,19 +12551,19 @@ paths:
                 description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
                   \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
             example:
-              id: 2
-              filter_id: 2
+              id: 6221c40c843d0d773f37cd4b
+              filter_id: 6221c40cdeb9dcdccf37cd4c
               emails:
-              - abc@xyz.pl
-              - def@klm.pl
+              - abc@mgbi.pl
+              - def@mgbi.pl
               append_first_entry: false
               send_empty_notification: true
-              creation_datetime: '2021-11-02T15:20:20.584Z'
-              last_update_datetime: '2021-11-02T15:20:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
               notifications:
-              - status: 1
-                email: abc@xyz.pl
-                sent_datetime: '2021-11-02T15:20:20.584Z'
+              - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+                email: abc@mgbi.pl
+                status: 1
           MsigChapterEnum:
             title: MsigChapterEnum
             type: integer
@@ -12695,10 +12662,10 @@ paths:
                 type: string
                 nullable: true
             example:
-              id: 0
-              dispatch_id: 1
-              monitor_id: 1
-              sent_datetime: '2021-11-12T15:39:29.584Z'
+              id: 6221c40c51fce5ae9f37cd48
+              dispatch_id: 6221c40c5cb436601e37cd49
+              monitor_id: 6221c40c5278893ac137cd4a
+              sent_datetime: '2022-03-02T08:47:24.765264+01:00'
               email: abc@def.pl
               status: 1
           NotificationStatusEnum:
@@ -13252,25 +13219,24 @@ paths:
                   type: object
                 description: "Historia pobra\u0144 raportu"
             example:
-              id: exampleID
+              id: 6221c40cff11c462e837cd51
               type: 0
               name: example raport
               query:
                 custom_categories:
                 - K
                 from_date: '2021-11-02'
-                append_first_entry: true
                 to_date: '2021-11-04'
-                filter_id: 61ded2f8aff2de52365d891e
+                filter_id: 6221c40c3ae93e8d7b37cd50
+                append_first_entry: true
               custom_content: []
               status: 1
               progress: 0
               file_format: 3
               file_password: mgbi2021
               credits_used: 0
-              creation_datetime: '2022-02-18T10:12:27.262422'
-              downloads:
-              - download_datetime: '2021-11-12T15:39:29.584Z'
+              creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+              downloads: []
               records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
@@ -13679,10 +13645,6 @@ paths:
             - source
             type: object
             properties:
-              id:
-                title: Id
-                type: string
-                description: Unikalny identyfikator zarejestrowanej aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -13700,12 +13662,6 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
-            example:
-              id: exampleID
-              creation_datetime: '2022-02-18T10:12:27.128461'
-              issue_date: '2022-02-18'
-              announcements_count: 100
-              source: krz
           UserModel:
             title: UserModel
             required:
@@ -13746,7 +13702,7 @@ paths:
                 description: "Data wygasania konta u\u017Cytkownika"
             example:
               id: '1'
-              email: abc@def.pl
+              email: abc@mgbi.pl
               is_active: true
               is_admin: false
               creation_datetime: '2021-11-10T15:20:20.584Z'
@@ -15188,7 +15144,7 @@ paths:
                 type: integer
                 description: "Liczba wszystkich identyfikator\xF3w w filtrze"
             example:
-              id: '222222222222222222222222'
+              id: 6221c40ca9ab2f868237cd47
               name: "D\u0142u\u017Cnicy 2021-11"
               content:
                 nip:
@@ -15207,8 +15163,8 @@ paths:
                 - Jan Kowalski
                 - "Ambro\u017Cy Nielepszy"
               items_count: 8
-              creation_datetime: '2021-11-10T15:20:20.584Z'
-              last_update_datetime: '2021-12-10T15:30:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.672929+01:00'
           Format:
             title: Format
             type: integer
@@ -15443,19 +15399,19 @@ paths:
                 description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie\
                   \ pojawi\u0142y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
             example:
-              id: 2
-              filter_id: 2
+              id: 6221c40c843d0d773f37cd4b
+              filter_id: 6221c40cdeb9dcdccf37cd4c
               emails:
-              - abc@xyz.pl
-              - def@klm.pl
+              - abc@mgbi.pl
+              - def@mgbi.pl
               append_first_entry: false
               send_empty_notification: true
-              creation_datetime: '2021-11-02T15:20:20.584Z'
-              last_update_datetime: '2021-11-02T15:20:20.584Z'
+              creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+              last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
               notifications:
-              - status: 1
-                email: abc@xyz.pl
-                sent_datetime: '2021-11-02T15:20:20.584Z'
+              - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+                email: abc@mgbi.pl
+                status: 1
           MsigChapterEnum:
             title: MsigChapterEnum
             type: integer
@@ -15554,10 +15510,10 @@ paths:
                 type: string
                 nullable: true
             example:
-              id: 0
-              dispatch_id: 1
-              monitor_id: 1
-              sent_datetime: '2021-11-12T15:39:29.584Z'
+              id: 6221c40c51fce5ae9f37cd48
+              dispatch_id: 6221c40c5cb436601e37cd49
+              monitor_id: 6221c40c5278893ac137cd4a
+              sent_datetime: '2022-03-02T08:47:24.765264+01:00'
               email: abc@def.pl
               status: 1
           NotificationStatusEnum:
@@ -16111,25 +16067,24 @@ paths:
                   type: object
                 description: "Historia pobra\u0144 raportu"
             example:
-              id: exampleID
+              id: 6221c40cff11c462e837cd51
               type: 0
               name: example raport
               query:
                 custom_categories:
                 - K
                 from_date: '2021-11-02'
-                append_first_entry: true
                 to_date: '2021-11-04'
-                filter_id: 61ded2f8aff2de52365d891e
+                filter_id: 6221c40c3ae93e8d7b37cd50
+                append_first_entry: true
               custom_content: []
               status: 1
               progress: 0
               file_format: 3
               file_password: mgbi2021
               credits_used: 0
-              creation_datetime: '2022-02-18T10:12:27.262422'
-              downloads:
-              - download_datetime: '2021-11-12T15:39:29.584Z'
+              creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+              downloads: []
               records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
@@ -16538,10 +16493,6 @@ paths:
             - source
             type: object
             properties:
-              id:
-                title: Id
-                type: string
-                description: Unikalny identyfikator zarejestrowanej aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -16559,12 +16510,6 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
-            example:
-              id: exampleID
-              creation_datetime: '2022-02-18T10:12:27.128461'
-              issue_date: '2022-02-18'
-              announcements_count: 100
-              source: krz
           UserModel:
             title: UserModel
             required:
@@ -16605,7 +16550,7 @@ paths:
                 description: "Data wygasania konta u\u017Cytkownika"
             example:
               id: '1'
-              email: abc@def.pl
+              email: abc@mgbi.pl
               is_active: true
               is_admin: false
               creation_datetime: '2021-11-10T15:20:20.584Z'
@@ -18667,7 +18612,7 @@ components:
           type: integer
           description: "Liczba wszystkich identyfikator\xF3w w filtrze"
       example:
-        id: '222222222222222222222222'
+        id: 6221c40ca9ab2f868237cd47
         name: "D\u0142u\u017Cnicy 2021-11"
         content:
           nip:
@@ -18686,8 +18631,8 @@ components:
           - Jan Kowalski
           - "Ambro\u017Cy Nielepszy"
         items_count: 8
-        creation_datetime: '2021-11-10T15:20:20.584Z'
-        last_update_datetime: '2021-12-10T15:30:20.584Z'
+        creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+        last_update_datetime: '2022-03-04T06:47:24.672929+01:00'
     Format:
       title: Format
       type: integer
@@ -18916,19 +18861,19 @@ components:
           description: "Czy wysy\u0142a\u0107 powiadomienie, je\u015Bli nie pojawi\u0142\
             y si\u0119 nowe og\u0142oszenia w ramach monitoringu?"
       example:
-        id: 2
-        filter_id: 2
+        id: 6221c40c843d0d773f37cd4b
+        filter_id: 6221c40cdeb9dcdccf37cd4c
         emails:
-        - abc@xyz.pl
-        - def@klm.pl
+        - abc@mgbi.pl
+        - def@mgbi.pl
         append_first_entry: false
         send_empty_notification: true
-        creation_datetime: '2021-11-02T15:20:20.584Z'
-        last_update_datetime: '2021-11-02T15:20:20.584Z'
+        creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+        last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
         notifications:
-        - status: 1
-          email: abc@xyz.pl
-          sent_datetime: '2021-11-02T15:20:20.584Z'
+        - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+          email: abc@mgbi.pl
+          status: 1
     MsigChapterEnum:
       title: MsigChapterEnum
       type: integer
@@ -19023,10 +18968,10 @@ components:
           type: string
           nullable: true
       example:
-        id: 0
-        dispatch_id: 1
-        monitor_id: 1
-        sent_datetime: '2021-11-12T15:39:29.584Z'
+        id: 6221c40c51fce5ae9f37cd48
+        dispatch_id: 6221c40c5cb436601e37cd49
+        monitor_id: 6221c40c5278893ac137cd4a
+        sent_datetime: '2022-03-02T08:47:24.765264+01:00'
         email: abc@def.pl
         status: 1
     NotificationStatusEnum:
@@ -19567,25 +19512,24 @@ components:
             type: object
           description: "Historia pobra\u0144 raportu"
       example:
-        id: exampleID
+        id: 6221c40cff11c462e837cd51
         type: 0
         name: example raport
         query:
           custom_categories:
           - K
           from_date: '2021-11-02'
-          append_first_entry: true
           to_date: '2021-11-04'
-          filter_id: 61ded2f8aff2de52365d891e
+          filter_id: 6221c40c3ae93e8d7b37cd50
+          append_first_entry: true
         custom_content: []
         status: 1
         progress: 0
         file_format: 3
         file_password: mgbi2021
         credits_used: 0
-        creation_datetime: '2022-02-18T10:12:27.262422'
-        downloads:
-        - download_datetime: '2021-11-12T15:39:29.584Z'
+        creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+        downloads: []
         records_count: 3
     ReportStatusEnum:
       title: ReportStatusEnum
@@ -19994,8 +19938,7 @@ components:
       properties:
         id:
           title: Id
-          type: string
-          description: Unikalny identyfikator zarejestrowanej aktualizacji
+          type: integer
         creation_datetime:
           title: Creation Datetime
           type: string
@@ -20015,9 +19958,9 @@ components:
           description: "Identyfikator \u017Ar\xF3d\u0142a danych"
           title: Source
       example:
-        id: exampleID
-        creation_datetime: '2022-02-18T10:12:27.128461'
-        issue_date: '2022-02-18'
+        id: 1
+        creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+        issue_date: '2022-03-04'
         announcements_count: 100
         source: krz
     UserModel:
@@ -20060,7 +20003,7 @@ components:
           description: "Data wygasania konta u\u017Cytkownika"
       example:
         id: '1'
-        email: abc@def.pl
+        email: abc@mgbi.pl
         is_active: true
         is_admin: false
         creation_datetime: '2021-11-10T15:20:20.584Z'

@@ -436,23 +436,22 @@ properties:
       type: object
     description: Historia pobrań raportu
 example:
-  id: exampleID
+  id: 6221c40cff11c462e837cd51
   type: 0
   name: example raport
   query:
     custom_categories:
     - K
     from_date: '2021-11-02'
-    append_first_entry: true
     to_date: '2021-11-04'
-    filter_id: 61ded2f8aff2de52365d891e
+    filter_id: 6221c40c3ae93e8d7b37cd50
+    append_first_entry: true
   custom_content: []
   status: 1
   progress: 0
   file_format: 3
   file_password: mgbi2021
   credits_used: 0
-  creation_datetime: '2022-02-18T10:12:27.262422'
-  downloads:
-  - download_datetime: '2021-11-12T15:39:29.584Z'
+  creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+  downloads: []
   records_count: 3

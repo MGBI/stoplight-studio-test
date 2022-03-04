@@ -82,16 +82,16 @@ properties:
     description: Czy wysyłać powiadomienie, jeśli nie pojawiły się nowe ogłoszenia
       w ramach monitoringu?
 example:
-  id: 2
-  filter_id: 2
+  id: 6221c40c843d0d773f37cd4b
+  filter_id: 6221c40cdeb9dcdccf37cd4c
   emails:
-  - abc@xyz.pl
-  - def@klm.pl
+  - abc@mgbi.pl
+  - def@mgbi.pl
   append_first_entry: false
   send_empty_notification: true
-  creation_datetime: '2021-11-02T15:20:20.584Z'
-  last_update_datetime: '2021-11-02T15:20:20.584Z'
+  creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+  last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
   notifications:
-  - status: 1
-    email: abc@xyz.pl
-    sent_datetime: '2021-11-02T15:20:20.584Z'
+  - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+    email: abc@mgbi.pl
+    status: 1
