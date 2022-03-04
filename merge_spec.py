@@ -54,7 +54,7 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                             objs = [(old_item.get("schema"), new_item.get("schema")),
                                     (old_item, new_item)]
                             if old_item.get("schema", {}).get("anyOf") and \
-                                new_item.get("schema", {}).get("anyOf"):
+                                    new_item.get("schema", {}).get("anyOf"):
                                 objs.extend(zip(old_item.get("schema", {}).get("anyOf"),
                                                 new_item.get("schema", {}).get("anyOf")))
 
@@ -85,10 +85,9 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                                             }
                                             if content_schema.get("$ref"):
                                                 del content_schema["$ref"]
-                                    else:
-                                        if old is not None and new is not None and old.get(
-                                                label) is not None:
-                                            new[label] = old[label]
+                                    elif old is not None and new is not None and old.get(
+                                            label) is not None:
+                                        new[label] = old[label]
 
     # here we remove admin and internal tags from paths field in new_openapi
     wanted_paths = defaultdict(dict)
