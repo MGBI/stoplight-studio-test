@@ -172,6 +172,7 @@ properties:
   monitors_filter_required:
     title: Monitors Filter Required
     type: boolean
+    description: Czy przy tworzeniu monitoringu użytkownik musi wybrać filtr?
 example:
   archive_date_from: '2021-04-23'
   current_reports_available: 25

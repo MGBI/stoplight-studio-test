@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.230
+  version: 1.0.231
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -250,15 +250,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - reports_iapi
-  - filters_iapi
-  - announcements_iapi
   - notifications_iapi
-  - updates_iapi
-  - params_iapi
   - users_iapi
   - dicts_iapi
+  - params_iapi
+  - reports_iapi
   - monitors_iapi
+  - announcements_iapi
+  - updates_iapi
+  - filters_iapi
 paths:
   /v2/filters:
     get:
@@ -3426,6 +3426,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -3815,6 +3817,7 @@ paths:
               creation_datetime: '2022-02-18T10:12:27.262422'
               downloads:
               - download_datetime: '2021-11-12T15:39:29.584Z'
+              records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
             type: integer
@@ -6517,6 +6520,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -6906,6 +6911,7 @@ paths:
               creation_datetime: '2022-02-18T10:12:27.262422'
               downloads:
               - download_datetime: '2021-11-12T15:39:29.584Z'
+              records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
             type: integer
@@ -9394,6 +9400,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -9783,6 +9791,7 @@ paths:
               creation_datetime: '2022-02-18T10:12:27.262422'
               downloads:
               - download_datetime: '2021-11-12T15:39:29.584Z'
+              records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
             type: integer
@@ -12871,6 +12880,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -13260,6 +13271,7 @@ paths:
               creation_datetime: '2022-02-18T10:12:27.262422'
               downloads:
               - download_datetime: '2021-11-12T15:39:29.584Z'
+              records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
             type: integer
@@ -15727,6 +15739,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -16116,6 +16130,7 @@ paths:
               creation_datetime: '2022-02-18T10:12:27.262422'
               downloads:
               - download_datetime: '2021-11-12T15:39:29.584Z'
+              records_count: 3
           ReportStatusEnum:
             title: ReportStatusEnum
             type: integer
@@ -19186,6 +19201,8 @@ components:
         monitors_filter_required:
           title: Monitors Filter Required
           type: boolean
+          description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi wybra\u0107\
+            \ filtr?"
       example:
         archive_date_from: '2021-04-23'
         current_reports_available: 25
