@@ -455,3 +455,4 @@ example:
   creation_datetime: '2022-02-18T10:12:27.262422'
   downloads:
   - download_datetime: '2021-11-12T15:39:29.584Z'
+  records_count: 3

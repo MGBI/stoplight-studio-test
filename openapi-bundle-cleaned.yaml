@@ -1,11 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-<<<<<<< HEAD
-  version: 1.0.242
-=======
-  version: 1.0.228
->>>>>>> origin/notification-keys
+  version: 1.0.230
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -32,45 +28,46 @@ tags:
     \ si\u0119 z nami](https://www.imsig.pl/inne/kontakt), aby uzyska\u0107\ninformacje\
     \ o zasadach korzystania z interfejsu.\n\nS\u0142owa kluczowe:\n* Krajowy Rejestr\
     \ S\u0105dowy API (KRS API)\n* Repozytorium Dokument\xF3w Finansowych API (RDF\
-    \ API)\n* Sprawozdania finansowe API\n\n\n## \u0179r\xF3d\u0142o danych\nPocz\u0105\
-    wszy od 15 marca 2018 r. ka\u017Cdy ma dost\u0119p przez Internet do sk\u0142\
-    adanych\nprzez podmioty gospodarcze dokument\xF3w finansowych. Ta funkcjonalno\u015B\
-    \u0107 dost\u0119pna\njest bez posiadania konta u\u017Cytkownika ani logowania\
-    \ na konto w wyszukiwarce na\n[stronie Ministerstwa Sprawiedliwo\u015Bci](https://ekrs.ms.gov.pl/rdf/pd/search_df).\n\
-    Wystarczy poda\u0107 numer KRS, aby wyszuka\u0107 dokumenty przypisane do podmiotu\
-    \ z tym\nnumerem.\n\n## Masowy dost\u0119p\nWyszukiwarka dokument\xF3w z\u0142\
-    o\u017Conych w RDF nie jest przeznaczona do masowego\ndost\u0119pu do dokument\xF3\
-    w. Wyszukiwanie jest zabezpieczone przed dzia\u0142aniem robot\xF3w\npobieraj\u0105\
-    cych dokumenty mechanizmem reCAPTCHA v3. Co wi\u0119cej, cz\u0119\u015B\u0107\
-    \ dokument\xF3w\nudost\u0119pniana jest w formie plik\xF3w XML z podpisem cyfrowym,\
-    \ co uniemo\u017Cliwia ich\nodczyt w popularnych programach.\n\nNasz interfejs\
-    \ programistyczny umo\u017Cliwia masowe pobieranie dokument\xF3w bez\nop\xF3\u017A\
-    nie\u0144 zwi\u0105zanych z wyszukiwaniem oraz bez problem\xF3w, kt\xF3re nierzadko\n\
-    wyst\u0119puj\u0105 przy pobieraniu pojedynczych plik\xF3w. Wszystkie udost\u0119\
-    pniane przez nas\ndokumenty s\u0105 gotowe do odczytu w popularnych programach.\n\
-    \n## Podgl\u0105d dokument\xF3w\nDla wszystkich dokument\xF3w z\u0142o\u017Conych\
-    \ w RDF w formacie innym ni\u017C PDF udost\u0119pniamy\ndodatkow\u0105 opcj\u0119\
-    \ podgl\u0105du takiego dokumentu po konwersji do formatu PDF. Dotyczy\nto r\xF3\
-    wnie\u017C sprawozda\u0144 finansowych sporz\u0105dzonych w formacie XML, kt\xF3\
-    re w surowej\npostaci nie s\u0105 czytelne dla odbiorcy. Dla tych sprawozda\u0144\
-    \ udost\u0119pniamy\nujednolicony oraz \u0142atwy w u\u017Cytkowaniu podgl\u0105\
-    d w formacie HTML oraz PDF.\n\nAby sprawdzi\u0107 opcje podgl\u0105du dokument\xF3\
-    w, skorzystaj z [wyszukiwarki dokument\xF3w](\nhttps://www.imsig.pl/sprawozdania-finansowe).\n"
+    \ API)\n* Sprawozdania finansowe API\n\n\n## \u0179r\xF3d\u0142o danych dla dokument\xF3\
+    w\nPocz\u0105wszy od 15 marca 2018 r. ka\u017Cdy ma dost\u0119p przez Internet\
+    \ do sk\u0142adanych\nprzez podmioty gospodarcze dokument\xF3w finansowych. Ta\
+    \ funkcjonalno\u015B\u0107 dost\u0119pna\njest bez posiadania konta u\u017Cytkownika\
+    \ ani logowania na konto w wyszukiwarce na\n[stronie Ministerstwa Sprawiedliwo\u015B\
+    ci](https://ekrs.ms.gov.pl/rdf/pd/search_df).\nWystarczy poda\u0107 numer KRS,\
+    \ aby wyszuka\u0107 dokumenty przypisane do podmiotu z tym\nnumerem.\n\n## Masowy\
+    \ dost\u0119p do dokument\xF3w\nWyszukiwarka dokument\xF3w z\u0142o\u017Conych\
+    \ w RDF nie jest przeznaczona do masowego\ndost\u0119pu do dokument\xF3w. Wyszukiwanie\
+    \ jest zabezpieczone przed dzia\u0142aniem robot\xF3w\npobieraj\u0105cych dokumenty\
+    \ mechanizmem reCAPTCHA v3. Co wi\u0119cej, cz\u0119\u015B\u0107 dokument\xF3\
+    w\nudost\u0119pniana jest w formie plik\xF3w XML z podpisem cyfrowym, co uniemo\u017C\
+    liwia ich\nodczyt w popularnych programach.\n\nNasz interfejs programistyczny\
+    \ umo\u017Cliwia masowe pobieranie dokument\xF3w bez\nop\xF3\u017Anie\u0144 zwi\u0105\
+    zanych z wyszukiwaniem oraz bez problem\xF3w, kt\xF3re nierzadko\nwyst\u0119puj\u0105\
+    \ przy pobieraniu pojedynczych plik\xF3w. Wszystkie udost\u0119pniane przez nas\n\
+    dokumenty s\u0105 gotowe do odczytu w popularnych programach.\n\n## Podgl\u0105\
+    d dokument\xF3w\nDla wszystkich dokument\xF3w z\u0142o\u017Conych w RDF w formacie\
+    \ innym ni\u017C PDF udost\u0119pniamy\ndodatkow\u0105 opcj\u0119 podgl\u0105\
+    du takiego dokumentu po konwersji do formatu PDF. Dotyczy\nto r\xF3wnie\u017C\
+    \ sprawozda\u0144 finansowych sporz\u0105dzonych w formacie XML, kt\xF3re w surowej\n\
+    postaci nie s\u0105 czytelne dla odbiorcy. Dla tych sprawozda\u0144 udost\u0119\
+    pniamy\nujednolicony oraz \u0142atwy w u\u017Cytkowaniu podgl\u0105d w formacie\
+    \ HTML oraz PDF.\n\nAby sprawdzi\u0107 opcje podgl\u0105du dokument\xF3w, skorzystaj\
+    \ z [wyszukiwarki dokument\xF3w](\nhttps://www.imsig.pl/sprawozdania-finansowe).\n"
 - x-displayName: Dane finansowe
   name: financial_data
   description: "Interfejs programistyczny RDF dost\u0119pny w serwisie iMSiG.pl umo\u017C\
     liwia pobieranie\nprzetworzonych danych finansowych ze sprawozda\u0144 z\u0142\
     o\u017Conych w Repozytorium\nDokument\xF3w Finansowych Krajowego Rejestru S\u0105\
-    dowego.\n\n## \u0179r\xF3d\u0142o danych\nPocz\u0105wszy od 1 pa\u017Adziernika\
-    \ 2018 r. sprawozdania finansowe podmiot\xF3w\nprowadz\u0105cych ksi\u0119gi rachunkowe\
-    \ musz\u0105 by\u0107 sporz\u0105dzone w ustrukturyzowanym\nlogicznie formacie\
-    \ XML (*Extensible Markup Format*). Struktury logiczne i format\ne-sprawozda\u0144\
-    \ zosta\u0142 okre\u015Blony i udost\u0119pnionych w Biuletynie Informacji\nPublicznej\
-    \ na [stronie internetowej Ministerstwa Finans\xF3w](\nhttps://www.gov.pl/web/kas/struktury-e-sprawozdan).\n\
-    \nSprawozdania finansowe sporz\u0105dzone w formacie XML nie s\u0105 czytelne\
-    \ dla odbiorcy\n\u2013 s\u0105 one przygotowywane oraz odczytywane przez dedykowane\
-    \ oprogramowanie. Aby\npodejrze\u0107 tak przygotowane sprawozdanie, skorzystaj\
-    \ z [wyszukiwarki dokument\xF3w]\n(https://www.imsig.pl/sprawozdania-finansowe).\n\
+    dowego.\n\n## \u0179r\xF3d\u0142o danych dla sprawozda\u0144\nPocz\u0105wszy od\
+    \ 1 pa\u017Adziernika 2018 r. sprawozdania finansowe podmiot\xF3w\nprowadz\u0105\
+    cych ksi\u0119gi rachunkowe musz\u0105 by\u0107 sporz\u0105dzone w ustrukturyzowanym\n\
+    logicznie formacie XML (*Extensible Markup Format*). Struktury logiczne i format\n\
+    e-sprawozda\u0144 zosta\u0142 okre\u015Blony i udost\u0119pnionych w Biuletynie\
+    \ Informacji\nPublicznej na [stronie internetowej Ministerstwa Finans\xF3w](\n\
+    https://www.gov.pl/web/kas/struktury-e-sprawozdan).\n\nSprawozdania finansowe\
+    \ sporz\u0105dzone w formacie XML nie s\u0105 czytelne dla odbiorcy\n\u2013 s\u0105\
+    \ one przygotowywane oraz odczytywane przez dedykowane oprogramowanie. Aby\npodejrze\u0107\
+    \ tak przygotowane sprawozdanie, skorzystaj z [wyszukiwarki dokument\xF3w]\n(https://www.imsig.pl/sprawozdania-finansowe).\n\
     \n## Struktury logiczne sprawozda\u0144 w XML\nAby przygotowa\u0107 albo przetworzy\u0107\
     \ sprawozdaniu finansowe, nale\u017Cy wzi\u0105\u0107 pod uwag\u0119\nzastosowany\
     \ rodzaj struktury logicznej, kt\xF3ry zale\u017Cy od typu podmiotu. Inn\u0105\
@@ -121,9 +118,9 @@ tags:
     \ dost\u0119pne s\u0105 na stronie us\u0142ugi [Lista upad\u0142o\u015Bci](https://www.imsig.pl/lista-upadlosci).\n\
     \nS\u0142owa kluczowe:\n* Monitor S\u0105dowy i Gospodarczy API (MSIG API)\n*\
     \ Krajowy Rejestr Zad\u0142u\u017Conych API (KRZ API)\n\n\n## \u0179r\xF3d\u0142\
-    o danych w API\nMonitor S\u0105dowy i Gospodarczy (MSiG) to oficjalny dziennik\
-    \ urz\u0119dowy, w kt\xF3rym publikowane\ns\u0105 og\u0142oszenia s\u0105dowe\
-    \ m.in. na podstawie przepis\xF3w kodeksu sp\xF3\u0142ek handlowych, kodeksu\n\
+    o danych dla og\u0142osze\u0144\nMonitor S\u0105dowy i Gospodarczy (MSiG) to oficjalny\
+    \ dziennik urz\u0119dowy, w kt\xF3rym publikowane\ns\u0105 og\u0142oszenia s\u0105\
+    dowe m.in. na podstawie przepis\xF3w kodeksu sp\xF3\u0142ek handlowych, kodeksu\n\
     post\u0119powania cywilnego i prawa upad\u0142o\u015Bciowego. Nowe numery dziennika\
     \ s\u0105 udost\u0119pniane\ncodziennie w formie plik\xF3w PDF na [stronie Ministerstwa\
     \ Sprawiedliwo\u015Bci](https://ems.ms.gov.pl/msig/przegladaniemonitorow).\n\n\
@@ -131,28 +128,29 @@ tags:
     \ Sprawiedliwo\u015Bci,\nw kt\xF3rym gromadzone s\u0105 wszystkie informacje i\
     \ dokumenty dotycz\u0105ce przebiegu post\u0119powa\u0144\nupad\u0142o\u015Bciowych\
     \ i restrukturyzacyjnych prowadzonych przez polskie s\u0105dy (od 1 grudnia 2021\
-    \ r.).\n\n\n## Ustrukturyzowane informacje w API\nFormat pliku, w jakim udost\u0119\
-    pniany jest Monitor S\u0105dowy i Gospodarczy, nie umo\u017Cliwia\n\u0142atwego\
-    \ wyszukiwania og\u0142osze\u0144 dotycz\u0105cych poszczeg\xF3lnych os\xF3b fizycznych\
-    \ lub podmiot\xF3w.\nTre\u015B\u0107 og\u0142osze\u0144 jest nieustrukturyzowana,\
-    \ co uniemo\u017Cliwia dalsze przetwarzanie zawartych\nw niej informacji.\n\n\
-    Nasz interfejs programistyczny umo\u017Cliwia przeszukiwanie bazy og\u0142osze\u0144\
-    \ opublikowanych\nw MSiG oraz KRZ na podstawie kilku r\xF3\u017Cnych kryteri\xF3\
-    w, pobieranie ich oryginalnej wersji w dw\xF3ch\nformatach, a tak\u017Ce dost\u0119\
-    p do wybranych informacji wyodr\u0119bnionych z tekstowej tre\u015Bci.\n\nAby\
-    \ sprawdzi\u0107, jakie og\u0142oszenia publikowane s\u0105 w MSiG, przejd\u017A\
-    \ na [stron\u0119 g\u0142\xF3wn\u0105 serwisu iMSiG.pl](\nhttps://www.imsig.pl).\n\
-    \n\n## Masowy dost\u0119p w API\nWyszukiwarka og\u0142osze\u0144 dost\u0119pna\
-    \ na stronie Ministerstwa Sprawiedliwo\u015Bci nie jest\nprzeznaczona do masowego\
-    \ dost\u0119pu do bazy og\u0142osze\u0144. Nie zosta\u0142o r\xF3wnie\u017C\n\
-    udost\u0119pnione oficjalne API do integracji z systemami teleinformatycznymi.\n\
-    \nW ramach naszego interfejsu programistycznego udost\u0119pniamy szereg kryteri\xF3\
-    w do\nprzeszukiwania bazy og\u0142osze\u0144 dost\u0119pnych w systemie KRZ jak\
-    \ i MSiG. Umo\u017Cliwia to\nmasowe pobieranie dokument\xF3w bez konieczno\u015B\
-    ci r\u0119cznego sprawdzania og\u0142osze\u0144\nw dw\xF3ch r\xF3\u017Cnych systemach.\n\
-    \nDodatkowo, wszystkie udost\u0119pniane przez nas og\u0142oszenia s\u0105 uzupe\u0142\
-    niane o pomini\u0119te\nw publicznym portalu dane doradc\xF3w restukturyzacyjnych\
-    \ oraz dane rejestrowe\npodmiot\xF3w, kt\xF3rych dotycz\u0105 og\u0142oszenia."
+    \ r.).\n\n\n## Ustrukturyzowane informacje z og\u0142osze\u0144\nFormat pliku,\
+    \ w jakim udost\u0119pniany jest Monitor S\u0105dowy i Gospodarczy, nie umo\u017C\
+    liwia\n\u0142atwego wyszukiwania og\u0142osze\u0144 dotycz\u0105cych poszczeg\xF3\
+    lnych os\xF3b fizycznych lub podmiot\xF3w.\nTre\u015B\u0107 og\u0142osze\u0144\
+    \ jest nieustrukturyzowana, co uniemo\u017Cliwia dalsze przetwarzanie zawartych\n\
+    w niej informacji.\n\nNasz interfejs programistyczny umo\u017Cliwia przeszukiwanie\
+    \ bazy og\u0142osze\u0144 opublikowanych\nw MSiG oraz KRZ na podstawie kilku r\xF3\
+    \u017Cnych kryteri\xF3w, pobieranie ich oryginalnej wersji w dw\xF3ch\nformatach,\
+    \ a tak\u017Ce dost\u0119p do wybranych informacji wyodr\u0119bnionych z tekstowej\
+    \ tre\u015Bci.\n\nAby sprawdzi\u0107, jakie og\u0142oszenia publikowane s\u0105\
+    \ w MSiG, przejd\u017A na [stron\u0119 g\u0142\xF3wn\u0105 serwisu iMSiG.pl](\n\
+    https://www.imsig.pl).\n\n\n## Masowy dost\u0119p do og\u0142osze\u0144\nWyszukiwarka\
+    \ og\u0142osze\u0144 dost\u0119pna na stronie Ministerstwa Sprawiedliwo\u015B\
+    ci nie jest\nprzeznaczona do masowego dost\u0119pu do bazy og\u0142osze\u0144\
+    . Nie zosta\u0142o r\xF3wnie\u017C\nudost\u0119pnione oficjalne API do integracji\
+    \ z systemami teleinformatycznymi.\n\nW ramach naszego interfejsu programistycznego\
+    \ udost\u0119pniamy szereg kryteri\xF3w do\nprzeszukiwania bazy og\u0142osze\u0144\
+    \ dost\u0119pnych w systemie KRZ jak i MSiG. Umo\u017Cliwia to\nmasowe pobieranie\
+    \ dokument\xF3w bez konieczno\u015Bci r\u0119cznego sprawdzania og\u0142osze\u0144\
+    \nw dw\xF3ch r\xF3\u017Cnych systemach.\n\nDodatkowo, wszystkie udost\u0119pniane\
+    \ przez nas og\u0142oszenia s\u0105 uzupe\u0142niane o pomini\u0119te\nw publicznym\
+    \ portalu dane doradc\xF3w restukturyzacyjnych oraz dane rejestrowe\npodmiot\xF3\
+    w, kt\xF3rych dotycz\u0105 og\u0142oszenia."
 - x-displayName: Aktualizacje
   name: updates
   description: ''
@@ -252,27 +250,15 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-<<<<<<< HEAD
   - reports_iapi
   - filters_iapi
-  - updates_iapi
-  - params_iapi
-  - monitors_iapi
   - announcements_iapi
-  - users_iapi
-  - dicts_iapi
-  - notifications_iapi
-=======
-  - dicts_iapi
-  - params_iapi
-  - filters_iapi
-  - monitors_iapi
-  - users_iapi
-  - announcements_iapi
-  - reports_iapi
   - notifications_iapi
   - updates_iapi
->>>>>>> origin/notification-keys
+  - params_iapi
+  - users_iapi
+  - dicts_iapi
+  - monitors_iapi
 paths:
   /v2/filters:
     get:
@@ -2514,6 +2500,7 @@ paths:
                 title: File Password
                 type: string
                 description: "Has\u0142o do pliku raportu"
+            additionalProperties: false
             example:
               type: 0
               name: example raport
@@ -3268,63 +3255,6 @@ paths:
               \  |-|-|\n  | `0` | B\u0142\u0105d wysy\u0142ki |\n  | `1` | Wys\u0142\
               ane |</details>"
           ParamsModel:
-<<<<<<< HEAD
-            properties:
-              available_content:
-                items:
-                  type: string
-                title: Available Content
-                type: array
-                description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
-                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
-                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
-                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
-                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
-                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
-                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
-                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
-                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
-                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
-                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
-                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
-                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
-                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
-                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
-                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
-                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
-                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
-                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
-                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
-                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
-                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
-                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
-                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
-                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
-                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
-                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
-                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
-                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
-                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
-                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
-                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
-                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
-                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
-                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
-                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
-                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
-                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
-                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
-                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
-                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
-                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
-                  du tre\u015Bci og\u0142oszenia |</details>"
-              archival_reports_used:
-                type: integer
-                description: "Liczba utworzonych raport\xF3w archiwalnych"
-                title: Archival Reports Used
-=======
             title: ParamsModel
             required:
             - archive_date_from
@@ -3355,7 +3285,6 @@ paths:
                 format: date
                 description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
                   \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
->>>>>>> origin/notification-keys
               current_reports_available:
                 title: Current Reports Available
                 type: integer
@@ -3403,9 +3332,51 @@ paths:
                 type: array
                 items:
                   type: string
-                example: asdasd
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
+                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
+                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
+                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
+                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
+                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
+                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
+                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
+                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
+                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
+                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
+                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
+                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
+                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
+                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
+                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
+                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
+                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
+                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
+                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
+                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
+                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
+                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
+                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
+                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
+                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
+                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
+                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
+                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
+                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
+                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
+                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
+                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
+                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
+                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
+                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
+                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
+                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
+                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
+                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
+                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
+                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
+                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
+                  du tre\u015Bci og\u0142oszenia |</details>"
               filter_items_limit:
                 title: Filter Items Limit
                 type: integer
@@ -3570,6 +3541,7 @@ paths:
                 title: Append First Entry
                 type: boolean
                 default: true
+            additionalProperties: false
             example:
               custom_categories:
               - K
@@ -3586,6 +3558,7 @@ paths:
               notification_id:
                 title: Notification Id
                 type: string
+            additionalProperties: false
           ReportModel:
             title: ReportModel
             required:
@@ -5618,6 +5591,7 @@ paths:
                 title: File Password
                 type: string
                 description: "Has\u0142o do pliku raportu"
+            additionalProperties: false
             example:
               type: 0
               name: example raport
@@ -6396,69 +6370,12 @@ paths:
             - monitors_filter_required
             type: object
             properties:
-<<<<<<< HEAD
-              available_content:
-                items:
-                  type: string
-                title: Available Content
-                type: array
-                description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
-                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
-                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
-                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
-                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
-                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
-                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
-                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
-                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
-                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
-                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
-                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
-                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
-                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
-                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
-                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
-                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
-                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
-                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
-                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
-                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
-                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
-                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
-                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
-                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
-                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
-                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
-                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
-                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
-                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
-                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
-                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
-                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
-                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
-                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
-                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
-                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
-                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
-                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
-                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
-                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
-                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
-                  du tre\u015Bci og\u0142oszenia |</details>"
-              archival_reports_used:
-                type: integer
-                description: "Liczba utworzonych raport\xF3w archiwalnych"
-                title: Archival Reports Used
-=======
               archive_date_from:
                 title: Archive Date From
                 type: string
                 format: date
                 description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
                   \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
->>>>>>> origin/notification-keys
               current_reports_available:
                 title: Current Reports Available
                 type: integer
@@ -6506,9 +6423,51 @@ paths:
                 type: array
                 items:
                   type: string
-                example: asdasd
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
+                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
+                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
+                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
+                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
+                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
+                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
+                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
+                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
+                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
+                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
+                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
+                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
+                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
+                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
+                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
+                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
+                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
+                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
+                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
+                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
+                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
+                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
+                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
+                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
+                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
+                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
+                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
+                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
+                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
+                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
+                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
+                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
+                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
+                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
+                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
+                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
+                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
+                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
+                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
+                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
+                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
+                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
+                  du tre\u015Bci og\u0142oszenia |</details>"
               filter_items_limit:
                 title: Filter Items Limit
                 type: integer
@@ -6673,6 +6632,7 @@ paths:
                 title: Append First Entry
                 type: boolean
                 default: true
+            additionalProperties: false
             example:
               custom_categories:
               - K
@@ -6689,6 +6649,7 @@ paths:
               notification_id:
                 title: Notification Id
                 type: string
+            additionalProperties: false
           ReportModel:
             title: ReportModel
             required:
@@ -8507,6 +8468,7 @@ paths:
                 title: File Password
                 type: string
                 description: "Has\u0142o do pliku raportu"
+            additionalProperties: false
             example:
               type: 0
               name: example raport
@@ -9285,69 +9247,12 @@ paths:
             - monitors_filter_required
             type: object
             properties:
-<<<<<<< HEAD
-              available_content:
-                items:
-                  type: string
-                title: Available Content
-                type: array
-                description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
-                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
-                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
-                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
-                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
-                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
-                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
-                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
-                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
-                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
-                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
-                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
-                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
-                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
-                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
-                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
-                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
-                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
-                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
-                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
-                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
-                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
-                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
-                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
-                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
-                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
-                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
-                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
-                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
-                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
-                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
-                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
-                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
-                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
-                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
-                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
-                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
-                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
-                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
-                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
-                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
-                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
-                  du tre\u015Bci og\u0142oszenia |</details>"
-              archival_reports_used:
-                type: integer
-                description: "Liczba utworzonych raport\xF3w archiwalnych"
-                title: Archival Reports Used
-=======
               archive_date_from:
                 title: Archive Date From
                 type: string
                 format: date
                 description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
                   \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
->>>>>>> origin/notification-keys
               current_reports_available:
                 title: Current Reports Available
                 type: integer
@@ -9395,9 +9300,51 @@ paths:
                 type: array
                 items:
                   type: string
-                example: asdasd
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
+                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
+                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
+                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
+                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
+                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
+                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
+                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
+                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
+                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
+                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
+                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
+                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
+                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
+                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
+                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
+                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
+                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
+                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
+                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
+                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
+                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
+                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
+                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
+                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
+                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
+                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
+                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
+                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
+                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
+                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
+                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
+                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
+                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
+                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
+                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
+                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
+                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
+                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
+                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
+                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
+                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
+                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
+                  du tre\u015Bci og\u0142oszenia |</details>"
               filter_items_limit:
                 title: Filter Items Limit
                 type: integer
@@ -9562,6 +9509,7 @@ paths:
                 title: Append First Entry
                 type: boolean
                 default: true
+            additionalProperties: false
             example:
               custom_categories:
               - K
@@ -9578,6 +9526,7 @@ paths:
               notification_id:
                 title: Notification Id
                 type: string
+            additionalProperties: false
           ReportModel:
             title: ReportModel
             required:
@@ -11996,6 +11945,7 @@ paths:
                 title: File Password
                 type: string
                 description: "Has\u0142o do pliku raportu"
+            additionalProperties: false
             example:
               type: 0
               name: example raport
@@ -12750,63 +12700,6 @@ paths:
               \  |-|-|\n  | `0` | B\u0142\u0105d wysy\u0142ki |\n  | `1` | Wys\u0142\
               ane |</details>"
           ParamsModel:
-<<<<<<< HEAD
-            properties:
-              available_content:
-                items:
-                  type: string
-                title: Available Content
-                type: array
-                description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
-                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
-                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
-                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
-                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
-                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
-                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
-                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
-                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
-                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
-                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
-                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
-                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
-                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
-                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
-                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
-                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
-                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
-                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
-                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
-                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
-                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
-                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
-                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
-                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
-                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
-                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
-                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
-                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
-                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
-                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
-                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
-                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
-                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
-                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
-                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
-                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
-                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
-                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
-                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
-                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
-                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
-                  du tre\u015Bci og\u0142oszenia |</details>"
-              archival_reports_used:
-                type: integer
-                description: "Liczba utworzonych raport\xF3w archiwalnych"
-                title: Archival Reports Used
-=======
             title: ParamsModel
             required:
             - archive_date_from
@@ -12837,7 +12730,6 @@ paths:
                 format: date
                 description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
                   \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
->>>>>>> origin/notification-keys
               current_reports_available:
                 title: Current Reports Available
                 type: integer
@@ -12885,9 +12777,51 @@ paths:
                 type: array
                 items:
                   type: string
-                example: asdasd
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
+                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
+                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
+                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
+                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
+                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
+                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
+                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
+                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
+                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
+                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
+                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
+                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
+                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
+                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
+                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
+                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
+                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
+                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
+                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
+                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
+                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
+                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
+                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
+                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
+                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
+                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
+                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
+                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
+                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
+                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
+                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
+                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
+                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
+                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
+                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
+                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
+                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
+                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
+                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
+                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
+                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
+                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
+                  du tre\u015Bci og\u0142oszenia |</details>"
               filter_items_limit:
                 title: Filter Items Limit
                 type: integer
@@ -13052,6 +12986,7 @@ paths:
                 title: Append First Entry
                 type: boolean
                 default: true
+            additionalProperties: false
             example:
               custom_categories:
               - K
@@ -13068,6 +13003,7 @@ paths:
               notification_id:
                 title: Notification Id
                 type: string
+            additionalProperties: false
           ReportModel:
             title: ReportModel
             required:
@@ -13948,6 +13884,16 @@ paths:
       responses:
         '200':
           description: Wynik pobierania pojedynczego raportu
+          headers:
+            Content-Type:
+              description: MIME
+              schema:
+                type: aplication/zip
+            Content-Disposition:
+              description: Nazwa pliku
+              schema:
+                type: attachement
+              example: imsig-pl_lista_upadlosci_powiadomienie_2022-03-02_q7jsyvw9.xml.zip
         '400':
           description: "Niew\u0142a\u015Bciwy format zapytania"
           content:
@@ -14855,6 +14801,7 @@ paths:
                 title: File Password
                 type: string
                 description: "Has\u0142o do pliku raportu"
+            additionalProperties: false
             example:
               type: 0
               name: example raport
@@ -15633,69 +15580,12 @@ paths:
             - monitors_filter_required
             type: object
             properties:
-<<<<<<< HEAD
-              available_content:
-                items:
-                  type: string
-                title: Available Content
-                type: array
-                description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
-                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
-                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
-                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
-                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
-                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
-                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
-                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
-                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
-                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
-                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
-                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
-                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
-                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
-                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
-                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
-                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
-                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
-                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
-                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
-                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
-                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
-                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
-                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
-                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
-                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
-                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
-                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
-                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
-                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
-                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
-                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
-                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
-                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
-                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
-                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
-                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
-                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
-                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
-                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
-                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
-                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
-                  du tre\u015Bci og\u0142oszenia |</details>"
-              archival_reports_used:
-                type: integer
-                description: "Liczba utworzonych raport\xF3w archiwalnych"
-                title: Archival Reports Used
-=======
               archive_date_from:
                 title: Archive Date From
                 type: string
                 format: date
                 description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
                   \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
->>>>>>> origin/notification-keys
               current_reports_available:
                 title: Current Reports Available
                 type: integer
@@ -15743,9 +15633,51 @@ paths:
                 type: array
                 items:
                   type: string
-                example: asdasd
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+                  \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
+                  \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
+                  |-|-|\n| `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
+                  \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
+                  \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142\
+                  asno\u015Bci |\n| `entity.info.primary_business` | Przewa\u017C\
+                  aj\u0105ca dzia\u0142alno\u015B\u0107 gospodarcza (kod PKD) |\n\
+                  | `entity.info.commencement_date` | Data rozpocz\u0119cia dzia\u0142\
+                  alno\u015Bci |\n| `entity.numbers.nip` | NIP |\n| `entity.numbers.regon`\
+                  \ | REGON |\n| `entity.numbers.krs` | KRS |\n| `entity.numbers.pesel`\
+                  \ | PESEL |\n| `entity.address.state` | Wojew\xF3dztwo |\n| `entity.address.powiat`\
+                  \ | Powiat |\n| `entity.address.gmina` | Gmina |\n| `entity.address.town`\
+                  \ | Miejscowo\u015B\u0107 |\n| `entity.address.street` | Ulica |\n\
+                  | `entity.address.house_number` | Numer nieruchomo\u015Bci |\n|\
+                  \ `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
+                  \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n\
+                  | `proceeding.court_name` | Nazwa s\u0105du |\n| `proceeding.court_department`\
+                  \ | Nazwa wydzia\u0142u |\n| `proceeding.signatures` | Sygnatura\
+                  \ sprawy |\n| `proceeding.commissioner_name` | S\u0119dzia komisarz\
+                  \ |\n| `proceeding.commissioner_deputy_name` | Zast\u0119pca s\u0119\
+                  dziego komisarza |\n| `proceeding.administrator_name` | Nadzorca\
+                  \ w post\u0119powaniu |\n| `proceeding.administrator_function` |\
+                  \ Funkcja nadzorcy |\n| `proceeding.administrator_licence_number`\
+                  \ | Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
+                  \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code`\
+                  \ | Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town`\
+                  \ | Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
+                  \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date`\
+                  \ | Data wydania postanowienia |\n| `order.expiration_period` |\
+                  \ Okres do dzia\u0142ania (w dniach) |\n| `order.expiration_date`\
+                  \ | Koniec okresu do dzia\u0142ania |\n| `msig_entry.chapter` |\
+                  \ Rozdzia\u0142 MSiG |\n| `msig_entry.section` | Sekcja MSiG |\n\
+                  | `msig_entry.signature` | Sygnatura og\u0142oszenia w MSiG |\n\
+                  | `msig_entry.issue_date` | Data publikacji og\u0142oszenia w MSiG\
+                  \ |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
+                  \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142\
+                  oszenia w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142\
+                  \ KRZ |\n| `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature`\
+                  \ | Sygnatura og\u0142oszenia w KRZ |\n| `krz_entry.issue_date`\
+                  \ | Data publikacji og\u0142oszenia w KRZ |\n| `krz_entry.url` |\
+                  \ Link do og\u0142oszenia w serwisie KRZ |\n| `content.text` | Tre\u015B\
+                  \u0107 og\u0142oszenia (tekst) |\n| `content.html` | Tre\u015B\u0107\
+                  \ og\u0142oszenia (HTML) |\n| `content.url` | Link do podgl\u0105\
+                  du tre\u015Bci og\u0142oszenia |</details>"
               filter_items_limit:
                 title: Filter Items Limit
                 type: integer
@@ -15910,6 +15842,7 @@ paths:
                 title: Append First Entry
                 type: boolean
                 default: true
+            additionalProperties: false
             example:
               custom_categories:
               - K
@@ -15926,6 +15859,7 @@ paths:
               notification_id:
                 title: Notification Id
                 type: string
+            additionalProperties: false
           ReportModel:
             title: ReportModel
             required:
@@ -17336,29 +17270,21 @@ paths:
           content:
             application/json:
               schema:
-<<<<<<< HEAD
                 example:
                   details: Error Description
                   error: Unauthorized
                 items:
                   $ref: '#/components/schemas/Error'
-=======
-                $ref: '#/components/schemas/Error'
->>>>>>> origin/notification-keys
         '403':
           description: "Nieudana autoryzacja dost\u0119pu do API"
           content:
             application/json:
               schema:
-<<<<<<< HEAD
                 example:
                   details: Error Description
                   error: Forbidden
                 items:
                   $ref: '#/components/schemas/Error'
-=======
-                $ref: '#/components/schemas/Error'
->>>>>>> origin/notification-keys
       description: "Zwraca list\u0119 aktualizacji bazy og\u0142osze\u0144 dla podanych\
         \ parametr\xF3w."
   /v2/monitors:
@@ -17371,7 +17297,6 @@ paths:
       - required: false
         schema:
           title: Exclude
-<<<<<<< HEAD
           type: array
           items:
             type: string
@@ -17562,421 +17487,6 @@ paths:
                   error: Forbidden
                 items:
                   $ref: '#/components/schemas/Error'
-      description: 'Usuwa monitoringi o identyfikatorach przekazanych w kolejnych
-        parametrach `ids`
-
-        w query stringu.
-
-
-        W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.'
-components:
-  securitySchemes:
-    api_key:
-      in: header
-      type: apiKey
-      description: "Do uwierzytelniania u\u017Cytkownik\xF3w API wykorzystywany jest\
-        \ klucz u\u017Cytkownika\nprzekazywany w nag\u0142\xF3wku HTTP `Authorization`\
-        \ przy wywo\u0142ywaniu poszczeg\xF3lnych metod."
-      name: Authorization
-  schemas:
-    AnnouncementModel:
-      example:
-        content:
-          text: Postanowieniem z dnia ...
-          html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
-        proceeding:
-          signatures:
-          - example signature
-          court_department: "V Wydzia\u0142 Gospodarczy"
-          court_name: "S\u0105d Rejonowy w XXX"
-        krz_entry:
-          chapter: 1
-          issue_date: '2021-12-08T00:00:00Z'
-          section: 20
-          signature: 20211208/00001
-        id: '000000000000000000000000'
-        msig_entry:
-          chapter: 0
-          position_number: '00000'
-          issue_date: '2021-11-04T00:00:00'
-          signature: BMSiG-00000/2021
-          url: http://www.imsig.pl/pozycja/2021/214/00000
-          section: 9
-          yearly_number: '214'
-        order:
-          order_date: '2021-09-01T00:00:00'
-          expiration_period: 7
-          expiration_date: '2021-11-11T00:00:00'
-        entity:
-        - info:
-            first_name: Jan
-            last_name: Kowalski
-            ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-            cleaned_name: Jan Kowalski
-            legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015Bci\
-              \ gospodarczej"
-          numbers: {}
-          address: {}
-      required:
-      - id
-      - proceeding
-      - entity
-      - content
-      - custom_categories
-      - order
-      type: object
-      properties:
-        proceeding:
-          items:
-            required:
-            - court_name
-            - court_department
-            - signatures
-            - commissioner_name
-            - commissioner_deputy_name
-            - administrator_name
-            - administrator_function
-            type: object
-            properties:
-              signatures:
-                items:
-                  type: string
-                type: array
-                description: "Sygnatury post\u0119powania"
-              commissioner_name:
-                type: string
-                description: "Imi\u0119 i nazwisko s\u0119dziego komisarza"
-                nullable: true
-              court_department:
-                type: string
-                description: "Nazwa wydzia\u0142u"
-              administrator_zip_code:
-                type: string
-                description: Kod pocztowy w adresie nadzorcy
-              administrator_function:
-                type: string
-                description: Funkcja nadzorcy
-              court_name:
-                type: string
-                description: "Nazwa s\u0105du"
-              administrator_name:
-                type: string
-                description: "Imi\u0119 i nazwisko nadzorcy"
-              commissioner_deputy_name:
-                type: string
-                description: "Imi\u0119 i nazwisko zast\u0119pcy s\u0119dziego komisarza"
-                nullable: true
-              administrator_town:
-                type: string
-                description: "Miejscowo\u015B\u0107 w adresie nadzorcy"
-              administrator_licence_number:
-                type: integer
-                description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
-              administrator_address:
-                type: string
-                description: Adres pocztowy nadzorcy
-              administrator_source_url:
-                type: string
-                description: "Link do \u017Ar\xF3d\u0142a danych nadzorcy"
-          type: array
-          description: "Informacje o post\u0119powaniu"
-          title: Proceeding
-        krz_entry:
-          items:
-            required:
-            - chapter
-            - section
-            - signature
-            - issue_date
-            - url
-            type: object
-            properties:
-              chapter:
-                type: integer
-                description: "Rozdzia\u0142 KRZ\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ rozdzia\u0142u |\n  |-|-|\n  | `0` | Post\u0119powanie restrukturyzacyjne\
-                  \ |\n  | `1` | Post\u0119powanie upad\u0142o\u015Bciowe |\n  | `2`\
-                  \ | Zakaz prowadzenia dzia\u0142alno\u015Bci gospodarczej |</details>"
-              url:
-                type: string
-                description: "Link do og\u0142oszenia w serwisie KRZ"
-                format: uri
-              section:
-                type: integer
-                description: "Sekcja KRZ\n<details>\n  <summary>Poka\u017C mo\u017C\
-                  liwe opcje</summary>\n\n  <b>Post\u0119powanie restrukturyzacyjne</b>\n\
-                  \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `0` | Dzie\u0144\
-                  \ uk\u0142adowy |\n  | `1` | Wniosek restrukturyzacyjny z\u0142\
-                  o\u017Cony przez d\u0142u\u017Cnika |\n  | `2` | Zabezpieczenie\
-                  \ maj\u0105tku |\n  | `3` | Otwarcie post\u0119powania restrukturyzacyjnego\
-                  \ |\n  | `4` | Nadzorca s\u0105dowy/zarz\u0105dca/nadzorca wykonania\
-                  \ uk\u0142adu |\n  | `5` | Spis wierzytelno\u015Bci/spis wierzytelno\u015B\
-                  ci spornych |\n  | `6` | Zgromadzenie wierzycieli |\n  | `7` | Sprawozdania\
-                  \ |\n  | `8` | Uk\u0142ad |\n  | `9` | Zako\u0144czenie/umorzenie\
-                  \ post\u0119powania restrukturyzacyjnego |\n  | `10` | Inne |\n\n\
-                  \  <b>Post\u0119powanie upad\u0142o\u015Bciowe</b>\n\n  | Warto\u015B\
-                  \u0107 | Nazwa sekcji |\n  |-|-|\n  | `20` | Wniosek o og\u0142\
-                  oszenie upad\u0142o\u015Bci z\u0142o\u017Cony przez d\u0142u\u017C\
-                  nika |\n  | `21` | Zabezpieczenie maj\u0105tku |\n  | `22` | Og\u0142\
-                  oszenie upad\u0142o\u015Bci/oddalenie wniosku |\n  | `23` | Wt\xF3\
-                  rne post\u0119powanie upad\u0142o\u015Bciowe |\n  | `24` | Uznanie\
-                  \ orzeczenia o wszcz\u0119ciu zagranicznego post\u0119powania upad\u0142\
-                  o\u015Bciowego |\n  | `25` | Przygotowana likwidacja |\n  | `26`\
-                  \ | Syndyk/zast\u0119pca syndyka/syndyk tymczasowy |\n  | `27` |\
-                  \ Zgromadzenie wierzycieli |\n  | `28` | Masa upad\u0142o\u015B\
-                  ci |\n  | `29` | Lista wierzytelno\u015Bci |\n  | `30` | Plan podzia\u0142\
-                  u |\n  | `31` | Zako\u0144czenie /umorzenie/uchylenie post\u0119\
-                  powania upad\u0142o\u015Bciowego |\n  | `32` | Plan sp\u0142aty/umorzenie\
-                  \ zobowi\u0105za\u0144 |\n  | `33` | Uk\u0142ad w upad\u0142o\u015B\
-                  ci |\n  | `34` | Inne |\n\n  <b>Zakaz prowadzenia dzia\u0142alno\u015B\
-                  ci gospodarczej</b>\n\n  | Warto\u015B\u0107 | Nazwa sekcji |\n\
-                  \  |-|-|\n  | `40` | Orzeczenie zakazu prowadzenia dzia\u0142alno\u015B\
-                  ci gospodarczej |\n  | `41` | Inne |</details>"
-              issue_date:
-                type: string
-                description: "Data publikacji og\u0142oszenia w KRZ"
-                format: date
-              signature:
-                type: string
-                description: "Sygnatura og\u0142oszenia w KRZ"
-          type: array
-          description: "Informacje dotycz\u0105ce publikacji og\u0142oszenia w KRZ"
-          title: Krz Entry
-        msig_entry:
-          items:
-            required:
-            - chapter
-            - section
-            - signature
-            - issue_date
-            - yearly_number
-            - position_number
-            - url
-            type: object
-            properties:
-              chapter:
-                type: integer
-                description: "Rozdzia\u0142 MSiG\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ rozdzia\u0142u |\n  |-|-|\n  | `0` | Og\u0142oszenia wymagane\
-                  \ przez prawo upad\u0142o\u015Bciowe |\n  | `1` | Og\u0142oszenia\
-                  \ wymagane przez prawo restrukturyzacyjne |</details>"
-              position_number:
-                type: string
-                description: Numer pozycji MSiG
-              issue_date:
-                type: string
-                description: "Data publikacji og\u0142oszenia w MSiG"
-                format: date
-              signature:
-                type: string
-                description: "Sygnatura og\u0142oszenia w MSiG"
-              url:
-                type: string
-                description: "Link do og\u0142oszenia w serwisie imsig.pl"
-                format: uri
-              section:
-                type: integer
-                description: "Sekcja MSiG\n<details>\n  <summary>Poka\u017C mo\u017C\
-                  liwe opcje</summary>\n\n  <b>Og\u0142oszenia wymagane przez prawo\
-                  \ upad\u0142o\u015Bciowe</b>\n\n  | Warto\u015B\u0107 | Nazwa sekcji\
-                  \ |\n  |-|-|\n  | `1` | Postanowienie o og\u0142oszeniu upad\u0142\
-                  o\u015Bci |\n  | `2` | Obwieszczenie o zatwierdzeniu uk\u0142adu\
-                  \ |\n  | `3` | Og\u0142oszenie o sporz\u0105dzeniu i przekazaniu\
-                  \ s\u0119dziemu komisarzowi listy wierzytelno\u015Bci |\n  | `4`\
-                  \ | Og\u0142oszenie o mo\u017Cliwo\u015Bci przegl\u0105dania planu\
-                  \ podzia\u0142u |\n  | `5` | Postanowienie o umorzeniu post\u0119\
-                  powania upad\u0142o\u015Bciowego |\n  | `6` | Postanowienie o zako\u0144\
-                  czeniu post\u0119powania upad\u0142o\u015Bciowego |\n  | `7` | Og\u0142\
-                  oszenie o z\u0142o\u017Ceniu o\u015Bwiadczenia o wszcz\u0119ciu\
-                  \ post\u0119powania naprawczego |\n  | `8` | Og\u0142oszenie o terminie\
-                  \ rozprawy zatwierdzaj\u0105cej uk\u0142ad |\n  | `9` | Inne |\n\
-                  \n  <b>Og\u0142oszenia wymagane przez prawo restrukturyzacyjne</b>\n\
-                  \n  | Warto\u015B\u0107 | Nazwa sekcji |\n  |-|-|\n  | `20` | Dokonanie\
-                  \ zmian w spisie wierzytelno\u015Bci |\n  | `21` | Inne |\n  | `22`\
-                  \ | Odmowa otwarcia post\u0119powania restrukturyzacyjnego |\n \
-                  \ | `23` | Odmowa zatwierdzenia uk\u0142adu |\n  | `24` | Og\u0142\
-                  oszenie przetargu lub konkursu ofert na sprzeda\u017C maj\u0105\
-                  tku d\u0142u\u017Cnika |\n  | `25` | Okre\u015Blenie trybu i sposobu\
-                  \ g\u0142osowania nad uk\u0142adem |\n  | `26` | Otwarcie post\u0119\
-                  powania o zatwierdzenie uk\u0142adu |\n  | `27` | Otwarcie post\u0119\
-                  powania o zatwierdzenie uk\u0142adu w zwi\u0105zku z wyst\u0105\
-                  pieniem covid-19 |\n  | `28` | Otwarcie post\u0119powania o zmian\u0119\
-                  \ uk\u0142adu |\n  | `29` | Otwarcie post\u0119powania sanacyjnego\
-                  \ |\n  | `30` | Otwarcie post\u0119powania uk\u0142adowego |\n \
-                  \ | `31` | Otwarcie przyspieszonego post\u0119powania uk\u0142adowego\
-                  \ |\n  | `32` | Sprostowanie |\n  | `33` | Stwierdzenie wykonania\
-                  \ uk\u0142adu |\n  | `34` | Uchylenie uk\u0142adu |\n  | `35` |\
-                  \ Umorzenie post\u0119powania |\n  | `36` | Wyznaczenie nadzorcy\
-                  \ lub zarz\u0105dcy |\n  | `37` | Wyznaczenie terminu rozprawy w\
-                  \ celu rozpoznania uk\u0142adu |\n  | `38` | Wyznaczenie terminu\
-                  \ zgromadzenia wierzycieli |\n  | `39` | Zabezpieczenie maj\u0105\
-                  tku d\u0142u\u017Cnika |\n  | `40` | Zako\u0144czenie post\u0119\
-                  powania |\n  | `41` | Zatwierdzenie spisu wierzytelno\u015Bci |\n\
-                  \  | `42` | Zatwierdzenie uk\u0142adu |\n  | `43` | Z\u0142o\u017C\
-                  enie planu restrukturyzacyjnego |\n  | `44` | Z\u0142o\u017Cenie\
-                  \ spisu wierzytelno\u015Bci |\n  | `45` | Z\u0142o\u017Cenie sprawozdania\
-                  \ z wykonania planu restrukturyzacyjnego lub uk\u0142adu |\n  |\
-                  \ `46` | Z\u0142o\u017Cenie uzupe\u0142niaj\u0105cego spisu wierzytelno\u015B\
-                  ci |\n  | `47` | Z\u0142o\u017Cenie wniosku o zatwierdzenie uk\u0142\
-                  adu |\n  | `48` | Zmiana nadzorcy lub zarz\u0105dcy |\n  | `49`\
-                  \ | Zmiana s\u0119dziego komisarza |\n  | `50` | Zmiana terminu\
-                  \ zgromadzenia wierzycieli |</details>"
-              yearly_number:
-                type: string
-                description: Numer wydania MSiG
-=======
->>>>>>> origin/notification-keys
-          type: array
-          items:
-            type: string
-        name: exclude
-        in: query
-      - required: false
-        schema:
-          title: Authorization
-          type: string
-        example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-        name: Authorization
-        in: header
-        description: Klucz autoryzacji
-      responses:
-        '200':
-          description: "Wynik wyszukiwania monitoring\xF3w"
-          content:
-            application/json:
-              schema:
-                title: Response Get Monitors V2 Monitors Get
-                type: array
-                items:
-                  $ref: '#/components/schemas/MonitorModel'
-        '400':
-          description: "Niew\u0142a\u015Bciwy format zapytania"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Niepoprawna autentykacja tokenu
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: "Nieudana autoryzacja dost\u0119pu do API"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      description: "Zwraca list\u0119 monitoring\xF3w przypisanych do aktualnego u\u017C\
-        ytkownika.\n\nAby ograniczy\u0107 list\u0119 zwracanych p\xF3l, warto ustawi\u0107\
-        \ parametr `exclude`\nna list\u0119 p\xF3l, kt\xF3re nie s\u0105 wymagane\
-        \ w odpowiedzi, np. `[\"notifications\"]`."
-    post:
-      tags:
-      - monitors_iapi
-      summary: POST /v2/monitors
-      operationId: create_monitor_v2_monitors_post
-      parameters:
-      - required: false
-        schema:
-          title: Authorization
-          type: string
-        example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-        name: Authorization
-        in: header
-        description: Klucz autoryzacji
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateMonitorsModel'
-        required: true
-      responses:
-        '200':
-          description: "Wynik przypisywania monitoring\xF3w do u\u017Cytkownika"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MonitorModel'
-        '400':
-          description: "Niew\u0142a\u015Bciwy format zapytania"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Niepoprawna autentykacja tokenu
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: "Nieudana autoryzacja dost\u0119pu do API"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '429':
-          description: "Wykorzystany limit zapyta\u0144 do API"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      description: "Tworzy nowy monitoring przypisany do aktualnego u\u017Cytkownika.\n\
-        \nW parametrze `emails` podajemy przynajmniej jeden adres e-mail, na kt\xF3\
-        ry b\u0119d\u0105\nwysy\u0142ane powiadomienia o nowych og\u0142oszeniach\
-        \ w ramach monitoringu.\nLiczba adres\xF3w e-mail nie mo\u017Ce przekracza\u0107\
-        \ warto\u015Bci `monitors_emails_limit`\nz parametr\xF3w us\u0142ugi.\n\n\
-        Monitoring mo\u017Ce zosta\u0107 utworzony, gdy liczba monitoring\xF3w po\
-        \ jego utworzeniu\nnie b\u0119dzie przekracza\u0107 warto\u015Bci `monitors_available`\
-        \ z parametr\xF3w us\u0142ugi."
-    delete:
-      tags:
-      - monitors_iapi
-      summary: DELETE /v2/monitors
-      operationId: delete_monitors_v2_monitors_delete
-      parameters:
-      - required: false
-        schema:
-          title: Ids
-          type: string
-          example: '222222222222222222222222'
-          maxLength: 24
-          minLength: 24
-        name: ids
-        in: query
-        description: "Lista identyfikator\xF3w monitoring\xF3w."
-      - required: false
-        schema:
-          title: Authorization
-          type: string
-        example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-        name: Authorization
-        in: header
-        description: Klucz autoryzacji
-      responses:
-        '204':
-          description: "Wynik usuwania monitoring\xF3w"
-        '400':
-          description: "Niew\u0142a\u015Bciwy format zapytania"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Niepoprawna autentykacja tokenu
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: "Nieudana autoryzacja dost\u0119pu do API"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
       description: 'Usuwa monitoringi o identyfikatorach przekazanych w kolejnych
         parametrach `ids`
 
@@ -19535,66 +19045,12 @@ components:
       - monitors_filter_required
       type: object
       properties:
-<<<<<<< HEAD
-        available_content:
-          items:
-            type: string
-          title: Available Content
-          type: array
-          description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-            \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
-            \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n|-|-|\n\
-            | `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
-            \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
-            \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142asno\u015B\
-            ci |\n| `entity.info.primary_business` | Przewa\u017Caj\u0105ca dzia\u0142\
-            alno\u015B\u0107 gospodarcza (kod PKD) |\n| `entity.info.commencement_date`\
-            \ | Data rozpocz\u0119cia dzia\u0142alno\u015Bci |\n| `entity.numbers.nip`\
-            \ | NIP |\n| `entity.numbers.regon` | REGON |\n| `entity.numbers.krs`\
-            \ | KRS |\n| `entity.numbers.pesel` | PESEL |\n| `entity.address.state`\
-            \ | Wojew\xF3dztwo |\n| `entity.address.powiat` | Powiat |\n| `entity.address.gmina`\
-            \ | Gmina |\n| `entity.address.town` | Miejscowo\u015B\u0107 |\n| `entity.address.street`\
-            \ | Ulica |\n| `entity.address.house_number` | Numer nieruchomo\u015B\
-            ci |\n| `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
-            \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n| `proceeding.court_name`\
-            \ | Nazwa s\u0105du |\n| `proceeding.court_department` | Nazwa wydzia\u0142\
-            u |\n| `proceeding.signatures` | Sygnatura sprawy |\n| `proceeding.commissioner_name`\
-            \ | S\u0119dzia komisarz |\n| `proceeding.commissioner_deputy_name` |\
-            \ Zast\u0119pca s\u0119dziego komisarza |\n| `proceeding.administrator_name`\
-            \ | Nadzorca w post\u0119powaniu |\n| `proceeding.administrator_function`\
-            \ | Funkcja nadzorcy |\n| `proceeding.administrator_licence_number` |\
-            \ Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
-            \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code` |\
-            \ Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town` |\
-            \ Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
-            \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date` | Data\
-            \ wydania postanowienia |\n| `order.expiration_period` | Okres do dzia\u0142\
-            ania (w dniach) |\n| `order.expiration_date` | Koniec okresu do dzia\u0142\
-            ania |\n| `msig_entry.chapter` | Rozdzia\u0142 MSiG |\n| `msig_entry.section`\
-            \ | Sekcja MSiG |\n| `msig_entry.signature` | Sygnatura og\u0142oszenia\
-            \ w MSiG |\n| `msig_entry.issue_date` | Data publikacji og\u0142oszenia\
-            \ w MSiG |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
-            \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142oszenia\
-            \ w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142 KRZ |\n\
-            | `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature` | Sygnatura\
-            \ og\u0142oszenia w KRZ |\n| `krz_entry.issue_date` | Data publikacji\
-            \ og\u0142oszenia w KRZ |\n| `krz_entry.url` | Link do og\u0142oszenia\
-            \ w serwisie KRZ |\n| `content.text` | Tre\u015B\u0107 og\u0142oszenia\
-            \ (tekst) |\n| `content.html` | Tre\u015B\u0107 og\u0142oszenia (HTML)\
-            \ |\n| `content.url` | Link do podgl\u0105du tre\u015Bci og\u0142oszenia\
-            \ |</details>"
-        archival_reports_used:
-          type: integer
-          description: "Liczba utworzonych raport\xF3w archiwalnych"
-          title: Archival Reports Used
-=======
         archive_date_from:
           title: Archive Date From
           type: string
           format: date
           description: "Data pocz\u0105tkowa okresu, z kt\xF3rego u\u017Cytkownik\
             \ mo\u017Ce pobiera\u0107 og\u0142oszenia w ramach raport\xF3w aktualnych"
->>>>>>> origin/notification-keys
         current_reports_available:
           title: Current Reports Available
           type: integer
@@ -19640,9 +19096,48 @@ components:
           type: array
           items:
             type: string
-          example: asdasd
           description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
-            \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach"
+            \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
+            \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n|-|-|\n\
+            | `entity.info.cleaned_name` | Nazwa podmiotu |\n| `entity.info.first_name`\
+            \ | Imi\u0119 |\n| `entity.info.last_name` | Nazwisko |\n| `entity.info.legal_form`\
+            \ | Forma prawna |\n| `entity.info.ownership_type` | Forma w\u0142asno\u015B\
+            ci |\n| `entity.info.primary_business` | Przewa\u017Caj\u0105ca dzia\u0142\
+            alno\u015B\u0107 gospodarcza (kod PKD) |\n| `entity.info.commencement_date`\
+            \ | Data rozpocz\u0119cia dzia\u0142alno\u015Bci |\n| `entity.numbers.nip`\
+            \ | NIP |\n| `entity.numbers.regon` | REGON |\n| `entity.numbers.krs`\
+            \ | KRS |\n| `entity.numbers.pesel` | PESEL |\n| `entity.address.state`\
+            \ | Wojew\xF3dztwo |\n| `entity.address.powiat` | Powiat |\n| `entity.address.gmina`\
+            \ | Gmina |\n| `entity.address.town` | Miejscowo\u015B\u0107 |\n| `entity.address.street`\
+            \ | Ulica |\n| `entity.address.house_number` | Numer nieruchomo\u015B\
+            ci |\n| `entity.address.flat_number` | Numer lokalu |\n| `entity.address.zip_code`\
+            \ | Kod pocztowy |\n| `entity.address.post_office` | Poczta |\n| `proceeding.court_name`\
+            \ | Nazwa s\u0105du |\n| `proceeding.court_department` | Nazwa wydzia\u0142\
+            u |\n| `proceeding.signatures` | Sygnatura sprawy |\n| `proceeding.commissioner_name`\
+            \ | S\u0119dzia komisarz |\n| `proceeding.commissioner_deputy_name` |\
+            \ Zast\u0119pca s\u0119dziego komisarza |\n| `proceeding.administrator_name`\
+            \ | Nadzorca w post\u0119powaniu |\n| `proceeding.administrator_function`\
+            \ | Funkcja nadzorcy |\n| `proceeding.administrator_licence_number` |\
+            \ Numer licencji doradcy restrukturyzacyjnego |\n| `proceeding.administrator_address`\
+            \ | Adres nadzorcy (ulica) |\n| `proceeding.administrator_zip_code` |\
+            \ Adres nadzorcy (kod pocztowy) |\n| `proceeding.administrator_town` |\
+            \ Adres nadzorcy (miejscowo\u015B\u0107) |\n| `proceeding.administrator_source_url`\
+            \ | \u0179r\xF3d\u0142o danych nadzorcy |\n| `order.order_date` | Data\
+            \ wydania postanowienia |\n| `order.expiration_period` | Okres do dzia\u0142\
+            ania (w dniach) |\n| `order.expiration_date` | Koniec okresu do dzia\u0142\
+            ania |\n| `msig_entry.chapter` | Rozdzia\u0142 MSiG |\n| `msig_entry.section`\
+            \ | Sekcja MSiG |\n| `msig_entry.signature` | Sygnatura og\u0142oszenia\
+            \ w MSiG |\n| `msig_entry.issue_date` | Data publikacji og\u0142oszenia\
+            \ w MSiG |\n| `msig_entry.yearly_number` | Numer wydania MSiG |\n| `msig_entry.position_number`\
+            \ | Numer pozycji MSiG |\n| `msig_entry.url` | Link do og\u0142oszenia\
+            \ w serwisie imsig.pl |\n| `krz_entry.chapter` | Rozdzia\u0142 KRZ |\n\
+            | `krz_entry.section` | Sekcja KRZ |\n| `krz_entry.signature` | Sygnatura\
+            \ og\u0142oszenia w KRZ |\n| `krz_entry.issue_date` | Data publikacji\
+            \ og\u0142oszenia w KRZ |\n| `krz_entry.url` | Link do og\u0142oszenia\
+            \ w serwisie KRZ |\n| `content.text` | Tre\u015B\u0107 og\u0142oszenia\
+            \ (tekst) |\n| `content.html` | Tre\u015B\u0107 og\u0142oszenia (HTML)\
+            \ |\n| `content.url` | Link do podgl\u0105du tre\u015Bci og\u0142oszenia\
+            \ |</details>"
         filter_items_limit:
           title: Filter Items Limit
           type: integer
@@ -20074,6 +19569,7 @@ components:
         creation_datetime: '2022-02-18T10:12:27.262422'
         downloads:
         - download_datetime: '2021-11-12T15:39:29.584Z'
+        records_count: 3
     ReportStatusEnum:
       title: ReportStatusEnum
       type: integer

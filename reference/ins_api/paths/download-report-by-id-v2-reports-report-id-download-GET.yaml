@@ -31,6 +31,16 @@ parameters:
 responses:
   '200':
     description: Wynik pobierania pojedynczego raportu
+    headers:
+      Content-Type:
+        description: MIME
+        schema:
+          type: aplication/zip
+      Content-Disposition:
+        description: Nazwa pliku
+        schema:
+          type: attachement
+        example: imsig-pl_lista_upadlosci_powiadomienie_2022-03-02_q7jsyvw9.xml.zip
   '400':
     description: Niewłaściwy format zapytania
     content:

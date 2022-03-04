@@ -22,11 +22,54 @@ required:
 - monitors_filter_required
 type: object
 properties:
+  archive_date_from:
+    title: Archive Date From
+    type: string
+    format: date
+    description: Data początkowa okresu, z którego użytkownik może pobierać ogłoszenia
+      w ramach raportów aktualnych
+  current_reports_available:
+    title: Current Reports Available
+    type: integer
+    description: Maksymalna liczba raportów aktualnych, które użytkownik może utorzyć
+      w ramach obecnego planu
+  current_reports_used:
+    title: Current Reports Used
+    type: integer
+    description: Liczba utworzonych raportów aktualnych
+  current_reports_filter_required:
+    title: Current Reports Filter Required
+    type: boolean
+    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
+  archival_reports_available:
+    title: Archival Reports Available
+    type: integer
+    description: Maksymalna liczba raportów archiwalnych, które użytkownik może utorzyć
+      w ramach obecnego planu
+  archival_reports_used:
+    title: Archival Reports Used
+    type: integer
+    description: Liczba utworzonych raportów archiwalnych
+  archival_reports_filter_required:
+    title: Archival Reports Filter Required
+    type: boolean
+    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
+  credits_available:
+    title: Credits Available
+    type: integer
+    description: Maksymalna liczba identyfikatorów, o które użytkownik może odpytać
+      API w zapytaniu o ogłoszenia z całego archiwum (od 1.01.2021) albo których może
+      użyć w filtrze dla raportu archiwalnego w ramach obecnego planu
+  credits_used:
+    title: Credits Used
+    type: integer
+    description: Liczba identyfikatorów, o które użytkownik odpytał API albo których
+      użył w filtrze dla raportu archiwalnego
   available_content:
-    items:
-      type: string
     title: Available Content
     type: array
+    items:
+      type: string
     description: |-
       Lista identyfikatorów pól, które użytkownik może uwzględnić w raportach
       <details>
@@ -84,49 +127,6 @@ properties:
       | `content.text` | Treść ogłoszenia (tekst) |
       | `content.html` | Treść ogłoszenia (HTML) |
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
-  archive_date_from:
-    title: Archive Date From
-    type: string
-    format: date
-    description: Data początkowa okresu, z którego użytkownik może pobierać ogłoszenia
-      w ramach raportów aktualnych
-  current_reports_available:
-    title: Current Reports Available
-    type: integer
-    description: Maksymalna liczba raportów aktualnych, które użytkownik może utorzyć
-      w ramach obecnego planu
-  current_reports_used:
-    title: Current Reports Used
-    type: integer
-    description: Liczba utworzonych raportów aktualnych
-  current_reports_filter_required:
-    title: Current Reports Filter Required
-    type: boolean
-    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
-  archival_reports_available:
-    title: Archival Reports Available
-    type: integer
-    description: Maksymalna liczba raportów archiwalnych, które użytkownik może utorzyć
-      w ramach obecnego planu
-  archival_reports_used:
-    title: Archival Reports Used
-    type: integer
-    description: Liczba utworzonych raportów archiwalnych
-  archival_reports_filter_required:
-    title: Archival Reports Filter Required
-    type: boolean
-    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
-  credits_available:
-    title: Credits Available
-    type: integer
-    description: Maksymalna liczba identyfikatorów, o które użytkownik może odpytać
-      API w zapytaniu o ogłoszenia z całego archiwum (od 1.01.2021) albo których może
-      użyć w filtrze dla raportu archiwalnego w ramach obecnego planu
-  credits_used:
-    title: Credits Used
-    type: integer
-    description: Liczba identyfikatorów, o które użytkownik odpytał API albo których
-      użył w filtrze dla raportu archiwalnego
   filter_items_limit:
     title: Filter Items Limit
     type: integer
