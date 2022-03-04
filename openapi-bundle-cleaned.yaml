@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.231
+  version: 1.0.232
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -250,14 +250,14 @@ x-tagGroups:
   - updates
 - name: MSIG API V2, KRZ API V2
   tags:
-  - reports_iapi
-  - notifications_iapi
-  - monitors_iapi
-  - users_iapi
-  - filters_iapi
-  - updates_iapi
-  - params_iapi
   - announcements_iapi
+  - updates_iapi
+  - filters_iapi
+  - reports_iapi
+  - monitors_iapi
+  - notifications_iapi
+  - users_iapi
+  - params_iapi
   - dicts_iapi
 paths:
   /v2/filters:
@@ -3426,6 +3426,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -4222,6 +4224,9 @@ paths:
             - source
             type: object
             properties:
+              id:
+                title: Id
+                type: integer
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -4239,6 +4244,12 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
+            example:
+              id: 1
+              creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+              issue_date: '2022-03-04'
+              announcements_count: 100
+              source: krz
           UserModel:
             title: UserModel
             required:
@@ -6507,6 +6518,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -7303,6 +7316,9 @@ paths:
             - source
             type: object
             properties:
+              id:
+                title: Id
+                type: integer
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -7320,6 +7336,12 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
+            example:
+              id: 1
+              creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+              issue_date: '2022-03-04'
+              announcements_count: 100
+              source: krz
           UserModel:
             title: UserModel
             required:
@@ -9374,6 +9396,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -10170,6 +10194,9 @@ paths:
             - source
             type: object
             properties:
+              id:
+                title: Id
+                type: integer
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -10187,6 +10214,12 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
+            example:
+              id: 1
+              creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+              issue_date: '2022-03-04'
+              announcements_count: 100
+              source: krz
           UserModel:
             title: UserModel
             required:
@@ -12841,6 +12874,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -13637,6 +13672,9 @@ paths:
             - source
             type: object
             properties:
+              id:
+                title: Id
+                type: integer
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -13654,6 +13692,12 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
+            example:
+              id: 1
+              creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+              issue_date: '2022-03-04'
+              announcements_count: 100
+              source: krz
           UserModel:
             title: UserModel
             required:
@@ -15687,6 +15731,8 @@ paths:
               monitors_filter_required:
                 title: Monitors Filter Required
                 type: boolean
+                description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi\
+                  \ wybra\u0107 filtr?"
             example:
               archive_date_from: '2021-04-23'
               current_reports_available: 25
@@ -16483,6 +16529,9 @@ paths:
             - source
             type: object
             properties:
+              id:
+                title: Id
+                type: integer
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -16500,6 +16549,12 @@ paths:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
                 title: Source
+            example:
+              id: 1
+              creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+              issue_date: '2022-03-04'
+              announcements_count: 100
+              source: krz
           UserModel:
             title: UserModel
             required:
@@ -17174,7 +17229,7 @@ paths:
           title: Creation Datetime From
           type: string
           format: date-time
-          example: '2019-01-01'
+          example: '2019-01-01T00:00:00Z'
         name: creation_datetime_from
         in: query
         description: "Pocz\u0105tek zakresu dla daty i czasu utworzenia aktualizacji"
@@ -17183,7 +17238,7 @@ paths:
           title: Creation Datetime To
           type: string
           format: date-time
-          example: '2019-12-31'
+          example: '2019-12-31T00:00:00Z'
         name: creation_datetime_to
         in: query
         description: Koniec zakresu dla daty i czasu utworzenia aktualizacji
@@ -19136,6 +19191,8 @@ components:
         monitors_filter_required:
           title: Monitors Filter Required
           type: boolean
+          description: "Czy przy tworzeniu monitoringu u\u017Cytkownik musi wybra\u0107\
+            \ filtr?"
       example:
         archive_date_from: '2021-04-23'
         current_reports_available: 25
