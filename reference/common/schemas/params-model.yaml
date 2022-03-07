@@ -66,10 +66,9 @@ properties:
     description: Liczba identyfikatorów, o które użytkownik odpytał API albo których
       użył w filtrze dla raportu archiwalnego
   available_content:
-    title: Available Content
     type: array
     items:
-      type: string
+      $ref: ../schemas.yaml#/FieldsEnum
     description: |-
       Lista identyfikatorów pól, które użytkownik może uwzględnić w raportach
       <details>
