@@ -7,7 +7,7 @@ parameters:
   schema:
     title: Id
     type: string
-    example: 0abcdcba123mbgi000001234
+    example: 6189ba008749c5e836fa4cf6
     maxLength: 24
     minLength: 24
   name: id

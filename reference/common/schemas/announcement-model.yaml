@@ -10,7 +10,7 @@ properties:
       Unikalny identyfikator ogłoszenia
       <details>
         <summary>Przykładowy identyfikator</summary>
-        "0abcdcba123mbgi000001234"
+        "6189ba008749c5e836fa4cf6"
       </details>
     format: ObjectId
   entity:
@@ -41,6 +41,7 @@ properties:
             properties:
               commencement_date:
                 type: string
+                format: date
                 description: Data rozpoczęcia działalności
               first_name:
                 type: string
