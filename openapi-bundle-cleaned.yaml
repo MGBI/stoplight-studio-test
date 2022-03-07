@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.254
+  version: 1.0.255
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -3356,53 +3356,6 @@ paths:
                   \ odpyta\u0142 API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla\
                   \ raportu archiwalnego"
               available_content:
-                type: array
-                items:
-                  type: string
-                  title: FieldsEnum
-                  description: "<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
-                    \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `entity.info.cleaned_name`\
-                    \ | Entity_info_cleaned_name |\n| `entity.info.first_name` | Entity_info_first_name\
-                    \ |\n| `entity.info.last_name` | Entity_info_last_name |\n| `entity.info.legal_form`\
-                    \ | Entity_info_legal_form |\n| `entity.info.ownership_type` |\
-                    \ Entity_info_ownership_type |\n| `entity.info.primary_business`\
-                    \ | Entity_info_primary_business |\n| `entity.info.commencement_date`\
-                    \ | Entity_info_commencement_date |\n| `entity.numbers.nip` |\
-                    \ Entity_numbers_nip |\n| `entity.numbers.regon` | Entity_numbers_regon\
-                    \ |\n| `entity.numbers.krs` | Entity_numbers_krs |\n| `entity.numbers.pesel`\
-                    \ | Entity_numbers_pesel |\n| `entity.address.state` | Entity_address_state\
-                    \ |\n| `entity.address.powiat` | Entity_address_powiat |\n| `entity.address.gmina`\
-                    \ | Entity_address_gmina |\n| `entity.address.town` | Entity_address_town\
-                    \ |\n| `entity.address.street` | Entity_address_street |\n| `entity.address.house_number`\
-                    \ | Entity_address_house_number |\n| `entity.address.flat_number`\
-                    \ | Entity_address_flat_number |\n| `entity.address.zip_code`\
-                    \ | Entity_address_zip_code |\n| `entity.address.post_office`\
-                    \ | Entity_address_post_office |\n| `proceeding.court_name` |\
-                    \ Proceeding_court_name |\n| `proceeding.court_department` | Proceeding_court_department\
-                    \ |\n| `proceeding.signatures` | Proceeding_signatures |\n| `proceeding.commissioner_name`\
-                    \ | Proceeding_commissioner_name |\n| `proceeding.commissioner_deputy_name`\
-                    \ | Proceeding_commissioner_deputy_name |\n| `proceeding.administrator_name`\
-                    \ | Proceeding_administrator_name |\n| `proceeding.administrator_function`\
-                    \ | Proceeding_administrator_function |\n| `proceeding.administrator_licence_number`\
-                    \ | Proceeding_administrator_licence_number |\n| `proceeding.administrator_address`\
-                    \ | Proceeding_administrator_address |\n| `proceeding.administrator_zip_code`\
-                    \ | Proceeding_administrator_zip_code |\n| `proceeding.administrator_town`\
-                    \ | Proceeding_administrator_town |\n| `proceeding.administrator_source_url`\
-                    \ | Proceeding_administrator_source_url |\n| `order.order_date`\
-                    \ | Order_order_date |\n| `order.expiration_period` | Order_expiration_period\
-                    \ |\n| `order.expiration_date` | Order_expiration_date |\n| `msig_entry.chapter`\
-                    \ | Msig_entry_chapter |\n| `msig_entry.section` | Msig_entry_section\
-                    \ |\n| `msig_entry.signature` | Msig_entry_signature |\n| `msig_entry.issue_date`\
-                    \ | Msig_entry_issue_date |\n| `msig_entry.yearly_number` | Msig_entry_yearly_number\
-                    \ |\n| `msig_entry.position_number` | Msig_entry_position_number\
-                    \ |\n| `msig_entry.url` | Msig_entry_url |\n| `krz_entry.chapter`\
-                    \ | Krz_entry_chapter |\n| `krz_entry.section` | Krz_entry_section\
-                    \ |\n| `krz_entry.subsection` | Krz_entry_subsection |\n| `krz_entry.signature`\
-                    \ | Krz_entry_signature |\n| `krz_entry.issue_date` | Krz_entry_issue_date\
-                    \ |\n| `krz_entry.url` | Krz_entry_url |\n| `content.text` | Content_text\
-                    \ |\n| `content.html` | Content_html |\n| `content.url` | Content_url\
-                    \ |</details>"
-                title: Available Content
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
                   \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
                   \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
@@ -6565,53 +6518,6 @@ paths:
                   \ odpyta\u0142 API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla\
                   \ raportu archiwalnego"
               available_content:
-                type: array
-                items:
-                  type: string
-                  title: FieldsEnum
-                  description: "<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
-                    \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `entity.info.cleaned_name`\
-                    \ | Entity_info_cleaned_name |\n| `entity.info.first_name` | Entity_info_first_name\
-                    \ |\n| `entity.info.last_name` | Entity_info_last_name |\n| `entity.info.legal_form`\
-                    \ | Entity_info_legal_form |\n| `entity.info.ownership_type` |\
-                    \ Entity_info_ownership_type |\n| `entity.info.primary_business`\
-                    \ | Entity_info_primary_business |\n| `entity.info.commencement_date`\
-                    \ | Entity_info_commencement_date |\n| `entity.numbers.nip` |\
-                    \ Entity_numbers_nip |\n| `entity.numbers.regon` | Entity_numbers_regon\
-                    \ |\n| `entity.numbers.krs` | Entity_numbers_krs |\n| `entity.numbers.pesel`\
-                    \ | Entity_numbers_pesel |\n| `entity.address.state` | Entity_address_state\
-                    \ |\n| `entity.address.powiat` | Entity_address_powiat |\n| `entity.address.gmina`\
-                    \ | Entity_address_gmina |\n| `entity.address.town` | Entity_address_town\
-                    \ |\n| `entity.address.street` | Entity_address_street |\n| `entity.address.house_number`\
-                    \ | Entity_address_house_number |\n| `entity.address.flat_number`\
-                    \ | Entity_address_flat_number |\n| `entity.address.zip_code`\
-                    \ | Entity_address_zip_code |\n| `entity.address.post_office`\
-                    \ | Entity_address_post_office |\n| `proceeding.court_name` |\
-                    \ Proceeding_court_name |\n| `proceeding.court_department` | Proceeding_court_department\
-                    \ |\n| `proceeding.signatures` | Proceeding_signatures |\n| `proceeding.commissioner_name`\
-                    \ | Proceeding_commissioner_name |\n| `proceeding.commissioner_deputy_name`\
-                    \ | Proceeding_commissioner_deputy_name |\n| `proceeding.administrator_name`\
-                    \ | Proceeding_administrator_name |\n| `proceeding.administrator_function`\
-                    \ | Proceeding_administrator_function |\n| `proceeding.administrator_licence_number`\
-                    \ | Proceeding_administrator_licence_number |\n| `proceeding.administrator_address`\
-                    \ | Proceeding_administrator_address |\n| `proceeding.administrator_zip_code`\
-                    \ | Proceeding_administrator_zip_code |\n| `proceeding.administrator_town`\
-                    \ | Proceeding_administrator_town |\n| `proceeding.administrator_source_url`\
-                    \ | Proceeding_administrator_source_url |\n| `order.order_date`\
-                    \ | Order_order_date |\n| `order.expiration_period` | Order_expiration_period\
-                    \ |\n| `order.expiration_date` | Order_expiration_date |\n| `msig_entry.chapter`\
-                    \ | Msig_entry_chapter |\n| `msig_entry.section` | Msig_entry_section\
-                    \ |\n| `msig_entry.signature` | Msig_entry_signature |\n| `msig_entry.issue_date`\
-                    \ | Msig_entry_issue_date |\n| `msig_entry.yearly_number` | Msig_entry_yearly_number\
-                    \ |\n| `msig_entry.position_number` | Msig_entry_position_number\
-                    \ |\n| `msig_entry.url` | Msig_entry_url |\n| `krz_entry.chapter`\
-                    \ | Krz_entry_chapter |\n| `krz_entry.section` | Krz_entry_section\
-                    \ |\n| `krz_entry.subsection` | Krz_entry_subsection |\n| `krz_entry.signature`\
-                    \ | Krz_entry_signature |\n| `krz_entry.issue_date` | Krz_entry_issue_date\
-                    \ |\n| `krz_entry.url` | Krz_entry_url |\n| `content.text` | Content_text\
-                    \ |\n| `content.html` | Content_html |\n| `content.url` | Content_url\
-                    \ |</details>"
-                title: Available Content
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
                   \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
                   \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
@@ -9560,53 +9466,6 @@ paths:
                   \ odpyta\u0142 API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla\
                   \ raportu archiwalnego"
               available_content:
-                type: array
-                items:
-                  type: string
-                  title: FieldsEnum
-                  description: "<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
-                    \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `entity.info.cleaned_name`\
-                    \ | Entity_info_cleaned_name |\n| `entity.info.first_name` | Entity_info_first_name\
-                    \ |\n| `entity.info.last_name` | Entity_info_last_name |\n| `entity.info.legal_form`\
-                    \ | Entity_info_legal_form |\n| `entity.info.ownership_type` |\
-                    \ Entity_info_ownership_type |\n| `entity.info.primary_business`\
-                    \ | Entity_info_primary_business |\n| `entity.info.commencement_date`\
-                    \ | Entity_info_commencement_date |\n| `entity.numbers.nip` |\
-                    \ Entity_numbers_nip |\n| `entity.numbers.regon` | Entity_numbers_regon\
-                    \ |\n| `entity.numbers.krs` | Entity_numbers_krs |\n| `entity.numbers.pesel`\
-                    \ | Entity_numbers_pesel |\n| `entity.address.state` | Entity_address_state\
-                    \ |\n| `entity.address.powiat` | Entity_address_powiat |\n| `entity.address.gmina`\
-                    \ | Entity_address_gmina |\n| `entity.address.town` | Entity_address_town\
-                    \ |\n| `entity.address.street` | Entity_address_street |\n| `entity.address.house_number`\
-                    \ | Entity_address_house_number |\n| `entity.address.flat_number`\
-                    \ | Entity_address_flat_number |\n| `entity.address.zip_code`\
-                    \ | Entity_address_zip_code |\n| `entity.address.post_office`\
-                    \ | Entity_address_post_office |\n| `proceeding.court_name` |\
-                    \ Proceeding_court_name |\n| `proceeding.court_department` | Proceeding_court_department\
-                    \ |\n| `proceeding.signatures` | Proceeding_signatures |\n| `proceeding.commissioner_name`\
-                    \ | Proceeding_commissioner_name |\n| `proceeding.commissioner_deputy_name`\
-                    \ | Proceeding_commissioner_deputy_name |\n| `proceeding.administrator_name`\
-                    \ | Proceeding_administrator_name |\n| `proceeding.administrator_function`\
-                    \ | Proceeding_administrator_function |\n| `proceeding.administrator_licence_number`\
-                    \ | Proceeding_administrator_licence_number |\n| `proceeding.administrator_address`\
-                    \ | Proceeding_administrator_address |\n| `proceeding.administrator_zip_code`\
-                    \ | Proceeding_administrator_zip_code |\n| `proceeding.administrator_town`\
-                    \ | Proceeding_administrator_town |\n| `proceeding.administrator_source_url`\
-                    \ | Proceeding_administrator_source_url |\n| `order.order_date`\
-                    \ | Order_order_date |\n| `order.expiration_period` | Order_expiration_period\
-                    \ |\n| `order.expiration_date` | Order_expiration_date |\n| `msig_entry.chapter`\
-                    \ | Msig_entry_chapter |\n| `msig_entry.section` | Msig_entry_section\
-                    \ |\n| `msig_entry.signature` | Msig_entry_signature |\n| `msig_entry.issue_date`\
-                    \ | Msig_entry_issue_date |\n| `msig_entry.yearly_number` | Msig_entry_yearly_number\
-                    \ |\n| `msig_entry.position_number` | Msig_entry_position_number\
-                    \ |\n| `msig_entry.url` | Msig_entry_url |\n| `krz_entry.chapter`\
-                    \ | Krz_entry_chapter |\n| `krz_entry.section` | Krz_entry_section\
-                    \ |\n| `krz_entry.subsection` | Krz_entry_subsection |\n| `krz_entry.signature`\
-                    \ | Krz_entry_signature |\n| `krz_entry.issue_date` | Krz_entry_issue_date\
-                    \ |\n| `krz_entry.url` | Krz_entry_url |\n| `content.text` | Content_text\
-                    \ |\n| `content.html` | Content_html |\n| `content.url` | Content_url\
-                    \ |</details>"
-                title: Available Content
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
                   \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
                   \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
@@ -13155,53 +13014,6 @@ paths:
                   \ odpyta\u0142 API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla\
                   \ raportu archiwalnego"
               available_content:
-                type: array
-                items:
-                  type: string
-                  title: FieldsEnum
-                  description: "<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
-                    \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `entity.info.cleaned_name`\
-                    \ | Entity_info_cleaned_name |\n| `entity.info.first_name` | Entity_info_first_name\
-                    \ |\n| `entity.info.last_name` | Entity_info_last_name |\n| `entity.info.legal_form`\
-                    \ | Entity_info_legal_form |\n| `entity.info.ownership_type` |\
-                    \ Entity_info_ownership_type |\n| `entity.info.primary_business`\
-                    \ | Entity_info_primary_business |\n| `entity.info.commencement_date`\
-                    \ | Entity_info_commencement_date |\n| `entity.numbers.nip` |\
-                    \ Entity_numbers_nip |\n| `entity.numbers.regon` | Entity_numbers_regon\
-                    \ |\n| `entity.numbers.krs` | Entity_numbers_krs |\n| `entity.numbers.pesel`\
-                    \ | Entity_numbers_pesel |\n| `entity.address.state` | Entity_address_state\
-                    \ |\n| `entity.address.powiat` | Entity_address_powiat |\n| `entity.address.gmina`\
-                    \ | Entity_address_gmina |\n| `entity.address.town` | Entity_address_town\
-                    \ |\n| `entity.address.street` | Entity_address_street |\n| `entity.address.house_number`\
-                    \ | Entity_address_house_number |\n| `entity.address.flat_number`\
-                    \ | Entity_address_flat_number |\n| `entity.address.zip_code`\
-                    \ | Entity_address_zip_code |\n| `entity.address.post_office`\
-                    \ | Entity_address_post_office |\n| `proceeding.court_name` |\
-                    \ Proceeding_court_name |\n| `proceeding.court_department` | Proceeding_court_department\
-                    \ |\n| `proceeding.signatures` | Proceeding_signatures |\n| `proceeding.commissioner_name`\
-                    \ | Proceeding_commissioner_name |\n| `proceeding.commissioner_deputy_name`\
-                    \ | Proceeding_commissioner_deputy_name |\n| `proceeding.administrator_name`\
-                    \ | Proceeding_administrator_name |\n| `proceeding.administrator_function`\
-                    \ | Proceeding_administrator_function |\n| `proceeding.administrator_licence_number`\
-                    \ | Proceeding_administrator_licence_number |\n| `proceeding.administrator_address`\
-                    \ | Proceeding_administrator_address |\n| `proceeding.administrator_zip_code`\
-                    \ | Proceeding_administrator_zip_code |\n| `proceeding.administrator_town`\
-                    \ | Proceeding_administrator_town |\n| `proceeding.administrator_source_url`\
-                    \ | Proceeding_administrator_source_url |\n| `order.order_date`\
-                    \ | Order_order_date |\n| `order.expiration_period` | Order_expiration_period\
-                    \ |\n| `order.expiration_date` | Order_expiration_date |\n| `msig_entry.chapter`\
-                    \ | Msig_entry_chapter |\n| `msig_entry.section` | Msig_entry_section\
-                    \ |\n| `msig_entry.signature` | Msig_entry_signature |\n| `msig_entry.issue_date`\
-                    \ | Msig_entry_issue_date |\n| `msig_entry.yearly_number` | Msig_entry_yearly_number\
-                    \ |\n| `msig_entry.position_number` | Msig_entry_position_number\
-                    \ |\n| `msig_entry.url` | Msig_entry_url |\n| `krz_entry.chapter`\
-                    \ | Krz_entry_chapter |\n| `krz_entry.section` | Krz_entry_section\
-                    \ |\n| `krz_entry.subsection` | Krz_entry_subsection |\n| `krz_entry.signature`\
-                    \ | Krz_entry_signature |\n| `krz_entry.issue_date` | Krz_entry_issue_date\
-                    \ |\n| `krz_entry.url` | Krz_entry_url |\n| `content.text` | Content_text\
-                    \ |\n| `content.html` | Content_html |\n| `content.url` | Content_url\
-                    \ |</details>"
-                title: Available Content
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
                   \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
                   \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
@@ -16129,53 +15941,6 @@ paths:
                   \ odpyta\u0142 API albo kt\xF3rych u\u017Cy\u0142 w filtrze dla\
                   \ raportu archiwalnego"
               available_content:
-                type: array
-                items:
-                  type: string
-                  title: FieldsEnum
-                  description: "<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
-                    \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `entity.info.cleaned_name`\
-                    \ | Entity_info_cleaned_name |\n| `entity.info.first_name` | Entity_info_first_name\
-                    \ |\n| `entity.info.last_name` | Entity_info_last_name |\n| `entity.info.legal_form`\
-                    \ | Entity_info_legal_form |\n| `entity.info.ownership_type` |\
-                    \ Entity_info_ownership_type |\n| `entity.info.primary_business`\
-                    \ | Entity_info_primary_business |\n| `entity.info.commencement_date`\
-                    \ | Entity_info_commencement_date |\n| `entity.numbers.nip` |\
-                    \ Entity_numbers_nip |\n| `entity.numbers.regon` | Entity_numbers_regon\
-                    \ |\n| `entity.numbers.krs` | Entity_numbers_krs |\n| `entity.numbers.pesel`\
-                    \ | Entity_numbers_pesel |\n| `entity.address.state` | Entity_address_state\
-                    \ |\n| `entity.address.powiat` | Entity_address_powiat |\n| `entity.address.gmina`\
-                    \ | Entity_address_gmina |\n| `entity.address.town` | Entity_address_town\
-                    \ |\n| `entity.address.street` | Entity_address_street |\n| `entity.address.house_number`\
-                    \ | Entity_address_house_number |\n| `entity.address.flat_number`\
-                    \ | Entity_address_flat_number |\n| `entity.address.zip_code`\
-                    \ | Entity_address_zip_code |\n| `entity.address.post_office`\
-                    \ | Entity_address_post_office |\n| `proceeding.court_name` |\
-                    \ Proceeding_court_name |\n| `proceeding.court_department` | Proceeding_court_department\
-                    \ |\n| `proceeding.signatures` | Proceeding_signatures |\n| `proceeding.commissioner_name`\
-                    \ | Proceeding_commissioner_name |\n| `proceeding.commissioner_deputy_name`\
-                    \ | Proceeding_commissioner_deputy_name |\n| `proceeding.administrator_name`\
-                    \ | Proceeding_administrator_name |\n| `proceeding.administrator_function`\
-                    \ | Proceeding_administrator_function |\n| `proceeding.administrator_licence_number`\
-                    \ | Proceeding_administrator_licence_number |\n| `proceeding.administrator_address`\
-                    \ | Proceeding_administrator_address |\n| `proceeding.administrator_zip_code`\
-                    \ | Proceeding_administrator_zip_code |\n| `proceeding.administrator_town`\
-                    \ | Proceeding_administrator_town |\n| `proceeding.administrator_source_url`\
-                    \ | Proceeding_administrator_source_url |\n| `order.order_date`\
-                    \ | Order_order_date |\n| `order.expiration_period` | Order_expiration_period\
-                    \ |\n| `order.expiration_date` | Order_expiration_date |\n| `msig_entry.chapter`\
-                    \ | Msig_entry_chapter |\n| `msig_entry.section` | Msig_entry_section\
-                    \ |\n| `msig_entry.signature` | Msig_entry_signature |\n| `msig_entry.issue_date`\
-                    \ | Msig_entry_issue_date |\n| `msig_entry.yearly_number` | Msig_entry_yearly_number\
-                    \ |\n| `msig_entry.position_number` | Msig_entry_position_number\
-                    \ |\n| `msig_entry.url` | Msig_entry_url |\n| `krz_entry.chapter`\
-                    \ | Krz_entry_chapter |\n| `krz_entry.section` | Krz_entry_section\
-                    \ |\n| `krz_entry.subsection` | Krz_entry_subsection |\n| `krz_entry.signature`\
-                    \ | Krz_entry_signature |\n| `krz_entry.issue_date` | Krz_entry_issue_date\
-                    \ |\n| `krz_entry.url` | Krz_entry_url |\n| `content.text` | Content_text\
-                    \ |\n| `content.html` | Content_html |\n| `content.url` | Content_url\
-                    \ |</details>"
-                title: Available Content
                 description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
                   \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
                   \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n\
@@ -19724,49 +19489,7 @@ components:
         available_content:
           type: array
           items:
-            type: string
-            title: FieldsEnum
-            description: "<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
-              \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `entity.info.cleaned_name`\
-              \ | Entity_info_cleaned_name |\n| `entity.info.first_name` | Entity_info_first_name\
-              \ |\n| `entity.info.last_name` | Entity_info_last_name |\n| `entity.info.legal_form`\
-              \ | Entity_info_legal_form |\n| `entity.info.ownership_type` | Entity_info_ownership_type\
-              \ |\n| `entity.info.primary_business` | Entity_info_primary_business\
-              \ |\n| `entity.info.commencement_date` | Entity_info_commencement_date\
-              \ |\n| `entity.numbers.nip` | Entity_numbers_nip |\n| `entity.numbers.regon`\
-              \ | Entity_numbers_regon |\n| `entity.numbers.krs` | Entity_numbers_krs\
-              \ |\n| `entity.numbers.pesel` | Entity_numbers_pesel |\n| `entity.address.state`\
-              \ | Entity_address_state |\n| `entity.address.powiat` | Entity_address_powiat\
-              \ |\n| `entity.address.gmina` | Entity_address_gmina |\n| `entity.address.town`\
-              \ | Entity_address_town |\n| `entity.address.street` | Entity_address_street\
-              \ |\n| `entity.address.house_number` | Entity_address_house_number |\n\
-              | `entity.address.flat_number` | Entity_address_flat_number |\n| `entity.address.zip_code`\
-              \ | Entity_address_zip_code |\n| `entity.address.post_office` | Entity_address_post_office\
-              \ |\n| `proceeding.court_name` | Proceeding_court_name |\n| `proceeding.court_department`\
-              \ | Proceeding_court_department |\n| `proceeding.signatures` | Proceeding_signatures\
-              \ |\n| `proceeding.commissioner_name` | Proceeding_commissioner_name\
-              \ |\n| `proceeding.commissioner_deputy_name` | Proceeding_commissioner_deputy_name\
-              \ |\n| `proceeding.administrator_name` | Proceeding_administrator_name\
-              \ |\n| `proceeding.administrator_function` | Proceeding_administrator_function\
-              \ |\n| `proceeding.administrator_licence_number` | Proceeding_administrator_licence_number\
-              \ |\n| `proceeding.administrator_address` | Proceeding_administrator_address\
-              \ |\n| `proceeding.administrator_zip_code` | Proceeding_administrator_zip_code\
-              \ |\n| `proceeding.administrator_town` | Proceeding_administrator_town\
-              \ |\n| `proceeding.administrator_source_url` | Proceeding_administrator_source_url\
-              \ |\n| `order.order_date` | Order_order_date |\n| `order.expiration_period`\
-              \ | Order_expiration_period |\n| `order.expiration_date` | Order_expiration_date\
-              \ |\n| `msig_entry.chapter` | Msig_entry_chapter |\n| `msig_entry.section`\
-              \ | Msig_entry_section |\n| `msig_entry.signature` | Msig_entry_signature\
-              \ |\n| `msig_entry.issue_date` | Msig_entry_issue_date |\n| `msig_entry.yearly_number`\
-              \ | Msig_entry_yearly_number |\n| `msig_entry.position_number` | Msig_entry_position_number\
-              \ |\n| `msig_entry.url` | Msig_entry_url |\n| `krz_entry.chapter` |\
-              \ Krz_entry_chapter |\n| `krz_entry.section` | Krz_entry_section |\n\
-              | `krz_entry.subsection` | Krz_entry_subsection |\n| `krz_entry.signature`\
-              \ | Krz_entry_signature |\n| `krz_entry.issue_date` | Krz_entry_issue_date\
-              \ |\n| `krz_entry.url` | Krz_entry_url |\n| `content.text` | Content_text\
-              \ |\n| `content.html` | Content_html |\n| `content.url` | Content_url\
-              \ |</details>"
-          title: Available Content
+            $ref: '#/components/schemas/FieldsEnum'
           description: "Lista identyfikator\xF3w p\xF3l, kt\xF3re u\u017Cytkownik\
             \ mo\u017Ce uwzgl\u0119dni\u0107 w raportach\n<details>\n<summary>Poka\u017C\
             \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa |\n|-|-|\n\
