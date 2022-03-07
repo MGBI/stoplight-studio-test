@@ -17,6 +17,9 @@ parameters:
     type: string
     description: A list of id's whose ones are strings representing the ObjectId from
       bson.
+    example:
+    - '6221c40ca9ab2f868237cd47'
+    - '6189ba008749c5e836fa4cf6'
   name: ids
   in: query
 - required: false

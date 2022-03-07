@@ -14,7 +14,7 @@ parameters:
       description: Zwraca ostatni dostępny monitoring
       maxLength: 4
       minLength: 4
-    example: '222222222222222222222222'
+    example: 6221c40c843d0d773f37cd4b
     maxLength: 24
     minLength: 24
   name: id

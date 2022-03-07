@@ -7,7 +7,7 @@ parameters:
   schema:
     title: Ids
     type: string
-    example: '222222222222222222222222'
+    example: 6221c40ca9ab2f868237cd47
     maxLength: 24
     minLength: 24
   name: ids

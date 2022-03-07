@@ -14,7 +14,7 @@ parameters:
       description: Zwraca ostatni dostępny raport
       maxLength: 4
       minLength: 4
-    example: '222222222222222222222222'
+    example: 6221c40cff11c462e837cd51
     maxLength: 24
     minLength: 24
   name: report_id

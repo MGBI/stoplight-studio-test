@@ -8,8 +8,8 @@ parameters:
     title: Ids
     type: string
     example:
-    - '222222222222222222222222'
-    - '333333333333333333333333'
+    - 6221c40ca9ab2f868237cd47
+    - 6189ba008749c5e836fa4cf6
     minLength: 24
   name: ids
   in: query
