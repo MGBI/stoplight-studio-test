@@ -18,7 +18,7 @@ parameters:
     title: Date From
     type: string
     format: date
-    example: 2022-01-01
+    example: '2022-01-01'
   name: date_from
   in: query
   description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
@@ -27,7 +27,7 @@ parameters:
     title: Date To
     type: string
     format: date
-    example: 2022-12-31
+    example: '2022-12-31'
   name: date_to
   in: query
   description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
