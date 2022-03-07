@@ -7,7 +7,7 @@ parameters:
   schema:
     title: Id
     type: string
-    example: BMSiG-26451/2020
+    example: 0abcdcba123mbgi000001234
     maxLength: 24
     minLength: 24
   name: id

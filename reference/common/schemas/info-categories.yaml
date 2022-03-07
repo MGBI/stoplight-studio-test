@@ -12,3 +12,6 @@ properties:
     title: Label
     type: string
     description: Etykieta
+example:
+  id: K
+  label: Krajowy Rejestr Zadłużonych

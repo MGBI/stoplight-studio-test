@@ -15,6 +15,24 @@ parameters:
   description: Unikalny identyfikator ogłoszenia
 - required: false
   schema:
+    $ref: '#/components/schemas/ProjectionEnum'
+    description: |-
+      Lista zwracanych grup informacji
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Identyfikator | Grupa informacji |
+        |-|-|
+        | `entity` | Lista podmiotów, których dotyczy ogłoszenie |
+        | `proceeding` | Informacje o postępowaniu |
+        | `order` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+        | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w msig |
+        | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
+        | `content` | Nieprzetworzona treść ogłoszenia |</details>
+  name: projection
+  in: query
+- required: false
+  schema:
     title: Append First Entry
     type: boolean
     default: false

@@ -90,3 +90,5 @@ UpdatesCreateModel:
   $ref: schemas/updates-create-model.yaml
 QueryBaseModel:
   $ref: schemas/query-base-model.yaml
+FieldsEnum:
+  $ref: schemas/fields-enum.yaml

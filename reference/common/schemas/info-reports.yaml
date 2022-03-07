@@ -12,3 +12,6 @@ properties:
     title: Label
     type: string
     description: Etykieta
+example:
+  id: 0
+  label: niedostępny

@@ -6,7 +6,13 @@ properties:
   id:
     title: Id
     type: string
-    description: Unikalny identyfikator ogłoszenia
+    description: |-
+      Unikalny identyfikator ogłoszenia
+      <details>
+        <summary>Przykładowy identyfikator</summary>
+        "0abcdcba123mbgi000001234"
+      </details>
+    format: ObjectId
   entity:
     title: Entity
     anyOf:
@@ -195,6 +201,7 @@ properties:
           description: Adres pocztowy nadzorcy
         administrator_source_url:
           type: string
+          format: uri
           description: Link do źródła danych nadzorcy
     description: Informacje o postępowaniu
   order:
@@ -209,6 +216,7 @@ properties:
       properties:
         order_date:
           type: string
+          format: date
           description: Data wydania postanowienia
           nullable: true
         expiration_period:
@@ -217,6 +225,7 @@ properties:
           nullable: true
         expiration_date:
           type: string
+          format: date
           description: Data końcowa okresu do działania
           nullable: true
     description: Informacje o postanowieniu, którego dotyczy ogłoszenie
@@ -247,17 +256,38 @@ properties:
               | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
         position_number:
           type: string
-          description: Numer pozycji MSiG
+          description: |-
+            Numer pozycji MSiG
+            <details>
+              <summary>Przykładowy numer pozycji</summary>
+              "00000"
+            </details>
         issue_date:
           type: string
-          description: Data publikacji ogłoszenia w MSiG
+          description: |-
+            Data publikacji ogłoszenia w MSiG
+            <details>
+              <summary>Przykładowa data</summary>
+              "2021-12-08"
+            </details>
           format: date
         signature:
           type: string
-          description: Sygnatura ogłoszenia w MSiG
+          description: |-
+            Sygnatura ogłoszenia w MSiG
+            <details>
+              <summary>Przykładowa sygnatura MSiG</summary>
+              "BMSiG-68636/2021"
+            </details>
         url:
           type: string
-          description: Link do ogłoszenia w serwisie imsig.pl
+          example: http://www.imsig.pl/pozycja/2020/112/26734
+          description: |-
+            Link do ogłoszenia w serwisie imsig.pl
+            <details>
+              <summary>Przykładowy link do ogłoszenia</summary>
+              "http://www.imsig.pl/pozycja/2020/112/26734"
+            </details>
           format: uri
         section:
           type: integer
@@ -317,7 +347,12 @@ properties:
               | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
         yearly_number:
           type: string
-          description: Numer wydania MSiG
+          description: |-
+            Numer wydania MSiG
+            <details>
+              <summary>Przykładowy nr wydania</summary>
+              "214"
+            </details>
     description: Informacje dotyczące publikacji ogłoszenia w MSiG
   krz_entry:
     title: Krz Entry
@@ -418,6 +453,7 @@ properties:
           description: Treść ogłoszenia w formacie tekstowym
         html:
           type: string
+          format: html
           description: Treść ogłoszenia w formacie HTML
     description: Nieprzetworzona treść ogłoszenia
 example:

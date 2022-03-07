@@ -12,3 +12,6 @@ properties:
     title: Label
     type: string
     description: Etykieta
+example:
+  id: entity
+  label: Lista podmiotów, których dotyczy ogłoszenie
