@@ -57,7 +57,7 @@ responses:
             $ref: '#/components/schemas/Error'
 description: |-
   Usuwa filtry o identyfikatorach przekazanych w kolejnych parametrach `ids`
-  w query stringu.
+  w query stringu, można podać wiele identyfikatorów oddzielonych przecinkami w jednym parametrze `ids`.
 
   W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.
 components:
