@@ -11,9 +11,7 @@ parameters:
     type: string
     description: A list of id's whose ones are strings representing the ObjectId from
       bson.
-    example:
-    - 6221c40ca9ab2f868237cd47
-    - 6189ba008749c5e836fa4cf6
+    example: 6221c40ca9ab2f868237cd47,6189ba008749c5e836fa4cf6
   name: ids
   in: query
 - required: false
@@ -57,11 +55,9 @@ responses:
             error: Forbidden
           items:
             $ref: '#/components/schemas/Error'
-description: |-
-  Usuwa raporty o identyfikatorach przekazanych w kolejnych parametrach `ids`
-  w query stringu, można podać wiele identyfikatorów oddzielonych przecinkami w jednym parametrze `ids`.
-
-  W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.
+description: "Usuwa raporty o identyfikatorach przekazanych w parametrze `ids` w query\
+  \ stringu, \nidentyfikatory muszą być oddzielone przecinkami.\n\nW przypadku sukcesu\
+  \ metoda zwraca kod odpowiedzi `204 No Content`."
 components:
   schemas:
     $ref: ../../common/schemas.yaml
