@@ -3,15 +3,17 @@ tags:
 summary: DELETE /v2/filters
 operationId: delete_filter_v2_filters_delete
 parameters:
-- required: false
+- description: Lista identyfikatorów filtra
+  required: true
   schema:
-    title: Ids
-    type: string
-    example: 6221c40ca9ab2f868237cd47,6189ba008749c5e836fa4cf6
+    title: List of id
     minLength: 24
+    type: string
+    description: A list of id's whose ones are strings representing the ObjectId from
+      bson.
+    example: 6221c40ca9ab2f868237cd47,6189ba008749c5e836fa4cf6
   name: ids
   in: query
-  description: Unikalne identyfikatory filtra
 - required: false
   schema:
     title: Authorization
