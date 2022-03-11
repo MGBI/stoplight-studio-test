@@ -67,7 +67,7 @@ description: |-
 
   Aby ograniczyć listę zwracanych pól, warto ustawić parametr `exclude`
   na pole, które nie jest wymagane w odpowiedzi, np. `exclude=notifications`.
-  Moża ukrywać wiele (niewymaganych w odpowiedzi) pól przekazując nazwy pól w kolejnych parametrach `exclude`.
+  Można ukrywać wiele (niewymaganych w odpowiedzi) pól przekazując nazwy pól w kolejnych parametrach `exclude`.
 components:
   schemas:
     $ref: ../../common/schemas.yaml
