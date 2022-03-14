@@ -76,4 +76,53 @@ enum:
 - M.1.49
 - M.1.50
 type: string
-description: An enumeration.
+description: "Litera oznacza źródło (`K` = KRZ, `M` = MSIG), pierwsza cyfra oznacza\
+  \ kategorię, druga sekcję. \n\n<details><summary>Pokaż możliwe opcje</summary>\n\
+  \n| Wartość | Nazwa  |\n|-|-|\n| `K` | Krajowy Rejestr Zadłużonych |\n| `K.0` |\
+  \ Postępowanie restrukturyzacyjne |\n| `K.0.0` | Dzień układowy |\n| `K.0.1` | Wniosek\
+  \ restrukturyzacyjny złożony przez dłużnika |\n| `K.0.2` | Zabezpieczenie majątku\
+  \ |\n| `K.0.3` | Otwarcie postępowania restrukturyzacyjnego |\n| `K.0.4` | Nadzorca\
+  \ sądowy/Zarządca/Nadzorca wykonania układu |\n| `K.0.5` | Spis wierzytelności/Spis\
+  \ wierzytelności spornych |\n| `K.0.6` | Zgromadzenie wierzycieli |\n| `K.0.7` |\
+  \ Sprawozdania |\n| `K.0.8` | Układ |\n| `K.0.9` | Zakończenie/umorzenie postępowania\
+  \ restrukturyzacyjnego |\n| `K.0.10` | Inne |\n| `K.1` | Postępowanie upadłościowe\
+  \ |\n| `K.1.20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |\n| `K.1.21`\
+  \ | Zabezpieczenie majątku |\n| `K.1.22` | Ogłoszenie upadłości/oddalenie wniosku\
+  \ |\n| `K.1.23` | Wtórne postępowanie upadłościowe |\n| `K.1.24` | Uznanie orzeczenia\
+  \ o wszczęciu zagranicznego postępowania upadłościowego |\n| `K.1.25` | Przygotowana\
+  \ likwidacja |\n| `K.1.26` | Syndyk/Zastępca syndyka/Syndyk tymczasowy |\n| `K.1.27`\
+  \ | Zgromadzenie wierzycieli |\n| `K.1.28` | Masa upadłości |\n| `K.1.29` | Lista\
+  \ wierzytelności |\n| `K.1.30` | Plan podziału |\n| `K.1.31` | Zakończenie /umorzenie/uchylenie\
+  \ postępowania upadłościowego |\n| `K.1.32` | Plan spłaty/umorzenie zobowiązań |\n\
+  | `K.1.33` | Układ w upadłości |\n| `K.1.34` | Inne |\n| `K.2` | Zakaz prowadzenia\
+  \ działalności gospodarczej |\n| `K.2.40` | Orzeczenie zakazu prowadzenia działalności\
+  \ gospodarczej |\n| `K.2.41` | Inne |\n| `M` | Monitor Sądowy i Gospodarczy |\n\
+  | `M.0` | Ogłoszenia wymagane przez prawo upadłościowe |\n| `M.0.1` | Postanowienie\
+  \ o ogłoszeniu upadłości |\n| `M.0.2` | Obwieszczenie o zatwierdzeniu układu |\n\
+  | `M.0.3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności\
+  \ |\n| `M.0.4` | Ogłoszenie o możliwości przeglądania planu podziału |\n| `M.0.5`\
+  \ | Postanowienie o umorzeniu postępowania upadłościowego |\n| `M.0.6` | Postanowienie\
+  \ o zakończeniu postępowania upadłościowego |\n| `M.0.7` | Ogłoszenie o złożeniu\
+  \ oświadczenia o wszczęciu postępowania naprawczego |\n| `M.0.8` | Ogłoszenie o\
+  \ terminie rozprawy zatwierdzającej układ |\n| `M.0.9` | Inne |\n| `M.1` | Ogłoszenia\
+  \ wymagane przez prawo restrukturyzacyjne |\n| `M.1.20` | Dokonanie zmian w spisie\
+  \ wierzytelności |\n| `M.1.21` | Inne |\n| `M.1.22` | Odmowa otwarcia postępowania\
+  \ restrukturyzacyjnego |\n| `M.1.23` | Odmowa zatwierdzenia układu |\n| `M.1.24`\
+  \ | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |\n| `M.1.25`\
+  \ | Określenie trybu i sposobu głosowania nad układem |\n| `M.1.26` | Otwarcie postępowania\
+  \ o zatwierdzenie układu |\n| `M.1.27` | Otwarcie postępowania o zatwierdzenie układu\
+  \ w związku z wystąpieniem COVID-19 |\n| `M.1.28` | Otwarcie postępowania o zmianę\
+  \ układu |\n| `M.1.29` | Otwarcie postępowania sanacyjnego |\n| `M.1.30` | Otwarcie\
+  \ postępowania układowego |\n| `M.1.31` | Otwarcie przyspieszonego postępowania\
+  \ układowego |\n| `M.1.32` | Sprostowanie |\n| `M.1.33` | Stwierdzenie wykonania\
+  \ układu |\n| `M.1.34` | Uchylenie układu |\n| `M.1.35` | Umorzenie postępowania\
+  \ |\n| `M.1.36` | Wyznaczenie nadzorcy lub zarządcy |\n| `M.1.37` | Wyznaczenie\
+  \ terminu rozprawy w celu rozpoznania układu |\n| `M.1.38` | Wyznaczenie terminu\
+  \ zgromadzenia wierzycieli |\n| `M.1.39` | Zabezpieczenie majątku dłużnika |\n|\
+  \ `M.1.40` | Zakończenie postępowania |\n| `M.1.41` | Zatwierdzenie spisu wierzytelności\
+  \ |\n| `M.1.42` | Zatwierdzenie układu |\n| `M.1.43` | Złożenie planu restrukturyzacyjnego\
+  \ |\n| `M.1.44` | Złożenie spisu wierzytelności |\n| `M.1.45` | Złożenie sprawozdania\
+  \ z wykonania planu restrukturyzacyjnego lub układu |\n| `M.1.46` | Złożenie uzupełniającego\
+  \ spisu wierzytelności |\n| `M.1.47` | Złożenie wniosku o zatwierdzenie układu |\n\
+  | `M.1.48` | Zmiana nadzorcy lub zarządcy |\n| `M.1.49` | Zmiana sędziego komisarza\
+  \ |\n| `M.1.50` | Zmiana terminu zgromadzenia wierzycieli |</details>"
