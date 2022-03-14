@@ -11,6 +11,8 @@ properties:
   id:
     title: Id
     type: string
+    description: Unikalny identyfikator powiadomienia
+    example: 6221c40c51fce5ae9f37cd48
   sent_datetime:
     title: Sent Datetime
     type: string
@@ -40,13 +42,18 @@ properties:
   dispatch_id:
     title: Dispatch Id
     type: string
+    description: Unikalny identyfikator wysyłki
+    example: 6221c40c5cb436601e37cd49
   monitor_id:
     title: Monitor Id
     type: string
+    description: Unikalny identyfikator monitora
+    example: 6221c40c5278893ac137cd4a
   error:
     title: Error
     type: string
     nullable: true
+    description: Komunikat błędu
 example:
   id: 6221c40c51fce5ae9f37cd48
   dispatch_id: 6221c40c5cb436601e37cd49

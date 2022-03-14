@@ -25,3 +25,4 @@ example:
   emails:
   - kura@wp.pl
   append_first_entry: false
+  send_empty_notifications: false

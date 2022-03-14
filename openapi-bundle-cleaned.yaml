@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.259
+  version: 1.0.266
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -2146,11 +2146,6 @@ paths:
                 position_number: '00000'
                 section: 9
                 yearly_number: '214'
-              krz_entry:
-                chapter: 1
-                issue_date: '2021-12-08'
-                section: 20
-                signature: 20211208/00001
               content:
                 text: Postanowieniem z dnia ...
                 html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
@@ -2321,6 +2316,7 @@ paths:
               emails:
               - jajko@wp.pl
               append_first_entry: true
+              send_empty_notifications: false
           CreateReportModel:
             title: CreateReportModel
             required:
@@ -3232,6 +3228,8 @@ paths:
               id:
                 title: Id
                 type: string
+                description: Unikalny identyfikator powiadomienia
+                example: 6221c40c51fce5ae9f37cd48
               sent_datetime:
                 title: Sent Datetime
                 type: string
@@ -3252,13 +3250,18 @@ paths:
               dispatch_id:
                 title: Dispatch Id
                 type: string
+                description: "Unikalny identyfikator wysy\u0142ki"
+                example: 6221c40c5cb436601e37cd49
               monitor_id:
                 title: Monitor Id
                 type: string
+                description: Unikalny identyfikator monitora
+                example: 6221c40c5278893ac137cd4a
               error:
                 title: Error
                 type: string
                 nullable: true
+                description: "Komunikat b\u0142\u0119du"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -4071,6 +4074,7 @@ paths:
               emails:
               - kura@wp.pl
               append_first_entry: false
+              send_empty_notifications: false
           UpdateParamsModel:
             title: UpdateParamsModel
             type: object
@@ -5355,11 +5359,6 @@ paths:
                 position_number: '00000'
                 section: 9
                 yearly_number: '214'
-              krz_entry:
-                chapter: 1
-                issue_date: '2021-12-08'
-                section: 20
-                signature: 20211208/00001
               content:
                 text: Postanowieniem z dnia ...
                 html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
@@ -5530,6 +5529,7 @@ paths:
               emails:
               - jajko@wp.pl
               append_first_entry: true
+              send_empty_notifications: false
           CreateReportModel:
             title: CreateReportModel
             required:
@@ -6441,6 +6441,8 @@ paths:
               id:
                 title: Id
                 type: string
+                description: Unikalny identyfikator powiadomienia
+                example: 6221c40c51fce5ae9f37cd48
               sent_datetime:
                 title: Sent Datetime
                 type: string
@@ -6461,13 +6463,18 @@ paths:
               dispatch_id:
                 title: Dispatch Id
                 type: string
+                description: "Unikalny identyfikator wysy\u0142ki"
+                example: 6221c40c5cb436601e37cd49
               monitor_id:
                 title: Monitor Id
                 type: string
+                description: Unikalny identyfikator monitora
+                example: 6221c40c5278893ac137cd4a
               error:
                 title: Error
                 type: string
                 nullable: true
+                description: "Komunikat b\u0142\u0119du"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -7280,6 +7287,7 @@ paths:
               emails:
               - kura@wp.pl
               append_first_entry: false
+              send_empty_notifications: false
           UpdateParamsModel:
             title: UpdateParamsModel
             type: object
@@ -8350,11 +8358,6 @@ paths:
                 position_number: '00000'
                 section: 9
                 yearly_number: '214'
-              krz_entry:
-                chapter: 1
-                issue_date: '2021-12-08'
-                section: 20
-                signature: 20211208/00001
               content:
                 text: Postanowieniem z dnia ...
                 html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
@@ -8525,6 +8528,7 @@ paths:
               emails:
               - jajko@wp.pl
               append_first_entry: true
+              send_empty_notifications: false
           CreateReportModel:
             title: CreateReportModel
             required:
@@ -9436,6 +9440,8 @@ paths:
               id:
                 title: Id
                 type: string
+                description: Unikalny identyfikator powiadomienia
+                example: 6221c40c51fce5ae9f37cd48
               sent_datetime:
                 title: Sent Datetime
                 type: string
@@ -9456,13 +9462,18 @@ paths:
               dispatch_id:
                 title: Dispatch Id
                 type: string
+                description: "Unikalny identyfikator wysy\u0142ki"
+                example: 6221c40c5cb436601e37cd49
               monitor_id:
                 title: Monitor Id
                 type: string
+                description: Unikalny identyfikator monitora
+                example: 6221c40c5278893ac137cd4a
               error:
                 title: Error
                 type: string
                 nullable: true
+                description: "Komunikat b\u0142\u0119du"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -10275,6 +10286,7 @@ paths:
               emails:
               - kura@wp.pl
               append_first_entry: false
+              send_empty_notifications: false
           UpdateParamsModel:
             title: UpdateParamsModel
             type: object
@@ -11945,11 +11957,6 @@ paths:
                 position_number: '00000'
                 section: 9
                 yearly_number: '214'
-              krz_entry:
-                chapter: 1
-                issue_date: '2021-12-08'
-                section: 20
-                signature: 20211208/00001
               content:
                 text: Postanowieniem z dnia ...
                 html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
@@ -12120,6 +12127,7 @@ paths:
               emails:
               - jajko@wp.pl
               append_first_entry: true
+              send_empty_notifications: false
           CreateReportModel:
             title: CreateReportModel
             required:
@@ -13031,6 +13039,8 @@ paths:
               id:
                 title: Id
                 type: string
+                description: Unikalny identyfikator powiadomienia
+                example: 6221c40c51fce5ae9f37cd48
               sent_datetime:
                 title: Sent Datetime
                 type: string
@@ -13051,13 +13061,18 @@ paths:
               dispatch_id:
                 title: Dispatch Id
                 type: string
+                description: "Unikalny identyfikator wysy\u0142ki"
+                example: 6221c40c5cb436601e37cd49
               monitor_id:
                 title: Monitor Id
                 type: string
+                description: Unikalny identyfikator monitora
+                example: 6221c40c5278893ac137cd4a
               error:
                 title: Error
                 type: string
                 nullable: true
+                description: "Komunikat b\u0142\u0119du"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -13870,6 +13885,7 @@ paths:
               emails:
               - kura@wp.pl
               append_first_entry: false
+              send_empty_notifications: false
           UpdateParamsModel:
             title: UpdateParamsModel
             type: object
@@ -14919,11 +14935,6 @@ paths:
                 position_number: '00000'
                 section: 9
                 yearly_number: '214'
-              krz_entry:
-                chapter: 1
-                issue_date: '2021-12-08'
-                section: 20
-                signature: 20211208/00001
               content:
                 text: Postanowieniem z dnia ...
                 html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
@@ -15094,6 +15105,7 @@ paths:
               emails:
               - jajko@wp.pl
               append_first_entry: true
+              send_empty_notifications: false
           CreateReportModel:
             title: CreateReportModel
             required:
@@ -16005,6 +16017,8 @@ paths:
               id:
                 title: Id
                 type: string
+                description: Unikalny identyfikator powiadomienia
+                example: 6221c40c51fce5ae9f37cd48
               sent_datetime:
                 title: Sent Datetime
                 type: string
@@ -16025,13 +16039,18 @@ paths:
               dispatch_id:
                 title: Dispatch Id
                 type: string
+                description: "Unikalny identyfikator wysy\u0142ki"
+                example: 6221c40c5cb436601e37cd49
               monitor_id:
                 title: Monitor Id
                 type: string
+                description: Unikalny identyfikator monitora
+                example: 6221c40c5278893ac137cd4a
               error:
                 title: Error
                 type: string
                 nullable: true
+                description: "Komunikat b\u0142\u0119du"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -16844,6 +16863,7 @@ paths:
               emails:
               - kura@wp.pl
               append_first_entry: false
+              send_empty_notifications: false
           UpdateParamsModel:
             title: UpdateParamsModel
             type: object
@@ -19596,6 +19616,8 @@ components:
         id:
           title: Id
           type: string
+          description: Unikalny identyfikator powiadomienia
+          example: 6221c40c51fce5ae9f37cd48
         sent_datetime:
           title: Sent Datetime
           type: string
@@ -19616,13 +19638,18 @@ components:
         dispatch_id:
           title: Dispatch Id
           type: string
+          description: "Unikalny identyfikator wysy\u0142ki"
+          example: 6221c40c5cb436601e37cd49
         monitor_id:
           title: Monitor Id
           type: string
+          description: Unikalny identyfikator monitora
+          example: 6221c40c5278893ac137cd4a
         error:
           title: Error
           type: string
           nullable: true
+          description: "Komunikat b\u0142\u0119du"
       example:
         id: 6221c40c51fce5ae9f37cd48
         dispatch_id: 6221c40c5cb436601e37cd49

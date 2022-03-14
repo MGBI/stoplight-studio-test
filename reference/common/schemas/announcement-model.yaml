@@ -485,11 +485,6 @@ example:
     position_number: '00000'
     section: 9
     yearly_number: '214'
-  krz_entry:
-    chapter: 1
-    issue_date: '2021-12-08'
-    section: 20
-    signature: 20211208/00001
   content:
     text: Postanowieniem z dnia ...
     html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>

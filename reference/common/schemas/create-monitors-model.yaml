@@ -28,3 +28,4 @@ example:
   emails:
   - jajko@wp.pl
   append_first_entry: true
+  send_empty_notifications: false
