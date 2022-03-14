@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.287
+  version: 1.0.288
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -2117,39 +2117,6 @@ paths:
                       format: html
                       description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
                 description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
-            example:
-              id: '000000000000000000000000'
-              entity:
-              - info:
-                  first_name: Jan
-                  last_name: Kowalski
-                  legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015B\
-                    ci gospodarczej"
-                  cleaned_name: Jan Kowalski
-                  ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-                numbers: {}
-                address: {}
-              proceeding:
-                signatures:
-                - example signature
-                court_department: "V Wydzia\u0142 Gospodarczy"
-                court_name: "S\u0105d Rejonowy w XXX"
-              order:
-                order_date: '2021-09-01'
-                expiration_period: 7
-                expiration_date: '2021-11-11'
-              msig_entry:
-                chapter: 0
-                url: http://www.imsig.pl/pozycja/2021/214/00000
-                issue_date: '2021-11-04'
-                signature: BMSiG-00000/2021
-                position_number: '00000'
-                section: 9
-                yearly_number: '214'
-              content:
-                text: Postanowieniem z dnia ...
-                html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
-                  ...</p></tresc>
           CategoriesEnum:
             title: CategoriesEnum
             type: string
@@ -5362,39 +5329,6 @@ paths:
                       format: html
                       description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
                 description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
-            example:
-              id: '000000000000000000000000'
-              entity:
-              - info:
-                  first_name: Jan
-                  last_name: Kowalski
-                  legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015B\
-                    ci gospodarczej"
-                  cleaned_name: Jan Kowalski
-                  ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-                numbers: {}
-                address: {}
-              proceeding:
-                signatures:
-                - example signature
-                court_department: "V Wydzia\u0142 Gospodarczy"
-                court_name: "S\u0105d Rejonowy w XXX"
-              order:
-                order_date: '2021-09-01'
-                expiration_period: 7
-                expiration_date: '2021-11-11'
-              msig_entry:
-                chapter: 0
-                url: http://www.imsig.pl/pozycja/2021/214/00000
-                issue_date: '2021-11-04'
-                signature: BMSiG-00000/2021
-                position_number: '00000'
-                section: 9
-                yearly_number: '214'
-              content:
-                text: Postanowieniem z dnia ...
-                html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
-                  ...</p></tresc>
           CategoriesEnum:
             title: CategoriesEnum
             type: string
@@ -8393,39 +8327,6 @@ paths:
                       format: html
                       description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
                 description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
-            example:
-              id: '000000000000000000000000'
-              entity:
-              - info:
-                  first_name: Jan
-                  last_name: Kowalski
-                  legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015B\
-                    ci gospodarczej"
-                  cleaned_name: Jan Kowalski
-                  ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-                numbers: {}
-                address: {}
-              proceeding:
-                signatures:
-                - example signature
-                court_department: "V Wydzia\u0142 Gospodarczy"
-                court_name: "S\u0105d Rejonowy w XXX"
-              order:
-                order_date: '2021-09-01'
-                expiration_period: 7
-                expiration_date: '2021-11-11'
-              msig_entry:
-                chapter: 0
-                url: http://www.imsig.pl/pozycja/2021/214/00000
-                issue_date: '2021-11-04'
-                signature: BMSiG-00000/2021
-                position_number: '00000'
-                section: 9
-                yearly_number: '214'
-              content:
-                text: Postanowieniem z dnia ...
-                html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
-                  ...</p></tresc>
           CategoriesEnum:
             title: CategoriesEnum
             type: string
@@ -12024,39 +11925,6 @@ paths:
                       format: html
                       description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
                 description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
-            example:
-              id: '000000000000000000000000'
-              entity:
-              - info:
-                  first_name: Jan
-                  last_name: Kowalski
-                  legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015B\
-                    ci gospodarczej"
-                  cleaned_name: Jan Kowalski
-                  ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-                numbers: {}
-                address: {}
-              proceeding:
-                signatures:
-                - example signature
-                court_department: "V Wydzia\u0142 Gospodarczy"
-                court_name: "S\u0105d Rejonowy w XXX"
-              order:
-                order_date: '2021-09-01'
-                expiration_period: 7
-                expiration_date: '2021-11-11'
-              msig_entry:
-                chapter: 0
-                url: http://www.imsig.pl/pozycja/2021/214/00000
-                issue_date: '2021-11-04'
-                signature: BMSiG-00000/2021
-                position_number: '00000'
-                section: 9
-                yearly_number: '214'
-              content:
-                text: Postanowieniem z dnia ...
-                html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
-                  ...</p></tresc>
           CategoriesEnum:
             title: CategoriesEnum
             type: string
@@ -15034,39 +14902,6 @@ paths:
                       format: html
                       description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
                 description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
-            example:
-              id: '000000000000000000000000'
-              entity:
-              - info:
-                  first_name: Jan
-                  last_name: Kowalski
-                  legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015B\
-                    ci gospodarczej"
-                  cleaned_name: Jan Kowalski
-                  ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-                numbers: {}
-                address: {}
-              proceeding:
-                signatures:
-                - example signature
-                court_department: "V Wydzia\u0142 Gospodarczy"
-                court_name: "S\u0105d Rejonowy w XXX"
-              order:
-                order_date: '2021-09-01'
-                expiration_period: 7
-                expiration_date: '2021-11-11'
-              msig_entry:
-                chapter: 0
-                url: http://www.imsig.pl/pozycja/2021/214/00000
-                issue_date: '2021-11-04'
-                signature: BMSiG-00000/2021
-                position_number: '00000'
-                section: 9
-                yearly_number: '214'
-              content:
-                text: Postanowieniem z dnia ...
-                html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia
-                  ...</p></tresc>
           CategoriesEnum:
             title: CategoriesEnum
             type: string
@@ -18683,32 +18518,35 @@ components:
                 description: "Tre\u015B\u0107 og\u0142oszenia w formacie HTML"
           description: "Nieprzetworzona tre\u015B\u0107 og\u0142oszenia"
       example:
-        id: '000000000000000000000000'
+        id: 622ef5cbf15eb859f650208f
         entity:
         - info:
             first_name: Jan
             last_name: Kowalski
             legal_form: "osoby fizyczne nieprowadz\u0105ce dzia\u0142alno\u015Bci\
               \ gospodarczej"
+            commencement_date: '1975-03-09'
             cleaned_name: Jan Kowalski
             ownership_type: "w\u0142asno\u015B\u0107 krajowych os\xF3b fizycznych"
-          numbers: {}
+          numbers:
+            pesel: '75030957433'
           address: {}
         proceeding:
           signatures:
-          - example signature
-          court_department: "V Wydzia\u0142 Gospodarczy"
-          court_name: "S\u0105d Rejonowy w XXX"
+          - XIX GUp 113/20
+          court_department: "XIX Wydzia\u0142 Gospodarczy ds. Upad\u0142o\u015Bciowych\
+            \ i Restrukturyzacyjnych"
+          court_name: "S\u0105d Rejonowy dla m.st. Warszawy w Warszawie"
         order:
           order_date: '2021-09-01'
           expiration_period: 7
           expiration_date: '2021-11-11'
         msig_entry:
           chapter: 0
-          url: http://www.imsig.pl/pozycja/2021/214/00000
+          url: http://www.imsig.pl/pozycja/2021/214/67445
           issue_date: '2021-11-04'
-          signature: BMSiG-00000/2021
-          position_number: '00000'
+          signature: BMSiG-68591/2021
+          position_number: '67445'
           section: 9
           yearly_number: '214'
         content:

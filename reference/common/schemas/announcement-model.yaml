@@ -458,31 +458,33 @@ properties:
           description: Treść ogłoszenia w formacie HTML
     description: Nieprzetworzona treść ogłoszenia
 example:
-  id: '000000000000000000000000'
+  id: 622ef5cbf15eb859f650208f
   entity:
   - info:
       first_name: Jan
       last_name: Kowalski
       legal_form: osoby fizyczne nieprowadzące działalności gospodarczej
+      commencement_date: '1975-03-09'
       cleaned_name: Jan Kowalski
       ownership_type: własność krajowych osób fizycznych
-    numbers: {}
+    numbers:
+      pesel: '75030957433'
     address: {}
   proceeding:
     signatures:
-    - example signature
-    court_department: V Wydział Gospodarczy
-    court_name: Sąd Rejonowy w XXX
+    - XIX GUp 113/20
+    court_department: XIX Wydział Gospodarczy ds. Upadłościowych i Restrukturyzacyjnych
+    court_name: Sąd Rejonowy dla m.st. Warszawy w Warszawie
   order:
     order_date: '2021-09-01'
     expiration_period: 7
     expiration_date: '2021-11-11'
   msig_entry:
     chapter: 0
-    url: http://www.imsig.pl/pozycja/2021/214/00000
+    url: http://www.imsig.pl/pozycja/2021/214/67445
     issue_date: '2021-11-04'
-    signature: BMSiG-00000/2021
-    position_number: '00000'
+    signature: BMSiG-68591/2021
+    position_number: '67445'
     section: 9
     yearly_number: '214'
   content:
