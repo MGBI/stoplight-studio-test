@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.278
+  version: 1.0.280
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -3278,7 +3278,7 @@ paths:
                 title: Error
                 type: string
                 nullable: true
-                description: "Komunikat b\u0142\u0119du"
+                description: "Opis b\u0142\u0119du, je\u015Bli wyst\u0105pi\u0142"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -3907,9 +3907,9 @@ paths:
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
           SourceEnum:
             title: SourceEnum
-            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
-              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
-              \ | Msig |\n| `krz` | Krz |</details>"
+            description: "Identyfikator \u017Ar\xF3d\u0142a danych.<details><summary>Poka\u017C\
+              \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+              | `msig` | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             title: StrictContentFiltersModel
             type: object
@@ -4336,6 +4336,7 @@ paths:
               added_records_count:
                 title: Added Records Count
                 type: integer
+                description: "Ilo\u015B\u0107 dodanych rekord\xF3w"
               source:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
@@ -6519,7 +6520,7 @@ paths:
                 title: Error
                 type: string
                 nullable: true
-                description: "Komunikat b\u0142\u0119du"
+                description: "Opis b\u0142\u0119du, je\u015Bli wyst\u0105pi\u0142"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -7148,9 +7149,9 @@ paths:
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
           SourceEnum:
             title: SourceEnum
-            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
-              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
-              \ | Msig |\n| `krz` | Krz |</details>"
+            description: "Identyfikator \u017Ar\xF3d\u0142a danych.<details><summary>Poka\u017C\
+              \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+              | `msig` | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             title: StrictContentFiltersModel
             type: object
@@ -7577,6 +7578,7 @@ paths:
               added_records_count:
                 title: Added Records Count
                 type: integer
+                description: "Ilo\u015B\u0107 dodanych rekord\xF3w"
               source:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
@@ -9546,7 +9548,7 @@ paths:
                 title: Error
                 type: string
                 nullable: true
-                description: "Komunikat b\u0142\u0119du"
+                description: "Opis b\u0142\u0119du, je\u015Bli wyst\u0105pi\u0142"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -10175,9 +10177,9 @@ paths:
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
           SourceEnum:
             title: SourceEnum
-            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
-              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
-              \ | Msig |\n| `krz` | Krz |</details>"
+            description: "Identyfikator \u017Ar\xF3d\u0142a danych.<details><summary>Poka\u017C\
+              \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+              | `msig` | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             title: StrictContentFiltersModel
             type: object
@@ -10604,6 +10606,7 @@ paths:
               added_records_count:
                 title: Added Records Count
                 type: integer
+                description: "Ilo\u015B\u0107 dodanych rekord\xF3w"
               source:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
@@ -13173,7 +13176,7 @@ paths:
                 title: Error
                 type: string
                 nullable: true
-                description: "Komunikat b\u0142\u0119du"
+                description: "Opis b\u0142\u0119du, je\u015Bli wyst\u0105pi\u0142"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -13802,9 +13805,9 @@ paths:
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
           SourceEnum:
             title: SourceEnum
-            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
-              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
-              \ | Msig |\n| `krz` | Krz |</details>"
+            description: "Identyfikator \u017Ar\xF3d\u0142a danych.<details><summary>Poka\u017C\
+              \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+              | `msig` | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             title: StrictContentFiltersModel
             type: object
@@ -14231,6 +14234,7 @@ paths:
               added_records_count:
                 title: Added Records Count
                 type: integer
+                description: "Ilo\u015B\u0107 dodanych rekord\xF3w"
               source:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
@@ -16179,7 +16183,7 @@ paths:
                 title: Error
                 type: string
                 nullable: true
-                description: "Komunikat b\u0142\u0119du"
+                description: "Opis b\u0142\u0119du, je\u015Bli wyst\u0105pi\u0142"
             example:
               id: 6221c40c51fce5ae9f37cd48
               dispatch_id: 6221c40c5cb436601e37cd49
@@ -16808,9 +16812,9 @@ paths:
               \ przygotowaniu |\n  | `2` | Gotowe |</details>"
           SourceEnum:
             title: SourceEnum
-            description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe\
-              \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig`\
-              \ | Msig |\n| `krz` | Krz |</details>"
+            description: "Identyfikator \u017Ar\xF3d\u0142a danych.<details><summary>Poka\u017C\
+              \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+              | `msig` | Msig |\n| `krz` | Krz |</details>"
           StrictContentFiltersModel:
             title: StrictContentFiltersModel
             type: object
@@ -17237,6 +17241,7 @@ paths:
               added_records_count:
                 title: Added Records Count
                 type: integer
+                description: "Ilo\u015B\u0107 dodanych rekord\xF3w"
               source:
                 type: string
                 description: "Identyfikator \u017Ar\xF3d\u0142a danych"
@@ -19805,7 +19810,7 @@ components:
           title: Error
           type: string
           nullable: true
-          description: "Komunikat b\u0142\u0119du"
+          description: "Opis b\u0142\u0119du, je\u015Bli wyst\u0105pi\u0142"
       example:
         id: 6221c40c51fce5ae9f37cd48
         dispatch_id: 6221c40c5cb436601e37cd49
@@ -20418,9 +20423,9 @@ components:
         \ |</details>"
     SourceEnum:
       title: SourceEnum
-      description: "An enumeration.<details><summary>Poka\u017C mo\u017Cliwe opcje</summary>\n\
-        \n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `msig` | Msig |\n| `krz` | Krz\
-        \ |</details>"
+      description: "Identyfikator \u017Ar\xF3d\u0142a danych.<details><summary>Poka\u017C\
+        \ mo\u017Cliwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+        | `msig` | Msig |\n| `krz` | Krz |</details>"
     StrictContentFiltersModel:
       title: StrictContentFiltersModel
       type: object
@@ -20845,6 +20850,7 @@ components:
         added_records_count:
           title: Added Records Count
           type: integer
+          description: "Ilo\u015B\u0107 dodanych rekord\xF3w"
         source:
           $ref: '#/components/schemas/SourceEnum'
           type: string

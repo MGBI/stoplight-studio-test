@@ -3,7 +3,7 @@ enum:
 - msig
 - krz
 description: |-
-  An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+  Identyfikator źródła danych.<details><summary>Pokaż możliwe opcje</summary>
 
   | Wartość | Nazwa  |
   |-|-|

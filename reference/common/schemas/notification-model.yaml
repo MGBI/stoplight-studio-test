@@ -53,7 +53,7 @@ properties:
     title: Error
     type: string
     nullable: true
-    description: Komunikat błędu
+    description: Opis błędu, jeśli wystąpił
 example:
   id: 6221c40c51fce5ae9f37cd48
   dispatch_id: 6221c40c5cb436601e37cd49
