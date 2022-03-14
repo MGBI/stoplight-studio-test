@@ -10,6 +10,7 @@ properties:
   id:
     title: Id
     type: integer
+    description: Unikalny identyfikator aktualizacji
   creation_datetime:
     title: Creation Datetime
     type: string

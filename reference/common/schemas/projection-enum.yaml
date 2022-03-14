@@ -19,3 +19,4 @@ description: |-
     | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w msig |
     | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
     | `content` | Nieprzetworzona treść ogłoszenia |</details>
+type: string

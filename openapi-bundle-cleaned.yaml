@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.281
+  version: 1.0.287
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -3594,6 +3594,7 @@ paths:
               oszenia w msig |\n  | `krz_entry` | Informacje dotycz\u0105ce publikacji\
               \ og\u0142oszenia w krz |\n  | `content` | Nieprzetworzona tre\u015B\
               \u0107 og\u0142oszenia |</details>"
+            type: string
           QueryRaportByDateRangeModel:
             title: QueryRaportByDateRangeModel
             required:
@@ -4324,6 +4325,7 @@ paths:
               id:
                 title: Id
                 type: integer
+                description: Unikalny identyfikator aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -6837,6 +6839,7 @@ paths:
               oszenia w msig |\n  | `krz_entry` | Informacje dotycz\u0105ce publikacji\
               \ og\u0142oszenia w krz |\n  | `content` | Nieprzetworzona tre\u015B\
               \u0107 og\u0142oszenia |</details>"
+            type: string
           QueryRaportByDateRangeModel:
             title: QueryRaportByDateRangeModel
             required:
@@ -7567,6 +7570,7 @@ paths:
               id:
                 title: Id
                 type: integer
+                description: Unikalny identyfikator aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -9866,6 +9870,7 @@ paths:
               oszenia w msig |\n  | `krz_entry` | Informacje dotycz\u0105ce publikacji\
               \ og\u0142oszenia w krz |\n  | `content` | Nieprzetworzona tre\u015B\
               \u0107 og\u0142oszenia |</details>"
+            type: string
           QueryRaportByDateRangeModel:
             title: QueryRaportByDateRangeModel
             required:
@@ -10596,6 +10601,7 @@ paths:
               id:
                 title: Id
                 type: integer
+                description: Unikalny identyfikator aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -13495,6 +13501,7 @@ paths:
               oszenia w msig |\n  | `krz_entry` | Informacje dotycz\u0105ce publikacji\
               \ og\u0142oszenia w krz |\n  | `content` | Nieprzetworzona tre\u015B\
               \u0107 og\u0142oszenia |</details>"
+            type: string
           QueryRaportByDateRangeModel:
             title: QueryRaportByDateRangeModel
             required:
@@ -14225,6 +14232,7 @@ paths:
               id:
                 title: Id
                 type: integer
+                description: Unikalny identyfikator aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -16503,6 +16511,7 @@ paths:
               oszenia w msig |\n  | `krz_entry` | Informacje dotycz\u0105ce publikacji\
               \ og\u0142oszenia w krz |\n  | `content` | Nieprzetworzona tre\u015B\
               \u0107 og\u0142oszenia |</details>"
+            type: string
           QueryRaportByDateRangeModel:
             title: QueryRaportByDateRangeModel
             required:
@@ -17233,6 +17242,7 @@ paths:
               id:
                 title: Id
                 type: integer
+                description: Unikalny identyfikator aktualizacji
               creation_datetime:
                 title: Creation Datetime
                 type: string
@@ -17912,11 +17922,13 @@ paths:
             oszenia |</details>"
         name: projection
         in: query
+        example: entity
       - required: false
         schema:
           title: Append First Entry
           type: boolean
           default: false
+          example: true
         name: append_first_entry
         in: query
       - required: false
@@ -20121,6 +20133,7 @@ components:
         \ | Informacje dotycz\u0105ce publikacji og\u0142oszenia w msig |\n  | `krz_entry`\
         \ | Informacje dotycz\u0105ce publikacji og\u0142oszenia w krz |\n  | `content`\
         \ | Nieprzetworzona tre\u015B\u0107 og\u0142oszenia |</details>"
+      type: string
     QueryRaportByDateRangeModel:
       title: QueryRaportByDateRangeModel
       required:
@@ -20843,6 +20856,7 @@ components:
         id:
           title: Id
           type: integer
+          description: Unikalny identyfikator aktualizacji
         creation_datetime:
           title: Creation Datetime
           type: string

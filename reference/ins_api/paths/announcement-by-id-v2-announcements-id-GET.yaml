@@ -31,11 +31,13 @@ parameters:
         | `content` | Nieprzetworzona treść ogłoszenia |</details>
   name: projection
   in: query
+  example: entity
 - required: false
   schema:
     title: Append First Entry
     type: boolean
     default: false
+    example: true
   name: append_first_entry
   in: query
 - required: false
