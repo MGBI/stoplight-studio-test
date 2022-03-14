@@ -28,7 +28,7 @@ properties:
     title: Creation Datetime
     type: string
     format: date-time
-    description: Data wygasania konta użytkownika
+    description: Data utworzenia konta użytkownika
   deactivation_datetime:
     title: Deactivation Datetime
     type: string

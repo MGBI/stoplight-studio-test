@@ -31,7 +31,7 @@ responses:
             creation_datetime:
               format: date-time
               type: string
-              description: Data wygasania konta użytkownika
+              description: Data utworzenia konta użytkownika
               title: Creation Datetime
             deactivation_datetime:
               format: date-time

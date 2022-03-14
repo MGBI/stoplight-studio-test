@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.258
+  version: 1.0.259
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -404,17 +404,17 @@ paths:
       summary: DELETE /v2/filters
       operationId: delete_filter_v2_filters_delete
       parameters:
-      - required: false
+      - description: "Lista identyfikator\xF3w filtra"
+        required: true
         schema:
-          title: Ids
-          type: string
-          example:
-          - '222222222222222222222222'
-          - '333333333333333333333333'
+          title: List of id
           minLength: 24
+          type: string
+          description: A list of id's whose ones are strings representing the ObjectId
+            from bson.
+          example: 6221c40ca9ab2f868237cd47,6189ba008749c5e836fa4cf6
         name: ids
         in: query
-        description: Unikalne identyfikatory filtra
       - required: false
         schema:
           title: Authorization
@@ -456,13 +456,9 @@ paths:
                   error: Forbidden
                 items:
                   $ref: '#/components/schemas/Error'
-      description: 'Usuwa filtry o identyfikatorach przekazanych w kolejnych parametrach
-        `ids`
-
-        w query stringu.
-
-
-        W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.'
+      description: "Usuwa filtry o identyfikatorach przekazanych w parametrze `ids`\
+        \ w query stringu, \nidentyfikatory musz\u0105 by\u0107 oddzielone przecinkami.\n\
+        \nW przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`."
   /v2/monitors/{id}:
     get:
       tags:
@@ -481,7 +477,7 @@ paths:
             description: "Zwraca ostatni dost\u0119pny monitoring"
             maxLength: 4
             minLength: 4
-          example: '222222222222222222222222'
+          example: 6221c40c843d0d773f37cd4b
           maxLength: 24
           minLength: 24
         name: id
@@ -562,7 +558,7 @@ paths:
         schema:
           title: Id
           type: string
-          example: '222222222222222222222222'
+          example: 6221c40c843d0d773f37cd4b
           maxLength: 24
           minLength: 24
         name: id
@@ -776,7 +772,7 @@ paths:
         schema:
           title: Id
           type: string
-          example: '222222222222222222222222'
+          example: 6221c40c51fce5ae9f37cd48
           maxLength: 24
           minLength: 24
         name: id
@@ -1073,9 +1069,7 @@ paths:
           type: string
           description: A list of id's whose ones are strings representing the ObjectId
             from bson.
-          example:
-          - '222222222222222222222222'
-          - '333333333333333333333333'
+          example: 6221c40ca9ab2f868237cd47,6189ba008749c5e836fa4cf6
         name: ids
         in: query
       - required: false
@@ -1119,13 +1113,9 @@ paths:
                   error: Forbidden
                 items:
                   $ref: '#/components/schemas/Error'
-      description: 'Usuwa raporty o identyfikatorach przekazanych w kolejnych parametrach
-        `ids`
-
-        w query stringu.
-
-
-        W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.'
+      description: "Usuwa raporty o identyfikatorach przekazanych w parametrze `ids`\
+        \ w query stringu, \nidentyfikatory musz\u0105 by\u0107 oddzielone przecinkami.\n\
+        \nW przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`."
   /v2/reports/{report_id}:
     get:
       tags:
@@ -1144,7 +1134,7 @@ paths:
             description: "Zwraca ostatni dost\u0119pny raport"
             maxLength: 4
             minLength: 4
-          example: '222222222222222222222222'
+          example: 6221c40cff11c462e837cd51
           maxLength: 24
           minLength: 24
         name: report_id
@@ -1225,7 +1215,7 @@ paths:
             description: "Zwraca ostatni dost\u0119pny filtr"
             maxLength: 4
             minLength: 4
-          example: '222222222222222222222222'
+          example: 6221c40ca9ab2f868237cd47
           maxLength: 24
           minLength: 24
         name: id
@@ -1306,7 +1296,7 @@ paths:
         schema:
           title: Id
           type: string
-          example: '222222222222222222222222'
+          example: 6221c40cff11c462e837cd51
           maxLength: 24
           minLength: 24
         name: id
@@ -4355,7 +4345,7 @@ paths:
                 title: Creation Datetime
                 type: string
                 format: date-time
-                description: "Data wygasania konta u\u017Cytkownika"
+                description: "Data utworzenia konta u\u017Cytkownika"
               deactivation_datetime:
                 title: Deactivation Datetime
                 type: string
@@ -7564,7 +7554,7 @@ paths:
                 title: Creation Datetime
                 type: string
                 format: date-time
-                description: "Data wygasania konta u\u017Cytkownika"
+                description: "Data utworzenia konta u\u017Cytkownika"
               deactivation_datetime:
                 title: Deactivation Datetime
                 type: string
@@ -10559,7 +10549,7 @@ paths:
                 title: Creation Datetime
                 type: string
                 format: date-time
-                description: "Data wygasania konta u\u017Cytkownika"
+                description: "Data utworzenia konta u\u017Cytkownika"
               deactivation_datetime:
                 title: Deactivation Datetime
                 type: string
@@ -14154,7 +14144,7 @@ paths:
                 title: Creation Datetime
                 type: string
                 format: date-time
-                description: "Data wygasania konta u\u017Cytkownika"
+                description: "Data utworzenia konta u\u017Cytkownika"
               deactivation_datetime:
                 title: Deactivation Datetime
                 type: string
@@ -14339,7 +14329,7 @@ paths:
             description: "Pobiera ostatni dost\u0119pny raport"
             maxLength: 4
             minLength: 4
-          example: '222222222222222222222222'
+          example: 6221c40cff11c462e837cd51
           maxLength: 24
           minLength: 24
         name: report_id
@@ -17128,7 +17118,7 @@ paths:
                 title: Creation Datetime
                 type: string
                 format: date-time
-                description: "Data wygasania konta u\u017Cytkownika"
+                description: "Data utworzenia konta u\u017Cytkownika"
               deactivation_datetime:
                 title: Deactivation Datetime
                 type: string
@@ -17732,7 +17722,7 @@ paths:
         schema:
           title: Id
           type: string
-          example: BMSiG-26451/2020
+          example: 6221c40ca9ab2f868237cd47
           maxLength: 24
           minLength: 24
         name: id
@@ -17956,8 +17946,10 @@ paths:
                   $ref: '#/components/schemas/Error'
       description: "Zwraca list\u0119 monitoring\xF3w przypisanych do aktualnego u\u017C\
         ytkownika.\n\nAby ograniczy\u0107 list\u0119 zwracanych p\xF3l, warto ustawi\u0107\
-        \ parametr `exclude`\nna list\u0119 p\xF3l, kt\xF3re nie s\u0105 wymagane\
-        \ w odpowiedzi, np. `[\"notifications\"]`."
+        \ parametr `exclude`\nna pole, kt\xF3re nie jest wymagane w odpowiedzi, np.\
+        \ `exclude=notifications`.\nMo\u017Cna ukrywa\u0107 wiele (niewymaganych w\
+        \ odpowiedzi) p\xF3l przekazuj\u0105c nazwy p\xF3l w kolejnych parametrach\
+        \ `exclude`."
     post:
       tags:
       - monitors_iapi
@@ -18040,16 +18032,17 @@ paths:
       summary: DELETE /v2/monitors
       operationId: delete_monitors_v2_monitors_delete
       parameters:
-      - required: false
+      - description: "Lista identyfikator\xF3w monitoring\xF3w."
+        required: true
         schema:
-          title: Ids
-          type: string
-          example: '222222222222222222222222'
-          maxLength: 24
+          title: List of id
           minLength: 24
+          type: string
+          description: A list of id's whose ones are strings representing the ObjectId
+            from bson.
+          example: 6221c40ca9ab2f868237cd47,6189ba008749c5e836fa4cf6
         name: ids
         in: query
-        description: "Lista identyfikator\xF3w monitoring\xF3w."
       - required: false
         schema:
           title: Authorization
@@ -18091,13 +18084,9 @@ paths:
                   error: Forbidden
                 items:
                   $ref: '#/components/schemas/Error'
-      description: 'Usuwa monitoringi o identyfikatorach przekazanych w kolejnych
-        parametrach `ids`
-
-        w query stringu.
-
-
-        W przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`.'
+      description: "Usuwa monitoringi o identyfikatorach przekazanych w parametrze\
+        \ `ids` w query stringu, \nidentyfikatory musz\u0105 by\u0107 oddzielone przecinkami.\n\
+        \nW przypadku sukcesu metoda zwraca kod odpowiedzi `204 No Content`."
 components:
   securitySchemes:
     api_key:
@@ -18540,11 +18529,6 @@ components:
           position_number: '00000'
           section: 9
           yearly_number: '214'
-        krz_entry:
-          chapter: 1
-          issue_date: '2021-12-08'
-          section: 20
-          signature: 20211208/00001
         content:
           text: Postanowieniem z dnia ...
           html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
@@ -18715,6 +18699,7 @@ components:
         emails:
         - jajko@wp.pl
         append_first_entry: true
+        send_empty_notifications: false
     CreateReportModel:
       title: CreateReportModel
       required:
@@ -20436,6 +20421,7 @@ components:
         emails:
         - kura@wp.pl
         append_first_entry: false
+        send_empty_notifications: false
     UpdateParamsModel:
       title: UpdateParamsModel
       type: object
@@ -20708,7 +20694,7 @@ components:
           title: Creation Datetime
           type: string
           format: date-time
-          description: "Data wygasania konta u\u017Cytkownika"
+          description: "Data utworzenia konta u\u017Cytkownika"
         deactivation_datetime:
           title: Deactivation Datetime
           type: string

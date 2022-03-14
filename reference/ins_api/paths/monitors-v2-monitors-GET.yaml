@@ -10,7 +10,6 @@ parameters:
     items:
       enum:
       - notifications
-      - ''
       type: string
   name: exclude
   in: query
