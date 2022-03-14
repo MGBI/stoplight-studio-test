@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.275
+  version: 1.0.278
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -2157,7 +2157,6 @@ paths:
           ContentFiltersModel:
             title: ContentFiltersModel
             type: object
-            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
@@ -2174,36 +2173,36 @@ paths:
               krs:
                 title: Krs
                 type: array
-                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
-                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
-                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
-                  \ i Gospodarczego"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
-                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
-                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             example:
               nip:
               - '7272849598'
@@ -2220,6 +2219,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           CreateFiltersModel:
             title: CreateFiltersModel
             required:
@@ -2807,67 +2807,70 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                example:
+                title: ContentFiltersModel
+                type: object
+                properties:
+                  nip:
+                    title: Nip
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w NIP"
+                  regon:
+                    title: Regon
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w REGON"
+                  krs:
+                    title: Krs
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista identyfikator\xF3w KRS"
+                  pesel:
+                    title: Pesel
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w PESEL"
+                  krz_signature:
+                    title: Krz Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                      \ Zad\u0142u\u017Conych"
                   msig_signature:
-                  - XIV GUp 83/16
+                    title: Msig Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105\
+                      dowego i Gospodarczego"
+                  name:
+                    title: Name
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                      \ (`imi\u0119 nazwisko`)"
+                example:
+                  nip:
+                  - '7272849598'
                   regon:
                   - '272404100'
-                  krz_signature:
-                  - BY1B/GUp/13/2021
                   krs:
                   - '0000422121'
                   pesel:
                   - '41041202774'
-                  nip:
-                  - '7272849598'
+                  krz_signature:
+                  - BY1B/GUp/13/2021
+                  msig_signature:
+                  - XIV GUp 83/16
                   name:
                   - Jan Kowalski
                   - "Ambro\u017Cy Nielepszy"
-                type: object
-                properties:
-                  msig_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w MSiG"
-                    title: Msig Signature
-                  regon:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer REGON podmiotu
-                    title: Regon
-                  krz_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w KRZ"
-                    title: Krz Signature
-                  krs:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer KRS podmiotu
-                    title: Krs
-                  pesel:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer PESEL
-                    title: Pesel
-                  nip:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer NIP podmiotu
-                    title: Nip
-                  name:
-                    items:
-                      type: string
-                    type: array
-                    description: "Imi\u0119 i nazwisko"
-                    title: Name
-                title: ContentFiltersModel
                 description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
@@ -3916,36 +3919,46 @@ paths:
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             additionalProperties: false
             example:
               nip:
@@ -3963,6 +3976,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           TypesEnum:
             title: TypesEnum
             type: integer
@@ -5384,7 +5398,6 @@ paths:
           ContentFiltersModel:
             title: ContentFiltersModel
             type: object
-            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
@@ -5401,36 +5414,36 @@ paths:
               krs:
                 title: Krs
                 type: array
-                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
-                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
-                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
-                  \ i Gospodarczego"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
-                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
-                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             example:
               nip:
               - '7272849598'
@@ -5447,6 +5460,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           CreateFiltersModel:
             title: CreateFiltersModel
             required:
@@ -6034,67 +6048,70 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                example:
+                title: ContentFiltersModel
+                type: object
+                properties:
+                  nip:
+                    title: Nip
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w NIP"
+                  regon:
+                    title: Regon
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w REGON"
+                  krs:
+                    title: Krs
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista identyfikator\xF3w KRS"
+                  pesel:
+                    title: Pesel
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w PESEL"
+                  krz_signature:
+                    title: Krz Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                      \ Zad\u0142u\u017Conych"
                   msig_signature:
-                  - XIV GUp 83/16
+                    title: Msig Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105\
+                      dowego i Gospodarczego"
+                  name:
+                    title: Name
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                      \ (`imi\u0119 nazwisko`)"
+                example:
+                  nip:
+                  - '7272849598'
                   regon:
                   - '272404100'
-                  krz_signature:
-                  - BY1B/GUp/13/2021
                   krs:
                   - '0000422121'
                   pesel:
                   - '41041202774'
-                  nip:
-                  - '7272849598'
+                  krz_signature:
+                  - BY1B/GUp/13/2021
+                  msig_signature:
+                  - XIV GUp 83/16
                   name:
                   - Jan Kowalski
                   - "Ambro\u017Cy Nielepszy"
-                type: object
-                properties:
-                  msig_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w MSiG"
-                    title: Msig Signature
-                  regon:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer REGON podmiotu
-                    title: Regon
-                  krz_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w KRZ"
-                    title: Krz Signature
-                  krs:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer KRS podmiotu
-                    title: Krs
-                  pesel:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer PESEL
-                    title: Pesel
-                  nip:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer NIP podmiotu
-                    title: Nip
-                  name:
-                    items:
-                      type: string
-                    type: array
-                    description: "Imi\u0119 i nazwisko"
-                    title: Name
-                title: ContentFiltersModel
                 description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
@@ -7143,36 +7160,46 @@ paths:
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             additionalProperties: false
             example:
               nip:
@@ -7190,6 +7217,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           TypesEnum:
             title: TypesEnum
             type: integer
@@ -8397,7 +8425,6 @@ paths:
           ContentFiltersModel:
             title: ContentFiltersModel
             type: object
-            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
@@ -8414,36 +8441,36 @@ paths:
               krs:
                 title: Krs
                 type: array
-                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
-                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
-                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
-                  \ i Gospodarczego"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
-                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
-                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             example:
               nip:
               - '7272849598'
@@ -8460,6 +8487,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           CreateFiltersModel:
             title: CreateFiltersModel
             required:
@@ -9047,67 +9075,70 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                example:
+                title: ContentFiltersModel
+                type: object
+                properties:
+                  nip:
+                    title: Nip
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w NIP"
+                  regon:
+                    title: Regon
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w REGON"
+                  krs:
+                    title: Krs
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista identyfikator\xF3w KRS"
+                  pesel:
+                    title: Pesel
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w PESEL"
+                  krz_signature:
+                    title: Krz Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                      \ Zad\u0142u\u017Conych"
                   msig_signature:
-                  - XIV GUp 83/16
+                    title: Msig Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105\
+                      dowego i Gospodarczego"
+                  name:
+                    title: Name
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                      \ (`imi\u0119 nazwisko`)"
+                example:
+                  nip:
+                  - '7272849598'
                   regon:
                   - '272404100'
-                  krz_signature:
-                  - BY1B/GUp/13/2021
                   krs:
                   - '0000422121'
                   pesel:
                   - '41041202774'
-                  nip:
-                  - '7272849598'
+                  krz_signature:
+                  - BY1B/GUp/13/2021
+                  msig_signature:
+                  - XIV GUp 83/16
                   name:
                   - Jan Kowalski
                   - "Ambro\u017Cy Nielepszy"
-                type: object
-                properties:
-                  msig_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w MSiG"
-                    title: Msig Signature
-                  regon:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer REGON podmiotu
-                    title: Regon
-                  krz_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w KRZ"
-                    title: Krz Signature
-                  krs:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer KRS podmiotu
-                    title: Krs
-                  pesel:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer PESEL
-                    title: Pesel
-                  nip:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer NIP podmiotu
-                    title: Nip
-                  name:
-                    items:
-                      type: string
-                    type: array
-                    description: "Imi\u0119 i nazwisko"
-                    title: Name
-                title: ContentFiltersModel
                 description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
@@ -10156,36 +10187,46 @@ paths:
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             additionalProperties: false
             example:
               nip:
@@ -10203,6 +10244,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           TypesEnum:
             title: TypesEnum
             type: integer
@@ -12010,7 +12052,6 @@ paths:
           ContentFiltersModel:
             title: ContentFiltersModel
             type: object
-            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
@@ -12027,36 +12068,36 @@ paths:
               krs:
                 title: Krs
                 type: array
-                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
-                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
-                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
-                  \ i Gospodarczego"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
-                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
-                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             example:
               nip:
               - '7272849598'
@@ -12073,6 +12114,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           CreateFiltersModel:
             title: CreateFiltersModel
             required:
@@ -12660,67 +12702,70 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                example:
+                title: ContentFiltersModel
+                type: object
+                properties:
+                  nip:
+                    title: Nip
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w NIP"
+                  regon:
+                    title: Regon
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w REGON"
+                  krs:
+                    title: Krs
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista identyfikator\xF3w KRS"
+                  pesel:
+                    title: Pesel
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w PESEL"
+                  krz_signature:
+                    title: Krz Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                      \ Zad\u0142u\u017Conych"
                   msig_signature:
-                  - XIV GUp 83/16
+                    title: Msig Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105\
+                      dowego i Gospodarczego"
+                  name:
+                    title: Name
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                      \ (`imi\u0119 nazwisko`)"
+                example:
+                  nip:
+                  - '7272849598'
                   regon:
                   - '272404100'
-                  krz_signature:
-                  - BY1B/GUp/13/2021
                   krs:
                   - '0000422121'
                   pesel:
                   - '41041202774'
-                  nip:
-                  - '7272849598'
+                  krz_signature:
+                  - BY1B/GUp/13/2021
+                  msig_signature:
+                  - XIV GUp 83/16
                   name:
                   - Jan Kowalski
                   - "Ambro\u017Cy Nielepszy"
-                type: object
-                properties:
-                  msig_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w MSiG"
-                    title: Msig Signature
-                  regon:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer REGON podmiotu
-                    title: Regon
-                  krz_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w KRZ"
-                    title: Krz Signature
-                  krs:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer KRS podmiotu
-                    title: Krs
-                  pesel:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer PESEL
-                    title: Pesel
-                  nip:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer NIP podmiotu
-                    title: Nip
-                  name:
-                    items:
-                      type: string
-                    type: array
-                    description: "Imi\u0119 i nazwisko"
-                    title: Name
-                title: ContentFiltersModel
                 description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
@@ -13769,36 +13814,46 @@ paths:
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             additionalProperties: false
             example:
               nip:
@@ -13816,6 +13871,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           TypesEnum:
             title: TypesEnum
             type: integer
@@ -15002,7 +15058,6 @@ paths:
           ContentFiltersModel:
             title: ContentFiltersModel
             type: object
-            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
@@ -15019,36 +15074,36 @@ paths:
               krs:
                 title: Krs
                 type: array
-                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
-                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
-                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
-                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
-                  \ i Gospodarczego"
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
-                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
-                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             example:
               nip:
               - '7272849598'
@@ -15065,6 +15120,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           CreateFiltersModel:
             title: CreateFiltersModel
             required:
@@ -15652,67 +15708,70 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                example:
+                title: ContentFiltersModel
+                type: object
+                properties:
+                  nip:
+                    title: Nip
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w NIP"
+                  regon:
+                    title: Regon
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w REGON"
+                  krs:
+                    title: Krs
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista identyfikator\xF3w KRS"
+                  pesel:
+                    title: Pesel
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista numer\xF3w PESEL"
+                  krz_signature:
+                    title: Krz Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                      \ Zad\u0142u\u017Conych"
                   msig_signature:
-                  - XIV GUp 83/16
+                    title: Msig Signature
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105\
+                      dowego i Gospodarczego"
+                  name:
+                    title: Name
+                    type: array
+                    items:
+                      type: string
+                    description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                      \ (`imi\u0119 nazwisko`)"
+                example:
+                  nip:
+                  - '7272849598'
                   regon:
                   - '272404100'
-                  krz_signature:
-                  - BY1B/GUp/13/2021
                   krs:
                   - '0000422121'
                   pesel:
                   - '41041202774'
-                  nip:
-                  - '7272849598'
+                  krz_signature:
+                  - BY1B/GUp/13/2021
+                  msig_signature:
+                  - XIV GUp 83/16
                   name:
                   - Jan Kowalski
                   - "Ambro\u017Cy Nielepszy"
-                type: object
-                properties:
-                  msig_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w MSiG"
-                    title: Msig Signature
-                  regon:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer REGON podmiotu
-                    title: Regon
-                  krz_signature:
-                    items:
-                      type: string
-                    type: array
-                    description: "Sygnatura og\u0142oszenia w KRZ"
-                    title: Krz Signature
-                  krs:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer KRS podmiotu
-                    title: Krs
-                  pesel:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer PESEL
-                    title: Pesel
-                  nip:
-                    items:
-                      type: string
-                    type: array
-                    description: Numer NIP podmiotu
-                    title: Nip
-                  name:
-                    items:
-                      type: string
-                    type: array
-                    description: "Imi\u0119 i nazwisko"
-                    title: Name
-                title: ContentFiltersModel
                 description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
@@ -16761,36 +16820,46 @@ paths:
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
                 items:
                   type: string
+                description: "Lista identyfikator\xF3w KRS"
               pesel:
                 title: Pesel
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w PESEL"
               krz_signature:
                 title: Krz Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
               msig_signature:
                 title: Msig Signature
                 type: array
                 items:
                   type: string
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
               name:
                 title: Name
                 type: array
                 items:
                   type: string
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
             additionalProperties: false
             example:
               nip:
@@ -16808,6 +16877,7 @@ paths:
               name:
               - Jan Kowalski
               - "Ambro\u017Cy Nielepszy"
+            description: "Zawarto\u015B\u0107 filtra"
           TypesEnum:
             title: TypesEnum
             type: integer
@@ -19275,67 +19345,70 @@ components:
           description: Nazwa filtra
         content:
           $ref: '#/components/schemas/ContentFiltersModel'
-          example:
+          title: ContentFiltersModel
+          type: object
+          properties:
+            nip:
+              title: Nip
+              type: array
+              items:
+                type: string
+              description: "Lista numer\xF3w NIP"
+            regon:
+              title: Regon
+              type: array
+              items:
+                type: string
+              description: "Lista numer\xF3w REGON"
+            krs:
+              title: Krs
+              type: array
+              items:
+                type: string
+              description: "Lista identyfikator\xF3w KRS"
+            pesel:
+              title: Pesel
+              type: array
+              items:
+                type: string
+              description: "Lista numer\xF3w PESEL"
+            krz_signature:
+              title: Krz Signature
+              type: array
+              items:
+                type: string
+              description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru Zad\u0142\
+                u\u017Conych"
             msig_signature:
-            - XIV GUp 83/16
+              title: Msig Signature
+              type: array
+              items:
+                type: string
+              description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                \ i Gospodarczego"
+            name:
+              title: Name
+              type: array
+              items:
+                type: string
+              description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia (`imi\u0119\
+                \ nazwisko`)"
+          example:
+            nip:
+            - '7272849598'
             regon:
             - '272404100'
-            krz_signature:
-            - BY1B/GUp/13/2021
             krs:
             - '0000422121'
             pesel:
             - '41041202774'
-            nip:
-            - '7272849598'
+            krz_signature:
+            - BY1B/GUp/13/2021
+            msig_signature:
+            - XIV GUp 83/16
             name:
             - Jan Kowalski
             - "Ambro\u017Cy Nielepszy"
-          type: object
-          properties:
-            msig_signature:
-              items:
-                type: string
-              type: array
-              description: "Sygnatura og\u0142oszenia w MSiG"
-              title: Msig Signature
-            regon:
-              items:
-                type: string
-              type: array
-              description: Numer REGON podmiotu
-              title: Regon
-            krz_signature:
-              items:
-                type: string
-              type: array
-              description: "Sygnatura og\u0142oszenia w KRZ"
-              title: Krz Signature
-            krs:
-              items:
-                type: string
-              type: array
-              description: Numer KRS podmiotu
-              title: Krs
-            pesel:
-              items:
-                type: string
-              type: array
-              description: Numer PESEL
-              title: Pesel
-            nip:
-              items:
-                type: string
-              type: array
-              description: Numer NIP podmiotu
-              title: Nip
-            name:
-              items:
-                type: string
-              type: array
-              description: "Imi\u0119 i nazwisko"
-              title: Name
-          title: ContentFiltersModel
           description: "Zawarto\u015B\u0107 filtra"
         id:
           title: Id
@@ -20357,36 +20430,46 @@ components:
           type: array
           items:
             type: string
+          description: "Lista numer\xF3w NIP"
         regon:
           title: Regon
           type: array
           items:
             type: string
+          description: "Lista numer\xF3w REGON"
         krs:
           title: Krs
           type: array
           items:
             type: string
+          description: "Lista identyfikator\xF3w KRS"
         pesel:
           title: Pesel
           type: array
           items:
             type: string
+          description: "Lista numer\xF3w PESEL"
         krz_signature:
           title: Krz Signature
           type: array
           items:
             type: string
+          description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru Zad\u0142\
+            u\u017Conych"
         msig_signature:
           title: Msig Signature
           type: array
           items:
             type: string
+          description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego i\
+            \ Gospodarczego"
         name:
           title: Name
           type: array
           items:
             type: string
+          description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia (`imi\u0119\
+            \ nazwisko`)"
       additionalProperties: false
       example:
         nip:
@@ -20404,6 +20487,7 @@ components:
         name:
         - Jan Kowalski
         - "Ambro\u017Cy Nielepszy"
+      description: "Zawarto\u015B\u0107 filtra"
     TypesEnum:
       title: TypesEnum
       type: integer

@@ -6,36 +6,43 @@ properties:
     type: array
     items:
       type: string
+    description: Lista numerów NIP
   regon:
     title: Regon
     type: array
     items:
       type: string
+    description: Lista numerów REGON
   krs:
     title: Krs
     type: array
     items:
       type: string
+    description: Lista identyfikatorów KRS
   pesel:
     title: Pesel
     type: array
     items:
       type: string
+    description: Lista numerów PESEL
   krz_signature:
     title: Krz Signature
     type: array
     items:
       type: string
+    description: Lista sygnatur obwieszczeń z Krajowego Rejestru Zadłużonych
   msig_signature:
     title: Msig Signature
     type: array
     items:
       type: string
+    description: Lista sygnatur obwieszczeń z Monitora Sądowego i Gospodarczego
   name:
     title: Name
     type: array
     items:
       type: string
+    description: Lista osób, których dotyczą obweiszczenia (`imię nazwisko`)
 additionalProperties: false
 example:
   nip:
@@ -53,3 +60,4 @@ example:
   name:
   - Jan Kowalski
   - Ambroży Nielepszy
+description: Zawartość filtra
