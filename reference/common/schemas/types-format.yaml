@@ -1,0 +1,17 @@
+title: TypesFormat
+required:
+- id
+- label
+type: object
+properties:
+  id:
+    title: Id
+    type: integer
+    description: Unikalny identyfikator
+  label:
+    title: Label
+    type: string
+    description: Etykieta
+example:
+  id: 1
+  label: CSV

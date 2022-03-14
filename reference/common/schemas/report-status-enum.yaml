@@ -1,0 +1,16 @@
+title: ReportStatusEnum
+enum:
+- 0
+- 1
+- 2
+type: integer
+description: |-
+  Aktualny status generowania pliku raportu
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa |
+    |-|-|
+    | `0` | Niedostępny |
+    | `1` | W przygotowaniu |
+    | `2` | Gotowe |</details>

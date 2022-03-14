@@ -1,0 +1,83 @@
+tags:
+- updates_iapi
+summary: GET /v2/updates/{id}
+operationId: get_update_by_id_v2_updates__id__get
+parameters:
+- required: true
+  schema:
+    title: Id
+    anyOf:
+    - exclusiveMaximum: 9007199254740991.0
+      minimum: 0.0
+      type: integer
+    - enum:
+      - last
+      type: string
+      description: Zwraca dane ostatniej aktualizacji bazy ogłoszeń
+      maxLength: 4
+      minLength: 4
+    example: '1'
+    minLength: 1
+  name: id
+  in: path
+  description: Unikalny identyfikator aktualizacji
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania aktualizacji o określonym identyfikatorze
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/UpdatesModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '404':
+    description: Nie znaleziono
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Not Found
+          items:
+            $ref: '#/components/schemas/Error'
+description: Zwraca dane aktualizacji bazy ogłoszeń o podanym `id`.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

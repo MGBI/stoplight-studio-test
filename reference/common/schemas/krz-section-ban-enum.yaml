@@ -1,0 +1,17 @@
+title: KrzSectionBanEnum
+enum:
+- 40
+- 41
+type: integer
+description: |-
+  Sekcja KRZ
+
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    <b>Zakaz prowadzenia działalności gospodarczej</b>
+
+    | Wartość | Nazwa sekcji |
+    |-|-|
+    | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
+    | `41` | Inne |</details>

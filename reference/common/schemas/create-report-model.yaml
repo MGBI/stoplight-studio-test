@@ -1,0 +1,385 @@
+title: CreateReportModel
+required:
+- type
+- name
+- query
+- file_format
+- file_password
+type: object
+properties:
+  type:
+    $ref: ../schemas.yaml#/TypesEnum
+    enum:
+    - 0
+    - 1
+    type: integer
+    description: |-
+      Rodzaj raportu.
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `0` | Aktualny |
+        | `1` | Archiwalny |</details>
+    title: Types
+  name:
+    title: Name
+    type: string
+    description: Nazwa raportu
+  query:
+    title: Query
+    anyOf:
+    - title: QueryRaportByDateRangeModel
+      required:
+      - from_date
+      - to_date
+      type: object
+      properties:
+        custom_categories:
+          type: array
+          items:
+            enum:
+            - K
+            - K.0
+            - K.0.0
+            - K.0.1
+            - K.0.2
+            - K.0.3
+            - K.0.4
+            - K.0.5
+            - K.0.6
+            - K.0.7
+            - K.0.8
+            - K.0.9
+            - K.0.10
+            - K.1
+            - K.1.20
+            - K.1.21
+            - K.1.22
+            - K.1.23
+            - K.1.24
+            - K.1.25
+            - K.1.26
+            - K.1.27
+            - K.1.28
+            - K.1.29
+            - K.1.30
+            - K.1.31
+            - K.1.32
+            - K.1.33
+            - K.1.34
+            - K.2
+            - K.2.40
+            - K.2.41
+            - M
+            - M.0
+            - M.0.1
+            - M.0.2
+            - M.0.3
+            - M.0.4
+            - M.0.5
+            - M.0.6
+            - M.0.7
+            - M.0.8
+            - M.0.9
+            - M.1
+            - M.1.20
+            - M.1.21
+            - M.1.22
+            - M.1.23
+            - M.1.24
+            - M.1.25
+            - M.1.26
+            - M.1.27
+            - M.1.28
+            - M.1.29
+            - M.1.30
+            - M.1.31
+            - M.1.32
+            - M.1.33
+            - M.1.34
+            - M.1.35
+            - M.1.36
+            - M.1.37
+            - M.1.38
+            - M.1.39
+            - M.1.40
+            - M.1.41
+            - M.1.42
+            - M.1.43
+            - M.1.44
+            - M.1.45
+            - M.1.46
+            - M.1.47
+            - M.1.48
+            - M.1.49
+            - M.1.50
+            type: string
+            description: An enumeration.
+            title: CategoriesEnum
+          default: []
+        from_date:
+          title: From Date
+          type: string
+          format: date
+        to_date:
+          title: To Date
+          type: string
+          format: date
+        filter_id:
+          title: Filter Id
+          type: string
+          nullable: true
+        append_first_entry:
+          title: Append First Entry
+          type: boolean
+          default: true
+      example:
+        custom_categories:
+        - K
+        from_date: '2021-11-02'
+        to_date: '2021-11-04'
+        filter_id: 61ded2f8aff2de52365d891e
+        append_first_entry: true
+    - title: QueryRaportByNotificationModel
+      required:
+      - notification_id
+      type: object
+      properties:
+        notification_id:
+          title: Notification Id
+          type: string
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
+    required:
+    - from_date
+    - to_date
+    type: object
+    properties:
+      custom_categories:
+        items:
+          enum:
+          - K
+          - K.0
+          - K.0.0
+          - K.0.1
+          - K.0.2
+          - K.0.3
+          - K.0.4
+          - K.0.5
+          - K.0.6
+          - K.0.7
+          - K.0.8
+          - K.0.9
+          - K.0.10
+          - K.1
+          - K.1.20
+          - K.1.21
+          - K.1.22
+          - K.1.23
+          - K.1.24
+          - K.1.25
+          - K.1.26
+          - K.1.27
+          - K.1.28
+          - K.1.29
+          - K.1.30
+          - K.1.31
+          - K.1.32
+          - K.1.33
+          - K.1.34
+          - K.2
+          - K.2.40
+          - K.2.41
+          - M
+          - M.0
+          - M.0.1
+          - M.0.2
+          - M.0.3
+          - M.0.4
+          - M.0.5
+          - M.0.6
+          - M.0.7
+          - M.0.8
+          - M.0.9
+          - M.1
+          - M.1.20
+          - M.1.21
+          - M.1.22
+          - M.1.23
+          - M.1.24
+          - M.1.25
+          - M.1.26
+          - M.1.27
+          - M.1.28
+          - M.1.29
+          - M.1.30
+          - M.1.31
+          - M.1.32
+          - M.1.33
+          - M.1.34
+          - M.1.35
+          - M.1.36
+          - M.1.37
+          - M.1.38
+          - M.1.39
+          - M.1.40
+          - M.1.41
+          - M.1.42
+          - M.1.43
+          - M.1.44
+          - M.1.45
+          - M.1.46
+          - M.1.47
+          - M.1.48
+          - M.1.49
+          - M.1.50
+          type: string
+          description: An enumeration.
+          title: CategoriesEnum
+        type: array
+        description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
+      from_date:
+        format: date
+        type: string
+        description: Data początkowa zakresu dla daty publikacji ogłoszenia w MSiG
+          lub KRZ
+        title: From Date
+      append_first_entry:
+        type: boolean
+        description: Czy pola z sekcji `entity` i `proceeding` powinny być przekopiowane
+          z pierwszego ogłoszenia w ramach postępowania?
+        title: Append First Entry
+      to_date:
+        format: date
+        type: string
+        description: Data końcowa zakresu dla daty publikacji ogłoszenia w MSiG lub
+          KRZ
+        title: To Date
+      filter_id:
+        nullable: true
+        type: string
+        description: Identyfikator filtra użytego do wygenerowania raportu
+        title: Filter Id
+    example:
+      custom_categories:
+      - K
+      from_date: '2021-11-02'
+      append_first_entry: true
+      to_date: '2021-11-04'
+      filter_id: 61ded2f8aff2de52365d891e
+  custom_content:
+    title: Custom Content
+    type: array
+    items: {}
+    default: []
+    description: |-
+      Identyfikatory pól raportu wybranych przez użytkownika
+      <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa |
+      |-|-|
+      | `entity` | Lista podmiotów, których dotyczy ogłoszenie |
+      | `entity.info` | Podstawowe dane podmiotu |
+      | `entity.info.cleaned_name` | Nazwa podmiotu |
+      | `entity.info.first_name` | Imię |
+      | `entity.info.last_name` | Nazwisko |
+      | `entity.info.legal_form` | Forma prawna |
+      | `entity.info.ownership_type` | Forma własności |
+      | `entity.info.primary_business` | Przeważająca działalność gospodarcza (kod PKD) |
+      | `entity.info.commencement_date` | Data rozpoczęcia działalności |
+      | `entity.numbers` | Numery rejestrowe podmiotu |
+      | `entity.numbers.nip` | NIP |
+      | `entity.numbers.regon` | REGON |
+      | `entity.numbers.krs` | KRS |
+      | `entity.numbers.pesel` | PESEL |
+      | `entity.address` | Adres pocztowy siedziby podmiotu lub miejsca zamieszkania |
+      | `entity.address.state` | Województwo |
+      | `entity.address.powiat` | Powiat |
+      | `entity.address.gmina` | Gmina |
+      | `entity.address.town` | Miejscowość |
+      | `entity.address.street` | Ulica |
+      | `entity.address.house_number` | Numer nieruchomości |
+      | `entity.address.flat_number` | Numer lokalu |
+      | `entity.address.zip_code` | Kod pocztowy |
+      | `entity.address.post_office` | Poczta |
+      | `proceeding` | Informacje o postępowaniu |
+      | `proceeding.court_name` | Nazwa sądu |
+      | `proceeding.court_department` | Nazwa wydziału |
+      | `proceeding.signatures` | Sygnatura sprawy |
+      | `proceeding.commissioner_name` | Sędzia komisarz |
+      | `proceeding.commissioner_deputy_name` | Zastępca sędziego komisarza |
+      | `proceeding.administrator_name` | Nadzorca w postępowaniu |
+      | `proceeding.administrator_function` | Funkcja nadzorcy |
+      | `proceeding.administrator_licence_number` | Numer licencji doradcy restrukturyzacyjnego |
+      | `proceeding.administrator_address` | Adres nadzorcy (ulica) |
+      | `proceeding.administrator_zip_code` | Adres nadzorcy (kod pocztowy) |
+      | `proceeding.administrator_town` | Adres nadzorcy (miejscowość) |
+      | `proceeding.administrator_source_url` | Źródło danych nadzorcy |
+      | `order` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+      | `order.order_date` | Data wydania postanowienia |
+      | `order.expiration_period` | Okres do działania (w dniach) |
+      | `order.expiration_date` | Koniec okresu do działania |
+      | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w MSiG |
+      | `msig_entry.chapter` | Rozdział MSiG |
+      | `msig_entry.section` | Sekcja MSiG |
+      | `msig_entry.signature` | Sygnatura ogłoszenia w MSiG |
+      | `msig_entry.issue_date` | Data publikacji ogłoszenia w MSiG |
+      | `msig_entry.yearly_number` | Numer wydania MSiG |
+      | `msig_entry.position_number` | Numer pozycji MSiG |
+      | `msig_entry.url` | Link do ogłoszenia w serwisie imsig.pl |
+      | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w KRZ |
+      | `krz_entry.chapter` | Rozdział KRZ |
+      | `krz_entry.section` | Sekcja KRZ |
+      | `krz_entry.subsection` | Podsekcja KRZ |
+      | `krz_entry.signature` | Sygnatura ogłoszenia w KRZ |
+      | `krz_entry.issue_date` | Data publikacji ogłoszenia w KRZ |
+      | `krz_entry.url` | Link do ogłoszenia w serwisie KRZ |
+      | `content` | Nieprzetworzona treść ogłoszenia |
+      | `content.text` | Treść ogłoszenia (tekst) |
+      | `content.html` | Treść ogłoszenia (HTML) |
+      | `content.url` | Link do podglądu treści ogłoszenia |</details>
+  file_format:
+    $ref: ../schemas.yaml#/Format
+    allOf:
+    - type: integer
+      description: |-
+        Format pliku raportu.
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa |
+          |-|-|
+          | `1` | Csv |
+          | `2` | Xlsx |
+          | `3` | Xml |
+          | `4` | Json |
+          | `5` | Def |</details>
+    title: Format
+    enum:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    type: integer
+    description: We numerate here each file format
+  file_password:
+    title: File Password
+    type: string
+    description: Hasło do pliku raportu
+additionalProperties: false
+example:
+  type: 0
+  name: example raport
+  query:
+    custom_categories:
+    - K
+    from_date: '2021-11-02'
+    append_first_entry: true
+    to_date: '2021-11-04'
+    filter_id: 61ded2f8aff2de52365d891e
+  custom_content: []
+  file_format: 3
+  file_password: mgbi2021

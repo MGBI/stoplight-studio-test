@@ -1,0 +1,80 @@
+tags:
+- monitors_iapi
+summary: POST /v2/monitors
+operationId: create_monitor_v2_monitors_post
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/CreateMonitorsModel'
+  required: true
+responses:
+  '200':
+    description: Wynik przypisywania monitoringów do użytkownika
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/MonitorModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '429':
+    description: Wykorzystany limit zapytań do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Too Many Requests
+          items:
+            $ref: '#/components/schemas/Error'
+description: |-
+  Tworzy nowy monitoring przypisany do aktualnego użytkownika.
+
+  W parametrze `emails` podajemy przynajmniej jeden adres e-mail, na który będą
+  wysyłane powiadomienia o nowych ogłoszeniach w ramach monitoringu.
+  Liczba adresów e-mail nie może przekraczać wartości `monitors_emails_limit`
+  z parametrów usługi.
+
+  Monitoring może zostać utworzony, gdy liczba monitoringów po jego utworzeniu
+  nie będzie przekraczać wartości `monitors_available` z parametrów usługi.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

@@ -1,0 +1,76 @@
+tags:
+- filters_iapi
+summary: PATCH /v2/filters/{id}
+operationId: patch_user_filters_v2_filters__id__patch
+parameters:
+- required: true
+  schema:
+    title: Id
+    type: string
+    example: 6221c40cff11c462e837cd51
+    maxLength: 24
+    minLength: 24
+  name: id
+  in: path
+  description: Unikalny identyfikator filtra
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/UpdateFiltersModel'
+  required: true
+responses:
+  '200':
+    description: Wynik aktualizacji filtrów użytkownika
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/FiltersModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+description: |-
+  Modyfikuje filtr o podanym `id`.
+
+  Ustawiając parametr `content`, podajemy przynajmniej jeden identyfikator
+  dowolnego typu. Łączna liczba przekazanych w żądaniu identyfikatorów nie może
+  przekraczać wartości `filter_items_limit` z parametrów usługi.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

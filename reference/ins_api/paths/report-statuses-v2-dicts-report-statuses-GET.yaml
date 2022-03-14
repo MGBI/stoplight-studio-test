@@ -1,0 +1,19 @@
+tags:
+- dicts_iapi
+- public_iapi
+summary: GET /v2/dicts/report-statuses
+operationId: get_report_statuses_v2_dicts_report_statuses_get
+responses:
+  '200':
+    description: Wynik wyszukiwania słownika
+    content:
+      application/json:
+        schema:
+          title: Response Get Report Statuses V2 Dicts Report Statuses Get
+          type: array
+          items:
+            $ref: '#/components/schemas/InfoReports'
+description: Zwraca słownik zawierający etykiety dla statusów pliku raportu.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

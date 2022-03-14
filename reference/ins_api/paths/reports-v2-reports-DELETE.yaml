@@ -1,0 +1,63 @@
+tags:
+- reports_iapi
+summary: DELETE /v2/reports
+operationId: delete_reports_v2_reports_delete
+parameters:
+- description: Lista identyfikatorów raportów.
+  required: true
+  schema:
+    title: List of id
+    minLength: 24
+    type: string
+    description: A list of id's whose ones are strings representing the ObjectId from
+      bson.
+    example: 6221c40ca9ab2f868237cd47,6189ba008749c5e836fa4cf6
+  name: ids
+  in: query
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '204':
+    description: Wynik usunięcia raportów
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+description: "Usuwa raporty o identyfikatorach przekazanych w parametrze `ids` w query\
+  \ stringu, \nidentyfikatory muszą być oddzielone przecinkami.\n\nW przypadku sukcesu\
+  \ metoda zwraca kod odpowiedzi `204 No Content`."
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

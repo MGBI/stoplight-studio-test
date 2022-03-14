@@ -1,0 +1,87 @@
+tags:
+- monitors_iapi
+summary: PATCH /v2/monitors/{id}
+operationId: patch_user_monitors_v2_monitors__id__patch
+parameters:
+- required: true
+  schema:
+    title: Id
+    type: string
+    example: 6221c40c843d0d773f37cd4b
+    maxLength: 24
+    minLength: 24
+  name: id
+  in: path
+  description: Unikalny identyfikator monitoringu
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/UpdateMonitorsModel'
+  required: true
+responses:
+  '200':
+    description: Wynik aktualizacji monitoringów użytkownika
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/MonitorModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '404':
+    description: Nie znaleziono
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Not Found
+          items:
+            $ref: '#/components/schemas/Error'
+description: |-
+  Modyfikuje monitoring o podanym `id`.
+
+  W parametrze `emails` podajemy przynajmniej jeden adres e-mail, na który będą
+  wysyłane powiadomienia o nowych ogłoszeniach w ramach monitoringu.
+  Liczba adresów e-mail nie może przekraczać wartości `monitors_emails_limit`
+  z parametrów usługi.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

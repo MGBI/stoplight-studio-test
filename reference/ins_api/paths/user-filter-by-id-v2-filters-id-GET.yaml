@@ -1,0 +1,93 @@
+tags:
+- filters_iapi
+summary: GET /v2/filters/{id}
+operationId: get_user_filter_by_id_v2_filters__id__get
+parameters:
+- required: true
+  schema:
+    title: Id
+    anyOf:
+    - type: string
+    - enum:
+      - last
+      type: string
+      description: Zwraca ostatni dostępny filtr
+      maxLength: 4
+      minLength: 4
+    example: 6221c40ca9ab2f868237cd47
+    maxLength: 24
+    minLength: 24
+  name: id
+  in: path
+  description: Unikalny identyfikator filtra
+- required: false
+  schema:
+    title: Exclude
+    type: array
+    items:
+      enum:
+      - content
+      - items_count
+      type: string
+  name: exclude
+  in: query
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania filtra o określonym identyfikatorze
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/FiltersModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '404':
+    description: Nie znaleziono
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Not Found
+          items:
+            $ref: '#/components/schemas/Error'
+description: Zwraca filtr o podanym `id`.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

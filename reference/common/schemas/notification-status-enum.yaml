@@ -1,0 +1,14 @@
+title: NotificationStatusEnum
+enum:
+- 0
+- 1
+type: integer
+description: |-
+  Status wysyłki powiadomienia
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa |
+    |-|-|
+    | `0` | Błąd wysyłki |
+    | `1` | Wysłane |</details>

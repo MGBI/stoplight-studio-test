@@ -1,0 +1,14 @@
+title: TypesEnum
+enum:
+- 0
+- 1
+type: integer
+description: |-
+  Rodzaj raportu.
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa |
+    |-|-|
+    | `0` | Aktualny |
+    | `1` | Archiwalny |</details>

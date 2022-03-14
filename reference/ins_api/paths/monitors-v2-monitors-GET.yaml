@@ -1,0 +1,73 @@
+tags:
+- monitors_iapi
+summary: GET /v2/monitors
+operationId: get_monitors_v2_monitors_get
+parameters:
+- required: false
+  schema:
+    title: Exclude
+    type: array
+    items:
+      enum:
+      - notifications
+      - ''
+      type: string
+  name: exclude
+  in: query
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania monitoringów
+    content:
+      application/json:
+        schema:
+          title: Response Get Monitors V2 Monitors Get
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+description: |-
+  Zwraca listę monitoringów przypisanych do aktualnego użytkownika.
+
+  Aby ograniczyć listę zwracanych pól, warto ustawić parametr `exclude`
+  na pole, które nie jest wymagane w odpowiedzi, np. `exclude=notifications`.
+  Można ukrywać wiele (niewymaganych w odpowiedzi) pól przekazując nazwy pól w kolejnych parametrach `exclude`.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

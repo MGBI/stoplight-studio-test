@@ -1,0 +1,90 @@
+tags:
+- reports_iapi
+summary: DOWNLOAD /v2/reports/{report_id}/download
+operationId: download_report_by_id_v2_reports__report_id__download_get
+parameters:
+- required: true
+  schema:
+    title: Report Id
+    anyOf:
+    - type: string
+    - enum:
+      - last
+      type: string
+      description: Pobiera ostatni dostępny raport
+      maxLength: 4
+      minLength: 4
+    example: 6221c40cff11c462e837cd51
+    maxLength: 24
+    minLength: 24
+  name: report_id
+  in: path
+  description: Unikalny identyfikator raportu
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik pobierania pojedynczego raportu
+    headers:
+      Content-Type:
+        description: MIME
+        schema:
+          type: aplication/zip
+      Content-Disposition:
+        description: Nazwa pliku
+        schema:
+          type: attachement
+        example: imsig-pl_lista_upadlosci_powiadomienie_2022-03-02_q7jsyvw9.xml.zip
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '404':
+    description: Nie znaleziono
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Not Found
+          items:
+            $ref: '#/components/schemas/Error'
+description: |-
+  Pobiera plik wygenerowanego raportu o podanym `id`.
+
+  Plik raportu można pobrać tylko w sytuacji, gdy status raportu ma wartość `2` (gotowy).
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

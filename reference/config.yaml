@@ -1,0 +1,27 @@
+# name of main file
+spec: openapi.yaml
+
+# map endpoints path to directories (it support only "*" other sink)
+path-to-directory:
+  /v1/rdf: krs_rdf
+  /v1/msig: msig
+  /v2: ins_api
+  "*": other
+# map tags to directories (it supports star prefix, suffix, completions)
+tag-to-directory:
+  documents: krs_rdf
+  financial_data: krs_rdf
+  announcements: msig
+  "*_iapi": ins_api
+  "*": other
+# x-tagGroups order
+tags-order:
+  - announcements_iapi
+  - updates_iapi
+  - filters_iapi
+  - reports_iapi
+  - monitors_iapi
+  - notifications_iapi
+  - users_iapi
+  - params_iapi
+  - dicts_iapi

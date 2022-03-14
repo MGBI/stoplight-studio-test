@@ -1,0 +1,9 @@
+title: Format
+enum:
+- 1
+- 2
+- 3
+- 4
+- 5
+type: integer
+description: We numerate here each file format

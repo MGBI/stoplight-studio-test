@@ -1,0 +1,9 @@
+title: QueryRaportByNotificationModel
+required:
+- notification_id
+type: object
+properties:
+  notification_id:
+    title: Notification Id
+    type: string
+additionalProperties: false

@@ -1,0 +1,56 @@
+title: NotificationModel
+required:
+- id
+- sent_datetime
+- email
+- status
+- dispatch_id
+- monitor_id
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+  sent_datetime:
+    title: Sent Datetime
+    type: string
+    format: date-time
+    description: Data wysyłki powiadomienia
+  email:
+    title: Email
+    type: string
+    description: Adres e-mail, na który wysłano powiadomienie
+    example: msig@bnf.pl
+  status:
+    $ref: ../schemas.yaml#/NotificationStatusEnum
+    enum:
+    - 0
+    - 1
+    type: integer
+    description: |-
+      Status wysyłki powiadomienia
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa |
+        |-|-|
+        | `0` | Błąd wysyłki |
+        | `1` | Wysłane |</details>
+    title: NotificationStatusEnum
+  dispatch_id:
+    title: Dispatch Id
+    type: string
+  monitor_id:
+    title: Monitor Id
+    type: string
+  error:
+    title: Error
+    type: string
+    nullable: true
+example:
+  id: 6221c40c51fce5ae9f37cd48
+  dispatch_id: 6221c40c5cb436601e37cd49
+  monitor_id: 6221c40c5278893ac137cd4a
+  sent_datetime: '2022-03-02T08:47:24.765264+01:00'
+  email: abc@def.pl
+  status: 1

@@ -1,0 +1,87 @@
+tags:
+- reports_iapi
+summary: POST /v2/reports
+operationId: create_report_v2_reports_post
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/CreateReportModel'
+  required: true
+responses:
+  '200':
+    description: Wynik tworzenia nowego raportu
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/ReportModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '429':
+    description: Wykorzystany limit zapytań do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Too Many Requests
+          items:
+            $ref: '#/components/schemas/Error'
+description: |-
+  Tworzy nowy raport - plik z listą ogłoszeń - przypisany do aktualnego użytkownika.
+
+  Raport możemy tworzyć w dwóch trybach:
+  * w trybie raportu aktualnego, gdzie podana wartość pola `query.from_date`
+  ograniczona jest przez wartość `archive_date_from` z parametrów usługi,
+  * w trybie raportu archiwalnego, gdzie podana wartość pola `query_from.date`
+  nie jest ograniczona.
+
+  Raport aktualny/archiwalny może zostać utworzony, gdy liczba raportów po jego
+  utworzeniu nie będzie przekraczać wartości odpowiednio
+  `current_reports_available`/`archival_reports_available` z parametrów usługi.
+
+  Dodatkowo, przy tworzeniu raportu archiwalnego, sumaryczna liczba ogłoszeń
+  wygenerowanych w ramach wszystkich stworzonych do tej pory archiwalnych
+  raportów i zapytań nie może przekroczyć wartości `credits_available`
+  z parametrów usługi.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

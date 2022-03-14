@@ -1,0 +1,432 @@
+tags:
+- announcements_iapi
+summary: GET /v2/announcements
+operationId: get_announcements_v2_announcements_get
+parameters:
+- required: false
+  schema:
+    title: Id
+    type: string
+    example: 6189ba008749c5e836fa4cf6
+    maxLength: 24
+    minLength: 24
+  name: id
+  in: query
+  description: Unikalny identyfikator ogłoszenia
+- required: false
+  schema:
+    title: Date From
+    type: string
+    format: date
+    example: '2022-01-01'
+  name: date_from
+  in: query
+  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+- required: false
+  schema:
+    title: Date To
+    type: string
+    format: date
+    example: '2022-12-31'
+  name: date_to
+  in: query
+  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+- required: false
+  schema:
+    $ref: '#/components/schemas/MsigChapterEnum'
+    description: |-
+      An enumeration.
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Insolvency |
+        | `1` | Restructuring |</details>
+    example: 0
+  name: msig_chapter
+  in: query
+- required: false
+  schema:
+    title: Msig Section
+    anyOf:
+    - $ref: '#/components/schemas/MsigSectionInsolvencyEnum'
+      description: |-
+        Sekcja MSiG
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `1` | Postanowienie o ogłoszeniu upadłości |
+          | `2` | Obwieszczenie o zatwierdzeniu układu |
+          | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+          | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+          | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+          | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+          | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+          | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+          | `9` | Inne |</details>
+    - $ref: '#/components/schemas/MsigSectionRestructuringEnum'
+      description: |-
+        Sekcja MSiG
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `20` | Dokonanie zmian w spisie wierzytelności |
+          | `21` | Inne |
+          | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
+          | `23` | Odmowa zatwierdzenia układu |
+          | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
+          | `25` | Określenie trybu i sposobu głosowania nad układem |
+          | `26` | Otwarcie postępowania o zatwierdzenie układu |
+          | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
+          | `28` | Otwarcie postępowania o zmianę układu |
+          | `29` | Otwarcie postępowania sanacyjnego |
+          | `30` | Otwarcie postępowania układowego |
+          | `31` | Otwarcie przyspieszonego postępowania układowego |
+          | `32` | Sprostowanie |
+          | `33` | Stwierdzenie wykonania układu |
+          | `34` | Uchylenie układu |
+          | `35` | Umorzenie postępowania |
+          | `36` | Wyznaczenie nadzorcy lub zarządcy |
+          | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
+          | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
+          | `39` | Zabezpieczenie majątku dłużnika |
+          | `40` | Zakończenie postępowania |
+          | `41` | Zatwierdzenie spisu wierzytelności |
+          | `42` | Zatwierdzenie układu |
+          | `43` | Złożenie planu restrukturyzacyjnego |
+          | `44` | Złożenie spisu wierzytelności |
+          | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
+          | `46` | Złożenie uzupełniającego spisu wierzytelności |
+          | `47` | Złożenie wniosku o zatwierdzenie układu |
+          | `48` | Zmiana nadzorcy lub zarządcy |
+          | `49` | Zmiana sędziego komisarza |
+          | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
+    example: 1
+  name: msig_section
+  in: query
+- required: false
+  schema:
+    $ref: '#/components/schemas/KrzChapterEnum'
+    description: |-
+      An enumeration.
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Restructuring |
+        | `1` | Insolvency |
+        | `2` | Ban |</details>
+    example: krz_chapter=0
+  name: krz_chapter
+  in: query
+- required: false
+  schema:
+    title: Krz Section
+    anyOf:
+    - $ref: '#/components/schemas/KrzSectionRestructuringEnum'
+      description: |-
+        Sekcja KRZ
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          <b>Postępowanie restrukturyzacyjne</b>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `0` | Dzień układowy |
+          | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
+          | `2` | Zabezpieczenie majątku |
+          | `3` | Otwarcie postępowania restrukturyzacyjnego |
+          | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
+          | `5` | Spis wierzytelności/spis wierzytelności spornych |
+          | `6` | Zgromadzenie wierzycieli |
+          | `7` | Sprawozdania |
+          | `8` | Układ |
+          | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
+          | `10` | Inne |</details>
+    - $ref: '#/components/schemas/KrzSectionInsolvencyEnum'
+      description: |-
+        Sekcja KRZ
+
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          <b>Postępowanie upadłościowe</b>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
+          | `21` | Zabezpieczenie majątku |
+          | `22` | Ogłoszenie upadłości/oddalenie wniosku |
+          | `23` | Wtórne postępowanie upadłościowe |
+          | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
+          | `25` | Przygotowana likwidacja |
+          | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
+          | `27` | Zgromadzenie wierzycieli |
+          | `28` | Masa upadłości |
+          | `29` | Lista wierzytelności |
+          | `30` | Plan podziału |
+          | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
+          | `32` | Plan spłaty/umorzenie zobowiązań |
+          | `33` | Układ w upadłości |
+          | `34` | Inne |</details>
+    - $ref: '#/components/schemas/KrzSectionBanEnum'
+      description: |-
+        Sekcja KRZ
+
+        <details>
+          <summary>Pokaż możliwe opcje</summary>
+
+          <b>Zakaz prowadzenia działalności gospodarczej</b>
+
+          | Wartość | Nazwa sekcji |
+          |-|-|
+          | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
+          | `41` | Inne |</details>
+    example: 1
+  name: krz_section
+  in: query
+- required: false
+  schema:
+    $ref: '#/components/schemas/KrzSubsectionEnum'
+    description: |-
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `0` | Obwieszczenie o ustaleniu dnia układowego |
+        | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
+        | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
+        | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
+        | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
+        | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
+        | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
+  name: krz_subsection
+  in: query
+- required: false
+  schema:
+    title: Msig Signature
+    type: string
+  name: msig_signature
+  in: query
+  description: Sygnatura ogłoszenia w MSiG
+- required: false
+  schema:
+    title: Krz Signature
+    type: string
+  name: krz_signature
+  in: query
+  description: Sygnatura ogłoszenia w KRZ
+- required: false
+  schema:
+    title: Nip
+    type: string
+    example: 9491827824
+    maxLength: 10
+    minLength: 10
+  name: nip
+  in: query
+  description: Numer NIP podmiotu, którego dotyczy ogłoszenie
+- required: false
+  schema:
+    title: Regon
+    type: string
+    example: 152074271
+    maxLength: 9
+    minLength: 9
+  name: regon
+  in: query
+  description: Numer REGON podmiotu, którego dotyczy ogłoszenie
+- required: false
+  schema:
+    title: Krs
+    type: string
+    example: 0000136890
+    maxLength: 10
+    minLength: 10
+  name: krs
+  in: query
+  description: Numer KRS podmiotu, którego dotyczy ogłoszenie
+- required: false
+  schema:
+    title: Pesel
+    type: string
+    example: 75121968629
+    maxLength: 11
+    minLength: 11
+  name: pesel
+  in: query
+  description: Numer PESEL osoby, której dotyczy ogłoszenie
+- required: false
+  schema:
+    title: First Name
+    type: string
+    example: Bogdan
+  name: first_name
+  in: query
+  description: Imię osoby, której dotyczy ogłoszenie
+- required: false
+  schema:
+    title: Last Name
+    type: string
+    example: Bogdanowicz
+  name: last_name
+  in: query
+  description: Nazwisko osoby, której dotyczy ogłoszenie
+- required: false
+  schema:
+    title: Signature
+    type: string
+  name: signature
+  in: query
+  description: Sygnatura postępowania
+- required: false
+  schema:
+    title: Commissioner Name
+    type: string
+  name: commissioner_name
+  in: query
+  description: Imię i nazwisko sędziego komisarza
+- required: false
+  schema:
+    title: Administrator Name
+    type: string
+  name: administrator_name
+  in: query
+  description: Imię i nazwisko nadzorcy sądowego
+- required: false
+  schema:
+    $ref: '#/components/schemas/ProjectionEnum'
+    description: |-
+      Rozdział MSiG
+      <details>
+        <summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa rozdziału |
+        |-|-|
+        | `entity` | Lista podmiotów, których dotyczy ogłoszenie |
+        | `proceeding` | Informacje o postępowaniu |
+        | `order` | Informacje o postanowieniu, którego dotyczy ogłoszenie |
+        | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w msig |
+        | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
+        | `content` | Nieprzetworzona treść ogłoszenia |</details>
+  name: projection
+  in: query
+- required: false
+  schema:
+    title: Category
+    type: array
+    items:
+      anyOf:
+      - $ref: '#/components/schemas/CategoriesEnum'
+      - type: string
+  name: category
+  in: query
+  description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,
+    krz_entry.chapter i krz_entry.section
+- required: false
+  schema:
+    title: Archival
+    type: boolean
+    default: false
+  name: archival
+  in: query
+  description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from
+    z parametrów usługi
+- required: false
+  schema:
+    title: Append First Entry
+    type: boolean
+    default: false
+  name: append_first_entry
+  in: query
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania ogłoszeń
+    content:
+      application/json:
+        schema:
+          title: Response Get Announcements V2 Announcements Get
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnouncementModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '429':
+    description: Wykorzystany limit zapytań do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Too Many Requests
+          items:
+            $ref: '#/components/schemas/Error'
+description: |-
+  Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
+  w wybranych rozdziałach MSiG / KRZ.
+
+  W przypadku sukcesu w treści odpowiedzi zwracana jest lista ogłoszeń
+  spełniających kryteria określone w parametrach metody, posortowanych rosnąco
+  według daty publikacji w MSiG / KRZ.
+
+  W przypadku, gdy żadne ogłoszenie nie spełnia podanych kryteriów,
+  zwracana jest pusta lista. W przypadku, gdy liczba ogłoszeń spełniających
+  kryteria jest większa niż 1 000, lista zawiera 1 000 pierwszych ogłoszeń.
+
+  Zapytanie może zostać wykonane, gdy całkowita liczba zapytań po jego wykonaniu
+  nie będzie przekraczać wartości `api_requests_used` z parametrów usługi.
+
+  Dodatkowo, przy wykonywaniu zapytania archiwalnego, sumaryczna liczba ogłoszeń
+  wygenerowanych w ramach wszystkich stworzonych do tej pory archiwalnych
+  raportów i zapytań nie może przekroczyć wartości `credits_available`
+  z parametrów usługi.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

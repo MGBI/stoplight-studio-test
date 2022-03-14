@@ -1,0 +1,17 @@
+title: InfoCategories
+required:
+- id
+- label
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator
+  label:
+    title: Label
+    type: string
+    description: Etykieta
+example:
+  id: K
+  label: Krajowy Rejestr Zadłużonych

@@ -1,0 +1,11 @@
+title: SourceEnum
+enum:
+- msig
+- krz
+description: |-
+  An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+
+  | Wartość | Nazwa  |
+  |-|-|
+  | `msig` | Msig |
+  | `krz` | Krz |</details>

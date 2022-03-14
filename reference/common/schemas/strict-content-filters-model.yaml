@@ -1,0 +1,55 @@
+title: StrictContentFiltersModel
+type: object
+properties:
+  nip:
+    title: Nip
+    type: array
+    items:
+      type: string
+  regon:
+    title: Regon
+    type: array
+    items:
+      type: string
+  krs:
+    title: Krs
+    type: array
+    items:
+      type: string
+  pesel:
+    title: Pesel
+    type: array
+    items:
+      type: string
+  krz_signature:
+    title: Krz Signature
+    type: array
+    items:
+      type: string
+  msig_signature:
+    title: Msig Signature
+    type: array
+    items:
+      type: string
+  name:
+    title: Name
+    type: array
+    items:
+      type: string
+additionalProperties: false
+example:
+  nip:
+  - '7272849598'
+  regon:
+  - '272404100'
+  krs:
+  - '0000422121'
+  pesel:
+  - '41041202774'
+  krz_signature:
+  - BY1B/GUp/13/2021
+  msig_signature:
+  - XIV GUp 83/16
+  name:
+  - Jan Kowalski
+  - Ambroży Nielepszy

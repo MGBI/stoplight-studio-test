@@ -1,0 +1,160 @@
+tags:
+- users_iapi
+- admin_iapi
+summary: GET /v2/users/{id}
+description: |-
+  Get user info by given id.
+
+  Admin flag is required.
+operationId: get_user_v2_users__id__get
+parameters:
+- required: true
+  schema:
+    title: Id
+    type: string
+  name: id
+  in: path
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+responses:
+  '200':
+    description: Retrieve user data by id
+    content:
+      application/json:
+        schema:
+          properties:
+            creation_datetime:
+              format: date-time
+              type: string
+              description: Data wygasania konta użytkownika
+              title: Creation Datetime
+            deactivation_datetime:
+              format: date-time
+              type: string
+              description: Data wygasania konta użytkownika
+              title: Deactivation Datetime
+            is_admin:
+              type: boolean
+              description: Czy użytkownik jest adminem?
+              title: Is Admin
+            is_active:
+              type: boolean
+              description: Czy użytkownik jest aktywny?
+              title: Is Active
+            id:
+              type: string
+              description: Unikalny identyfikator użytkownika
+              title: Id
+            email:
+              format: email
+              type: string
+              description: Adres e-mail użytkownika
+              title: Email
+          required:
+          - id
+          - email
+          - is_active
+          - is_admin
+          - creation_datetime
+          type: object
+          example:
+            creation_datetime: '2021-11-10T15:20:20.584Z'
+            deactivation_datetime: '2021-11-10T15:20:20.584Z'
+            is_admin: false
+            is_active: true
+            id: '1'
+            email: abc@def.pl
+          title: UserModel
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '403':
+    description: Forbidden
+    content:
+      application/json:
+        schema:
+          required:
+          - error
+          - details
+          type: object
+          properties:
+            details:
+              description: Szczegółowe informacje na temat błędu
+              title: Details
+            error:
+              type: string
+              description: Opis błędu
+              title: Error
+          title: Error
+  '422':
+    description: Validation Error
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            detail:
+              items:
+                required:
+                - loc
+                - msg
+                - type
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    title: Message
+                  loc:
+                    items:
+                      type: string
+                    type: array
+                    title: Location
+                  type:
+                    type: string
+                    title: Error Type
+                title: ValidationError
+              type: array
+              description: Szczegółowa informacja na temat błędu
+              title: Detail
+          title: HTTPValidationError
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

@@ -1,0 +1,55 @@
+tags:
+- users_iapi
+summary: GET /v2/users/me
+description: Zwraca aktualne informacje o użytkowniku
+operationId: get_current_user_v2_users_me_get
+parameters:
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania danych obecnego użytkownika
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/UserModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

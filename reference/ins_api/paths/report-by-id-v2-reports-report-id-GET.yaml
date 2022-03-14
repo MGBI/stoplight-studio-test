@@ -1,0 +1,82 @@
+tags:
+- reports_iapi
+summary: GET /v2/reports/{report_id}
+operationId: get_report_by_id_v2_reports__report_id__get
+parameters:
+- required: true
+  schema:
+    title: Report Id
+    anyOf:
+    - type: string
+    - enum:
+      - last
+      type: string
+      description: Zwraca ostatni dostępny raport
+      maxLength: 4
+      minLength: 4
+    example: 6221c40cff11c462e837cd51
+    maxLength: 24
+    minLength: 24
+  name: report_id
+  in: path
+  description: Unikalny identyfikator raportu
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania raportu o określonym identyfikatorze
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/ReportModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '404':
+    description: Nie znaleziono
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Not Found
+          items:
+            $ref: '#/components/schemas/Error'
+description: Zwraca raport o podanym `id`.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

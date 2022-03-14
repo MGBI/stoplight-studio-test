@@ -1,0 +1,16 @@
+title: KrzChapterEnum
+enum:
+- 0
+- 1
+- 2
+type: integer
+description: |-
+  Rozdział KRZ
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa rozdziału |
+    |-|-|
+    | `0` | Postępowanie restrukturyzacyjne |
+    | `1` | Postępowanie upadłościowe |
+    | `2` | Zakaz prowadzenia działalności gospodarczej |</details>

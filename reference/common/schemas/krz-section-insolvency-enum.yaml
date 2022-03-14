@@ -1,0 +1,43 @@
+title: KrzSectionInsolvencyEnum
+enum:
+- 20
+- 21
+- 22
+- 23
+- 24
+- 25
+- 26
+- 27
+- 28
+- 29
+- 30
+- 31
+- 32
+- 33
+- 34
+type: integer
+description: |-
+  Sekcja KRZ
+
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    <b>Postępowanie upadłościowe</b>
+
+    | Wartość | Nazwa sekcji |
+    |-|-|
+    | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
+    | `21` | Zabezpieczenie majątku |
+    | `22` | Ogłoszenie upadłości/oddalenie wniosku |
+    | `23` | Wtórne postępowanie upadłościowe |
+    | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
+    | `25` | Przygotowana likwidacja |
+    | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
+    | `27` | Zgromadzenie wierzycieli |
+    | `28` | Masa upadłości |
+    | `29` | Lista wierzytelności |
+    | `30` | Plan podziału |
+    | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
+    | `32` | Plan spłaty/umorzenie zobowiązań |
+    | `33` | Układ w upadłości |
+    | `34` | Inne |</details>

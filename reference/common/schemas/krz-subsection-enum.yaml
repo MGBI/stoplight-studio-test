@@ -1,0 +1,24 @@
+title: KrzSubsectionEnum
+enum:
+- 0
+- 1
+- 30
+- 31
+- 2
+- 3
+- 32
+type: integer
+description: |-
+  Subsekcja KRZ
+  <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa subsekcji |
+    |-|-|
+    | `0` | Obwieszczenie o ustaleniu dnia układowego |
+    | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
+    | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
+    | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
+    | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
+    | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
+    | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>

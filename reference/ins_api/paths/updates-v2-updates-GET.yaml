@@ -1,0 +1,75 @@
+tags:
+- updates_iapi
+summary: GET /v2/updates
+operationId: get_updates_v2_updates_get
+parameters:
+- required: true
+  schema:
+    title: Creation Datetime From
+    type: string
+    format: date-time
+    example: '2019-01-01T00:00:00Z'
+  name: creation_datetime_from
+  in: query
+  description: Początek zakresu dla daty i czasu utworzenia aktualizacji
+- required: true
+  schema:
+    title: Creation Datetime To
+    type: string
+    format: date-time
+    example: '2019-12-31T00:00:00Z'
+  name: creation_datetime_to
+  in: query
+  description: Koniec zakresu dla daty i czasu utworzenia aktualizacji
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania aktualizacji
+    content:
+      application/json:
+        schema:
+          title: Response Get Updates V2 Updates Get
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdatesModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+description: Zwraca listę aktualizacji bazy ogłoszeń dla podanych parametrów.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

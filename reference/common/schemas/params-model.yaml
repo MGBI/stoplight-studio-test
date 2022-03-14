@@ -1,0 +1,248 @@
+title: ParamsModel
+required:
+- archive_date_from
+- current_reports_available
+- current_reports_used
+- current_reports_filter_required
+- archival_reports_available
+- archival_reports_used
+- archival_reports_filter_required
+- credits_available
+- credits_used
+- available_content
+- filter_items_limit
+- monitors_available
+- monitors_used
+- monitors_emails_limit
+- api_key
+- api_requests_available
+- api_requests_used
+- panel_users_limit
+- panel_users
+- monitors_filter_required
+type: object
+properties:
+  archive_date_from:
+    title: Archive Date From
+    type: string
+    format: date
+    description: Data początkowa okresu, z którego użytkownik może pobierać ogłoszenia
+      w ramach raportów aktualnych
+  current_reports_available:
+    title: Current Reports Available
+    type: integer
+    description: Maksymalna liczba raportów aktualnych, które użytkownik może utorzyć
+      w ramach obecnego planu
+  current_reports_used:
+    title: Current Reports Used
+    type: integer
+    description: Liczba utworzonych raportów aktualnych
+  current_reports_filter_required:
+    title: Current Reports Filter Required
+    type: boolean
+    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
+  archival_reports_available:
+    title: Archival Reports Available
+    type: integer
+    description: Maksymalna liczba raportów archiwalnych, które użytkownik może utorzyć
+      w ramach obecnego planu
+  archival_reports_used:
+    title: Archival Reports Used
+    type: integer
+    description: Liczba utworzonych raportów archiwalnych
+  archival_reports_filter_required:
+    title: Archival Reports Filter Required
+    type: boolean
+    description: Czy przy tworzeniu raportu aktualnego użytkownik musi wybrać filtr?
+  credits_available:
+    title: Credits Available
+    type: integer
+    description: Maksymalna liczba identyfikatorów, o które użytkownik może odpytać
+      API w zapytaniu o ogłoszenia z całego archiwum (od 1.01.2021) albo których może
+      użyć w filtrze dla raportu archiwalnego w ramach obecnego planu
+  credits_used:
+    title: Credits Used
+    type: integer
+    description: Liczba identyfikatorów, o które użytkownik odpytał API albo których
+      użył w filtrze dla raportu archiwalnego
+  available_content:
+    type: array
+    items:
+      $ref: ../schemas.yaml#/FieldsEnum
+    description: |-
+      Lista identyfikatorów pól, które użytkownik może uwzględnić w raportach
+      <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa |
+      |-|-|
+      | `entity.info.cleaned_name` | Nazwa podmiotu |
+      | `entity.info.first_name` | Imię |
+      | `entity.info.last_name` | Nazwisko |
+      | `entity.info.legal_form` | Forma prawna |
+      | `entity.info.ownership_type` | Forma własności |
+      | `entity.info.primary_business` | Przeważająca działalność gospodarcza (kod PKD) |
+      | `entity.info.commencement_date` | Data rozpoczęcia działalności |
+      | `entity.numbers.nip` | NIP |
+      | `entity.numbers.regon` | REGON |
+      | `entity.numbers.krs` | KRS |
+      | `entity.numbers.pesel` | PESEL |
+      | `entity.address.state` | Województwo |
+      | `entity.address.powiat` | Powiat |
+      | `entity.address.gmina` | Gmina |
+      | `entity.address.town` | Miejscowość |
+      | `entity.address.street` | Ulica |
+      | `entity.address.house_number` | Numer nieruchomości |
+      | `entity.address.flat_number` | Numer lokalu |
+      | `entity.address.zip_code` | Kod pocztowy |
+      | `entity.address.post_office` | Poczta |
+      | `proceeding.court_name` | Nazwa sądu |
+      | `proceeding.court_department` | Nazwa wydziału |
+      | `proceeding.signatures` | Sygnatura sprawy |
+      | `proceeding.commissioner_name` | Sędzia komisarz |
+      | `proceeding.commissioner_deputy_name` | Zastępca sędziego komisarza |
+      | `proceeding.administrator_name` | Nadzorca w postępowaniu |
+      | `proceeding.administrator_function` | Funkcja nadzorcy |
+      | `proceeding.administrator_licence_number` | Numer licencji doradcy restrukturyzacyjnego |
+      | `proceeding.administrator_address` | Adres nadzorcy (ulica) |
+      | `proceeding.administrator_zip_code` | Adres nadzorcy (kod pocztowy) |
+      | `proceeding.administrator_town` | Adres nadzorcy (miejscowość) |
+      | `proceeding.administrator_source_url` | Źródło danych nadzorcy |
+      | `order.order_date` | Data wydania postanowienia |
+      | `order.expiration_period` | Okres do działania (w dniach) |
+      | `order.expiration_date` | Koniec okresu do działania |
+      | `msig_entry.chapter` | Rozdział MSiG |
+      | `msig_entry.section` | Sekcja MSiG |
+      | `msig_entry.signature` | Sygnatura ogłoszenia w MSiG |
+      | `msig_entry.issue_date` | Data publikacji ogłoszenia w MSiG |
+      | `msig_entry.yearly_number` | Numer wydania MSiG |
+      | `msig_entry.position_number` | Numer pozycji MSiG |
+      | `msig_entry.url` | Link do ogłoszenia w serwisie imsig.pl |
+      | `krz_entry.chapter` | Rozdział KRZ |
+      | `krz_entry.section` | Sekcja KRZ |
+      | `krz_entry.signature` | Sygnatura ogłoszenia w KRZ |
+      | `krz_entry.issue_date` | Data publikacji ogłoszenia w KRZ |
+      | `krz_entry.url` | Link do ogłoszenia w serwisie KRZ |
+      | `content.text` | Treść ogłoszenia (tekst) |
+      | `content.html` | Treść ogłoszenia (HTML) |
+      | `content.url` | Link do podglądu treści ogłoszenia |</details>
+  filter_items_limit:
+    title: Filter Items Limit
+    type: integer
+    description: Maksymalna liczba identyfikatorów w filtrze
+  monitors_available:
+    title: Monitors Available
+    type: integer
+    description: Maksymalna liczba monitoringów, które użytkownik może utorzyć w ramach
+      obecnego planu
+  monitors_used:
+    title: Monitors Used
+    type: integer
+    description: Liczba utworzonych monitoringów
+  monitors_emails_limit:
+    title: Monitors Emails Limit
+    type: integer
+    description: Maksymalna liczba adresów e-mail przypisanych do pojedynczego monitoringu
+  api_key:
+    title: Api Key
+    type: string
+    format: uuid
+    description: Klucz autoryzacji w API
+  api_requests_available:
+    title: Api Requests Available
+    type: integer
+    description: Maksymalna liczba zapytań do API o pojedyncze ogłoszenia, które użytkownik
+      może wykonać w ramach obecnego planu
+  api_requests_used:
+    title: Api Requests Used
+    type: integer
+    description: Liczba wykonanych zapytań do API o pojedyncze ogłoszenia
+  panel_users_limit:
+    title: Panel Users Limit
+    type: integer
+    description: Maksymalna liczba użytkowników panelu usługi
+  panel_users:
+    title: Panel Users
+    type: array
+    items:
+      type: string
+      format: email
+    description: Adresy e-mail użytkowników usługi
+  monitors_filter_required:
+    title: Monitors Filter Required
+    type: boolean
+    description: Czy przy tworzeniu monitoringu użytkownik musi wybrać filtr?
+example:
+  archive_date_from: '2021-04-23'
+  current_reports_available: 25
+  current_reports_used: 5
+  current_reports_filter_required: false
+  archival_reports_available: 5
+  archival_reports_used: 0
+  archival_reports_filter_required: false
+  credits_available: 5
+  credits_used: 0
+  available_content:
+  - entity.info.cleaned_name
+  - entity.info.first_name
+  - entity.info.last_name
+  - entity.info.legal_form
+  - entity.info.ownership_type
+  - entity.info.primary_business
+  - entity.info.commencement_date
+  - entity.numbers.nip
+  - entity.numbers.regon
+  - entity.numbers.krs
+  - entity.numbers.pesel
+  - entity.address.state
+  - entity.address.powiat
+  - entity.address.gmina
+  - entity.address.town
+  - entity.address.street
+  - entity.address.house_number
+  - entity.address.flat_number
+  - entity.address.zip_code
+  - entity.address.post_office
+  - proceeding.court_name
+  - proceeding.court_department
+  - proceeding.signatures
+  - proceeding.commissioner_name
+  - proceeding.commissioner_deputy_name
+  - proceeding.administrator_name
+  - proceeding.administrator_function
+  - proceeding.administrator_licence_number
+  - proceeding.administrator_address
+  - proceeding.administrator_zip_code
+  - proceeding.administrator_town
+  - proceeding.administrator_source_url
+  - order.order_date
+  - order.expiration_period
+  - order.expiration_date
+  - msig_entry.chapter
+  - msig_entry.section
+  - msig_entry.signature
+  - msig_entry.issue_date
+  - msig_entry.yearly_number
+  - msig_entry.position_number
+  - msig_entry.url
+  - krz_entry.chapter
+  - krz_entry.section
+  - krz_entry.subsection
+  - krz_entry.signature
+  - krz_entry.issue_date
+  - krz_entry.url
+  - content.text
+  - content.html
+  - content.url
+  filter_items_limit: 50
+  monitors_available: 5
+  monitors_used: 2
+  monitors_emails_limit: 5
+  api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  api_requests_available: 1000
+  api_requests_used: 100
+  panel_users_limit: 5
+  panel_users:
+  - abc@def.pl
+  - xyz@ghi.pl
+  monitors_filter_required: false

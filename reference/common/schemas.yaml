@@ -1,0 +1,94 @@
+AnnouncementModel:
+  $ref: schemas/announcement-model.yaml
+CategoriesEnum:
+  $ref: schemas/categories-enum.yaml
+ContentFiltersModel:
+  $ref: schemas/content-filters-model.yaml
+CreateFiltersModel:
+  $ref: schemas/create-filters-model.yaml
+CreateMonitorsModel:
+  $ref: schemas/create-monitors-model.yaml
+CreateReportModel:
+  $ref: schemas/create-report-model.yaml
+CreateUserModel:
+  $ref: schemas/create-user-model.yaml
+DBParamsModel:
+  $ref: schemas/d-bparams-model.yaml
+Error:
+  $ref: schemas/error.yaml
+FiltersModel:
+  $ref: schemas/filters-model.yaml
+Format:
+  $ref: schemas/format.yaml
+HTTPValidationError:
+  $ref: schemas/h-tt-pvalidation-error.yaml
+InfoCategories:
+  $ref: schemas/info-categories.yaml
+InfoFields:
+  $ref: schemas/info-fields.yaml
+InfoReports:
+  $ref: schemas/info-reports.yaml
+InfoTypes:
+  $ref: schemas/info-types.yaml
+KrzChapterEnum:
+  $ref: schemas/krz-chapter-enum.yaml
+KrzSectionBanEnum:
+  $ref: schemas/krz-section-ban-enum.yaml
+KrzSectionInsolvencyEnum:
+  $ref: schemas/krz-section-insolvency-enum.yaml
+KrzSectionRestructuringEnum:
+  $ref: schemas/krz-section-restructuring-enum.yaml
+KrzSubsectionEnum:
+  $ref: schemas/krz-subsection-enum.yaml
+MonitorModel:
+  $ref: schemas/monitor-model.yaml
+MsigChapterEnum:
+  $ref: schemas/msig-chapter-enum.yaml
+MsigSectionInsolvencyEnum:
+  $ref: schemas/msig-section-insolvency-enum.yaml
+MsigSectionRestructuringEnum:
+  $ref: schemas/msig-section-restructuring-enum.yaml
+NotificationModel:
+  $ref: schemas/notification-model.yaml
+NotificationStatusEnum:
+  $ref: schemas/notification-status-enum.yaml
+ParamsModel:
+  $ref: schemas/params-model.yaml
+ProjectionEnum:
+  $ref: schemas/projection-enum.yaml
+QueryRaportByDateRangeModel:
+  $ref: schemas/query-raport-by-date-range-model.yaml
+QueryRaportByNotificationModel:
+  $ref: schemas/query-raport-by-notification-model.yaml
+ReportModel:
+  $ref: schemas/report-model.yaml
+ReportStatusEnum:
+  $ref: schemas/report-status-enum.yaml
+SourceEnum:
+  $ref: schemas/source-enum.yaml
+StrictContentFiltersModel:
+  $ref: schemas/strict-content-filters-model.yaml
+TypesEnum:
+  $ref: schemas/types-enum.yaml
+TypesFormat:
+  $ref: schemas/types-format.yaml
+UpdateFiltersModel:
+  $ref: schemas/update-filters-model.yaml
+UpdateMonitorsModel:
+  $ref: schemas/update-monitors-model.yaml
+UpdateParamsModel:
+  $ref: schemas/update-params-model.yaml
+UpdateUserModel:
+  $ref: schemas/update-user-model.yaml
+UpdatesModel:
+  $ref: schemas/updates-model.yaml
+UserModel:
+  $ref: schemas/user-model.yaml
+ValidationError:
+  $ref: schemas/validation-error.yaml
+UpdatesCreateModel:
+  $ref: schemas/updates-create-model.yaml
+QueryBaseModel:
+  $ref: schemas/query-base-model.yaml
+FieldsEnum:
+  $ref: schemas/fields-enum.yaml

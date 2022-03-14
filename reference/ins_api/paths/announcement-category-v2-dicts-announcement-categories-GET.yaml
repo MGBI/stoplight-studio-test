@@ -1,0 +1,20 @@
+tags:
+- dicts_iapi
+- public_iapi
+summary: GET /v2/dicts/announcement-categories
+operationId: get_announcement_category_v2_dicts_announcement_categories_get
+responses:
+  '200':
+    description: Wynik wyszukiwania słownika
+    content:
+      application/json:
+        schema:
+          title: Response Get Announcement Category V2 Dicts Announcement Categories
+            Get
+          type: array
+          items:
+            $ref: '#/components/schemas/InfoCategories'
+description: Zwraca słownik zawierający etykiety dla kategorii ogłoszeń.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

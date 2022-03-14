@@ -1,0 +1,19 @@
+tags:
+- dicts_iapi
+- public_iapi
+summary: GET /v2/dicts/report-types
+operationId: get_types_v2_dicts_report_types_get
+responses:
+  '200':
+    description: Wynik wyszukiwania słownika
+    content:
+      application/json:
+        schema:
+          title: Response Get Types V2 Dicts Report Types Get
+          type: array
+          items:
+            $ref: '#/components/schemas/InfoTypes'
+description: Zwraca słownik zawierający etykiety dla typów raportu.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

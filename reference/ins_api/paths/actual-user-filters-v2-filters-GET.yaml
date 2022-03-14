@@ -1,0 +1,68 @@
+tags:
+- filters_iapi
+summary: GET /v2/filters
+operationId: get_actual_user_filters_v2_filters_get
+parameters:
+- required: false
+  schema:
+    title: Exclude
+    type: array
+    items:
+      enum:
+      - content
+      - items_count
+      type: string
+  name: exclude
+  in: query
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania filtrów aktualnego użytkownika
+    content:
+      application/json:
+        schema:
+          title: Response Get Actual User Filters V2 Filters Get
+          type: array
+          items:
+            $ref: '#/components/schemas/FiltersModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+description: Zwraca listę filtrów przypisanych do aktualnego użytkownika.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

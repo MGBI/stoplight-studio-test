@@ -1,0 +1,116 @@
+title: FiltersModel
+required:
+- name
+- id
+- creation_datetime
+type: object
+properties:
+  name:
+    title: Name
+    type: string
+    description: Nazwa filtra
+  content:
+    $ref: ../schemas.yaml#/ContentFiltersModel
+    description: Zawartość filtra
+    example:
+      msig_signature:
+      - XIV GUp 83/16
+      regon:
+      - '272404100'
+      krz_signature:
+      - BY1B/GUp/13/2021
+      krs:
+      - '0000422121'
+      pesel:
+      - '41041202774'
+      nip:
+      - '7272849598'
+      name:
+      - Jan Kowalski
+      - Ambroży Nielepszy
+    type: object
+    properties:
+      msig_signature:
+        items:
+          type: string
+        type: array
+        description: Sygnatura ogłoszenia w MSiG
+        title: Msig Signature
+      regon:
+        items:
+          type: string
+        type: array
+        description: Numer REGON podmiotu
+        title: Regon
+      krz_signature:
+        items:
+          type: string
+        type: array
+        description: Sygnatura ogłoszenia w KRZ
+        title: Krz Signature
+      krs:
+        items:
+          type: string
+        type: array
+        description: Numer KRS podmiotu
+        title: Krs
+      pesel:
+        items:
+          type: string
+        type: array
+        description: Numer PESEL
+        title: Pesel
+      nip:
+        items:
+          type: string
+        type: array
+        description: Numer NIP podmiotu
+        title: Nip
+      name:
+        items:
+          type: string
+        type: array
+        description: Imię i nazwisko
+        title: Name
+    title: ContentFiltersModel
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator filtra
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas utworzenia filtra
+  last_update_datetime:
+    title: Last Update Datetime
+    type: string
+    format: date-time
+    nullable: true
+    description: Data i czas ostatniej aktualizacji filtra
+  items_count:
+    title: Items Count
+    type: integer
+    description: Liczba wszystkich identyfikatorów w filtrze
+example:
+  id: 6221c40ca9ab2f868237cd47
+  name: Dłużnicy 2021-11
+  content:
+    nip:
+    - '7272849598'
+    regon:
+    - '272404100'
+    krs:
+    - '0000422121'
+    pesel:
+    - '41041202774'
+    krz_signature:
+    - BY1B/GUp/13/2021
+    msig_signature:
+    - XIV GUp 83/16
+    name:
+    - Jan Kowalski
+    - Ambroży Nielepszy
+  items_count: 8
+  creation_datetime: '2022-03-02T08:47:24.672670+01:00'
+  last_update_datetime: '2022-03-04T06:47:24.672929+01:00'

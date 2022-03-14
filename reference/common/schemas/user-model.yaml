@@ -1,0 +1,44 @@
+title: UserModel
+required:
+- id
+- email
+- is_active
+- is_admin
+- creation_datetime
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator użytkownika
+  email:
+    title: Email
+    type: string
+    format: email
+    description: Adres e-mail użytkownika
+  is_active:
+    title: Is Active
+    type: boolean
+    description: Czy użytkownik jest aktywny?
+  is_admin:
+    title: Is Admin
+    type: boolean
+    description: Czy użytkownik jest adminem?
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data wygasania konta użytkownika
+  deactivation_datetime:
+    title: Deactivation Datetime
+    type: string
+    format: date-time
+    nullable: true
+    description: Data wygasania konta użytkownika
+example:
+  id: 62220466f48a3bfd27aaf800
+  email: abc@mgbi.pl
+  is_active: true
+  is_admin: false
+  creation_datetime: '2022-03-03T13:21:58.550020+01:00'
+  deactivation_datetime: '2022-07-01T13:21:58.550392+02:00'

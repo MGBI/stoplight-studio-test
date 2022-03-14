@@ -1,0 +1,39 @@
+title: UpdatesModel
+required:
+- id
+- creation_datetime
+- issue_date
+- added_records_count
+- source
+type: object
+properties:
+  id:
+    title: Id
+    type: integer
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas rejestracji aktualizacji
+  issue_date:
+    title: Issue Date
+    type: string
+    format: date
+    description: Data publikacji ogłoszeń
+  added_records_count:
+    title: Added Records Count
+    type: integer
+  source:
+    $ref: ../schemas.yaml#/SourceEnum
+    enum:
+    - krz
+    - msig
+    type: string
+    description: Identyfikator źródła danych
+    title: Source
+example:
+  id: 1
+  creation_datetime: '2022-03-04T08:47:24.864903+01:00'
+  issue_date: '2022-03-04'
+  announcements_count: 100
+  source: krz

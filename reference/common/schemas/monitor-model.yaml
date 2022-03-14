@@ -1,0 +1,97 @@
+title: MonitorModel
+required:
+- id
+- emails
+- append_first_entry
+- creation_datetime
+- send_empty_notifications
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator monitoringu
+  filter_id:
+    title: Filter Id
+    type: string
+    nullable: true
+    description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
+  emails:
+    title: Emails
+    type: array
+    items:
+      type: string
+    description: Adresy e-mail do wysyłki powiadomień z monitoringów
+  append_first_entry:
+    title: Append First Entry
+    type: boolean
+    description: Czy uwzględniać również identyfikatory podane w pierwszym ogłoszeniu
+      w ramach postępowania?
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+    description: Data i czas utworzenia monitoringu
+  last_update_datetime:
+    title: Last Update Datetime
+    type: string
+    format: date-time
+    nullable: true
+    description: Data i czas ostatniej aktualizacji monitoringu
+  notifications:
+    title: Notifications
+    type: array
+    items:
+      required:
+      - sent_datetime
+      - email
+      - status
+      type: object
+      properties:
+        status:
+          enum:
+          - 0
+          - 1
+          type: integer
+          description: |-
+            Status wysyłki powiadomienia
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Wartość | Nazwa |
+              |-|-|
+              | `0` | Błąd wysyłki |
+              | `1` | Wysłane |</details>
+          title: NotificationStatusEnum
+        email:
+          minLength: 5
+          maxLength: 100
+          type: string
+          description: Adres e-mail, na który wysłano powiadomienie
+          title: Email
+        sent_datetime:
+          format: date-time
+          type: string
+          description: Data wysyłki powiadomienia
+          title: Sent Datetime
+      title: NotificationModel
+    description: Data i czas wysyłki powiadomienia
+  send_empty_notifications:
+    title: Send Empty Notifications
+    type: boolean
+    description: Czy wysyłać powiadomienie, jeśli nie pojawiły się nowe ogłoszenia
+      w ramach monitoringu?
+example:
+  id: 6221c40c843d0d773f37cd4b
+  filter_id: 6221c40cdeb9dcdccf37cd4c
+  emails:
+  - abc@mgbi.pl
+  - def@mgbi.pl
+  append_first_entry: false
+  send_empty_notification: true
+  creation_datetime: '2022-03-02T08:47:24.769095+01:00'
+  last_update_datetime: '2022-03-04T06:47:24.769118+01:00'
+  notifications:
+  - sent_datetime: '2022-02-27T08:47:24.769125+01:00'
+    email: abc@mgbi.pl
+    status: 1

@@ -1,0 +1,19 @@
+tags:
+- dicts_iapi
+- public_iapi
+summary: GET /v2/dicts/report-formats
+operationId: report_formats_v2_dicts_report_formats_get
+responses:
+  '200':
+    description: Wynik wyszukiwania słownika
+    content:
+      application/json:
+        schema:
+          title: Response Report Formats V2 Dicts Report Formats Get
+          type: array
+          items:
+            $ref: '#/components/schemas/TypesFormat'
+description: Zwraca słownik zawierający etykiety dla formatów pliku raportu.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

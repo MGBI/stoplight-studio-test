@@ -1,0 +1,16 @@
+title: Error
+required:
+- error
+- details
+type: object
+properties:
+  error:
+    title: Error
+    type: string
+    description: Opis błędu
+  details:
+    title: Details
+    anyOf:
+    - type: string
+    - type: object
+    description: Szczegółowe informacje na temat błędu

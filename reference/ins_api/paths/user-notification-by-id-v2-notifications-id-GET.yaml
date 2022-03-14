@@ -1,0 +1,75 @@
+tags:
+- notifications_iapi
+summary: GET /v2/notifications/{id}
+operationId: get_user_notification_by_id_v2_notifications__id__get
+parameters:
+- required: true
+  schema:
+    title: Id
+    type: string
+    example: 6221c40c51fce5ae9f37cd48
+    maxLength: 24
+    minLength: 24
+  name: id
+  in: path
+  description: Unikalny identyfikator powiadomienia
+- required: false
+  schema:
+    title: Authorization
+    type: string
+  example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Authorization
+  in: header
+  description: Klucz autoryzacji
+responses:
+  '200':
+    description: Wynik wyszukiwania powiadomienia o określonym identyfikatorze
+    content:
+      application/json:
+        schema:
+          items:
+            $ref: '#/components/schemas/NotificationModel'
+  '400':
+    description: Niewłaściwy format zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Bad Request
+          items:
+            $ref: '#/components/schemas/Error'
+  '401':
+    description: Niepoprawna autentykacja tokenu
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Unauthorized
+          items:
+            $ref: '#/components/schemas/Error'
+  '403':
+    description: Nieudana autoryzacja dostępu do API
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Forbidden
+          items:
+            $ref: '#/components/schemas/Error'
+  '404':
+    description: Nie znaleziono
+    content:
+      application/json:
+        schema:
+          example:
+            details: Error Description
+            error: Not Found
+          items:
+            $ref: '#/components/schemas/Error'
+description: Zwraca powiadomienie o podanym `id`.
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml

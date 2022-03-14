@@ -1,0 +1,17 @@
+title: InfoFields
+required:
+- id
+- label
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+    description: Unikalny identyfikator
+  label:
+    title: Label
+    type: string
+    description: Etykieta
+example:
+  id: entity
+  label: Lista podmiotów, których dotyczy ogłoszenie
