@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.292
+  version: 1.0.312
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -17919,12 +17919,14 @@ paths:
       - required: false
         schema:
           $ref: '#/components/schemas/MsigChapterEnum'
-          description: "An enumeration.\nRozdzia\u0142 MSiG\n<details>\n  <summary>Poka\u017C\
-            \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa rozdzia\u0142\
-            u |\n  |-|-|\n  | `0` | Insolvency |\n  | `1` | Restructuring |</details>"
-          example: 0
+          description: "Rozdzia\u0142 MSiG\n<details>\n  <summary>Poka\u017C mo\u017C\
+            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa rozdzia\u0142u |\n\
+            \  |-|-|\n  | `0` | Og\u0142oszenia wymagane przez prawo upad\u0142o\u015B\
+            ciowe |\n  | `1` | Og\u0142oszenia wymagane przez prawo restrukturyzacyjne\
+            \ |</details>"
         name: msig_chapter
         in: query
+        example: '0'
       - required: false
         schema:
           title: Msig Section
@@ -17983,9 +17985,9 @@ paths:
             \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa rozdzia\u0142\
             u |\n  |-|-|\n  | `0` | Restructuring |\n  | `1` | Insolvency |\n  | `2`\
             \ | Ban |</details>"
-          example: krz_chapter=0
         name: krz_chapter
         in: query
+        example: '0'
       - required: false
         schema:
           title: Krz Section
@@ -18045,6 +18047,7 @@ paths:
             \ s\u0105dowego |</details>"
         name: krz_subsection
         in: query
+        example: 30
       - required: false
         schema:
           title: Msig Signature
@@ -18052,6 +18055,7 @@ paths:
         name: msig_signature
         in: query
         description: "Sygnatura og\u0142oszenia w MSiG"
+        example: BMSiG-68591/2021
       - required: false
         schema:
           title: Krz Signature
@@ -18059,6 +18063,7 @@ paths:
         name: krz_signature
         in: query
         description: "Sygnatura og\u0142oszenia w KRZ"
+        example: 22220111/00004
       - required: false
         schema:
           title: Nip
@@ -18107,6 +18112,7 @@ paths:
         name: first_name
         in: query
         description: "Imi\u0119 osoby, kt\xF3rej dotyczy og\u0142oszenie"
+        example: Adam
       - required: false
         schema:
           title: Last Name
@@ -18115,6 +18121,7 @@ paths:
         name: last_name
         in: query
         description: "Nazwisko osoby, kt\xF3rej dotyczy og\u0142oszenie"
+        example: Kowalczyk
       - required: false
         schema:
           title: Signature
@@ -18122,6 +18129,7 @@ paths:
         name: signature
         in: query
         description: "Sygnatura post\u0119powania"
+        example: XIX GUp 113/20
       - required: false
         schema:
           title: Commissioner Name
@@ -18129,6 +18137,7 @@ paths:
         name: commissioner_name
         in: query
         description: "Imi\u0119 i nazwisko s\u0119dziego komisarza"
+        example: Ryszard Nowak
       - required: false
         schema:
           title: Administrator Name
@@ -18136,6 +18145,7 @@ paths:
         name: administrator_name
         in: query
         description: "Imi\u0119 i nazwisko nadzorcy s\u0105dowego"
+        example: Jan Kowalski
       - required: false
         schema:
           $ref: '#/components/schemas/ProjectionEnum'
@@ -18150,6 +18160,7 @@ paths:
             oszenia |</details>"
         name: projection
         in: query
+        example: entity
       - required: false
         schema:
           title: Category
@@ -18162,6 +18173,9 @@ paths:
         in: query
         description: "Umo\u017Cliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,\
           \ krz_entry.chapter i krz_entry.section"
+        example:
+        - K.0.1,M.0.9
+        - M.1.22
       - required: false
         schema:
           title: Archival

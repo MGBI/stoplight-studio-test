@@ -35,18 +35,17 @@ parameters:
   schema:
     $ref: '#/components/schemas/MsigChapterEnum'
     description: |-
-      An enumeration.
       Rozdział MSiG
       <details>
         <summary>Pokaż możliwe opcje</summary>
 
         | Wartość | Nazwa rozdziału |
         |-|-|
-        | `0` | Insolvency |
-        | `1` | Restructuring |</details>
-    example: 0
+        | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+        | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
   name: msig_chapter
   in: query
+  example: '0'
 - required: false
   schema:
     title: Msig Section
@@ -124,9 +123,9 @@ parameters:
         | `0` | Restructuring |
         | `1` | Insolvency |
         | `2` | Ban |</details>
-    example: krz_chapter=0
   name: krz_chapter
   in: query
+  example: '0'
 - required: false
   schema:
     title: Krz Section
@@ -213,6 +212,7 @@ parameters:
         | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
   name: krz_subsection
   in: query
+  example: 30
 - required: false
   schema:
     title: Msig Signature
@@ -220,6 +220,7 @@ parameters:
   name: msig_signature
   in: query
   description: Sygnatura ogłoszenia w MSiG
+  example: BMSiG-68591/2021
 - required: false
   schema:
     title: Krz Signature
@@ -227,6 +228,7 @@ parameters:
   name: krz_signature
   in: query
   description: Sygnatura ogłoszenia w KRZ
+  example: 22220111/00004
 - required: false
   schema:
     title: Nip
@@ -275,6 +277,7 @@ parameters:
   name: first_name
   in: query
   description: Imię osoby, której dotyczy ogłoszenie
+  example: Adam
 - required: false
   schema:
     title: Last Name
@@ -283,6 +286,7 @@ parameters:
   name: last_name
   in: query
   description: Nazwisko osoby, której dotyczy ogłoszenie
+  example: Kowalczyk
 - required: false
   schema:
     title: Signature
@@ -290,6 +294,7 @@ parameters:
   name: signature
   in: query
   description: Sygnatura postępowania
+  example: XIX GUp 113/20
 - required: false
   schema:
     title: Commissioner Name
@@ -297,6 +302,7 @@ parameters:
   name: commissioner_name
   in: query
   description: Imię i nazwisko sędziego komisarza
+  example: Ryszard Nowak
 - required: false
   schema:
     title: Administrator Name
@@ -304,6 +310,7 @@ parameters:
   name: administrator_name
   in: query
   description: Imię i nazwisko nadzorcy sądowego
+  example: Jan Kowalski
 - required: false
   schema:
     $ref: '#/components/schemas/ProjectionEnum'
@@ -322,6 +329,7 @@ parameters:
         | `content` | Nieprzetworzona treść ogłoszenia |</details>
   name: projection
   in: query
+  example: entity
 - required: false
   schema:
     title: Category
@@ -334,6 +342,9 @@ parameters:
   in: query
   description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,
     krz_entry.chapter i krz_entry.section
+  example:
+  - K.0.1,M.0.9
+  - M.1.22
 - required: false
   schema:
     title: Archival
