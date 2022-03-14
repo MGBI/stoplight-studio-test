@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.270
+  version: 1.0.275
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -2156,41 +2156,52 @@ paths:
             description: An enumeration.
           ContentFiltersModel:
             title: ContentFiltersModel
-            type: array
+            type: object
+            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
+                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
               pesel:
                 title: Pesel
                 type: array
+                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
               krz_signature:
                 title: Krz Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
               msig_signature:
                 title: Msig Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
                 items:
                   type: string
               name:
                 title: Name
                 type: array
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
             example:
@@ -2796,7 +2807,6 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                description: "Zawarto\u015B\u0107 filtra"
                 example:
                   msig_signature:
                   - XIV GUp 83/16
@@ -2858,6 +2868,7 @@ paths:
                     description: "Imi\u0119 i nazwisko"
                     title: Name
                 title: ContentFiltersModel
+                description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
                 type: string
@@ -5372,41 +5383,52 @@ paths:
             description: An enumeration.
           ContentFiltersModel:
             title: ContentFiltersModel
-            type: array
+            type: object
+            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
+                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
               pesel:
                 title: Pesel
                 type: array
+                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
               krz_signature:
                 title: Krz Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
               msig_signature:
                 title: Msig Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
                 items:
                   type: string
               name:
                 title: Name
                 type: array
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
             example:
@@ -6012,7 +6034,6 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                description: "Zawarto\u015B\u0107 filtra"
                 example:
                   msig_signature:
                   - XIV GUp 83/16
@@ -6074,6 +6095,7 @@ paths:
                     description: "Imi\u0119 i nazwisko"
                     title: Name
                 title: ContentFiltersModel
+                description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
                 type: string
@@ -8374,41 +8396,52 @@ paths:
             description: An enumeration.
           ContentFiltersModel:
             title: ContentFiltersModel
-            type: array
+            type: object
+            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
+                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
               pesel:
                 title: Pesel
                 type: array
+                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
               krz_signature:
                 title: Krz Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
               msig_signature:
                 title: Msig Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
                 items:
                   type: string
               name:
                 title: Name
                 type: array
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
             example:
@@ -9014,7 +9047,6 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                description: "Zawarto\u015B\u0107 filtra"
                 example:
                   msig_signature:
                   - XIV GUp 83/16
@@ -9076,6 +9108,7 @@ paths:
                     description: "Imi\u0119 i nazwisko"
                     title: Name
                 title: ContentFiltersModel
+                description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
                 type: string
@@ -11976,41 +12009,52 @@ paths:
             description: An enumeration.
           ContentFiltersModel:
             title: ContentFiltersModel
-            type: array
+            type: object
+            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
+                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
               pesel:
                 title: Pesel
                 type: array
+                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
               krz_signature:
                 title: Krz Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
               msig_signature:
                 title: Msig Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
                 items:
                   type: string
               name:
                 title: Name
                 type: array
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
             example:
@@ -12616,7 +12660,6 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                description: "Zawarto\u015B\u0107 filtra"
                 example:
                   msig_signature:
                   - XIV GUp 83/16
@@ -12678,6 +12721,7 @@ paths:
                     description: "Imi\u0119 i nazwisko"
                     title: Name
                 title: ContentFiltersModel
+                description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
                 type: string
@@ -14957,41 +15001,52 @@ paths:
             description: An enumeration.
           ContentFiltersModel:
             title: ContentFiltersModel
-            type: array
+            type: object
+            description: "Zawarto\u015B\u0107 filtra"
             properties:
               nip:
                 title: Nip
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w NIP"
               regon:
                 title: Regon
                 type: array
                 items:
                   type: string
+                description: "Lista numer\xF3w REGON"
               krs:
                 title: Krs
                 type: array
+                description: "Lista identyfikator\xF3w KRS"
                 items:
                   type: string
               pesel:
                 title: Pesel
                 type: array
+                description: "Lista numer\xF3w PESEL"
                 items:
                   type: string
               krz_signature:
                 title: Krz Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru\
+                  \ Zad\u0142u\u017Conych"
                 items:
                   type: string
               msig_signature:
                 title: Msig Signature
                 type: array
+                description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego\
+                  \ i Gospodarczego"
                 items:
                   type: string
               name:
                 title: Name
                 type: array
+                description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia\
+                  \ (`imi\u0119 nazwisko`)"
                 items:
                   type: string
             example:
@@ -15597,7 +15652,6 @@ paths:
                 type: string
                 description: Nazwa filtra
               content:
-                description: "Zawarto\u015B\u0107 filtra"
                 example:
                   msig_signature:
                   - XIV GUp 83/16
@@ -15659,6 +15713,7 @@ paths:
                     description: "Imi\u0119 i nazwisko"
                     title: Name
                 title: ContentFiltersModel
+                description: "Zawarto\u015B\u0107 filtra"
               id:
                 title: Id
                 type: string
@@ -18573,43 +18628,53 @@ components:
       description: An enumeration.
     ContentFiltersModel:
       title: ContentFiltersModel
-      type: array
+      type: object
       properties:
         nip:
           title: Nip
           type: array
           items:
             type: string
+          description: "Lista numer\xF3w NIP"
         regon:
           title: Regon
           type: array
           items:
             type: string
+          description: "Lista numer\xF3w REGON"
         krs:
           title: Krs
           type: array
           items:
             type: string
+          description: "Lista identyfikator\xF3w KRS"
         pesel:
           title: Pesel
           type: array
           items:
             type: string
+          description: "Lista numer\xF3w PESEL"
         krz_signature:
           title: Krz Signature
           type: array
           items:
             type: string
+          description: "Lista sygnatur obwieszcze\u0144 z Krajowego Rejestru Zad\u0142\
+            u\u017Conych"
         msig_signature:
           title: Msig Signature
           type: array
           items:
             type: string
+          description: "Lista sygnatur obwieszcze\u0144 z Monitora S\u0105dowego i\
+            \ Gospodarczego"
         name:
           title: Name
           type: array
           items:
             type: string
+          description: "Lista os\xF3b, kt\xF3rych dotycz\u0105 obweiszczenia (`imi\u0119\
+            \ nazwisko`)"
       example:
         nip:
         - '7272849598'
@@ -18626,6 +18691,7 @@ components:
         name:
         - Jan Kowalski
         - "Ambro\u017Cy Nielepszy"
+      description: "Zawarto\u015B\u0107 filtra"
     CreateFiltersModel:
       title: CreateFiltersModel
       required:
@@ -19209,7 +19275,6 @@ components:
           description: Nazwa filtra
         content:
           $ref: '#/components/schemas/ContentFiltersModel'
-          description: "Zawarto\u015B\u0107 filtra"
           example:
             msig_signature:
             - XIV GUp 83/16
@@ -19271,6 +19336,7 @@ components:
               description: "Imi\u0119 i nazwisko"
               title: Name
           title: ContentFiltersModel
+          description: "Zawarto\u015B\u0107 filtra"
         id:
           title: Id
           type: string

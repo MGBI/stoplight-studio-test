@@ -11,7 +11,6 @@ properties:
     description: Nazwa filtra
   content:
     $ref: ../schemas.yaml#/ContentFiltersModel
-    description: Zawartość filtra
     example:
       msig_signature:
       - XIV GUp 83/16
@@ -73,6 +72,7 @@ properties:
         description: Imię i nazwisko
         title: Name
     title: ContentFiltersModel
+    description: Zawartość filtra
   id:
     title: Id
     type: string
