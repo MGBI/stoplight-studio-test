@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.266
+  version: 1.0.270
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -2902,7 +2902,10 @@ paths:
           Format:
             title: Format
             type: integer
-            description: We numerate here each file format
+            description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+              liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `1`\
+              \ | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n| `5` | Def\
+              \ |</details>"
           HTTPValidationError:
             title: HTTPValidationError
             type: object
@@ -3832,11 +3835,11 @@ paths:
                 maximum: 100
               file_format:
                 type: integer
-                description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ |\n  |-|-|\n  | `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n\
-                  \  | `4` | Json |\n  | `5` | Def |</details>"
                 title: Format
+                description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+                  liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+                  | `1` | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n|\
+                  \ `5` | Def |</details>"
               file_password:
                 title: File Password
                 type: string
@@ -6115,7 +6118,10 @@ paths:
           Format:
             title: Format
             type: integer
-            description: We numerate here each file format
+            description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+              liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `1`\
+              \ | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n| `5` | Def\
+              \ |</details>"
           HTTPValidationError:
             title: HTTPValidationError
             type: object
@@ -7045,11 +7051,11 @@ paths:
                 maximum: 100
               file_format:
                 type: integer
-                description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ |\n  |-|-|\n  | `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n\
-                  \  | `4` | Json |\n  | `5` | Def |</details>"
                 title: Format
+                description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+                  liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+                  | `1` | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n|\
+                  \ `5` | Def |</details>"
               file_password:
                 title: File Password
                 type: string
@@ -9114,7 +9120,10 @@ paths:
           Format:
             title: Format
             type: integer
-            description: We numerate here each file format
+            description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+              liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `1`\
+              \ | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n| `5` | Def\
+              \ |</details>"
           HTTPValidationError:
             title: HTTPValidationError
             type: object
@@ -10044,11 +10053,11 @@ paths:
                 maximum: 100
               file_format:
                 type: integer
-                description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ |\n  |-|-|\n  | `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n\
-                  \  | `4` | Json |\n  | `5` | Def |</details>"
                 title: Format
+                description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+                  liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+                  | `1` | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n|\
+                  \ `5` | Def |</details>"
               file_password:
                 title: File Password
                 type: string
@@ -12713,7 +12722,10 @@ paths:
           Format:
             title: Format
             type: integer
-            description: We numerate here each file format
+            description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+              liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `1`\
+              \ | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n| `5` | Def\
+              \ |</details>"
           HTTPValidationError:
             title: HTTPValidationError
             type: object
@@ -13643,11 +13655,11 @@ paths:
                 maximum: 100
               file_format:
                 type: integer
-                description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ |\n  |-|-|\n  | `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n\
-                  \  | `4` | Json |\n  | `5` | Def |</details>"
                 title: Format
+                description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+                  liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+                  | `1` | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n|\
+                  \ `5` | Def |</details>"
               file_password:
                 title: File Password
                 type: string
@@ -15691,7 +15703,10 @@ paths:
           Format:
             title: Format
             type: integer
-            description: We numerate here each file format
+            description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+              liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `1`\
+              \ | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n| `5` | Def\
+              \ |</details>"
           HTTPValidationError:
             title: HTTPValidationError
             type: object
@@ -16621,11 +16636,11 @@ paths:
                 maximum: 100
               file_format:
                 type: integer
-                description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C\
-                  \ mo\u017Cliwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa\
-                  \ |\n  |-|-|\n  | `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n\
-                  \  | `4` | Json |\n  | `5` | Def |</details>"
                 title: Format
+                description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+                  liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n\
+                  | `1` | Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n|\
+                  \ `5` | Def |</details>"
               file_password:
                 title: File Password
                 type: string
@@ -19300,7 +19315,9 @@ components:
     Format:
       title: Format
       type: integer
-      description: We numerate here each file format
+      description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017Cliwe\
+        \ opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `1` | Csv |\n\
+        | `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n| `5` | Def |</details>"
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -20205,11 +20222,10 @@ components:
         file_format:
           $ref: '#/components/schemas/Format'
           type: integer
-          description: "Format pliku raportu.\n<details>\n  <summary>Poka\u017C mo\u017C\
-            liwe opcje</summary>\n\n  | Warto\u015B\u0107 | Nazwa |\n  |-|-|\n  |\
-            \ `1` | Csv |\n  | `2` | Xlsx |\n  | `3` | Xml |\n  | `4` | Json |\n \
-            \ | `5` | Def |</details>"
           title: Format
+          description: "Format pliku raportu.<details><summary>Poka\u017C mo\u017C\
+            liwe opcje</summary>\n\n| Warto\u015B\u0107 | Nazwa  |\n|-|-|\n| `1` |\
+            \ Csv |\n| `2` | Xlsx |\n| `3` | Xml |\n| `4` | Json |\n| `5` | Def |</details>"
         file_password:
           title: File Password
           type: string

@@ -6,4 +6,13 @@ enum:
 - 4
 - 5
 type: integer
-description: We numerate here each file format
+description: |-
+  Format pliku raportu.<details><summary>Pokaż możliwe opcje</summary>
+
+  | Wartość | Nazwa  |
+  |-|-|
+  | `1` | Csv |
+  | `2` | Xlsx |
+  | `3` | Xml |
+  | `4` | Json |
+  | `5` | Def |</details>

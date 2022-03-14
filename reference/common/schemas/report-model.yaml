@@ -392,18 +392,6 @@ properties:
   file_format:
     $ref: ../schemas.yaml#/Format
     type: integer
-    description: |-
-      Format pliku raportu.
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Wartość | Nazwa |
-        |-|-|
-        | `1` | Csv |
-        | `2` | Xlsx |
-        | `3` | Xml |
-        | `4` | Json |
-        | `5` | Def |</details>
     title: Format
     enum:
     - 1
@@ -411,6 +399,16 @@ properties:
     - 3
     - 4
     - 5
+    description: |-
+      Format pliku raportu.<details><summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa  |
+      |-|-|
+      | `1` | Csv |
+      | `2` | Xlsx |
+      | `3` | Xml |
+      | `4` | Json |
+      | `5` | Def |</details>
   file_password:
     title: File Password
     type: string
