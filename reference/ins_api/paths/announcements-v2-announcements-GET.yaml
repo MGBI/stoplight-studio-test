@@ -342,16 +342,15 @@ parameters:
       - type: string
   name: category
   in: query
-  description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,
-    krz_entry.chapter i krz_entry.section
+  description: Lista możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
   example:
-  - K.0.1,M.0.9
-  - M.1.22
+  - K.0.1,M.0.9,M.1.22
 - required: false
   schema:
     title: Archival
     type: boolean
     default: false
+    example: true
   name: archival
   in: query
   description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from
