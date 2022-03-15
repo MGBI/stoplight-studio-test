@@ -463,7 +463,7 @@ properties:
           description: Link do podglądu treści ogłoszenia
     description: Nieprzetworzona treść ogłoszenia
 example:
-  id: 622ef5cbf15eb859f650208f
+  id: 623048cdb48627e3e2e491f3
   entity:
   - info:
       first_name: Jan
@@ -474,7 +474,12 @@ example:
       ownership_type: własność krajowych osób fizycznych
     numbers:
       pesel: '75030957433'
-    address: {}
+    address:
+      town: Warszawa
+      state: mazowieckie
+      gmina: Warszawa-Mokotów
+      street: Jadźwingów
+      powiat: Warszawa
   proceeding:
     signatures:
     - XIX GUp 113/20
@@ -501,3 +506,4 @@ example:
   content:
     text: Postanowieniem z dnia ...
     html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
+    url: https://www.imsig.pl/lista-upadlosci/ogloszenia/61de1a009d34ec0asqd2df06
