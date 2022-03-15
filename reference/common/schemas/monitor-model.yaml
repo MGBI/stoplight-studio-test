@@ -79,6 +79,7 @@ properties:
   send_empty_notifications:
     title: Send Empty Notifications
     type: boolean
+    example: true
     description: Czy wysyłać powiadomienie, jeśli nie pojawiły się nowe ogłoszenia
       w ramach monitoringu?
 example:

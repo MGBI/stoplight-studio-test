@@ -286,7 +286,7 @@ properties:
     type: array
     items: {}
     description: |-
-      Identyfikatory pól raportu wybranych przez użytkownika
+      Identyfikatory pól raportu wybranych przez użytkownika. W przypadku pustej listy raport zawiera wszystkie dostępne pola obwieszczenia.
       <details>
       <summary>Pokaż możliwe opcje</summary>
 
