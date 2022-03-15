@@ -13,6 +13,15 @@ parameters:
       type: string
   name: exclude
   in: query
+  description: |-
+    Pola, które nie będą zwrócone w odpowiedzi.
+    <details><summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa  |
+    |-|-|
+    | `notifications`| Lista powiadomień |</details>
+  example:
+  - notifications
 - required: false
   schema:
     title: Authorization

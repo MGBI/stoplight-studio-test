@@ -61,3 +61,4 @@ example:
   sent_datetime: '2022-03-02T08:47:24.765264+01:00'
   email: abc@def.pl
   status: 1
+  error: ERROR !

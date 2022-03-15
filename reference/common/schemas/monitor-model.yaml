@@ -75,7 +75,7 @@ properties:
           description: Data wysyłki powiadomienia
           title: Sent Datetime
       title: NotificationModel
-    description: Data i czas wysyłki powiadomienia
+    description: Lista powiadomień
   send_empty_notifications:
     title: Send Empty Notifications
     type: boolean
