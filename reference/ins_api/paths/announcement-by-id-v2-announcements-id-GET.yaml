@@ -40,6 +40,8 @@ parameters:
     example: true
   name: append_first_entry
   in: query
+  description: Scala dane obwieszczenia z pierwszym obwieszczeniem dotyczącym tego
+    samego postępowania.
 - required: false
   schema:
     title: Authorization

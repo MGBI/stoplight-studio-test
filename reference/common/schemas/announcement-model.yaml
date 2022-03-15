@@ -447,6 +447,7 @@ properties:
       required:
       - text
       - html
+      - url
       type: object
       properties:
         text:
@@ -456,6 +457,10 @@ properties:
           type: string
           format: html
           description: Treść ogłoszenia w formacie HTML
+        url:
+          type: string
+          format: url
+          description: Adres URL źródła danych
     description: Nieprzetworzona treść ogłoszenia
 example:
   id: 622ef5cbf15eb859f650208f

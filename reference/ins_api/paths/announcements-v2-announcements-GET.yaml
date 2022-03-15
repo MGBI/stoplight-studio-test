@@ -109,6 +109,7 @@ parameters:
     example: 1
   name: msig_section
   in: query
+  description: Sekcja MSIG
 - required: false
   schema:
     $ref: '#/components/schemas/KrzChapterEnum'
@@ -193,6 +194,7 @@ parameters:
     example: 1
   name: krz_section
   in: query
+  description: Sekcja KRZ
 - required: false
   schema:
     $ref: '#/components/schemas/KrzSubsectionEnum'
@@ -361,6 +363,9 @@ parameters:
     default: false
   name: append_first_entry
   in: query
+  description: Scala dane obwieszczenia z pierwszym obwieszczeniem dotyczącym tego
+    samego postępowania.
+  example: true
 - required: false
   schema:
     title: Authorization
