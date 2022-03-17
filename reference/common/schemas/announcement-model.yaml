@@ -362,6 +362,7 @@ properties:
       required:
       - chapter
       - section
+      - subsection
       - signature
       - issue_date
       - url
@@ -432,6 +433,22 @@ properties:
               |-|-|
               | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
               | `41` | Inne |</details>
+        subsection:
+          type: integer
+          description: |-
+            Podsekcja KRZ
+            <details>
+              <summary>Pokaż możliwe opcje</summary>
+
+              | Wartość | Nazwa rozdziału |
+              |-|-|
+              | `0` | Obwieszczenie o ustaleniu dnia układowego |
+              | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
+              | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
+              | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
+              | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
+              | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
+              | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
         issue_date:
           type: string
           description: Data publikacji ogłoszenia w KRZ

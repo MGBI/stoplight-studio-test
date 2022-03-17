@@ -199,11 +199,11 @@ parameters:
   schema:
     $ref: '#/components/schemas/KrzSubsectionEnum'
     description: |-
-      Rozdział MSiG
+      Subsekcja KRZ
       <details>
         <summary>Pokaż możliwe opcje</summary>
 
-        | Wartość | Nazwa rozdziału |
+        | Wartość | Nazwa subsekcji |
         |-|-|
         | `0` | Obwieszczenie o ustaleniu dnia układowego |
         | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
