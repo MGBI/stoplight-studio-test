@@ -43,8 +43,22 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: value is not a valid integer
+            error: Validation error
+            details:
+            - loc:
+              - path
+              - id
+              msg: value is not a valid integer
+              type: type_error.integer
+            - loc:
+              - path
+              - id
+              msg: 'unexpected value; permitted: ''last'''
+              type: value_error.const
+              ctx:
+                given: abcd
+                permitted:
+                - last
           items:
             $ref: '#/components/schemas/Error'
   '401':

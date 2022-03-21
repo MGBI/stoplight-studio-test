@@ -31,8 +31,14 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: Filter content cannot be empty
+            error: Validation error
+            details:
+            - loc:
+              - body
+              - content
+              - __root__
+              msg: Filter content cannot be empty
+              type: value_error
           items:
             $ref: '#/components/schemas/Error'
   '401':

@@ -49,8 +49,18 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: 'unexpected value; permitted: ''content'', ''items_count'''
+            error: Validation error
+            details:
+            - loc:
+              - query
+              - exclude
+              msg: 'unexpected value; permitted: ''content'', ''items_count'''
+              type: value_error.const
+              ctx:
+                given: ''
+                permitted:
+                - content
+                - items_count
           items:
             $ref: '#/components/schemas/Error'
   '401':

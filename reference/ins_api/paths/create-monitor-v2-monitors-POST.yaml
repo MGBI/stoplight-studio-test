@@ -31,8 +31,13 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: 'No filter with id: 6221c40cdeb9dcdccf37cd4c.'
+            error: Validation error
+            details:
+            - loc:
+              - body
+              - filter_id
+              msg: Invalid objectid
+              type: value_error
           items:
             $ref: '#/components/schemas/Error'
   '401':

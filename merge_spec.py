@@ -76,7 +76,11 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                                             "application/json", {}).get("schema", {})
                                         if new_code != "200":
                                             content_schema["example"] = {
-                                                "error": http.HTTPStatus(int(new_code)).phrase,
+                                                "error": old.get(label, {}).get(
+                                                    "application/json", {}).get(
+                                                    "schema", {}).get(
+                                                    "example", {}).get(
+                                                    "error", {}),
                                                 "details": old.get(label, {}).get(
                                                     "application/json", {}).get(
                                                     "schema", {}).get(

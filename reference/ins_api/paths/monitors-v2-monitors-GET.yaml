@@ -46,8 +46,17 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: 'unexpected value; permitted: ''notifications'''
+            error: Validation error
+            details:
+            - loc:
+              - query
+              - exclude
+              msg: 'unexpected value; permitted: ''notifications'''
+              type: value_error.const
+              ctx:
+                given: ''
+                permitted:
+                - notifications
           items:
             $ref: '#/components/schemas/Error'
   '401':

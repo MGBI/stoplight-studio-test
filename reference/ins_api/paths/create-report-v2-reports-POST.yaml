@@ -31,8 +31,13 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: Expecting value
+            error: Validation error
+            details:
+            - loc:
+              - body
+              - file_format
+              msg: field required
+              type: value_error.missing
           items:
             $ref: '#/components/schemas/Error'
   '401':

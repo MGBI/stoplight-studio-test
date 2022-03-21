@@ -32,7 +32,7 @@ responses:
         schema:
           example:
             error: Bad Request
-            details: 'You do not have monitor with id: 6221c40c843d0d773f37cd4b'
+            details: One of given ids is incorrect
           items:
             $ref: '#/components/schemas/Error'
   '401':

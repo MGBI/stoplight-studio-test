@@ -32,7 +32,7 @@ responses:
         schema:
           example:
             error: Bad Request
-            details: 'You don''t have filter with id: 6221c40ca9ab2f868237cd47'
+            details: One of given ids is incorrect
           items:
             $ref: '#/components/schemas/Error'
   '401':

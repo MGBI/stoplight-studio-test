@@ -41,8 +41,13 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: Invalid objectid
+            error: Validation error
+            details:
+            - loc:
+              - path
+              - id
+              msg: Invalid objectid
+              type: value_error
           items:
             $ref: '#/components/schemas/Error'
   '401':

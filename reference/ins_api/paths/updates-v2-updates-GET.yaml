@@ -45,8 +45,22 @@ responses:
       application/json:
         schema:
           example:
-            error: Bad Request
-            details: invalid datetime format
+            error: Validation error
+            details:
+            - loc:
+              - query
+              - creation_datetime_from
+              msg: invalid datetime format
+              type: value_error.datetime
+            - loc:
+              - query
+              - creation_datetime_to
+              msg: invalid datetime format
+              type: value_error.datetime
+              ctx:
+                given: abcd
+                permitted:
+                - last
           items:
             $ref: '#/components/schemas/Error'
   '401':
