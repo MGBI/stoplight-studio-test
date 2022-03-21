@@ -64,8 +64,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Bad Request
+            details: Invalid objectid
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -74,8 +74,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -84,8 +84,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
   '404':
@@ -94,8 +94,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Not Found
+            details: No announcement with id 623048cdb48627e3e2e491f3
           items:
             $ref: '#/components/schemas/Error'
 description: Zwraca ogłoszenie o podanym `id`.

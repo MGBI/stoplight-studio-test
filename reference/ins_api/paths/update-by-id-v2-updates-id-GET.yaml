@@ -43,8 +43,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Bad Request
+            details: value is not a valid integer
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -53,8 +53,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -63,8 +63,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
   '404':
@@ -73,8 +73,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Not Found
+            details: Update not found
           items:
             $ref: '#/components/schemas/Error'
 description: Zwraca dane aktualizacji bazy ogłoszeń o podanym `id`.

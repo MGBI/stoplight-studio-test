@@ -389,8 +389,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Bad Request
+            details: Invalid objectid
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -399,8 +399,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -409,8 +409,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
   '429':
@@ -419,8 +419,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Too Many Requests
+            details: You have exceeded your request limit
           items:
             $ref: '#/components/schemas/Error'
 description: |-

@@ -31,8 +31,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Bad Request
+            details: 'No filter with id: 6221c40cdeb9dcdccf37cd4c.'
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -41,8 +41,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -51,8 +51,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
   '429':
@@ -61,8 +61,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Too Many Requests
+            details: 'Monitors limit exceeded. Your monitors limit is: 5'
           items:
             $ref: '#/components/schemas/Error'
 description: |-
