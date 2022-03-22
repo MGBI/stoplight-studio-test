@@ -3,6 +3,8 @@ required:
 - name
 - id
 - creation_datetime
+- content
+- items_count
 type: object
 properties:
   name:

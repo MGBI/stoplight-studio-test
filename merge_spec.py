@@ -131,7 +131,7 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                         for pname in old_component[field].get(p, []):
                             component[field][p][pname] = old_component[field][p][pname]
             for field in old_component:
-                if field not in ["example", "properties", "required"]:
+                if field not in ["example", "properties"]:
                     component[field] = old_component[field]
             old_openapi["components"][name][component_name] = component
 
