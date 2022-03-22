@@ -21,16 +21,6 @@ responses:
           type: array
           items:
             $ref: '#/components/schemas/ReportModel'
-  '400':
-    description: Niewłaściwy format zapytania
-    content:
-      application/json:
-        schema:
-          example:
-            error: Bad Request
-            details: Error Description
-          items:
-            $ref: '#/components/schemas/Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:

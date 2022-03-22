@@ -19,16 +19,6 @@ responses:
         schema:
           items:
             $ref: '#/components/schemas/ParamsModel'
-  '400':
-    description: Niewłaściwy format zapytania
-    content:
-      application/json:
-        schema:
-          example:
-            error: Bad Request
-            details: Error Description
-          items:
-            $ref: '#/components/schemas/Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
@@ -47,6 +37,16 @@ responses:
           example:
             error: Forbidden
             details: Incorrect user token
+          items:
+            $ref: '#/components/schemas/Error'
+  '404':
+    description: Not Found
+    content:
+      application/json:
+        schema:
+          example:
+            error: Not Found
+            details: No params
           items:
             $ref: '#/components/schemas/Error'
 description: Zwraca parametry usługi dla aktualnego użytkownika.

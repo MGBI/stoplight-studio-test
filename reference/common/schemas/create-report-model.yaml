@@ -151,9 +151,6 @@ properties:
           title: Notification Id
           type: string
     description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
-    required:
-    - from_date
-    - to_date
     type: object
     properties:
       custom_categories:
