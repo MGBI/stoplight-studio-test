@@ -24,7 +24,7 @@ properties:
   added_records_count:
     title: Added Records Count
     type: integer
-    description: Ilość dodanych rekordów
+    description: Liczba dodanych rekordów
   source:
     $ref: ../schemas.yaml#/SourceEnum
     enum:
