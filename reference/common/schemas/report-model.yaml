@@ -432,6 +432,12 @@ properties:
     type: array
     items:
       type: object
+      properties:
+        download_datetime:
+          title: Download Datetime
+          type: string
+          format: date-time
+          description: Data pobrania raportu
     description: Historia pobrań raportu
 example:
   id: 6221c40cff11c462e837cd51
@@ -451,5 +457,6 @@ example:
   file_password: mgbi2021
   credits_used: 0
   creation_datetime: '2022-03-04T08:47:24.947878+01:00'
-  downloads: []
+  downloads:
+  - download_datetime: '2022-03-04T10:12:08.505092+01:00'
   records_count: 3
