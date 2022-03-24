@@ -141,328 +141,318 @@ properties:
     description: Lista podmiotów, których dotyczy ogłoszenie
   proceeding:
     title: Proceeding
-    type: array
-    items:
-      required:
-      - court_name
-      - court_department
-      - signatures
-      - commissioner_name
-      - commissioner_deputy_name
-      - administrator_name
-      - administrator_function
-      type: object
-      properties:
-        signatures:
-          items:
-            type: string
-          type: array
-          description: Sygnatury postępowania
-        commissioner_name:
+    type: object
+    required:
+    - court_name
+    - court_department
+    - signatures
+    - commissioner_name
+    - commissioner_deputy_name
+    - administrator_name
+    - administrator_function
+    properties:
+      signatures:
+        items:
           type: string
-          description: Imię i nazwisko sędziego komisarza
-        court_department:
-          type: string
-          description: Nazwa wydziału
-        administrator_zip_code:
-          type: string
-          description: Kod pocztowy w adresie nadzorcy
-        administrator_function:
-          type: string
-          description: Funkcja nadzorcy
-        court_name:
-          type: string
-          description: Nazwa sądu
-        administrator_name:
-          type: string
-          description: Imię i nazwisko nadzorcy
-        commissioner_deputy_name:
-          type: string
-          description: Imię i nazwisko zastępcy sędziego komisarza
-        administrator_town:
-          type: string
-          description: Miejscowość w adresie nadzorcy
-        administrator_licence_number:
-          type: integer
-          description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
-        administrator_address:
-          type: string
-          description: Adres pocztowy nadzorcy
-        administrator_source_url:
-          type: string
-          format: uri
-          description: Link do źródła danych nadzorcy
+        type: array
+        description: Sygnatury postępowania
+      commissioner_name:
+        type: string
+        description: Imię i nazwisko sędziego komisarza
+      court_department:
+        type: string
+        description: Nazwa wydziału
+      administrator_zip_code:
+        type: string
+        description: Kod pocztowy w adresie nadzorcy
+      administrator_function:
+        type: string
+        description: Funkcja nadzorcy
+      court_name:
+        type: string
+        description: Nazwa sądu
+      administrator_name:
+        type: string
+        description: Imię i nazwisko nadzorcy
+      commissioner_deputy_name:
+        type: string
+        description: Imię i nazwisko zastępcy sędziego komisarza
+      administrator_town:
+        type: string
+        description: Miejscowość w adresie nadzorcy
+      administrator_licence_number:
+        type: integer
+        description: Numer licencji doradcy restrukturyzacyjnego nadzorcy
+      administrator_address:
+        type: string
+        description: Adres pocztowy nadzorcy
+      administrator_source_url:
+        type: string
+        format: uri
+        description: Link do źródła danych nadzorcy
     description: Informacje o postępowaniu
   order:
     title: Order
-    type: array
-    items:
-      required:
-      - order_date
-      - expiration_period
-      - expiration_date
-      type: object
-      properties:
-        order_date:
-          type: string
-          format: date
-          description: Data wydania postanowienia
-        expiration_period:
-          type: integer
-          description: Okres do działania (w dniach)
-        expiration_date:
-          type: string
-          format: date
-          description: Data końcowa okresu do działania
+    type: object
+    required:
+    - order_date
+    - expiration_period
+    - expiration_date
+    properties:
+      order_date:
+        type: string
+        format: date
+        description: Data wydania postanowienia
+      expiration_period:
+        type: integer
+        description: Okres do działania (w dniach)
+      expiration_date:
+        type: string
+        format: date
+        description: Data końcowa okresu do działania
     description: Informacje o postanowieniu, którego dotyczy ogłoszenie
   msig_entry:
     title: Msig Entry
-    type: array
-    items:
-      required:
-      - chapter
-      - section
-      - signature
-      - issue_date
-      - yearly_number
-      - position_number
-      - url
-      type: object
-      properties:
-        chapter:
-          type: integer
-          description: |-
-            Rozdział MSiG
-            <details>
-              <summary>Pokaż możliwe opcje</summary>
+    type: object
+    required:
+    - chapter
+    - section
+    - signature
+    - issue_date
+    - yearly_number
+    - position_number
+    - url
+    properties:
+      chapter:
+        type: integer
+        description: |-
+          Rozdział MSiG
+          <details>
+            <summary>Pokaż możliwe opcje</summary>
 
-              | Wartość | Nazwa rozdziału |
-              |-|-|
-              | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
-              | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
-        position_number:
-          type: string
-          description: |-
-            Numer pozycji MSiG
-            <details>
-              <summary>Przykładowy numer pozycji</summary>
-              "00000"
-            </details>
-        issue_date:
-          type: string
-          description: |-
-            Data publikacji ogłoszenia w MSiG
-            <details>
-              <summary>Przykładowa data</summary>
-              "2021-12-08"
-            </details>
-          format: date
-        signature:
-          type: string
-          description: |-
-            Sygnatura ogłoszenia w MSiG
-            <details>
-              <summary>Przykładowa sygnatura MSiG</summary>
-              "BMSiG-68636/2021"
-            </details>
-        url:
-          type: string
-          example: http://www.imsig.pl/pozycja/2020/112/26734
-          description: |-
-            Link do ogłoszenia w serwisie imsig.pl
-            <details>
-              <summary>Przykładowy link do ogłoszenia</summary>
-              "http://www.imsig.pl/pozycja/2020/112/26734"
-            </details>
-          format: uri
-        section:
-          type: integer
-          description: |-
-            Sekcja MSiG
-            <details>
-              <summary>Pokaż możliwe opcje</summary>
+            | Wartość | Nazwa rozdziału |
+            |-|-|
+            | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+            | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
+      position_number:
+        type: string
+        description: |-
+          Numer pozycji MSiG
+          <details>
+            <summary>Przykładowy numer pozycji</summary>
+            "00000"
+          </details>
+      issue_date:
+        type: string
+        description: |-
+          Data publikacji ogłoszenia w MSiG
+          <details>
+            <summary>Przykładowa data</summary>
+            "2021-12-08"
+          </details>
+        format: date
+      signature:
+        type: string
+        description: |-
+          Sygnatura ogłoszenia w MSiG
+          <details>
+            <summary>Przykładowa sygnatura MSiG</summary>
+            "BMSiG-68636/2021"
+          </details>
+      url:
+        type: string
+        example: http://www.imsig.pl/pozycja/2020/112/26734
+        description: |-
+          Link do ogłoszenia w serwisie imsig.pl
+          <details>
+            <summary>Przykładowy link do ogłoszenia</summary>
+            "http://www.imsig.pl/pozycja/2020/112/26734"
+          </details>
+        format: uri
+      section:
+        type: integer
+        description: |-
+          Sekcja MSiG
+          <details>
+            <summary>Pokaż możliwe opcje</summary>
 
-              <b>Ogłoszenia wymagane przez prawo upadłościowe</b>
+            <b>Ogłoszenia wymagane przez prawo upadłościowe</b>
 
-              | Wartość | Nazwa sekcji |
-              |-|-|
-              | `1` | Postanowienie o ogłoszeniu upadłości |
-              | `2` | Obwieszczenie o zatwierdzeniu układu |
-              | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
-              | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
-              | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
-              | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
-              | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
-              | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
-              | `9` | Inne |
+            | Wartość | Nazwa sekcji |
+            |-|-|
+            | `1` | Postanowienie o ogłoszeniu upadłości |
+            | `2` | Obwieszczenie o zatwierdzeniu układu |
+            | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
+            | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
+            | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
+            | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
+            | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
+            | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
+            | `9` | Inne |
 
-              <b>Ogłoszenia wymagane przez prawo restrukturyzacyjne</b>
+            <b>Ogłoszenia wymagane przez prawo restrukturyzacyjne</b>
 
-              | Wartość | Nazwa sekcji |
-              |-|-|
-              | `20` | Dokonanie zmian w spisie wierzytelności |
-              | `21` | Inne |
-              | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
-              | `23` | Odmowa zatwierdzenia układu |
-              | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
-              | `25` | Określenie trybu i sposobu głosowania nad układem |
-              | `26` | Otwarcie postępowania o zatwierdzenie układu |
-              | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
-              | `28` | Otwarcie postępowania o zmianę układu |
-              | `29` | Otwarcie postępowania sanacyjnego |
-              | `30` | Otwarcie postępowania układowego |
-              | `31` | Otwarcie przyspieszonego postępowania układowego |
-              | `32` | Sprostowanie |
-              | `33` | Stwierdzenie wykonania układu |
-              | `34` | Uchylenie układu |
-              | `35` | Umorzenie postępowania |
-              | `36` | Wyznaczenie nadzorcy lub zarządcy |
-              | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
-              | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
-              | `39` | Zabezpieczenie majątku dłużnika |
-              | `40` | Zakończenie postępowania |
-              | `41` | Zatwierdzenie spisu wierzytelności |
-              | `42` | Zatwierdzenie układu |
-              | `43` | Złożenie planu restrukturyzacyjnego |
-              | `44` | Złożenie spisu wierzytelności |
-              | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
-              | `46` | Złożenie uzupełniającego spisu wierzytelności |
-              | `47` | Złożenie wniosku o zatwierdzenie układu |
-              | `48` | Zmiana nadzorcy lub zarządcy |
-              | `49` | Zmiana sędziego komisarza |
-              | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
-        yearly_number:
-          type: string
-          description: |-
-            Numer wydania MSiG
-            <details>
-              <summary>Przykładowy nr wydania</summary>
-              "214"
-            </details>
+            | Wartość | Nazwa sekcji |
+            |-|-|
+            | `20` | Dokonanie zmian w spisie wierzytelności |
+            | `21` | Inne |
+            | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
+            | `23` | Odmowa zatwierdzenia układu |
+            | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
+            | `25` | Określenie trybu i sposobu głosowania nad układem |
+            | `26` | Otwarcie postępowania o zatwierdzenie układu |
+            | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
+            | `28` | Otwarcie postępowania o zmianę układu |
+            | `29` | Otwarcie postępowania sanacyjnego |
+            | `30` | Otwarcie postępowania układowego |
+            | `31` | Otwarcie przyspieszonego postępowania układowego |
+            | `32` | Sprostowanie |
+            | `33` | Stwierdzenie wykonania układu |
+            | `34` | Uchylenie układu |
+            | `35` | Umorzenie postępowania |
+            | `36` | Wyznaczenie nadzorcy lub zarządcy |
+            | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
+            | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
+            | `39` | Zabezpieczenie majątku dłużnika |
+            | `40` | Zakończenie postępowania |
+            | `41` | Zatwierdzenie spisu wierzytelności |
+            | `42` | Zatwierdzenie układu |
+            | `43` | Złożenie planu restrukturyzacyjnego |
+            | `44` | Złożenie spisu wierzytelności |
+            | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
+            | `46` | Złożenie uzupełniającego spisu wierzytelności |
+            | `47` | Złożenie wniosku o zatwierdzenie układu |
+            | `48` | Zmiana nadzorcy lub zarządcy |
+            | `49` | Zmiana sędziego komisarza |
+            | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
+      yearly_number:
+        type: string
+        description: |-
+          Numer wydania MSiG
+          <details>
+            <summary>Przykładowy nr wydania</summary>
+            "214"
+          </details>
     description: Informacje dotyczące publikacji ogłoszenia w MSiG
   krz_entry:
     title: Krz Entry
-    type: array
-    items:
-      required:
-      - chapter
-      - section
-      - subsection
-      - signature
-      - issue_date
-      - url
-      type: object
-      properties:
-        chapter:
-          type: integer
-          description: |-
-            Rozdział KRZ
-            <details>
-              <summary>Pokaż możliwe opcje</summary>
+    type: object
+    required:
+    - chapter
+    - section
+    - subsection
+    - signature
+    - issue_date
+    - url
+    properties:
+      chapter:
+        type: integer
+        description: |-
+          Rozdział KRZ
+          <details>
+            <summary>Pokaż możliwe opcje</summary>
 
-              | Wartość | Nazwa rozdziału |
-              |-|-|
-              | `0` | Postępowanie restrukturyzacyjne |
-              | `1` | Postępowanie upadłościowe |
-              | `2` | Zakaz prowadzenia działalności gospodarczej |</details>
-        url:
-          type: string
-          description: Link do ogłoszenia w serwisie KRZ
-          format: uri
-        section:
-          type: integer
-          description: |-
-            Sekcja KRZ
-            <details>
-              <summary>Pokaż możliwe opcje</summary>
+            | Wartość | Nazwa rozdziału |
+            |-|-|
+            | `0` | Postępowanie restrukturyzacyjne |
+            | `1` | Postępowanie upadłościowe |
+            | `2` | Zakaz prowadzenia działalności gospodarczej |</details>
+      url:
+        type: string
+        description: Link do ogłoszenia w serwisie KRZ
+        format: uri
+      section:
+        type: integer
+        description: |-
+          Sekcja KRZ
+          <details>
+            <summary>Pokaż możliwe opcje</summary>
 
-              <b>Postępowanie restrukturyzacyjne</b>
+            <b>Postępowanie restrukturyzacyjne</b>
 
-              | Wartość | Nazwa sekcji |
-              |-|-|
-              | `0` | Dzień układowy |
-              | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
-              | `2` | Zabezpieczenie majątku |
-              | `3` | Otwarcie postępowania restrukturyzacyjnego |
-              | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
-              | `5` | Spis wierzytelności/spis wierzytelności spornych |
-              | `6` | Zgromadzenie wierzycieli |
-              | `7` | Sprawozdania |
-              | `8` | Układ |
-              | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
-              | `10` | Inne |
+            | Wartość | Nazwa sekcji |
+            |-|-|
+            | `0` | Dzień układowy |
+            | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
+            | `2` | Zabezpieczenie majątku |
+            | `3` | Otwarcie postępowania restrukturyzacyjnego |
+            | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
+            | `5` | Spis wierzytelności/spis wierzytelności spornych |
+            | `6` | Zgromadzenie wierzycieli |
+            | `7` | Sprawozdania |
+            | `8` | Układ |
+            | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
+            | `10` | Inne |
 
-              <b>Postępowanie upadłościowe</b>
+            <b>Postępowanie upadłościowe</b>
 
-              | Wartość | Nazwa sekcji |
-              |-|-|
-              | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
-              | `21` | Zabezpieczenie majątku |
-              | `22` | Ogłoszenie upadłości/oddalenie wniosku |
-              | `23` | Wtórne postępowanie upadłościowe |
-              | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
-              | `25` | Przygotowana likwidacja |
-              | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
-              | `27` | Zgromadzenie wierzycieli |
-              | `28` | Masa upadłości |
-              | `29` | Lista wierzytelności |
-              | `30` | Plan podziału |
-              | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
-              | `32` | Plan spłaty/umorzenie zobowiązań |
-              | `33` | Układ w upadłości |
-              | `34` | Inne |
+            | Wartość | Nazwa sekcji |
+            |-|-|
+            | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
+            | `21` | Zabezpieczenie majątku |
+            | `22` | Ogłoszenie upadłości/oddalenie wniosku |
+            | `23` | Wtórne postępowanie upadłościowe |
+            | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
+            | `25` | Przygotowana likwidacja |
+            | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
+            | `27` | Zgromadzenie wierzycieli |
+            | `28` | Masa upadłości |
+            | `29` | Lista wierzytelności |
+            | `30` | Plan podziału |
+            | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
+            | `32` | Plan spłaty/umorzenie zobowiązań |
+            | `33` | Układ w upadłości |
+            | `34` | Inne |
 
-              <b>Zakaz prowadzenia działalności gospodarczej</b>
+            <b>Zakaz prowadzenia działalności gospodarczej</b>
 
-              | Wartość | Nazwa sekcji |
-              |-|-|
-              | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
-              | `41` | Inne |</details>
-        subsection:
-          type: integer
-          description: |-
-            Podsekcja KRZ
-            <details>
-              <summary>Pokaż możliwe opcje</summary>
+            | Wartość | Nazwa sekcji |
+            |-|-|
+            | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
+            | `41` | Inne |</details>
+      subsection:
+        type: integer
+        description: |-
+          Podsekcja KRZ
+          <details>
+            <summary>Pokaż możliwe opcje</summary>
 
-              | Wartość | Nazwa rozdziału |
-              |-|-|
-              | `0` | Obwieszczenie o ustaleniu dnia układowego |
-              | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
-              | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
-              | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
-              | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
-              | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
-              | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
-        issue_date:
-          type: string
-          description: Data publikacji ogłoszenia w KRZ
-          format: date
-        signature:
-          type: string
-          description: Sygnatura ogłoszenia w KRZ
+            | Wartość | Nazwa rozdziału |
+            |-|-|
+            | `0` | Obwieszczenie o ustaleniu dnia układowego |
+            | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
+            | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
+            | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
+            | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
+            | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
+            | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
+      issue_date:
+        type: string
+        description: Data publikacji ogłoszenia w KRZ
+        format: date
+      signature:
+        type: string
+        description: Sygnatura ogłoszenia w KRZ
     description: Informacje dotyczące publikacji ogłoszenia w KRZ
   content:
     title: Content
-    type: array
-    items:
-      required:
-      - text
-      - html
-      - url
-      type: object
-      properties:
-        text:
-          type: string
-          description: Treść ogłoszenia w formacie tekstowym
-        html:
-          type: string
-          format: html
-          description: Treść ogłoszenia w formacie HTML
-        url:
-          type: string
-          format: url
-          description: Link do podglądu treści ogłoszenia
+    type: object
+    required:
+    - text
+    - html
+    - url
+    properties:
+      text:
+        type: string
+        description: Treść ogłoszenia w formacie tekstowym
+      html:
+        type: string
+        format: html
+        description: Treść ogłoszenia w formacie HTML
+      url:
+        type: string
+        format: url
+        description: Link do podglądu treści ogłoszenia
     description: Nieprzetworzona treść ogłoszenia
 example:
   id: 623048cdb48627e3e2e491f3

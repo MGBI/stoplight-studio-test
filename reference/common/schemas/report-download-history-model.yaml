@@ -1,0 +1,9 @@
+title: ReportDownloadHistoryModel
+required:
+- download_datetime
+type: object
+properties:
+  download_datetime:
+    title: Download Datetime
+    type: string
+    format: date-time
