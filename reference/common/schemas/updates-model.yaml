@@ -3,7 +3,7 @@ required:
 - id
 - creation_datetime
 - issue_date
-- added_records_count
+- announcements_count
 - source
 type: object
 properties:
@@ -21,8 +21,8 @@ properties:
     type: string
     format: date
     description: Data publikacji ogłoszeń
-  added_records_count:
-    title: Added Records Count
+  announcements_count:
+    title: Announcements Count
     type: integer
     description: Liczba dodanych rekordów
   source:
