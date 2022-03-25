@@ -432,6 +432,8 @@ properties:
     type: array
     items:
       type: object
+      required:
+      - download_datetime
       properties:
         download_datetime:
           title: Download Datetime
