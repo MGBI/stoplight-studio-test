@@ -30,13 +30,7 @@ properties:
         info:
           items:
             required:
-            - commencement_date
-            - first_name
-            - last_name
             - cleaned_name
-            - primary_business
-            - ownership_type
-            - legal_form
             type: object
             properties:
               commencement_date:
@@ -65,16 +59,6 @@ properties:
           description: Podstawowe dane podmiotu
         address:
           items:
-            required:
-            - town
-            - gmina
-            - house_number
-            - flat_number
-            - state
-            - street
-            - post_office
-            - powiat
-            - zip_code
             type: object
             properties:
               town:
@@ -108,11 +92,6 @@ properties:
           description: Numery rejestrowe podmiotu
         numbers:
           items:
-            required:
-            - krs
-            - nip
-            - regon
-            - pesel
             type: object
             properties:
               krs:
