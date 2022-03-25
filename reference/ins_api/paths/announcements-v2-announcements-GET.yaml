@@ -291,6 +291,14 @@ parameters:
   example: Kowalczyk
 - required: false
   schema:
+    title: Name
+    type: string
+  name: name
+  in: query
+  description: Imię i nazwisko osoby, której dotyczy ogłoszenie
+  example: Jan Kowalski
+- required: false
+  schema:
     title: Signature
     type: string
   name: signature
