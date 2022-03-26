@@ -28,93 +28,87 @@ properties:
       type: object
       properties:
         info:
-          items:
-            required:
-            - cleaned_name
-            type: object
-            properties:
-              commencement_date:
-                type: string
-                format: date
-                description: Data rozpoczęcia działalności
-              first_name:
-                type: string
-                description: Imię
-              last_name:
-                type: string
-                description: Nazwisko
-              cleaned_name:
-                type: string
-                description: Nazwa podmiotu
-              primary_business:
-                type: string
-                description: Przeważająca działalność gospodarcza (kod PKD)
-              ownership_type:
-                type: string
-                description: Forma własności
-              legal_form:
-                type: string
-                description: Forma prawna
-          type: array
+          required:
+          - cleaned_name
+          properties:
+            commencement_date:
+              type: string
+              format: date
+              description: Data rozpoczęcia działalności
+            first_name:
+              type: string
+              description: Imię
+            last_name:
+              type: string
+              description: Nazwisko
+            cleaned_name:
+              type: string
+              description: Nazwa podmiotu
+            primary_business:
+              type: string
+              description: Przeważająca działalność gospodarcza (kod PKD)
+            ownership_type:
+              type: string
+              description: Forma własności
+            legal_form:
+              type: string
+              description: Forma prawna
+          type: object
           description: Podstawowe dane podmiotu
         address:
-          items:
-            type: object
-            properties:
-              town:
-                type: string
-                description: Miejscowość
-              gmina:
-                type: string
-                description: Gmina
-              house_number:
-                type: string
-                description: Numer nieruchomości
-              flat_number:
-                type: string
-                description: Numer lokalu
-              state:
-                type: string
-                description: Województwo
-              street:
-                type: string
-                description: Ulica
-              post_office:
-                type: string
-                description: Poczta
-              powiat:
-                type: string
-                description: Powiat
-              zip_code:
-                type: string
-                description: Kod pocztowy
-          type: array
+          properties:
+            town:
+              type: string
+              description: Miejscowość
+            gmina:
+              type: string
+              description: Gmina
+            house_number:
+              type: string
+              description: Numer nieruchomości
+            flat_number:
+              type: string
+              description: Numer lokalu
+            state:
+              type: string
+              description: Województwo
+            street:
+              type: string
+              description: Ulica
+            post_office:
+              type: string
+              description: Poczta
+            powiat:
+              type: string
+              description: Powiat
+            zip_code:
+              type: string
+              description: Kod pocztowy
+          type: object
           description: Numery rejestrowe podmiotu
         numbers:
-          items:
-            type: object
-            properties:
-              krs:
-                minLength: 10
-                maxLength: 10
-                type: string
-                description: Numer KRS
-              nip:
-                minLength: 10
-                maxLength: 10
-                type: string
-                description: Numer NIP
-              regon:
-                minLength: 9
-                maxLength: 9
-                type: string
-                description: Numer REGON
-              pesel:
-                minLength: 11
-                maxLength: 11
-                type: string
-                description: Numer PESEL
-          type: array
+          properties:
+            krs:
+              minLength: 10
+              maxLength: 10
+              type: string
+              description: Numer KRS
+            nip:
+              minLength: 10
+              maxLength: 10
+              type: string
+              description: Numer NIP
+            regon:
+              minLength: 9
+              maxLength: 9
+              type: string
+              description: Numer REGON
+            pesel:
+              minLength: 11
+              maxLength: 11
+              type: string
+              description: Numer PESEL
+          type: object
           description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
     type: array
     description: Lista podmiotów, których dotyczy ogłoszenie
