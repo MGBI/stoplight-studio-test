@@ -16,9 +16,6 @@ properties:
   entity:
     title: Entity
     anyOf:
-    - type: array
-      items:
-        type: object
     - type: object
     items:
       required:
