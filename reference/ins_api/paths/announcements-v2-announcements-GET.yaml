@@ -35,18 +35,17 @@ parameters:
   schema:
     $ref: '#/components/schemas/MsigChapterEnum'
     description: |-
-      An enumeration.
       Rozdział MSiG
       <details>
         <summary>Pokaż możliwe opcje</summary>
 
         | Wartość | Nazwa rozdziału |
         |-|-|
-        | `0` | Insolvency |
-        | `1` | Restructuring |</details>
-    example: 0
+        | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
+        | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
   name: msig_chapter
   in: query
+  example: '0'
 - required: false
   schema:
     title: Msig Section
@@ -110,6 +109,7 @@ parameters:
     example: 1
   name: msig_section
   in: query
+  description: Sekcja MSIG
 - required: false
   schema:
     $ref: '#/components/schemas/KrzChapterEnum'
@@ -124,9 +124,9 @@ parameters:
         | `0` | Restructuring |
         | `1` | Insolvency |
         | `2` | Ban |</details>
-    example: krz_chapter=0
   name: krz_chapter
   in: query
+  example: '0'
 - required: false
   schema:
     title: Krz Section
@@ -194,15 +194,16 @@ parameters:
     example: 1
   name: krz_section
   in: query
+  description: Sekcja KRZ
 - required: false
   schema:
     $ref: '#/components/schemas/KrzSubsectionEnum'
     description: |-
-      Rozdział MSiG
+      Subsekcja KRZ
       <details>
         <summary>Pokaż możliwe opcje</summary>
 
-        | Wartość | Nazwa rozdziału |
+        | Wartość | Nazwa subsekcji |
         |-|-|
         | `0` | Obwieszczenie o ustaleniu dnia układowego |
         | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
@@ -213,6 +214,7 @@ parameters:
         | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
   name: krz_subsection
   in: query
+  example: 30
 - required: false
   schema:
     title: Msig Signature
@@ -220,6 +222,7 @@ parameters:
   name: msig_signature
   in: query
   description: Sygnatura ogłoszenia w MSiG
+  example: BMSiG-68591/2021
 - required: false
   schema:
     title: Krz Signature
@@ -227,6 +230,7 @@ parameters:
   name: krz_signature
   in: query
   description: Sygnatura ogłoszenia w KRZ
+  example: 22220111/00004
 - required: false
   schema:
     title: Nip
@@ -275,6 +279,7 @@ parameters:
   name: first_name
   in: query
   description: Imię osoby, której dotyczy ogłoszenie
+  example: Adam
 - required: false
   schema:
     title: Last Name
@@ -283,6 +288,15 @@ parameters:
   name: last_name
   in: query
   description: Nazwisko osoby, której dotyczy ogłoszenie
+  example: Kowalczyk
+- required: false
+  schema:
+    title: Name
+    type: string
+  name: name
+  in: query
+  description: Imię i nazwisko osoby, której dotyczy ogłoszenie
+  example: Jan Kowalski
 - required: false
   schema:
     title: Signature
@@ -290,6 +304,7 @@ parameters:
   name: signature
   in: query
   description: Sygnatura postępowania
+  example: XIX GUp 113/20
 - required: false
   schema:
     title: Commissioner Name
@@ -297,6 +312,7 @@ parameters:
   name: commissioner_name
   in: query
   description: Imię i nazwisko sędziego komisarza
+  example: Ryszard Nowak
 - required: false
   schema:
     title: Administrator Name
@@ -304,6 +320,7 @@ parameters:
   name: administrator_name
   in: query
   description: Imię i nazwisko nadzorcy sądowego
+  example: Jan Kowalski
 - required: false
   schema:
     $ref: '#/components/schemas/ProjectionEnum'
@@ -322,6 +339,7 @@ parameters:
         | `content` | Nieprzetworzona treść ogłoszenia |</details>
   name: projection
   in: query
+  example: entity
 - required: false
   schema:
     title: Category
@@ -332,13 +350,15 @@ parameters:
       - type: string
   name: category
   in: query
-  description: Umożliwia filtrowanie po polach msig_entry.chapter, msig_entry.section,
-    krz_entry.chapter i krz_entry.section
+  description: Lista możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
+  example:
+  - K.0.1,M.0.9,M.1.22
 - required: false
   schema:
     title: Archival
     type: boolean
     default: false
+    example: true
   name: archival
   in: query
   description: Umożliwia odpytywanie bazy o ogłoszenia sprzed daty archive_date_from
@@ -350,6 +370,9 @@ parameters:
     default: false
   name: append_first_entry
   in: query
+  description: Scala dane obwieszczenia z pierwszym obwieszczeniem dotyczącym tego
+    samego postępowania.
+  example: true
 - required: false
   schema:
     title: Authorization
@@ -374,8 +397,13 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
-            error: Bad Request
+            error: Validation error
+            details:
+            - loc:
+              - path
+              - id
+              msg: Invalid objectid
+              type: value_error
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -384,8 +412,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -394,8 +422,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
   '429':
@@ -404,8 +432,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Too Many Requests
+            details: You have exceeded your request limit
           items:
             $ref: '#/components/schemas/Error'
 description: |-

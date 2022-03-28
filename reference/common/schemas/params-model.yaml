@@ -68,13 +68,65 @@ properties:
   available_content:
     type: array
     items:
-      $ref: ../schemas.yaml#/FieldsEnum
+      title: FieldsEnum
+      enum:
+      - entity.info.cleaned_name
+      - entity.info.first_name
+      - entity.info.last_name
+      - entity.info.legal_form
+      - entity.info.ownership_type
+      - entity.info.primary_business
+      - entity.info.commencement_date
+      - entity.numbers.nip
+      - entity.numbers.regon
+      - entity.numbers.krs
+      - entity.numbers.pesel
+      - entity.address.state
+      - entity.address.powiat
+      - entity.address.gmina
+      - entity.address.town
+      - entity.address.street
+      - entity.address.house_number
+      - entity.address.flat_number
+      - entity.address.zip_code
+      - entity.address.post_office
+      - proceeding.court_name
+      - proceeding.court_department
+      - proceeding.signatures
+      - proceeding.commissioner_name
+      - proceeding.commissioner_deputy_name
+      - proceeding.administrator_name
+      - proceeding.administrator_function
+      - proceeding.administrator_licence_number
+      - proceeding.administrator_address
+      - proceeding.administrator_zip_code
+      - proceeding.administrator_town
+      - proceeding.administrator_source_url
+      - order.order_date
+      - order.expiration_period
+      - order.expiration_date
+      - msig_entry.chapter
+      - msig_entry.section
+      - msig_entry.signature
+      - msig_entry.issue_date
+      - msig_entry.yearly_number
+      - msig_entry.position_number
+      - msig_entry.url
+      - krz_entry.chapter
+      - krz_entry.section
+      - krz_entry.subsection
+      - krz_entry.signature
+      - krz_entry.issue_date
+      - krz_entry.url
+      - content.text
+      - content.html
+      - content.url
+      type: string
     description: |-
-      Lista identyfikatorów pól, które użytkownik może uwzględnić w raportach
-      <details>
-      <summary>Pokaż możliwe opcje</summary>
+      Lista identyfikatorów pół, które użytkownik może uwzględnić w raportach
+      <details><summary>Pokaż możliwe opcje</summary>
 
-      | Wartość | Nazwa |
+      | Wartość | Nazwa  |
       |-|-|
       | `entity.info.cleaned_name` | Nazwa podmiotu |
       | `entity.info.first_name` | Imię |
@@ -120,6 +172,7 @@ properties:
       | `msig_entry.url` | Link do ogłoszenia w serwisie imsig.pl |
       | `krz_entry.chapter` | Rozdział KRZ |
       | `krz_entry.section` | Sekcja KRZ |
+      | `krz_entry.subsection` | Podsekcja KRZ |
       | `krz_entry.signature` | Sygnatura ogłoszenia w KRZ |
       | `krz_entry.issue_date` | Data publikacji ogłoszenia w KRZ |
       | `krz_entry.url` | Link do ogłoszenia w serwisie KRZ |

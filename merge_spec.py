@@ -76,8 +76,16 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                                             "application/json", {}).get("schema", {})
                                         if new_code != "200":
                                             content_schema["example"] = {
-                                                "details": "Error Description",
-                                                "error": http.HTTPStatus(int(new_code)).phrase
+                                                "error": old.get(label, {}).get(
+                                                    "application/json", {}).get(
+                                                    "schema", {}).get(
+                                                    "example", {}).get(
+                                                    "error", {}),
+                                                "details": old.get(label, {}).get(
+                                                    "application/json", {}).get(
+                                                    "schema", {}).get(
+                                                    "example", {}).get(
+                                                    "details", {}),
                                             }
                                         if not content_schema.get("items"):
                                             content_schema["items"] = {
@@ -123,7 +131,7 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                         for pname in old_component[field].get(p, []):
                             component[field][p][pname] = old_component[field][p][pname]
             for field in old_component:
-                if field not in ["example", "properties", "required"]:
+                if field not in ["example", "properties"]:
                     component[field] = old_component[field]
             old_openapi["components"][name][component_name] = component
 

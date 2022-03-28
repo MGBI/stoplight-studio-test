@@ -92,3 +92,5 @@ QueryBaseModel:
   $ref: schemas/query-base-model.yaml
 FieldsEnum:
   $ref: schemas/fields-enum.yaml
+ReportDownloadHistoryModel:
+  $ref: schemas/report-download-history-model.yaml

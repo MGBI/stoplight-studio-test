@@ -9,6 +9,7 @@ properties:
     maxLength: 24
     minLength: 24
     description: Identyfikator filtra wykorzystanego do utworzenia monitoringu
+    example: 6221c40c843d0d773f37cd4b
   emails:
     title: Emails
     type: array
@@ -19,12 +20,19 @@ properties:
   append_first_entry:
     title: Append First Entry
     type: boolean
+    example: true
+    description: Czy uwzględniać również identyfikatory podane w pierwszym ogłoszeniu
+      w ramach postępowania?
   send_empty_notifications:
     title: Send Empty Notifications
     type: boolean
     default: false
+    example: true
+    description: Czy wysyłać powiadomienie, jeśli nie pojawiły się nowe ogłoszenia
+      w ramach monitoringu?
 example:
-  filter_id: 3
+  filter_id: 6221c40c843d0d773f37cd4b
   emails:
   - jajko@wp.pl
   append_first_entry: true
+  send_empty_notifications: false

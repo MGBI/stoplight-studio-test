@@ -14,6 +14,17 @@ parameters:
       type: string
   name: exclude
   in: query
+  description: |-
+    Pola, które nie będą zwrócone w odpowiedzi.
+    <details><summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa  |
+    |-|-|
+    | `content` | Zawartość filtra |
+    | `items_count`| Liczba wszystkich identyfikatorów w filtrze |</details>
+  example:
+  - content
+  - items_count
 - required: false
   schema:
     title: Authorization
@@ -38,8 +49,18 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
-            error: Bad Request
+            error: Validation error
+            details:
+            - loc:
+              - query
+              - exclude
+              msg: 'unexpected value; permitted: ''content'', ''items_count'''
+              type: value_error.const
+              ctx:
+                given: ''
+                permitted:
+                - content
+                - items_count
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -48,8 +69,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -58,8 +79,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
 description: Zwraca listę filtrów przypisanych do aktualnego użytkownika.

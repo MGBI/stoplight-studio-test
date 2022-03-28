@@ -7,24 +7,34 @@ properties:
   custom_categories:
     type: array
     items:
+      title: CategoriesEnum
       enum:
       - K
       - K.0
       - K.0.0
-      - K.0.1
+      - K.0.0.0
       - K.0.2
-      - K.0.3
-      - K.0.4
       - K.0.5
       - K.0.6
+      - K.0.6.4
       - K.0.7
       - K.0.8
       - K.0.9
       - K.0.10
+      - K.1.22
+      - K.0.1
+      - K.0.1.1
+      - K.0.2.2
+      - K.0.3
+      - K.0.3.3
+      - K.0.4
       - K.1
       - K.1.20
+      - K.1.20.30
       - K.1.21
-      - K.1.22
+      - K.1.21.32
+      - K.1.22.31
+      - K.1.22.35
       - K.1.23
       - K.1.24
       - K.1.25
@@ -34,9 +44,11 @@ properties:
       - K.1.29
       - K.1.30
       - K.1.31
+      - K.1.31.34
       - K.1.32
       - K.1.33
       - K.1.34
+      - K.1.34.33
       - K.2
       - K.2.40
       - K.2.41
@@ -84,29 +96,36 @@ properties:
       - M.1.49
       - M.1.50
       type: string
-      description: An enumeration.
-      title: CategoriesEnum
     default: []
+    description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika. Lista
+      możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
   from_date:
     title: From Date
     type: string
     format: date
+    description: Data początkowa zakresu dla daty publikacji ogłoszenia w MSiG lub
+      KRZ
   to_date:
     title: To Date
     type: string
     format: date
+    description: Data końcowa zakresu dla daty publikacji ogłoszenia w MSiG lub KRZ
   filter_id:
     title: Filter Id
     type: string
     nullable: true
+    description: Identyfikator filtra użytego do wygenerowania raportu
   append_first_entry:
     title: Append First Entry
     type: boolean
     default: true
+    description: Czy pola z sekcji `entity` i `proceeding` powinny być przekopiowane
+      z pierwszego ogłoszenia w ramach postępowania?
 additionalProperties: false
 example:
   custom_categories:
-  - K
+  - K.1.34.33
+  - M.1.41
   from_date: '2021-11-02'
   to_date: '2021-11-04'
   filter_id: 61ded2f8aff2de52365d891e

@@ -47,8 +47,22 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
-            error: Bad Request
+            error: Validation error
+            details:
+            - loc:
+              - path
+              - report_id
+              msg: Invalid objectid
+              type: value_error
+            - loc:
+              - path
+              - report_id
+              msg: 'unexpected value; permitted: ''last'''
+              type: value_error.const
+              ctx:
+                given: abcd
+                permitted:
+                - last
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -57,8 +71,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -67,8 +81,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
   '404':
@@ -77,8 +91,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Not Found
+            details: Report not found
           items:
             $ref: '#/components/schemas/Error'
 description: |-

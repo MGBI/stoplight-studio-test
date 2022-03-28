@@ -57,54 +57,54 @@ description: |-
 
   | Wartość | Nazwa  |
   |-|-|
-  | `entity.info.cleaned_name` | Entity_info_cleaned_name |
-  | `entity.info.first_name` | Entity_info_first_name |
-  | `entity.info.last_name` | Entity_info_last_name |
-  | `entity.info.legal_form` | Entity_info_legal_form |
-  | `entity.info.ownership_type` | Entity_info_ownership_type |
-  | `entity.info.primary_business` | Entity_info_primary_business |
-  | `entity.info.commencement_date` | Entity_info_commencement_date |
-  | `entity.numbers.nip` | Entity_numbers_nip |
-  | `entity.numbers.regon` | Entity_numbers_regon |
-  | `entity.numbers.krs` | Entity_numbers_krs |
-  | `entity.numbers.pesel` | Entity_numbers_pesel |
-  | `entity.address.state` | Entity_address_state |
-  | `entity.address.powiat` | Entity_address_powiat |
-  | `entity.address.gmina` | Entity_address_gmina |
-  | `entity.address.town` | Entity_address_town |
-  | `entity.address.street` | Entity_address_street |
-  | `entity.address.house_number` | Entity_address_house_number |
-  | `entity.address.flat_number` | Entity_address_flat_number |
-  | `entity.address.zip_code` | Entity_address_zip_code |
-  | `entity.address.post_office` | Entity_address_post_office |
-  | `proceeding.court_name` | Proceeding_court_name |
-  | `proceeding.court_department` | Proceeding_court_department |
-  | `proceeding.signatures` | Proceeding_signatures |
-  | `proceeding.commissioner_name` | Proceeding_commissioner_name |
-  | `proceeding.commissioner_deputy_name` | Proceeding_commissioner_deputy_name |
-  | `proceeding.administrator_name` | Proceeding_administrator_name |
-  | `proceeding.administrator_function` | Proceeding_administrator_function |
-  | `proceeding.administrator_licence_number` | Proceeding_administrator_licence_number |
-  | `proceeding.administrator_address` | Proceeding_administrator_address |
-  | `proceeding.administrator_zip_code` | Proceeding_administrator_zip_code |
-  | `proceeding.administrator_town` | Proceeding_administrator_town |
-  | `proceeding.administrator_source_url` | Proceeding_administrator_source_url |
-  | `order.order_date` | Order_order_date |
-  | `order.expiration_period` | Order_expiration_period |
-  | `order.expiration_date` | Order_expiration_date |
-  | `msig_entry.chapter` | Msig_entry_chapter |
-  | `msig_entry.section` | Msig_entry_section |
-  | `msig_entry.signature` | Msig_entry_signature |
-  | `msig_entry.issue_date` | Msig_entry_issue_date |
-  | `msig_entry.yearly_number` | Msig_entry_yearly_number |
-  | `msig_entry.position_number` | Msig_entry_position_number |
-  | `msig_entry.url` | Msig_entry_url |
-  | `krz_entry.chapter` | Krz_entry_chapter |
-  | `krz_entry.section` | Krz_entry_section |
-  | `krz_entry.subsection` | Krz_entry_subsection |
-  | `krz_entry.signature` | Krz_entry_signature |
-  | `krz_entry.issue_date` | Krz_entry_issue_date |
-  | `krz_entry.url` | Krz_entry_url |
-  | `content.text` | Content_text |
-  | `content.html` | Content_html |
-  | `content.url` | Content_url |</details>
+  | `entity.info.cleaned_name` | Nazwa podmiotu |
+  | `entity.info.first_name` | Imię |
+  | `entity.info.last_name` | Nazwisko |
+  | `entity.info.legal_form` | Forma prawna |
+  | `entity.info.ownership_type` | Forma własności |
+  | `entity.info.primary_business` | Przeważająca działalność gospodarcza (kod PKD) |
+  | `entity.info.commencement_date` | Data rozpoczęcia działalności |
+  | `entity.numbers.nip` | NIP |
+  | `entity.numbers.regon` | REGON |
+  | `entity.numbers.krs` | KRS |
+  | `entity.numbers.pesel` | PESEL |
+  | `entity.address.state` | Województwo |
+  | `entity.address.powiat` | Powiat |
+  | `entity.address.gmina` | Gmina |
+  | `entity.address.town` | Miejscowość |
+  | `entity.address.street` | Ulica |
+  | `entity.address.house_number` | Numer nieruchomości |
+  | `entity.address.flat_number` | Numer lokalu |
+  | `entity.address.zip_code` | Kod pocztowy |
+  | `entity.address.post_office` | Poczta |
+  | `proceeding.court_name` | Nazwa sądu |
+  | `proceeding.court_department` | Nazwa wydziału |
+  | `proceeding.signatures` | Sygnatura sprawy |
+  | `proceeding.commissioner_name` | Sędzia komisarz |
+  | `proceeding.commissioner_deputy_name` | Zastępca sędziego komisarza |
+  | `proceeding.administrator_name` | Nadzorca w postępowaniu |
+  | `proceeding.administrator_function` | Funkcja nadzorcy |
+  | `proceeding.administrator_licence_number` | Numer licencji doradcy restrukturyzacyjnego |
+  | `proceeding.administrator_address` | Adres nadzorcy (ulica) |
+  | `proceeding.administrator_zip_code` | Adres nadzorcy (kod pocztowy) |
+  | `proceeding.administrator_town` | Adres nadzorcy (miejscowość) |
+  | `proceeding.administrator_source_url` | Źródło danych nadzorcy |
+  | `order.order_date` | Data wydania postanowienia |
+  | `order.expiration_period` | Okres do działania (w dniach) |
+  | `order.expiration_date` | Koniec okresu do działania |
+  | `msig_entry.chapter` | Rozdział MSiG |
+  | `msig_entry.section` | Sekcja MSiG |
+  | `msig_entry.signature` | Sygnatura ogłoszenia w MSiG |
+  | `msig_entry.issue_date` | Data publikacji ogłoszenia w MSiG |
+  | `msig_entry.yearly_number` | Numer wydania MSiG |
+  | `msig_entry.position_number` | Numer pozycji MSiG |
+  | `msig_entry.url` | Link do ogłoszenia w serwisie imsig.pl |
+  | `krz_entry.chapter` | Rozdział KRZ |
+  | `krz_entry.section` | Sekcja KRZ |
+  | `krz_entry.subsection` | Podsekcja KRZ |
+  | `krz_entry.signature` | Sygnatura ogłoszenia w KRZ |
+  | `krz_entry.issue_date` | Data publikacji ogłoszenia w KRZ |
+  | `krz_entry.url` | Link do ogłoszenia w serwisie KRZ |
+  | `content.text` | Treść ogłoszenia (tekst) |
+  | `content.html` | Treść ogłoszenia (HTML) |
+  | `content.url` | Link do podglądu treści ogłoszenia |</details>

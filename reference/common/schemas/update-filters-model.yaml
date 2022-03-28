@@ -3,6 +3,7 @@ type: object
 properties:
   name:
     title: Name
+    minLength: 1
     type: string
     description: Nazwa filtra
   content:

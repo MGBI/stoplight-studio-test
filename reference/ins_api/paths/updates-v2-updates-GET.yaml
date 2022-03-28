@@ -45,8 +45,22 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
-            error: Bad Request
+            error: Validation error
+            details:
+            - loc:
+              - query
+              - creation_datetime_from
+              msg: invalid datetime format
+              type: value_error.datetime
+            - loc:
+              - query
+              - creation_datetime_to
+              msg: invalid datetime format
+              type: value_error.datetime
+              ctx:
+                given: abcd
+                permitted:
+                - last
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -55,8 +69,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -65,8 +79,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
 description: Zwraca listę aktualizacji bazy ogłoszeń dla podanych parametrów.

@@ -31,6 +31,17 @@ parameters:
       type: string
   name: exclude
   in: query
+  description: |-
+    Pola, które nie będą zwrócone w odpowiedzi.
+    <details><summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Nazwa  |
+    |-|-|
+    | `content` | Zawartość filtra |
+    | `items_count`| Liczba wszystkich identyfikatorów w filtrze |</details>
+  example:
+  - content
+  - items_count
 - required: false
   schema:
     title: Authorization
@@ -53,8 +64,22 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
-            error: Bad Request
+            error: Validation error
+            details:
+            - loc:
+              - path
+              - id
+              msg: Invalid objectid
+              type: value_error
+            - loc:
+              - path
+              - id
+              msg: 'unexpected value; permitted: ''last'''
+              type: value_error.const
+              ctx:
+                given: abcd
+                permitted:
+                - last
           items:
             $ref: '#/components/schemas/Error'
   '401':
@@ -63,8 +88,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Unauthorized
+            details: User token not provided
           items:
             $ref: '#/components/schemas/Error'
   '403':
@@ -73,8 +98,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Forbidden
+            details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
   '404':
@@ -83,8 +108,8 @@ responses:
       application/json:
         schema:
           example:
-            details: Error Description
             error: Not Found
+            details: User filter not found
           items:
             $ref: '#/components/schemas/Error'
 description: Zwraca filtr o podanym `id`.

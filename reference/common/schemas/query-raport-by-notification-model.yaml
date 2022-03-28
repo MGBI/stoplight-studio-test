@@ -6,4 +6,6 @@ properties:
   notification_id:
     title: Notification Id
     type: string
+    description: Identyfikator notyfikacji na postawie, którego zostanie wygenerowany
+      raport
 additionalProperties: false
