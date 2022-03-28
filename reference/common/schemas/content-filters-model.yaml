@@ -37,8 +37,8 @@ properties:
     items:
       type: string
     description: Lista sygnatur obwieszczeń z Monitora Sądowego i Gospodarczego
-  name:
-    title: Name
+  person_name:
+    title: Person Name
     type: array
     items:
       type: string
@@ -56,7 +56,7 @@ example:
   - BY1B/GUp/13/2021
   msig_signature:
   - XIV GUp 83/16
-  name:
+  person_name:
   - Jan Kowalski
   - Ambroży Nielepszy
 description: Zawartość filtra

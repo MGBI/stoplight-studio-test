@@ -291,9 +291,9 @@ parameters:
   example: Kowalczyk
 - required: false
   schema:
-    title: Name
+    title: Cleaned Name
     type: string
-  name: name
+  name: cleaned_name
   in: query
   description: Imię i nazwisko osoby, której dotyczy ogłoszenie
   example: Jan Kowalski

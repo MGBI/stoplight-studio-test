@@ -11,6 +11,7 @@ properties:
     title: Name
     minLength: 1
     type: string
+    description: Nazwa filtra
   content:
     $ref: ../schemas.yaml#/ContentFiltersModel
     title: ContentFiltersModel
@@ -78,18 +79,22 @@ properties:
   id:
     title: Id
     type: string
+    description: Unikalny identyfikator filtra
   creation_datetime:
     title: Creation Datetime
     type: string
     format: date-time
+    description: Data i czas utworzenia filtra
   last_update_datetime:
     title: Last Update Datetime
     type: string
     format: date-time
     nullable: true
+    description: Data i czas ostatniej aktualizacji filtra
   items_count:
     title: Items Count
     type: integer
+    description: Liczba wszystkich identyfikatorów w filtrze
 example:
   id: 6241914e815d3e6b3771fc81
   name: Dłużnicy 2021-11
@@ -106,7 +111,7 @@ example:
     - BY1B/GUp/13/2021
     msig_signature:
     - XIV GUp 83/16
-    name:
+    person_name:
     - Jan Kowalski
     - Ambroży Nielepszy
   items_count: 8
