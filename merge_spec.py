@@ -128,6 +128,8 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                         component[field][f] = old_component[field].get(f, component[field][f])
                 if field == "properties":
                     for p in component[field]:
+                        if p == "entity":
+                            component[field][p] = old_component[field][p]
                         for pname in old_component[field].get(p, []):
                             component[field][p][pname] = old_component[field][p][pname]
             for field in old_component:

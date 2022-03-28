@@ -6,6 +6,7 @@ enum:
 - msig_entry
 - krz_entry
 - content
+type: string
 description: |-
   Lista zwracanych grup informacji
   <details>
@@ -19,4 +20,3 @@ description: |-
     | `msig_entry` | Informacje dotyczące publikacji ogłoszenia w msig |
     | `krz_entry` | Informacje dotyczące publikacji ogłoszenia w krz |
     | `content` | Nieprzetworzona treść ogłoszenia |</details>
-type: string

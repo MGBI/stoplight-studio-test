@@ -15,8 +15,6 @@ properties:
     format: ObjectId
   entity:
     title: Entity
-    anyOf:
-    - type: object
     items:
       required:
       - info

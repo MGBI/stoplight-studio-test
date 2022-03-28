@@ -282,7 +282,6 @@ properties:
       to_date: '2021-11-04'
       filter_id: 61ded2f8aff2de52365d891e
   custom_content:
-    title: Custom Content
     type: array
     items: {}
     description: |-
@@ -352,6 +351,7 @@ properties:
       | `content.text` | Treść ogłoszenia (tekst) |
       | `content.html` | Treść ogłoszenia (HTML) |
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
+    title: Custom Content
   status:
     $ref: ../schemas.yaml#/ReportStatusEnum
     allOf:
