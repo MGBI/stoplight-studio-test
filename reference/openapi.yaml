@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.310
+  version: 1.0.311
   description:
     $ref: common/info_description.md
   x-logo:

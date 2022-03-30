@@ -1,6 +1,6 @@
 tags:
 - reports_iapi
-summary: DOWNLOAD /v2/reports/{report_id}/download
+summary: GET /v2/reports/{report_id}/download
 operationId: download_report_by_id_v2_reports__report_id__download_get
 parameters:
 - required: true
