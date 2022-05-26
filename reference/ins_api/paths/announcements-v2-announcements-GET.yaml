@@ -33,188 +33,44 @@ parameters:
   description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
 - required: false
   schema:
-    $ref: '#/components/schemas/MsigChapterEnum'
-    description: |-
-      Rozdział MSiG
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Wartość | Nazwa rozdziału |
-        |-|-|
-        | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
-        | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
+    title: Msig Chapter
+    maximum: 4.0
+    minimum: 0.0
+    type: integer
   name: msig_chapter
   in: query
-  example: '0'
 - required: false
   schema:
     title: Msig Section
-    anyOf:
-    - $ref: '#/components/schemas/MsigSectionInsolvencyEnum'
-      description: |-
-        Sekcja MSiG
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          | Wartość | Nazwa sekcji |
-          |-|-|
-          | `1` | Postanowienie o ogłoszeniu upadłości |
-          | `2` | Obwieszczenie o zatwierdzeniu układu |
-          | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
-          | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
-          | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
-          | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
-          | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
-          | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
-          | `9` | Inne |</details>
-    - $ref: '#/components/schemas/MsigSectionRestructuringEnum'
-      description: |-
-        Sekcja MSiG
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          | Wartość | Nazwa sekcji |
-          |-|-|
-          | `20` | Dokonanie zmian w spisie wierzytelności |
-          | `21` | Inne |
-          | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
-          | `23` | Odmowa zatwierdzenia układu |
-          | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
-          | `25` | Określenie trybu i sposobu głosowania nad układem |
-          | `26` | Otwarcie postępowania o zatwierdzenie układu |
-          | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
-          | `28` | Otwarcie postępowania o zmianę układu |
-          | `29` | Otwarcie postępowania sanacyjnego |
-          | `30` | Otwarcie postępowania układowego |
-          | `31` | Otwarcie przyspieszonego postępowania układowego |
-          | `32` | Sprostowanie |
-          | `33` | Stwierdzenie wykonania układu |
-          | `34` | Uchylenie układu |
-          | `35` | Umorzenie postępowania |
-          | `36` | Wyznaczenie nadzorcy lub zarządcy |
-          | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
-          | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
-          | `39` | Zabezpieczenie majątku dłużnika |
-          | `40` | Zakończenie postępowania |
-          | `41` | Zatwierdzenie spisu wierzytelności |
-          | `42` | Zatwierdzenie układu |
-          | `43` | Złożenie planu restrukturyzacyjnego |
-          | `44` | Złożenie spisu wierzytelności |
-          | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
-          | `46` | Złożenie uzupełniającego spisu wierzytelności |
-          | `47` | Złożenie wniosku o zatwierdzenie układu |
-          | `48` | Zmiana nadzorcy lub zarządcy |
-          | `49` | Zmiana sędziego komisarza |
-          | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
-    example: 1
+    maximum: 50.0
+    minimum: 0.0
+    type: integer
   name: msig_section
   in: query
-  description: Sekcja MSIG
 - required: false
   schema:
-    $ref: '#/components/schemas/KrzChapterEnum'
-    description: |-
-      An enumeration.
-      Rozdział MSiG
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Wartość | Nazwa rozdziału |
-        |-|-|
-        | `0` | Restructuring |
-        | `1` | Insolvency |
-        | `2` | Ban |</details>
+    title: Krz Chapter
+    maximum: 3.0
+    minimum: 0.0
+    type: integer
   name: krz_chapter
   in: query
-  example: '0'
 - required: false
   schema:
     title: Krz Section
-    anyOf:
-    - $ref: '#/components/schemas/KrzSectionRestructuringEnum'
-      description: |-
-        Sekcja KRZ
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          <b>Postępowanie restrukturyzacyjne</b>
-
-          | Wartość | Nazwa sekcji |
-          |-|-|
-          | `0` | Dzień układowy |
-          | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
-          | `2` | Zabezpieczenie majątku |
-          | `3` | Otwarcie postępowania restrukturyzacyjnego |
-          | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
-          | `5` | Spis wierzytelności/spis wierzytelności spornych |
-          | `6` | Zgromadzenie wierzycieli |
-          | `7` | Sprawozdania |
-          | `8` | Układ |
-          | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
-          | `10` | Inne |</details>
-    - $ref: '#/components/schemas/KrzSectionInsolvencyEnum'
-      description: |-
-        Sekcja KRZ
-
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          <b>Postępowanie upadłościowe</b>
-
-          | Wartość | Nazwa sekcji |
-          |-|-|
-          | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
-          | `21` | Zabezpieczenie majątku |
-          | `22` | Ogłoszenie upadłości/oddalenie wniosku |
-          | `23` | Wtórne postępowanie upadłościowe |
-          | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
-          | `25` | Przygotowana likwidacja |
-          | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
-          | `27` | Zgromadzenie wierzycieli |
-          | `28` | Masa upadłości |
-          | `29` | Lista wierzytelności |
-          | `30` | Plan podziału |
-          | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
-          | `32` | Plan spłaty/umorzenie zobowiązań |
-          | `33` | Układ w upadłości |
-          | `34` | Inne |</details>
-    - $ref: '#/components/schemas/KrzSectionBanEnum'
-      description: |-
-        Sekcja KRZ
-
-        <details>
-          <summary>Pokaż możliwe opcje</summary>
-
-          <b>Zakaz prowadzenia działalności gospodarczej</b>
-
-          | Wartość | Nazwa sekcji |
-          |-|-|
-          | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
-          | `41` | Inne |</details>
-    example: 1
+    maximum: 41.0
+    minimum: 0.0
+    type: integer
   name: krz_section
   in: query
-  description: Sekcja KRZ
 - required: false
   schema:
-    $ref: '#/components/schemas/KrzSubsectionEnum'
-    description: |-
-      Subsekcja KRZ
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Wartość | Nazwa subsekcji |
-        |-|-|
-        | `0` | Obwieszczenie o ustaleniu dnia układowego |
-        | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
-        | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
-        | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
-        | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
-        | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
-        | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
+    title: Krz Subsection
+    maximum: 130.0
+    minimum: 0.0
+    type: integer
   name: krz_subsection
   in: query
-  example: 30
 - required: false
   schema:
     title: Msig Signature

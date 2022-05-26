@@ -54,6 +54,10 @@ properties:
     type: string
     nullable: true
     description: Opis błędu, jeśli wystąpił
+  records_count:
+    title: Records Count
+    type: integer
+    description: Liczba rekordów
 example:
   id: 6221c40c51fce5ae9f37cd48
   dispatch_id: 6221c40c5cb436601e37cd49
@@ -62,3 +66,4 @@ example:
   email: abc@def.pl
   status: 1
   error: ERROR !
+  records_count: 14
