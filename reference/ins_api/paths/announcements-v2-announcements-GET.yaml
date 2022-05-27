@@ -33,46 +33,6 @@ parameters:
   description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
 - required: false
   schema:
-    title: Msig Chapter
-    maximum: 4.0
-    minimum: 0.0
-    type: integer
-  name: msig_chapter
-  in: query
-- required: false
-  schema:
-    title: Msig Section
-    maximum: 50.0
-    minimum: 0.0
-    type: integer
-  name: msig_section
-  in: query
-- required: false
-  schema:
-    title: Krz Chapter
-    maximum: 3.0
-    minimum: 0.0
-    type: integer
-  name: krz_chapter
-  in: query
-- required: false
-  schema:
-    title: Krz Section
-    maximum: 41.0
-    minimum: 0.0
-    type: integer
-  name: krz_section
-  in: query
-- required: false
-  schema:
-    title: Krz Subsection
-    maximum: 130.0
-    minimum: 0.0
-    type: integer
-  name: krz_subsection
-  in: query
-- required: false
-  schema:
     title: Msig Signature
     type: string
   name: msig_signature
