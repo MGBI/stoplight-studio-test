@@ -191,6 +191,16 @@ parameters:
   example: true
 - required: false
   schema:
+    title: Filter Id
+    type: string
+    example: 6189ba008749c5e836fa4cf6
+    maxLength: 24
+    minLength: 24
+  name: filter_id
+  in: query
+  description: Unikalny identyfikator filtra
+- required: false
+  schema:
     title: Authorization
     type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
