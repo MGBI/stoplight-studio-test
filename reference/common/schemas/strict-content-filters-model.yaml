@@ -42,6 +42,7 @@ properties:
     type: array
     items:
       type: string
+    description: Lista osób, których dotyczą obweiszczenia (`imię nazwisko`)
 additionalProperties: false
 example:
   nip:

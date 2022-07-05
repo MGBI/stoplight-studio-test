@@ -133,6 +133,9 @@ parameters:
     type: string
   name: cleaned_name
   in: query
+  description: Imię i nazwisko osoby lub nazwa podmiotu gospodarczego, których dotyczy
+    ogłoszenie
+  example: Jan Kowalski
 - required: false
   schema:
     title: Signature
