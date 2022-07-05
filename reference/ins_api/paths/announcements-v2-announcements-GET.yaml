@@ -5,6 +5,28 @@ operationId: get_announcements_v2_announcements_get
 parameters:
 - required: false
   schema:
+    title: Stream
+    enum:
+    - json
+    - ndjson
+    - none
+    type: string
+    default: none
+    example: json
+  name: stream
+  in: query
+  description: |-
+    Czy odpowiedź ma być streamowana/wysyłana 'porcjami' ?
+    <details>
+    <summary>Pokaż możliwe opcje</summary>
+
+    | Wartość | Opis |
+    |-|-|
+    | `none`   | Stream wyłączony, odpowiedź przesyłana w całości w formacie JSON |
+    | `json`   | Odpowiedź streamowana w formacie JSON |
+    | `ndjson` | Odpowiedź streamowana w formacie NDJSON (Newline Delimited JSON) |</details>
+- required: false
+  schema:
     title: Id
     type: string
     example: 6189ba008749c5e836fa4cf6
@@ -111,8 +133,6 @@ parameters:
     type: string
   name: cleaned_name
   in: query
-  description: Imię i nazwisko osoby, której dotyczy ogłoszenie
-  example: Jan Kowalski
 - required: false
   schema:
     title: Signature
@@ -193,7 +213,7 @@ parameters:
   schema:
     title: Filter Id
     type: string
-    example: 6189ba008749c5e836fa4cf6
+    example: 62c4261f8a99edae0409fbc0
     maxLength: 24
     minLength: 24
   name: filter_id
