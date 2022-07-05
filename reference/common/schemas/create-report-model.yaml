@@ -176,10 +176,10 @@ properties:
       additionalProperties: false
     description: Kryteria filtrowania ogłoszeń uwzględnionych w raporcie
   custom_content:
-    title: Custom Content
     type: array
     items: {}
     default: []
+    title: Custom Content
     description: |-
       Identyfikatory pól raportu wybranych przez użytkownika. W przypadku pustej listy raport zawiera wszystkie dostępne pola obwieszczenia.
       <details>

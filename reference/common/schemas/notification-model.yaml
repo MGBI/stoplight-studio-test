@@ -49,6 +49,10 @@ properties:
     type: string
     description: Unikalny identyfikator monitora
     example: 6221c40c5278893ac137cd4a
+  records_count:
+    title: Records Count
+    type: integer
+    description: Liczba rekordów
   error:
     title: Error
     type: string
@@ -61,4 +65,5 @@ example:
   sent_datetime: '2022-03-02T08:47:24.765264+01:00'
   email: abc@def.pl
   status: 1
+  records_count: 14
   error: ERROR !

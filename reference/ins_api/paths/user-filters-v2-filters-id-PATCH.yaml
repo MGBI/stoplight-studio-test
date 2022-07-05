@@ -34,7 +34,7 @@ responses:
       application/json:
         schema:
           items:
-            $ref: '#/components/schemas/FiltersModel'
+            $ref: '#/components/schemas/FullFiltersModel'
   '400':
     description: Niewłaściwy format zapytania
     content:
@@ -68,6 +68,17 @@ responses:
           example:
             error: Forbidden
             details: Incorrect user token
+          items:
+            $ref: '#/components/schemas/Error'
+  '429':
+    description: Too Many Requests
+    content:
+      application/json:
+        schema:
+          example:
+            error: Too Many Requests
+            details: You have specified too many filter items. Your limit items of
+              filter is 100.
           items:
             $ref: '#/components/schemas/Error'
 description: |-

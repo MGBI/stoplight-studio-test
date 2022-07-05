@@ -13,10 +13,123 @@ properties:
         "6189ba008749c5e836fa4cf6"
       </details>
     format: ObjectId
+  meta:
+    $ref: ../schemas.yaml#/MetaModel
+    title: MetaModel
+    description: Informacje o ogłoszeniu
+    required:
+    - issue_date
+    - category
+    type: object
+    properties:
+      issue_date:
+        title: Issue Date
+        type: string
+        format: date
+        description: Data publikacji ogłoszenia
+      category:
+        title: CategoriesEnum
+        enum:
+        - K
+        - K.0
+        - K.0.0
+        - K.0.0.0
+        - K.0.2
+        - K.0.5
+        - K.0.6
+        - K.0.6.4
+        - K.0.7
+        - K.0.8
+        - K.0.9
+        - K.0.10
+        - K.1.22
+        - K.0.1
+        - K.0.1.1
+        - K.0.2.2
+        - K.0.3
+        - K.0.3.3
+        - K.0.4
+        - K.1
+        - K.1.20
+        - K.1.20.30
+        - K.1.21
+        - K.1.21.32
+        - K.1.22.31
+        - K.1.22.35
+        - K.1.23
+        - K.1.24
+        - K.1.25
+        - K.1.26
+        - K.1.27
+        - K.1.28
+        - K.1.29
+        - K.1.30
+        - K.1.31
+        - K.1.31.34
+        - K.1.32
+        - K.1.33
+        - K.1.34
+        - K.1.34.33
+        - K.2
+        - K.2.40
+        - K.2.41
+        - M
+        - M.0
+        - M.0.1
+        - M.0.2
+        - M.0.3
+        - M.0.4
+        - M.0.5
+        - M.0.6
+        - M.0.7
+        - M.0.8
+        - M.0.9
+        - M.1
+        - M.1.20
+        - M.1.21
+        - M.1.22
+        - M.1.23
+        - M.1.24
+        - M.1.25
+        - M.1.26
+        - M.1.27
+        - M.1.28
+        - M.1.29
+        - M.1.30
+        - M.1.31
+        - M.1.32
+        - M.1.33
+        - M.1.34
+        - M.1.35
+        - M.1.36
+        - M.1.37
+        - M.1.38
+        - M.1.39
+        - M.1.40
+        - M.1.41
+        - M.1.42
+        - M.1.43
+        - M.1.44
+        - M.1.45
+        - M.1.46
+        - M.1.47
+        - M.1.48
+        - M.1.49
+        - M.1.50
+        type: string
+        description: Lista możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
+      first_update_date:
+        title: First Update Date
+        type: string
+        format: date
+        description: Data pierwszej aktualizacji ogłoszenia
+      last_update_date:
+        title: Last Update Date
+        type: string
+        format: date
+        description: Data ostatniej aktualizacji ogłoszenia
   entity:
     title: Entity
-    anyOf:
-    - type: object
     items:
       required:
       - info
@@ -420,6 +533,9 @@ properties:
     description: Nieprzetworzona treść ogłoszenia
 example:
   id: 623048cdb48627e3e2e491f3
+  meta:
+    issue_date: '2021-11-04'
+    category: K.1.20.30
   entity:
   - info:
       first_name: Jan

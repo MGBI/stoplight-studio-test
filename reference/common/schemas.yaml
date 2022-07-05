@@ -94,3 +94,7 @@ FieldsEnum:
   $ref: schemas/fields-enum.yaml
 ReportDownloadHistoryModel:
   $ref: schemas/report-download-history-model.yaml
+FullFiltersModel:
+  $ref: schemas/full-filters-model.yaml
+MetaModel:
+  $ref: schemas/meta-model.yaml

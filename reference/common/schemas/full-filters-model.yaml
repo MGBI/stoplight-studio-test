@@ -1,8 +1,10 @@
-title: FiltersModel
+title: FullFiltersModel
 required:
 - name
+- content
 - id
 - creation_datetime
+- items_count
 type: object
 properties:
   name:
@@ -94,7 +96,7 @@ properties:
     type: integer
     description: Liczba wszystkich identyfikatorów w filtrze
 example:
-  id: 6221c40ca9ab2f868237cd47
+  id: 6241914e815d3e6b3771fc81
   name: Dłużnicy 2021-11
   content:
     nip:
@@ -113,5 +115,5 @@ example:
     - Jan Kowalski
     - Ambroży Nielepszy
   items_count: 8
-  creation_datetime: '2022-03-02T08:47:24.672670+01:00'
-  last_update_datetime: '2022-03-04T06:47:24.672929+01:00'
+  creation_datetime: '2022-03-26T12:43:26.269733+01:00'
+  last_update_datetime: '2022-03-28T10:43:26.269763+02:00'
