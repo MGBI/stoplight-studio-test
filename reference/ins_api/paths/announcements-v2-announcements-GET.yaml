@@ -221,7 +221,22 @@ parameters:
     minLength: 24
   name: filter_id
   in: query
-  description: Unikalny identyfikator filtra
+  description: Umożliwia odpytywanie bazy o ogłoszenia na podstawie unikalnego identyfikatora
+    filtra
+- required: false
+  schema:
+    title: Update Id
+    type: integer
+  name: update_id
+  in: query
+  description: Umożliwia odpytywanie bazy o ogłoszenia ze wskazanej aktualizacji
+- required: false
+  schema:
+    title: First Update Id
+    type: integer
+  name: first_update_id
+  in: query
+  description: Umożliwia odpytywanie bazy o ogłoszenia począwszy od wskazanej aktualizacji
 - required: false
   schema:
     title: Authorization
