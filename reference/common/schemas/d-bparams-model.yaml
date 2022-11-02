@@ -128,6 +128,10 @@ properties:
     title: Api Requests Used
     type: integer
     default: 0
+  monthly_reset_limits:
+    title: Monthly Reset Limits
+    type: boolean
+    default: true
   panel_users_limit:
     title: Panel Users Limit
     type: integer
@@ -310,6 +314,7 @@ example:
   api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   api_requests_available: 1000
   api_requests_used: 100
+  monthly_reset_limits: true
   panel_users_limit: 5
   panel_users:
   - abc@def.pl

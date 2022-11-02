@@ -17,6 +17,7 @@ required:
 - api_key
 - api_requests_available
 - api_requests_used
+- monthly_reset_limits
 - panel_users_limit
 - panel_users
 - monitors_filter_required
@@ -211,6 +212,10 @@ properties:
     title: Api Requests Used
     type: integer
     description: Liczba wykonanych zapytań do API o pojedyncze ogłoszenia
+  monthly_reset_limits:
+    title: Monthly Reset Limits
+    type: boolean
+    description: Miesięczny reset limitów
   panel_users_limit:
     title: Panel Users Limit
     type: integer
@@ -388,6 +393,7 @@ example:
   api_key: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   api_requests_available: 1000
   api_requests_used: 100
+  monthly_reset_limits: true
   panel_users_limit: 5
   panel_users:
   - abc@def.pl

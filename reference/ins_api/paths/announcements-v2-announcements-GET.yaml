@@ -209,8 +209,11 @@ parameters:
     default: false
   name: append_first_entry
   in: query
-  description: Scala dane obwieszczenia z pierwszym obwieszczeniem dotyczącym tego
-    samego postępowania.
+  description: Umożliwia wyszukiwanie po danych dłużnika lub postępowania (np. numerach
+    PESEL/NIP, sygnaturze sprawy) opublikowanych w pierwszym ogłoszeniu w ramach tego
+    samego postępowania. W odpowiedzi dane dłużnika i postępowania pochodzące z obwieszczenia
+    są nadpisywane danymi pochodzącymi z pierwszego ogłoszenia w ramach tej samej
+    sprawy
   example: true
 - required: false
   schema:
