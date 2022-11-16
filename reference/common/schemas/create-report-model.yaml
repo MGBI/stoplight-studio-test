@@ -276,6 +276,24 @@ properties:
     title: File Password
     type: string
     description: Hasło do pliku raportu
+  file_encoding:
+    title: File Encoding
+    enum:
+    - utf-8
+    - cp1250
+    - iso-8859-2
+    type: string
+    default: utf-8
+    description: |-
+      Typ kodowania znaków w raporcie.
+      <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość |
+      |-|
+      | `utf-8` |
+      | `cp1250` |
+      | `iso-8859-2` |</details>
 additionalProperties: false
 example:
   type: 0
@@ -290,3 +308,4 @@ example:
   custom_content: []
   file_format: 3
   file_password: mgbi2021
+  file_encoding: utf-8

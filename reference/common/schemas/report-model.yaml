@@ -441,6 +441,24 @@ properties:
           format: date-time
           description: Data pobrania raportu
     description: Historia pobrań raportu
+  file_encoding:
+    title: File Encoding
+    enum:
+    - utf-8
+    - cp1250
+    - iso-8859-2
+    type: string
+    default: utf-8
+    description: |-
+      Typ kodowania znaków w raporcie.
+      <details>
+      <summary>Pokaż możliwe opcje</summary>
+
+      | Wartość |
+      |-|
+      | `utf-8` |
+      | `cp1250` |
+      | `iso-8859-2` |</details>
 example:
   id: 6221c40cff11c462e837cd51
   type: 0
@@ -462,3 +480,4 @@ example:
   downloads:
   - download_datetime: '2022-03-04T10:12:08.505092+01:00'
   records_count: 3
+  file_encoding: utf-8
