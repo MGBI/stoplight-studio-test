@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.345
+  version: 1.0.356
   description:
     $ref: common/info_description.md
   x-logo:
@@ -176,6 +176,9 @@ paths:
       $ref: ins_api/paths/create-monitor-v2-monitors-POST.yaml
     delete:
       $ref: ins_api/paths/monitors-v2-monitors-DELETE.yaml
+  /v2/dicts/report-encodings:
+    get:
+      $ref: ins_api/paths/report-encodings-v2-dicts-report-encodings-GET.yaml
 components:
   securitySchemes:
     $ref: common/security-schemes.yaml
