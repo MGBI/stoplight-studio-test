@@ -1,0 +1,14 @@
+title: Encoding
+enum:
+- 0
+- 1
+- 2
+type: integer
+description: |-
+  System kodowania znaków w pliku<details><summary>Pokaż możliwe opcje</summary>
+
+  | Wartość | Nazwa  |
+  |-|-|
+  | `0` | utf-8 |
+  | `1` | cp1250 |
+  | `2` | iso-8859-2 |</details>

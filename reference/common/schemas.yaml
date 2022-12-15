@@ -98,3 +98,7 @@ FullFiltersModel:
   $ref: schemas/full-filters-model.yaml
 MetaModel:
   $ref: schemas/meta-model.yaml
+Encoding:
+  $ref: schemas/encoding.yaml
+InfoEncoding:
+  $ref: schemas/info-encoding.yaml

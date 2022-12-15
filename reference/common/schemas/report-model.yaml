@@ -129,7 +129,7 @@ properties:
             - M.1.49
             - M.1.50
             type: string
-            description: An enumeration.
+            description: Format kodowania znaków
             title: CategoriesEnum
           default: []
         from_date:
@@ -248,7 +248,7 @@ properties:
           - M.1.49
           - M.1.50
           type: string
-          description: An enumeration.
+          description: Format kodowania znaków
           title: CategoriesEnum
         type: array
         description: Identyfikatory kategorii ogłoszeń wybranych przez użytkownika
@@ -442,25 +442,24 @@ properties:
           description: Data pobrania raportu
     description: Historia pobrań raportu
   file_encoding:
-    title: File Encoding
-    enum:
-    - utf-8
-    - cp1250
-    - iso-8859-2
-    type: string
-    default: utf-8
-    description: |-
-      Typ kodowania znaków w raporcie.
-      <details>
-      <summary>Pokaż możliwe opcje</summary>
+    allOf:
+    - title: Encoding
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      description: |-
+        System kodowania znaków w pliku<details><summary>Pokaż możliwe opcje</summary>
 
-      | Wartość |
-      |-|
-      | `utf-8` |
-      | `cp1250` |
-      | `iso-8859-2` |</details>
+        | Wartość | Nazwa  |
+        |-|-|
+        | `0` | utf-8 |
+        | `1` | cp1250 |
+        | `2` | iso-8859-2 |</details>
+    default: 0
 example:
-  id: 6221c40cff11c462e837cd51
+  id: 639740d112aacc69fa7707c2
   type: 0
   name: example raport
   query:
@@ -468,7 +467,7 @@ example:
     - K
     from_date: '2021-11-02'
     to_date: '2021-11-04'
-    filter_id: 6221c40c3ae93e8d7b37cd50
+    filter_id: 639740d14a61d5fa007707c1
     append_first_entry: true
   custom_content: []
   status: 1
@@ -476,8 +475,8 @@ example:
   file_format: 3
   file_password: mgbi2021
   credits_used: 0
-  creation_datetime: '2022-03-04T08:47:24.947878+01:00'
+  creation_datetime: '2022-12-12T15:55:13.629761+01:00'
   downloads:
-  - download_datetime: '2022-03-04T10:12:08.505092+01:00'
+  - download_datetime: '2022-12-12T15:55:13.207386+01:00'
   records_count: 3
-  file_encoding: utf-8
+  file_encoding: 0

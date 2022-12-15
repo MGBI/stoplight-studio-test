@@ -1,0 +1,20 @@
+tags:
+- dicts_iapi
+- public_iapi
+summary: GET /v2/dicts/report-encodings
+operationId: report_encodings_v2_dicts_report_encodings_get
+responses:
+  '200':
+    description: Successful Response
+    content:
+      application/json:
+        schema:
+          title: Response Report Encodings V2 Dicts Report Encodings Get
+          type: array
+          items:
+            $ref: '#/components/schemas/InfoEncoding'
+description: Zwraca słownik zawierający etykiety dla systemów kodowania znaków w pliku
+  raportu
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
