@@ -42,7 +42,8 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
             if "description" in old_values:
                 new_values["description"] = old_values["description"]
             # Remove 422 status_code that is added standards in fastapi
-            new_values.get("responses", {}).pop("422", None)
+            if new_values.get("responses", {}).get("422", {}).get("description") == "Validation Error":
+                new_values.get("responses", {}).pop("422", None)
             # Get actual endpoint's summary
             if "summary" in new_values:
                 new_values["summary"] = old_values["summary"]
