@@ -293,6 +293,17 @@ responses:
             details: Incorrect user token
           items:
             $ref: '#/components/schemas/Error'
+  '422':
+    description: Błędne parametry zapytania
+    content:
+      application/json:
+        schema:
+          example:
+            error: Unprocessable entity
+            details: 'Parameter date_from out of range. Minimal date_from for not
+              archival queries is: 2000-01-01.'
+          items:
+            $ref: '#/components/schemas/Error'
   '429':
     description: Wykorzystany limit zapytań do API
     content:
