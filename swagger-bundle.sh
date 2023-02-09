@@ -13,5 +13,5 @@ wget http://szczur41.mgbi.pl:8080/openapi.json -O iapi.json
 mkdir backup 2> /dev/null && true
 cp -r reference "backup/reference-`date +'%Y-%m-%d_%H-%M-%S'`"
 ./save_spec.py openapi-bundle.iapi.yaml reference/
-
+./remove_from_spec.py openapi-bundle.iapi.yaml
 ./clean_spec.py openapi-bundle.iapi.yaml > openapi-bundle-cleaned.yaml
