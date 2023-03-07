@@ -2,6 +2,11 @@ title: MetaModel
 required:
 - issue_date
 - category
+- first_update_date
+- last_update_date
+- is_administrator_data_consistent
+- is_correction
+- is_entity_data_consistent
 type: object
 properties:
   issue_date:
@@ -100,7 +105,8 @@ properties:
     - M.1.49
     - M.1.50
     type: string
-    description: Lista możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
+    description: Identyfikator kategorii. Lista możliwych wartości dostępna jest pod
+      adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
   first_update_date:
     title: First Update Date
     type: string
@@ -111,4 +117,16 @@ properties:
     type: string
     format: date
     description: Data ostatniej aktualizacji ogłoszenia
+  is_administrator_data_consistent:
+    title: Is Administrator Data Consistent
+    type: boolean
+    description: Czy dane nadzorcy z nagłówka są zgodne z danymi w treści?
+  is_correction:
+    title: Is Correction
+    type: boolean
+    description: Czy dane nadzorcy z nagłówka są zgodne z danymi w treści?
+  is_entity_data_consistent:
+    title: Is Entity Data Consistent
+    type: boolean
+    description: Czy numery rejestrowe dłużnika z nagłówka są zgodne z danymi w treści?
 description: Informacje o ogłoszeniu
