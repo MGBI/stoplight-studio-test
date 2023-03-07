@@ -87,4 +87,5 @@ enum:
 - M.1.49
 - M.1.50
 type: string
-description: Lista możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
+description: Identyfikator kategorii. Lista możliwych wartości dostępna jest pod adresem
+  [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
