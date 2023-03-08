@@ -142,7 +142,7 @@ properties:
       is_correction:
         title: Is Correction
         type: boolean
-        description: Czy dane nadzorcy z nagłówka są zgodne z danymi w treści?
+        description: Czy ogłoszenie jest sprostowaniem?
       is_entity_data_consistent:
         title: Is Entity Data Consistent
         type: boolean
