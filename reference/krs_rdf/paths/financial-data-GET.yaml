@@ -164,6 +164,48 @@ responses:
                 example: '25573272324.98'
                 description: Aktywa razem - przekształcone dane porównawcze za poprzedni
                   rok obrotowy
+              pala_oac_maec_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Zużycie materiałów i energii - kwota na dzień kończący
+                  bieżący rok obrotowy
+              pala_oac_maec_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Zużycie materiałów i energii - kwota na dzień kończący
+                  poprzedni rok obrotowy
+              pala_oac_maec_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Zużycie materiałów i energii - przekształcone dane porównawcze
+                  za poprzedni rok obrotowy
+              pala_oac_ocbt_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Pozostałe koszty rodzajowe - kwota na dzień kończący
+                  bieżący rok obrotowy
+              pala_oac_ocbt_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Pozostałe koszty rodzajowe - kwota na dzień kończący
+                  poprzedni rok obrotowy
+              pala_oac_ocbt_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Pozostałe koszty rodzajowe - przekształcone dane porównawcze
+                  za poprzedni rok obrotowy
+              en_sotdbttboitatgfr_it_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Podatek dochodowy przy rozliczeniu różnicy pomiędzy podstawą
+                  opodatkowania podatkiem dochodowym a wynikiem finansowym (zyskiem,
+                  stratą) brutto - kwota na dzień kończący bieżący rok obrotowy
+              en_sotdbttboitatgfr_it_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                description: Podatek dochodowy przy rozliczeniu różnicy pomiędzy podstawą
+                  opodatkowania podatkiem dochodowym a wynikiem finansowym (zyskiem,
+                  stratą) brutto - kwota na dzień kończący poprzedni rok obrotowy
           type: array
           description: Lista danych finansowych ze sprawozdań spełniających kryteria
             określone w parametrach metody, posortowanych malejąco według daty publikacji
