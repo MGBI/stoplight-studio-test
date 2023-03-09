@@ -772,14 +772,6 @@ responses:
                 description: Podatek dochodowy przy rozliczeniu różnicy pomiędzy podstawą
                   opodatkowania podatkiem dochodowym a wynikiem finansowym (zyskiem,
                   stratą) brutto - kwota na dzień kończący poprzedni rok obrotowy
-              en_sotdbttboitatgfr_it_cpfy:
-                type: string
-                pattern: \d+\.\d{2}
-                example: '10362941097.49'
-                description: Podatek dochodowy przy rozliczeniu różnicy pomiędzy podstawą
-                  opodatkowania podatkiem dochodowym a wynikiem finansowym (zyskiem,
-                  stratą) brutto - przekształcone dane porównawcze za poprzedni rok
-                  obrotowy
           type: array
           description: Lista danych finansowych ze sprawozdań spełniających kryteria
             określone w parametrach metody, posortowanych malejąco według daty publikacji
