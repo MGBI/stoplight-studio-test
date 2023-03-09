@@ -10,7 +10,8 @@ responses:
             - krs
             - period_from
             - period_to
-            - period_year
+            - period_end_year
+            - period_major_year
             - preparation_date
             - filing_date
             - crawling_date
@@ -34,6 +35,16 @@ responses:
                 type: string
                 example: '2019-02-28'
                 description: Data końcowa okresu, którego dotyczy sprawozdanie
+              period_end_year:
+                format: int32
+                type: integer
+                example: 2019
+                description: Rok z daty końcowej okresu, którego dotyczy dokument
+              period_major_year:
+                format: int32
+                type: integer
+                example: 2018
+                description: Zasadniczy rok, którego dotyczy dokument
               preparation_date:
                 format: date
                 type: string
@@ -88,11 +99,6 @@ responses:
                 example: '10362941097.49'
                 description: Zobowiązania długoterminowe - kwota na dzień kończący
                   poprzedni rok obrotowy
-              period_end_year:
-                format: int32
-                type: integer
-                example: 2019
-                description: Rok z daty końcowej okresu, którego dotyczy dokument
               bs_lae_e_cfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -661,11 +667,6 @@ responses:
                 example: '8501384278.96'
                 description: Przychody netto ze sprzedaży - kwota na dzień kończący
                   poprzedni rok obrotowy
-              period_major_year:
-                format: int32
-                type: integer
-                example: 2018
-                description: Zasadniczy rok, którego dotyczy dokument
               bs_a_ta_cfy:
                 pattern: \d+\.\d{2}
                 type: string
