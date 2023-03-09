@@ -25,6 +25,13 @@ responses:
                 type: integer
                 example: 2520543
                 format: int32
+              krs:
+                description: Numer KRS podmiotu, którego dotyczy sprawozdanie
+                maxLength: 10
+                pattern: ^\d{10}$
+                type: string
+                example: 0000019193
+                minLength: 10
               period_from:
                 format: date
                 type: string
@@ -477,13 +484,6 @@ responses:
                 example: '10362941097.49'
                 description: Zobowiązania długoterminowe - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
-              krs:
-                description: Numer KRS podmiotu, którego dotyczy sprawozdanie
-                maxLength: 10
-                pattern: ^\d{10}$
-                type: string
-                example: 0000019193
-                minLength: 10
               bs_a_ta_pfy:
                 pattern: \d+\.\d{2}
                 type: string
