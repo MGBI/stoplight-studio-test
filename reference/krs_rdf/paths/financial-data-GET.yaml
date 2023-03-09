@@ -18,6 +18,46 @@ responses:
             - ias_standard
             type: object
             properties:
+              id:
+                description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator
+                  dokumentu w RDF)
+                type: integer
+                example: 2520543
+                format: int32
+              period_from:
+                format: date
+                type: string
+                example: '2018-01-01'
+                description: Data początkowa okresu, którego dotyczy sprawozdanie
+              period_to:
+                format: date
+                type: string
+                example: '2019-02-28'
+                description: Data końcowa okresu, którego dotyczy sprawozdanie
+              preparation_date:
+                format: date
+                type: string
+                example: '2019-04-12'
+                description: Data sporządzenia sprawozdania
+              filing_date:
+                format: date
+                type: string
+                example: '2019-07-19'
+                description: Data publikacji sprawozdania w RDF
+              crawling_date:
+                format: date
+                type: string
+                example: '2019-07-24'
+                description: Data pobrania sprawozdania z RDF
+              consolidated:
+                type: boolean
+                example: true
+                description: Informacja, czy sprawozdanie jest skonsolidowane
+              ias_standard:
+                type: boolean
+                example: false
+                description: Informacja, czy sprawozdanie zostało sporządzone zgodnie
+                  z Międzynarodowymi Standardami Rachunkowości
               bs_lae_e_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -33,16 +73,19 @@ responses:
               bs_lae_lapfl_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania i rezerwy na zobowiązania - kwota na dzień
                   kończący poprzedni rok obrotowy
               bs_lae_lapfl_stl_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania krótkoterminowe - kwota na dzień kończący
                   poprzedni rok obrotowy
               bs_lae_lapfl_ltl_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania długoterminowe - kwota na dzień kończący
                   poprzedni rok obrotowy
               period_end_year:
@@ -50,10 +93,6 @@ responses:
                 type: integer
                 example: 2019
                 description: Rok z daty końcowej okresu, którego dotyczy dokument
-              consolidated:
-                type: boolean
-                example: true
-                description: Informacja, czy sprawozdanie jest skonsolidowane
               bs_lae_e_cfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -69,16 +108,19 @@ responses:
               bs_lae_lapfl_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania i rezerwy na zobowiązania - kwota na dzień
                   kończący bieżący rok obrotowy
               bs_lae_lapfl_stl_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania krótkoterminowe - kwota na dzień kończący
                   bieżący rok obrotowy
               bs_lae_lapfl_ltl_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania długoterminowe - kwota na dzień kończący
                   bieżący rok obrotowy
               pala_nrfs_cpfy:
@@ -87,28 +129,12 @@ responses:
                 example: '8588730876.40'
                 description: Przychody netto ze sprzedaży - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
-              ias_standard:
-                type: boolean
-                example: false
-                description: Informacja, czy sprawozdanie zostało sporządzone zgodnie
-                  z Międzynarodowymi Standardami Rachunkowości
-              filing_date:
-                format: date
-                type: string
-                example: '2019-07-19'
-                description: Data publikacji sprawozdania w RDF
               bs_lae_e_pfy:
                 pattern: \d+\.\d{2}
                 type: string
                 example: '10400343189.57'
                 description: Kapitał (fundusz) własny - kwota na dzień kończący poprzedni
                   rok obrotowy
-              id:
-                description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator
-                  dokumentu w RDF)
-                type: integer
-                example: 2520543
-                format: int32
               pala_npl_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -118,128 +144,153 @@ responses:
               pala_gpl_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) brutto - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
               pala_plfoa_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) z działalności operacyjnej - przekształcone
                   dane porównawcze za poprzedni rok obrotowy
               pala_it_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Podatek dochodowy - przekształcone dane porównawcze za
                   poprzedni rok obrotowy
               pala_oac_taci_ed_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Podatek akcyzowy - przekształcone dane porównawcze za
                   poprzedni rok obrotowy
               cfs_oacf_ta_d_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Amortyzacja - przekształcone dane porównawcze za poprzedni
                   rok obrotowy
               pala_oac_d_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Amortyzacja - przekształcone dane porównawcze za poprzedni
                   rok obrotowy
               pala_oac_r_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Wynagrodzenia - przekształcone dane porównawcze za poprzedni
                   rok obrotowy
               cfs_oacf_e_sahiaob_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Ubezpieczenia społeczne i zdrowotne oraz inne świadczenia
                   - przekształcone dane porównawcze za poprzedni rok obrotowy
               pala_oac_siaobi_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Ubezpieczenia społeczne i inne świadczenia - przekształcone
                   dane porównawcze za poprzedni rok obrotowy
               cfs_cffia_e_aoiaaotfa_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Nabycie wartości niematerialnych i prawnych oraz rzeczowych
                   aktywów trwałych - przekształcone dane porównawcze za poprzedni
                   rok obrotowy
               cfs_oacf_e_nr_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Wynagrodzenia netto - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
               pala_nrfs_frunafufcm_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: od jednostek powiązanych nieobjętych metodą konsolidacji
                   pełnej - przekształcone dane porównawcze za poprzedni rok obrotowy
               pala_copgams_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: 'Koszty sprzedanych produktów, towarów i materiałów,
                   w tym: -  przekształcone dane porównawcze za poprzedni rok obrotowy'
               pala_gplfs_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) brutto ze sprzedaży (A - B) - przekształcone
                   dane porównawcze za poprzedni rok obrotowy
               pala_cos_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty sprzedaży - przekształcone dane porównawcze za
                   poprzedni rok obrotowy
               pala_gmc_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty ogólnego zarządu - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
               pala_nrfs_ciiop_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zmiana stanu produktów (zwiększenie - wartość dodatnia,
                   zmniejszenie - wartość ujemna) - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
               pala_nrfs_mcopfipote_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszt wytworzenia produktów na własne potrzeby jednostki
                   - przekształcone dane porównawcze za poprzedni rok obrotowy
               pala_oac_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty działalności operacyjnej - przekształcone dane
                   porównawcze za poprzedni rok obrotowy
               pala_plfs_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) ze sprzedaży (C - D - E) - przekształcone
                   dane porównawcze za poprzedni rok obrotowy
               pala_oor_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Pozostałe przychody operacyjne - przekształcone dane
                   porównawcze za poprzedni rok obrotowy
               pala_ooc_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Pozostałe koszty operacyjne - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
               pala_fr_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Przychody finansowe - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
               pala_fc_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty finansowe - przekształcone dane porównawcze za
                   poprzedni rok obrotowy
               pala_ploba_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) z działalności gospodarczej (I + J - K
                   +/- L) - przekształcone dane porównawcze za poprzedni rok obrotowy
               pala_npl_cfy:
@@ -251,124 +302,149 @@ responses:
               pala_gpl_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) brutto - kwota na dzień kończący bieżący
                   rok obrotowy
               pala_plfoa_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) z działalności operacyjnej - kwota na dzień
                   kończący bieżący rok obrotowy
               pala_it_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Podatek dochodowy - kwota na dzień kończący bieżący rok
                   obrotowy
               pala_oac_taci_ed_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Podatek akcyzowy - kwota na dzień kończący bieżący rok
                   obrotowy
               cfs_oacf_ta_d_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Amortyzacja - kwota na dzień kończący bieżący rok obrotowy
               pala_oac_d_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Amortyzacja - kwota na dzień kończący bieżący rok obrotowy
               pala_oac_r_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Wynagrodzenia - kwota na dzień kończący bieżący rok obrotowy
               cfs_oacf_e_sahiaob_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Ubezpieczenia społeczne i zdrowotne oraz inne świadczenia
                   - kwota na dzień kończący bieżący rok obrotowy
               pala_oac_siaobi_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Ubezpieczenia społeczne i inne świadczenia - kwota na
                   dzień kończący bieżący rok obrotowy
               cfs_cffia_e_aoiaaotfa_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Nabycie wartości niematerialnych i prawnych oraz rzeczowych
                   aktywów trwałych - kwota na dzień kończący bieżący rok obrotowy
               cfs_oacf_e_nr_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Wynagrodzenia netto - kwota na dzień kończący bieżący
                   rok obrotowy
               pala_nrfs_frunafufcm_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: od jednostek powiązanych nieobjętych metodą konsolidacji
                   pełnej - kwota na dzień kończący bieżący rok obrotowy
               pala_copgams_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: 'Koszty sprzedanych produktów, towarów i materiałów,
                   w tym: -  kwota na dzień kończący bieżący rok obrotowy'
               pala_gplfs_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) brutto ze sprzedaży (A - B) - kwota na
                   dzień kończący bieżący rok obrotowy
               pala_cos_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty sprzedaży - kwota na dzień kończący bieżący rok
                   obrotowy
               pala_gmc_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty ogólnego zarządu - kwota na dzień kończący bieżący
                   rok obrotowy
               pala_nrfs_ciiop_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zmiana stanu produktów (zwiększenie - wartość dodatnia,
                   zmniejszenie - wartość ujemna) - kwota na dzień kończący bieżący
                   rok obrotowy
               pala_nrfs_mcopfipote_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszt wytworzenia produktów na własne potrzeby jednostki
                   - kwota na dzień kończący bieżący rok obrotowy
               pala_oac_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty działalności operacyjnej - kwota na dzień kończący
                   bieżący rok obrotowy
               pala_plfs_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) ze sprzedaży (C - D - E) - kwota na dzień
                   kończący bieżący rok obrotowy
               pala_oor_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Pozostałe przychody operacyjne - kwota na dzień kończący
                   bieżący rok obrotowy
               pala_ooc_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Pozostałe koszty operacyjne - kwota na dzień kończący
                   bieżący rok obrotowy
               pala_fr_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Przychody finansowe - kwota na dzień kończący bieżący
                   rok obrotowy
               pala_fc_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty finansowe - kwota na dzień kończący bieżący rok
                   obrotowy
               pala_ploba_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) z działalności gospodarczej (I + J - K
                   +/- L) - kwota na dzień kończący bieżący rok obrotowy
               bs_lae_nc_cpfy:
@@ -380,23 +456,21 @@ responses:
               bs_lae_lapfl_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania i rezerwy na zobowiązania - przekształcone
                   dane porównawcze za poprzedni rok obrotowy
               bs_lae_lapfl_stl_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania krótkoterminowe - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
               bs_lae_lapfl_ltl_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zobowiązania długoterminowe - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
-              period_from:
-                format: date
-                type: string
-                example: '2018-01-01'
-                description: Data początkowa okresu, którego dotyczy sprawozdanie
               krs:
                 description: Numer KRS podmiotu, którego dotyczy sprawozdanie
                 maxLength: 10
@@ -404,16 +478,6 @@ responses:
                 type: string
                 example: 0000019193
                 minLength: 10
-              period_to:
-                format: date
-                type: string
-                example: '2019-02-28'
-                description: Data końcowa okresu, którego dotyczy sprawozdanie
-              crawling_date:
-                format: date
-                type: string
-                example: '2019-07-24'
-                description: Data pobrania sprawozdania z RDF
               bs_a_ta_pfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -423,10 +487,12 @@ responses:
               bs_a_ca_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Aktywa obrotowe - kwota na dzień kończący poprzedni rok
               bs_a_fa_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Aktywa trwałe - kwota na dzień kończący poprzedni rok
               pala_npl_pfy:
                 pattern: \d+\.\d{2}
@@ -437,125 +503,150 @@ responses:
               pala_gpl_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) brutto - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_plfoa_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) z działalności operacyjnej - kwota na dzień
                   kończący poprzedni rok obrotowy
               pala_it_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Podatek dochodowy - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_oac_taci_ed_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Podatek akcyzowy - kwota na dzień kończący poprzedni
                   rok obrotowy
               cfs_oacf_ta_d_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Amortyzacja - kwota na dzień kończący poprzedni rok obrotowy
               pala_oac_d_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Amortyzacja - kwota na dzień kończący poprzedni rok obrotowy
               pala_oac_r_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Wynagrodzenia - kwota na dzień kończący poprzedni rok
                   obrotowy
               cfs_oacf_e_sahiaob_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Ubezpieczenia społeczne i zdrowotne oraz inne świadczenia
                   - kwota na dzień kończący poprzedni rok obrotowy
               pala_oac_siaobi_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Ubezpieczenia społeczne i inne świadczenia - kwota na
                   dzień kończący poprzedni rok obrotowy
               cfs_cffia_e_aoiaaotfa_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Nabycie wartości niematerialnych i prawnych oraz rzeczowych
                   aktywów trwałych - kwota na dzień kończący poprzedni rok obrotowy
               cfs_oacf_e_nr_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Wynagrodzenia netto - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_nrfs_frunafufcm_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: od jednostek powiązanych nieobjętych metodą konsolidacji
                   pełnej - kwota na dzień kończący poprzedni rok obrotowy
               pala_copgams_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: 'Koszty sprzedanych produktów, towarów i materiałów,
                   w tym: -  kwota na dzień kończący poprzedni rok obrotowy'
               pala_gplfs_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) brutto ze sprzedaży (A - B) - kwota na
                   dzień kończący poprzedni rok obrotowy
               pala_cos_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty sprzedaży - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_gmc_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty ogólnego zarządu - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_nrfs_ciiop_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zmiana stanu produktów (zwiększenie - wartość dodatnia,
                   zmniejszenie - wartość ujemna) - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_nrfs_mcopfipote_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszt wytworzenia produktów na własne potrzeby jednostki
                   - kwota na dzień kończący poprzedni rok obrotowy
               pala_oac_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty działalności operacyjnej - kwota na dzień kończący
                   poprzedni rok obrotowy
               pala_plfs_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) ze sprzedaży (C - D - E) - kwota na dzień
                   kończący poprzedni rok obrotowy
               pala_oor_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Pozostałe przychody operacyjne - kwota na dzień kończący
                   poprzedni rok
               pala_ooc_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Pozostałe koszty operacyjne - kwota na dzień kończący
                   poprzedni rok obrotowy
               pala_fr_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Przychody finansowe - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_fc_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Koszty finansowe - kwota na dzień kończący poprzedni
                   rok obrotowy
               pala_ploba_pfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Zysk (strata) z działalności gospodarczej (I + J - K
                   +/- L) - kwota na dzień kończący poprzedni rok obrotowy
               pala_nrfs_cfy:
@@ -583,17 +674,14 @@ responses:
               bs_a_ca_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Aktywa obrotowe - kwota na dzień kończący bieżący rok
                   obrotowy
               bs_a_fa_cfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Aktywa trwałe - kwota na dzień kończący bieżący rok obrotowy
-              preparation_date:
-                format: date
-                type: string
-                example: '2019-04-12'
-                description: Data sporządzenia sprawozdania
               bs_a_ta_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -603,11 +691,13 @@ responses:
               bs_a_ca_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Aktywa obrotowe - przekształcone dane porównawcze za
                   poprzedni rok obrotowy
               bs_a_fa_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
+                example: '10362941097.49'
                 description: Aktywa trwałe - przekształcone dane porównawcze za poprzedni
                   rok obrotowy
               pala_oac_maec_cfy:
