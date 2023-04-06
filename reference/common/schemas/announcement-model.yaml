@@ -556,17 +556,21 @@ properties:
         description: Link do podglądu treści ogłoszenia
     description: Nieprzetworzona treść ogłoszenia
 example:
-  id: 623048cdb48627e3e2e491f3
+  id: 642d7d281c62e3a72c70cd8d
   meta:
     issue_date: '2021-11-04'
     category: K.1.20.30
+    first_update_date: '2022-11-11'
+    last_update_date: '2023-01-11'
+    is_administrator_data_consistent: true
+    is_correction: false
+    is_entity_data_consistent: true
   entity:
   - info:
       first_name: Jan
       last_name: Kowalski
       legal_form: osoby fizyczne nieprowadzące działalności gospodarczej
       birth_date: '1975-03-09'
-      commencement_date: null
       cleaned_name: Jan Kowalski
       ownership_type: własność krajowych osób fizycznych
     numbers:
