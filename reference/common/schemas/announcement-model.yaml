@@ -161,6 +161,10 @@ properties:
           required:
           - cleaned_name
           properties:
+            birth_date:
+              type: string
+              format: date
+              description: Data urodzenia
             commencement_date:
               type: string
               format: date
@@ -561,7 +565,8 @@ example:
       first_name: Jan
       last_name: Kowalski
       legal_form: osoby fizyczne nieprowadzące działalności gospodarczej
-      commencement_date: '1975-03-09'
+      birth_date: '1975-03-09'
+      commencement_date: null
       cleaned_name: Jan Kowalski
       ownership_type: własność krajowych osób fizycznych
     numbers:

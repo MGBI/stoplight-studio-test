@@ -196,6 +196,7 @@ properties:
       | `entity.info.ownership_type` | Forma własności |
       | `entity.info.primary_business` | Przeważająca działalność gospodarcza (kod PKD) |
       | `entity.info.commencement_date` | Data rozpoczęcia działalności |
+      | `entity.info.birth_date` | Data urodzenia |
       | `entity.numbers` | Numery rejestrowe podmiotu |
       | `entity.numbers.nip` | NIP |
       | `entity.numbers.regon` | REGON |
