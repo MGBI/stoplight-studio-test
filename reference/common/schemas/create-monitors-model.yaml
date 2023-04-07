@@ -30,9 +30,14 @@ properties:
     example: true
     description: Czy wysyłać powiadomienie, jeśli nie pojawiły się nowe ogłoszenia
       w ramach monitoringu?
+  show_snippets:
+    title: Show Snippets
+    type: boolean
+    default: true
 example:
   filter_id: 6221c40c843d0d773f37cd4b
   emails:
   - jajko@wp.pl
   append_first_entry: true
   send_empty_notifications: false
+  show_snippets: true

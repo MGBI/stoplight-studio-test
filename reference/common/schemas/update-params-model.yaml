@@ -210,6 +210,7 @@ example:
   - entity.info.ownership_type
   - entity.info.primary_business
   - entity.info.commencement_date
+  - entity.info.birth_date
   - entity.numbers.nip
   - entity.numbers.regon
   - entity.numbers.krs

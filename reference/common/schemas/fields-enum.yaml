@@ -7,6 +7,7 @@ enum:
 - entity.info.ownership_type
 - entity.info.primary_business
 - entity.info.commencement_date
+- entity.info.birth_date
 - entity.numbers.nip
 - entity.numbers.regon
 - entity.numbers.krs
@@ -64,6 +65,7 @@ description: |-
   | `entity.info.ownership_type` | Forma własności |
   | `entity.info.primary_business` | Przeważająca działalność gospodarcza (kod PKD) |
   | `entity.info.commencement_date` | Data rozpoczęcia działalności |
+  | `entity.info.birth_date` | Data urodzenia |
   | `entity.numbers.nip` | NIP |
   | `entity.numbers.regon` | REGON |
   | `entity.numbers.krs` | KRS |
