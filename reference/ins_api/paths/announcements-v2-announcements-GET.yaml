@@ -11,7 +11,7 @@ parameters:
     - ndjson
     - none
     type: string
-    default: none
+    default: json
     example: json
   name: stream
   in: query
@@ -22,7 +22,7 @@ parameters:
 
     | Wartość | Opis |
     |-|-|
-    | `none`   | Stream wyłączony, odpowiedź przesyłana w całości w formacie JSON |
+    | `none`   | Stream wyłączony, odpowiedź przesyłana w całości w formacie JSON (ograniczona do 1000 pierwszych rekordów) |
     | `json`   | Odpowiedź streamowana w formacie JSON |
     | `ndjson` | Odpowiedź streamowana w formacie NDJSON (Newline Delimited JSON) |</details>
 - required: false
