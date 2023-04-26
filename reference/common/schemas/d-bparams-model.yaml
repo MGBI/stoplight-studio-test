@@ -246,11 +246,6 @@ properties:
     - K.2
     - M.0
     - M.1
-  authorized_vendors:
-    title: Authorized Vendors
-    type: array
-    items: {}
-    default: []
 example:
   archive_date_from: '2021-04-23'
   current_reports_available: 25
@@ -333,4 +328,3 @@ example:
   - K.2
   - M.0
   - M.1
-  authorized_vendors: []
