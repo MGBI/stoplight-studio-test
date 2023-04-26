@@ -12,6 +12,13 @@ parameters:
   name: Authorization
   in: header
   description: Klucz autoryzacji
+- required: false
+  schema:
+    title: X-Vendor-Authorization
+    type: string
+  example: imsig-55086cef9c87d6d031cd5db29cd03a2ed0252b45
+  name: X-Vendor-Authorization
+  in: header
 responses:
   '200':
     description: Wynik wyszukiwania danych obecnego użytkownika
