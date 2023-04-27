@@ -192,6 +192,11 @@ properties:
       - M.1.50
       type: string
       description: Lista możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
+  authorized_vendors:
+    title: Authorized Vendors
+    type: array
+    items:
+      type: string
 example:
   archive_date_from: '2021-04-23'
   current_reports_available: 25
@@ -274,3 +279,4 @@ example:
   - K.2
   - M.0
   - M.1
+  authorized_vendors: []
