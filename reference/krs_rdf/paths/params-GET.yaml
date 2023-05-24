@@ -1,0 +1,88 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          items:
+            properties:
+              api_documents_requests_avaiable:
+                type: string
+                description: Limit requestów dla zakresu dokumentów finansowych
+                example: 100
+              api_documents_requests_used:
+                type: string
+                description: Wykorzystane requesty dla zakresu dokumentów finansowych
+                example: 100
+              api_financial_data_requests_avaiable:
+                type: string
+                description: Limit requestów dla zakresu danych finansowych
+                example: 100
+              api_financial_data_requests_used:
+                type: string
+                description: Limit requestów dla zakresu danych finansowych
+                example: 100
+    description: Poprawne zapytanie
+  '401':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Missing 'Authorization' header
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niepoprawna autentykacja tokenu
+  '403':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Access forbidden
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nieudana autoryzacja dostępu do API
+  '429':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Quota is exceeded
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Wykorzystany limit zapytań do API
+tags:
+- params
+summary: ''
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
+security:
+- api_key: []
+operationId: get-params
+x-code-samples:
+- lang: Shell
+  source: |-
+    # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`
+    curl https://api.imsig.pl/v1/rdf/params --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+description: Zwraca informacje dotyczące wysokości limitu oraz wykorzystanych zapytań
+  dla użytkownika w wykupionym zakresie.
