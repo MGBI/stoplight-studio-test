@@ -5,7 +5,7 @@ import sys
 import yaml
 
 INTERNAL_DOCS = bool(int(os.getenv("INTERNAL_DOCS", 0)))
-print(INTERNAL_DOCS)
+print(f"Internal docs: {INTERNAL_DOCS}")
 
 def load(file_path):
     with open(file_path) as file:

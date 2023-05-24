@@ -11,6 +11,7 @@ path-to-directory:
 tag-to-directory:
   documents: krs_rdf
   financial_data: krs_rdf
+  params: krs_rdf
   announcements: msig
   "*_iapi": ins_api
   "*": other

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.405
+  version: 1.0.418
   description:
     $ref: common/info_description.md
   x-logo:
@@ -20,6 +20,10 @@ tags:
   name: financial_data
   description:
     $ref: krs_rdf/descriptions/tag_financial_data.md
+- x-displayName: Parametry użytkownika
+  name: params
+  description:
+    $ref: krs_rdf/descriptions/tag_params.md
 - x-displayName: Ogłoszenia
   name: announcements
   description:
@@ -69,6 +73,7 @@ x-tagGroups:
   tags:
   - documents
   - financial_data
+  - params
 - name: MSiG API, KRZ API
   tags:
   - announcements
@@ -139,6 +144,9 @@ paths:
   /v1/rdf/documents:
     get:
       $ref: krs_rdf/paths/documents-GET.yaml
+  /v1/rdf/params:
+    get:
+      $ref: krs_rdf/paths/params-GET.yaml
   /v2/dicts/announcement-fields:
     get:
       $ref: ins_api/paths/fields-v2-dicts-announcement-fields-GET.yaml
