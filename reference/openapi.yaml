@@ -25,14 +25,6 @@ tags:
   description:
     $ref: krs_rdf/descriptions/tag_params.md
 - x-displayName: Ogłoszenia
-  name: announcements
-  description:
-    $ref: msig/descriptions/tag_announcements.md
-- x-displayName: Aktualizacje
-  name: updates
-  description:
-    $ref: other/descriptions/tag_updates.md
-- x-displayName: Ogłoszenia
   name: announcements_iapi
   description:
     $ref: ins_api/descriptions/tag_announcements.md
@@ -74,10 +66,6 @@ x-tagGroups:
   - documents
   - financial_data
   - params
-- name: MSiG API, KRZ API
-  tags:
-  - announcements
-  - updates
 - name: MSIG API V2, KRZ API V2
   tags:
   - announcements_iapi
@@ -153,18 +141,9 @@ paths:
   /v2/dicts/report-formats:
     get:
       $ref: ins_api/paths/report-formats-v2-dicts-report-formats-GET.yaml
-  /v1/msig/checkNumbers:
-    post:
-      $ref: msig/paths/check-numbers-POST.yaml
-  /v1/msig/announcements:
-    get:
-      $ref: msig/paths/announcements-GET.yaml
   /v2/reports/{report_id}/download:
     get:
       $ref: ins_api/paths/download-report-by-id-v2-reports-report-id-download-GET.yaml
-  /v1/msig/updates:
-    get:
-      $ref: msig/paths/updates-GET.yaml
   /v2/params:
     get:
       $ref: ins_api/paths/actual-user-params-v2-params-GET.yaml
