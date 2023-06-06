@@ -13,7 +13,7 @@ responses:
                 type: string
                 description: Wykorzystane zapytania dla zakresu dokumentów finansowych
                 example: 100
-              api_financial_data_requests_avaiable:
+              api_financial_data_requests_available:
                 type: string
                 description: Limit zapytań dla zakresu danych finansowych
                 example: 100
@@ -81,7 +81,6 @@ security:
 operationId: get-params
 x-code-samples:
 - lang: Shell
-  source: |-
-    curl https://api.imsig.pl/v1/rdf/params/ --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+  source: 'curl https://api.imsig.pl/v1/rdf/params/ --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"'
 description: Zwraca informacje dotyczące wysokości limitu oraz wykorzystanych zapytań
   dla użytkownika w wykupionym zakresie.
