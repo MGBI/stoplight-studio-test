@@ -674,20 +674,18 @@ responses:
                 type: string
                 pattern: \d+\.\d{2}
                 example: '10362941097.49'
-                description: Usługi obce" - wariant porównawczy poz. B (III) - kwota
-                  na dzień kończący bieżący rok obrotowy
+                description: Usługi obce - kwota na dzień kończący bieżący rok obrotowy
               pala_oac_es_pfy:
                 type: string
                 pattern: \d+\.\d{2}
                 example: '10362941097.49'
-                description: Usługi obce" - wariant porównawczy poz. B (III) - kwota
-                  na dzień kończący poprzedni rok obrotowy
+                description: Usługi obce - kwota na dzień kończący poprzedni rok obrotowy
               pala_oac_es_cpfy:
                 type: string
                 pattern: \d+\.\d{2}
                 example: '10362941097.49'
-                description: Usługi obce" - wariant porównawczy poz. B (III) - przekształcone
-                  dane porównawcze za poprzedni rok obrotowy
+                description: Usługi obce - przekształcone dane porównawcze za poprzedni
+                  rok obrotowy
               pala_oac_maec_cfy:
                 type: string
                 pattern: \d+\.\d{2}
@@ -766,20 +764,20 @@ responses:
                 type: string
                 pattern: \d+\.\d{2}
                 example: '10362941097.49'
-                description: Podatki i opłaty" - wariant porównawczy poz. B (IV) -
-                  kwota na dzień kończący bieżący rok obrotowy
+                description: Podatki i opłaty" - kwota na dzień kończący bieżący rok
+                  obrotowy
               pala_oac_tac_pfy:
                 type: string
                 pattern: \d+\.\d{2}
                 example: '10362941097.49'
-                description: Podatki i opłaty" - wariant porównawczy poz. B (IV) -
-                  kwota na dzień kończący poprzedni rok obrotowy
+                description: Podatki i opłaty" - kwota na dzień kończący poprzedni
+                  rok obrotowy
               pala_oac_tac_cpfy:
                 type: string
                 pattern: \d+\.\d{2}
                 example: '10362941097.49'
-                description: Podatki i opłaty" - wariant porównawczy poz. B (IV) -
-                  przekształcone dane porównawcze za poprzedni rok obrotowy
+                description: Podatki i opłaty" - przekształcone dane porównawcze za
+                  poprzedni rok obrotowy
               pala_omropiol_cfy:
                 type: string
                 pattern: \d+\.\d{2}
