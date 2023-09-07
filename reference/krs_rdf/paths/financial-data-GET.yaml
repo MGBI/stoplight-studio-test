@@ -289,6 +289,25 @@ responses:
                 example: '10362941097.49'
                 description: Koszty sprzedanych produktów, towarów i materiałów -  przekształcone
                   dane porównawcze za poprzedni rok obrotowy
+              pala_copgams_vogams_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - kwota na dzień kończący bieżący rok obrotowy
+              pala_copgams_vogams_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - kwota na dzień kończący poprzedni rok obrotowy
+              pala_copgams_vogams_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - przekształcone dane porównawcze za poprzedni rok
+                  obrotowy
               pala_gplfs_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
@@ -651,6 +670,24 @@ responses:
                 example: '8501384278.96'
                 description: Przychody netto ze sprzedaży - kwota na dzień kończący
                   poprzedni rok obrotowy
+              pala_oac_es_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Usługi obce" - wariant porównawczy poz. B (III) - kwota
+                  na dzień kończący bieżący rok obrotowy
+              pala_oac_es_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Usługi obce" - wariant porównawczy poz. B (III) - kwota
+                  na dzień kończący poprzedni rok obrotowy
+              pala_oac_es_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Usługi obce" - wariant porównawczy poz. B (III) - przekształcone
+                  dane porównawcze za poprzedni rok obrotowy
               pala_oac_maec_cfy:
                 type: string
                 pattern: \d+\.\d{2}
@@ -669,6 +706,44 @@ responses:
                 example: '10362941097.49'
                 description: Zużycie materiałów i energii - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
+              pala_oac_oc_vogams_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - kwota na dzień kończący bieżący rok obrotowy
+              pala_oac_oc_vogams_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - kwota na dzień kończący poprzedni rok obrotowy
+              pala_oac_oc_vogams_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - przekształcone dane porównawcze za poprzedni rok
+                  obrotowy
+              pala_oac_vogams_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - kwota na dzień kończący bieżący rok obrotowy
+              pala_oac_vogams_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - kwota na dzień kończący poprzedni rok obrotowy
+              pala_oac_vogams_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Wartość sprzedanych towarów i materiałów" - wariant porównawczy
+                  poz. B (VIII) - przekształcone dane porównawcze za poprzedni rok
+                  obrotowy
               pala_oac_ocbt_cfy:
                 type: string
                 pattern: \d+\.\d{2}
@@ -687,6 +762,42 @@ responses:
                 example: '10362941097.49'
                 description: Pozostałe koszty rodzajowe - przekształcone dane porównawcze
                   za poprzedni rok obrotowy
+              pala_oac_tac_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Podatki i opłaty" - wariant porównawczy poz. B (IV) -
+                  kwota na dzień kończący bieżący rok obrotowy
+              pala_oac_tac_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Podatki i opłaty" - wariant porównawczy poz. B (IV) -
+                  kwota na dzień kończący poprzedni rok obrotowy
+              pala_oac_tac_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Podatki i opłaty" - wariant porównawczy poz. B (IV) -
+                  przekształcone dane porównawcze za poprzedni rok obrotowy
+              pala_omropiol_cfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Pozostałe obowiązkowe zmniejszenia zysku (zwiększenia
+                  straty) - kwota na dzień kończący bieżący rok obrotowy
+              pala_omropiol_pfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Pozostałe obowiązkowe zmniejszenia zysku (zwiększenia
+                  straty) - kwota na dzień kończący poprzedni rok obrotowy
+              pala_omropiol_cpfy:
+                type: string
+                pattern: \d+\.\d{2}
+                example: '10362941097.49'
+                description: Pozostałe obowiązkowe zmniejszenia zysku (zwiększenia
+                  straty) - przekształcone dane porównawcze za poprzedni rok obrotowy
               cfs_oacf_ta_d_cpfy:
                 pattern: \d+\.\d{2}
                 type: string
