@@ -27,6 +27,12 @@ responses:
         schema:
           items:
             $ref: '#/components/schemas/UserModel'
+  '400':
+    description: Bad Request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
