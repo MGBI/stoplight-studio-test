@@ -1343,138 +1343,23 @@ responses:
     description: Wykorzystany limit zapytań do API
 parameters:
 - schema:
-    pattern: ^\d{10}$
-    type: string
-    example: 0000019193
-    minLength: 10
-    maxLength: 10
-  description: Numer KRS podmiotu, którego dotyczy sprawozdanie
-  name: krs
-  in: query
-- schema:
-    enum:
-    - auditors_opinion
-    - consolidated_auditors_opinion
-    - balance_sheet
-    - footnotes
-    - cash_flow_statement
-    - profit_and_loss_statement
-    - equity_statement
-    - financial_statement
-    - consolidated_footnotes
-    - consolidated_equity_statement
-    - consolidated_balance_sheet
-    - consolidated_cash_flow_statement
-    - consolidated_profit_and_loss_statement
-    - consolidated_equity_statement
-    - consolidated_financial_statement
-    - activity_report
-    - consolidated_and_parent_activity_report
-    - parent_activity_report
-    - report_on_payments
-    - consolidated_report_on_payments
-    - resolution_on_approval
-    - consolidated_resolution_on_approval
-    - resolution_on_profit_distribution
-    type: string
-    description: |-
-      Identyfikator rodzaju dokumentu
-
-      <details>
-        <summary>Pokaż możliwe opcje</summary>
-
-        | Identyfikator | Rodzaj dokumentu | Nazwa dokumentu |
-        |-|-|-|
-        | `"auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania rocznego sprawozdania finansowego |  |
-        | `"consolidated_auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania skonsolidowanego rocznego sprawozdania finansowego grupy kapitałowej |  |
-        | `"balance_sheet"` | Roczne sprawozdanie finansowe | Bilans |
-        | `"footnotes"` | Roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
-        | `"cash_flow_statement"` | Roczne sprawozdanie finansowe | Rachunek przepływów pieniężnych |
-        | `"profit_and_loss_statement"` | Roczne sprawozdanie finansowe | Rachunek zysków i strat |
-        | `"equity_statement"` | Roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
-        | `"financial_statement"` | Roczne sprawozdanie finansowe |  |
-        | `"consolidated_footnotes"` | Skonsolidowane roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
-        | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowane zestawienie zmian w kapitale (funduszu) własnym |
-        | `"consolidated_balance_sheet"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany bilans |
-        | `"consolidated_cash_flow_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek przepływów pieniężnych |
-        | `"consolidated_profit_and_loss_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek zysków i strat |
-        | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
-        | `"consolidated_financial_statement"` | Skonsolidowane roczne sprawozdanie finansowe |  |
-        | `"activity_report"` | Sprawozdanie z działalności |  |
-        | `"consolidated_and_parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej oraz sprawozdanie z działalności grupy kapitałowej |  |
-        | `"parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej |  |
-        | `"report_on_payments"` | Sprawozdanie z płatności na rzecz administracji publicznej |  |
-        | `"consolidated_report_on_payments"` | Skonsolidowane sprawozdanie z płatności na rzecz administracji publicznej |  |
-        | `"resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu rocznego sprawozdania finansowego |  |
-        | `"consolidated_resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego |  |
-        | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
-
-      </details>
-    example: financial_statement
-  name: type
-  in: query
-- schema:
     type: integer
-    example: 2019
-  description: Rok z daty końcowej okresu, którego dotyczy dokument
-  name: period_end_year
-  in: query
-- schema:
-    type: integer
-    example: 2018
-  description: Zasadniczy rok, którego dotyczy dokument
-  name: period_major_year
-  in: query
-- schema:
-    type: string
-    example: '2019-01-01'
-    format: date
-  description: Początek zakresu dla daty publikacji sprawozdania w RDF
-  name: filing_date_from
-  in: query
-- schema:
-    type: string
-    example: '2019-12-31'
-    format: date
-  description: Koniec zakresu dla daty publikacji sprawozdania w RDF
-  name: filing_date_to
-  in: query
-- schema:
-    type: string
-    example: '2020-07-01'
-    format: date
-  description: Początek zakresu dla daty pobrania dokumentu z RDF
-  name: crawling_date_from
-  in: query
-- schema:
-    type: string
-    example: '2020-07-31'
-    format: date
-  description: Koniec zakresu dla daty pobrania dokumentu z RDF
-  name: crawling_date_to
-  in: query
-- schema:
-    type: boolean
-    example: false
-  description: Informacja, czy sprawozdanie jest skonsolidowane
-  name: consolidated
-  in: query
-- schema:
-    type: boolean
-    example: false
-  description: Informacja, czy sprawozdanie zostało sporządzone zgodnie z Międzynarodowymi
-    Standardami Rachunkowości
-  name: ias_standard
-  in: query
+    example: 2520543
+    format: int32
+  description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator dokumentu
+    w RDF)
+  name: id
+  in: path
+  required: true
 tags:
 - financial_data
-summary: GET /v1/rdf/allFinancialData
+summary: GET /v1/rdf/allFinancialData/{id}
 components:
   schemas:
     $ref: ../../common/schemas.yaml
 security:
 - api_key: []
-operationId: get-all-financial-data
+operationId: get-all-financial-data-id
 x-code-samples:
 - lang: Shell
   source: |-
@@ -1484,11 +1369,7 @@ description: |-
   Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium
   Dokumentów Finansowych KRS spełniających podane kryteria.
 
-  W przypadku sukcesu w treści odpowiedzi zwracana jest lista danych finansowych
-  ze sprawozdań spełniających kryteria określone w parametrach metody,
-  posortowanych malejąco według daty publikacji w RDF.
+  W przypadku sukcesu w treści odpowiedzi zwracane są dane finansowe
+  ze sprawozdania o podanym identyfikatorze.
 
-  W przypadku, gdy żadne sprawozdanie nie spełnia podanych kryteriów, zwracana
-  jest pusta lista. W przypadku, gdy liczba sprawozdań spełniających kryteria
-  jest większa niż 100, lista zawiera dane finansowe ze 100 pierwszych
-  dokumentów.
+  W przypadku, gdy sprawozdanie nie istnieje zwracany jest błąd.

@@ -86,6 +86,12 @@ responses:
                 description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
                   do formatu PDF (tylko dla dokumentów w formacie XML)
                 example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=pdf
+              json_data_url:
+                format: uri
+                type: string
+                description: Bezpośredni adres URL do endpointu z surowymi wszystkimi
+                  danymi zawartymi w sprawozdaniu.
+                example: https://api.imsig.pl/v1/rdf/allFinancialData/2047606
               crawling_date:
                 format: date
                 type: string
