@@ -921,6 +921,21 @@ responses:
           properties:
             error:
               type: string
+  '404':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Entry does not exist.
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
     description: Nieudana autoryzacja dostępu do API
   '429':
     content:
