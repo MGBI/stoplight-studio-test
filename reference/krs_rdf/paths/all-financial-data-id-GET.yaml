@@ -1275,7 +1275,7 @@ responses:
                 DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_10.RP: '0.00'
                 DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_11.RB: '0.00'
                 DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_11.RP: '0.00'
-          description: Dane finansowe ze sprawozdania o podanym identyfikatorze
+          description: Wszystkie dane finansowe ze sprawozdania o podanym identyfikatorze
     description: Poprawne wyszukiwanie danych finansowych
   '400':
     content:
@@ -1363,10 +1363,10 @@ operationId: get-all-financial-data-id
 x-code-samples:
 - lang: Shell
   source: |-
-    # Wyszukaj dane finansowe ze sprawozdania dla podmiotu z numerem KRS `0000019193`
-    curl https://api.imsig.pl/v1/rdf/financialData?krs=0000019193 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+    # Wyszukaj wszystkie dane finansowe ze sprawozdania o identyfikatorze `2520543`
+    curl https://api.imsig.pl/v1/rdf/financialData/2520543 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 description: |-
-  Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium
+  Pobiera przetworzone oraz surowe dane finansowe ze sprawozdań złożonych do Repozytorium
   Dokumentów Finansowych KRS spełniających podane kryteria.
 
   W przypadku sukcesu w treści odpowiedzi zwracane są dane finansowe

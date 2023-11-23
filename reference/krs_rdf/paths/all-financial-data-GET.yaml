@@ -1275,7 +1275,7 @@ responses:
                 DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_10.RP: '0.00'
                 DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_11.RB: '0.00'
                 DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_11.RP: '0.00'
-          description: Dane finansowe ze sprawozdania o podanym identyfikatorze
+          description: Wszystkie dane finansowe ze sprawozdania o podanym identyfikatorze
     description: Poprawne wyszukiwanie danych finansowych
   '400':
     content:
@@ -1481,7 +1481,7 @@ x-code-samples:
     # Wyszukaj dane finansowe ze sprawozdania dla podmiotu z numerem KRS `0000019193`
     curl https://api.imsig.pl/v1/rdf/financialData?krs=0000019193 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 description: |-
-  Pobiera przetworzone dane finansowe ze sprawozdań złożonych do Repozytorium
+  Pobiera przetworzone oraz surowe dane finansowe ze sprawozdań złożonych do Repozytorium
   Dokumentów Finansowych KRS spełniających podane kryteria.
 
   W przypadku sukcesu w treści odpowiedzi zwracana jest lista danych finansowych

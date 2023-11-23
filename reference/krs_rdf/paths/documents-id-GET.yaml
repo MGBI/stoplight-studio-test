@@ -277,8 +277,8 @@ operationId: get-documents-id
 x-code-samples:
 - lang: Shell
   source: |-
-    # Wyszukaj dokumenty dla podmiotu z numerem KRS `0000028860`
-    curl https://api.imsig.pl/v1/rdf/documents?krs=0000028860 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+    # Wyszukaj dokument o identyfikatorze `2047606`
+    curl https://api.imsig.pl/v1/rdf/documents/2047606 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
 description: |-
   Pobiera informacje o dokumencie złożonym do Repozytorium Dokumentów
   Finansowych KRS o podanym identyfikatorze.

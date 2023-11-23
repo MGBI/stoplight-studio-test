@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.450
+  version: 1.0.453
   description:
     $ref: common/info_description.md
   x-logo:
@@ -123,6 +123,9 @@ paths:
   /v1/rdf/financialData:
     get:
       $ref: krs_rdf/paths/financial-data-GET.yaml
+  /v1/rdf/financialData/{id}:
+    get:
+      $ref: krs_rdf/paths/financial-data-id-GET.yaml
   /v1/rdf/allFinancialData:
     get:
       $ref: krs_rdf/paths/all-financial-data-GET.yaml
