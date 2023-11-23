@@ -1,0 +1,31 @@
+title: ParamsQuery
+type: object
+properties:
+  from_date:
+    title: From Date
+    type: string
+    format: date
+  to_date:
+    title: To Date
+    type: string
+    format: date
+  update_id_from:
+    title: Update Id From
+    type: integer
+  update_id_to:
+    title: Update Id To
+    type: integer
+  sort:
+    title: Sort
+    type: array
+    items:
+      maxItems: 2
+      minItems: 2
+      type: array
+      items:
+      - type: string
+      - type: integer
+  limit:
+    title: Limit
+    type: integer
+additionalProperties: false

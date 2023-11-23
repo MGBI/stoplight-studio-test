@@ -370,7 +370,7 @@ parameters:
   in: query
 tags:
 - documents
-summary: ''
+summary: GET /v1/rdf/documents
 components:
   schemas:
     $ref: ../../common/schemas.yaml

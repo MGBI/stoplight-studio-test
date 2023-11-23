@@ -1075,7 +1075,7 @@ parameters:
   in: query
 tags:
 - financial_data
-summary: ''
+summary: GET /v1/rdf/financialData
 components:
   schemas:
     $ref: ../../common/schemas.yaml
