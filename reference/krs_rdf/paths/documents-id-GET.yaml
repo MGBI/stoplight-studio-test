@@ -74,7 +74,7 @@ responses:
               type: boolean
             json_data_url:
               description: Bezpośredni adres URL do endpointu z wszystkimi danymi
-                zawartymi w sprawozdaniu (tylko dla sprawozdań w formacie XML).
+                zawartymi w sprawozdaniu (tylko dla sprawozdań w formacie XML)
               example: https://api.imsig.pl/v1/rdf/allFinancialData/2047606
               format: uri
               type: string
