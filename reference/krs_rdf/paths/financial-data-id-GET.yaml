@@ -920,6 +920,7 @@ responses:
           properties:
             error:
               type: string
+    description: Nieudana autoryzacja dostępu do API
   '404':
     content:
       application/json:
@@ -935,7 +936,7 @@ responses:
           properties:
             error:
               type: string
-    description: Nieudana autoryzacja dostępu do API
+    description: Nie znaleziono
   '429':
     content:
       application/json:
