@@ -40,7 +40,8 @@ responses:
                 format: date
                 type: string
               ias_standard:
-                description: Informacja, czy sprawozdanie zostało sporządzone zgodnie z Międzynarodowymi Standardami Rachunkowości
+                description: Informacja, czy sprawozdanie zostało sporządzone zgodnie
+                  z Międzynarodowymi Standardami Rachunkowości
                 example: false
                 type: boolean
               krs:

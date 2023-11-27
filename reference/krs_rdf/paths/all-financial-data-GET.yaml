@@ -34,7 +34,8 @@ responses:
               format: date
               type: string
             ias_standard:
-              description: Informacja, czy sprawozdanie zostało sporządzone zgodnie z Międzynarodowymi Standardami Rachunkowości
+              description: Informacja, czy sprawozdanie zostało sporządzone zgodnie
+                z Międzynarodowymi Standardami Rachunkowości
               example: false
               type: boolean
             is_consolidated:
@@ -52,13 +53,21 @@ responses:
               description: Meta dane sprawozdania
               properties:
                 raw_fields_multiplier:
-                  description: Korekcyjny mnożnik wartości w sprawozdaniu
+                  description: Korekcyjny mnożnik wartości w sprawozdaniu (`0.001`|
+                    `1` | `1000` )
                   example: 1
+                  enum:
+                  - 0.001
+                  - 1
+                  - 1000
+                  type: float32
                 schema_version:
-                  description: Wersja schemy sprawozdania udostępnionego w formacie XML
+                  description: Wersja schemy sprawozdania udostępnionego w formacie
+                    XML
                   example: 1-0E
                 structure_name:
-                  description: Nazwa schemy sprawozdania udostępnionego w formacie XML
+                  description: Nazwa schemy sprawozdania udostępnionego w formacie
+                    XML
                   example: JednostkaMalaWZlotych
               type: object
             period_end_year:
@@ -904,7 +913,8 @@ responses:
             raw_fields:
               type: object
               description: Surowe dane wydobyte ze sprawozdania finansowego występującego
-                w formacie XML (skontaktuj się z nami, aby uzyskać pełną listę identyfikatorów pól)
+                w formacie XML (skontaktuj się z nami, aby uzyskać pełną listę identyfikatorów
+                pól)
               example:
                 '@tns': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMalaWZlotych
                 '@dtsf': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/DefinicjeTypySprawozdaniaFinansowe/
