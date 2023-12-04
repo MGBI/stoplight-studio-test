@@ -1,0 +1,1408 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          required:
+          - id
+          - krs
+          - period_from
+          - period_to
+          - period_end_year
+          - period_major_year
+          - preparation_date
+          - filing_date
+          - crawling_date
+          - consolidated
+          - ias_standard
+          type: object
+          properties:
+            id:
+              description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator
+                dokumentu w RDF)
+              type: integer
+              example: 2520543
+              format: int32
+            crawling_date:
+              description: Data pobrania sprawozdania z RDF
+              example: '2019-07-24'
+              format: date
+              type: string
+            filing_date:
+              description: Data publikacji sprawozdania w RDF
+              example: '2019-07-19'
+              format: date
+              type: string
+            ias_standard:
+              description: Informacja, czy sprawozdanie zostało sporządzone zgodnie
+                z Międzynarodowymi Standardami Rachunkowości
+              example: false
+              type: boolean
+            is_consolidated:
+              description: Informacja, czy sprawozdanie jest skonsolidowane
+              example: true
+              type: boolean
+            krs:
+              description: Numer KRS podmiotu, którego dotyczy sprawozdanie
+              example: 19193
+              maxLength: 10
+              minLength: 10
+              pattern: ^\d{10}$
+              type: string
+            meta:
+              description: Meta dane sprawozdania
+              properties:
+                raw_fields_multiplier:
+                  description: Korekcyjny mnożnik wartości w sprawozdaniu (`0.001`|
+                    `1` | `1000` )
+                  example: 1
+                  enum:
+                  - 0.001
+                  - 1
+                  - 1000
+                  type: float32
+                schema_version:
+                  description: Wersja schemy sprawozdania udostępnionego w formacie
+                    XML
+                  example: 1-0E
+                  type: string
+                structure_name:
+                  description: Nazwa schemy sprawozdania udostępnionego w formacie
+                    XML
+                  example: JednostkaMalaWZlotych
+                  type: string
+              type: object
+            period_end_year:
+              description: Rok z daty końcowej okresu, którego dotyczy dokument
+              example: 2019
+              format: int32
+              type: integer
+            period_from:
+              description: Data początkowa okresu, którego dotyczy sprawozdanie
+              example: '2018-01-01'
+              format: date
+              type: string
+            period_major_year:
+              description: Zasadniczy rok, którego dotyczy dokument
+              example: 2018
+              format: int32
+              type: integer
+            period_to:
+              description: Data końcowa okresu, którego dotyczy sprawozdanie
+              example: '2019-02-28'
+              format: date
+              type: string
+            preparation_date:
+              description: Data sporządzenia sprawozdania
+              example: '2019-04-12'
+              format: date
+              type: string
+            parsed_fields:
+              description: Zwalidowane dane finansowe sprawozdania
+              type: object
+              properties:
+                bs_a_ca_cfy:
+                  description: Aktywa obrotowe - kwota na dzień kończący bieżący rok
+                    obrotowy
+                  example: '101506941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_ca_cpfy:
+                  description: Aktywa obrotowe - przekształcone dane porównawcze za
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_ca_pfy:
+                  description: Aktywa obrotowe - kwota na dzień kończący poprzedni
+                    rok
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_fa_cfy:
+                  description: Aktywa trwałe - kwota na dzień kończący bieżący rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_fa_cpfy:
+                  description: Aktywa trwałe - przekształcone dane porównawcze za
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_fa_pfy:
+                  description: Aktywa trwałe - kwota na dzień kończący poprzedni rok
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_ta_cfy:
+                  description: Aktywa razem - kwota na dzień kończący bieżący rok
+                    obrotowy
+                  example: '26227994995.11'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_ta_cpfy:
+                  description: Aktywa razem - przekształcone dane porównawcze za poprzedni
+                    rok obrotowy
+                  example: '25573272324.98'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_a_ta_pfy:
+                  description: Aktywa razem - kwota na dzień kończący poprzedni rok
+                    obrotowy
+                  example: '25540926976.86'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_e_cfy:
+                  description: Kapitał (fundusz) własny - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10834213197.71'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_e_cpfy:
+                  description: Kapitał (fundusz) własny - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_e_pfy:
+                  description: Kapitał (fundusz) własny - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10400343189.57'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_cfy:
+                  description: Zobowiązania i rezerwy na zobowiązania - kwota na dzień
+                    kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_cpfy:
+                  description: Zobowiązania i rezerwy na zobowiązania - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_ltl_cfy:
+                  description: Zobowiązania długoterminowe - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_ltl_cpfy:
+                  description: Zobowiązania długoterminowe - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_ltl_pfy:
+                  description: Zobowiązania długoterminowe - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_pfy:
+                  description: Zobowiązania i rezerwy na zobowiązania - kwota na dzień
+                    kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_stl_cfy:
+                  description: Zobowiązania krótkoterminowe - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_stl_cpfy:
+                  description: Zobowiązania krótkoterminowe - przekształcone dane
+                    porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_lapfl_stl_pfy:
+                  description: Zobowiązania krótkoterminowe - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_nc_cfy:
+                  description: Kapitał (fundusz) podstawowy - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10150715600'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_nc_cpfy:
+                  description: Kapitał (fundusz) podstawowy - przekształcone dane
+                    porównawcze za poprzedni rok obrotowy
+                  example: '10150715600'
+                  pattern: \d+\.\d{2}
+                  type: string
+                bs_lae_nc_pfy:
+                  description: Kapitał (fundusz) podstawowy - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: 1vscode-yaml-sort.octal.1715600.00
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_cffia_e_aoiaaotfa_cfy:
+                  description: Nabycie wartości niematerialnych i prawnych oraz rzeczowych
+                    aktywów trwałych - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_cffia_e_aoiaaotfa_cpfy:
+                  description: Nabycie wartości niematerialnych i prawnych oraz rzeczowych
+                    aktywów trwałych - przekształcone dane porównawcze za poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_cffia_e_aoiaaotfa_pfy:
+                  description: Nabycie wartości niematerialnych i prawnych oraz rzeczowych
+                    aktywów trwałych - kwota na dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_e_nr_cfy:
+                  description: Wynagrodzenia netto - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_e_nr_cpfy:
+                  description: Wynagrodzenia netto - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_e_nr_pfy:
+                  description: Wynagrodzenia netto - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_e_sahiaob_cfy:
+                  description: Ubezpieczenia społeczne i zdrowotne oraz inne świadczenia
+                    - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_e_sahiaob_cpfy:
+                  description: Ubezpieczenia społeczne i zdrowotne oraz inne świadczenia
+                    - przekształcone dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_e_sahiaob_pfy:
+                  description: Ubezpieczenia społeczne i zdrowotne oraz inne świadczenia
+                    - kwota na dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_ta_d_cfy:
+                  description: Amortyzacja - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_ta_d_cpfy:
+                  description: Amortyzacja - przekształcone dane porównawcze za poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                cfs_oacf_ta_d_pfy:
+                  description: Amortyzacja - kwota na dzień kończący poprzedni rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                en_sotdbttboitatgfr_it_cfy:
+                  description: Podatek dochodowy przy rozliczeniu różnicy pomiędzy
+                    podstawą opodatkowania podatkiem dochodowym a wynikiem finansowym
+                    (zyskiem, stratą) brutto - kwota na dzień kończący bieżący rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                en_sotdbttboitatgfr_it_pfy:
+                  description: Podatek dochodowy przy rozliczeniu różnicy pomiędzy
+                    podstawą opodatkowania podatkiem dochodowym a wynikiem finansowym
+                    (zyskiem, stratą) brutto - kwota na dzień kończący poprzedni rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_copgams_cfy:
+                  description: Koszty sprzedanych produktów, towarów i materiałów
+                    -  kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_copgams_cpfy:
+                  description: Koszty sprzedanych produktów, towarów i materiałów
+                    -  przekształcone dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_copgams_pfy:
+                  description: Koszty sprzedanych produktów, towarów i materiałów
+                    -  kwota na dzień kończący poprzedni rok obrotowy'
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_copgams_vogams_cfy:
+                  description: Wartość sprzedanych towarów i materiałów - kwota na
+                    dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_copgams_vogams_cpfy:
+                  description: Wartość sprzedanych towarów i materiałów - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_copgams_vogams_pfy:
+                  description: Wartość sprzedanych towarów i materiałów - kwota na
+                    dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_cos_cfy:
+                  description: Koszty sprzedaży - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_cos_cpfy:
+                  description: Koszty sprzedaży - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_cos_pfy:
+                  description: Koszty sprzedaży - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_fc_cfy:
+                  description: Koszty finansowe - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_fc_cpfy:
+                  description: Koszty finansowe - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_fc_pfy:
+                  description: Koszty finansowe - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_fr_cfy:
+                  description: Przychody finansowe - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_fr_cpfy:
+                  description: Przychody finansowe - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_fr_pfy:
+                  description: Przychody finansowe - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gmc_cfy:
+                  description: Koszty ogólnego zarządu - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gmc_cpfy:
+                  description: Koszty ogólnego zarządu - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gmc_pfy:
+                  description: Koszty ogólnego zarządu - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gpl_cfy:
+                  description: Zysk (strata) brutto - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gpl_cpfy:
+                  description: Zysk (strata) brutto - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gpl_pfy:
+                  description: Zysk (strata) brutto - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gplfs_cfy:
+                  description: Zysk (strata) brutto ze sprzedaży - kwota na dzień
+                    kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gplfs_cpfy:
+                  description: Zysk (strata) brutto ze sprzedaży - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_gplfs_pfy:
+                  description: Zysk (strata) brutto ze sprzedaży - kwota na dzień
+                    kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_it_cfy:
+                  description: Podatek dochodowy - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_it_cpfy:
+                  description: Podatek dochodowy - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_it_pfy:
+                  description: Podatek dochodowy - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_npl_cfy:
+                  description: Zysk (strata) netto - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '479809229.39'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_npl_cpfy:
+                  description: Zysk (strata) netto - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '653871907.56'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_npl_pfy:
+                  description: Zysk (strata) netto - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '652934002.40'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_cfy:
+                  description: Przychody netto ze sprzedaży - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '9318533736.56'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_ciiop_cfy:
+                  description: Zmiana stanu produktów (zwiększenie - wartość dodatnia,
+                    zmniejszenie - wartość ujemna) - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_ciiop_cpfy:
+                  description: Zmiana stanu produktów (zwiększenie - wartość dodatnia,
+                    zmniejszenie - wartość ujemna) - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_ciiop_pfy:
+                  description: Zmiana stanu produktów (zwiększenie - wartość dodatnia,
+                    zmniejszenie - wartość ujemna) - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_cpfy:
+                  description: Przychody netto ze sprzedaży - przekształcone dane
+                    porównawcze za poprzedni rok obrotowy
+                  example: '8588730876.40'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_fru_cfy:
+                  description: Przychody netto ze sprzedaży od jednostek powiązanych
+                    - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_fru_cpfy:
+                  description: Przychody netto ze sprzedaży od jednostek powiązanych
+                    - przekształcone dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_fru_pfy:
+                  description: Przychody netto ze sprzedaży od jednostek powiązanych
+                    - kwota na dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_frunafufcm_cfy:
+                  description: Przychody netto ze sprzedaży od jednostek powiązanych
+                    nieobjętych metodą konsolidacji pełnej - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_frunafufcm_cpfy:
+                  description: Przychody netto ze sprzedaży od jednostek powiązanych
+                    nieobjętych metodą konsolidacji pełnej - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_frunafufcm_pfy:
+                  description: Przychody netto ze sprzedaży od jednostek powiązanych
+                    nieobjętych metodą konsolidacji pełnej - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_mcopfipote_cfy:
+                  description: Koszt wytworzenia produktów na własne potrzeby jednostki
+                    - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_mcopfipote_cpfy:
+                  description: Koszt wytworzenia produktów na własne potrzeby jednostki
+                    - przekształcone dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_mcopfipote_pfy:
+                  description: Koszt wytworzenia produktów na własne potrzeby jednostki
+                    - kwota na dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_nrfs_pfy:
+                  description: Przychody netto ze sprzedaży - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '8501384278.96'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_cfy:
+                  description: Koszty działalności operacyjnej - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_cpfy:
+                  description: Koszty działalności operacyjnej - przekształcone dane
+                    porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_d_cfy:
+                  description: Amortyzacja - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_d_cpfy:
+                  description: Amortyzacja - przekształcone dane porównawcze za poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_d_pfy:
+                  description: Amortyzacja - kwota na dzień kończący poprzedni rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_es_cfy:
+                  description: Usługi obce - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_es_cpfy:
+                  description: Usługi obce - przekształcone dane porównawcze za poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_es_pfy:
+                  description: Usługi obce - kwota na dzień kończący poprzedni rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_maec_cfy:
+                  description: Zużycie materiałów i energii - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_maec_cpfy:
+                  description: Zużycie materiałów i energii - przekształcone dane
+                    porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_maec_pfy:
+                  description: Zużycie materiałów i energii - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_oc_vogams_cfy:
+                  description: Wartość sprzedanych towarów i materiałów - kwota na
+                    dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_oc_vogams_cpfy:
+                  description: Wartość sprzedanych towarów i materiałów - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_oc_vogams_pfy:
+                  description: Wartość sprzedanych towarów i materiałów - kwota na
+                    dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_ocbt_cfy:
+                  description: Pozostałe koszty rodzajowe - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_ocbt_cpfy:
+                  description: Pozostałe koszty rodzajowe - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_ocbt_pfy:
+                  description: Pozostałe koszty rodzajowe - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_pfy:
+                  description: Koszty działalności operacyjnej - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_r_cfy:
+                  description: Wynagrodzenia - kwota na dzień kończący bieżący rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_r_cpfy:
+                  description: Wynagrodzenia - przekształcone dane porównawcze za
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_r_pfy:
+                  description: Wynagrodzenia - kwota na dzień kończący poprzedni rok
+                    obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_siaobi_cfy:
+                  description: Ubezpieczenia społeczne i inne świadczenia - kwota
+                    na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_siaobi_cpfy:
+                  description: Ubezpieczenia społeczne i inne świadczenia - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_siaobi_pfy:
+                  description: Ubezpieczenia społeczne i inne świadczenia - kwota
+                    na dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_tac_cfy:
+                  description: Podatki i opłaty - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_tac_cpfy:
+                  description: Podatki i opłaty - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_tac_pfy:
+                  description: Podatki i opłaty - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_taci_ed_cfy:
+                  description: Podatek akcyzowy - kwota na dzień kończący bieżący
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_taci_ed_cpfy:
+                  description: Podatek akcyzowy - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_taci_ed_pfy:
+                  description: Podatek akcyzowy - kwota na dzień kończący poprzedni
+                    rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_vogams_cfy:
+                  description: Wartość sprzedanych towarów i materiałów - kwota na
+                    dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_vogams_cpfy:
+                  description: Wartość sprzedanych towarów i materiałów - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oac_vogams_pfy:
+                  description: Wartość sprzedanych towarów i materiałów - kwota na
+                    dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_omropiol_cfy:
+                  description: Pozostałe obowiązkowe zmniejszenia zysku (zwiększenia
+                    straty) - kwota na dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_omropiol_cpfy:
+                  description: Pozostałe obowiązkowe zmniejszenia zysku (zwiększenia
+                    straty) - przekształcone dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_omropiol_pfy:
+                  description: Pozostałe obowiązkowe zmniejszenia zysku (zwiększenia
+                    straty) - kwota na dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_ooc_cfy:
+                  description: Pozostałe koszty operacyjne - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_ooc_cpfy:
+                  description: Pozostałe koszty operacyjne - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_ooc_pfy:
+                  description: Pozostałe koszty operacyjne - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oor_cfy:
+                  description: Pozostałe przychody operacyjne - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oor_cpfy:
+                  description: Pozostałe przychody operacyjne - przekształcone dane
+                    porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_oor_pfy:
+                  description: Pozostałe przychody operacyjne - kwota na dzień kończący
+                    poprzedni rok
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_plfoa_cfy:
+                  description: Zysk (strata) z działalności operacyjnej - kwota na
+                    dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_plfoa_cpfy:
+                  description: Zysk (strata) z działalności operacyjnej - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_plfoa_pfy:
+                  description: Zysk (strata) z działalności operacyjnej - kwota na
+                    dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_plfs_cfy:
+                  description: Zysk (strata) ze sprzedaży - kwota na dzień kończący
+                    bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_plfs_cpfy:
+                  description: Zysk (strata) ze sprzedaży - przekształcone dane porównawcze
+                    za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_plfs_pfy:
+                  description: Zysk (strata) ze sprzedaży - kwota na dzień kończący
+                    poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_ploba_cfy:
+                  description: Zysk (strata) z działalności gospodarczej - kwota na
+                    dzień kończący bieżący rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_ploba_cpfy:
+                  description: Zysk (strata) z działalności gospodarczej - przekształcone
+                    dane porównawcze za poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+                pala_ploba_pfy:
+                  description: Zysk (strata) z działalności gospodarczej - kwota na
+                    dzień kończący poprzedni rok obrotowy
+                  example: '10362941097.49'
+                  pattern: \d+\.\d{2}
+                  type: string
+            raw_fields:
+              type: object
+              description: Surowe dane wydobyte ze sprawozdania finansowego występującego
+                w formacie XML (skontaktuj się z nami, aby uzyskać pełną listę identyfikatorów
+                pól)
+              example:
+                '@tns': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMalaWZlotych
+                '@dtsf': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/DefinicjeTypySprawozdaniaFinansowe/
+                '@etd': http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/
+                '@jin': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaInnaStruktury
+                '@jma': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMalaStruktury
+                '@xsd': http://www.w3.org/2001/XMLSchema
+                '@xsi': http://www.w3.org/2001/XMLSchema-instance
+                '@schemaLocation': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMalaWZlotych
+                  https://www.mf.gov.pl/documents/764034/6464789/JednostkaMalaWZlotych%281%29_v1-0.xsd
+                Naglowek.OkresOd: '2015-06-28'
+                Naglowek.OkresDo: '2015-12-31'
+                Naglowek.DataSporzadzenia: '2016-03-29'
+                Naglowek.KodSprawozdania.@kodSystemowy: SFJMAZ (1)
+                Naglowek.KodSprawozdania.@wersjaSchemy: 1-0E
+                Naglowek.KodSprawozdania: SprFinJednostkaMalaWZlotych
+                Naglowek.WariantSprawozdania: '1'
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1A.Siedziba.Wojewodztwo: małopolskie
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1A.Siedziba.Powiat: krakowski
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1A.Siedziba.Gmina: Pcim
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1A.Siedziba.Miejscowosc: Szczecin
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.KodKraju: PL
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.Wojewodztwo: zachodniopomorskie
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.Powiat: poznański
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.Gmina: Koszalin
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.NrDomu: '36'
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.Miejscowosc: Skałowo
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.KodPocztowy: 02-787
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1B.Adres.Poczta: Szczecin
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_1.P_1C.KRS: 0000738432
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_3.DataOd: '2015-06-28'
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_3.DataDo: '2015-12-31'
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_5.P_5A: 'True'
+                WprowadzenieDoSprawozdaniaFinansowegoJednostkaMala.P_5.P_5B: 'True'
+                BilansJednostkaMala.Aktywa.KwotaA: '2422929.19'
+                BilansJednostkaMala.Aktywa.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.KwotaA: '42000.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_I.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_I.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_I.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.KwotaA: '42000.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.Aktywa_A_II_1.KwotaA: '42000.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.Aktywa_A_II_1.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.Aktywa_A_II_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.Aktywa_A_II_2.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.Aktywa_A_II_2.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_II.Aktywa_A_II_2.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_III.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_III.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_III.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.Aktywa_A_IV_1.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.Aktywa_A_IV_1.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.Aktywa_A_IV_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.Aktywa_A_IV_2.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.Aktywa_A_IV_2.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_IV.Aktywa_A_IV_2.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_V.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_V.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_A.Aktywa_A_V.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.KwotaA: '2380429.19'
+                BilansJednostkaMala.Aktywa.Aktywa_B.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_I.KwotaA: '2127253.26'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_I.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_I.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.KwotaA: '191206.75'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.KwotaA: '118845.47'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.Aktywa_B_II_A_1.KwotaA: '118845.47'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.Aktywa_B_II_A_1.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.Aktywa_B_II_A_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.Aktywa_B_II_A_2.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.Aktywa_B_II_A_2.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_II.Aktywa_B_II_A.Aktywa_B_II_A_2.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.KwotaA: '59223.38'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.Aktywa_B_III_A.KwotaA: '59223.38'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.Aktywa_B_III_A.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.Aktywa_B_III_A.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.Aktywa_B_III_A.Aktywa_B_III_A_1.KwotaA: '59223.38'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.Aktywa_B_III_A.Aktywa_B_III_A_1.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_III.Aktywa_B_III_A.Aktywa_B_III_A_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_IV.KwotaA: '2745.80'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_IV.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_B.Aktywa_B_IV.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_C.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_C.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_C.KwotaB1: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_D.KwotaA: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_D.KwotaB: '0.00'
+                BilansJednostkaMala.Aktywa.Aktywa_D.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.KwotaA: '2422419.19'
+                BilansJednostkaMala.Pasywa.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.KwotaA: '446278.92'
+                BilansJednostkaMala.Pasywa.Pasywa_A.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_I.KwotaA: '5000.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_I.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_I.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_II.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_II.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_II.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_II.Pasywa_A_II_1.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_II.Pasywa_A_II_1.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_II.Pasywa_A_II_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_III.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_III.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_III.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_III.Pasywa_A_III_1.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_III.Pasywa_A_III_1.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_III.Pasywa_A_III_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_IV.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_IV.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_IV.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_V.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_V.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_V.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_VI.KwotaA: '443238.92'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_VI.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_VI.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_VII.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_VII.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_A.Pasywa_A_VII.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.KwotaA: '1974150.27'
+                BilansJednostkaMala.Pasywa.Pasywa_B.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_I.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_I.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_I.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_I.Pasywa_B_I_1.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_I.Pasywa_B_I_1.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_I.Pasywa_B_I_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_II.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_II.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_II.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_II.Pasywa_B_II_1.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_II.Pasywa_B_II_1.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_II.Pasywa_B_II_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.KwotaA: '1974150.27'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_A.KwotaA: '1800000.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_A.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_A.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.KwotaA: '37063.83'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.Pasywa_B_III_B_1.KwotaA: '37065.83'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.Pasywa_B_III_B_1.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.Pasywa_B_III_B_1.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.Pasywa_B_III_B_2.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.Pasywa_B_III_B_2.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_B.Pasywa_B_III_B_2.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_C.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_C.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_III.Pasywa_B_III_C.KwotaB1: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_IV.KwotaA: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_IV.KwotaB: '0.00'
+                BilansJednostkaMala.Pasywa.Pasywa_B.Pasywa_B_IV.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.KwotaA: '3291226.93'
+                RZiSJednostkaMala.RZiSPor.A.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_I.KwotaA: '3191526.93'
+                RZiSJednostkaMala.RZiSPor.A.A_I.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_I.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_II.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_II.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_II.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_III.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_III.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.A.A_III.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.KwotaA: '2802942.92'
+                RZiSJednostkaMala.RZiSPor.B.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_I.KwotaA: '3700.00'
+                RZiSJednostkaMala.RZiSPor.B.B_I.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_I.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_II.KwotaA: '38783.85'
+                RZiSJednostkaMala.RZiSPor.B.B_II.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_II.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_III.KwotaA: '599312.87'
+                RZiSJednostkaMala.RZiSPor.B.B_III.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_III.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_IV.KwotaA: '23818.90'
+                RZiSJednostkaMala.RZiSPor.B.B_IV.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_IV.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_V.KwotaA: '4858.79'
+                RZiSJednostkaMala.RZiSPor.B.B_V.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_V.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_V.B_V_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_V.B_V_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_V.B_V_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_VI.KwotaA: '2132468.51'
+                RZiSJednostkaMala.RZiSPor.B.B_VI.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_VI.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_VI.B_VI_1.KwotaA: '2077435.13'
+                RZiSJednostkaMala.RZiSPor.B.B_VI.B_VI_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.B.B_VI.B_VI_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.C.KwotaA: '488584.01'
+                RZiSJednostkaMala.RZiSPor.C.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.C.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.D.KwotaA: '10288.27'
+                RZiSJednostkaMala.RZiSPor.D.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.D.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.D.D_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.D.D_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.D.D_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.E.KwotaA: '4759.28'
+                RZiSJednostkaMala.RZiSPor.E.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.E.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.E.E_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.E.E_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.E.E_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.KwotaA: '4760.86'
+                RZiSJednostkaMala.RZiSPor.F.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_I.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_I.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_I.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_I.F_I_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_I.F_I_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_I.F_I_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_II.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_II.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_II.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_II.F_II_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_II.F_II_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_II.F_II_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_III.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_III.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_III.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_III.F_III_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_III.F_III_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_III.F_III_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_IV.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_IV.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.F.F_IV.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.KwotaA: '55594.94'
+                RZiSJednostkaMala.RZiSPor.G.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_I.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_I.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_I.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_I.G_I_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_I.G_I_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_I.G_I_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_II.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_II.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_II.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_II.G_II_1.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_II.G_II_1.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_II.G_II_1.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_III.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_III.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.G.G_III.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.H.KwotaA: '443278.92'
+                RZiSJednostkaMala.RZiSPor.H.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.H.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.I.KwotaA: '0.00'
+                RZiSJednostkaMala.RZiSPor.I.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.I.KwotaB1: '0.00'
+                RZiSJednostkaMala.RZiSPor.J.KwotaA: '443248.92'
+                RZiSJednostkaMala.RZiSPor.J.KwotaB: '0.00'
+                RZiSJednostkaMala.RZiSPor.J.KwotaB1: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.DodatkoweInformacjeIObjasnienia.0.Opis: brak
+                  danych
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_1.RB: '448278.92'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_1.RP: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Kwota.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Kwota.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Pozostale.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Pozostale.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Pozostale.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Pozostale.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Pozostale.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_2.Pozostale.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Kwota.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Kwota.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Pozostale.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Pozostale.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Pozostale.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Pozostale.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Pozostale.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_3.Pozostale.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Kwota.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Kwota.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Pozostale.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Pozostale.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Pozostale.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Pozostale.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Pozostale.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_4.Pozostale.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Kwota.RB.KwotaA: '5048.49'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Kwota.RB.KwotaC: '5048.49'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Pozostale.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Pozostale.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Pozostale.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Pozostale.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Pozostale.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_5.Pozostale.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Kwota.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Kwota.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Pozostale.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Pozostale.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Pozostale.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Pozostale.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Pozostale.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_6.Pozostale.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Kwota.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Kwota.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Pozostale.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Pozostale.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Pozostale.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Pozostale.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Pozostale.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_7.Pozostale.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_8.Kwota.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_8.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_8.Kwota.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_8.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_8.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_8.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Kwota.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Kwota.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Kwota.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Kwota.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Kwota.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Kwota.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Pozostale.RB.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Pozostale.RB.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Pozostale.RB.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Pozostale.RP.KwotaA: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Pozostale.RP.KwotaB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_9.Pozostale.RP.KwotaC: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_10.RB: '445327.41'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_10.RP: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_11.RB: '0.00'
+                DodatkoweInformacjeIObjasnieniaJednostkaMala.InformacjaDodatkowaDotyczacaPodatkuDochodowego.P_ID_11.RP: '0.00'
+          description: Wszystkie dane finansowe ze sprawozdania o podanym identyfikatorze
+    description: Poprawne wyszukiwanie danych finansowych
+  '400':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Invalid year format
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niewłaściwy format zapytania
+  '401':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Missing 'Authorization' header
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niepoprawna autentykacja tokenu
+  '403':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Access forbidden
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nieudana autoryzacja dostępu do API
+  '404':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Entry does not exist.
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nie znaleziono
+  '429':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Quota is exceeded
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Wykorzystany limit zapytań do API
+parameters:
+- schema:
+    type: integer
+    example: 2520543
+    format: int32
+  description: Unikalny identyfikator sprawozdania (wewnętrzy identyfikator dokumentu
+    w RDF)
+  name: id
+  in: path
+  required: true
+tags:
+- financial_data
+summary: GET /v1/rdf/allFinancialData/{id}
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
+security:
+- api_key: []
+operationId: get-all-financial-data-id
+x-code-samples:
+- lang: Shell
+  source: |-
+    # Wyszukaj wszystkie dane finansowe ze sprawozdania o identyfikatorze `2520543`
+    curl https://api.imsig.pl/v1/rdf/financialData/2520543 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+description: |-
+  Pobiera przetworzone oraz surowe dane finansowe ze sprawozdań złożonych do Repozytorium
+  Dokumentów Finansowych KRS spełniających podane kryteria.
+
+  W przypadku sukcesu w treści odpowiedzi zwracane są dane finansowe
+  ze sprawozdania o podanym identyfikatorze.
+
+  W przypadku, gdy sprawozdanie nie istnieje zwracany jest błąd.

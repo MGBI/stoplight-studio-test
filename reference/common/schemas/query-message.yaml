@@ -1,0 +1,62 @@
+title: QueryMessage
+required:
+- data_service
+- criteria
+type: object
+properties:
+  version:
+    title: Version
+    type: integer
+    default: 1
+  data_service:
+    title: Data Service
+    type: string
+  criteria:
+    $ref: ../schemas.yaml#/DataQuery
+    title: DataQuery
+    type: object
+    properties:
+      version:
+        title: Version
+        type: integer
+        default: 1
+      filter_id:
+        title: Filter Id
+        type: string
+  params:
+    $ref: ../schemas.yaml#/ParamsQuery
+    title: ParamsQuery
+    type: object
+    properties:
+      from_date:
+        title: From Date
+        type: string
+        format: date
+      to_date:
+        title: To Date
+        type: string
+        format: date
+      update_id_from:
+        title: Update Id From
+        type: integer
+      update_id_to:
+        title: Update Id To
+        type: integer
+      sort:
+        title: Sort
+        type: array
+        items:
+          maxItems: 2
+          minItems: 2
+          type: array
+          items:
+          - type: string
+          - type: integer
+      limit:
+        title: Limit
+        type: integer
+    additionalProperties: false
+  event_key:
+    title: Event Key
+    type: string
+additionalProperties: false

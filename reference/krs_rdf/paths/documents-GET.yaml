@@ -18,136 +18,122 @@ responses:
             - ias_standard
             type: object
             properties:
-              submission_id:
-                format: int32
-                type: integer
-                description: Wewnętrzny identyfikator zgłoszenia w RDF
-                example: 845399
-              period_end_year:
-                format: int32
-                type: integer
-                example: 2019
-                description: Rok z daty końcowej okresu, którego dotyczy dokument
-              file_root_pl:
-                pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
-                type: string
-                example: 0000028860_2018_sprawozdanie_finansowe_2047606
-                description: Nazwa pliku dokumentu bez rozszerzenia (w języku polskim)
-              period_to:
-                format: date
-                type: string
-                example: '2019-02-28'
-                description: Data końcowa okresu, którego dotyczy dokument
-              ias_standard:
-                type: boolean
-                example: true
-                description: Informacja, czy dokument został sporządzony zgodnie z
-                  Międzynarodowymi Standardami Rachunkowości
-              filing_date:
-                format: date
-                type: string
-                example: '2019-06-27'
-                description: Data publikacji dokumentu w RDF
               id:
                 description: Unikalny identyfikator dokumentu (wewnętrzy identyfikator
                   dokumentu w RDF)
-                type: integer
                 example: 2047606
                 format: int32
-              file_root:
-                pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
+                type: integer
+              crawling_date:
+                description: Data pobrania dokumentu z RDF
+                example: '2019-08-14'
+                format: date
                 type: string
+              download_url:
+                description: Bezpośredni adres URL pliku z treścią oryginalnego dokumentu
+                example: https://api.imsig.pl/v1/rdf/documents/2047606/download
+                format: uri
+                type: string
+              file_content_type:
+                description: |-
+                  Typ MIME pliku.
+
+                  [Zobacz listę możliwości](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
+                type: string
+              file_format:
+                description: Format pliku
+                example: pdf
+                type: string
+              file_root:
                 description: Nazwa pliku dokumentu bez rozszerzenia (w języku angielskim)
                 example: 0000028860_2018_financial_statement_2047606
+                pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
+                type: string
+              file_root_pl:
+                description: Nazwa pliku dokumentu bez rozszerzenia (w języku polskim)
+                example: 0000028860_2018_sprawozdanie_finansowe_2047606
+                pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
+                type: string
+              filing_date:
+                description: Data publikacji dokumentu w RDF
+                example: '2019-06-27'
+                format: date
+                type: string
+              html_preview_url:
+                description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
+                  do formatu HTML (tylko dla dokumentów w formacie XML)
+                example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=html
+                format: uri
+                type: string
+              ias_standard:
+                description: Informacja, czy dokument został sporządzony zgodnie z
+                  Międzynarodowymi Standardami Rachunkowości
+                example: true
+                type: boolean
+              is_correction:
+                description: Informacja, czy dokument jest korektą
+                example: false
+                type: boolean
+              json_data_url:
+                description: Bezpośredni adres URL do endpointu z wszystkimi danymi
+                  zawartymi w sprawozdaniu (tylko dla sprawozdań w formacie XML)
+                example: https://api.imsig.pl/v1/rdf/allFinancialData/2047606
+                format: uri
+                type: string
+              krs:
+                description: Numer KRS podmiotu, którego dotyczy dokument
+                example: 28860
+                maxLength: 10
+                minLength: 10
+                pattern: ^\d{10}$
+                type: string
               language:
                 description: |-
                   Język, w którym sporządzono dokument
 
                   Łańcuch znaków (dwuliterowy kod języka ISO 639-1)
+                example: pl
                 maxLength: 2
+                minLength: 2
                 pattern: ^[a-z]{2}$
                 type: string
-                example: pl
-                minLength: 2
-              file_format:
-                type: string
-                example: pdf
-                description: Format pliku
-              krs:
-                description: Numer KRS podmiotu, którego dotyczy dokument
-                maxLength: 10
-                pattern: ^\d{10}$
-                type: string
-                example: 0000028860
-                minLength: 10
               pdf_preview_url:
-                format: uri
-                type: string
                 description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
                   do formatu PDF (tylko dla dokumentów w formacie XML)
                 example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=pdf
-              crawling_date:
-                format: date
-                type: string
-                example: '2019-08-14'
-                description: Data pobrania dokumentu z RDF
-              download_url:
                 format: uri
                 type: string
-                description: Bezpośredni adres URL pliku z treścią oryginalnego dokumentu
-                example: https://api.imsig.pl/v1/rdf/documents/2047606/download
-              html_preview_url:
-                format: uri
-                type: string
-                example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=html
-                description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
-                  do formatu HTML (tylko dla dokumentów w formacie XML)
-              period_from:
-                format: date
-                type: string
-                example: '2018-01-01'
-                description: Data początkowa okresu, którego dotyczy dokument
-              period_major_year:
+              period_end_year:
+                description: Rok z daty końcowej okresu, którego dotyczy dokument
+                example: 2019
                 format: int32
                 type: integer
-                example: 2018
+              period_from:
+                description: Data początkowa okresu, którego dotyczy dokument
+                example: '2018-01-01'
+                format: date
+                type: string
+              period_major_year:
                 description: Zasadniczy rok, którego dotyczy dokument
-              is_correction:
-                type: boolean
-                example: false
-                description: Informacja, czy dokument jest korektą
-              file_content_type:
+                example: 2018
+                format: int32
+                type: integer
+              period_to:
+                description: Data końcowa okresu, którego dotyczy dokument
+                example: '2019-02-28'
+                format: date
                 type: string
-                description: |-
-                  Typ MIME pliku.
-
-                  [Zobacz listę możliwości](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
+              preparation_date:
+                description: Data sporządzenia dokumentu
+                example: '2019-03-29'
+                format: date
+                type: string
+              submission_id:
+                description: Wewnętrzny identyfikator zgłoszenia w RDF
+                example: 845399
+                format: int32
+                type: integer
               type:
-                enum:
-                - auditors_opinion
-                - consolidated_auditors_opinion
-                - balance_sheet
-                - footnotes
-                - cash_flow_statement
-                - profit_and_loss_statement
-                - equity_statement
-                - financial_statement
-                - consolidated_footnotes
-                - consolidated_equity_statement
-                - consolidated_balance_sheet
-                - consolidated_cash_flow_statement
-                - consolidated_profit_and_loss_statement
-                - consolidated_equity_statement
-                - consolidated_financial_statement
-                - activity_report
-                - consolidated_and_parent_activity_report
-                - parent_activity_report
-                - report_on_payments
-                - consolidated_report_on_payments
-                - resolution_on_approval
-                - consolidated_resolution_on_approval
-                - resolution_on_profit_distribution
-                type: string
                 description: |-
                   Identyfikator rodzaju dokumentu
 
@@ -181,12 +167,32 @@ responses:
                     | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
 
                   </details>
+                enum:
+                - auditors_opinion
+                - consolidated_auditors_opinion
+                - balance_sheet
+                - footnotes
+                - cash_flow_statement
+                - profit_and_loss_statement
+                - equity_statement
+                - financial_statement
+                - consolidated_footnotes
+                - consolidated_equity_statement
+                - consolidated_balance_sheet
+                - consolidated_cash_flow_statement
+                - consolidated_profit_and_loss_statement
+                - consolidated_equity_statement
+                - consolidated_financial_statement
+                - activity_report
+                - consolidated_and_parent_activity_report
+                - parent_activity_report
+                - report_on_payments
+                - consolidated_report_on_payments
+                - resolution_on_approval
+                - consolidated_resolution_on_approval
+                - resolution_on_profit_distribution
                 example: financial_statement
-              preparation_date:
-                format: date
                 type: string
-                example: '2019-03-29'
-                description: Data sporządzenia dokumentu
           type: array
           description: Lista dokumentów spełniających kryteria określone w parametrach
             metody, posortowanych malejąco według daty publikacji w RDF
@@ -370,7 +376,7 @@ parameters:
   in: query
 tags:
 - documents
-summary: ''
+summary: GET /v1/rdf/documents
 components:
   schemas:
     $ref: ../../common/schemas.yaml

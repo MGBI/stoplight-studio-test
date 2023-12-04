@@ -72,7 +72,7 @@ responses:
     description: Wykorzystany limit zapytań do API
 tags:
 - params
-summary: ''
+summary: GET /v1/rdf/params
 components:
   schemas:
     $ref: ../../common/schemas.yaml

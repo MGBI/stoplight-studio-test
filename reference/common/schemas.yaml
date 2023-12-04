@@ -104,3 +104,15 @@ InfoEncoding:
   $ref: schemas/info-encoding.yaml
 ParamsAdminModel:
   $ref: schemas/params-admin-model.yaml
+ConfigDataModel:
+  $ref: schemas/config-data-model.yaml
+ConfigForQuery:
+  $ref: schemas/config-for-query.yaml
+ConfigForQueryReport:
+  $ref: schemas/config-for-query-report.yaml
+DataQuery:
+  $ref: schemas/data-query.yaml
+ParamsQuery:
+  $ref: schemas/params-query.yaml
+QueryMessage:
+  $ref: schemas/query-message.yaml

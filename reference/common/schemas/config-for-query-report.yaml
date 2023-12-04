@@ -1,0 +1,43 @@
+title: ConfigForQueryReport
+type: object
+properties:
+  sort:
+    title: Sort
+    type: array
+    items:
+      maxItems: 2
+      minItems: 2
+      type: array
+      items:
+      - type: string
+      - type: integer
+  limit:
+    title: Limit
+    type: integer
+  report_name:
+    title: Report Name
+    type: string
+    default: raport_%(date_today)s
+  record_name:
+    title: Record Name
+    type: string
+    default: rekord
+  list_name:
+    title: List Name
+    type: string
+    default: lista-rekordow
+  formats:
+    title: Formats
+    type: array
+    items:
+      type: string
+  exclude_formats:
+    title: Exclude Formats
+    type: array
+    items:
+      type: string
+    default: []
+  file_encoding:
+    title: File Encoding
+    type: string
+    default: utf-8
