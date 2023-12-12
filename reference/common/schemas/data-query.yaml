@@ -1,0 +1,10 @@
+title: DataQuery
+type: object
+properties:
+  version:
+    title: Version
+    type: integer
+    default: 1
+  filter_id:
+    title: Filter Id
+    type: string

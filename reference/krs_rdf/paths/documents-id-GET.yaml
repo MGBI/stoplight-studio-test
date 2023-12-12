@@ -1,0 +1,304 @@
+responses:
+  '200':
+    content:
+      application/json:
+        schema:
+          required:
+          - id
+          - krs
+          - type
+          - period_from
+          - period_to
+          - period_year
+          - filing_date
+          - crawling_date
+          - is_correction
+          - ias_standard
+          type: object
+          properties:
+            id:
+              description: Unikalny identyfikator dokumentu (wewnętrzy identyfikator
+                dokumentu w RDF)
+              example: 2047606
+              format: int32
+              type: integer
+            crawling_date:
+              description: Data pobrania dokumentu z RDF
+              example: '2019-08-14'
+              format: date
+              type: string
+            download_url:
+              description: Bezpośredni adres URL pliku z treścią oryginalnego dokumentu
+              example: https://api.imsig.pl/v1/rdf/documents/2047606/download
+              format: uri
+              type: string
+            file_content_type:
+              description: |-
+                Typ MIME pliku.
+
+                [Zobacz listę możliwości](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
+              type: string
+            file_format:
+              description: Format pliku
+              example: pdf
+              type: string
+            file_root:
+              description: Nazwa pliku dokumentu bez rozszerzenia (w języku angielskim)
+              example: 0000028860_2018_financial_statement_2047606
+              pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
+              type: string
+            file_root_pl:
+              description: Nazwa pliku dokumentu bez rozszerzenia (w języku polskim)
+              example: 0000028860_2018_sprawozdanie_finansowe_2047606
+              pattern: ^\d{10}_\d{4}_[a-z_]+_\d+$
+              type: string
+            filing_date:
+              description: Data publikacji dokumentu w RDF
+              example: '2019-06-27'
+              format: date
+              type: string
+            html_preview_url:
+              description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
+                do formatu HTML (tylko dla dokumentów w formacie XML)
+              example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=html
+              format: uri
+              type: string
+            ias_standard:
+              description: Informacja, czy dokument został sporządzony zgodnie z Międzynarodowymi
+                Standardami Rachunkowości
+              example: true
+              type: boolean
+            is_correction:
+              description: Informacja, czy dokument jest korektą
+              example: false
+              type: boolean
+            json_data_url:
+              description: Bezpośredni adres URL do endpointu z wszystkimi danymi
+                zawartymi w sprawozdaniu (tylko dla sprawozdań w formacie XML)
+              example: https://api.imsig.pl/v1/rdf/allFinancialData/2047606
+              format: uri
+              type: string
+            krs:
+              description: Numer KRS podmiotu, którego dotyczy dokument
+              example: 28860
+              maxLength: 10
+              minLength: 10
+              pattern: ^\d{10}$
+              type: string
+            language:
+              description: |-
+                Język, w którym sporządzono dokument
+
+                Łańcuch znaków (dwuliterowy kod języka ISO 639-1)
+              example: pl
+              maxLength: 2
+              minLength: 2
+              pattern: ^[a-z]{2}$
+              type: string
+            pdf_preview_url:
+              description: Bezpośredni adres URL pliku z dokumentem w postaci przetworzonej
+                do formatu PDF (tylko dla dokumentów w formacie XML)
+              example: https://api.imsig.pl/v1/rdf/documents/2047606/download?format=pdf
+              format: uri
+              type: string
+            period_end_year:
+              description: Rok z daty końcowej okresu, którego dotyczy dokument
+              example: 2019
+              format: int32
+              type: integer
+            period_from:
+              description: Data początkowa okresu, którego dotyczy dokument
+              example: '2018-01-01'
+              format: date
+              type: string
+            period_major_year:
+              description: Zasadniczy rok, którego dotyczy dokument
+              example: 2018
+              format: int32
+              type: integer
+            period_to:
+              description: Data końcowa okresu, którego dotyczy dokument
+              example: '2019-02-28'
+              format: date
+              type: string
+            preparation_date:
+              description: Data sporządzenia dokumentu
+              example: '2019-03-29'
+              format: date
+              type: string
+            submission_id:
+              description: Wewnętrzny identyfikator zgłoszenia w RDF
+              example: 845399
+              format: int32
+              type: integer
+            type:
+              description: |-
+                Identyfikator rodzaju dokumentu
+
+                <details>
+                  <summary>Pokaż możliwe opcje</summary>
+
+                  | Identyfikator | Rodzaj dokumentu | Nazwa dokumentu |
+                  |-|-|-|
+                  | `"auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania rocznego sprawozdania finansowego |  |
+                  | `"consolidated_auditors_opinion"` | Opinia biegłego rewidenta / sprawozdanie z badania skonsolidowanego rocznego sprawozdania finansowego grupy kapitałowej |  |
+                  | `"balance_sheet"` | Roczne sprawozdanie finansowe | Bilans |
+                  | `"footnotes"` | Roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
+                  | `"cash_flow_statement"` | Roczne sprawozdanie finansowe | Rachunek przepływów pieniężnych |
+                  | `"profit_and_loss_statement"` | Roczne sprawozdanie finansowe | Rachunek zysków i strat |
+                  | `"equity_statement"` | Roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
+                  | `"financial_statement"` | Roczne sprawozdanie finansowe |  |
+                  | `"consolidated_footnotes"` | Skonsolidowane roczne sprawozdanie finansowe | Informacja dodatkowa lub inny dokument z art. 48 ustawy o rachunkowości |
+                  | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowane zestawienie zmian w kapitale (funduszu) własnym |
+                  | `"consolidated_balance_sheet"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany bilans |
+                  | `"consolidated_cash_flow_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek przepływów pieniężnych |
+                  | `"consolidated_profit_and_loss_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Skonsolidowany rachunek zysków i strat |
+                  | `"consolidated_equity_statement"` | Skonsolidowane roczne sprawozdanie finansowe | Zestawienie zmian w kapitale (funduszu) własnym |
+                  | `"consolidated_financial_statement"` | Skonsolidowane roczne sprawozdanie finansowe |  |
+                  | `"activity_report"` | Sprawozdanie z działalności |  |
+                  | `"consolidated_and_parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej oraz sprawozdanie z działalności grupy kapitałowej |  |
+                  | `"parent_activity_report"` | Sprawozdanie z działalności jednostki dominującej |  |
+                  | `"report_on_payments"` | Sprawozdanie z płatności na rzecz administracji publicznej |  |
+                  | `"consolidated_report_on_payments"` | Skonsolidowane sprawozdanie z płatności na rzecz administracji publicznej |  |
+                  | `"resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu rocznego sprawozdania finansowego |  |
+                  | `"consolidated_resolution_on_approval"` | Uchwała lub postanowienie o zatwierdzeniu skonsolidowanego rocznego sprawozdania finansowego |  |
+                  | `"resolution_on_profit_distribution"` | Uchwała o podziale zysku bądź pokryciu straty |  |
+
+                </details>
+              enum:
+              - auditors_opinion
+              - consolidated_auditors_opinion
+              - balance_sheet
+              - footnotes
+              - cash_flow_statement
+              - profit_and_loss_statement
+              - equity_statement
+              - financial_statement
+              - consolidated_footnotes
+              - consolidated_equity_statement
+              - consolidated_balance_sheet
+              - consolidated_cash_flow_statement
+              - consolidated_profit_and_loss_statement
+              - consolidated_equity_statement
+              - consolidated_financial_statement
+              - activity_report
+              - consolidated_and_parent_activity_report
+              - parent_activity_report
+              - report_on_payments
+              - consolidated_report_on_payments
+              - resolution_on_approval
+              - consolidated_resolution_on_approval
+              - resolution_on_profit_distribution
+              example: financial_statement
+              type: string
+          description: Dokument o podanym identyfikatorze.
+    description: Poprawne wyszukanie dokumentu
+  '400':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Invalid year format
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niewłaściwy format zapytania
+  '401':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Missing 'Authorization' header
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Niepoprawna autentykacja tokenu
+  '403':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Access forbidden
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nieudana autoryzacja dostępu do API
+  '404':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Entry does not exist.
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Nie znaleziono
+  '429':
+    content:
+      application/json:
+        examples:
+          example-1:
+            value:
+              error: Quota is exceeded
+        schema:
+          required:
+          - error
+          type: object
+          description: Obiekt dla błędu.
+          properties:
+            error:
+              type: string
+    description: Wykorzystany limit zapytań do API
+parameters:
+- schema:
+    description: Wewnętrzy identyfikator zgłoszenia w RDF
+    type: string
+    example: 2047606
+  name: id
+  in: path
+  required: true
+tags:
+- documents
+summary: GET /v1/rdf/documents/{id}
+components:
+  schemas:
+    $ref: ../../common/schemas.yaml
+security:
+- api_key: []
+operationId: get-documents-id
+x-code-samples:
+- lang: Shell
+  source: |-
+    # Wyszukaj dokument o identyfikatorze `2047606`
+    curl https://api.imsig.pl/v1/rdf/documents/2047606 --header \"Authorization: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\"
+description: |-
+  Pobiera informacje o dokumencie złożonym do Repozytorium Dokumentów
+  Finansowych KRS o podanym identyfikatorze.
+
+  W przypadku sukcesu w treści odpowiedzi zwracany jest dokument o podanym identyfikatorze.
+
+  W przypadku, gdy dokument o podanym identyfikatorze nie istnieja w odpowiedzi zwracany jest błąd.
