@@ -13,4 +13,5 @@ description: |-
     |-|-|
     | `0` | Niedostępny |
     | `1` | W przygotowaniu |
-    | `2` | Gotowe |</details>
+    | `2` | Gotowe |
+    | `3` | Zarchiwizowany |</details>

@@ -366,13 +366,15 @@ properties:
           |-|-|
           | `0` | Niedostępny |
           | `1` | W przygotowaniu |
-          | `2` | Gotowe |</details>
+          | `2` | Gotowe |
+          | `3` | Zarchiwizowany |</details>
       title: ReportStatusEnum
     title: ReportStatusEnum
     enum:
     - 0
     - 1
     - 2
+    - 3
     type: integer
     description: |-
       Aktualny status generowania pliku raportu
@@ -383,7 +385,8 @@ properties:
         |-|-|
         | `0` | Niedostępny |
         | `1` | W przygotowaniu |
-        | `2` | Gotowe |</details>
+        | `2` | Gotowe |
+        | `3` | Zarchiwizowany |</details>
   progress:
     title: Progress
     type: integer
