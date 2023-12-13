@@ -102,6 +102,16 @@ responses:
             details: Report not found
           items:
             $ref: '#/components/schemas/Error'
+  '410':
+    description: Gone
+    content:
+      application/json:
+        schema:
+          example:
+            error: Gone
+            details: Report no longer exists
+          items:
+            $ref: '#/components/schemas/Error'
 description: |-
   Pobiera plik wygenerowanego raportu o podanym `id`.
 
