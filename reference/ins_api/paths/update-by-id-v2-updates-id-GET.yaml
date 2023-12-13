@@ -42,8 +42,7 @@ responses:
     content:
       application/json:
         schema:
-          items:
-            $ref: '#/components/schemas/UpdatesModel'
+          $ref: '#/components/schemas/UpdatesModel'
   '400':
     description: Niewłaściwy format zapytania
     content:
