@@ -41,8 +41,7 @@ responses:
     content:
       application/json:
         schema:
-          items:
-            $ref: '#/components/schemas/ReportModel'
+          $ref: '#/components/schemas/ReportModel'
   '400':
     description: Niewłaściwy format zapytania
     content:

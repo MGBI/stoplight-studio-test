@@ -25,8 +25,7 @@ responses:
     content:
       application/json:
         schema:
-          items:
-            $ref: '#/components/schemas/UserModel'
+          $ref: '#/components/schemas/UserModel'
   '400':
     description: Bad Request
     content:

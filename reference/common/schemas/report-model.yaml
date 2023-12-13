@@ -465,7 +465,7 @@ properties:
 example:
   id: 639740d112aacc69fa7707c2
   type: 0
-  name: example raport
+  name: example report
   query:
     custom_categories:
     - K

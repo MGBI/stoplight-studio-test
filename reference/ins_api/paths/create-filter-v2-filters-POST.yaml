@@ -30,8 +30,7 @@ responses:
     content:
       application/json:
         schema:
-          items:
-            $ref: '#/components/schemas/FullFiltersModel'
+          $ref: '#/components/schemas/FullFiltersModel'
   '400':
     description: Niewłaściwy format zapytania
     content:

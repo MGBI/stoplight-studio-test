@@ -88,12 +88,12 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                                                     "example", {}).get(
                                                     "details", {}),
                                             }
-                                        if not content_schema.get("items"):
-                                            content_schema["items"] = {
-                                                "$ref": content_schema.get("$ref")
-                                            }
-                                            if content_schema.get("$ref"):
-                                                del content_schema["$ref"]
+                                            if not content_schema.get("items"):
+                                                content_schema["items"] = {
+                                                    "$ref": content_schema.get("$ref")
+                                                }
+                                                if content_schema.get("$ref"):
+                                                    del content_schema["$ref"]
                                     elif old is not None and new is not None and old.get(
                                             label) is not None:
                                         new[label] = old[label]
