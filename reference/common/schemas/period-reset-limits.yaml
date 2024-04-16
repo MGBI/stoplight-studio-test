@@ -1,0 +1,8 @@
+title: PeriodResetLimits
+enum:
+- annual
+- immortal
+- monthly
+- weekly
+type: string
+description: An enumeration.

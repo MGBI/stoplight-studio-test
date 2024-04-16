@@ -28,4 +28,12 @@ properties:
   limit:
     title: Limit
     type: integer
+  project:
+    title: Project
+    anyOf:
+    - uniqueItems: true
+      type: array
+      items:
+        type: string
+    - type: object
 additionalProperties: false
