@@ -6,20 +6,29 @@ responses:
           items:
             properties:
               api_documents_requests_available:
-                type: string
+                type: integer
                 description: Limit zapytań dla zakresu dokumentów finansowych
                 example: 100
               api_documents_requests_used:
-                type: string
+                type: integer
                 description: Wykorzystane zapytania dla zakresu dokumentów finansowych
                 example: 100
               api_financial_data_requests_available:
-                type: string
+                type: integer
                 description: Limit zapytań dla zakresu danych finansowych
                 example: 100
               api_financial_data_requests_used:
-                type: string
+                type: integer
                 description: Wykorzystane zapytania dla zakresu danych finansowych
+                example: 100
+              api_all_financial_data_requests_available:
+                type: integer
+                description: Limit zapytań dla zakresu wszystkich danych finansowych
+                example: 100
+              api_all_financial_data_requests_used:
+                type: integer
+                description: Wykorzystane zapytania dla zakresu wszystkich danych
+                  finansowych
                 example: 100
     description: Poprawne zapytanie
   '401':
@@ -72,7 +81,7 @@ responses:
     description: Wykorzystany limit zapytań do API
 tags:
 - params
-summary: GET /v1/rdf/params
+summary: GET /v1/rdf/params/
 components:
   schemas:
     $ref: ../../common/schemas.yaml

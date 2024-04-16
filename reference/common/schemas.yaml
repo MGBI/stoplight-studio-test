@@ -116,3 +116,9 @@ ParamsQuery:
   $ref: schemas/params-query.yaml
 QueryMessage:
   $ref: schemas/query-message.yaml
+AnnouncementAdminAccountParams:
+  $ref: schemas/announcement-admin-account-params.yaml
+PeriodResetLimits:
+  $ref: schemas/period-reset-limits.yaml
+UpdateAnnouncementAdminAccountParams:
+  $ref: schemas/update-announcement-admin-account-params.yaml

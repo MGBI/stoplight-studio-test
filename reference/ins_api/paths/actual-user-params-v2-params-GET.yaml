@@ -24,7 +24,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/ParamsModel'
+          $ref: '#/components/schemas/AnnouncementAdminAccountParams'
   '400':
     description: Bad Request
     content:
