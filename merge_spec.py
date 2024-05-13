@@ -104,7 +104,9 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
         for method, endpoint in methods.items():
             # TODO: add types
             if "internal" not in endpoint["tags"] \
-                    and "admin" not in endpoint["tags"]:
+                    and "admin" not in endpoint["tags"] \
+                        and "mgbi-api" not in endpoint["tags"]:
+                        # TODO: REMOVE LINE ABOVE TO GENERATE DOCS FOR MGBI-API ENDPOINTS
                 wanted_paths[path][method] = endpoint
             endpoint["tags"] = [tag + V_SUFFIX for tag in endpoint["tags"]]
 
