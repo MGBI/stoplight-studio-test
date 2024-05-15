@@ -1,46 +1,25 @@
-title: AnnouncementAdminAccountParams
+title: AnnouncementParamsModel
 required:
-- panel_users
-- panel_users_limit
-- filter_items_limit
 - archive_date_from
 - current_reports_available
+- current_reports_used
 - current_reports_filter_required
 - archival_reports_available
+- archival_reports_used
 - archival_reports_filter_required
 - credits_available
+- credits_used
+- available_content
 - monitors_available
+- monitors_used
 - monitors_emails_limit
 - api_requests_available
+- api_requests_used
+- monthly_reset_limits
 - monitors_filter_required
+- available_categories
 type: object
 properties:
-  api_key:
-    title: Api Key
-    type: string
-    format: uuid
-    description: Klucz autoryzacji w API
-  authorized_vendors:
-    title: Authorized Vendors
-    type: array
-    items:
-      type: string
-    default: []
-  panel_users:
-    title: Panel Users
-    type: array
-    items:
-      type: string
-      format: email
-    description: Adresy e-mail użytkowników usługi
-  panel_users_limit:
-    title: Panel Users Limit
-    type: integer
-    description: Maksymalna liczba użytkowników panelu usługi
-  filter_items_limit:
-    title: Filter Items Limit
-    type: integer
-    description: Maksymalna liczba identyfikatorów w filtrze
   archive_date_from:
     title: Archive Date From
     type: string
@@ -55,7 +34,6 @@ properties:
   current_reports_used:
     title: Current Reports Used
     type: integer
-    default: 0
     description: Liczba utworzonych raportów aktualnych
   current_reports_filter_required:
     title: Current Reports Filter Required
@@ -69,7 +47,6 @@ properties:
   archival_reports_used:
     title: Archival Reports Used
     type: integer
-    default: 0
     description: Liczba utworzonych raportów archiwalnych
   archival_reports_filter_required:
     title: Archival Reports Filter Required
@@ -84,7 +61,6 @@ properties:
   credits_used:
     title: Credits Used
     type: integer
-    default: 0
     description: Liczba identyfikatorów, o które użytkownik odpytał API albo których
       użył w filtrze dla raportu archiwalnego
   available_content:
@@ -145,66 +121,6 @@ properties:
       - content.html
       - content.url
       type: string
-    default:
-    - entity.info.cleaned_name
-    - entity.info.first_name
-    - entity.info.last_name
-    - entity.info.legal_form
-    - entity.info.ownership_type
-    - entity.info.primary_business
-    - entity.info.commencement_date
-    - entity.info.birth_date
-    - entity.numbers.nip
-    - entity.numbers.regon
-    - entity.numbers.krs
-    - entity.numbers.pesel
-    - entity.address.state
-    - entity.address.powiat
-    - entity.address.gmina
-    - entity.address.town
-    - entity.address.street
-    - entity.address.house_number
-    - entity.address.flat_number
-    - entity.address.zip_code
-    - entity.address.post_office
-    - proceeding.court_name
-    - proceeding.court_department
-    - proceeding.signatures
-    - proceeding.commissioner_name
-    - proceeding.commissioner_deputy_name
-    - proceeding.administrator_name
-    - proceeding.administrator_function
-    - proceeding.administrator_licence_number
-    - proceeding.administrator_address
-    - proceeding.administrator_zip_code
-    - proceeding.administrator_town
-    - proceeding.administrator_source_url
-    - order.order_date
-    - order.expiration_period
-    - order.expiration_date
-    - msig_entry.chapter
-    - msig_entry.section
-    - msig_entry.signature
-    - msig_entry.issue_date
-    - msig_entry.yearly_number
-    - msig_entry.position_number
-    - msig_entry.url
-    - krz_entry.chapter
-    - krz_entry.section
-    - krz_entry.subsection
-    - krz_entry.signature
-    - krz_entry.issue_date
-    - krz_entry.url
-    - content.text
-    - content.html
-    - content.url
-    - meta.issue_date
-    - meta.first_update_date
-    - meta.last_update_date
-    - meta.category
-    - meta.is_administrator_data_consistent
-    - meta.is_correction
-    - meta.is_entity_data_consistent
     description: |-
       Lista identyfikatorów pół, które użytkownik może uwzględnić w raportach
       <details><summary>Pokaż możliwe opcje</summary>
@@ -271,7 +187,6 @@ properties:
   monitors_used:
     title: Monitors Used
     type: integer
-    default: 0
     description: Liczba utworzonych monitoringów
   monitors_emails_limit:
     title: Monitors Emails Limit
@@ -285,12 +200,10 @@ properties:
   api_requests_used:
     title: Api Requests Used
     type: integer
-    default: 0
     description: Liczba wykonanych zapytań do API o pojedyncze ogłoszenia
   monthly_reset_limits:
     title: Monthly Reset Limits
     type: boolean
-    default: true
     description: Miesięczny reset limitów
   monitors_filter_required:
     title: Monitors Filter Required
@@ -388,14 +301,7 @@ properties:
       - M.1.49
       - M.1.50
       type: string
-      description: Identyfikator kategorii. Lista możliwych wartości dostępna jest
-        pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
-    default:
-    - K.0
-    - K.1
-    - K.2
-    - M.0
-    - M.1
+    description: Lista możliwych wartości dostępna jest pod adresem [/v2/dicts/announcement-categories](#operation/get_announcement_category_v2_dicts_announcement_categories_get)
 example:
   archive_date_from: '2021-04-23'
   current_reports_available: 25
@@ -459,13 +365,6 @@ example:
   - content.text
   - content.html
   - content.url
-  - meta.issue_date
-  - meta.first_update_date
-  - meta.last_update_date
-  - meta.category
-  - meta.is_administrator_data_consistent
-  - meta.is_correction
-  - meta.is_entity_data_consistent
   monitors_available: 5
   monitors_used: 2
   monitors_emails_limit: 5
