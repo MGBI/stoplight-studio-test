@@ -42,7 +42,10 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
             if "description" in old_values:
                 new_values["description"] = old_values["description"]
             # Remove 422 status_code that is added standards in fastapi
-            if new_values.get("responses", {}).get("422", {}).get("description") == "Validation Error":
+            if (
+                new_values.get("responses", {}).get("422", {}).get("description")
+                == "Validation Error"
+            ):
                 new_values.get("responses", {}).pop("422", None)
             # Get actual endpoint's summary
             if "summary" in new_values:
@@ -52,17 +55,32 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                     new_name = new_item.get("name")
                     for old_item in new_item and old_values["parameters"] or []:
                         if new_name == old_item["name"]:
-                            objs = [(old_item.get("schema"), new_item.get("schema")),
-                                    (old_item, new_item)]
-                            if old_item.get("schema", {}).get("anyOf") and \
-                                    new_item.get("schema", {}).get("anyOf"):
-                                objs.extend(zip(old_item.get("schema", {}).get("anyOf"),
-                                                new_item.get("schema", {}).get("anyOf")))
+                            objs = [
+                                (old_item.get("schema"), new_item.get("schema")),
+                                (old_item, new_item),
+                            ]
+                            if old_item.get("schema", {}).get("anyOf") and new_item.get(
+                                "schema", {}
+                            ).get("anyOf"):
+                                objs.extend(
+                                    zip(
+                                        old_item.get("schema", {}).get("anyOf"),
+                                        new_item.get("schema", {}).get("anyOf"),
+                                    )
+                                )
 
                             for old, new in objs:
-                                for label in ["description", "example", "maxLength", "minLength"]:
-                                    if old is not None and new is not None and old.get(
-                                            label) is not None:
+                                for label in [
+                                    "description",
+                                    "example",
+                                    "maxLength",
+                                    "minLength",
+                                ]:
+                                    if (
+                                        old is not None
+                                        and new is not None
+                                        and old.get(label) is not None
+                                    ):
                                         new[label] = old[label]
             if "responses" in new_values:
                 for new_code, new_item in new_values["responses"].items():
@@ -73,20 +91,23 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                             for old, new in objs:
                                 for label in ["description", "content"]:
                                     if label == "content":
-                                        content_schema = new.get(label, {}).get(
-                                            "application/json", {}).get("schema", {})
+                                        content_schema = (
+                                            new.get(label, {})
+                                            .get("application/json", {})
+                                            .get("schema", {})
+                                        )
                                         if new_code != "200":
                                             content_schema["example"] = {
-                                                "error": old.get(label, {}).get(
-                                                    "application/json", {}).get(
-                                                    "schema", {}).get(
-                                                    "example", {}).get(
-                                                    "error", {}),
-                                                "details": old.get(label, {}).get(
-                                                    "application/json", {}).get(
-                                                    "schema", {}).get(
-                                                    "example", {}).get(
-                                                    "details", {}),
+                                                "error": old.get(label, {})
+                                                .get("application/json", {})
+                                                .get("schema", {})
+                                                .get("example", {})
+                                                .get("error", {}),
+                                                "details": old.get(label, {})
+                                                .get("application/json", {})
+                                                .get("schema", {})
+                                                .get("example", {})
+                                                .get("details", {}),
                                             }
                                             if not content_schema.get("items"):
                                                 content_schema["items"] = {
@@ -94,8 +115,11 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
                                                 }
                                                 if content_schema.get("$ref"):
                                                     del content_schema["$ref"]
-                                    elif old is not None and new is not None and old.get(
-                                            label) is not None:
+                                    elif (
+                                        old is not None
+                                        and new is not None
+                                        and old.get(label) is not None
+                                    ):
                                         new[label] = old[label]
 
     # here we remove admin and internal tags from paths field in new_openapi
@@ -103,10 +127,12 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     for path, methods in new_openapi["paths"].items():
         for method, endpoint in methods.items():
             # TODO: add types
-            if "internal" not in endpoint["tags"] \
-                    and "admin" not in endpoint["tags"] \
-                        and "mgbi-api" not in endpoint["tags"]:
-                        # TODO: REMOVE LINE ABOVE TO GENERATE DOCS FOR MGBI-API ENDPOINTS
+            if (
+                "internal" not in endpoint["tags"]
+                and "admin" not in endpoint["tags"]
+                and "mgbi-api" not in endpoint["tags"]
+            ):
+                # TODO: REMOVE LINE ABOVE TO GENERATE DOCS FOR MGBI-API ENDPOINTS
                 wanted_paths[path][method] = endpoint
             endpoint["tags"] = [tag + V_SUFFIX for tag in endpoint["tags"]]
 
@@ -128,7 +154,9 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
             for field in component:
                 if field in ["example"] and field in old_component:
                     for f in component[field]:
-                        component[field][f] = old_component[field].get(f, component[field][f])
+                        component[field][f] = old_component[field].get(
+                            f, component[field][f]
+                        )
                 if field == "properties":
                     for p in component[field]:
                         if p == "entity":
@@ -145,7 +173,9 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
     for path, methods in new_openapi["paths"].items():
         for method, endpoint in methods.items():
             tags = tags.union(endpoint["tags"])
-    tags = tags.difference(["public" + V_SUFFIX, "internal" + V_SUFFIX, "admin" + V_SUFFIX])
+    tags = tags.difference(
+        ["public" + V_SUFFIX, "internal" + V_SUFFIX, "admin" + V_SUFFIX]
+    )
 
     # adding new values to tags field without duplicates
     for tag in tags.difference({tag["name"] for tag in old_openapi["tags"]}):
@@ -166,7 +196,8 @@ def transformation_of_openapi_v2(old_file_path, new_file_path):
             break
     if found is False:
         old_openapi["x-tagGroups"].append(
-            {"name": "MSIG API V2, KRZ API V2", "tags": list(tags)})
+            {"name": "MSIG API V2, KRZ API V2", "tags": list(tags)}
+        )
 
     # at the end we dump changes to old openapi
     yaml.safe_dump(old_openapi, sys.stdout, sort_keys=False)
@@ -176,6 +207,4 @@ if __name__ == "__main__":
     if len(sys.argv) == 3:
         transformation_of_openapi_v2(sys.argv[1], sys.argv[2])
     else:
-        sys.stderr.write(
-            "USAGE: %s old_file_path new_file_path\n" % sys.argv[0]
-        )
+        sys.stderr.write("USAGE: %s old_file_path new_file_path\n" % sys.argv[0])
