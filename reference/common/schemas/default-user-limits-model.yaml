@@ -1,0 +1,15 @@
+title: DefaultUserLimitsModel
+type: object
+properties:
+  max:
+    title: Max
+    type: object
+    additionalProperties:
+      type: integer
+    default: {}
+  used:
+    title: Used
+    type: object
+    additionalProperties:
+      type: integer
+    default: {}

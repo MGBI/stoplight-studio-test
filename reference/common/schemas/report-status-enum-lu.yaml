@@ -1,0 +1,16 @@
+title: ReportStatusEnumLU
+enum:
+- 0
+- 1
+- 2
+- 3
+type: integer
+description: |-
+  An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+
+  | Wartość | Nazwa  |
+  |-|-|
+  | `0` | Unavailable |
+  | `1` | Preparing |
+  | `2` | Ready |
+  | `3` | Archived |</details>

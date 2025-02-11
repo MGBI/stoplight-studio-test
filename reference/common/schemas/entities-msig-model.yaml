@@ -1,0 +1,11 @@
+title: EntitiesMsigModel
+required:
+- basic
+type: object
+properties:
+  identifiers:
+    $ref: ../schemas.yaml#/IdentifiersMsigModel
+  basic:
+    $ref: ../schemas.yaml#/EntitiesBasicModel
+  court:
+    $ref: ../schemas.yaml#/EntitiesCourtModel

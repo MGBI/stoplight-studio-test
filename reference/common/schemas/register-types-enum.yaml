@@ -1,0 +1,12 @@
+title: RegisterTypesEnum
+enum:
+- P
+- S
+type: string
+description: |-
+  An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+
+  | Wartość | Nazwa  |
+  |-|-|
+  | `P` | Company |
+  | `S` | Association |</details>

@@ -1,0 +1,13 @@
+title: FileModel
+required:
+- original
+type: object
+properties:
+  original:
+    $ref: ../schemas.yaml#/FileInfoModel
+  pdf_preview:
+    $ref: ../schemas.yaml#/FileInfoModel
+  html_preview:
+    $ref: ../schemas.yaml#/FileInfoModel
+description: Contains `original`, `pdf_preview` (optional), `html_preview` (optional)
+  fields.

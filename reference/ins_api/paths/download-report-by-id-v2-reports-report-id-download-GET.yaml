@@ -42,7 +42,7 @@ responses:
       Content-Type:
         description: MIME
         schema:
-          type: aplication/zip
+          type: application/zip
       Content-Disposition:
         description: Nazwa pliku
         schema:
@@ -71,7 +71,7 @@ responses:
                 permitted:
                 - last
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
@@ -81,7 +81,7 @@ responses:
             error: Unauthorized
             details: User token not provided
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '403':
     description: Nieudana autoryzacja dostępu do API
     content:
@@ -91,7 +91,7 @@ responses:
             error: Forbidden
             details: Incorrect user token
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '404':
     description: Nie znaleziono
     content:
@@ -101,7 +101,7 @@ responses:
             error: Not Found
             details: Report not found
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '410':
     description: Gone
     content:
@@ -111,7 +111,7 @@ responses:
             error: Gone
             details: Report no longer exists
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
 description: |-
   Pobiera plik wygenerowanego raportu o podanym `id`.
 

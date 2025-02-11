@@ -1,0 +1,12 @@
+title: ContentKrsRdfModel
+type: object
+properties:
+  schema:
+    $ref: ../schemas.yaml#/SchemaKrsRdfModel
+  extracted_fields:
+    title: Extracted Fields
+    type: object
+    additionalProperties:
+      type: string
+  standardized_fields:
+    $ref: ../schemas.yaml#/StandardizedFieldsKrsRdfModel

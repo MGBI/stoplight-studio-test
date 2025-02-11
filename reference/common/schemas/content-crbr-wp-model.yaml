@@ -1,0 +1,6 @@
+title: ContentCrbrWpModel
+type: object
+properties:
+  raw_result:
+    title: Raw Result
+    type: object

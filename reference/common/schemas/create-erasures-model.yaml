@@ -1,0 +1,44 @@
+title: CreateErasuresModel
+required:
+- identity_data
+- records
+type: object
+properties:
+  identity_data:
+    $ref: ../schemas.yaml#/ErasuresIdentityDataModel
+  scope:
+    title: Scope
+    type: array
+    items:
+      type: string
+  records:
+    title: Records
+    type: array
+    items:
+      $ref: ../schemas.yaml#/DBErasuresRecordsModel
+  account_ids:
+    title: Account Ids
+    uniqueItems: true
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: string
+example:
+  identity_data:
+    email: jan@kowalski.pl
+    phone: '123456789'
+    website: www.wp.pl
+    company_name: JanPol Jan Kowalski
+    nip: '0000000000'
+    pesel: '11111111111'
+    first_name: Jan
+    last_name: Kowalski
+  records:
+  - model: pl-mgbi-bnf-record
+    id: 66505029425c2b0b16381711
+    scope:
+    - numbers.nip
+    - numbers.pesel
+    account_ids:
+    - 6650504d425c2b0b16381712

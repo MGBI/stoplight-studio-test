@@ -1,0 +1,20 @@
+title: FormatLU
+enum:
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+type: integer
+description: |-
+  An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+
+  | Wartość | Nazwa  |
+  |-|-|
+  | `1` | Csv |
+  | `2` | Xlsx |
+  | `3` | Xml |
+  | `4` | Json |
+  | `5` | Def |
+  | `6` | Novum |</details>

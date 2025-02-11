@@ -1,0 +1,57 @@
+title: DocumentKrsRdfModel
+required:
+- name
+- filing_date
+- period_from_date
+- period_to_date
+- period_end_year
+- period_major_year
+- is_correction
+- is_ias_compliant
+- language
+- document_id
+type: object
+properties:
+  type:
+    title: Type
+    type: string
+  name:
+    title: Name
+    type: string
+  filing_date:
+    title: Filing Date
+    type: string
+    format: date
+  preparation_date:
+    title: Preparation Date
+    type: string
+    format: date
+  period_from_date:
+    title: Period From Date
+    type: string
+    format: date
+  period_to_date:
+    title: Period To Date
+    type: string
+    format: date
+  period_end_year:
+    title: Period End Year
+    type: integer
+  period_major_year:
+    title: Period Major Year
+    type: integer
+  is_correction:
+    title: Is Correction
+    type: boolean
+  is_ias_compliant:
+    title: Is Ias Compliant
+    type: boolean
+  language:
+    title: Language
+    type: string
+  document_id:
+    title: Document Id
+    type: integer
+  submission_id:
+    title: Submission Id
+    type: integer

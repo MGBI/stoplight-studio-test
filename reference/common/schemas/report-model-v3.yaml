@@ -1,0 +1,93 @@
+title: ReportModelV3
+required:
+- id
+- projection
+- name
+- query
+- content
+- status
+- progress
+- file_format
+- file_password
+- limits
+- creation_datetime
+- downloads
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+  projection:
+    title: Projection
+    type: string
+  name:
+    title: Name
+    type: string
+  query:
+    $ref: ../schemas.yaml#/QueryMessage
+  content:
+    title: Content
+    type: array
+    items:
+      type: string
+  status:
+    $ref: ../schemas.yaml#/ReportStatusEnum
+  progress:
+    title: Progress
+    type: integer
+  file_format:
+    $ref: ../schemas.yaml#/Format
+  file_password:
+    title: File Password
+    type: string
+  file_encoding:
+    allOf:
+    - $ref: ../schemas.yaml#/Encoding
+    default: utf-8
+  limits:
+    title: Limits
+    type: object
+    additionalProperties:
+      type: integer
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+  records_count:
+    title: Records Count
+    type: integer
+    nullable: true
+  downloads:
+    title: Downloads
+    type: array
+    items:
+      $ref: ../schemas.yaml#/ReportDownloadHistoryModel
+example:
+  id: 67ab6f84d17249f4b9d2e127
+  projection: default
+  type: 0
+  name: example raport
+  query:
+    version: 1
+    model: pl-mgbi-lu-announcement
+    criteria:
+      version: 1
+      filter_id: 67ab6f843c65cb5a4bd2e126
+      append_first_entry: true
+    params:
+      from_date: '2021-11-02'
+      to_date: '2021-11-04'
+  custom_content: []
+  status: preparing
+  progress: 0
+  file_format: xml
+  file_password: mgbi2021
+  credits_used: 0
+  limits:
+    reports: 1
+    files: 1
+  creation_datetime: '2025-02-11T16:40:52.234111+01:00'
+  downloads:
+  - download_datetime: '2025-02-11T16:40:52.234042+01:00'
+  records_count: 3
+  file_encoding: utf-8

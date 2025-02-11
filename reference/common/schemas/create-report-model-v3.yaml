@@ -1,0 +1,49 @@
+title: CreateReportModelV3
+required:
+- name
+- query
+- file_format
+- file_password
+type: object
+properties:
+  projection:
+    title: Projection
+    type: string
+  name:
+    title: Name
+    type: string
+  query:
+    $ref: ../schemas.yaml#/QueryMessage
+  content:
+    title: Content
+    type: array
+    items:
+      type: string
+    default: []
+  file_format:
+    $ref: ../schemas.yaml#/Format
+  file_password:
+    title: File Password
+    type: string
+  file_encoding:
+    allOf:
+    - $ref: ../schemas.yaml#/Encoding
+    default: utf-8
+additionalProperties: false
+example:
+  type: 0
+  name: example raport
+  query:
+    version: 1
+    model: pl-mgbi-lu-announcement
+    criteria:
+      version: 1
+      filter_id: 67ab6f843c65cb5a4bd2e126
+      append_first_entry: true
+    params:
+      from_date: '2021-11-02'
+      to_date: '2021-11-04'
+  custom_content: []
+  file_format: xml
+  file_password: mgbi2021
+  file_encoding: utf-8

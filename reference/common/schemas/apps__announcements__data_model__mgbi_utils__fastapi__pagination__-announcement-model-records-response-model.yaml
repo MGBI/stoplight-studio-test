@@ -1,0 +1,70 @@
+title: RecordsResponseModel
+required:
+- count
+- results
+type: object
+properties:
+  count:
+    title: Count
+    type: integer
+  pages:
+    title: Pages
+    type: integer
+  results:
+    title: Results
+    type: array
+    items:
+      $ref: ../schemas.yaml#/AnnouncementModel
+example:
+  id: 67ab6f84653074ec4ad2e124
+  meta:
+    issue_date: '2021-11-04'
+    category: K.1.20.30
+    first_update_date: '2022-11-11'
+    last_update_date: '2023-01-11'
+    is_administrator_data_consistent: true
+    is_correction: false
+    is_entity_data_consistent: true
+  entity:
+  - info:
+      first_name: Jan
+      last_name: Kowalski
+      legal_form: osoby fizyczne nieprowadzące działalności gospodarczej
+      birth_date: '1975-03-09'
+      cleaned_name: Jan Kowalski
+      ownership_type: własność krajowych osób fizycznych
+    numbers:
+      pesel: '75030957433'
+    address:
+      town: Warszawa
+      state: mazowieckie
+      gmina: Warszawa-Mokotów
+      street: Jadźwingów
+      powiat: Warszawa
+  proceeding:
+    signatures:
+    - XIX GUp 113/20
+    court_department: XIX Wydział Gospodarczy ds. Upadłościowych i Restrukturyzacyjnych
+    court_name: Sąd Rejonowy dla m.st. Warszawy w Warszawie
+  order:
+    order_date: '2021-09-01'
+    expiration_period: 7
+    expiration_date: '2021-11-11'
+  msig_entry:
+    chapter: 0
+    url: http://www.imsig.pl/pozycja/2021/214/67445
+    issue_date: '2021-11-04'
+    signature: BMSiG-68591/2021
+    position_number: '67445'
+    section: 9
+    yearly_number: '214'
+  krz_entry:
+    chapter: 1
+    issue_date: '2022-01-11'
+    section: 20
+    subsection: 30
+    signature: 20220111/00004
+  content:
+    text: Postanowieniem z dnia ...
+    html: <tresc><p style="margin:15px 0px 0px 0px">Postanowieniem z dnia ...</p></tresc>
+    url: https://www.imsig.pl/lista-upadlosci/ogloszenia/61de1a009d34ec0asqd2df06

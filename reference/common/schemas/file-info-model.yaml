@@ -1,0 +1,13 @@
+title: FileInfoModel
+required:
+- url
+- content_type
+type: object
+properties:
+  url:
+    title: Url
+    type: string
+  content_type:
+    title: Content Type
+    type: string
+description: 'Contains two required fields: `url`, `content_type`.'
