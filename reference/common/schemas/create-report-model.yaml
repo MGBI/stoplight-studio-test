@@ -8,7 +8,9 @@ required:
 type: object
 properties:
   type:
-    $ref: ../schemas.yaml#/TypesEnum
+    allOf:
+    - $ref: ../schemas.yaml#/TypesEnum
+    default: 0
     enum:
     - 0
     - 1
@@ -249,7 +251,7 @@ properties:
       | `content.html` | Treść ogłoszenia (HTML) |
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
   file_format:
-    $ref: ../schemas.yaml#/Format
+    $ref: ../schemas.yaml#/FormatLU
     allOf:
     - type: integer
       description: |-

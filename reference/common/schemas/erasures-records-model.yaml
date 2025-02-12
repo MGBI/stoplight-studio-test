@@ -1,0 +1,17 @@
+title: ErasuresRecordsModel
+required:
+- model
+- id
+type: object
+properties:
+  model:
+    title: Model
+    type: string
+  id:
+    title: Id
+    type: string
+  scope:
+    title: Scope
+    type: array
+    items:
+      type: string

@@ -1,0 +1,93 @@
+title: RecordsResponseModel
+required:
+- id
+- identifiers
+- document
+- files
+type: object
+properties:
+  count:
+    title: Count
+    type: integer
+  pages:
+    title: Pages
+    type: integer
+  results:
+    title: Results
+    type: array
+    items:
+      $ref: ../schemas.yaml#/KrsRdfRecordModel
+example:
+  id: 66224f432af717a81b7caf8f
+  identifiers:
+    pl_krs: 0000009723
+    pl_nip: '1111111111'
+    pl_regon: '2222222222'
+  document:
+    type: Sprawozdanie z działalności
+    name: Sprawozdanie z działalności
+    filing_date: '2021-08-09'
+    preparation_date: '2021-01-18'
+    period_from_date: '2021-01-10'
+    period_to_date: '2020-11-01'
+    period_end_year: 2020
+    period_major_year: 2020
+    is_correction: false
+    is_ias_compliant: false
+    language: pl
+    document_id: 1
+    submission_id: 111
+  content:
+    schema:
+      name: JednostkaMikroWZlotych
+      version: 1-2
+      is_validated: true
+      invalid_fields_count: 0
+      fields_value_multiplier: 1
+    extracted_fields:
+      '@xmlns': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMikroWZlotych
+      '@ns1': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/DefinicjeTypySprawozdaniaFinansowe/
+      '@ns2': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMikroStruktury
+      '@ns3': http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/
+      '@ns4': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaInnaStruktury
+      '@p5': http://www.w3.org/2001/XMLSchema-instance
+      '@schemaLocation': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMikroWZlotych
+        https://www.gov.pl/attachment/0411ed25-ba82-4233-a92f-f380f5d0605b
+      Naglowek>OkresOd: '2020-01-10'
+      Naglowek>OkresDo: '2020-11-01'
+      Naglowek>DataSporzadzenia: '2020-11-04'
+      Naglowek>KodSprawozdania>@kodSystemowy: SFJMIZ (1)
+      Naglowek>KodSprawozdania>@wersjaSchemy: 1-2
+      Naglowek>KodSprawozdania: SprFinJednostkaMikroWZlotych
+      Naglowek>WariantSprawozdania: '1'
+      InformacjeOgolneJednostkaMikro>P_1>P_1A>NazwaFirmy: VOSS COMPANY SPÓŁKA Z OGRANICZONĄ
+        ODPOWIEDZIALNOŚCIĄ
+      InformacjeOgolneJednostkaMikro>P_1>P_1A>Siedziba>Wojewodztwo: WIELKOPOLSKIE
+    standardized_fields:
+      bs:
+        a_ca_cfy: 3309.75
+        a_ca_pfy: 0
+        lae_nc_cfy: 5000
+        lae_nc_pfy: 0
+      pala:
+        it_cfy: 1456
+        it_pfy: 0
+        npl_cfy: -1690.25
+        npl_pfy: 0
+        oor_cfy: 0
+        oor_pfy: 0
+  files:
+    main_document:
+      original:
+        url: https://api.mgbi.pl/v1/pl-krs-rdf-record/records/66224f432af717a81b7caf8f/files/main_document_uri
+        content_type: application/pdf
+      pdf_preview:
+        url: https://api.mgbi.pl/v1/pl-krs-rdf-record/records/66224f432af717a81b7caf8f/files/main_document_uri:pdf
+        content_type: application/pdf
+      html_preview:
+        url: https://api.mgbi.pl/v1/pl-krs-rdf-record/records/66224f432af717a81b7caf8f/files/main_document_uri:html
+        content_type: text/html
+  meta:
+    first_update_datetime: '2024-04-01T00:00:00.000'
+    last_update_datetime: '2024-04-03T00:00:00.000'
+    source_record_id: 1

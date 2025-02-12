@@ -1,0 +1,38 @@
+title: UserModel
+required:
+- id
+- email
+- is_active
+- is_admin
+- creation_datetime
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+  email:
+    title: Email
+    type: string
+    format: email
+  is_active:
+    title: Is Active
+    type: boolean
+  is_admin:
+    title: Is Admin
+    type: boolean
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+  deactivation_datetime:
+    title: Deactivation Datetime
+    type: string
+    format: date-time
+    nullable: true
+example:
+  id: 67ac98d92526d4159e54ff4d
+  email: abc@mgbi.pl
+  is_active: true
+  is_admin: false
+  creation_datetime: '2025-02-11T13:49:29.449592+01:00'
+  deactivation_datetime: '2025-06-11T13:49:29.450008+02:00'

@@ -1,0 +1,16 @@
+title: IdentifiersKrsWpModel
+type: object
+properties:
+  register_type:
+    $ref: ../schemas.yaml#/RegisterTypesEnum
+  pl_krs:
+    title: Pl Krs
+    type: string
+  pl_nip:
+    title: Pl Nip
+    type: string
+  pl_regon:
+    title: Pl Regon
+    type: string
+  pl_pesel:
+    $ref: ../schemas.yaml#/IdentifiersPeselKrsWpModel

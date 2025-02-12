@@ -1,0 +1,15 @@
+title: RawResultWpvModel
+required:
+- subject
+- request_id
+- request_datetime
+type: object
+properties:
+  subject:
+    $ref: ../schemas.yaml#/SubjectWpvModel
+  requestId:
+    title: Requestid
+    type: string
+  requestDateTime:
+    title: Requestdatetime
+    type: string

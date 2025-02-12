@@ -1,0 +1,23 @@
+title: StandardizedFieldsKrsRdfModel
+type: object
+properties:
+  bs:
+    title: Bs
+    type: object
+    additionalProperties:
+      type: number
+  cfs:
+    title: Cfs
+    type: object
+    additionalProperties:
+      type: number
+  en:
+    title: En
+    type: object
+    additionalProperties:
+      type: number
+  pala:
+    title: Pala
+    type: object
+    additionalProperties:
+      type: number

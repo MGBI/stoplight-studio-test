@@ -1,0 +1,14 @@
+title: IdentifiersWpvModel
+required:
+- pl_nip
+type: object
+properties:
+  pl_krs:
+    title: Pl Krs
+    type: string
+  pl_nip:
+    title: Pl Nip
+    type: string
+  pl_regon:
+    title: Pl Regon
+    type: string

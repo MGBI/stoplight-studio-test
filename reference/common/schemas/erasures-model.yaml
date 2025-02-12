@@ -1,0 +1,45 @@
+title: ErasuresModel
+required:
+- id
+- acceptance_datetime
+- identity_data
+- records
+type: object
+properties:
+  id:
+    title: Id
+    type: string
+  acceptance_datetime:
+    title: Acceptance Datetime
+    type: string
+    format: date-time
+  identity_data:
+    $ref: ../schemas.yaml#/ErasuresIdentityDataModel
+  scope:
+    title: Scope
+    type: array
+    items:
+      type: string
+  records:
+    title: Records
+    type: array
+    items:
+      $ref: ../schemas.yaml#/ErasuresRecordsModel
+example:
+  id: 66505020425c2b0b16381710
+  acceptance_datetime: '2024-02-05T15:55:13.629761+01:00'
+  identity_data:
+    email: jan@kowalski.pl
+    phone: '123456789'
+    website: www.wp.pl
+    company_name: JanPol Jan Kowalski
+    nip: '0000000000'
+    pesel: '11111111111'
+    first_name: Jan
+    last_name: Kowalski
+  records:
+  - model: pl-mgbi-bnf-record
+    id: 66505029425c2b0b16381711
+    scope:
+    - numbers.nip
+    - numbers.pesel

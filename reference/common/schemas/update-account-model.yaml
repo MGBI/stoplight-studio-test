@@ -1,0 +1,20 @@
+title: UpdateAccountModel
+type: object
+properties:
+  name:
+    title: Name
+    type: string
+  email:
+    title: Email
+    type: string
+    format: email
+  is_active:
+    title: Is Active
+    type: boolean
+  is_admin:
+    title: Is Admin
+    type: boolean
+  deactivation_datetime:
+    title: Deactivation Datetime
+    type: string
+    format: date-time

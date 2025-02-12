@@ -2,7 +2,6 @@ title: ConfigDataModel
 type: object
 properties:
   monitor:
-    $ref: ../schemas.yaml#/ConfigForQuery
     title: ConfigForQuery
     type: object
     properties:
@@ -20,7 +19,6 @@ properties:
         title: Limit
         type: integer
   report:
-    $ref: ../schemas.yaml#/ConfigForQueryReport
     title: ConfigForQueryReport
     type: object
     properties:

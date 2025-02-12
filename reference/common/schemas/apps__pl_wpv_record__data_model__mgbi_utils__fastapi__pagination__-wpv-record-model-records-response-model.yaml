@@ -1,0 +1,53 @@
+title: RecordsResponseModel
+required:
+- id
+- content
+- identifiers
+- version
+type: object
+properties:
+  count:
+    title: Count
+    type: integer
+  pages:
+    title: Pages
+    type: integer
+  results:
+    title: Results
+    type: array
+    items:
+      $ref: ../schemas.yaml#/WpvRecordModel
+example:
+  _id: 674706cb585d7bc7e9207c4b
+  meta:
+    first_update_datetime: '2024-11-27T11:47:20.325'
+    last_update_datetime: '2024-11-27T11:47:20.325'
+  content:
+    raw_result:
+      subject:
+        name: APINEX TECHNIKA TWORZYW SZTUCZNYCH SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
+        nip: '1010001148'
+        statusVat: Czynny
+        regon: 020159328
+        krs: 0000245778
+        workingAddress: GNIEWOMIERZ 179A, 59-241 GNIEWOMIERZ
+        representatives: []
+        authorizedClerks: []
+        partners: []
+        registrationLegalDate: '2005-12-01'
+        accountNumbers:
+        - '20102030170000240204460663'
+        - '25102030170000220204460671'
+        - '28102030170000270205043536'
+        - '97102030170000240205150208'
+        hasVirtualAccounts: false
+      requestId: NGORD-917cegf
+      requestDateTime: 31-10-2024 15:49:51
+  identifiers:
+    pl_krs: 0000245778
+    pl_nip: '1010001148'
+    pl_regon: 020159328
+  version:
+    from_datetime: '2023-12-30T23:00:00.000'
+    to_datetime: '2023-12-31T23:00:00.000'
+    latest: true

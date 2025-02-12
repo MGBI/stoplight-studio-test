@@ -1,0 +1,7 @@
+title: ContentWpvModel
+required:
+- raw_result
+type: object
+properties:
+  raw_result:
+    $ref: ../schemas.yaml#/RawResultWpvModel

@@ -1,0 +1,27 @@
+title: DBErasuresModel
+required:
+- identity_data
+- records
+type: object
+properties:
+  _id:
+    title: ' Id'
+    type: string
+  acceptance_datetime:
+    title: Acceptance Datetime
+    type: string
+    format: date-time
+  identity_data:
+    $ref: ../schemas.yaml#/ErasuresIdentityDataModel
+  records:
+    title: Records
+    type: array
+    items:
+      $ref: ../schemas.yaml#/DBErasuresRecordsModel
+  account_ids:
+    title: Account Ids
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: string

@@ -1,0 +1,25 @@
+title: DBErasuresRecordsModel
+required:
+- model
+- id
+- account_ids
+type: object
+properties:
+  model:
+    title: Model
+    type: string
+  id:
+    title: Id
+    type: string
+  scope:
+    title: Scope
+    type: array
+    items:
+      type: string
+  account_ids:
+    title: Account Ids
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: string

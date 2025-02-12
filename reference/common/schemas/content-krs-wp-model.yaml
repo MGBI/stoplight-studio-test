@@ -1,0 +1,9 @@
+title: ContentKrsWpModel
+type: object
+properties:
+  current_excerpt:
+    title: Current Excerpt
+    type: object
+  full_excerpt:
+    title: Full Excerpt
+    type: object

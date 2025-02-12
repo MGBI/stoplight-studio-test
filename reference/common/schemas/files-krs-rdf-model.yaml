@@ -1,0 +1,5 @@
+title: FilesKrsRdfModel
+type: object
+properties:
+  main_document:
+    $ref: ../schemas.yaml#/FileModel

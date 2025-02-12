@@ -1,0 +1,12 @@
+title: IdentifiersMsigModel
+type: object
+properties:
+  pl_krs:
+    title: Pl Krs
+    type: string
+  pl_rhb:
+    title: Pl Rhb
+    type: string
+  pl_ewp:
+    title: Pl Ewp
+    type: string

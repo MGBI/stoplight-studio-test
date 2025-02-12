@@ -1,0 +1,6 @@
+title: MediaTypeJSONEnum
+enum:
+- json
+- ndjson
+type: string
+description: An enumeration.

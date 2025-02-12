@@ -1,0 +1,7 @@
+title: FilesKrsWpModel
+type: object
+properties:
+  current_excerpt_pdf:
+    $ref: ../schemas.yaml#/FileModel
+  full_excerpt_pdf:
+    $ref: ../schemas.yaml#/FileModel

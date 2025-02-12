@@ -1,0 +1,14 @@
+title: KindEnum
+enum:
+- current
+- full
+- all
+type: string
+description: |-
+  An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+
+  | Wartość | Nazwa  |
+  |-|-|
+  | `current` | Current |
+  | `full` | Full |
+  | `all` | All |</details>

@@ -1,0 +1,13 @@
+title: IdentifiersPeselKrsWpModel
+type: object
+properties:
+  full:
+    title: Full
+    type: array
+    items:
+      type: string
+  current:
+    title: Current
+    type: array
+    items:
+      type: string

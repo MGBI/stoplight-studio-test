@@ -49,7 +49,7 @@ responses:
               msg: Invalid objectid
               type: value_error
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
@@ -59,7 +59,7 @@ responses:
             error: Unauthorized
             details: User token not provided
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '403':
     description: Nieudana autoryzacja dostępu do API
     content:
@@ -69,7 +69,7 @@ responses:
             error: Forbidden
             details: Incorrect user token
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '404':
     description: Nie znaleziono
     content:
@@ -79,7 +79,7 @@ responses:
             error: Not Found
             details: Notification not found
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
 description: Zwraca powiadomienie o podanym `id`.
 components:
   schemas:

@@ -1,0 +1,12 @@
+title: ContentMsigModel
+type: object
+properties:
+  header_xml:
+    title: Header Xml
+    type: string
+  body_xml:
+    title: Body Xml
+    type: string
+  krs_entry_xml:
+    title: Krs Entry Xml
+    type: string

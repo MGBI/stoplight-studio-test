@@ -45,7 +45,7 @@ responses:
               msg: field required
               type: value_error.missing
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
@@ -55,7 +55,7 @@ responses:
             error: Unauthorized
             details: User token not provided
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '403':
     description: Nieudana autoryzacja dostępu do API
     content:
@@ -65,7 +65,7 @@ responses:
             error: Forbidden
             details: Incorrect user token
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '429':
     description: Wykorzystany limit zapytań do API
     content:
@@ -75,7 +75,7 @@ responses:
             error: Too Many Requests
             details: You have used up the limit for this request
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
 description: |-
   Tworzy nowy raport - plik z listą ogłoszeń - przypisany do aktualnego użytkownika.
 
