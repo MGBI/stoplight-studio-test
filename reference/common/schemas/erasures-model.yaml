@@ -15,6 +15,33 @@ properties:
     format: date-time
   identity_data:
     $ref: ../schemas.yaml#/ErasuresIdentityDataModel
+    title: ErasuresIdentityDataModel
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+      phone:
+        title: Phone
+        type: string
+      website:
+        title: Website
+        type: string
+      company_name:
+        title: Company Name
+        type: string
+      nip:
+        title: Nip
+        type: string
+      pesel:
+        title: Pesel
+        type: string
+      first_name:
+        title: First Name
+        type: string
+      last_name:
+        title: Last Name
+        type: string
   scope:
     title: Scope
     type: array
@@ -24,7 +51,23 @@ properties:
     title: Records
     type: array
     items:
-      $ref: ../schemas.yaml#/ErasuresRecordsModel
+      title: ErasuresRecordsModel
+      required:
+      - model
+      - id
+      type: object
+      properties:
+        model:
+          title: Model
+          type: string
+        id:
+          title: Id
+          type: string
+        scope:
+          title: Scope
+          type: array
+          items:
+            type: string
 example:
   id: 66505020425c2b0b16381710
   acceptance_datetime: '2024-02-05T15:55:13.629761+01:00'

@@ -12,8 +12,6 @@ CreateReportModel:
   $ref: schemas/create-report-model.yaml
 CreateUserModel:
   $ref: schemas/create-user-model.yaml
-DBParamsModel:
-  $ref: schemas/d-bparams-model.yaml
 Error:
   $ref: schemas/error.yaml
 FiltersModel:
@@ -52,8 +50,6 @@ NotificationModel:
   $ref: schemas/notification-model.yaml
 NotificationStatusEnum:
   $ref: schemas/notification-status-enum.yaml
-ParamsModel:
-  $ref: schemas/params-model.yaml
 ProjectionEnum:
   $ref: schemas/projection-enum.yaml
 QueryRaportByDateRangeModel:
@@ -76,8 +72,6 @@ UpdateFiltersModel:
   $ref: schemas/update-filters-model.yaml
 UpdateMonitorsModel:
   $ref: schemas/update-monitors-model.yaml
-UpdateParamsModel:
-  $ref: schemas/update-params-model.yaml
 UpdateUserModel:
   $ref: schemas/update-user-model.yaml
 UpdatesModel:
@@ -102,8 +96,6 @@ Encoding:
   $ref: schemas/encoding.yaml
 InfoEncoding:
   $ref: schemas/info-encoding.yaml
-ParamsAdminModel:
-  $ref: schemas/params-admin-model.yaml
 ConfigDataModel:
   $ref: schemas/config-data-model.yaml
 ConfigForQuery:
@@ -116,22 +108,12 @@ ParamsQuery:
   $ref: schemas/params-query.yaml
 QueryMessage:
   $ref: schemas/query-message.yaml
-AnnouncementAdminAccountParams:
-  $ref: schemas/announcement-admin-account-params.yaml
 PeriodResetLimits:
   $ref: schemas/period-reset-limits.yaml
-UpdateAnnouncementAdminAccountParams:
-  $ref: schemas/update-announcement-admin-account-params.yaml
 AccountModel:
   $ref: schemas/account-model.yaml
 ActiveUser:
   $ref: schemas/active-user.yaml
-AnnouncementAdminUpdateAccountParams:
-  $ref: schemas/announcement-admin-update-account-params.yaml
-AnnouncementParamsModel:
-  $ref: schemas/announcement-params-model.yaml
-AnnouncementUpdateParamsModel:
-  $ref: schemas/announcement-update-params-model.yaml
 ContentCrbrWpModel:
   $ref: schemas/content-crbr-wp-model.yaml
 ContentKrsRdfModel:
@@ -150,14 +132,10 @@ CreateErasuresModel:
   $ref: schemas/create-erasures-model.yaml
 CreateReportModelV3:
   $ref: schemas/create-report-model-v3.yaml
-DBAnnouncementParamsModel:
-  $ref: schemas/d-bannouncement-params-model.yaml
 DBErasuresModel:
   $ref: schemas/d-berasures-model.yaml
 DBErasuresRecordsModel:
   $ref: schemas/d-berasures-records-model.yaml
-DefaultDataParamsModel:
-  $ref: schemas/default-data-params-model.yaml
 DefaultUserLimitsModel:
   $ref: schemas/default-user-limits-model.yaml
 DocumentKrsRdfModel:
@@ -272,3 +250,17 @@ apps__user__models__UserModel:
   $ref: schemas/apps__user__models__-user-model.yaml
 mgbi_utils__fastapi__interface__public__errormodel__Error:
   $ref: schemas/mgbi_utils__fastapi__interface__public__errormodel__-error.yaml
+AnnouncementAdminAccountParams:
+  $ref: schemas/announcement-admin-account-params.yaml
+AnnouncementAdminUpdateAccountParams:
+  $ref: schemas/announcement-admin-update-account-params.yaml
+AnnouncementParamsModel:
+  $ref: schemas/announcement-params-model.yaml
+AnnouncementUpdateParamsModel:
+  $ref: schemas/announcement-update-params-model.yaml
+DBAnnouncementParamsModel:
+  $ref: schemas/d-bannouncement-params-model.yaml
+DefaultDataParamsModel:
+  $ref: schemas/default-data-params-model.yaml
+UpdateAnnouncementAdminAccountParams:
+  $ref: schemas/update-announcement-admin-account-params.yaml

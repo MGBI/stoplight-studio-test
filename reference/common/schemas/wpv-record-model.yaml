@@ -11,12 +11,163 @@ properties:
     type: string
   content:
     $ref: ../schemas.yaml#/ContentWpvModel
+    title: ContentWpvModel
+    required:
+    - raw_result
+    type: object
+    properties:
+      raw_result:
+        title: RawResultWpvModel
+        required:
+        - subject
+        - request_id
+        - request_datetime
+        type: object
+        properties:
+          subject:
+            title: SubjectWpvModel
+            required:
+            - name
+            - nip
+            - statusVat
+            - regon
+            - pesel
+            - krs
+            - residenceAddress
+            - workingAddress
+            - representatives
+            - authorizedClerks
+            - partners
+            - registrationLegalDate
+            - registrationDenialBasis
+            - registrationDenialDate
+            - restorationBasis
+            - restorationDate
+            - removalBasis
+            - removalDate
+            - accountNumbers
+            - hasVirtualAccounts
+            type: object
+            properties:
+              name:
+                title: Name
+                type: string
+              nip:
+                title: Nip
+                type: string
+              statusVat:
+                title: Statusvat
+                type: string
+              regon:
+                title: Regon
+                type: string
+              pesel:
+                title: Pesel
+                type: string
+              krs:
+                title: Krs
+                type: string
+              residenceAddress:
+                title: Residenceaddress
+                type: string
+              workingAddress:
+                title: Workingaddress
+                type: string
+              representatives:
+                title: Representatives
+                type: array
+                items: {}
+              authorizedClerks:
+                title: Authorizedclerks
+                type: array
+                items: {}
+              partners:
+                title: Partners
+                type: array
+                items: {}
+              registrationLegalDate:
+                title: Registrationlegaldate
+                type: string
+              registrationDenialBasis:
+                title: Registrationdenialbasis
+                type: string
+              registrationDenialDate:
+                title: Registrationdenialdate
+                type: string
+              restorationBasis:
+                title: Restorationbasis
+                type: string
+              restorationDate:
+                title: Restorationdate
+                type: string
+              removalBasis:
+                title: Removalbasis
+                type: string
+              removalDate:
+                title: Removaldate
+                type: string
+              accountNumbers:
+                title: Accountnumbers
+                type: array
+                items: {}
+              hasVirtualAccounts:
+                title: Hasvirtualaccounts
+                type: boolean
+          requestId:
+            title: Requestid
+            type: string
+          requestDateTime:
+            title: Requestdatetime
+            type: string
   identifiers:
     $ref: ../schemas.yaml#/IdentifiersWpvModel
+    title: IdentifiersWpvModel
+    required:
+    - pl_nip
+    type: object
+    properties:
+      pl_krs:
+        title: Pl Krs
+        type: string
+      pl_nip:
+        title: Pl Nip
+        type: string
+      pl_regon:
+        title: Pl Regon
+        type: string
   version:
     $ref: ../schemas.yaml#/VersionWpvModel
+    title: VersionWpvModel
+    required:
+    - from_datetime
+    - to_datetime
+    - version
+    type: object
+    properties:
+      from_datetime:
+        title: From Datetime
+        type: string
+        format: date-time
+      to_datetime:
+        title: To Datetime
+        type: string
+        format: date-time
+      latest:
+        title: Latest
+        type: boolean
   meta:
     $ref: ../schemas.yaml#/MetaWpvModel
+    title: MetaWpvModel
+    type: object
+    properties:
+      first_update_datetime:
+        title: First Update Datetime
+        type: string
+        format: date-time
+      last_update_datetime:
+        title: Last Update Datetime
+        type: string
+        format: date-time
 example:
   _id: 674706cb585d7bc7e9207c4b
   meta:

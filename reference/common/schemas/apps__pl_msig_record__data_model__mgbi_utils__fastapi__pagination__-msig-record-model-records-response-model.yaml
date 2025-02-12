@@ -16,7 +16,217 @@ properties:
     title: Results
     type: array
     items:
-      $ref: ../schemas.yaml#/MsigRecordModel
+      title: MsigRecordModel
+      required:
+      - id
+      - content
+      - msig
+      - entities
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        files:
+          title: FilesMsigModel
+          type: object
+          properties:
+            pdf_preview_file:
+              title: FileModel
+              required:
+              - original
+              type: object
+              properties:
+                original:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                pdf_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                html_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+              description: Contains `original`, `pdf_preview` (optional), `html_preview`
+                (optional) fields.
+        content:
+          title: ContentMsigModel
+          type: object
+          properties:
+            header_xml:
+              title: Header Xml
+              type: string
+            body_xml:
+              title: Body Xml
+              type: string
+            krs_entry_xml:
+              title: Krs Entry Xml
+              type: string
+        msig:
+          title: MsigModel
+          type: object
+          properties:
+            chapter:
+              title: Chapter
+              type: string
+            section:
+              title: Section
+              type: string
+            subsection:
+              title: Subsection
+              type: string
+            page_number:
+              title: Page Number
+              type: integer
+            position_number:
+              title: Position Number
+              type: integer
+            signature:
+              title: Signature
+              type: string
+            year:
+              title: Year
+              type: integer
+            yearly_number:
+              title: Yearly Number
+              type: integer
+            sequential_number:
+              title: Sequential Number
+              type: integer
+        entities:
+          title: Entities
+          type: array
+          items:
+            title: EntitiesMsigModel
+            required:
+            - basic
+            type: object
+            properties:
+              identifiers:
+                title: IdentifiersMsigModel
+                type: object
+                properties:
+                  pl_krs:
+                    title: Pl Krs
+                    type: string
+                  pl_rhb:
+                    title: Pl Rhb
+                    type: string
+                  pl_ewp:
+                    title: Pl Ewp
+                    type: string
+              basic:
+                title: EntitiesBasicModel
+                type: object
+                properties:
+                  name:
+                    title: Name
+                    type: string
+                  town:
+                    title: Town
+                    type: string
+              court:
+                title: EntitiesCourtModel
+                type: object
+                properties:
+                  name:
+                    title: Name
+                    type: string
+                  department:
+                    title: Department
+                    type: string
+                  signatures:
+                    title: Signatures
+                    type: array
+                    items:
+                      type: string
+                  registration_date:
+                    title: Registration Date
+                    type: string
+                    format: date
+        meta:
+          title: MetaMsigModel
+          type: object
+          properties:
+            first_update_datetime:
+              title: First Update Datetime
+              type: string
+              format: date-time
+            last_update_datetime:
+              title: Last Update Datetime
+              type: string
+              format: date-time
+      example:
+        _id: 66224f432af717a81b7caf8f
+        content:
+          body_xml: "<p style=\"margin:15px 0px 0px 0px\">\"Przedsiębiorstwo Robót\
+            \ Drogowych Świnoujście\" Sp. z o.o. z siedzibą w\n            Świnoujściu\
+            \ (KRS <numer typ=\"KRS\">1074561</numer>) (Spółka przekształcona), na\
+            \ podstawie art. 570 Ksh\n            ogłasza, że w dniu 13.12.2023 r.\
+            \ Spółka została wpisana w Rejestrze Przedsiębiorców w drodze przekształcenia\n\
+            \            ze spółki cywilnej, akt not. z 25.08.2023 r., Rep. A nr 3653/2023.\n\
+            \        </p>\n    "
+          header_xml: "<p>\n                <b>Poz. 1. \"PRZEDSIĘBIORSTWO ROBÓT DROGOWYCH\
+            \ ŚWINOUJŚCIE\" SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ</b>\n        \
+            \        w Świnoujściu. KRS 0001074561. SĄD REJONOWY SZCZECIN-CENTRUM\
+            \ W SZCZECINIE, XIII WYDZIAŁ GOSPODARCZY\n                KRAJOWEGO REJESTRU\
+            \ SĄDOWEGO, wpis do rejestru: 13 grudnia 2023 r. [BMSiG-61885/2023]\n\
+            \            </p>\n        "
+        entities:
+        - basic:
+            name: '"PRZEDSIĘBIORSTWO ROBÓT DROGOWYCH ŚWINOUJŚCIE" SPÓŁKA Z OGRANICZONĄ
+              ODPOWIEDZIALNOŚCIĄ'
+            town: w Świnoujściu
+          court:
+            department: XIII WYDZIAŁ GOSPODARCZY KRAJOWEGO REJESTRU SĄDOWEGO
+            name: SĄD REJONOWY SZCZECIN-CENTRUM W SZCZECINIE
+            registration_date: '2023-12-13'
+          identifiers:
+            pl_krs: '0001074561'
+        msig:
+          chapter: I. OGŁOSZENIA WYMAGANE PRZEZ KODEKS SPÓŁEK HANDLOWYCH
+          page_number: 7
+          position_number: 1
+          section: 2. Spółki z ograniczoną odpowiedzialnością
+          sequential_number: 6903
+          signature: BMSiG-61885/2023
+          year: 2024
+          yearly_number: 1
+        meta:
+          first_update_datetime: '2024-04-01T00:00:00.000'
+          last_update_datetime: '2024-04-03T00:00:00.000'
 example:
   _id: 66224f432af717a81b7caf8f
   content:

@@ -16,7 +16,191 @@ properties:
     title: Results
     type: array
     items:
-      $ref: ../schemas.yaml#/CrbrWpRecordModel
+      title: CrbrWpRecordModel
+      required:
+      - id
+      - content
+      - identifiers
+      - version
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        content:
+          title: ContentCrbrWpModel
+          type: object
+          properties:
+            raw_result:
+              title: Raw Result
+              type: object
+        identifiers:
+          title: IdentifiersCrbrWpModel
+          required:
+          - pl_nip
+          type: object
+          properties:
+            pl_krs:
+              title: Pl Krs
+              type: string
+            pl_nip:
+              title: Pl Nip
+              type: string
+        version:
+          title: VersionCrbrWpModel
+          required:
+          - from_datetime
+          - to_datetime
+          - version
+          type: object
+          properties:
+            from_datetime:
+              title: From Datetime
+              type: string
+              format: date-time
+            to_datetime:
+              title: To Datetime
+              type: string
+              format: date-time
+            latest:
+              title: Latest
+              type: boolean
+        meta:
+          title: MetaCrbrWpModel
+          type: object
+          properties:
+            first_update_datetime:
+              title: First Update Datetime
+              type: string
+              format: date-time
+            last_update_datetime:
+              title: Last Update Datetime
+              type: string
+              format: date-time
+      example:
+        _id: 67769232d29f87342811bc07
+        meta:
+          first_update_datetime: '2025-01-02T13:18:38.371000'
+          last_update_datetime: '2025-01-02T13:18:38.371000'
+        content:
+          raw_result:
+            id: 846e3f14-e498-4b4f-8cb7-f3a5034f1197
+            dataPoczatkuPrezentacji: '2020-07-09'
+            dataKoncaPrezentacji: '2020-08-13'
+            spolka:
+              nip: '5250000251'
+              krs: 0000019193
+              pelnaNazwa: POLSKIE KOLEJE PAŃSTWOWE SPÓŁKA AKCYJNA
+              formaOrganizacyjna: '116'
+              formaOrganizacyjnaOpis: Spółka akcyjna
+              adresSiedziby:
+                kodPocztowy: 02-305
+                wojewodztwo: MAZOWIECKIE
+                miejscowosc: WARSZAWA
+                ulica: ALEJE JEROZOLIMSKIE
+                nrDomu: 142A
+              idTech: 745138b3-b20e-4099-bf08-cb6cd82ef493
+            listaBeneficjentow:
+            - pesel: '69110606559'
+              imiePierwsze: JACEK
+              imieDrugieINastepne: ROBERT
+              nazwisko: SASIN
+              obywatelstwo:
+              - kodKraju: PL
+                nazwa: POLSKA
+              panstwoZamieszkania:
+                kodKraju: PL
+                nazwa: POLSKA
+              informacjeOUdzialeLubUprawnieniach:
+              - charakterUdzialu: 3
+                inneUprBO:
+                  rodzajInnychUprawnien:
+                    kod: '000'
+                    opis: inne stare – wartość wpisana w starej wersji formularza
+                  opisInnychUprawnien: CZŁONEK RADY MINISTRÓW - MINISTER AKTYWÓW PAŃSTWOWYCH,
+                    KTÓRY W IMIENIU SKARBU PAŃSTWA WYKONUJE PRAWA Z 100% AKCJI W OPARCIU
+                    O ART. 7 UST. 2 USTAWY Z DNIA 16.12.2016 R. O ZASADACH ZARZĄDZANIA
+                    MIENIEM PAŃSTWOWYM
+                idTech: 6e441a1d-298c-4df7-b3e4-8e66f5e16259
+              idTech: f6fa30b3-6a86-42f9-a757-1a7752be8025
+            listaZglaszajacych:
+            - pesel: '59060500313'
+              imiePierwsze: MIROSŁAW
+              imieDrugieINastepne: ANDRZEJ
+              nazwisko: ANTONOWICZ
+              obywatelstwo:
+              - kodKraju: PL
+                nazwa: POLSKA
+              panstwoZamieszkania:
+                kodKraju: PL
+                nazwa: POLSKA
+              funkcjeZglaszajacego:
+              - kod: '101'
+                opis: reprezentant
+              idTech: 8375782b-8bac-4fac-8b46-9f3760686629
+            - pesel: '65080304293'
+              imiePierwsze: ANDRZEJ
+              imieDrugieINastepne: ANTONI
+              nazwisko: OLSZEWSKI
+              obywatelstwo:
+              - kodKraju: PL
+                nazwa: POLSKA
+              panstwoZamieszkania:
+                kodKraju: PL
+                nazwa: POLSKA
+              funkcjeZglaszajacego:
+              - kod: '101'
+                opis: reprezentant
+              idTech: f44af4c7-7aef-4eeb-be67-c10a9ff0b803
+            - pesel: '59080403540'
+              imiePierwsze: MAŁGORZATA
+              nazwisko: ZIELIŃSKA
+              obywatelstwo:
+              - kodKraju: PL
+                nazwa: POLSKA
+              panstwoZamieszkania:
+                kodKraju: PL
+                nazwa: POLSKA
+              funkcjeZglaszajacego:
+              - kod: '101'
+                opis: reprezentant
+              idTech: 261ad14b-5fca-49b7-9e5e-bb6947962b92
+            - pesel: '77010900778'
+              imiePierwsze: KRZYSZTOF
+              nazwisko: GOLUBIEWSKI
+              obywatelstwo:
+              - kodKraju: PL
+                nazwa: POLSKA
+              panstwoZamieszkania:
+                kodKraju: PL
+                nazwa: POLSKA
+              funkcjeZglaszajacego:
+              - kod: '101'
+                opis: reprezentant
+              idTech: dbdcb726-e664-4ad6-9f3c-2ce17596e233
+            - pesel: '57012601570'
+              imiePierwsze: KRZYSZTOF
+              imieDrugieINastepne: WACŁAW
+              nazwisko: MAMIŃSKI
+              obywatelstwo:
+              - kodKraju: PL
+                nazwa: POLSKA
+              panstwoZamieszkania:
+                kodKraju: PL
+                nazwa: POLSKA
+              funkcjeZglaszajacego:
+              - kod: '101'
+                opis: reprezentant
+              idTech: 809d4df2-8793-4223-b496-8b7a3d52f007
+            korekta: false
+            listaInformacjiORozbieznosciach: []
+          identifiers:
+            pl_krs: 0000019193
+            pl_nip: '5250000251'
+          version:
+            from_datetime: '2019-12-11T23:00:00.000'
+            to_datetime: '2019-12-12T23:00:00.000'
+            latest: true
 example:
   _id: 67769232d29f87342811bc07
   meta:

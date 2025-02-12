@@ -3,3 +3,52 @@ type: object
 properties:
   pdf_preview_file:
     $ref: ../schemas.yaml#/FileModel
+    title: FileModel
+    required:
+    - original
+    type: object
+    properties:
+      original:
+        title: FileInfoModel
+        required:
+        - url
+        - content_type
+        type: object
+        properties:
+          url:
+            title: Url
+            type: string
+          content_type:
+            title: Content Type
+            type: string
+        description: 'Contains two required fields: `url`, `content_type`.'
+      pdf_preview:
+        title: FileInfoModel
+        required:
+        - url
+        - content_type
+        type: object
+        properties:
+          url:
+            title: Url
+            type: string
+          content_type:
+            title: Content Type
+            type: string
+        description: 'Contains two required fields: `url`, `content_type`.'
+      html_preview:
+        title: FileInfoModel
+        required:
+        - url
+        - content_type
+        type: object
+        properties:
+          url:
+            title: Url
+            type: string
+          content_type:
+            title: Content Type
+            type: string
+        description: 'Contains two required fields: `url`, `content_type`.'
+    description: Contains `original`, `pdf_preview` (optional), `html_preview` (optional)
+      fields.

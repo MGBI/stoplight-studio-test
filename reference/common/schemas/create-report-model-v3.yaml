@@ -14,6 +14,69 @@ properties:
     type: string
   query:
     $ref: ../schemas.yaml#/QueryMessage
+    title: QueryMessage
+    required:
+    - data_service
+    - criteria
+    type: object
+    properties:
+      version:
+        title: Version
+        type: integer
+        default: 1
+      model:
+        title: Model
+        type: string
+      criteria:
+        title: DataQuery
+        type: object
+        properties:
+          version:
+            title: Version
+            type: integer
+            default: 1
+          filter_id:
+            title: Filter Id
+            type: string
+      params:
+        title: ParamsQuery
+        type: object
+        properties:
+          from_date:
+            title: From Date
+            type: string
+            format: date
+          to_date:
+            title: To Date
+            type: string
+            format: date
+          update_id_from:
+            title: Update Id From
+            type: integer
+          update_id_to:
+            title: Update Id To
+            type: integer
+          sort:
+            title: Sort
+            type: array
+            items:
+              maxItems: 2
+              minItems: 2
+              type: array
+              items:
+              - type: string
+              - type: integer
+          limit:
+            title: Limit
+            type: integer
+        additionalProperties: false
+      event_key:
+        title: Event Key
+        type: string
+      constraint:
+        title: Constraint
+        type: object
+    additionalProperties: false
   content:
     title: Content
     type: array
@@ -22,12 +85,43 @@ properties:
     default: []
   file_format:
     $ref: ../schemas.yaml#/Format
+    title: Format
+    enum:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    type: integer
+    description: |-
+      Format pliku raportu.<details><summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa  |
+      |-|-|
+      | `1` | Csv |
+      | `2` | Xlsx |
+      | `3` | Xml |
+      | `4` | Json |
+      | `5` | Def |</details>
   file_password:
     title: File Password
     type: string
   file_encoding:
     allOf:
-    - $ref: ../schemas.yaml#/Encoding
+    - title: Encoding
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      description: |-
+        System kodowania znaków w pliku<details><summary>Pokaż możliwe opcje</summary>
+
+        | Wartość | Nazwa  |
+        |-|-|
+        | `0` | utf-8 |
+        | `1` | cp1250 |
+        | `2` | iso-8859-2 |</details>
     default: utf-8
 additionalProperties: false
 example:

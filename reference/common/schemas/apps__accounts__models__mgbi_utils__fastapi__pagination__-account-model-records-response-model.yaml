@@ -14,4 +14,24 @@ properties:
     title: Results
     type: array
     items:
-      $ref: ../schemas.yaml#/AccountModel
+      title: AccountModel
+      required:
+      - id
+      - name
+      - creation_datetime
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+        creation_datetime:
+          title: Creation Datetime
+          type: string
+          format: date-time
+        deletion_datetime:
+          title: Deletion Datetime
+          type: string
+          format: date-time

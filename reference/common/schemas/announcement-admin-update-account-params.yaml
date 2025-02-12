@@ -19,12 +19,6 @@ properties:
     title: Api Key
     type: string
     format: uuid
-  authorized_vendors:
-    title: Authorized Vendors
-    type: array
-    items:
-      type: string
-    default: []
   panel_users:
     title: Panel Users
     type: array

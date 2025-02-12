@@ -251,26 +251,12 @@ parameters:
     wartości
 - required: false
   schema:
-    title: First Update Id
-    type: integer
-  name: first_update_id
-  in: query
-  description: Umożliwia odpytywanie bazy o ogłoszenia począwszy od wskazanej aktualizacji
-- required: false
-  schema:
     title: Authorization
     type: string
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
   in: header
   description: Klucz autoryzacji
-- required: false
-  schema:
-    title: X-Vendor-Authorization
-    type: string
-  example: imsig-55086cef9c87d6d031cd5db29cd03a2ed0252b45
-  name: X-Vendor-Authorization
-  in: header
 responses:
   '200':
     description: Wynik wyszukiwania ogłoszeń

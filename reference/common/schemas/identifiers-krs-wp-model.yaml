@@ -3,6 +3,18 @@ type: object
 properties:
   register_type:
     $ref: ../schemas.yaml#/RegisterTypesEnum
+    title: RegisterTypesEnum
+    enum:
+    - P
+    - S
+    type: string
+    description: |-
+      An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+
+      | Wartość | Nazwa  |
+      |-|-|
+      | `P` | Company |
+      | `S` | Association |</details>
   pl_krs:
     title: Pl Krs
     type: string
@@ -14,3 +26,16 @@ properties:
     type: string
   pl_pesel:
     $ref: ../schemas.yaml#/IdentifiersPeselKrsWpModel
+    title: IdentifiersPeselKrsWpModel
+    type: object
+    properties:
+      full:
+        title: Full
+        type: array
+        items:
+          type: string
+      current:
+        title: Current
+        type: array
+        items:
+          type: string

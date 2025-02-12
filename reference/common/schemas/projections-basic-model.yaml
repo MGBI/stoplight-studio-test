@@ -1,4 +1,16 @@
 title: ProjectionsBasicModel
 type: object
 additionalProperties:
-  $ref: ../schemas.yaml#/ProjectionBasicModel
+  title: ProjectionBasicModel
+  type: object
+  properties:
+    content:
+      title: Content
+      type: array
+      items:
+        type: string
+    where:
+      title: Where
+      type: array
+      items:
+        type: string

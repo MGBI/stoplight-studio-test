@@ -22,6 +22,7 @@ properties:
     maxLength: 24
   type:
     $ref: ../schemas.yaml#/TypesEnum
+    title: TypesEnum
     enum:
     - 0
     - 1
@@ -35,7 +36,6 @@ properties:
         |-|-|
         | `0` | Aktualny |
         | `1` | Archiwalny |</details>
-    title: TypesEnum
   name:
     title: Name
     type: string

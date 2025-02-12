@@ -11,14 +11,213 @@ properties:
     type: string
   identifiers:
     $ref: ../schemas.yaml#/IdentifiersKrsRdfModel
+    title: IdentifiersKrsRdfModel
+    required:
+    - pl_krs
+    type: object
+    properties:
+      pl_krs:
+        title: Pl Krs
+        type: string
+      pl_nip:
+        title: Pl Nip
+        type: string
+      pl_regon:
+        title: Pl Regon
+        type: string
   document:
     $ref: ../schemas.yaml#/DocumentKrsRdfModel
+    title: DocumentKrsRdfModel
+    required:
+    - name
+    - filing_date
+    - period_from_date
+    - period_to_date
+    - period_end_year
+    - period_major_year
+    - is_correction
+    - is_ias_compliant
+    - language
+    - document_id
+    type: object
+    properties:
+      type:
+        title: Type
+        type: string
+      name:
+        title: Name
+        type: string
+      filing_date:
+        title: Filing Date
+        type: string
+        format: date
+      preparation_date:
+        title: Preparation Date
+        type: string
+        format: date
+      period_from_date:
+        title: Period From Date
+        type: string
+        format: date
+      period_to_date:
+        title: Period To Date
+        type: string
+        format: date
+      period_end_year:
+        title: Period End Year
+        type: integer
+      period_major_year:
+        title: Period Major Year
+        type: integer
+      is_correction:
+        title: Is Correction
+        type: boolean
+      is_ias_compliant:
+        title: Is Ias Compliant
+        type: boolean
+      language:
+        title: Language
+        type: string
+      document_id:
+        title: Document Id
+        type: integer
+      submission_id:
+        title: Submission Id
+        type: integer
   content:
     $ref: ../schemas.yaml#/ContentKrsRdfModel
+    title: ContentKrsRdfModel
+    type: object
+    properties:
+      schema:
+        title: SchemaKrsRdfModel
+        required:
+        - name
+        - version
+        - is_validated
+        - invalid_fields_count
+        - fields_value_multiplier
+        type: object
+        properties:
+          name:
+            title: Name
+            type: string
+          version:
+            title: Version
+            type: string
+          is_validated:
+            title: Is Validated
+            type: boolean
+          invalid_fields_count:
+            title: Invalid Fields Count
+            type: integer
+          fields_value_multiplier:
+            title: Fields Value Multiplier
+            type: number
+      extracted_fields:
+        title: Extracted Fields
+        type: object
+        additionalProperties:
+          type: string
+      standardized_fields:
+        title: StandardizedFieldsKrsRdfModel
+        type: object
+        properties:
+          bs:
+            title: Bs
+            type: object
+            additionalProperties:
+              type: number
+          cfs:
+            title: Cfs
+            type: object
+            additionalProperties:
+              type: number
+          en:
+            title: En
+            type: object
+            additionalProperties:
+              type: number
+          pala:
+            title: Pala
+            type: object
+            additionalProperties:
+              type: number
   files:
     $ref: ../schemas.yaml#/FilesKrsRdfModel
+    title: FilesKrsRdfModel
+    type: object
+    properties:
+      main_document:
+        title: FileModel
+        required:
+        - original
+        type: object
+        properties:
+          original:
+            title: FileInfoModel
+            required:
+            - url
+            - content_type
+            type: object
+            properties:
+              url:
+                title: Url
+                type: string
+              content_type:
+                title: Content Type
+                type: string
+            description: 'Contains two required fields: `url`, `content_type`.'
+          pdf_preview:
+            title: FileInfoModel
+            required:
+            - url
+            - content_type
+            type: object
+            properties:
+              url:
+                title: Url
+                type: string
+              content_type:
+                title: Content Type
+                type: string
+            description: 'Contains two required fields: `url`, `content_type`.'
+          html_preview:
+            title: FileInfoModel
+            required:
+            - url
+            - content_type
+            type: object
+            properties:
+              url:
+                title: Url
+                type: string
+              content_type:
+                title: Content Type
+                type: string
+            description: 'Contains two required fields: `url`, `content_type`.'
+        description: Contains `original`, `pdf_preview` (optional), `html_preview`
+          (optional) fields.
   meta:
     $ref: ../schemas.yaml#/MetaKrsRdfModel
+    title: MetaKrsRdfModel
+    required:
+    - first_update_datetime
+    - last_update_datetime
+    - source_record_id
+    type: object
+    properties:
+      first_update_datetime:
+        title: First Update Datetime
+        type: string
+        format: date-time
+      last_update_datetime:
+        title: Last Update Datetime
+        type: string
+        format: date-time
+      source_record_id:
+        title: Source Record Id
+        type: integer
 example:
   id: 66224f432af717a81b7caf8f
   identifiers:

@@ -16,7 +16,207 @@ properties:
     title: Results
     type: array
     items:
-      $ref: ../schemas.yaml#/KrsWpRecordModel
+      title: KrsWpRecordModel
+      required:
+      - id
+      - identifiers
+      - content
+      - files
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        identifiers:
+          title: IdentifiersKrsWpModel
+          type: object
+          properties:
+            register_type:
+              title: RegisterTypesEnum
+              enum:
+              - P
+              - S
+              type: string
+              description: |-
+                An enumeration.<details><summary>Pokaż możliwe opcje</summary>
+
+                | Wartość | Nazwa  |
+                |-|-|
+                | `P` | Company |
+                | `S` | Association |</details>
+            pl_krs:
+              title: Pl Krs
+              type: string
+            pl_nip:
+              title: Pl Nip
+              type: string
+            pl_regon:
+              title: Pl Regon
+              type: string
+            pl_pesel:
+              title: IdentifiersPeselKrsWpModel
+              type: object
+              properties:
+                full:
+                  title: Full
+                  type: array
+                  items:
+                    type: string
+                current:
+                  title: Current
+                  type: array
+                  items:
+                    type: string
+        content:
+          title: ContentKrsWpModel
+          type: object
+          properties:
+            current_excerpt:
+              title: Current Excerpt
+              type: object
+            full_excerpt:
+              title: Full Excerpt
+              type: object
+        files:
+          title: FilesKrsWpModel
+          type: object
+          properties:
+            current_excerpt_pdf:
+              title: FileModel
+              required:
+              - original
+              type: object
+              properties:
+                original:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                pdf_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                html_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+              description: Contains `original`, `pdf_preview` (optional), `html_preview`
+                (optional) fields.
+            full_excerpt_pdf:
+              title: FileModel
+              required:
+              - original
+              type: object
+              properties:
+                original:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                pdf_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                html_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+              description: Contains `original`, `pdf_preview` (optional), `html_preview`
+                (optional) fields.
+        meta:
+          title: MetaKrsWpModel
+          type: object
+          properties:
+            first_update_datetime:
+              title: First Update Datetime
+              type: string
+              format: date-time
+            last_update_datetime:
+              title: Last Update Datetime
+              type: string
+              format: date-time
+            source_url:
+              title: Source Url
+              type: string
+      example:
+        id: 66224f432af717a81b7caf8f
+        identifiers:
+          register_type: P
+          pl_krs: 0000009723
+        content:
+          current_excerpt: {}
+          full_excerpt: {}
+        files:
+          current_excerpt_pdf_file:
+            url: https://api.mgbi.pl/v2/pl-krs-wp-record/records/66224f432af717a81b7caf8f/files/current_excerpt_pdf_uri
+            content_type: application/pdf
+            name: current.pdf
+          full_excerpt_pdf_file:
+            url: https://api.mgbi.pl/v2/pl-krs-wp-record/records/66224f432af717a81b7caf8f/files/full_excerpt_pdf_uri
+            content_type: application/pdf
+            name: full.pdf
+        meta:
+          first_update_date: '2024-04-01'
+          last_update_date: '2024-04-03'
+          source_url: https://wyszukiwarka-krs.ms.gov.pl/dane-szczegolowe-podmiotu;numerKRS=IRvUx22qkN9DX9NFq0hPnw%3D%3D;typ=P
 example:
   id: 66224f432af717a81b7caf8f
   identifiers:

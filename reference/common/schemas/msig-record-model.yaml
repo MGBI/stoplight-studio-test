@@ -11,17 +11,169 @@ properties:
     type: string
   files:
     $ref: ../schemas.yaml#/FilesMsigModel
+    title: FilesMsigModel
+    type: object
+    properties:
+      pdf_preview_file:
+        title: FileModel
+        required:
+        - original
+        type: object
+        properties:
+          original:
+            title: FileInfoModel
+            required:
+            - url
+            - content_type
+            type: object
+            properties:
+              url:
+                title: Url
+                type: string
+              content_type:
+                title: Content Type
+                type: string
+            description: 'Contains two required fields: `url`, `content_type`.'
+          pdf_preview:
+            title: FileInfoModel
+            required:
+            - url
+            - content_type
+            type: object
+            properties:
+              url:
+                title: Url
+                type: string
+              content_type:
+                title: Content Type
+                type: string
+            description: 'Contains two required fields: `url`, `content_type`.'
+          html_preview:
+            title: FileInfoModel
+            required:
+            - url
+            - content_type
+            type: object
+            properties:
+              url:
+                title: Url
+                type: string
+              content_type:
+                title: Content Type
+                type: string
+            description: 'Contains two required fields: `url`, `content_type`.'
+        description: Contains `original`, `pdf_preview` (optional), `html_preview`
+          (optional) fields.
   content:
     $ref: ../schemas.yaml#/ContentMsigModel
+    title: ContentMsigModel
+    type: object
+    properties:
+      header_xml:
+        title: Header Xml
+        type: string
+      body_xml:
+        title: Body Xml
+        type: string
+      krs_entry_xml:
+        title: Krs Entry Xml
+        type: string
   msig:
     $ref: ../schemas.yaml#/MsigModel
+    title: MsigModel
+    type: object
+    properties:
+      chapter:
+        title: Chapter
+        type: string
+      section:
+        title: Section
+        type: string
+      subsection:
+        title: Subsection
+        type: string
+      page_number:
+        title: Page Number
+        type: integer
+      position_number:
+        title: Position Number
+        type: integer
+      signature:
+        title: Signature
+        type: string
+      year:
+        title: Year
+        type: integer
+      yearly_number:
+        title: Yearly Number
+        type: integer
+      sequential_number:
+        title: Sequential Number
+        type: integer
   entities:
     title: Entities
     type: array
     items:
-      $ref: ../schemas.yaml#/EntitiesMsigModel
+      title: EntitiesMsigModel
+      required:
+      - basic
+      type: object
+      properties:
+        identifiers:
+          title: IdentifiersMsigModel
+          type: object
+          properties:
+            pl_krs:
+              title: Pl Krs
+              type: string
+            pl_rhb:
+              title: Pl Rhb
+              type: string
+            pl_ewp:
+              title: Pl Ewp
+              type: string
+        basic:
+          title: EntitiesBasicModel
+          type: object
+          properties:
+            name:
+              title: Name
+              type: string
+            town:
+              title: Town
+              type: string
+        court:
+          title: EntitiesCourtModel
+          type: object
+          properties:
+            name:
+              title: Name
+              type: string
+            department:
+              title: Department
+              type: string
+            signatures:
+              title: Signatures
+              type: array
+              items:
+                type: string
+            registration_date:
+              title: Registration Date
+              type: string
+              format: date
   meta:
     $ref: ../schemas.yaml#/MetaMsigModel
+    title: MetaMsigModel
+    type: object
+    properties:
+      first_update_datetime:
+        title: First Update Datetime
+        type: string
+        format: date-time
+      last_update_datetime:
+        title: Last Update Datetime
+        type: string
+        format: date-time
 example:
   _id: 66224f432af717a81b7caf8f
   content:

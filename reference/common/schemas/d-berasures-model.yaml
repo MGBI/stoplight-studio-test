@@ -13,11 +13,62 @@ properties:
     format: date-time
   identity_data:
     $ref: ../schemas.yaml#/ErasuresIdentityDataModel
+    title: ErasuresIdentityDataModel
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+      phone:
+        title: Phone
+        type: string
+      website:
+        title: Website
+        type: string
+      company_name:
+        title: Company Name
+        type: string
+      nip:
+        title: Nip
+        type: string
+      pesel:
+        title: Pesel
+        type: string
+      first_name:
+        title: First Name
+        type: string
+      last_name:
+        title: Last Name
+        type: string
   records:
     title: Records
     type: array
     items:
-      $ref: ../schemas.yaml#/DBErasuresRecordsModel
+      title: DBErasuresRecordsModel
+      required:
+      - model
+      - id
+      - account_ids
+      type: object
+      properties:
+        model:
+          title: Model
+          type: string
+        id:
+          title: Id
+          type: string
+        scope:
+          title: Scope
+          type: array
+          items:
+            type: string
+        account_ids:
+          title: Account Ids
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: string
   account_ids:
     title: Account Ids
     type: array

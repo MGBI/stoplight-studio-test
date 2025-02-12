@@ -14,4 +14,62 @@ properties:
     title: Results
     type: array
     items:
-      $ref: ../schemas.yaml#/apps__accounts__models__UserModel
+      title: UserModel
+      required:
+      - id
+      - email
+      - creation_datetime
+      - accounts
+      - is_superuser
+      - api_key
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        email:
+          title: Email
+          type: string
+          format: email
+        password:
+          title: Password
+          type: string
+          nullable: true
+        phone:
+          title: Phone
+          type: string
+          nullable: true
+        first_name:
+          title: First Name
+          type: string
+          nullable: true
+        last_name:
+          title: Last Name
+          type: string
+          nullable: true
+        creation_datetime:
+          title: Creation Datetime
+          type: string
+          format: date-time
+        accounts:
+          title: Accounts
+          type: array
+          items:
+            type: string
+        teams:
+          title: Teams
+          type: array
+          items:
+            type: string
+          default: []
+        is_superuser:
+          title: Is Superuser
+          type: boolean
+        api_key:
+          title: Api Key
+          type: string
+          format: uuid
+        api_key_secret:
+          title: Api Key Secret
+          type: string
+          default: v1

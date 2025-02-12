@@ -1,6 +1,6 @@
 tags:
 - params_iapi
-summary: GET /v2/params
+summary: Get Actual User Params
 operationId: get_actual_user_params_v2_params_get
 parameters:
 - required: false
@@ -10,17 +10,9 @@ parameters:
   example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
   name: Authorization
   in: header
-  description: Klucz autoryzacji
-- required: false
-  schema:
-    title: X-Vendor-Authorization
-    type: string
-  example: imsig-55086cef9c87d6d031cd5db29cd03a2ed0252b45
-  name: X-Vendor-Authorization
-  in: header
 responses:
   '200':
-    description: Wynik wyszukiwania parametrów
+    description: Params retrieved
     content:
       application/json:
         schema:
@@ -30,42 +22,31 @@ responses:
     content:
       application/json:
         schema:
-          example:
-            error: {}
-            details: {}
-          items:
-            $ref: '#/components/schemas/apps__base__errors__models__Error'
+          $ref: '#/components/schemas/apps__base__errors__models__Error'
   '401':
-    description: Niepoprawna autentykacja tokenu
+    description: Unauthorized
     content:
       application/json:
         schema:
-          example:
-            error: Unauthorized
-            details: User token not provided
-          items:
-            $ref: '#/components/schemas/apps__base__errors__models__Error'
+          $ref: '#/components/schemas/apps__base__errors__models__Error'
   '403':
-    description: Nieudana autoryzacja dostępu do API
+    description: Forbidden
     content:
       application/json:
         schema:
-          example:
-            error: Forbidden
-            details: Incorrect user token
-          items:
-            $ref: '#/components/schemas/apps__base__errors__models__Error'
+          $ref: '#/components/schemas/apps__base__errors__models__Error'
   '404':
     description: Not Found
     content:
       application/json:
         schema:
-          example:
-            error: Not Found
-            details: No params
-          items:
-            $ref: '#/components/schemas/apps__base__errors__models__Error'
-description: Zwraca parametry usługi dla aktualnego użytkownika.
+          $ref: '#/components/schemas/apps__base__errors__models__Error'
+  '422':
+    description: Validation Error
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
     $ref: ../../common/schemas.yaml

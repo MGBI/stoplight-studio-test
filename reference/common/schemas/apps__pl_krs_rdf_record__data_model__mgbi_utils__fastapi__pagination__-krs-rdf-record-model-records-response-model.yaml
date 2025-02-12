@@ -16,7 +16,295 @@ properties:
     title: Results
     type: array
     items:
-      $ref: ../schemas.yaml#/KrsRdfRecordModel
+      title: KrsRdfRecordModel
+      required:
+      - id
+      - identifiers
+      - document
+      - files
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        identifiers:
+          title: IdentifiersKrsRdfModel
+          required:
+          - pl_krs
+          type: object
+          properties:
+            pl_krs:
+              title: Pl Krs
+              type: string
+            pl_nip:
+              title: Pl Nip
+              type: string
+            pl_regon:
+              title: Pl Regon
+              type: string
+        document:
+          title: DocumentKrsRdfModel
+          required:
+          - name
+          - filing_date
+          - period_from_date
+          - period_to_date
+          - period_end_year
+          - period_major_year
+          - is_correction
+          - is_ias_compliant
+          - language
+          - document_id
+          type: object
+          properties:
+            type:
+              title: Type
+              type: string
+            name:
+              title: Name
+              type: string
+            filing_date:
+              title: Filing Date
+              type: string
+              format: date
+            preparation_date:
+              title: Preparation Date
+              type: string
+              format: date
+            period_from_date:
+              title: Period From Date
+              type: string
+              format: date
+            period_to_date:
+              title: Period To Date
+              type: string
+              format: date
+            period_end_year:
+              title: Period End Year
+              type: integer
+            period_major_year:
+              title: Period Major Year
+              type: integer
+            is_correction:
+              title: Is Correction
+              type: boolean
+            is_ias_compliant:
+              title: Is Ias Compliant
+              type: boolean
+            language:
+              title: Language
+              type: string
+            document_id:
+              title: Document Id
+              type: integer
+            submission_id:
+              title: Submission Id
+              type: integer
+        content:
+          title: ContentKrsRdfModel
+          type: object
+          properties:
+            schema:
+              title: SchemaKrsRdfModel
+              required:
+              - name
+              - version
+              - is_validated
+              - invalid_fields_count
+              - fields_value_multiplier
+              type: object
+              properties:
+                name:
+                  title: Name
+                  type: string
+                version:
+                  title: Version
+                  type: string
+                is_validated:
+                  title: Is Validated
+                  type: boolean
+                invalid_fields_count:
+                  title: Invalid Fields Count
+                  type: integer
+                fields_value_multiplier:
+                  title: Fields Value Multiplier
+                  type: number
+            extracted_fields:
+              title: Extracted Fields
+              type: object
+              additionalProperties:
+                type: string
+            standardized_fields:
+              title: StandardizedFieldsKrsRdfModel
+              type: object
+              properties:
+                bs:
+                  title: Bs
+                  type: object
+                  additionalProperties:
+                    type: number
+                cfs:
+                  title: Cfs
+                  type: object
+                  additionalProperties:
+                    type: number
+                en:
+                  title: En
+                  type: object
+                  additionalProperties:
+                    type: number
+                pala:
+                  title: Pala
+                  type: object
+                  additionalProperties:
+                    type: number
+        files:
+          title: FilesKrsRdfModel
+          type: object
+          properties:
+            main_document:
+              title: FileModel
+              required:
+              - original
+              type: object
+              properties:
+                original:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                pdf_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+                html_preview:
+                  title: FileInfoModel
+                  required:
+                  - url
+                  - content_type
+                  type: object
+                  properties:
+                    url:
+                      title: Url
+                      type: string
+                    content_type:
+                      title: Content Type
+                      type: string
+                  description: 'Contains two required fields: `url`, `content_type`.'
+              description: Contains `original`, `pdf_preview` (optional), `html_preview`
+                (optional) fields.
+        meta:
+          title: MetaKrsRdfModel
+          required:
+          - first_update_datetime
+          - last_update_datetime
+          - source_record_id
+          type: object
+          properties:
+            first_update_datetime:
+              title: First Update Datetime
+              type: string
+              format: date-time
+            last_update_datetime:
+              title: Last Update Datetime
+              type: string
+              format: date-time
+            source_record_id:
+              title: Source Record Id
+              type: integer
+      example:
+        id: 66224f432af717a81b7caf8f
+        identifiers:
+          pl_krs: 0000009723
+          pl_nip: '1111111111'
+          pl_regon: '2222222222'
+        document:
+          type: Sprawozdanie z działalności
+          name: Sprawozdanie z działalności
+          filing_date: '2021-08-09'
+          preparation_date: '2021-01-18'
+          period_from_date: '2021-01-10'
+          period_to_date: '2020-11-01'
+          period_end_year: 2020
+          period_major_year: 2020
+          is_correction: false
+          is_ias_compliant: false
+          language: pl
+          document_id: 1
+          submission_id: 111
+        content:
+          schema:
+            name: JednostkaMikroWZlotych
+            version: 1-2
+            is_validated: true
+            invalid_fields_count: 0
+            fields_value_multiplier: 1
+          extracted_fields:
+            '@xmlns': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMikroWZlotych
+            '@ns1': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/DefinicjeTypySprawozdaniaFinansowe/
+            '@ns2': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMikroStruktury
+            '@ns3': http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/
+            '@ns4': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaInnaStruktury
+            '@p5': http://www.w3.org/2001/XMLSchema-instance
+            '@schemaLocation': http://www.mf.gov.pl/schematy/SF/DefinicjeTypySprawozdaniaFinansowe/2018/07/09/JednostkaMikroWZlotych
+              https://www.gov.pl/attachment/0411ed25-ba82-4233-a92f-f380f5d0605b
+            Naglowek>OkresOd: '2020-01-10'
+            Naglowek>OkresDo: '2020-11-01'
+            Naglowek>DataSporzadzenia: '2020-11-04'
+            Naglowek>KodSprawozdania>@kodSystemowy: SFJMIZ (1)
+            Naglowek>KodSprawozdania>@wersjaSchemy: 1-2
+            Naglowek>KodSprawozdania: SprFinJednostkaMikroWZlotych
+            Naglowek>WariantSprawozdania: '1'
+            InformacjeOgolneJednostkaMikro>P_1>P_1A>NazwaFirmy: VOSS COMPANY SPÓŁKA
+              Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
+            InformacjeOgolneJednostkaMikro>P_1>P_1A>Siedziba>Wojewodztwo: WIELKOPOLSKIE
+          standardized_fields:
+            bs:
+              a_ca_cfy: 3309.75
+              a_ca_pfy: 0
+              lae_nc_cfy: 5000
+              lae_nc_pfy: 0
+            pala:
+              it_cfy: 1456
+              it_pfy: 0
+              npl_cfy: -1690.25
+              npl_pfy: 0
+              oor_cfy: 0
+              oor_pfy: 0
+        files:
+          main_document:
+            original:
+              url: https://api.mgbi.pl/v1/pl-krs-rdf-record/records/66224f432af717a81b7caf8f/files/main_document_uri
+              content_type: application/pdf
+            pdf_preview:
+              url: https://api.mgbi.pl/v1/pl-krs-rdf-record/records/66224f432af717a81b7caf8f/files/main_document_uri:pdf
+              content_type: application/pdf
+            html_preview:
+              url: https://api.mgbi.pl/v1/pl-krs-rdf-record/records/66224f432af717a81b7caf8f/files/main_document_uri:html
+              content_type: text/html
+        meta:
+          first_update_datetime: '2024-04-01T00:00:00.000'
+          last_update_datetime: '2024-04-03T00:00:00.000'
+          source_record_id: 1
 example:
   id: 66224f432af717a81b7caf8f
   identifiers:

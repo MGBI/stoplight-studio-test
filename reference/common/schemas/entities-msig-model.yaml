@@ -5,7 +5,46 @@ type: object
 properties:
   identifiers:
     $ref: ../schemas.yaml#/IdentifiersMsigModel
+    title: IdentifiersMsigModel
+    type: object
+    properties:
+      pl_krs:
+        title: Pl Krs
+        type: string
+      pl_rhb:
+        title: Pl Rhb
+        type: string
+      pl_ewp:
+        title: Pl Ewp
+        type: string
   basic:
     $ref: ../schemas.yaml#/EntitiesBasicModel
+    title: EntitiesBasicModel
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+      town:
+        title: Town
+        type: string
   court:
     $ref: ../schemas.yaml#/EntitiesCourtModel
+    title: EntitiesCourtModel
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+      department:
+        title: Department
+        type: string
+      signatures:
+        title: Signatures
+        type: array
+        items:
+          type: string
+      registration_date:
+        title: Registration Date
+        type: string
+        format: date

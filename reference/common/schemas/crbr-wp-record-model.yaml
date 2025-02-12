@@ -11,12 +11,58 @@ properties:
     type: string
   content:
     $ref: ../schemas.yaml#/ContentCrbrWpModel
+    title: ContentCrbrWpModel
+    type: object
+    properties:
+      raw_result:
+        title: Raw Result
+        type: object
   identifiers:
     $ref: ../schemas.yaml#/IdentifiersCrbrWpModel
+    title: IdentifiersCrbrWpModel
+    required:
+    - pl_nip
+    type: object
+    properties:
+      pl_krs:
+        title: Pl Krs
+        type: string
+      pl_nip:
+        title: Pl Nip
+        type: string
   version:
     $ref: ../schemas.yaml#/VersionCrbrWpModel
+    title: VersionCrbrWpModel
+    required:
+    - from_datetime
+    - to_datetime
+    - version
+    type: object
+    properties:
+      from_datetime:
+        title: From Datetime
+        type: string
+        format: date-time
+      to_datetime:
+        title: To Datetime
+        type: string
+        format: date-time
+      latest:
+        title: Latest
+        type: boolean
   meta:
     $ref: ../schemas.yaml#/MetaCrbrWpModel
+    title: MetaCrbrWpModel
+    type: object
+    properties:
+      first_update_datetime:
+        title: First Update Datetime
+        type: string
+        format: date-time
+      last_update_datetime:
+        title: Last Update Datetime
+        type: string
+        format: date-time
 example:
   _id: 67769232d29f87342811bc07
   meta:

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - MSIG API, KRZ API
-  version: 1.0.481
+  version: 1.0.483
   description:
     $ref: common/info_description.md
   x-logo:
@@ -118,9 +118,6 @@ paths:
   /v2/reports/{report_id}/download:
     get:
       $ref: ins_api/paths/download-report-by-id-v2-reports-report-id-download-GET.yaml
-  /v2/params:
-    get:
-      $ref: ins_api/paths/actual-user-params-v2-params-GET.yaml
   /v2/announcements:
     get:
       $ref: ins_api/paths/announcements-v2-announcements-GET.yaml
@@ -140,19 +137,9 @@ paths:
   /v2/dicts/report-encodings:
     get:
       $ref: ins_api/paths/report-encodings-v2-dicts-report-encodings-GET.yaml
-  /v1/reports:
+  /v2/params:
     get:
-      $ref: other/paths/reports-v1-reports-GET.yaml
-    post:
-      $ref: other/paths/create-report-v1-reports-POST.yaml
-  /v1/reports/{report_id}:
-    get:
-      $ref: other/paths/report-by-id-v1-reports-report-id-GET.yaml
-    delete:
-      $ref: other/paths/report-v1-reports-report-id-DELETE.yaml
-  /v1/reports/{report_id}/download:
-    get:
-      $ref: other/paths/download-report-v1-reports-report-id-download-GET.yaml
+      $ref: ins_api/paths/actual-user-params-v2-params-GET.yaml
 components:
   securitySchemes:
     $ref: common/security-schemes.yaml

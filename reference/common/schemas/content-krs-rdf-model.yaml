@@ -3,6 +3,30 @@ type: object
 properties:
   schema:
     $ref: ../schemas.yaml#/SchemaKrsRdfModel
+    title: SchemaKrsRdfModel
+    required:
+    - name
+    - version
+    - is_validated
+    - invalid_fields_count
+    - fields_value_multiplier
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+      version:
+        title: Version
+        type: string
+      is_validated:
+        title: Is Validated
+        type: boolean
+      invalid_fields_count:
+        title: Invalid Fields Count
+        type: integer
+      fields_value_multiplier:
+        title: Fields Value Multiplier
+        type: number
   extracted_fields:
     title: Extracted Fields
     type: object
@@ -10,3 +34,26 @@ properties:
       type: string
   standardized_fields:
     $ref: ../schemas.yaml#/StandardizedFieldsKrsRdfModel
+    title: StandardizedFieldsKrsRdfModel
+    type: object
+    properties:
+      bs:
+        title: Bs
+        type: object
+        additionalProperties:
+          type: number
+      cfs:
+        title: Cfs
+        type: object
+        additionalProperties:
+          type: number
+      en:
+        title: En
+        type: object
+        additionalProperties:
+          type: number
+      pala:
+        title: Pala
+        type: object
+        additionalProperties:
+          type: number
