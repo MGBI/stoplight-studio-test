@@ -8,8 +8,8 @@ properties:
     title: Version
     type: integer
     default: 1
-  data_service:
-    title: Data Service
+  model:
+    title: Model
     type: string
   criteria:
     $ref: ../schemas.yaml#/DataQuery
@@ -59,4 +59,7 @@ properties:
   event_key:
     title: Event Key
     type: string
+  constraint:
+    title: Constraint
+    type: object
 additionalProperties: false

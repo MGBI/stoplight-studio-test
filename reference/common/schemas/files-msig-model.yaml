@@ -1,0 +1,5 @@
+title: FilesMsigModel
+type: object
+properties:
+  pdf_preview_file:
+    $ref: ../schemas.yaml#/FileModel

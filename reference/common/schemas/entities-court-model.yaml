@@ -1,0 +1,18 @@
+title: EntitiesCourtModel
+type: object
+properties:
+  name:
+    title: Name
+    type: string
+  department:
+    title: Department
+    type: string
+  signatures:
+    title: Signatures
+    type: array
+    items:
+      type: string
+  registration_date:
+    title: Registration Date
+    type: string
+    format: date

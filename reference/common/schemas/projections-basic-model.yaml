@@ -1,0 +1,4 @@
+title: ProjectionsBasicModel
+type: object
+additionalProperties:
+  $ref: ../schemas.yaml#/ProjectionBasicModel

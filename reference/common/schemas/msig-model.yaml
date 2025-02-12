@@ -1,0 +1,30 @@
+title: MsigModel
+type: object
+properties:
+  chapter:
+    title: Chapter
+    type: string
+  section:
+    title: Section
+    type: string
+  subsection:
+    title: Subsection
+    type: string
+  page_number:
+    title: Page Number
+    type: integer
+  position_number:
+    title: Position Number
+    type: integer
+  signature:
+    title: Signature
+    type: string
+  year:
+    title: Year
+    type: integer
+  yearly_number:
+    title: Yearly Number
+    type: integer
+  sequential_number:
+    title: Sequential Number
+    type: integer

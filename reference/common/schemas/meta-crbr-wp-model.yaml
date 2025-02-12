@@ -1,0 +1,11 @@
+title: MetaCrbrWpModel
+type: object
+properties:
+  first_update_datetime:
+    title: First Update Datetime
+    type: string
+    format: date-time
+  last_update_datetime:
+    title: Last Update Datetime
+    type: string
+    format: date-time

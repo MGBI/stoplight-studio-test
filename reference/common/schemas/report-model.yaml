@@ -354,7 +354,7 @@ properties:
       | `content.url` | Link do podglądu treści ogłoszenia |</details>
     title: Custom Content
   status:
-    $ref: ../schemas.yaml#/ReportStatusEnum
+    $ref: ../schemas.yaml#/ReportStatusEnumLU
     allOf:
     - type: integer
       description: |-
@@ -394,7 +394,7 @@ properties:
     description: Procentowy postęp generowania pliku raportu w skali 0-100
     maximum: 100
   file_format:
-    $ref: ../schemas.yaml#/Format
+    $ref: ../schemas.yaml#/FormatLU
     type: integer
     title: Format
     enum:

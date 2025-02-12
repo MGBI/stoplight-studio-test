@@ -1,0 +1,29 @@
+title: CreateAccountModel
+required:
+- name
+- email
+type: object
+properties:
+  name:
+    title: Name
+    type: string
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
+  email:
+    title: Email
+    type: string
+    format: email
+  is_active:
+    title: Is Active
+    type: boolean
+    default: false
+  is_admin:
+    title: Is Admin
+    type: boolean
+    default: false
+  deactivation_datetime:
+    title: Deactivation Datetime
+    type: string
+    format: date-time

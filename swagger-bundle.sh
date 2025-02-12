@@ -7,7 +7,7 @@ docker run --rm --volume $PWD:/mnt --workdir /mnt mgbi/swagger-cli bundle \
   --outfile openapi-bundle.yaml \
   reference/openapi.yaml
 
-wget http://szczur41.mgbi.pl:8080/openapi.json -O iapi.json
+wget http://nornik41.mgbi.pl:8080/openapi.json -O iapi.json
 ./merge_spec.py openapi-bundle.yaml iapi.json > openapi-bundle.iapi.yaml
 
 mkdir backup 2> /dev/null && true

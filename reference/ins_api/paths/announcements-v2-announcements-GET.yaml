@@ -295,7 +295,7 @@ responses:
               msg: Invalid objectid
               type: value_error
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
@@ -305,7 +305,7 @@ responses:
             error: Unauthorized
             details: User token not provided
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '403':
     description: Nieudana autoryzacja dostępu do API
     content:
@@ -315,7 +315,7 @@ responses:
             error: Forbidden
             details: Incorrect user token
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '422':
     description: Błędne parametry zapytania
     content:
@@ -326,7 +326,7 @@ responses:
             details: 'Parameter date_from out of range. Minimal date_from for not
               archival queries is: 2000-01-01.'
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '429':
     description: Wykorzystany limit zapytań do API
     content:
@@ -336,7 +336,7 @@ responses:
             error: Too Many Requests
             details: You have exceeded your request limit
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
 description: |-
   Pobiera treść i wyodrębnione informacje z ogłoszeń tekstowych opublikowanych
   w wybranych rozdziałach MSiG / KRZ.

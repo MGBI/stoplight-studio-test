@@ -1,0 +1,18 @@
+title: MetaKrsRdfModel
+required:
+- first_update_datetime
+- last_update_datetime
+- source_record_id
+type: object
+properties:
+  first_update_datetime:
+    title: First Update Datetime
+    type: string
+    format: date-time
+  last_update_datetime:
+    title: Last Update Datetime
+    type: string
+    format: date-time
+  source_record_id:
+    title: Source Record Id
+    type: integer

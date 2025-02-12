@@ -1,6 +1,9 @@
 title: ParamsQuery
 type: object
 properties:
+  record_id:
+    title: Record Id
+    type: string
   from_date:
     title: From Date
     type: string
@@ -28,6 +31,9 @@ properties:
   limit:
     title: Limit
     type: integer
+  offset:
+    title: Offset
+    type: integer
   project:
     title: Project
     anyOf:
@@ -36,4 +42,8 @@ properties:
       items:
         type: string
     - type: object
+  creation_datetime:
+    title: Creation Datetime
+    type: string
+    format: date-time
 additionalProperties: false

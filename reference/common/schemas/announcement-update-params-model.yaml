@@ -1,0 +1,60 @@
+title: AnnouncementUpdateParamsModel
+type: object
+properties:
+  archive_date_from:
+    title: Archive Date From
+    type: string
+    format: date
+  current_reports_available:
+    title: Current Reports Available
+    type: integer
+  current_reports_used:
+    title: Current Reports Used
+    type: integer
+  current_reports_filter_required:
+    title: Current Reports Filter Required
+    type: boolean
+  archival_reports_available:
+    title: Archival Reports Available
+    type: integer
+  archival_reports_used:
+    title: Archival Reports Used
+    type: integer
+  archival_reports_filter_required:
+    title: Archival Reports Filter Required
+    type: boolean
+  credits_available:
+    title: Credits Available
+    type: integer
+  credits_used:
+    title: Credits Used
+    type: integer
+  available_content:
+    type: array
+    items:
+      $ref: ../schemas.yaml#/FieldsEnum
+  monitors_available:
+    title: Monitors Available
+    type: integer
+  monitors_used:
+    title: Monitors Used
+    type: integer
+  api_requests_available:
+    title: Api Requests Available
+    type: integer
+  api_requests_used:
+    title: Api Requests Used
+    type: integer
+  monthly_reset_limits:
+    title: Monthly Reset Limits
+    type: boolean
+  monitors_emails_limit:
+    title: Monitors Emails Limit
+    type: integer
+  monitors_filter_required:
+    title: Monitors Filter Required
+    type: boolean
+  available_categories:
+    type: array
+    items:
+      $ref: ../schemas.yaml#/CategoriesEnum

@@ -1,0 +1,16 @@
+title: Error
+required:
+- error
+- details
+type: object
+properties:
+  error:
+    title: Error
+    type: string
+  details:
+    title: Details
+    anyOf:
+    - type: string
+    - type: object
+    - type: array
+      items: {}

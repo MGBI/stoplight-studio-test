@@ -122,3 +122,153 @@ PeriodResetLimits:
   $ref: schemas/period-reset-limits.yaml
 UpdateAnnouncementAdminAccountParams:
   $ref: schemas/update-announcement-admin-account-params.yaml
+AccountModel:
+  $ref: schemas/account-model.yaml
+ActiveUser:
+  $ref: schemas/active-user.yaml
+AnnouncementAdminUpdateAccountParams:
+  $ref: schemas/announcement-admin-update-account-params.yaml
+AnnouncementParamsModel:
+  $ref: schemas/announcement-params-model.yaml
+AnnouncementUpdateParamsModel:
+  $ref: schemas/announcement-update-params-model.yaml
+ContentCrbrWpModel:
+  $ref: schemas/content-crbr-wp-model.yaml
+ContentKrsRdfModel:
+  $ref: schemas/content-krs-rdf-model.yaml
+ContentKrsWpModel:
+  $ref: schemas/content-krs-wp-model.yaml
+ContentMsigModel:
+  $ref: schemas/content-msig-model.yaml
+ContentWpvModel:
+  $ref: schemas/content-wpv-model.yaml
+CrbrWpRecordModel:
+  $ref: schemas/crbr-wp-record-model.yaml
+CreateAccountModel:
+  $ref: schemas/create-account-model.yaml
+CreateErasuresModel:
+  $ref: schemas/create-erasures-model.yaml
+CreateReportModelV3:
+  $ref: schemas/create-report-model-v3.yaml
+DBAnnouncementParamsModel:
+  $ref: schemas/d-bannouncement-params-model.yaml
+DBErasuresModel:
+  $ref: schemas/d-berasures-model.yaml
+DBErasuresRecordsModel:
+  $ref: schemas/d-berasures-records-model.yaml
+DefaultDataParamsModel:
+  $ref: schemas/default-data-params-model.yaml
+DefaultUserLimitsModel:
+  $ref: schemas/default-user-limits-model.yaml
+DocumentKrsRdfModel:
+  $ref: schemas/document-krs-rdf-model.yaml
+EncodingLU:
+  $ref: schemas/encoding-lu.yaml
+EntitiesBasicModel:
+  $ref: schemas/entities-basic-model.yaml
+EntitiesCourtModel:
+  $ref: schemas/entities-court-model.yaml
+EntitiesMsigModel:
+  $ref: schemas/entities-msig-model.yaml
+ErasuresIdentityDataModel:
+  $ref: schemas/erasures-identity-data-model.yaml
+ErasuresModel:
+  $ref: schemas/erasures-model.yaml
+ErasuresRecordsModel:
+  $ref: schemas/erasures-records-model.yaml
+FileInfoModel:
+  $ref: schemas/file-info-model.yaml
+FileModel:
+  $ref: schemas/file-model.yaml
+FilesKrsRdfModel:
+  $ref: schemas/files-krs-rdf-model.yaml
+FilesKrsWpModel:
+  $ref: schemas/files-krs-wp-model.yaml
+FilesMsigModel:
+  $ref: schemas/files-msig-model.yaml
+FormatLU:
+  $ref: schemas/format-lu.yaml
+IdentifiersCrbrWpModel:
+  $ref: schemas/identifiers-crbr-wp-model.yaml
+IdentifiersKrsRdfModel:
+  $ref: schemas/identifiers-krs-rdf-model.yaml
+IdentifiersKrsWpModel:
+  $ref: schemas/identifiers-krs-wp-model.yaml
+IdentifiersMsigModel:
+  $ref: schemas/identifiers-msig-model.yaml
+IdentifiersPeselKrsWpModel:
+  $ref: schemas/identifiers-pesel-krs-wp-model.yaml
+IdentifiersWpvModel:
+  $ref: schemas/identifiers-wpv-model.yaml
+KindEnum:
+  $ref: schemas/kind-enum.yaml
+KrsRdfRecordModel:
+  $ref: schemas/krs-rdf-record-model.yaml
+KrsWpRecordModel:
+  $ref: schemas/krs-wp-record-model.yaml
+MediaTypeJSONEnum:
+  $ref: schemas/media-type-js-on-enum.yaml
+MetaCrbrWpModel:
+  $ref: schemas/meta-crbr-wp-model.yaml
+MetaKrsRdfModel:
+  $ref: schemas/meta-krs-rdf-model.yaml
+MetaKrsWpModel:
+  $ref: schemas/meta-krs-wp-model.yaml
+MetaMsigModel:
+  $ref: schemas/meta-msig-model.yaml
+MetaWpvModel:
+  $ref: schemas/meta-wpv-model.yaml
+MsigModel:
+  $ref: schemas/msig-model.yaml
+MsigRecordModel:
+  $ref: schemas/msig-record-model.yaml
+ProjectionBasicModel:
+  $ref: schemas/projection-basic-model.yaml
+ProjectionsBasicModel:
+  $ref: schemas/projections-basic-model.yaml
+RawResultWpvModel:
+  $ref: schemas/raw-result-wpv-model.yaml
+RegisterTypesEnum:
+  $ref: schemas/register-types-enum.yaml
+ReportModelV3:
+  $ref: schemas/report-model-v3.yaml
+ReportStatusEnumLU:
+  $ref: schemas/report-status-enum-lu.yaml
+SchemaKrsRdfModel:
+  $ref: schemas/schema-krs-rdf-model.yaml
+StandardizedFieldsKrsRdfModel:
+  $ref: schemas/standardized-fields-krs-rdf-model.yaml
+SubjectWpvModel:
+  $ref: schemas/subject-wpv-model.yaml
+UpdateAccountModel:
+  $ref: schemas/update-account-model.yaml
+VersionCrbrWpModel:
+  $ref: schemas/version-crbr-wp-model.yaml
+VersionWpvModel:
+  $ref: schemas/version-wpv-model.yaml
+WpvRecordModel:
+  $ref: schemas/wpv-record-model.yaml
+apps__accounts__models__UserModel:
+  $ref: schemas/apps__accounts__models__-user-model.yaml
+apps__accounts__models__mgbi_utils__fastapi__pagination__AccountModelRecordsResponseModel:
+  $ref: schemas/apps__accounts__models__mgbi_utils__fastapi__pagination__-account-model-records-response-model.yaml
+apps__accounts__models__mgbi_utils__fastapi__pagination__UserModelRecordsResponseModel:
+  $ref: schemas/apps__accounts__models__mgbi_utils__fastapi__pagination__-user-model-records-response-model.yaml
+apps__announcements__data_model__mgbi_utils__fastapi__pagination__AnnouncementModelRecordsResponseModel:
+  $ref: schemas/apps__announcements__data_model__mgbi_utils__fastapi__pagination__-announcement-model-records-response-model.yaml
+apps__base__errors__models__Error:
+  $ref: schemas/apps__base__errors__models__-error.yaml
+apps__pl_crbr_wp_record__data_model__mgbi_utils__fastapi__pagination__CrbrWpRecordModelRecordsResponseModel:
+  $ref: schemas/apps__pl_crbr_wp_record__data_model__mgbi_utils__fastapi__pagination__-crbr-wp-record-model-records-response-model.yaml
+apps__pl_krs_rdf_record__data_model__mgbi_utils__fastapi__pagination__KrsRdfRecordModelRecordsResponseModel:
+  $ref: schemas/apps__pl_krs_rdf_record__data_model__mgbi_utils__fastapi__pagination__-krs-rdf-record-model-records-response-model.yaml
+apps__pl_krs_wp_record__data_model__mgbi_utils__fastapi__pagination__KrsWpRecordModelRecordsResponseModel:
+  $ref: schemas/apps__pl_krs_wp_record__data_model__mgbi_utils__fastapi__pagination__-krs-wp-record-model-records-response-model.yaml
+apps__pl_msig_record__data_model__mgbi_utils__fastapi__pagination__MsigRecordModelRecordsResponseModel:
+  $ref: schemas/apps__pl_msig_record__data_model__mgbi_utils__fastapi__pagination__-msig-record-model-records-response-model.yaml
+apps__pl_wpv_record__data_model__mgbi_utils__fastapi__pagination__WpvRecordModelRecordsResponseModel:
+  $ref: schemas/apps__pl_wpv_record__data_model__mgbi_utils__fastapi__pagination__-wpv-record-model-records-response-model.yaml
+apps__user__models__UserModel:
+  $ref: schemas/apps__user__models__-user-model.yaml
+mgbi_utils__fastapi__interface__public__errormodel__Error:
+  $ref: schemas/mgbi_utils__fastapi__interface__public__errormodel__-error.yaml

@@ -1,0 +1,9 @@
+title: EntitiesBasicModel
+type: object
+properties:
+  name:
+    title: Name
+    type: string
+  town:
+    title: Town
+    type: string

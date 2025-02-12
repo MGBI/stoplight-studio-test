@@ -1,0 +1,27 @@
+title: ErasuresIdentityDataModel
+type: object
+properties:
+  email:
+    title: Email
+    type: string
+  phone:
+    title: Phone
+    type: string
+  website:
+    title: Website
+    type: string
+  company_name:
+    title: Company Name
+    type: string
+  nip:
+    title: Nip
+    type: string
+  pesel:
+    title: Pesel
+    type: string
+  first_name:
+    title: First Name
+    type: string
+  last_name:
+    title: Last Name
+    type: string

@@ -41,7 +41,7 @@ responses:
             error: Bad Request
             details: One of given ids is incorrect
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '401':
     description: Niepoprawna autentykacja tokenu
     content:
@@ -51,7 +51,7 @@ responses:
             error: Unauthorized
             details: User token not provided
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
   '403':
     description: Nieudana autoryzacja dostępu do API
     content:
@@ -61,7 +61,7 @@ responses:
             error: Forbidden
             details: Incorrect user token
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/apps__base__errors__models__Error'
 description: "Usuwa monitoringi o identyfikatorach przekazanych w parametrze `ids`\
   \ w query stringu, \nidentyfikatory muszą być oddzielone przecinkami.\n\nW przypadku\
   \ sukcesu metoda zwraca kod odpowiedzi `204 No Content`."

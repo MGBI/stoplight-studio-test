@@ -1,0 +1,17 @@
+title: RecordsResponseModel
+required:
+- count
+- results
+type: object
+properties:
+  count:
+    title: Count
+    type: integer
+  pages:
+    title: Pages
+    type: integer
+  results:
+    title: Results
+    type: array
+    items:
+      $ref: ../schemas.yaml#/apps__accounts__models__UserModel

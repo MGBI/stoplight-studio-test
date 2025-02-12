@@ -1,0 +1,24 @@
+title: SchemaKrsRdfModel
+required:
+- name
+- version
+- is_validated
+- invalid_fields_count
+- fields_value_multiplier
+type: object
+properties:
+  name:
+    title: Name
+    type: string
+  version:
+    title: Version
+    type: string
+  is_validated:
+    title: Is Validated
+    type: boolean
+  invalid_fields_count:
+    title: Invalid Fields Count
+    type: integer
+  fields_value_multiplier:
+    title: Fields Value Multiplier
+    type: number
