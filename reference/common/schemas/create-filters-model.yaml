@@ -79,5 +79,5 @@ properties:
     minLength: 1
     type: string
     description: |
-      Nazwa klucza szyfrującego.
+      Nazwa klucza deszyfrującego elementy w listach pod `content`.
       Więcej informacji o możliwości przekazania zaszyfrowanych wartości jest w sekcji [Szyfrowanie przekazywanych danych](https://www.imsig.pl/inne/dokumentacja-api#section/Szyfrowanie-przekazywanych-danych).
