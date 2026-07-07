@@ -78,4 +78,6 @@ properties:
     title: Crypto Key Name
     minLength: 1
     type: string
-    description: Nazwa klucza szyfrującego
+    description: |
+      Nazwa klucza szyfrującego.
+      Więcej informacji o możliwości przekazania zaszyfrowanych wartości znajdziesz w sekcji [Szyfrowanie](https://www.imsig.pl/inne/dokumentacja-api#section/Szyfrowanie).
