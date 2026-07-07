@@ -80,4 +80,4 @@ properties:
     type: string
     description: |
       Nazwa klucza szyfrującego.
-      Więcej informacji o możliwości przekazania zaszyfrowanych wartości znajdziesz w sekcji [Szyfrowanie](https://www.imsig.pl/inne/dokumentacja-api#section/Szyfrowanie).
+      Więcej informacji o możliwości przekazania zaszyfrowanych wartości jest w sekcji [Szyfrowanie przekazywanych danych](https://www.imsig.pl/inne/dokumentacja-api#section/Szyfrowanie-przekazywanych-danych).

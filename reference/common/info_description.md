@@ -15,7 +15,7 @@ tylko dla kodu 200 (OK).
 # Autentykacja
 <SecurityDefinitions />
 
-# Szyfrowanie
+# Szyfrowanie przekazywanych danych
 API umożliwia tworzenie filtrów z wartościami zaszyfrowanymi po stronie klienta.
 
 Przed utworzeniem takiego filtra należy skontaktować się z opiekunem klienta i w
@@ -27,8 +27,8 @@ bezpieczny sposób przekazać następujące informacje:
 * `crypto_algorithm` - pełna nazwa algorytmu kryptograficznego,
 np. AES-256-GCM lub RSA-OAEP-SHA256
 
-Po zakończeniu konfiguracji podczas tworzenia filtra można przekazywać
-aszyfrowane wartości dla każdego z poniższych pól:
+Po zakończeniu konfiguracji, podczas tworzenia filtra można przekazywać
+zaszyfrowane wartości w elementach listy dla każdego z poniższych pól:
 * `content.nip`
 * `content.regon`
 * `content.krs`
