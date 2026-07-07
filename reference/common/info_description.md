@@ -27,14 +27,16 @@ bezpieczny sposób przekazać następujące informacje:
 * `crypto_algorithm` - pełna nazwa algorytmu kryptograficznego,
 np. AES-256-GCM lub RSA-OAEP-SHA256
 
-Po zakończeniu konfiguracji możliwe jest szyfrowanie wartości wykorzystywanych
-w filtrach dla każdego z poniższych pól:
-* `content.nip`
-* `content.regon`
-* `content.krs`
-* `content.pesel`
-* `content.krz_signature`
-* `content.msig_signature`
-* `content.person_name`
+Po zakończeniu konfiguracji podczas tworzenia filtra można przekazywać
+aszyfrowane wartości dla każdego z poniższych pól:
 
-Przy tworzeniu filtra należy przekazać nazwę użytego klucza w parametrze `crypto_key_name`.
+content.nip
+content.regon
+content.krs
+content.pesel
+content.krz_signature
+content.msig_signature
+content.person_name
+
+Jeżeli filtr zawiera zaszyfrowane wartości, należy w zapytaniu [POST /v2/filters](https://www.imsig.pl/inne/dokumentacja-api#operation/create_filter_v2_filters_post)
+przekazać nazwę użytego klucza w parametrze crypto_key_name.
