@@ -74,3 +74,8 @@ properties:
         type: array
         description: Imię i nazwisko
         title: Name
+  crypto_key_name:
+    title: Crypto Key Name
+    minLength: 1
+    type: string
+    description: Nazwa klucza szyfrującego
