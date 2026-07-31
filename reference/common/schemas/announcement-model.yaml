@@ -191,6 +191,9 @@ properties:
           description: Podstawowe dane podmiotu
         address:
           properties:
+            teryt_address_id:
+              type: string
+              description: Identyfikator adresu w systemie TERYT
             town:
               type: string
               description: Miejscowość
@@ -252,6 +255,24 @@ properties:
     required:
     - signatures
     properties:
+      termination_date:
+        type: string
+        format: date
+        description: Data zakończenia postępowania
+      registration_date:
+        type: string
+        format: date
+        description: Data rejestracji postępowania
+      type:
+        type: string
+        description: Typ postępowania
+      status:
+        type: string
+        description: Status postępowania
+      main_signature:
+        type: string
+        description: Główna sygnatura postępowania
+      
       signatures:
         items:
           type: string
