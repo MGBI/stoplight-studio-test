@@ -7,8 +7,8 @@ parameters:
   schema:
     title: Id
     anyOf:
-    - exclusiveMaximum: 9007199254740991.0
-      minimum: 0.0
+    - exclusiveMaximum: 9007199254740991
+      minimum: 0
       type: integer
     - enum:
       - last

@@ -26,8 +26,14 @@ properties:
     - is_administrator_data_consistent
     - is_correction
     - is_entity_data_consistent
+    - last_refresh_date
     type: object
     properties:
+      last_refresh_date:
+        title: Last Refresh Date
+        type: string
+        format: date-time
+        description: Data ostatniego odświeżenia ogłoszenia
       issue_date:
         title: Issue Date
         type: string
@@ -191,9 +197,6 @@ properties:
           description: Podstawowe dane podmiotu
         address:
           properties:
-            teryt_address_id:
-              type: string
-              description: Identyfikator adresu w systemie TERYT
             town:
               type: string
               description: Miejscowość
@@ -222,7 +225,7 @@ properties:
               type: string
               description: Kod pocztowy
           type: object
-          description: Numery rejestrowe podmiotu
+          description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
         numbers:
           properties:
             krs:
@@ -246,7 +249,7 @@ properties:
               type: string
               description: Numer PESEL
           type: object
-          description: Adres pocztowy siedziby podmiotu lub miejsca zamieszkania
+          description: Numery rejestrowe podmiotu
     type: array
     description: Lista podmiotów, których dotyczy ogłoszenie
   proceeding:
@@ -265,14 +268,13 @@ properties:
         description: Data rejestracji postępowania
       type:
         type: string
-        description: Typ postępowania
+        description: Rodzaj postępowania
       status:
         type: string
-        description: Status postępowania
+        description: Status postępowania na dzień publikacji ogłoszenia
       main_signature:
         type: string
         description: Główna sygnatura postępowania
-      
       signatures:
         items:
           type: string
@@ -347,15 +349,7 @@ properties:
     properties:
       chapter:
         type: integer
-        description: |-
-          Rozdział MSiG
-          <details>
-            <summary>Pokaż możliwe opcje</summary>
-
-            | Wartość | Nazwa rozdziału |
-            |-|-|
-            | `0` | Ogłoszenia wymagane przez prawo upadłościowe |
-            | `1` | Ogłoszenia wymagane przez prawo restrukturyzacyjne |</details>
+        description: Rozdział MSiG
       position_number:
         type: string
         description: |-
@@ -393,60 +387,7 @@ properties:
         format: uri
       section:
         type: integer
-        description: |-
-          Sekcja MSiG
-          <details>
-            <summary>Pokaż możliwe opcje</summary>
-
-            <b>Ogłoszenia wymagane przez prawo upadłościowe</b>
-
-            | Wartość | Nazwa sekcji |
-            |-|-|
-            | `1` | Postanowienie o ogłoszeniu upadłości |
-            | `2` | Obwieszczenie o zatwierdzeniu układu |
-            | `3` | Ogłoszenie o sporządzeniu i przekazaniu sędziemu komisarzowi listy wierzytelności |
-            | `4` | Ogłoszenie o możliwości przeglądania planu podziału |
-            | `5` | Postanowienie o umorzeniu postępowania upadłościowego |
-            | `6` | Postanowienie o zakończeniu postępowania upadłościowego |
-            | `7` | Ogłoszenie o złożeniu oświadczenia o wszczęciu postępowania naprawczego |
-            | `8` | Ogłoszenie o terminie rozprawy zatwierdzającej układ |
-            | `9` | Inne |
-
-            <b>Ogłoszenia wymagane przez prawo restrukturyzacyjne</b>
-
-            | Wartość | Nazwa sekcji |
-            |-|-|
-            | `20` | Dokonanie zmian w spisie wierzytelności |
-            | `21` | Inne |
-            | `22` | Odmowa otwarcia postępowania restrukturyzacyjnego |
-            | `23` | Odmowa zatwierdzenia układu |
-            | `24` | Ogłoszenie przetargu lub konkursu ofert na sprzedaż majątku dłużnika |
-            | `25` | Określenie trybu i sposobu głosowania nad układem |
-            | `26` | Otwarcie postępowania o zatwierdzenie układu |
-            | `27` | Otwarcie postępowania o zatwierdzenie układu w związku z wystąpieniem covid-19 |
-            | `28` | Otwarcie postępowania o zmianę układu |
-            | `29` | Otwarcie postępowania sanacyjnego |
-            | `30` | Otwarcie postępowania układowego |
-            | `31` | Otwarcie przyspieszonego postępowania układowego |
-            | `32` | Sprostowanie |
-            | `33` | Stwierdzenie wykonania układu |
-            | `34` | Uchylenie układu |
-            | `35` | Umorzenie postępowania |
-            | `36` | Wyznaczenie nadzorcy lub zarządcy |
-            | `37` | Wyznaczenie terminu rozprawy w celu rozpoznania układu |
-            | `38` | Wyznaczenie terminu zgromadzenia wierzycieli |
-            | `39` | Zabezpieczenie majątku dłużnika |
-            | `40` | Zakończenie postępowania |
-            | `41` | Zatwierdzenie spisu wierzytelności |
-            | `42` | Zatwierdzenie układu |
-            | `43` | Złożenie planu restrukturyzacyjnego |
-            | `44` | Złożenie spisu wierzytelności |
-            | `45` | Złożenie sprawozdania z wykonania planu restrukturyzacyjnego lub układu |
-            | `46` | Złożenie uzupełniającego spisu wierzytelności |
-            | `47` | Złożenie wniosku o zatwierdzenie układu |
-            | `48` | Zmiana nadzorcy lub zarządcy |
-            | `49` | Zmiana sędziego komisarza |
-            | `50` | Zmiana terminu zgromadzenia wierzycieli |</details>
+        description: Sekcja MSiG
       yearly_number:
         type: string
         description: |-
@@ -469,85 +410,17 @@ properties:
     properties:
       chapter:
         type: integer
-        description: |-
-          Rozdział KRZ
-          <details>
-            <summary>Pokaż możliwe opcje</summary>
-
-            | Wartość | Nazwa rozdziału |
-            |-|-|
-            | `0` | Postępowanie restrukturyzacyjne |
-            | `1` | Postępowanie upadłościowe |
-            | `2` | Zakaz prowadzenia działalności gospodarczej |</details>
+        description: Rozdział KRZ
       url:
         type: string
         description: Link do ogłoszenia w serwisie KRZ
         format: uri
       section:
         type: integer
-        description: |-
-          Sekcja KRZ
-          <details>
-            <summary>Pokaż możliwe opcje</summary>
-
-            <b>Postępowanie restrukturyzacyjne</b>
-
-            | Wartość | Nazwa sekcji |
-            |-|-|
-            | `0` | Dzień układowy |
-            | `1` | Wniosek restrukturyzacyjny złożony przez dłużnika |
-            | `2` | Zabezpieczenie majątku |
-            | `3` | Otwarcie postępowania restrukturyzacyjnego |
-            | `4` | Nadzorca sądowy/zarządca/nadzorca wykonania układu |
-            | `5` | Spis wierzytelności/spis wierzytelności spornych |
-            | `6` | Zgromadzenie wierzycieli |
-            | `7` | Sprawozdania |
-            | `8` | Układ |
-            | `9` | Zakończenie/umorzenie postępowania restrukturyzacyjnego |
-            | `10` | Inne |
-
-            <b>Postępowanie upadłościowe</b>
-
-            | Wartość | Nazwa sekcji |
-            |-|-|
-            | `20` | Wniosek o ogłoszenie upadłości złożony przez dłużnika |
-            | `21` | Zabezpieczenie majątku |
-            | `22` | Ogłoszenie upadłości/oddalenie wniosku |
-            | `23` | Wtórne postępowanie upadłościowe |
-            | `24` | Uznanie orzeczenia o wszczęciu zagranicznego postępowania upadłościowego |
-            | `25` | Przygotowana likwidacja |
-            | `26` | Syndyk/zastępca syndyka/syndyk tymczasowy |
-            | `27` | Zgromadzenie wierzycieli |
-            | `28` | Masa upadłości |
-            | `29` | Lista wierzytelności |
-            | `30` | Plan podziału |
-            | `31` | Zakończenie /umorzenie/uchylenie postępowania upadłościowego |
-            | `32` | Plan spłaty/umorzenie zobowiązań |
-            | `33` | Układ w upadłości |
-            | `34` | Inne |
-
-            <b>Zakaz prowadzenia działalności gospodarczej</b>
-
-            | Wartość | Nazwa sekcji |
-            |-|-|
-            | `40` | Orzeczenie zakazu prowadzenia działalności gospodarczej |
-            | `41` | Inne |</details>
+        description: Sekcja KRZ
       subsection:
         type: integer
-        description: |-
-          Podsekcja KRZ
-          <details>
-            <summary>Pokaż możliwe opcje</summary>
-
-            | Wartość | Nazwa rozdziału |
-            |-|-|
-            | `0` | Obwieszczenie o ustaleniu dnia układowego |
-            | `1` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku restrukturyzacyjnego |
-            | `30` | Obwieszczenie zarządzenia o wpisaniu do repertorium wniosku o ogłoszenie upadłości |
-            | `31` | Obwieszczenie postanowienia o ogłoszeniu upadłości |
-            | `2` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego / tymczasowego zarządcy |
-            | `3` | Obwieszczenie postanowienia o otwarciu postępowania restrukturyzacyjnego |
-            | `32` | Obwieszczenie postanowienia o ustanowieniu tymczasowego nadzorcy sądowego |</details>
+        description: Podsekcja KRZ
       issue_date:
         type: string
         description: Data publikacji ogłoszenia w KRZ
@@ -597,12 +470,19 @@ example:
     numbers:
       pesel: '75030957433'
     address:
-      town: Warszawa
-      state: mazowieckie
-      gmina: Warszawa-Mokotów
-      street: Jadźwingów
-      powiat: Warszawa
+      town: Bartoszyce
+      state: warmińsko-mazurskie
+      gmina: Bartoszyce
+      street: ul. Marii Skłodowskiej-Curie
+      powiat: bartoszycki
+      post_office: Bartoszyce
+      zip_code: 11-200
   proceeding:
+    registration_date: '2021-09-01'
+    termination_date: '2021-11-11'
+    type: upadłość konsumencka
+    status: zakończone
+    main_signature: XIX GUp 113/20
     signatures:
     - XIX GUp 113/20
     court_department: XIX Wydział Gospodarczy ds. Upadłościowych i Restrukturyzacyjnych

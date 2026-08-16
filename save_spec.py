@@ -144,6 +144,23 @@ def save_components(config, data: dict, directory=None, nested="common"):
 def save_spec(api_file_path, spec_directory):
     global SAVE_ROOT_PATH
     api = load(api_file_path)
+
+    # Guard: this script splits shared schemas out into separate files and
+    # replaces their usages with `$ref`s. That only works if the bundle still
+    # contains internal `#/components/...` refs. A fully dereferenced bundle
+    # (e.g. produced with `swagger-cli bundle --dereference`) has none, which
+    # would make every usage of a shared schema get saved as an independent,
+    # disconnected copy instead of a reference - silently corrupting the
+    # modular spec directory.
+    if "#/components/" not in json.dumps(api.get("paths", {})):
+        sys.stderr.write(
+            f"ERROR: '{api_file_path}' looks fully dereferenced (no internal "
+            "'#/components/...' refs found in paths). Bundle it WITHOUT "
+            "--dereference before running save_spec.py, otherwise shared "
+            "schemas will be duplicated instead of referenced.\n"
+        )
+        sys.exit(1)
+
     config = load(os.path.join(spec_directory, CONFIG_FILE))
     SAVE_ROOT_PATH = spec_directory
     # SAVE_ROOT_PATH = "save_test"

@@ -41,7 +41,7 @@ parameters:
     type: string
     format: date
     example: '2022-01-01'
-  name: date_from
+  name: last_update_datetime_from
   in: query
   description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
 - required: false
@@ -50,7 +50,7 @@ parameters:
     type: string
     format: date
     example: '2022-12-31'
-  name: date_to
+  name: last_update_datetime_to
   in: query
   description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
 - required: false
