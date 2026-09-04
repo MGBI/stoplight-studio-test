@@ -9,6 +9,11 @@ required:
 - is_entity_data_consistent
 type: object
 properties:
+  last_refresh_date:
+    title: Last Refresh Date
+    type: string
+    format: date
+    description: Data ostatniej próby aktualizacji ogłoszenia
   issue_date:
     title: Issue Date
     type: string
