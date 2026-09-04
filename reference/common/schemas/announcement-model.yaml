@@ -32,7 +32,7 @@ properties:
       last_refresh_date:
         title: Last Refresh Date
         type: string
-        format: date-time
+        format: date
         description: Data ostatniego odświeżenia ogłoszenia
       issue_date:
         title: Issue Date

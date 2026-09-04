@@ -12,8 +12,8 @@ properties:
   last_refresh_date:
     title: Last Refresh Date
     type: string
-    format: date-time
-    description: Data ostatniego odświeżenia ogłoszenia
+    format: date
+    description: Data ostatniej próby aktualizacji ogłoszenia
   issue_date:
     title: Issue Date
     type: string

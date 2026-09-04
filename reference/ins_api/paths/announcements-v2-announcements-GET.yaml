@@ -43,7 +43,7 @@ parameters:
     example: '2022-01-01T08:00:00'
   name: last_update_datetime_from
   in: query
-  description: Początek zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+  description: Wyszukiwanie od daty i czasu ostatniej aktualizacji
 - required: false
   schema:
     title: Date To
@@ -52,7 +52,7 @@ parameters:
     example: '2022-12-31T08:00:00'
   name: last_update_datetime_to
   in: query
-  description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
+  description: Wyszukiwanie do daty i czasu ostatniej aktualizacji
 - required: false
   schema:
     title: Msig Signature
