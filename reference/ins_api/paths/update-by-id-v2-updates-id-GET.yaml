@@ -7,8 +7,8 @@ parameters:
   schema:
     title: Id
     anyOf:
-    - exclusiveMaximum: 9007199254740991.0
-      minimum: 0.0
+    - exclusiveMaximum: 9007199254740991
+      minimum: 0
       type: integer
     - enum:
       - last
@@ -97,7 +97,8 @@ responses:
             details: Update not found
           items:
             $ref: '#/components/schemas/Error'
-description: Zwraca dane aktualizacji bazy ogłoszeń o podanym `id`.
+description: Zwraca dane aktualizacji bazy ogłoszeń o podanym `id` limitowane do 1000
+  rekordów.
 components:
   schemas:
     $ref: ../../common/schemas.yaml

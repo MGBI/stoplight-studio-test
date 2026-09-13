@@ -34,6 +34,11 @@ def remove_from_spec(file_path):
                         method["parameters"].remove(parameter)
                         break
                 for model in method.get("components", {}).get("schemas", {}).values():
+                    if not isinstance(model, dict):
+                        # schemas may be a `$ref` pointer back to the top-level
+                        # components.schemas (e.g. when bundled without
+                        # --dereference); those are handled by the loop below.
+                        continue
                     model.get("properties", {}).pop("authorized_vendors", None)
                     model.get("example", {}).pop("authorized_vendors", None)
                     for requirement in model.get("required", []):
