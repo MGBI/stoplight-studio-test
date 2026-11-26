@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Dokumentacja API serwisu iMSiG.pl - KRS API, MSIG API, KRZ API
-  version: 1.0.485
+  version: 1.0.487
   description: "# Og\xF3lne informacje\nAPI oparte jest na protokole HTTP, a tre\u015B\
     \u0107 wszystkich \u017C\u0105da\u0144 i odpowiedzi\nprzekazywana jest w formie\
     \ obiekt\xF3w j\u0119zyka JavaScript (JSON).\n\nW nag\u0142\xF3wku HTTP `Content-Type`\
@@ -1723,24 +1723,6 @@ paths:
           \ KRZ"
       - required: false
         schema:
-          title: Last Update Datetime From
-          type: string
-          format: datetime
-          example: '2022-01-01T08:00:00'
-        name: last_update_datetime_from
-        in: query
-        description: Wyszukiwanie od daty i czasu ostatniej aktualizacji
-      - required: false
-        schema:
-          title: Last Update Datetime To
-          type: string
-          format: datetime
-          example: '2022-12-31T08:00:00'
-        name: last_update_datetime_to
-        in: query
-        description: Wyszukiwanie do daty i czasu ostatniej aktualizacji
-      - required: false
-        schema:
           title: Msig Signature
           type: string
         name: msig_signature
@@ -1925,7 +1907,7 @@ paths:
         name: update_id_from
         in: query
         description: "Umo\u017Cliwia odpytywanie bazy o og\u0142oszenia z update_id\
-          \ wi\u0119kszym od podanej warto\u015Bci"
+          \ r\u00F3wnym lub wi\u0119kszym od podanej warto\u015Bci"
       - required: false
         schema:
           title: Update Id To
@@ -1933,7 +1915,7 @@ paths:
         name: update_id_to
         in: query
         description: "Umo\u017Cliwia odpytywanie bazy o og\u0142oszenia z update_id\
-          \ mniejszym od podanej warto\u015Bci"
+          \ r\u00F3wnym lub mniejszym od podanej warto\u015Bci"
       - required: false
         schema:
           title: Authorization

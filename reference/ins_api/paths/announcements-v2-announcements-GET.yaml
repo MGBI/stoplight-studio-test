@@ -55,24 +55,6 @@ parameters:
   description: Koniec zakresu dla daty publikacji ogłoszenia w MSiG / KRZ
 - required: false
   schema:
-    title: Last Update Datetime From
-    type: string
-    format: datetime
-    example: '2022-01-01T08:00:00'
-  name: last_update_datetime_from
-  in: query
-  description: Wyszukiwanie od daty i czasu ostatniej aktualizacji
-- required: false
-  schema:
-    title: Last Update Datetime To
-    type: string
-    format: datetime
-    example: '2022-12-31T08:00:00'
-  name: last_update_datetime_to
-  in: query
-  description: Wyszukiwanie do daty i czasu ostatniej aktualizacji
-- required: false
-  schema:
     title: Msig Signature
     type: string
   name: msig_signature
@@ -257,16 +239,16 @@ parameters:
     type: integer
   name: update_id_from
   in: query
-  description: Umożliwia odpytywanie bazy o ogłoszenia z update_id większym od podanej
-    wartości
+  description: Umożliwia odpytywanie bazy o ogłoszenia z update_id równym lub większym
+    od podanej wartości
 - required: false
   schema:
     title: Update Id To
     type: integer
   name: update_id_to
   in: query
-  description: Umożliwia odpytywanie bazy o ogłoszenia z update_id mniejszym od podanej
-    wartości
+  description: Umożliwia odpytywanie bazy o ogłoszenia z update_id równym lub mniejszym
+    od podanej wartości
 - required: false
   schema:
     title: First Update Id
